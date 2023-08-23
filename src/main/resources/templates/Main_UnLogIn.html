@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <!--css-->
+    <link href="../static/CSS/Main_UnLogIn.css" rel="stylesheet">
+
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap" class="clearfix">
+        <header id="header" class="clearfix">
+            <h1 class="logo">
+                <a href="index.html">
+                    <img alt="로고_L" src="../static/img/로고_L.png">
+                </a>
+            </h1>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">내 모임</a></li>
+                    <li><a href="#">스케줄</a></li>
+                    <li><a href="#">모임 검색</a></li>
+                    <li><a href="#">HOT 모임</a></li>
+                    <li><a href="#">모임 만들기</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!--헤더 + 뷰-->
+        <section id="box" class="clearfix">
+            <!--헤더-->
+            <div id="user">
+                <ul class="user_wrap" >
+                    <li><a>로그인 하세요</a></li>
+                    <li class="icon_a"> <!--<img alt="user_img" src="#">--></li>
+                    <li class="icon_b"><!--<img alt="s_menu_bar">--></li>
+                </ul>
+            </div>
+
+            <!--뷰-->
+            <div id="view">
+                <!--최근 소식-->
+                <div class="l_news">
+                    <ul>
+                        <li><p>내 모임 최근 소식</p></li>
+                        <li><img rel=">" src="#"><a hred="#"><p>로그인 하기</p></a> </li>
+                    </ul>
+                    <div class="inBox">
+                        <p >아직 밍글되지 않으셨네요.</p>
+                        <h3>로그인</h3><p>하고</p><h3>밍글</h3><p>과 함께해 즐겨주세요.</p>
+                    </div>
+                </div>
+                <!--배너-->
+                <div class="swiper-container banner" >
+                    <div class="swiper-wrapper ul">
+                        <div class="swiper-slide B_mbti"><img rel="mbti" src="../static/img/배너_mbti.png"></div>
+                        <div class="swiper-slide B_hot"><img rel="hot" src="../static/img/배너_%20HOT.png"></div>
+                        <div class="swiper-slide B_mypage"><img rel="mypage" src="../static/img/배너_MYPAGE.png"></div>
+                        <div class="swiper-slide B_mimgle"><img rel="mimgle" src="../static/img/배너_mingle.png"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <!--핫모임-->
+                <div class="hotMeeting">
+                    <ul>
+                        <h3>HOT 모임</h3>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+
+
+
+    <script>
+
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            slideToClickedSlide: true,
+            effect: 'coverflow',
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            coverflowEffect: {
+                rotate: 0, // 회전 각도
+                stretch: 910, // 슬라이드 겹침 정도
+                depth: 300, // 원근 거리
+                slideShadows: false, // 슬라이드 그림자 사용 여부
+            },
+        });
+
+    </script>
+</body>
+</html>
