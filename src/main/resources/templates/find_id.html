@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>아이디 찾기</title>
+    <!-- css링크 -->
+    <link rel="stylesheet" type="text/css" href="/css/find_id.css" />
+</head>
+<body>
+<div id="wrap">
+    <section id="contents">
+        <div class="background">
+            <h1 class="logo">
+                <a href="#"><img src="image/login_logo.png" alt="메인페이지가기"></a>   <!-- 메인창 url넣기 -->
+            </h1>
+            <button type="button" class="id_bt" onclick="location.href='find_id.html'">아이디 찾기</button>
+            <button type="button" class="pw_bt" onclick="location.href='find_pw.html'">비밀번호 찾기</button>
+            <form method="Post" name="form">
+                <div class="textFiled">
+                    <div class="drop_member_name">
+                        <input type="text" name="member_name" class="member_name" placeholder="이름" maxlength="16" />
+                        <img src="image/login_id.png">
+                    </div> <!-- name -->
+                    <div class="drop_member_email">
+                        <input type="email" name="member_email" class="member_email" placeholder="이메일" maxlength="25" />
+                        <img src="image/login_email.png">
+                    </div> <!-- email -->
+                    <input type="text" name="member_check" class="member_check" placeholder="인증번호 6자리 숫자 입력" maxlength="6" />
+                    <input type="submit" id="check_bt" value="인증번호 받기" onclick="javascript: form.action='#';"/> <!-- 인증번호받기 -->
+                </div>
+                <input type="submit" id="find_id_bt" value="아이디 찾기" onclick="javascript: form.action='#';"/> <!-- 아이디 찾기 -->
+            </form>
+        </div> <!-- 구성창 끝 -->
+        <div class="footer_menu">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">책임의 한계와 법적고지</a>
+            <a href="#">회원정보 고객센터</a>
+        </div> <!--footer메뉴 -->
+        <div class="f_copyright" >
+            <img src="image/login_footer.png">
+            <p>Copyright ⓒ </p>
+            <p class="corp">mingle Corp. </p>
+            <p>All Rights Reserved.</p>
+        </div> <!--copyright -->
+    </section>
+</div><!-- wrap -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</body>
+</html>
