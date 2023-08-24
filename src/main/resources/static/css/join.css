@@ -1,0 +1,344 @@
+@charset "UTF-8";
+/* 글꼴 */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* 초기화 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #333;
+    font-family: 'GmarketSansMedium';
+    font-weight: 300;
+}
+li{
+    list-style: none;
+}
+a{
+    color: #333;
+    text-decoration: none;
+}
+img{
+    display: block;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+    font-size: 14px;
+}
+.clearfix::after, .clearfix::before{
+    content: "";
+    display: block;
+    clear: both;
+}
+li{
+    list-style: none;
+}
+
+/* 전체영역 */
+#wrap{
+    width: 100%;
+}
+
+body{
+    background: linear-gradient(90deg, #B1B2FF, #AAC4FF);
+}
+
+#contents{
+    position: relative;
+    width: 100%;
+    height: 1920px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contents .background{
+    position: relative;
+    width: 1200px;
+    height: 1550px;
+    background-color: #F2F4FF;
+    border-radius: 20px;
+}
+
+#contents .background .logo{
+    position: absolute;
+    width: 454px;
+    height: 458px;
+    top: 111px;
+    left: 73px;
+}
+
+#contents .background > p{
+    position: absolute;
+    font-size: 40px;
+    font-family: 'Fugaz One', cursive;
+    color: #514680;
+    left: 809px;
+    top: 111px;
+}
+
+/* id, pw */
+.drop_member_id{
+    position: absolute;
+    left: 661px;
+    top: 225px;
+    width: 380px;
+    height: 65px;
+}
+.drop_member_id .member_id{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 60px;
+}
+.drop_member_id > img{
+    position: absolute;
+    top: 14px;
+    left: 13px;
+}
+
+.drop_member_pw{
+    position: absolute;
+    left: 661px;
+    top: 305px;
+    width: 380px;
+    height: 65px;
+}
+.drop_member_pw .member_pw{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 60px;
+}
+.drop_member_pw > img{
+    position: absolute;
+    top: 10px;
+    left: 9px;
+}
+
+/* id, pw error */
+.error_text{
+    position: absolute;
+    left: 675px;
+    font-size: 12px;
+    color: #FF7171;
+    padding: 5px 0;
+    display: none;  /* 에러 뜨면 보이도록 */
+}
+.error_text::before{
+    position: absolute;
+    content: "";
+    width: 3px;
+    height: 3px;
+    background-color: #FF7171;
+    border-radius: 50%;
+    left: -10px;
+    top: 12px;
+}
+#idMsg1{
+    top: 380px;
+}
+#idMsg2{
+    top: 404px;
+}
+#pwMsg{
+    top: 429px;
+}
+
+/* name */
+.drop_member_name{
+    position: absolute;
+    left: 661px;
+    top: 465px;
+    width: 380px;
+    height: 65px;
+}
+.drop_member_name .member_name{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 60px;
+}
+.drop_member_name > img{
+    position: absolute;
+    top: 15px;
+    left: 9px;
+}
+
+/* birth */
+.drop_member_birth{
+    position: absolute;
+    left: 661px;
+    top: 545px;
+    width: 380px;
+    height: 65px;
+}
+.drop_member_birth .member_birth{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 60px;
+}
+.drop_member_birth > img{
+    position: absolute;
+    top: 15px;
+    left: 9px;
+}
+
+/* gender */
+.gender_btn{
+    width: 137px;
+    height: 42px;
+    border-radius: 5px;
+    position: absolute;
+    top: 625px;
+    left: 691px;
+}
+.gender_btn2{
+    left: 878px;
+}
+.gender_btn input[type=radio]{
+    display: none;
+}
+.gender_btn label{
+    display: block;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+    height: 42px;
+    line-height: 42px;
+}
+.gender_btn input[type=radio]:checked + label {
+    background-color: #B1B2FF;
+    color: #FFFFFF;
+}
+.gender_btn input[type=radio] + label{
+    background-color: #FFFFFF;
+    color: #8B8B8B;
+}
+
+/* email */
+.drop_member_email{
+    position: absolute;
+    left: 661px;
+    top: 682px;
+    width: 380px;
+    height: 65px;
+}
+.drop_member_email .member_email{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    padding: 10px;
+    padding-left: 60px;
+}
+.drop_member_email > img{
+    position: absolute;
+    top: 15px;
+    left: 9px;
+}
+
+/* 거주지 */
+.my_place{
+    position: absolute;
+    left: 718px;
+    top: 850px;
+    font-size: 32px;
+    color: #2C244F;
+}
+.my_place > img{
+    position: absolute;
+    display: inline-block;
+    top: 5px;
+    left: -57px;
+}
+
+
+/* 회원가입 버튼 */
+#join{
+    position: absolute;
+    left: 661px;
+    bottom: 104px;
+    width: 380px;
+    height: 65px;
+    color: #FFFFFF;
+    background-color: #B1B2FF;
+    border-radius: 5px;
+    border: none;
+    font-size: 30px;
+}
+#join:hover{
+    background-color: #514680;
+}
+
+/* footer 메뉴 */
+.footer_menu{
+    position: absolute;
+    bottom: 78px;
+}
+.footer_menu > a{
+    position: relative;
+    color: #FFFFFF;
+    margin-right: 30px;
+}
+.footer_menu > a::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #FFFFFF;
+    top: 1px;
+    left: -15px;
+}
+.footer_menu > a:first-child:before{
+    width: 0;
+}
+.footer_menu > a:last-child{
+    margin-right: 0;
+}
+
+/* footer CopyRight */
+.f_copyright{
+    position: absolute;
+    bottom: 28px;
+}
+.f_copyright > img{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+}
+.f_copyright > p{
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    color: #EEEEEE;
+}
+.f_copyright .corp{
+    color: #FFFFFF;
+}

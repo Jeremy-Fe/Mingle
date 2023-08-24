@@ -10,17 +10,16 @@ public class MingleController {
         return "login";
     }
 
+    
+
     @GetMapping("find_id*")
     public String find_id() { return "find_id"; }
 
     @GetMapping("find_pw*")
     public String find_pw() { return "find_pw"; }
 
-    @GetMapping("login_all*")
-    public String login_all() { return "login_all"; }
-
-    @GetMapping("test*")
-    public String test() { return "test"; }
+    @GetMapping("join")
+    public String join() { return "join"; }
 
     @GetMapping("Main_UnLogIn*")
     public String Main_UnLogIn() {
