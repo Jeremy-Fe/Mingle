@@ -23,9 +23,10 @@ public class MingleController {
     public String test() { return "test"; }
 
     @GetMapping("Main_UnLogIn*")
-    public String Main_UnLogIn() {
-        return "Main_UnLogIn";
-    }
+    public String Main_UnLogIn() { return "Main_UnLogIn"; }
+
+    @GetMapping("Main_LogIn*")
+    public String Main() { return "Main_LogIn"; }
 }
 
 
