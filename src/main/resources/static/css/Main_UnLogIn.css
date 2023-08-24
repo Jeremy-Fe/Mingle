@@ -45,7 +45,7 @@ h3{font-family: 'GmarketSans';}
 #box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
 #box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
 #box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
-#box>#user >ul>.icon_b{width: 10px; height: 45px; background-color: #AAC4FF ;margin: 10px}
+#box>#user >ul>.icon_b>img{width: 30px; height: 30px;  margin-top: 20px ;}
 
 /*section_ view*/
 #box>#view{}
@@ -64,11 +64,15 @@ h3{font-family: 'GmarketSans';}
     font-size: 35px;  font-family: 'Jalnan'; color: #564797;
     float: left ; padding-left: 25px; margin-left: 25px;line-height: 100px;
 }
-#view>.l_news>ul>li>a>p{
+#view>.l_news>ul>li>a{
     margin: 15px;float: right ; line-height: 70px;
     font-size: 25px ;  font-weight:300;
 }
-#view>.l_news>ul>li>img{argin: 15px; width: 22px; height: 22px; float: right}
+#view>.l_news>ul>li>a>img{
+    argin: 15px; width: 22px;
+    height: 22px; float: right ;
+    margin-top: 20px ;padding-left: 10px
+}
 #view> .l_news> .inBox{
     width: 1300px; height: 110px; background-color: #fff;
     border-radius: 20px;
