@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <!-- 폰트링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <!-- css링크 -->
+    <link rel="stylesheet" type="text/css" href="/css/join.css?after" />
+</head>
+<body>
+<div id="wrap">
+    <section id="contents">
+        <div class="background">
+            <h1 class="logo">
+                <a href="/Main_UnLogIn"><img src="image/login_logo.png" alt="메인페이지가기"></a>   <!-- 메인창 url넣기 -->
+            </h1>
+            <p>Join</p>
+            <form action="/url" method="post">    <!-- 메인창 url넣기 -->
+                <div class="drop_member_id">
+                    <input type="text" name="member_id" class="member_id" placeholder="아이디" maxlength="16" />
+                    <img src="image/login_id.png">
+                </div> <!--id -->
+                <div class="drop_member_pw">
+                    <input type="password" name="member_pw" class="member_pw" placeholder="비밀번호" maxlength="16" />
+                    <img src="image/login_pw.png">
+                </div> <!-- pw -->
+                <div class="error_text" id="idMsg1">아이디: 사용할 수 없는 아이디입니다. 다른 아이디를 입력해 주세요.</div>
+                <div class="error_text" id="idMsg2">아이디: 5~16자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</div>
+                <div class="error_text" id="pwMsg">비밀번호: 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.</div> <!-- id, pw, error -->
+                <div class="drop_member_name">
+                    <input type="text" name="member_name" class="member_name" placeholder="이름" maxlength="16" />
+                    <img src="image/login_id.png">
+                </div> <!-- name -->
+                <div class="drop_member_birth">
+                    <input type="text" name="member_birth" class="member_birth" placeholder="생년월일 8자리" maxlength="8" />
+                    <img src="image/join_birth.png">
+                </div> <!-- birth -->
+                <div class="gender_btn gender_btn1">
+                    <input type="radio" id="radio-1" name="userSex" value="male">
+                    <label for="radio-1">남자</label>
+                </div>
+                <div class="gender_btn gender_btn2">
+                    <input type="radio" id="radio-2" name="userSex" value="female">
+                    <label for="radio-2">여자</label>
+                </div> <!-- gender -->
+                <div class="drop_member_email">
+                    <input type="email" name="member_email" class="member_email" placeholder="이메일" maxlength="25" />
+                    <img src="image/join_email.png">
+                </div> <!-- email -->
+                <div class="my_place"><img src="image/join_marker.png">내 거주지</div>
+
+
+
+                <input type="submit" id="join" value="회원가입"/>
+            </form>
+        </div> <!-- 구성창 끝 -->
+        <div class="footer_menu">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">책임의 한계와 법적고지</a>
+            <a href="#">회원정보 고객센터</a>
+        </div> <!--footer메뉴 -->
+        <div class="f_copyright" >
+            <img src="image/login_footer.png">
+            <p>Copyright ⓒ </p>
+            <p class="corp">mingle Corp. </p>
+            <p>All Rights Reserved.</p>
+        </div> <!--copyright -->
+    </section>
+
+</div><!-- wrap -->
+</body>
+</html>
