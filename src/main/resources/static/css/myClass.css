@@ -20,7 +20,7 @@ body{z-index: 2}
     background: rgba(0,0,255,0.1);
     border-radius: 10px;
 }
-/* 마우스 오버 시 스크롤바의 Thumb 스타일링 */
+/* 마우스 오버 시 스크롤바의 Thumb 스타일링1 */
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0,0,255,0.4);
 }
