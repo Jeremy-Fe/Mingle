@@ -26,6 +26,11 @@ public class MingleController {
     public String Main_UnLogIn() {
         return "Main_UnLogIn";
     }
+
+    @GetMapping("myClass*")
+    public String myClass() {
+        return "myClass";
+    }
 }
 
 

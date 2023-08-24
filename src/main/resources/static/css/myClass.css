@@ -1,0 +1,359 @@
+@charset "utf-8";
+*{margin: 0;padding: 0; box-sizing: border-box; }
+li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
+a{text-decoration: none; color: #2C244F;}
+img{display: block;}
+.clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
+p{font-family: 'GmarketSans'; }
+h3{font-family: 'GmarketSans';}
+
+@media (max-width: 767px){
+
+}
+
+/* wrap */
+#wrap{width: 1920px; margin: 0 auto;}
+
+/*header*/
+#header{width: 400px; height: 1100px; float: left;
+}
+/*header_logo*/
+#header .logo{width: 100%; height: 200px;}
+#header .logo>a>img{float: left; width:90%; margin: 10px}
+
+/*header_nav*/
+#header .menu{ width: 400px; padding: 20px}
+#header .menu>ul{}
+#header .menu>ul>li{margin-bottom: 82px}
+#header .menu>ul>li>img{
+   width: 35px; height: 35px;}
+#header .menu>ul>li>a{
+   font-size: 40px;
+}
+
+
+/* section */
+#box{width: 1520px;  float: left; ;}
+#box>div{float: left}
+#user{width: 100%; height: 65px;}
+#view{width: 100%; height: 2027px;
+   background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+   border-radius: 20px 0 0 0;
+}
+
+/*section_ user*/
+#box>#user >ul{float: right}
+#box>#user >ul>li{float: left; line-height: 65px;}
+#box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
+#box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
+#box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
+#box>#user >ul>.icon_b{width: 10px; height: 45px; background-color: #AAC4FF ;margin: 10px}
+
+/*section_ view*/
+#box>#view{}
+#box>#view>ul{}
+#box>#view>ul>li{}
+#box>#view>ul>li>a{font-family: 'Orbitron', sans-serif;}
+/*section_ view_logo1*/
+#view>.logo1{
+   width: 100%;
+   height: 300px;
+   position: relative;
+}
+#view>.logo1>ul>img{
+   position: absolute;
+   top: 59px;
+   left: 50px;
+}
+.my1{
+   font-size: 38px;
+   font-family: 'Jalnan';
+   color: #2C244F;
+   position: absolute;
+   top: 57px;
+   left: 111px;
+}
+#view>.logo1 .my_home{width: 1400px; height: 100px; background-color:rgba(255,255,255,0.65);
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 160px;
+   left: 55px;
+}
+.meet{
+   width: 1200px;
+   margin: auto;
+}
+.meet>li{
+   width:400px;
+   height: 75px;
+   float: left;
+   margin-top: 20px;
+
+}
+.meet>li>a{
+   display:inline-block; width:400px;font-size: 27px ; text-align: center;
+}
+.meet>.jjim{}
+
+
+/*가입한 모임 두번 째 섹션 */
+#view>.logo2{
+   width: 100%;
+   height: 370px;
+   position: relative;
+}
+#view>.logo2>ul>.my2{
+   font-size: 38px;
+   position: absolute;
+   top: 0px;
+   left: 55px;
+}
+#view>.logo2>ul>.my2>a{
+   font-family: 'Jalnan';
+}
+#view>.logo2 .join_class{
+   width: 1400px; height: 306px; background-color:rgba(255,255,255,0.65);
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 55px;
+   left: 50px;
+}
+#view>.logo2 .join_class .container1{
+   width: 195px; height: 236px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 35px;
+   left: 34px;
+}
+#view>.logo2 .join_class .container2{
+   width: 195px; height: 236px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 35px;
+   left: 307px;
+}
+#view>.logo2 .join_class .container3{
+   width: 195px; height: 236px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 35px;
+   left: 580px;
+}
+#view>.logo2 .join_class .container4{
+   width: 195px; height: 236px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 35px;
+   left: 853px;
+}
+#view>.logo2 .join_class .container5{
+   width: 238px; height: 236px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 35px;
+   left: 1126px;
+}
+#view>.logo2 .join_class .container5>ul>li{
+   font-size: 12px;
+   color: #8B8B8B;
+   position: absolute;
+   top: 160px;
+   left: 94px;
+}
+.all_bt{
+   border: none;
+   background: none;
+   position: absolute;
+   top: 73px;
+   left: 79px;
+
+}
+/*recommend 섹션 */
+
+#view>.recommend{
+   width: 100%;
+   height: 1125px;
+   position: relative;
+}
+#view>.recommend>ul>li{
+   font-size: 38px;
+   position: absolute;
+   top: 41px;
+   left: 55px;
+}
+#view>.recommend>ul>li>a{
+   font-family: 'Jalnan';
+}
+#view>.recommend .recommend2{
+   width: 1400px; height: 885px; background-color:rgba(255,255,255,0.65);
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 100px;
+   left: 50px;
+}
+#view>.recommend .container6{
+   width: 1328px; height: 164px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 58px;
+   left: 35px;
+}
+#view>.recommend .container7{
+   width: 1328px; height: 164px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 252px;
+   left: 35px;
+}
+#view>.recommend .container8{
+   width: 1328px; height: 164px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 458px;
+   left: 35px;
+}
+#view>.recommend .container9{
+   width: 1328px; height: 164px; background-color:#FFFFFF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   top: 664px;
+   left: 35px;
+}
+/*바로가기 버튼*/
+#view>.recommend .recommend2 .container6>ul> .sh_bt1{
+   border: none;
+   background: none;
+   position: absolute;
+   top: 91px;
+   left: 1156px;
+}
+.sh_bt2{
+   border: none;
+   background: none;
+   position: absolute;
+   top: 91px;
+   left: 1156px;
+}
+.sh_bt3{
+   border: none;
+   background: none;
+   position: absolute;
+   top: 91px;
+   left: 1156px;
+}
+.sh_bt4{
+   border: none;
+   background: none;
+   position: absolute;
+   top: 91px;
+   left: 1156px;
+}
+/*맞춤 추천 이미지*/
+#view>.recommend .recommend2 .container6 .dd_img1{
+   position: absolute;
+   top: 15px;
+   left: 50px;
+}
+.dd_img2{
+   position: absolute;
+   top: 15px;
+   left: 50px;
+}
+.dd_img3{
+   position: absolute;
+   top: 15px;
+   left: 50px;
+}
+.dd_img4{
+   position: absolute;
+   top: 15px;
+   left: 50px;
+}
+/*모임 만들기 컨테이너*/
+#view>.recommend .make_meet{
+   width: 730px; height: 80px; background-color:#EEF1FF;
+   margin: auto;
+   border-radius: 20px;
+   position: absolute;
+   bottom: 0px;
+   left: 406px;
+}
+#view>.recommend .make_meet .meet_bt{
+   border: none;
+   background: none;
+   position: absolute;
+   top: 24px;
+   left: 268px;
+}
+#view>.recommend .make_meet>ul>li{
+   font-size: 27px;
+   position: absolute;
+   top: 27px;
+   left: 308px;
+}
+
+
+/* footer 메뉴 */
+#footer{
+   height: 196px;
+   position: relative;
+}
+.footer_menu{
+   position: absolute;
+   top: 78px;
+   left: 415px;
+}
+.footer_menu > a{
+   position: relative;
+   color: #FFFFFF;
+   margin-right: 30px;
+}
+.footer_menu > a::before{
+   content: "";
+   position: absolute;
+   width: 2px;
+   height: 18px;
+   background-color: #FFFFFF;
+   top: 1px;
+   left: -15px;
+}
+.footer_menu > a:first-child:before{
+   width: 0;
+}
+.footer_menu > a:last-child{
+   margin-right: 0;
+}
+
+/* footer CopyRight */
+.f_copyright{
+   position: absolute;
+   top: 113px;
+   left: 475px;
+}
+.f_copyright > img{
+   display: inline-block;
+   text-align: center;
+   vertical-align: middle;
+
+}
+.f_copyright > p{
+   display: inline;
+   text-align: center;
+   vertical-align: middle;
+   color: #EEEEEE;
+}
+.f_copyright .corp{
+   color: #FFFFFF;
+}
