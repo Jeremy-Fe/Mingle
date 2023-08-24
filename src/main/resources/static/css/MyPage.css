@@ -140,10 +140,12 @@ h3{font-family: 'GmarketSans';}
         border-radius: 40px;
         padding: 20px;
         padding-left: 40px;
+
 }
 #view .title .inBox .coment {
     font-size: 30px;
     font-family: 'GmarketSans';
+    white-space: pre-line;
 /*---기본정보 자기소개란---*/
 }
 
