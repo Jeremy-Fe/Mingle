@@ -1,0 +1,161 @@
+@charset "utf-8";
+*{margin: 0;padding: 0; box-sizing: border-box; }
+li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
+a{text-decoration: none; color: #2C244F;}
+img{display: block; width: 150px;}
+.clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
+p{font-family: 'GmarketSans'; }
+h3{font-family: 'GmarketSans';}
+
+@media (max-width: 767px){
+
+}
+
+/* wrap */
+#wrap{width: 1900px; margin: 0 auto;}
+
+/*header*/
+#header{width: 400px; height: 1100px; float: left;
+    /*background-color: aliceblue*/
+}
+
+
+
+/*-------페이지 기본구성(시작)*-------/
+
+/*header_logo*/
+#header .logo{width: 100%; height: 200px;}
+#header .logo>a>img{float: left; width:90%; margin: 10px}
+
+/*header_nav*/
+#header .menu{ width: 100%; padding: 20px}
+#header .menu>ul{}
+#header .menu>ul>li{margin-bottom: 82px}
+#header .menu>ul>li>a{font-size: 40px; }
+/*#header .menu>ul>li>a:first-child::before{ line-height: 0px}*/
+
+/* section */
+#box{width: 1500px; height: 1100px;  float: left; ;}
+#box>div{float: left}
+#user{width: 100%; height: 65px;}
+#view{width: 100%;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    border-radius: 20px 0 0 0;
+}
+
+/*section_ user*/
+#box>#user >ul{float: right}
+#box>#user >ul>li{float: left; line-height: 65px;}
+#box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
+#box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
+#box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
+#box>#user >ul>.icon_b{width: 10px; height: 45px; background-color: #AAC4FF ;margin: 10px}
+/*-------페이지 기본구성(끝)*-------*/
+
+
+
+
+/*<section_ view>*/
+
+/*---뷰 전체 기본설정---*/
+#view>div{width: 1400px;
+    margin: auto; margin-top: 20px;
+    border-radius: 20px;
+/*---뷰 전체 기본설정(끝)---*/
+}
+
+
+
+/*---큰제목 아이콘---*/
+#view> .title > img{
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 10px;
+/*---큰제목 아이콘(끝)---*/
+}
+
+
+
+/*---큰제목 텍스트---*/
+#view> .title > p{
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 40px;
+    font-family: 'Jalnan';
+/*---큰제목 텍스트(끝)---*/
+}
+
+
+
+
+
+/*---큰제목 세부설정---*/
+#view> .title .profile ul{
+    margin-top: 30px;
+    height: 300px;
+}
+#view> .title .profile li{
+    height: 240px;
+    float: left;
+    font-size: 25px;
+}
+#view> .title .profile p{
+    padding-top: 20px;
+/*---큰제목 세부설정(끝)---*/
+}
+
+
+/*---프로필 사진---*/
+#view> .title .profile .pimg > a > img{
+    width: 240px;
+    height: 240px;
+    border-radius: 100%;
+    margin-right: 50px;
+/*---프로필 사진(끝)---*/
+}
+
+
+/*---기본정보 텍스트---*/
+#view> .title .profile .text{
+    margin-right: 70px;
+}
+#view> .title .profile li .name {
+    font-size: 32px;
+    margin-top: 40px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+}
+#view> .title .profile li .info{
+        padding-top: 15px;
+        font-weight: bold;
+        font-family: 'Jalnan';
+/*---기본정보 텍스트(끝)---*/
+}
+
+
+/*---기본정보 자기소개란---*/
+#view .title .inBox{
+        width: 900px; height: 240px; background-color: #fff;
+        border-radius: 40px;
+        padding: 20px;
+        padding-left: 40px;
+}
+#view .title .inBox .coment {
+    font-size: 30px;
+    font-family: 'GmarketSans';
+/*---기본정보 자기소개란---*/
+}
+
+
+
+    /*
+    #view> .l_news>li{float: left}
+    #view> .l_news> .inBox>p{
+        float: left ; line-height: 80px;
+        font-size: 32px;  font-weight: 300; color: grey}
+    #view> .l_news> .inBox>p:first-child{margin-right: 40px}
+    #view> .inBox>h3{
+        float: left ;line-height: 75px ; margin-left: 10px;
+        font-size: 48px; font-weight: 500}
+    */
