@@ -28,6 +28,11 @@ public class MingleController {
 
     @GetMapping("myClass*")
     public String myClass() {return "myClass";}
+
+    @GetMapping("schedule*")
+    public String schedule() {return "schedule";}
 }
+
+
 
 
