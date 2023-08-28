@@ -84,14 +84,14 @@ body{
 }
 
 /* id, pw */
-.drop_memberId{
+.drop_mId{
     position: absolute;
     left: 657px;
     top: 225px;
     width: 380px;
     height: 65px;
 }
-.drop_memberId .memberId{
+.drop_mId .mId{
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -101,20 +101,20 @@ body{
     padding: 10px;
     padding-left: 60px;
 }
-.drop_memberId > img{
+.drop_mId > img{
     position: absolute;
     top: 14px;
     left: 13px;
 }
 
-.drop_memberPw{
+.drop_mPwd{
     position: absolute;
     left: 657px;
     top: 305px;
     width: 380px;
     height: 65px;
 }
-.drop_memberPw .memberPw{
+.drop_mPwd .mPwd{
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -124,7 +124,7 @@ body{
     padding: 10px;
     padding-left: 60px;
 }
-.drop_memberPw > img{
+.drop_mPwd > img{
     position: absolute;
     top: 10px;
     left: 9px;

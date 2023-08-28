@@ -1,7 +1,12 @@
 package Mingle.MingleProject.dto;
 
+import Mingle.MingleProject.entity.City;
+import Mingle.MingleProject.entity.Interest;
 import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.ProfileImg;
 import lombok.*;
+
+import java.sql.Date;
 
 
 @Getter
@@ -11,14 +16,37 @@ import lombok.*;
 @ToString // toString 자동으로
 public class MemberDTO {
     private Long id;
-    private String memberId;
-    private String memberPw;
+    private String mId;
+    private String mPwd;
+    private String mName;
+    private String mGender;
+    private Date mBirth;
+    private String mEmail;
+    private City mAddress;
+    private City mInteregion;
+    private Interest mInterest;
+    private String mGGathering;
+    private ProfileImg mPiProfileimg;
+    private String mIntroduction;
+    private String mMbti;
+
+
 
     public static MemberDTO toMemberDTO(MemberEntity memberEntity) {
         MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setId(memberEntity.getId());
-        memberDTO.setMemberId(memberEntity.getMemberId());
-        memberDTO.setMemberPw(memberEntity.getMemberPw());
+        memberDTO.setMId(memberEntity.getMId());
+        memberDTO.setMPwd(memberEntity.getMPwd());
+        memberDTO.setMName(memberEntity.getMName());
+        memberDTO.setMGender(memberEntity.getMGender());
+        memberDTO.setMBirth(memberEntity.getMBirth());
+        memberDTO.setMEmail(memberEntity.getMEmail());
+        memberDTO.setMAddress(memberEntity.getMAddress());
+        memberDTO.setMInteregion(memberEntity.getMInteregion());
+        memberDTO.setMInterest(memberEntity.getMInterest());
+        memberDTO.setMGGathering(memberEntity.getMGGathering());
+        memberDTO.setMPiProfileimg(memberEntity.getMPiProfileimg());
+        memberDTO.setMIntroduction(memberEntity.getMIntroduction());
+        memberDTO.setMMbti(memberEntity.getMMbti());
         return memberDTO;
     }
 }

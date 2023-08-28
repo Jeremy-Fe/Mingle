@@ -3,10 +3,10 @@ spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
     #    각자 PC에 만들어놓은 Database이름을 써야 합니다.
-    url: jdbc:oracle:thin:@localhost:1521:XE
+    url: jdbc:oracle:thin:@192.168.0.250:1521:XE
     #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
-    username: c##yeeun
-    password: yeeun
+    username: c##mingle
+    password: mingle
   thymeleaf:
     cache: false
 
@@ -16,4 +16,4 @@ spring:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create

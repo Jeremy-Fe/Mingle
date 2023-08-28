@@ -5,26 +5,79 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-@Entity
-@Setter
 @Getter
-@Table(name = "member_table2")
+@Setter
+@Entity
+@Table(name = "MEMBER")
 public class MemberEntity {
-    @Id //pk 지정
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto.increment
-    private Long id;
+    @Id
+    @Column(name = "M_ID", nullable = false, length = 50)
+    private String mId;
 
-    @Column(unique = true) //unique 제약조건 추가
-    private String memberId;
+    @Column(name = "M_PWD", nullable = false, length = 50)
+    private String mPwd;
 
-    @Column
-    private String memberPw;
+    @Column(name = "M_NAME", nullable = false, length = 50)
+    private String mName;
+
+    @Column(name = "M_GENDER", nullable = false)
+    private String mGender;
+
+    @Column(name = "M_BIRTH", nullable = false)
+    private Date mBirth;
+
+    @Column(name = "M_EMAIL", nullable = false, length = 50)
+    private String mEmail;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "M_ADDRESS", nullable = false)
+    private City mAddress;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "M_INTEREGION", nullable = false)
+    private City mInteregion;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "M_INTEREST", nullable = false)
+    private Interest mInterest;
+
+    @Column(name = "M_G_GATHERING", length = 2000)
+    private String mGGathering;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "M_PI_PROFILEIMG")
+    private ProfileImg mPiProfileimg;
+
+    @Column(name = "M_INTRODUCTION", length = 1000)
+    private String mIntroduction;
+
+    @Column(name = "M_MBTI", length = 4)
+    private String mMbti;
+
+    @OneToMany(mappedBy = "piM")
+    private Set<ProfileImg> profileImgs = new LinkedHashSet<>();
 
     public static MemberEntity toMemberEntity(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setMemberId(memberDTO.getMemberId());
-        memberEntity.setMemberPw(memberDTO.getMemberPw());
+        memberEntity.setMId(memberDTO.getMId());
+        memberEntity.setMPwd(memberDTO.getMPwd());
+        memberEntity.setMName(memberDTO.getMName());
+        memberEntity.setMGender(memberDTO.getMGender());
+        memberEntity.setMBirth(memberDTO.getMBirth());
+        memberEntity.setMEmail(memberDTO.getMEmail());
+        memberEntity.setMAddress(memberDTO.getMAddress());
+        memberEntity.setMInteregion(memberDTO.getMInteregion());
+        memberEntity.setMInterest(memberDTO.getMInterest());
+        memberEntity.setMGGathering(memberDTO.getMGGathering());
+        memberEntity.setMPiProfileimg(memberDTO.getMPiProfileimg());
+        memberEntity.setMIntroduction(memberDTO.getMIntroduction());
+        memberEntity.setMMbti(memberEntity.getMMbti());
         return memberEntity;
     }
+
 }

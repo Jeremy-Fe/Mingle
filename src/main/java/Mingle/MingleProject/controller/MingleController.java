@@ -51,7 +51,7 @@ public class MingleController {
         MemberDTO loginResult = memberService.login(memberDTO);
         if(loginResult != null) {
             //login 성공
-            session.setAttribute("loginId", loginResult.getMemberId());
+            session.setAttribute("loginId", loginResult.getMId());
             return "Main_LogIn";
         }else {
             //login 실패
