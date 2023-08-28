@@ -9,7 +9,7 @@
 
 
     <!--css-->
-    <link href="../static/CSS/MyPage.css" type="text/css" rel="stylesheet">
+    <link href="/CSS/MyPage.css" type="text/css" rel="stylesheet">
 
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -20,68 +20,438 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
 <div id="wrap" class="clearfix">
     <header id="header" class="clearfix">
         <h1 class="logo">
             <a href="index.html">
-                <img alt="로고_L" src="../static/image/로고_L.png">
+                <img alt="로고_L" src="image/로고_L.png">
             </a>
         </h1>
         <nav class="menu">
             <ul>
-                <li><a href="#">내 모임</a></li>
-                <li><a href="#">스케줄</a></li>
-                <li><a href="#">모임 검색</a></li>
-                <li><a href="#">HOT 모임</a></li>
-                <li><a href="#">모임 만들기</a></li>
+                <li><a href="#"><img src="image/Menu_내모임.png">내 모임</a></li>
+                <li><a href="#"><img src="image/Menu_스케줄.png">스케줄</a></li>
+                <li><a href="#"><img src="image/Menu_모임검색.png">모임 검색</a></li>
+                <li><a href="#"><img src="image/Menu_HOT모임.png">HOT 모임</a></li>
+                <li><a href="#"><img src="image/Menu_모임만들기.png">모임 만들기</a></li>
             </ul>
         </nav>
     </header>
 
+    <!--헤더 + 뷰-->
     <section id="box" class="clearfix">
+
         <!--헤더-->
         <div id="user">
             <ul class="user_wrap" >
                 <li><a>로그인 하세요</a></li>
                 <li class="icon_a"> <!--<img alt="user_img" src="#">--></li>
-                <li class="icon_b"><!--<img alt="s_menu_bar">--></li>
+                <li class="icon_b"><img alt="_mymenu" src="image/Main_마이메뉴.png"></li>
             </ul>
         </div>
+
+        <!--<html xmlns:th="http://www.thymeleaf.org">
+
+        <div th:replace="/defaultUI.html"></div>-->
+
         <!--뷰-->
-        <div id="view">
-            <!--마이페이지-->
-            <div class="title">
-                <img alt="큰제목" src="../static/image/MyPageTitle.png">
-                <p>마이 페이지</p>
+        <div id="view"style="overflow:scroll;">
+            <!-- 바꿔야하는 부분 -->
+            <div class="view">
+                <!--마이페이지-->
+                <div class="MyPage">
+                    <img alt="큰제목" src="/image/MyPageTitle.png">
+                    <p>마이페이지</p>
 
-                <div class="profile">
-                    <ul>
-                        <li class="pimg">
-                            <a href="index.html">
-                                <img alt="프로필사진" src="../static/image/DefaultProfile_logo.png">
+                    <div class="profile">
+                        <ul>
+                            <li class="pimg">
+                                <a href="">
+                                    <img class="edit" alt="프로필수정" src="/image/ProfileEdit_w.png">
+                                </a>
+                                <a href="index.html">
+                                    <img class="proimg" alt="프로필사진" src="/image/DefaultProfile_logo.png">
+                                </a>
+                            </li>
+
+                            <li class="text">
+                                <p class="name">Amelia</p>
+                                <p class="info">1998.01.18<br><br>여</p>
+                            </li>
+
+                            <li class="inBox">
+                                <p class="coment">누구를위한 삶인가       .//... 인생이란 무엇인가
+                                    인생은 부먹인가 찍먹인가
+                                    소주와 맥주는 대체 왜 먹는것일까
+                                    그렇지만 없다면 나는 살수 없다
+                                    한잔 허쉴?
+                                </p>
+                            </li>
+                            <a href="">
+                                <img class="edit_2" alt="프로필수정" src="/image/ProfileEdit_b.png">
                             </a>
-                        </li>
+                        </ul>
+                    </div>
 
-                        <li class="text">
-                            <p class="name">Amelia</p>
-                            <p class="info">1998.01.18<br><br>여</p>
-                        </li>
+                    <!--내모임-->
+                    <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부</p></p>
+                    <div class="myclass clearfix">
+                        <ul class="mycb_01">
+                            <a>
+                                <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p>질풍가도</p>
+                            <span><도심속 러닝 모...></span>
+                            <a>
+                                <img id="peple_01" alt="전체 보기" src="/image/짱구1.png">
+                            </a>
+                            <a>
+                                <img id="peple_02" alt="전체 보기" src="/image/짱구2.png">
+                            </a>
+                            <a>
+                                <img id="peple_03" alt="전체 보기" src="/image/짱구3.png">
+                            </a>
+                            <a>
+                                <img id="peple_04" alt="전체 보기" src="/image/짱구4.png">
+                            </a>
+                            <a>
+                                <img id="peple_05" alt="전체 보기" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <a>
+                                <p id="peple_etc">+50</p>
+                            </a>
+                        </ul>
 
-                        <li class="inBox">
-                            <p class="coment">누구를위한 삶인가       .//... 인생이란 무엇인가
-                                인생은 부먹인가 찍먹인가
-                                소주와 맥주는 대체 왜 먹는것일까
-                                그렇지만 없다면 나는 살수 없다
-                                한잔 허쉴?
+                        <ul class="mycb_01-1">
+                            <a>
+                                <img alt="모임 이미지2" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p>질풍가도</p>
+                            <span><도심속 러닝 모...></span>
+                            <a>
+                                <img id="peple_01" alt="전체 보기" src="/image/짱구1.png">
+                            </a>
+                            <a>
+                                <img id="peple_02" alt="전체 보기" src="/image/짱구2.png">
+                            </a>
+                            <a>
+                                <img id="peple_03" alt="전체 보기" src="/image/짱구3.png">
+                            </a>
+                            <a>
+                                <img id="peple_04" alt="전체 보기" src="/image/짱구4.png">
+                            </a>
+                            <a>
+                                <img id="peple_05" alt="전체 보기" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <a>
+                                <p id="peple_etc">+50</p>
+                            </a>
+                        </ul>
+
+                        <ul class="mycb_02">
+                            <a>
+                                <img alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p>스플래쉬</p>
+                            <span><회사인 배드민턴 모...></span>
+                            <a>
+                                <img id="peple_01" alt="전체 보기" src="/image/짱구1.png">
+                            </a>
+                            <a>
+                                <img id="peple_02" alt="전체 보기" src="/image/짱구2.png">
+                            </a>
+                            <a>
+                                <img id="peple_03" alt="전체 보기" src="/image/짱구3.png">
+                            </a>
+                            <a>
+                                <img id="peple_04" alt="전체 보기" src="/image/짱구4.png">
+                            </a>
+                            <a>
+                                <img id="peple_05" alt="전체 보기" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <a>
+                                <p id="peple_etc">+50</p>
+                            </a>
+                        </ul>
+                        <ul class="mycb_02-1">
+                            <a>
+                                <img alt="모임 이미지4" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p>스플래쉬</p>
+                            <span><회사인 배드민턴 모...></span>
+                            <a>
+                                <img id="peple_01" alt="전체 보기" src="/image/짱구1.png">
+                            </a>
+                            <a>
+                                <img id="peple_02" alt="전체 보기" src="/image/짱구2.png">
+                            </a>
+                            <a>
+                                <img id="peple_03" alt="전체 보기" src="/image/짱구3.png">
+                            </a>
+                            <a>
+                                <img id="peple_04" alt="전체 보기" src="/image/짱구4.png">
+                            </a>
+                            <a>
+                                <img id="peple_05" alt="전체 보기" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <a>
+                                <p id="peple_etc">+50</p>
+                            </a>
+                        </ul>
+
+                        <ul class="mycb_03">
+                            <a>
+                                <img alt="모임 이미지5" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p>빽투더퓨처</p>
+                            <span><레트로 게임 메니아... ></span>
+                            <a>
+                                <img id="peple_01" alt="전체 보기" src="/image/짱구1.png">
+                            </a>
+                            <a>
+                                <img id="peple_02" alt="전체 보기" src="/image/짱구2.png">
+                            </a>
+                            <a>
+                                <img id="peple_03" alt="전체 보기" src="/image/짱구3.png">
+                            </a>
+                            <a>
+                                <img id="peple_04" alt="전체 보기" src="/image/짱구4.png">
+                            </a>
+                            <a>
+                                <img id="peple_05" alt="전체 보기" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <a>
+                                <p id="peple_etc">+50</p>
+                            </a>
+                        </ul>
+
+                        <ul class="mycb_03-1">
+                            <a>
+                                <img alt="모임 이미지6" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p>빽투더퓨처</p>
+                            <span><레트로 게임 메니아... ></span>
+                            <a>
+                                <img id="peple_01" alt="전체 보기" src="/image/짱구1.png">
+                            </a>
+                            <a>
+                                <img id="peple_02" alt="전체 보기" src="/image/짱구2.png">
+                            </a>
+                            <a>
+                                <img id="peple_03" alt="전체 보기" src="/image/짱구3.png">
+                            </a>
+                            <a>
+                                <img id="peple_04" alt="전체 보기" src="/image/짱구4.png">
+                            </a>
+                            <a>
+                                <img id="peple_05" alt="전체 보기" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <a>
+                                <p id="peple_etc">+50</p>
+                            </a>
+                        </ul>
+
+                        <ul class="mycb_04">
+                            <a>
+                                <img alt="모임 이미지7" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p>우주먼지</p>
+                            <span><천체관측 모임... ></span>
+                            <a>
+                                <img id="peple_01" alt="전체 보기" src="/image/짱구1.png">
+                            </a>
+                            <a>
+                                <img id="peple_02" alt="전체 보기" src="/image/짱구2.png">
+                            </a>
+                            <a>
+                                <img id="peple_03" alt="전체 보기" src="/image/짱구3.png">
+                            </a>
+                            <a>
+                                <img id="peple_04" alt="전체 보기" src="/image/짱구4.png">
+                            </a>
+                            <a>
+                                <img id="peple_05" alt="전체 보기" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <a>
+                                <p id="peple_etc">+50</p>
+                            </a>
+                        </ul>
+                        <ul class="mycb_04-1">
+                            <a>
+                                <img alt="모임 이미지8" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p>우주먼지</p>
+                            <span><천체관측 모임... ></span>
+                            <a>
+                                <img id="peple_01" alt="전체 보기" src="/image/짱구1.png">
+                            </a>
+                            <a>
+                                <img id="peple_02" alt="전체 보기" src="/image/짱구2.png">
+                            </a>
+                            <a>
+                                <img id="peple_03" alt="전체 보기" src="/image/짱구3.png">
+                            </a>
+                            <a>
+                                <img id="peple_04" alt="전체 보기" src="/image/짱구4.png">
+                            </a>
+                            <a>
+                                <img id="peple_05" alt="전체 보기" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <a>
+                                <p id="peple_etc">+50</p>
+                            </a>
+                        </ul>
+                        <div id ="allwrap" class="clearfix">
+                            <ul >
+                                <a>
+                                    <img id="allview" alt="전체 보기" src="/image/전체 보기.png">
+                                    <p id="allviewtext">전체 보기</p>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--내게시물-->
+                    <p class="title_03">내 게시물</p>
+                    <div class="myPost clearfix">
+                        <ul class="post_01 clearfix">
+                            <a>
+                                <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p class="postname_01">질풍가도</p>
+                            <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
+                            <p class="day_01">2023. 05. 19<p class="viewcount_01">조회 012</p></p>
+                            </a>
+                        </ul>
+
+                        <ul class="post_02 clearfix">
+                            <a>
+                                <img class="postimg_01" alt="모임 이미지2" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p class="postname_01">우주먼지</p>
+                            <span>20년만에 돌아오는 천체 관측 하는 날 끝나고 맥주 한잔 할 살암</span>
+                            <p class="day_01">2023. 07. 15<p class="viewcount_01">조회 112</p></p>
+                            </a>
+                        </ul>
+
+                        <ul class="post_03 clearfix">
+                            <a>
+                                <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p class="postname_01">빽투더퓨처</p>
+                            <span>플스 하는 날 (피파, 철권, 킹오파, 다디졌다)</span>
+                            <p class="day_01">2023. 08. 06<p class="viewcount_01">조회 002</p></p>
+                            </a>
+                        </ul>
+
+                        <ul class="post_04 clearfix">
+                            <a>
+                                <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p class="postname_01">스플래쉬</p>
+                            <span>동네 아재들 다 모여라 배드민턴 함치자~!</span>
+                            <p class="day_01">2023. 08. 14<p class="viewcount_01">조회 001</p></p>
+                            </a>
+                        </ul>
+
+                        <ul class="post_05 clearfix">
+                            <a>
+                                <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p class="postname_01">질풍가도</p>
+                            <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
+                            <p class="day_01">2023. 08. 31<p class="viewcount_01">조회 012</p></p>
+                            </a>
+                        </ul>
+
+                        <ul class="post_06 clearfix">
+                            <a>
+                                <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                            </a>
+                            <p class="postname_01">우주먼지</p>
+                            <span>모임 회식</span>
+                            <p class="day_01">2023.09.03<p class="viewcount_01">조회 112</p></p>
+                            </a>
+                        </ul>
+
+                        <ul class="Allpost clearfix">
+                            <a>
+                                <img alt="전체 보기" src="/image/전체 보기.png">
+                            </a>
+                            <p>전체 보기</p>
+                        </ul>
+
+                        <!--
+                        <div id="myclass" class="clearfix">
+                                     <script>
+                                         for (var i = 0; i < 4; i++) {
+
+                                             // ul 요소 생성
+                                             var ulElement1 = document.createElement("ul");
+                                             ulElement1.className = "mycb_0"+(i+1);
+
+                                             var ulElement2 = document.createElement("ul");
+                                             ulElement2.className = "mycb_0"+(i+1)+"-"+(i+1);
+
+                                             var myclass = document.getElementById("myclass");
+                                             myclass.appendChild(ulElement1);
+                                             myclass.appendChild(ulElement2);
+                                         }
+                                     </script>-->
+                    </div>
+                    <!--내 댓글-->
+                    <p class="title_04">내 댓글</p>
+                    <div class="myComment clearfix">
+                        <ul class="comment_01 clearfix">
+                            <p class="commenttext_01">
+                                <span>ㅋㅋㅋ 나 그날 러닝 뛰고 집에 오는길에 맥주 한캔 사서 집 들어옴 ㅋㅋㅋ</span>
+                                2023. 08. 27 - 질풍가도 | 자유게시판
                             </p>
-                        </li>
-                    </ul>
+                        </ul>
+
+                        <ul class="comment_02 clearfix">
+                            <p class="commenttext_01">
+                                <span>이 천체 관측날 캠핑 용품 준비 해가야 하나요??</span>
+                                2023. 08. 15 - 우주먼지 | 자유게시판
+                            </p>
+                        </ul>
+
+                        <ul class="comment_03 clearfix">
+                            <p class="commenttext_01">
+                                <span>혹시 회원님들 중에 라켓 저렴하고 좋은것 파는곳 정보 아시는분 있나요??</span>
+                                2023. 07. 22 - 스플래쉬 | 자유게시판
+                            </p>
+                        </ul>
+
+                        <ul class="comment_04 clearfix">
+                            <p class="commenttext_01">
+                                <span>아니 근데 저기서 마지막 챕터 보스몹 잡는거 너무 빡세던데.. 이거 못잡는거 아...</span>
+                                2023. 07. 15 - 빽투더퓨처 | 자유게시판
+                            </p>
+                        </ul>
+
+                        <ul class="comment_05 clearfix">
+                            <p class="commenttext_01">
+                                <span>이제 맥주 그만 먹어야되는데.. 러닝뛴거 그대로 살로 다 가겠음ㅋㅋㅋㅋ</span>
+                                2023. 07. 02 - 질풍가도 | 자유게시판
+                            </p>
+                        </ul>
+
+                        <ul class="comment_06 clearfix">
+                            <p class="commenttext_01">
+                                <span>이 지역 보스몹 잡아 보셨나요?</span>
+                                2023. 05. 18  - 빽투더퓨처 | 자유게시판
+                            </p>
+                        </ul>
+                        <ul>
+                            <a>
+                                <img id="seemore" alt="더보기" src="/image/더보기.png">
+                                <p id="seemoretext">더보기</p>
+                            </a>
+                        </ul>
+
+                    </div>
                 </div>
-
-            </div>
-
-        </div>
     </section>
 
 </div>
