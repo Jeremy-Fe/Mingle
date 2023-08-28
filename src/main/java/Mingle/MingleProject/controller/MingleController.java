@@ -52,6 +52,7 @@ public class MingleController {
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
+        System.out.println(memberDTO);
         if(loginResult != null) {
             //login 성공
             session.setAttribute("loginId", loginResult.getMId());
