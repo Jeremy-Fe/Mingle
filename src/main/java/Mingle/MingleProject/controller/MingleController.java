@@ -49,6 +49,9 @@ public class MingleController {
     @GetMapping("schedule*")
     public String schedule() {return "schedule";}
 
+    @GetMapping("Gathering_Home")
+    public String Gathering_Home() {return "Gathering_Home";}
+
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
@@ -62,6 +65,8 @@ public class MingleController {
             return "login";
         }
     }
+
+
 
 }
 
