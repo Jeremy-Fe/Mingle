@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--css-->
+    <link href="/css/Create_Meet.css?after" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="/defaultUI.html"></div>
+<div class="contents">
+    <ul>
+        <img class="marker" src="image/meet_marker.png">
+        <li>지역</li>
+    </ul>
+    <div class="select1">
+        <ul>
+            <li>
+                <form action="#">
+                    <Select name="city" class="select_city">
+                        <option value="none">시/도 선택</option>
+                        <option value="gyeonggi_do">부천시</option>
+                        <option value="gyeonggi_do">광명시</option>
+                        <option value="gyeonggi_do">서울시</option>
+                        <option value="gyeonggi_do">부산시</option>
+                    </Select>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <div class="select2">
+        <ul>
+            <li>
+                <form action="#">
+                    <Select name="county" class="select_county">
+                        <option value="none">구/군 선택</option>
+                        <option value="gyeonggi_do">경기도</option>
+                        <option value="gyeonggi_do">경기도</option>
+                        <option value="gyeonggi_do">경기도</option>
+                        <option value="gyeonggi_do">경기도</option>
+                    </Select>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div class="meet_name1">
+        <div class="meet_name2">
+            <ul>
+                <li>
+                    <input type="text" name="G_NAME" class="g_name" placeholder="모임 이름" maxlength="16"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="meet_introduce">
+        <div class="meet_introduce2">
+            <ul>
+                <li>
+                    <form action="#">
+                        <textarea name="M_INTRODUCTION" class="m_introduce">모임의 소개글을 적어주세요.</textarea>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="personnel">
+        <ul>
+            <img class="person" src="image/모임 만들기_사람.png">
+            <li>정원(최대300명)</li>
+        </ul>
+    </div>
+    <div class="personnel_box">
+        <div class="personnel_box2">
+            <ul>
+                <li>
+                    <form action="#">
+                        <textarea name="G_personnel" class="G_personnel"></textarea>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="create_bt">
+        <ul>
+            <li>
+                <form action="#">
+                    <button name="G_create_bt" class="G_create_bt"></button>
+                </form>
+            </li>
+        </ul>
+        <ul>
+            <li class="create_bt2">모임 만들기</li>
+        </ul>
+    </div>
+    <ul>
+        <img class="meet_bt" src="image/모임 버튼.png">
+    </ul>
+</div>
+<div class="footer">
+    <div class="footer_menu">
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">책임의 한계와 법적고지</a>
+        <a href="#">회원정보 고객센터</a>
+    </div> <!--footer메뉴 -->
+    <div class="f_copyright">
+        <img src="image/login_footer.png">
+        <p>Copyright ⓒ </p>
+        <p class="corp">mingle Corp. </p>
+        <p>All Rights Reserved.</p>
+    </div> <!--copyright -->
+</div>
+</body>
+</html>
