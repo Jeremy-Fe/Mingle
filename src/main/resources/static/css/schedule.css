@@ -255,6 +255,7 @@ body{z-index: 2}
     left: 415px;
 }
 .footer_menu > a{
+    position: relative;
     color: #FFFFFF;
     margin-right: 30px;
 }

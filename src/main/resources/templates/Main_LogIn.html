@@ -28,37 +28,133 @@
                 <!-- 바꿔야하는 부분 -->
                 <div class="view">
                     <!--최근 소식-->
-                    <div class="l_news">
+                    <div id="l_news">
                         <ul class="header">
                             <li><p>내 모임 최근 소식</p></li>
                             <li><a hred="#">마이 페이지<img rel="오른쪽화살표.png" src="image/오른쪽화살표.png"></a></li>
                         </ul>
                         <div class="inBox">
                             <!--내모임-->
-                            <ul class="myMingles">
+                            <ul id="myMingles">
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_search"><img src="image/Main_Login_내모임.png"><p>모임 찾아보기</p></li>
-                                <a href="#"><img src="image/오른쪽화살표.png"></a>
+                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
+                            <!-- / -->
                             <!--내게시글-->
-                            <ul class="myPost">
-                                <li><img src="image/Main_Login_내게시물.png"></li>
-                                <li>질풍가도</li>
-                                <li>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암 </li>
-                                <li><p>2023. 05. 19</p><p>조회 12</p></li>
+                            <ul id="myPost">
+                                <div class="myPost">
+                                <img src="image/Main_Login_내게시물.png">
+                                <a  href="#"> 질풍가도</a><br>
+                                <a href="#">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암 </a>
+                                <li><p>2023. 05. 19</p><p>조회 12</p>
+                                </li>
+                                </div>
+                                <div></div>
+                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
+                            <!-- / -->
                             <!--내스케줄-->
-                            <ul class="mySchedule">
-                                <li></li>
-                                <li></li>
+                            <ul id="mySchedule">
+                                <div id="scheduleBox">
+                                    <div id="table">
+                                        <ul id="s1">
+                                            <li><a href="#">MON</a></li>
+                                            <li><a href="#">TUE</a></li>
+                                            <li><a href="#">WED</a></li>
+                                            <li><a href="#">THU</a></li>
+                                            <li><a href="#">FRI</a></li>
+                                            <li><a href="#">SAT</a></li>
+                                            <li><a href="#">SUN</a></li>
+                                        </ul>
+                                        <ul id="s2">
+                                            <li id="MON">
+                                                <a href="#">
+                                                    <img src="image/Main_최근모임스케줄.png" alt="">
+                                                    <img src="image/Main_최근모임스케줄.png" alt="">
+                                                </a>
+                                            </li>
+                                            <li id="TUE">
+                                                <a href="#">
+                                                    <img src="image/Main_최근모임스케줄.png" alt="">
+                                                </a>
+                                            </li>
+                                            <li id="WED">
+                                                <a href="#">
+
+                                                </a>
+                                            </li>
+                                            <li id="THU">
+                                                <a href="#">
+
+                                                </a>
+                                            </li>
+                                            <li id="FRI">
+                                                <a href="#">
+
+                                                </a>
+                                            </li>
+                                            <li id="SAT">
+                                                <a href="#">
+
+                                                </a>
+                                            </li>
+                                            <li id="SUN">
+                                                <a href="#">
+
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div> 
+                                </div>
+                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
+                            <!-- / -->
                         </div>
                     </div>
+                    <!-- / -->
+
+                    <!--배너-->
+                    <div class="swiper-container banner" >
+                         <div class="swiper-wrapper ul">
+                            <div class="swiper-slide B_mbti"><img rel="mbti" src="image/배너_mbti.png"></div>
+                            <div class="swiper-slide B_hot"><img rel="hot" src="image/배너_%20HOT.png"></div>
+                            <div class="swiper-slide B_mypage"><img rel="mypage" src="image/배너_MYPAGE.png"></div>
+                            <div class="swiper-slide B_mimgle"><img rel="mimgle" src="image/배너_mingle.png"></div>
+                        </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                     </div>
+                    <!-- / 배너-->
+
+                    <!--내모임-->
+                    <div id="mingle" class="myMingle">
+                        <ul>
+                            <h3>내 모임</h3>
+                            <ul>
+                                <li></li>
+                            </ul>
+                         </ul>
+                    </div>
+                    <!-- / 내모임-->
+                    
+                    <!--추천모임-->
+                    <div id="mingle" class="recMingle">
+                        <ul>
+                            <h3>추천모임</h3>
+                            <ul>
+                                <li></li>
+                            </ul>
+                         </ul>
+                    </div>
+                    <!-- / 추천모임-->
+
+                </div>
     
             </div>
 
