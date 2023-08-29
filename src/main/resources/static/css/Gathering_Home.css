@@ -1,0 +1,198 @@
+/* view */
+.view{ padding-bottom : 200px;}
+.view>div{width: 1450px;  background-color:rgba(255,255,255,0.65);
+    margin: auto; margin-top: 10px;
+    border-radius: 20px;}
+.view> #g_contents > div{width: 1450px;  background-color:rgba(255,255,255,0.65);
+    margin: auto; margin-top: 20px;
+    border-radius: 20px;}
+
+/*section_ view 모임 타이틀*/
+.view > .g_title {
+    height:510px;
+    background-color: #fff;
+    float: left;
+    margin-left: 25px;
+}
+
+.view > .g_title > ul > li {}
+.view > .g_title > ul > li > .title_img {
+    border-radius: 20px 20px 0px 0px;
+    width: 1450px;
+    height: 290px;
+    margin-bottom: 20px;
+}
+.view > .g_title > ul > .title_subject {
+    border-bottom: 1px solid #565656;
+    margin-bottom: 15px;
+}
+.view > .g_title > ul > .title_subject > li {
+    width: 1450px;
+}
+.view > .g_title > ul > .title_subject > li > .title_detail {
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    font-size: 25px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.view > .g_title > ul > .title_subject > li > .title_title{
+    font-size: 50px;
+    margin: 20px;
+}
+.view > .g_title > ul > .title_subject > li > .title_title > a {
+    float: right;
+    width: 120px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    font-size: 26px;
+    border: 0px;
+    text-align: center;
+    line-height: 60px;
+    margin-top: 10px;
+}
+.view > .g_title > ul > li > a:first-child {
+    color: #542DFF;
+    margin-left: 70px;
+    border-bottom: 3px solid #542DFF;
+}
+.view > .g_title > ul > li > .title_nav {
+    font-size: 25px;
+    margin: 50px;
+    padding: 13px;
+}
+.view > #g_contents > div {
+    margin-top: 20px;
+    border-radius: 20px;
+}
+.view > #g_contents > #g_introduction {
+    width: 440px;
+    height: auto;
+    background-color: white;
+    float: left;
+}
+.view > #g_contents > #g_introduction > h4 {
+    display: block;
+    margin: 10px 20px;
+    font-size: 35px;
+    font-family:'GmarketSans';
+    font-weight: 500;
+}
+.view > #g_contents > #g_introduction > #g_introduction_content{
+    font-size: 24px;
+    white-space: pre-line;
+    text-align: center;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+}
+
+.view > #g_contents > #g_introduction > #g_introduction_more {
+    appearance: none;
+    padding: 0.3em;
+    cursor: pointer;
+    margin: 1rem;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #919191;
+
+}
+
+
+.view > #g_contents > #g_introduction > #g_introduction_more::before {
+    content: '더보기';
+}
+
+.view > #g_contents > #g_introduction > #g_introduction_more:checked::before {
+    content: '줄이기';
+}
+
+.view > #g_contents > #g_introduction > #g_introduction_content:has(+ #g_introduction_more:checked){
+    -webkit-line-clamp: unset;
+}
+
+.view > #g_contents > #g_news{
+    float : right;
+    width: 985px;
+    height: auto;
+    margin-right: 5px;
+    background-color: #fff;
+}
+.view > #g_contents > #g_news > .g_news_bg {
+height:1000px;}
+
+
+.view > #g_contents > #g_news > .g_news_bg > li > h4{
+    display: block;
+    margin: 10px 20px;
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.view > #g_contents > #g_news > .g_news_bg > ul{
+    margin: 10px 40px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > p{
+    font-size: 24px;
+    color: #585858;
+    margin-bottom: 10px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule{
+    box-shadow: 0px 0px 15px  #bcbcbc;
+    border-radius: 20px;
+    padding: 25px 0px;
+}
+
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li {
+    padding-left: 50px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > span {
+    font-size: 26px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > span:first-child {
+    margin-right: 15px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_date{
+    color: cyan;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_title{
+    display: block;
+    margin-bottom: 40px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_subject{
+    font-size: 18px;
+    color: #727272;
+    margin-right: 15px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_detail{
+    font-size: 18px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > img{
+    width: 30px;
+    height: 30px;
+    display: inline;
+
+}
+
+
+.view > #g_contents > #g_member{
+    width: 440px;
+    height: 500px;
+    float: left;
+    background-color: #fff;
+}
+
+.view > #g_contents > #g_member > ul > li > h4 {
+    display: block;
+    margin: 10px 20px;
+    font-size: 35px;
+    font-family:'GmarketSans';
+    font-weight: 500;
+}
+

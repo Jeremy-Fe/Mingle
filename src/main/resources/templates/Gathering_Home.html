@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <!--css-->
+    <link href="/CSS/Gathering_Home.css" type="text/css" rel="stylesheet">
+    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="wrap" class="clearfix">
+
+        <div th:replace="/header.html"></div>
+
+        <!--뷰-->
+        <div id="view" class="clearfix" style="overflow:scroll;">
+            <!-- 바꿔야하는 부분 -->
+            <div class="view clearfix">
+                <!-- 타이틀 -->
+                <div class="g_title">
+                    <ul>
+                        <li><img class="title_img" src="image/testimg.png" alt="테스트"></li>
+                        <ul class="title_subject">
+                            <li>
+                                <a class="title_detail" href="">금천구</a>
+                                <a class="title_detail" href="">운동/스포츠</a>
+                                <a class="title_detail" href="">멤버 18</a>
+                            </li>
+                            <li><h3 class="title_title">작당모의 볼링 클럽 🎳 신입 환영 🎳 <a href="#">가입하기</a></h3></li>
+                        </ul>
+                        <li>
+                            <a class="title_nav" href="">홈</a>
+                            <a class="title_nav" href="">게시판</a>
+                            <a class="title_nav" href="">사진첩</a>
+                            <a class="title_nav" href="">일정</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 소개 -->
+                <div id="g_contents">
+                    <div id="g_introduction">
+                        <h4>소개</h4>
+                        <p id="g_introduction_content">🎊 since. 2022. 10 🎊
+                            현 금천구 위너스 볼링장 상주
+                            2030 신생 볼링 모임
+                            • 2030 볼링 고수 & 초보 환영!!!!
+                            @@@
+                            ㅎㅎ
+                            안녕하세요 저는 신우철입니다 입니다.
+                            반가워요^^
+
+                            안녕하세요 저는 정웅철입니다 입니다.
+                            반갑습네다
+                            안녕하세요 저는 김강철입니다 입니다.
+                            당신은 누구시죠?
+                            안녕하세요 저는 전예철입니다 입니다.
+                            안녕하세요 저는 정예철입니다 입니다.
+                            동해물과
+                            별헤는 밤
+                            해병의 긍지
+                            나는 국가전략 기동부대의 인원으로서
+                            선봉군임을 자랑한다.
+                            하나.
+                            나는 찬란한 해병대 정신을
+                            이어받은 무적 해병이다.
+                            둘.
+                            나는 불가능을 모르는 전천후 해병이다.
+                        </p>
+                        <input type="checkbox" id="g_introduction_more">
+                        <script>
+                            var contentLength = document.querySelector("#g_introduction_content").innerHTML.length
+                            var moreButton = document.getElementById("g_introduction_more");
+                            var background = document.getElementById("g_introduction");
+
+                            if(contentLength < 200){
+                                moreButton.style.display = "none";
+                                background.style.paddingBottom = "30px";
+                            }
+
+                        </script>
+                    </div>
+                    <div id="g_news">
+                        <ul class="g_news_bg">
+                            <li><h4>최근</h4></li>
+                            <ul>
+                                <p>일정</p>
+                                <ul class="g_news_schedule">
+                                    <li><span>8/12 (토)</span><span class="schedule_date">D-16</span></li>
+                                    <li><span class="schedule_title">8월 1차 정기전🎳</span></li>
+                                    <li><span class="schedule_subject">일시</span><span class="schedule_detail">8월12일 (토) 오후 7:30</span></li>
+                                    <li><span class="schedule_subject">위치</span><span class="schedule_detail">하이미디어 볼링센터</span></li>
+                                    <li><span class="schedule_subject">금액</span><span class="schedule_detail">N빵!! (4게임 17,200원)</span></li>
+                                    <li><span class="schedule_subject">참여</span><span class="schedule_detail">4/20</span><span class="schedule_subject">(16자리 남음)</span></li>
+                                    <li>
+                                        <img src="image/Gathering_img1.png">
+                                        <img src="image/Gathering_img2.png">
+                                        <img src="image/Gathering_img3.png">
+                                        <img src="image/Gathering_img4.png">
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div id="g_member">
+                        <ul>
+                            <li><h4>모임 멤버 (18)</h4></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="/footer.html"></div>
+        </div>
+</div>
+</body>
+</html>
