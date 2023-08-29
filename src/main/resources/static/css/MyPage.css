@@ -113,6 +113,12 @@ body{z-index: 2}
     /*---마이페이지 텍스트(끝)---*/
 }
 
+.view> .MyPage .title_02-1 .check{
+    width: 20px;
+    height: 20px;
+    /*---마이페이지 텍스트(끝)---*/
+}
+
 
 /*---마이페이지 세부설정---*/
 .view> .MyPage .profile ul{
@@ -196,7 +202,7 @@ body{z-index: 2}
 }
 
 
-/*---내모임 제목---*/
+/*---내모임 제목(감추기)---*/
 .view > .MyPage .myclass {
     width: 1400px;
     background-color: rgba(255,255,255,0.65);
@@ -204,30 +210,19 @@ body{z-index: 2}
     margin: auto;
     border-radius: 20px;
     position: relative;
-    /*---내모임 제목(끝)---*/
+    /*---내모임 제목(감추기)(끝)---*/
 }
 
 
-/*---내모임 출력---*/
+/*---내모임 출력(감추기)---*/
 .view > .MyPage .myclass > ul {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     width: 195px;
     height: 240px;
     background-color: #fff;
     border-radius: 20px;
     margin-top: 30px;
     float: left;
-}
-
-.view > .MyPage .myclass > ul > p {
-    width: 195px;
-    height: 240px;
-    color: #2C244F;
-    font-weight: bold;
-    font-size: 16px;
-    text-align: center;
-    line-height: 340px;
-    display: block;
-    position: absolute;
 }
 
 .view > .MyPage .myclass > ul > p {
@@ -316,6 +311,7 @@ body{z-index: 2}
 }
 
 #allwrap{
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     width: 240px;
     height: 240px;
     background-color: #fff;
@@ -327,6 +323,8 @@ body{z-index: 2}
 }
 
 #allview {
+    border-radius: 100%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     width: 80px;
     height: 80px;
     left: 80px;
@@ -426,8 +424,13 @@ body{z-index: 2}
     margin: auto;
     border-radius: 20px;
     position: relative;
+}
+
+.view > .MyPage .myPost > ul {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     /*---내게시물 제목(끝)---*/
 }
+
 
 
 /*---내게시물 출력---*/
@@ -561,7 +564,14 @@ body{z-index: 2}
 
 }
 
-.view > .MyPage .myPost .Allpost > a > img {
+
+#button {
+    z-index: 10;
+}
+
+#allview2 {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
     width : 55px;
     height: 55px;
     left: 38px;
@@ -593,6 +603,10 @@ body{z-index: 2}
     height: 585px;
     border-radius: 20px;
     position: relative;
+
+}
+.view > .MyPage .myComment > ul {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     /*---내 댓글 제목(끝)---*/
 }
 

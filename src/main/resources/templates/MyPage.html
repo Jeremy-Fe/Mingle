@@ -50,7 +50,7 @@
             </ul>
         </div>
 
-        <!--<html xmlns:th="http://www.thymeleaf.org">
+<!--        <html xmlns:th="http://www.thymeleaf.org">
 
         <div th:replace="/defaultUI.html"></div>-->
 
@@ -62,7 +62,6 @@
                 <div class="MyPage">
                     <img alt="큰제목" src="/image/MyPageTitle.png">
                     <p>마이페이지</p>
-
                     <div class="profile">
                         <ul>
                             <li class="pimg">
@@ -94,7 +93,7 @@
                     </div>
 
                     <!--내모임-->
-                    <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부</p></p>
+                    <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부 <input class="check" type="checkbox" name="xxx" value="yyy" checked></p></p>
                     <div class="myclass clearfix">
                         <ul class="mycb_01">
                             <a>
@@ -375,9 +374,13 @@
                         </ul>
 
                         <ul class="Allpost clearfix">
-                            <a>
-                                <img alt="전체 보기" src="/image/전체 보기.png">
-                            </a>
+                                <button id="button"><img id="allview2" alt="전체 보기" src="/image/전체 보기.png"></button>
+                            <script>
+                                const button = document.getElementById('button');
+                                button.addEventListener('click', function() {
+                                    window.location.href = 'Allview.html.html';
+                                });
+                            </script>
                             <p>전체 보기</p>
                         </ul>
 
