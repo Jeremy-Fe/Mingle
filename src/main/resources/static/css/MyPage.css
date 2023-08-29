@@ -2,46 +2,54 @@
 *{margin: 0;padding: 0; box-sizing: border-box; }
 li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
 a{text-decoration: none; color: #2C244F;}
-img{display: block; width: 150px;}
+img{display: block;}
 .clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
 p{font-family: 'GmarketSans'; }
 h3{font-family: 'GmarketSans';}
-
-@media (max-width: 767px){
-
+body{z-index: 2}
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    z-index: 0;
+    width: 0.5em; /* 스크롤바 너비 */
+    height: 0.5em; /* 스크롤바 높이 */
 }
+/* 스크롤바의 Track 스타일링 */
+::-webkit-scrollbar-track {background:rgba(255,255,255,0.65) ;}
+/* 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,255,0.1);
+    border-radius: 10px;
+}
+/* 마우스 오버 시 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,255,0.4);
+}
+
 
 /* wrap */
-#wrap{width: 1900px; margin: 0 auto;}
+#wrap{width: 1915px; margin: 0 auto;}
 
 /*header*/
-#header{width: 400px; height: 1100px; float: left;
+#header{width: 400px; height: 1000px; float: left;
     /*background-color: aliceblue*/
 }
-
-
-
-/*-------페이지 기본구성(시작)*-------/
-
 /*header_logo*/
 #header .logo{width: 100%; height: 200px;}
 #header .logo>a>img{float: left; width:90%; margin: 10px}
 
-/*header_nav*/
+/*header_메뉴*/
 #header .menu{ width: 100%; padding: 20px}
 #header .menu>ul{}
-#header .menu>ul>li{margin-bottom: 82px}
-#header .menu>ul>li>a{font-size: 40px; }
+#header .menu>ul>li{margin-bottom: 82px ;margin-left: 20px;}
+#header .menu>ul>li>a{font-size: 40px; margin-left: 25px;}
+#header .menu>ul>li>a>img{width: 40px;float: left;}
 /*#header .menu>ul>li>a:first-child::before{ line-height: 0px}*/
 
+
 /* section */
-#box{width: 1500px; height: 1100px;  float: left; ;}
+#box{width: 1515px; height: 1000px;  float: left; ;}
 #box>div{float: left}
 #user{width: 100%; height: 65px;}
-#view{width: 100%;
-    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
-    border-radius: 20px 0 0 0;
-}
 
 /*section_ user*/
 #box>#user >ul{float: right}
@@ -49,115 +57,663 @@ h3{font-family: 'GmarketSans';}
 #box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
 #box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
 #box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
-#box>#user >ul>.icon_b{width: 10px; height: 45px; background-color: #AAC4FF ;margin: 10px}
+#box>#user >ul>.icon_b>img{width: 30px; height: 30px;  margin-top: 20px ;}
+
+/*view*/
+#view{width: 100%; height: 1035px;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    border-radius: 20px 0 0 0;
+    padding-top: 40px;
+}
+#view::-webkit-scrollbar {
+    display: none;
+}
 /*-------페이지 기본구성(끝)*-------*/
+/*view_바꿔야할 부분*/
+.view{width: 100%;
+    height: 2000px;/* 임의지정 값*/
+    border-radius: 20px 0 0 0;
+}
 
 
 
 
 /*<section_ view>*/
 
+
 /*---뷰 전체 기본설정---*/
-#view>div{width: 1400px;
+.view > div {width: 1400px;
     margin: auto; margin-top: 20px;
     border-radius: 20px;
-/*---뷰 전체 기본설정(끝)---*/
+    /*---뷰 전체 기본설정(끝)---*/
 }
 
 
 
-/*---큰제목 아이콘---*/
-#view> .title > img{
+/*---마이페이지 아이콘---*/
+.view> .MyPage > img{
     width: 40px;
     height: 40px;
     float: left;
     margin-right: 10px;
-/*---큰제목 아이콘(끝)---*/
+    /*---마이페이지 아이콘(끝)---*/
 }
 
 
-
-/*---큰제목 텍스트---*/
-#view> .title > p{
+/*---마이페이지 텍스트---*/
+.view> .MyPage > p{
     font-size: 32px;
     font-weight: bold;
     line-height: 40px;
     font-family: 'Jalnan';
-/*---큰제목 텍스트(끝)---*/
+}
+.view> .MyPage .title_02 {
+    float: left;
+}
+.view> .MyPage .title_02-1{
+    font-size: 20px;
+    /*---마이페이지 텍스트(끝)---*/
 }
 
 
-
-
-
-/*---큰제목 세부설정---*/
-#view> .title .profile ul{
+/*---마이페이지 세부설정---*/
+.view> .MyPage .profile ul{
     margin-top: 30px;
     height: 300px;
+    position: relative;
 }
-#view> .title .profile li{
+.view> .MyPage .profile li{
     height: 240px;
     float: left;
     font-size: 25px;
+
 }
-#view> .title .profile p{
+.view> .MyPage .profile p{
     padding-top: 20px;
-/*---큰제목 세부설정(끝)---*/
+    /*---마이페이지 세부설정(끝)---*/
 }
 
 
 /*---프로필 사진---*/
-#view> .title .profile .pimg > a > img{
+.view> .MyPage .profile .pimg {
+    position: relative;
+}
+
+.view> .MyPage .profile .pimg > a > .proimg{
     width: 240px;
     height: 240px;
     border-radius: 100%;
     margin-right: 50px;
-/*---프로필 사진(끝)---*/
+    z-index: 2;
+    /*---프로필 사진(끝)---*/
 }
 
 
 /*---기본정보 텍스트---*/
-#view> .title .profile .text{
+.view> .MyPage .profile .pimg > a > .edit{
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    right: 40px;
+    bottom: 20px;
+    position: absolute;
+}
+
+.view> .MyPage .profile .text{
     margin-right: 70px;
 }
-#view> .title .profile li .name {
+.view> .MyPage .profile li .name {
     font-size: 32px;
     margin-top: 40px;
     font-weight: bold;
     font-family: 'Jalnan';
 }
-#view> .title .profile li .info{
-        padding-top: 15px;
-        font-weight: bold;
-        font-family: 'Jalnan';
-/*---기본정보 텍스트(끝)---*/
+.view> .MyPage .profile li .info{
+    padding-top: 15px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+    /*---기본정보 텍스트(끝)---*/
 }
 
 
 /*---기본정보 자기소개란---*/
-#view .title .inBox{
-        width: 900px; height: 240px; background-color: #fff;
-        border-radius: 40px;
-        padding: 20px;
-        padding-left: 40px;
-
+.view .MyPage .inBox{
+    width: 900px; height: 240px; background-color: #fff;
+    border-radius: 40px;
+    padding: 20px;
+    padding-left: 40px;
 }
-#view .title .inBox .coment {
+.view .MyPage .inBox .coment {
     font-size: 30px;
     font-family: 'GmarketSans';
     white-space: pre-line;
-/*---기본정보 자기소개란---*/
+}
+.view .MyPage .edit_2 {
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    bottom: 20px;
+    position: absolute;
+    /*---기본정보 자기소개란(끝)---*/
+}
+
+
+/*---내모임 제목---*/
+.view > .MyPage .myclass {
+    width: 1400px;
+    background-color: rgba(255,255,255,0.65);
+    height: 300px;
+    margin: auto;
+    border-radius: 20px;
+    position: relative;
+    /*---내모임 제목(끝)---*/
+}
+
+
+/*---내모임 출력---*/
+.view > .MyPage .myclass > ul {
+    width: 195px;
+    height: 240px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-top: 30px;
+    float: left;
+}
+
+.view > .MyPage .myclass > ul > p {
+    width: 195px;
+    height: 240px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 340px;
+    display: block;
+    position: absolute;
+}
+
+.view > .MyPage .myclass > ul > p {
+    width: 195px;
+    height: 240px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 290px;
+    display: block;
+    position: absolute;
+}
+
+.view > .MyPage .myclass > ul > span {
+    width: 195px;
+    height: 240px;
+    color: #8B8B8B;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 340px;
+    display: block;
+    position: absolute;
+}
+
+.view > .MyPage .myclass > ul > a > img{
+    width: 120px;
+    height: 120px;
+    left: 35px;
+    bottom: 110px;
+    border-radius: 100%;
+    position: absolute;
+}
+
+.view > .MyPage .myclass .mycb_01 {
+    margin-left: 30px;
+    opacity: 0.65;
+    z-index: 1;
+    position: absolute;
+}
+
+.view > .MyPage .myclass .mycb_01-1 {
+    left: 60px;
+    z-index: 2;
+    position: absolute;
+}
+
+.view > .MyPage .myclass .mycb_02 {
+    left: 300px;
+    opacity: 0.65;
+    z-index: 1;
+    position: absolute;
+}
+
+.view > .MyPage .myclass .mycb_02-1 {
+    left: 330px;
+    z-index: 2;
+    position: absolute;
+}
+
+.view > .MyPage .myclass .mycb_03 {
+    left: 570px;
+    opacity: 0.65;
+    z-index: 1;
+    position: absolute;
+}
+
+.view > .MyPage .myclass .mycb_03-1 {
+    left: 600px;
+    z-index: 2;
+    position: absolute;
+}
+
+.view > .MyPage .myclass .mycb_04 {
+    left: 840px;
+    opacity: 0.65;
+    z-index: 1;
+    position: absolute;
+}
+
+.view > .MyPage .myclass .mycb_04-1 {
+    left: 870px;
+    z-index: 2;
+    position: absolute;
+}
+
+#allwrap{
+    width: 240px;
+    height: 240px;
+    background-color: #fff;
+    left: 1120px;
+    margin-top: 30px;
+    border-radius: 20px;
+    position: relative;
+    position: absolute;
+}
+
+#allview {
+    width: 80px;
+    height: 80px;
+    left: 80px;
+    bottom: 90px;
+    position: absolute;
+}
+
+#allviewtext {
+    font-size: 20px;
+    color: #8B8B8B;
+    left: 80px;
+    bottom: 50px;
+    position: absolute;
+}
+
+
+#peple_01 {
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    position: absolute;
+    left: 10px;
+    z-index: 1;
+
+}
+
+#peple_02 {
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    position: absolute;
+    left: 40px;
+    z-index: 2;
+
+}
+
+#peple_03 {
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    position: absolute;
+    left: 70px;
+    z-index: 3;
+
+}
+
+#peple_04 {
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    position: absolute;
+    left: 100px;
+    z-index: 4;
+
+}
+
+#peple_05 {
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    position: absolute;
+    left: 130px;
+    z-index: 5;
+
+}
+#peple_etc {
+    left: 150px;
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+    font-weight: normal;
+    text-align: center;
+    background-color: #D9D9D9;
+    border-radius: 100%;
+    position: absolute;
+    font-family:'GmarketSans';
+    z-index: 6;
+    /*---내모임 출력(끝)---*/
+}
+
+.view > .MyPage .title_03 {
+    margin-top: 20px;
+}
+
+
+/*---내게시물 제목---*/
+.view > .MyPage .myPost {
+    width: 1400px;
+    background-color: rgba(255,255,255,0.65);
+    height: 540px;
+    margin: auto;
+    border-radius: 20px;
+    position: relative;
+    /*---내게시물 제목(끝)---*/
+}
+
+
+/*---내게시물 출력---*/
+.view > .MyPage .myPost > .post_01 {
+    width: 600px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-left: 30px;
+    margin-top: 30px;
+    position: absolute;
+    float: left;
+}
+
+.view > .MyPage .myPost > .post_02 {
+    width: 600px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-left: 30px;
+    margin-top: 30px;
+    bottom : 195px;
+    position: absolute;
+    float: left;
+}
+
+.view > .MyPage .myPost > .post_03 {
+    width: 600px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-left: 30px;
+    margin-top: 30px;
+    bottom : 30px;
+    position: absolute;
+    float: left;
+}
+
+.view > .MyPage .myPost > .post_04 {
+    width: 600px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-left: 30px;
+    margin-top: 30px;
+    left: 620px;
+    position: absolute;
+    float: left;
+}
+
+.view > .MyPage .myPost > .post_05 {
+    width: 600px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-left: 30px;
+    margin-top: 30px;
+    bottom : 195px;
+    left: 620px;
+    position: absolute;
+    float: left;
+}
+
+.view > .MyPage .myPost > .post_06 {
+    width: 600px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-left: 30px;
+    margin-top: 30px;
+    bottom : 30px;
+    left: 620px;
+    position: absolute;
+    float: left;
+}
+
+.view > .MyPage .myPost .postimg_01 {
+    width: 110px;
+    height: 110px;
+    margin-left: 20px;
+    margin-top: 20px;
+    position: absolute;
+}
+
+.view > .MyPage .myPost > ul > .postname_01 {
+    left: 145px;
+    top:25px;
+    position: absolute;
+    font-weight: lighter;
+}
+
+.view > .MyPage .myPost > ul > span {
+    width: 460px;
+    left: 145px;
+    top: 50px;
+    font-weight: normal;
+    font-size: 23px;
+    position: absolute;
+    font-family: 'GmarketSans';
+}
+
+.view > .MyPage .myPost > ul .day_01 {
+    left: 145px;
+    top: 110px;
+    font-size: 20px;
+    font-weight: lighter;
+    position: absolute;
+    color: #767676;
+}
+
+.view > .MyPage .myPost > ul .viewcount_01 {
+    left: 500px;
+    bottom: 15px;
+    font-size: 20px;
+    position: absolute;
+    color: #6B6B6B;
+    /*---내게시물 출력(끝)---*/
+}
+
+
+/*---내게시물 전체 보기---*/
+.view > .MyPage .myPost .Allpost {
+    width: 130px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 20px;
+    bottom : 210px;
+    left: 1260px;
+    position: absolute;
+    float: left;
+
+}
+
+.view > .MyPage .myPost .Allpost > a > img {
+    width : 55px;
+    height: 55px;
+    left: 38px;
+    bottom: 38px;
+    position: absolute;
+
+}
+
+.view > .MyPage .myPost .Allpost > p {
+    left: 40px;
+    bottom: 15px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #8B8B8B;
+    position: absolute;
+    /*---내게시물 전체 보기(끝)---*/
 }
 
 
 
-    /*
-    #view> .l_news>li{float: left}
-    #view> .l_news> .inBox>p{
-        float: left ; line-height: 80px;
-        font-size: 32px;  font-weight: 300; color: grey}
-    #view> .l_news> .inBox>p:first-child{margin-right: 40px}
-    #view> .inBox>h3{
-        float: left ;line-height: 75px ; margin-left: 10px;
-        font-size: 48px; font-weight: 500}
-    */
+.view > .MyPage .title_04 {
+    margin-top: 20px;
+}
+
+/*---내 댓글 제목---*/
+.view > .MyPage .myComment {
+    width: 1400px;
+    background-color: rgba(255,255,255,0.65);
+    height: 585px;
+    border-radius: 20px;
+    position: relative;
+    /*---내 댓글 제목(끝)---*/
+}
+
+.view > .MyPage .myComment .comment_01 {
+    width: 1340px;
+    height: 47px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: #EEF1FF;
+    position: relative;
+    position: absolute;
+}
+
+.view > .MyPage .myComment .comment_02 {
+    width: 1340px;
+    height: 47px;
+    top: 80px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: #EEF1FF;
+    position: relative;
+    position: absolute;
+}
+
+.view > .MyPage .myComment .comment_03 {
+    width: 1340px;
+    height: 47px;
+    top: 160px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: #EEF1FF;
+    position: relative;
+    position: absolute;
+}
+
+.view > .MyPage .myComment .comment_04 {
+    width: 1340px;
+    height: 47px;
+    top: 240px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: #EEF1FF;
+    position: relative;
+    position: absolute;
+}
+
+.view > .MyPage .myComment .comment_05 {
+    width: 1340px;
+    height: 47px;
+    top: 320px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: #EEF1FF;
+    position: relative;
+    position: absolute;
+}
+
+.view > .MyPage .myComment .comment_06 {
+    width: 1340px;
+    height: 47px;
+    top: 400px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: #EEF1FF;
+    position: relative;
+    position: absolute;
+}
+
+.view > .MyPage .myComment > ul > p > span {
+    line-height: 50px;
+    left: 40px;
+    width: 1280px;
+    font-size: 23px;
+    position: absolute;
+    font-weight: normal;
+    text-align: left;
+    color: #000000;
+
+}
+
+.view > .MyPage .myComment > ul > p {
+    width: 1280px;
+    line-height: 50px;
+    text-align: right;
+    position: absolute;
+    font-size: 18px;
+    font-weight: normal;
+    color: #8B8B8B;
+}
+
+#seemore {
+    width: 24px;
+    height: 31px;
+    left: 700px;
+    bottom: 50px;
+    position: absolute;
+}
+
+#seemoretext {
+    width: 60px;
+    height: 15px;
+    left: 690px;
+    bottom: 30px;
+    position: absolute;
+}
+
+/*
+.view> .l_news>li{float: left}
+.view> .l_news> .inBox>p{
+    float: left ; line-height: 80px;
+    font-size: 32px;  font-weight: 300; color: grey}
+.view> .l_news> .inBox>p:first-child{margin-right: 40px}
+.view> .inBox>h3{
+    float: left ;line-height: 75px ; margin-left: 10px;
+    font-size: 48px; font-weight: 500}
+*/
