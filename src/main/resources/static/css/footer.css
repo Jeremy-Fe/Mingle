@@ -1,7 +1,7 @@
 /* footer 메뉴 */
 #footer{
-    height: 196px;
-    text-align: center
+    height: 100px;
+    text-align: center;
 }
 .footer_menu{
     top: 78px;

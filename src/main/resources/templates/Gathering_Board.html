@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <!--css-->
+    <link href="/CSS/Gathering.css?after" type="text/css" rel="stylesheet">
+    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .view > .g_title > ul > li > a:first-child {
+            margin-left: 70px;
+        }
+        .view > .g_title > ul > li > a:nth-child(2) {
+            color: #542DFF;
+            border-bottom: 3px solid #542DFF;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap" class="clearfix">
+
+    <div th:replace="/header.html"></div>
+
+    <!--뷰-->
+    <div id="view" class="clearfix" style="overflow:scroll;">
+        <!-- 바꿔야하는 부분 -->
+        <div class="view clearfix">
+            <!-- 타이틀 -->
+            <div class="g_title">
+                <ul>
+                    <li><img class="title_img" src="image/testimg.png" alt="테스트"></li>
+                    <ul class="title_subject">
+                        <li>
+                            <a class="title_detail" href="">금천구</a>
+                            <a class="title_detail" href="">운동/스포츠</a>
+                            <a class="title_detail" href="">멤버 18</a>
+                        </li>
+                        <li><h3 class="title_title">작당모의 볼링 클럽 🎳 신입 환영 🎳 <a href="#">가입하기</a></h3></li>
+                    </ul>
+                    <li>
+                        <a class="title_nav" href="">홈</a>
+                        <a class="title_nav" href="">게시판</a>
+                        <a class="title_nav" href="">사진첩</a>
+                        <a class="title_nav" href="">일정</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="board">
+
+            </div>
+        </div>
+        <div th:replace="/footer.html"></div>
+    </div>
+</div>
+</body>
+</html>

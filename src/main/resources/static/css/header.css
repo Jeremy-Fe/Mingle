@@ -34,8 +34,8 @@ body{z-index: 2}
     /*background-color: aliceblue*/
 }
 /*header_logo*/
-#header .logo{width: 100%; height: 200px}
-#header .logo>a>img{float: left; width:90%; margin: auto}
+#header .logo{width: 100%; height: 200px;}
+#header .logo>a>img{float: left; width:90%; margin: 10px}
 
 /*header_메뉴*/
 #header .menu{ width: 100%; padding: 20px}
@@ -47,7 +47,7 @@ body{z-index: 2}
 
 
 /* section */
-#box{width: 1515px; height: 1000px;  float: left; ;}
+#box{width: 1515px; height: 1000px;  float: left;}
 #box>div{float: left}
 #user{width: 100%; height: 65px;}
 
@@ -63,5 +63,8 @@ body{z-index: 2}
 #view{width: 100%; height: 1010px;
     background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
     border-radius: 20px 0 0 0;
-    /* padding-top: 40px; */
+    padding-top: 20px;
+}
+#view::-webkit-scrollbar {
+    display: none;
 }
