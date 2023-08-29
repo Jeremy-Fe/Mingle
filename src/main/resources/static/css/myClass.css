@@ -63,7 +63,6 @@ body{z-index: 2}
 #view{width: 100%; height: 1035px;
     background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
     border-radius: 20px 0 0 0;
-    padding-top: 40px;
 }
 
 .view{width: 100%; height: 2027px;

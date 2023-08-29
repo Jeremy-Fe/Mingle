@@ -68,8 +68,3 @@ body{z-index: 2}
 #view::-webkit-scrollbar {
     display: none;
 }
-
-/*view_바꿔야할 부분*/
-.view{width: 100%;
-    border-radius: 20px 0 0 0;
-}
