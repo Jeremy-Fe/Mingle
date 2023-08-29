@@ -52,6 +52,9 @@ public class MingleController {
     @GetMapping("Mypage*")
     public String Mypage() {return "Mypage";}
 
+    @GetMapping("Create_Meet*")
+    public String Create_Meet() {return "Create_Meet";}
+
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
