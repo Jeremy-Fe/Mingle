@@ -1,1 +1,48 @@
-#board {}
+#board {
+
+}
+
+#board > .board_bg {
+    width: 1450px;
+    height: 1000px;
+    background-color: #fff;
+    float: left;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 35px 50px;
+}
+#board > .board_bg > ul > li{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #747474;
+}
+#board > .board_bg > ul > li > h4{
+    font-size: 35px;
+    font-weight: normal;
+    display: inline;
+    float: left;
+}
+#board > .board_bg > ul > li > form > .select_board{
+    width: 175px;
+    height: 40px;
+    font-size: 25px;
+    font-family: GmarketSans;
+    font-weight: lighter;
+    float: right;
+}
+#board > .board_bg > ul > li > form > .select_board > option{
+    font-weight: lighter;
+}
+
+#board > .board_bg > .board_notification {}
+#board > .board_bg > .board_notification > li{
+    padding: 20px 0px;
+    border-bottom: 2px solid #DADADA;
+}
+#board > .board_bg > .board_notification > li > a >span{
+    font-size : 24px;
+}
+
+#board > .board_bg > .board_notification > li > a > .post_board{
+    color: #15B1E2;
+    margin-right: 20px;
+}

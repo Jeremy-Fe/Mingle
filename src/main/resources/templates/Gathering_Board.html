@@ -10,7 +10,8 @@
 
     <!--css-->
     <link href="/CSS/Gathering.css?after" type="text/css" rel="stylesheet">
-    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <link href="/CSS/Gathering_Board.css?after" type="text/css" rel="stylesheet">
+        <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
     <!--font-->
     <!--font-family: 'GmarketSans';-->
     <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
@@ -58,7 +59,28 @@
                 </ul>
             </div>
             <div id="board">
-
+                <div class="board_bg">
+                    <ul>
+                        <li class="clearfix">
+                            <h4>게시판</h4>
+                            <form action="#">
+                                <Select name="city" class="select_board">
+                                    <option value="none">전체보기</option>
+                                    <option value="free">자유글</option>
+                                    <option value="interest">관심사 공유</option>
+                                    <option value="review">정모후기</option>
+                                    <option value="greetings">가입인사</option>
+                                    <option value="notification">공지사항</option>
+                                </Select>
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="board_notification">
+                        <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">하이미디어 볼링센터 이용 가이드🎳</span></a></li>
+                        <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">작당모의 볼링클럽모임 방칙 ⭐</span></a></li>
+                        <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">가입인사 참고사항</span></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div th:replace="/footer.html"></div>
