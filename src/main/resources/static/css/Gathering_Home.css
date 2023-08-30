@@ -1,4 +1,6 @@
-
+img{
+    object-fit: cover;
+}
 .view > #g_contents > div {
     margin-top: 20px;
     border-radius: 20px;

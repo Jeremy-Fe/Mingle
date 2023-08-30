@@ -1,10 +1,11 @@
 #board {
 
 }
-
+img{
+    object-fit: cover;
+}
 #board > .board_bg {
     width: 1450px;
-    height: 1000px;
     background-color: #fff;
     float: left;
     margin-top: 20px;
@@ -23,8 +24,8 @@
 }
 #board > .board_bg > .board_title > li > form > .select_board{
     width: 175px;
-    height: 40px;
-    font-size: 25px;
+    height: 50px;
+    font-size: 22px;
     font-family: GmarketSans;
     font-weight: lighter;
     float: right;
@@ -32,7 +33,28 @@
 #board > .board_bg > .board_title > li > form > .select_board > option{
     font-weight: lighter;
 }
+#board > .board_bg > .board_title > li > .search {
+    position: relative;
+    width: 400px;
+    float: right;
+    margin-right: 20px;
+}
 
+#board > .board_bg > .board_title > li > .search > input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 24px;
+}
+
+#board > .board_bg > .board_title > li > .search > a > img {
+    position : absolute;
+    width: 17px;
+    top: 10px;
+    right: 12px;
+    margin: 0;
+}
 #board > .board_bg > .board_notification {}
 #board > .board_bg > .board_notification > li{
     padding: 20px 0px;
@@ -64,12 +86,22 @@
     float: left;
     margin-right: 20px;
 }
-
-#board > .board_bg > .board_post > a > .posts > .post_img{
+#board > .board_bg > .board_post > a > .posts > .date_img{
     float: right;
-    width: 120px;
-    height: 170px;
+    width: 250px;
+}
+#board > .board_bg > .board_post > a > .posts > .date_img > .post_date{
+    color: #808080;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 15px;
+    float: right;
+}
+#board > .board_bg > .board_post > a > .posts > .date_img > .post_img{
+    width: 250px;
+    height: 150px;
     border-radius: 10px;
+    float: right;
 }
 #board > .board_bg > .board_post > a > .posts > li > .post_boardName{
     color: #808080;
@@ -80,12 +112,7 @@
     font-size: 18px;
     margin-bottom: 3px;
 }
-#board > .board_bg > .board_post > a > .posts > li > .post_date{
-    color: #808080;
-    font-size: 15px;
-    float: right;
-    display: block;
-}
+
 #board > .board_bg > .board_post > a > .posts > li > .post_title{
     font-size: 24px;
     width: 500px;
