@@ -4,12 +4,16 @@ import Mingle.MingleProject.dto.MemberDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@DynamicInsert
 @Getter
 @Setter
 @Entity
@@ -29,7 +33,7 @@ public class MemberEntity {
     private String mGender;
 
     @Column(name = "M_BIRTH", nullable = false)
-    private Date mBirth;
+    private LocalDate mBirth;
 
     @Column(name = "M_EMAIL", nullable = false, length = 50)
     private String mEmail;
