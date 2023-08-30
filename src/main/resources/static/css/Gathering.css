@@ -1,0 +1,66 @@
+/* view */
+.view{ padding-bottom : 50px;}
+.view>div{width: 1450px;  background-color:rgba(255,255,255,0.65);
+    margin: auto;
+    border-radius: 20px;}
+.view> #g_contents > div{width: 1450px;  background-color:rgba(255,255,255,0.65);
+    margin: auto; margin-top: 20px;
+    border-radius: 20px;}
+
+/*section_ view 모임 타이틀*/
+.view > .g_title {
+    height:510px;
+    background-color: #fff;
+    float: left;
+    margin-left: 30px;
+}
+
+.view > .g_title > ul > li {}
+.view > .g_title > ul > li > .title_img {
+    border-radius: 20px 20px 0px 0px;
+    width: 1450px;
+    height: 290px;
+    margin-bottom: 20px;
+}
+.view > .g_title > ul > .title_subject {
+    border-bottom: 1px solid #565656;
+    margin-bottom: 15px;
+}
+.view > .g_title > ul > .title_subject > li {
+    width: 1450px;
+}
+.view > .g_title > ul > .title_subject > li > .title_detail {
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    font-size: 25px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.view > .g_title > ul > .title_subject > li > .title_title{
+    font-size: 50px;
+    margin: 20px;
+}
+.view > .g_title > ul > .title_subject > li > .title_title > a {
+    float: right;
+    width: 120px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    font-size: 26px;
+    border: 0px;
+    text-align: center;
+    line-height: 60px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+.view > .g_title > ul >  li > .title_nav:hover{
+    color: #542DFF;
+}
+
+.view > .g_title > ul > li > .title_nav {
+    font-size: 25px;
+    margin: 50px;
+    padding: 13px;
+}

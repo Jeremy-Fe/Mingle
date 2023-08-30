@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -21,33 +21,8 @@
 </head>
 <body>
     <div id="wrap" class="clearfix">
-        <header id="header" class="clearfix">
-            <h1 class="logo">
-                <a  href="Main_UnLogIn">
-                    <img alt="로고_L" src="image/로고_L.png">
-                </a>
-            </h1>
-            <nav class="menu">
-                <ul>
-                    <li><a href="#">내 모임</a></li>
-                    <li><a href="#">스케줄</a></li>
-                    <li><a href="#">모임 검색</a></li>
-                    <li><a href="#">HOT 모임</a></li>
-                    <li><a href="#">모임 만들기</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div th:replace="/header.html"></div>
 
-        <!--헤더 + 뷰-->
-        <section id="box" class="clearfix">
-            <!--헤더-->
-            <div id="user">
-                <ul class="user_wrap" >
-                    <li><a href="/login">로그인 하세요</a></li>
-                    <li class="icon_a"> <!--<img alt="user_img" src="#">--></li>
-                    <li class="icon_b"><img alt="_mymenu" src="img/Main_마이메뉴.png"></li>
-                </ul>
-            </div>
 
             <!--뷰-->
             <div id="view">
@@ -86,7 +61,7 @@
             </div>
 
 
-        </section>
+        <div th:replace="/footer.html"></div>
     </div>
 
 
