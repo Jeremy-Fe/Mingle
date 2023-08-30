@@ -160,6 +160,7 @@
 }
 .G_create_bt:hover{
     background-color: #968ACD;
+    cursor:pointer;
 }
 /*footer 영역*/
 .footer{height: 319px;
