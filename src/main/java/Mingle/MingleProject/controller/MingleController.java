@@ -43,7 +43,7 @@ public class MingleController {
         return "Main_UnLogIn";}
 
     @GetMapping("Main_LogIn*")
-    public String Main() { return "Main_LogIn"; }
+    public String Main_LogIn() { return "Main_LogIn"; }
 
     @GetMapping("myClass*")
     public String myClass() {return "myClass";}
@@ -91,7 +91,13 @@ public class MingleController {
         memberService.save(memberDTO);
         return "login";
     }
+    @GetMapping("search1")
+    public String search1() {return "search1";}
+    @GetMapping("search2")
+    public String search2() {return "search1";}
 
+    @GetMapping("selectResi")
+    public String selectResi() {return "selectResi";}
 
 }
 
