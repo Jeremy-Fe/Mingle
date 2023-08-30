@@ -24,7 +24,7 @@ img{
 }
 #board > .board_bg > .board_title > li > form > .select_board{
     width: 175px;
-    height: 50px;
+    height: 45px;
     font-size: 22px;
     font-family: GmarketSans;
     font-weight: lighter;
@@ -45,7 +45,7 @@ img{
     border: 1px solid #bbb;
     border-radius: 8px;
     padding: 10px 12px;
-    font-size: 24px;
+    font-size: 22px;
 }
 
 #board > .board_bg > .board_title > li > .search > a > img {
