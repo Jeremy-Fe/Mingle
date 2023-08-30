@@ -1,0 +1,204 @@
+@charset "utf-8";
+*{margin: 0;padding: 0; box-sizing: border-box; }
+li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
+a{text-decoration: none; color: #2C244F;}
+img{display: block;}
+.clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
+p{font-family: 'GmarketSans'; }
+h3{font-family: 'GmarketSans';}
+body{z-index: 2}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    z-index: 0;
+    width: 0.5em; /* 스크롤바 너비 */
+    height: 0.5em; /* 스크롤바 높이 */
+}
+/* 스크롤바의 Track 스타일링 */
+::-webkit-scrollbar-track {background:rgba(255,255,255,0.65) ;}
+/* 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,255,0.1);
+    border-radius: 10px;
+}
+/* 마우스 오버 시 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,255,0.4);
+}
+
+
+/* wrap */
+#wrap{width: 1915px; margin: 0 auto;}
+
+/*header*/
+#header{width: 400px; height: 1000px; float: left;
+    /*background-color: aliceblue*/
+}
+/*header_logo*/
+#header .logo{width: 100%; height: 200px;}
+#header .logo>a>img{float: left; width:80%; margin: 10px; padding: 10px;}
+
+/*header_메뉴*/
+#header .menu{ width: 100%; padding: 20px;padding-top: 40px;}
+#header .menu>ul{}
+#header .menu>ul>li{margin-bottom: 72px ;margin-left: 50px;}
+#header .menu>ul>li>a{font-size: 36px; margin-left: 25px;}
+#header .menu>ul>li>a>img{width: 36px;float: left;}
+/*#header .menu>ul>li>a:first-child::before{ line-height: 0px}*/
+
+
+/* section */
+#box{width: 1515px; height: 1000px;  float: left; ;}
+#box>div{float: left}
+#user{width: 100%; height: 65px;}
+
+/*section_ user*/
+#box>#user >ul{float: right}
+#box>#user >ul>li{float: left; line-height: 65px;}
+#box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
+#box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
+#box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
+#box>#user >ul>.icon_b>img{width: 30px; height: 30px;  margin-top: 20px ;}
+
+/*view*/
+#view{width: 100%; height: 1010px;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    border-radius: 20px 0 0 0;
+    padding-top: 20px;
+}
+#view::-webkit-scrollbar {
+ display: none;
+}
+
+/*view_바꿔야할 부분*/
+.view{width: 100%;
+    border-radius: 20px 0 0 0;
+}
+h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
+/* 검색창 */
+#search{
+    width: 1400px; height: 75px; 
+    background-color: rgba(255,255,255,0.65);
+    margin: auto; border-radius: 15px;
+    display: flex; 
+}
+#search>ul{
+    width: 1360px; height: 55px; margin: auto; 
+}
+/* 지역선택창 */
+#search>ul>li{ display: flex;width: 320px; height: 55px; float: left;}
+#search>ul>li>img{width: 55px; margin-right: 20px; float: left;}
+#search>ul>li>p{
+    width: 195px; height: 55px; 
+    float: left; line-height: 65px;
+    font-size: 32px; font-weight: lighter;
+}
+#search>ul>li>a{margin: auto;}
+#search>ul>li>a>img{
+    width: 40px;  float: left;
+}
+/* 검색창 */
+#Stext{
+    width: 970px; height: 55px; 
+    border: none; border-radius: 15px;
+    font-size: 28px; font-weight: lighter;
+    font-family: 'NexonLv1Gothic'; 
+    padding-left: 50px;
+}
+/* 검색버튼 */
+#search_I{width: 55px; height: 100%;  float: right; }
+
+/* / 검색창 */
+
+/* 검색 모임 */
+#chMingle{
+    width: 1400px; height: 860px; 
+    margin: auto; margin-top: 20px;
+    border-radius: 15px; padding: 20px;
+    background-color: rgba(255,255,255,0.65);
+}
+
+/* 검색한 모임 헤더 */
+#cM_header{width: 1360px; height: 70px; margin: auto; }
+
+/* 관심사 선택버튼 */
+#mainC{
+    width: 250px; height: 70px;
+    display: flex; float: left;
+    background-color: #fff; border-radius: 10px;
+}
+#mainC>p{    
+    font-size: 40px; font-weight: bolder; 
+    font-family: 'NexonLv1Gothic';
+    margin: auto; line-height: 70px;
+}
+#mainC>img{
+    width: 60px;height: 60px; 
+    margin: 5px; 
+}
+/* 세부카테고리 버튼 */
+#subC{
+    font-size: 28px; line-height: 50px; font-weight: lighter;
+    font-family: 'NexonLv1Gothic'; float: left;
+    margin: 10px; padding-left: 10px;
+}
+#subC>img{width: 35px; float: right; margin: 5px;}
+#subC{}
+/* 정렬 */
+#array{
+    width: 180px;height: 55px; 
+    text-align: center; line-height: 55px;
+    font-size: 32px; float: right;  
+    font-family: 'NexonLv1Gothic'; font-weight: lighter;
+    border-radius: 30px; background-color: #fff;
+}
+
+/* #inMingle::-webkit-scrollbar {display: none; } */
+
+/* 모임카드들 */
+#inMingle{
+    width: 1360PX; height: 760px;
+}
+
+/* 모임카드 */
+#inMingle > #mingle{
+    display: block; float: left;
+    width: 440px; height: 275px; padding: 15px; margin: 10px;
+    border-radius: 20px; background-color: #fff;
+    margin-left: 0;
+}
+/* 모임카드 상단 */
+#mingle ul {
+    width: 405px; height: 160px;
+    margin: auto; 
+}
+#mingle>ul>img{  width: 175px; height: 160px;float: left;}
+#mingle>ul>li{
+    float: right; width: 200px; margin: 5px;
+}
+#mTitle{font-size: 32px;color: #6554AF; line-height: 36px;}
+#mCategorie{
+    height: 35px; font-size: 20px; 
+    line-height: 35px; padding-left: 20px;
+    border-radius: 10px; background-color: #ececec;
+}
+#mRogi{
+    color: #737373;  text-align: right;
+    font-weight: lighter;font-family: 'NexonLv1Gothic';
+}
+#mUserImg{width: 100%;height: 35px;}
+#mUser{
+    font-size: 20px;
+    text-align: right;
+    font-family: 'NexonLv1Gothic'; 
+}
+#mUser>a{color: #4364B0; text-decoration: underline;}
+/* 모임 설명 */
+#mIntd{
+    width: 405px;height: 90px; 
+    margin: auto;padding: 10px;
+    line-height: 20px; font-size: 16px;
+    
+    overflow: hidden; text-overflow: ellipsis;    
+}
+/* / 모임카드들 */
