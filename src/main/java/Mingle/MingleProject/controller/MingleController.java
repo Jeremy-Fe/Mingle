@@ -1,5 +1,6 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -94,7 +95,10 @@ public class MingleController {
     public String search2() {return "search1";}
 
     @GetMapping("selectResi")
-    public String selectResi() {return "selectResi";}
+    public String selectResi(@ModelAttribute CityDTO cityDTO) {
+
+        return "selectResi";
+    }
 
 }
 
