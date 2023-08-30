@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr" xmlns:th="http://www.thymeleaf.org" >
+<html lang="kr">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
@@ -20,10 +20,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-        <div th:replace="/defaultUI.html">
+    <div id="wrap" class="clearfix">
+        <div th:replace="/header.html"></div>
 
-        </div>
-
+            <!--뷰-->
+            <div id="view"style="overflow:scroll;">
                 <!-- 바꿔야하는 부분 -->
                 <div class="view">
                     <!--최근 소식-->

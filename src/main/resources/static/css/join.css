@@ -36,9 +36,6 @@ h1,h2,h3,h4,h5,h6{
     display: block;
     clear: both;
 }
-li{
-    list-style: none;
-}
 
 /* 전체영역 */
 #wrap{
@@ -84,14 +81,14 @@ body{
 }
 
 /* id, pw */
-.drop_member_id{
+.drop_mId{
     position: absolute;
     left: 661px;
     top: 225px;
     width: 380px;
     height: 65px;
 }
-.drop_member_id .member_id{
+.drop_mId .mId{
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -101,20 +98,20 @@ body{
     padding: 10px;
     padding-left: 60px;
 }
-.drop_member_id > img{
+.drop_mId > img{
     position: absolute;
     top: 14px;
     left: 13px;
 }
 
-.drop_member_pw{
+.drop_mPwd{
     position: absolute;
     left: 661px;
     top: 305px;
     width: 380px;
     height: 65px;
 }
-.drop_member_pw .member_pw{
+.drop_mPwd .mPwd{
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -124,20 +121,20 @@ body{
     padding: 10px;
     padding-left: 60px;
 }
-.drop_member_pw > img{
+.drop_mPwd > img{
     position: absolute;
     top: 10px;
     left: 9px;
 }
 
-/* id, pw error */
+/* error_text */
 .error_text{
     position: absolute;
     left: 675px;
     font-size: 12px;
     color: #FF7171;
     padding: 5px 0;
-    display: none;  /* 에러 뜨면 보이도록 */
+    /*display: none;  !* 에러 뜨면 보이도록 *!*/
 }
 .error_text::before{
     position: absolute;
@@ -156,18 +153,24 @@ body{
     top: 404px;
 }
 #pwMsg{
-    top: 429px;
+    top: 428px;
+}
+#birthMsg{
+    top: 768px;
+}
+#emailMsg{
+    top: 792px;
 }
 
 /* name */
-.drop_member_name{
+.drop_mName{
     position: absolute;
     left: 661px;
     top: 465px;
     width: 380px;
     height: 65px;
 }
-.drop_member_name .member_name{
+.drop_mName .mName{
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -177,21 +180,21 @@ body{
     padding: 10px;
     padding-left: 60px;
 }
-.drop_member_name > img{
+.drop_mName > img{
     position: absolute;
     top: 15px;
     left: 9px;
 }
 
 /* birth */
-.drop_member_birth{
+.drop_mBirth{
     position: absolute;
     left: 661px;
     top: 545px;
     width: 380px;
     height: 65px;
 }
-.drop_member_birth .member_birth{
+.drop_mBirth .mBirth{
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -201,7 +204,7 @@ body{
     padding: 10px;
     padding-left: 60px;
 }
-.drop_member_birth > img{
+.drop_mBirth > img{
     position: absolute;
     top: 15px;
     left: 9px;
@@ -240,14 +243,14 @@ body{
 }
 
 /* email */
-.drop_member_email{
+.drop_mEmail{
     position: absolute;
     left: 661px;
     top: 682px;
     width: 380px;
     height: 65px;
 }
-.drop_member_email .member_email{
+.drop_mEmail .mEmail{
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -257,13 +260,13 @@ body{
     padding: 10px;
     padding-left: 60px;
 }
-.drop_member_email > img{
+.drop_mEmail > img{
     position: absolute;
     top: 15px;
     left: 9px;
 }
 
-/* 거주지 */
+/* 내 거주지 */
 .my_place{
     position: absolute;
     left: 718px;
@@ -277,7 +280,78 @@ body{
     top: 5px;
     left: -57px;
 }
+.select_box{
+    position: absolute;
+    width: 200px;
+    height: 65px;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    font-size: 32px;
+    border: none;
+    color: #8B8B8B;
+    text-align: center;
+}
+.city{
+    top: 906px;
+    left: 657px;
+}
+.county{
+    top: 906px;
+    left: 888px;
+}
 
+/* 관심지역 */
+.interest_place{
+    position: absolute;
+    left: 718px;
+    top: 1010px;
+    font-size: 32px;
+    color: #2C244F;
+}
+.interest_place > img{
+    position: absolute;
+    display: inline-block;
+    top: 5px;
+    left: -57px;
+}
+.city2{
+    top: 1066px;
+    left: 657px;
+}
+.county2{
+    top: 1066px;
+    left: 888px;
+}
+
+/* 관심사 */
+#interest_bt{
+    position: absolute;
+    top: 1170px;
+    left: 657px;
+    border: none;
+    background-color: #F2F4FF;
+    cursor: pointer;
+}
+.interest{
+    position: absolute;
+    top: 1177px;
+    left: 716px;
+    font-size: 32px;
+    color: #2C244F;
+}
+.mInterest{
+    position: absolute;
+    left: 661px;
+    top: 1240px;
+    width: 380px;
+    height: 65px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 20px;
+}
 
 /* 회원가입 버튼 */
 #join{

@@ -1,0 +1,70 @@
+@charset "utf-8";
+*{margin: 0;padding: 0; box-sizing: border-box; }
+li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
+a{text-decoration: none; color: #2C244F;}
+img{display: block;}
+.clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
+p{font-family: 'GmarketSans'; }
+h3{font-family: 'GmarketSans';}
+body{z-index: 2}
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    z-index: 0;
+    width: 0.5em; /* 스크롤바 너비 */
+    height: 0.5em; /* 스크롤바 높이 */
+}
+/* 스크롤바의 Track 스타일링 */
+::-webkit-scrollbar-track {background:rgba(255,255,255,0.65) ;}
+/* 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,255,0.1);
+    border-radius: 10px;
+}
+/* 마우스 오버 시 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,255,0.4);
+}
+
+
+/* wrap */
+#wrap{width: 1915px; margin: 0 auto;}
+
+/*header*/
+#header{width: 400px; height: 1000px; float: left;
+    /*background-color: aliceblue*/
+}
+/*header_logo*/
+#header .logo{width: 100%; height: 200px;}
+#header .logo>a>img{float: left; width:90%; margin: 10px}
+
+/*header_메뉴*/
+#header .menu{ width: 100%; padding: 20px}
+#header .menu>ul{}
+#header .menu>ul>li{margin-bottom: 82px ;margin-left: 20px;}
+#header .menu>ul>li>a{font-size: 40px; margin-left: 25px;}
+#header .menu>ul>li>a>img{width: 40px;float: left;}
+/*#header .menu>ul>li>a:first-child::before{ line-height: 0px}*/
+
+
+/* section */
+#box{width: 1515px; height: 1000px;  float: left;}
+#box>div{float: left}
+#user{width: 100%; height: 65px;}
+
+/*section_ user*/
+#box>#user >ul{float: right}
+#box>#user >ul>li{float: left; line-height: 65px;}
+#box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
+#box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
+#box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
+#box>#user >ul>.icon_b>img{width: 30px; height: 30px;  margin-top: 20px ;}
+
+/*view*/
+#view{width: 100%; height: 1010px;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    border-radius: 20px 0 0 0;
+    padding-top: 20px;
+}
+#view::-webkit-scrollbar {
+    display: none;
+}

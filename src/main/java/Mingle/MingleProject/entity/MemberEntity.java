@@ -1,15 +1,19 @@
 package Mingle.MingleProject.entity;
 
 import Mingle.MingleProject.dto.MemberDTO;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@DynamicInsert
 @Getter
 @Setter
 @Entity
@@ -29,22 +33,25 @@ public class MemberEntity {
     private String mGender;
 
     @Column(name = "M_BIRTH", nullable = false)
-    private Date mBirth;
+    private LocalDate mBirth;
 
     @Column(name = "M_EMAIL", nullable = false, length = 50)
     private String mEmail;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "M_ADDRESS", nullable = false)
-    private City mAddress;
+    @Column(name = "M_City", nullable = false, length = 2000)
+    private String mCity;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "M_INTEREGION", nullable = false)
-    private City mInteregion;
+    @Column(name = "M_District", nullable = false, length = 2000)
+    private String mDistrict;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "M_INTEREST", nullable = false)
-    private Interest mInterest;
+    @Column(name = "M_ICity", nullable = false)
+    private String mIcity;
+
+    @Column(name = "M_IDistrict", nullable = false)
+    private String mIDistrict;
+
+    @Column(name = "M_INTEREST", nullable = false)
+    private String mInterest;
 
     @Column(name = "M_G_GATHERING", length = 2000)
     private String mGGathering;
@@ -70,8 +77,10 @@ public class MemberEntity {
         memberEntity.setMGender(memberDTO.getMGender());
         memberEntity.setMBirth(memberDTO.getMBirth());
         memberEntity.setMEmail(memberDTO.getMEmail());
-        memberEntity.setMAddress(memberDTO.getMAddress());
-        memberEntity.setMInteregion(memberDTO.getMInteregion());
+        memberEntity.setMCity(memberDTO.getMCity());
+        memberEntity.setMDistrict(memberDTO.getMDistrict());
+        memberEntity.setMIcity(memberDTO.getMIcity());
+        memberEntity.setMIDistrict(memberDTO.getMIDistrict());
         memberEntity.setMInterest(memberDTO.getMInterest());
         memberEntity.setMGGathering(memberDTO.getMGGathering());
         memberEntity.setMPiProfileimg(memberDTO.getMPiProfileimg());
