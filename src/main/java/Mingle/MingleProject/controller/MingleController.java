@@ -91,6 +91,8 @@ public class MingleController {
     @GetMapping("search2")
     public String search2() {return "search1";}
 
+    @GetMapping("selectResi")
+    public String selectResi() {return "selectResi";}
 
 }
 
