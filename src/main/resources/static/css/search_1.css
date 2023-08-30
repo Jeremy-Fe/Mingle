@@ -35,14 +35,14 @@ body{z-index: 2}
 }
 /*header_logo*/
 #header .logo{width: 100%; height: 200px;}
-#header .logo>a>img{float: left; width:90%; margin: 10px}
+#header .logo>a>img{float: left; width:80%; margin: 10px; padding: 10px;}
 
 /*header_메뉴*/
-#header .menu{ width: 100%; padding: 20px}
+#header .menu{ width: 100%; padding: 20px;padding-top: 40px;}
 #header .menu>ul{}
-#header .menu>ul>li{margin-bottom: 82px ;margin-left: 20px;}
-#header .menu>ul>li>a{font-size: 40px; margin-left: 25px;}
-#header .menu>ul>li>a>img{width: 40px;float: left;}
+#header .menu>ul>li{margin-bottom: 82px ;margin-left: 50px;}
+#header .menu>ul>li>a{font-size: 36px; margin-left: 25px;}
+#header .menu>ul>li>a>img{width: 36px;float: left;}
 /*#header .menu>ul>li>a:first-child::before{ line-height: 0px}*/
 
 
@@ -102,7 +102,7 @@ body{z-index: 2}
 #inter1{ 
     width: 660px;height: 850px; 
     background-color: rgba(255,255,255,0.65);
-    border-radius: 30px;
+    border-radius: 30px; 
     display: flex;
     float: left;
     
@@ -111,13 +111,22 @@ body{z-index: 2}
     width: 600px; height: 800px;
     background-color: #fff; margin: auto;
 }
-#inter1 >ul>h2{font-size: 40px; text-align: center; line-height: 80px; font-weight: 500; padding: 10px;}
+#inter1 >ul>h2{
+    font-family: 'Jalnan';
+    font-size: 40px; font-weight: 700; color: #424874;
+    text-align: center; line-height: 80px;  padding: 15px;
+}
 #inter1 >ul>li{width: 525px; height: 170px; margin: auto; }
-#inter1 >ul>li>img{float: left; display: flex; margin: 13px;}
+#inter1 >ul>li>img{
+    float: left; 
+    display: flex; margin: 15px; 
+    width: 100px; 
+}
 
 #re_in{
     width: 720px; height: 890px;position: relative; margin-left: 40px;
 }
+/* / 관심사 선택 1 */
 
 /* 거주지역 선택*/
 #regi{
@@ -136,6 +145,8 @@ body{z-index: 2}
     margin-top: 5px;
 }
 #r_plus{float: right;}
+/* / 거주지역 선택*/
+
 /* 관심사 선택 2 */
 #inter2{
     width: 720px; height: 730px;
@@ -146,8 +157,8 @@ body{z-index: 2}
 
 #Iheader{
     width: 645px;
-    font-size: 40px; color: #2C244F; font-weight: bold;
-    line-height: 100px; padding: 20px;
+    font-size: 40px; color: #424874; font-weight: bold;
+    line-height: 100px; padding: 15px;
      margin: auto;
 }
 #Iheader>img{
@@ -164,6 +175,6 @@ body{z-index: 2}
     float: left;
     border-radius: 10px;
     padding: 20px; margin: 20px;
-    font-size: 36px; font-weight: lighter; 
-    background-color: #fff;  color: #2C244F;
+    font-size: 30px; font-weight: lighter; 
+    background-color: #fff;  color: #676767;
 }
