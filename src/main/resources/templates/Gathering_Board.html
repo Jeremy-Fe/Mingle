@@ -2,27 +2,28 @@
 <html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>모임이름-게시판</title>
     <!--swiper-->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 
     <!--css-->
-    <link href="/CSS/Gathering.css" type="text/css" rel="stylesheet">
     <link href="/CSS/Gathering_Board.css" type="text/css" rel="stylesheet">
-        <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
     <!--font-->
     <!--font-family: 'GmarketSans';-->
     <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
     <!--font-family: 'Orbitron', sans-serif;-->
     <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
     <!--font-family: 'Jalnan';-->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
     <style>
         .view > .g_title > ul > li > a:first-child {
             margin-left: 70px;
         }
+
         .view > .g_title > ul > li > a:nth-child(2) {
             color: #542DFF;
             border-bottom: 3px solid #542DFF;
@@ -30,187 +31,174 @@
     </style>
 </head>
 <body>
-<div id="wrap" class="clearfix">
+<div th:replace="/defaultUI.html"></div>
 
-    <div th:replace="/header.html"></div>
-
-    <!--뷰-->
-    <div id="view" class="clearfix" style="overflow:scroll;">
-        <!-- 바꿔야하는 부분 -->
-        <div class="view clearfix">
-            <!-- 타이틀 -->
-            <div class="g_title">
-                <ul>
-                    <li><img class="title_img" src="image/testimg.png" alt="테스트"></li>
-                    <ul class="title_subject">
-                        <li>
-                            <a class="title_detail" href="">금천구</a>
-                            <a class="title_detail" href="">운동/스포츠</a>
-                            <a class="title_detail" href="">멤버 18</a>
-                        </li>
-                        <li><h3 class="title_title">작당모의 볼링 클럽 🎳 신입 환영 🎳 <a href="#">가입하기</a></h3></li>
-                    </ul>
-                    <li>
-                        <a class="title_nav" href="">홈</a>
-                        <a class="title_nav" href="">게시판</a>
-                        <a class="title_nav" href="">사진첩</a>
-                        <a class="title_nav" href="">일정</a>
-                    </li>
-                </ul>
-            </div>
-            <div id="board">
-                <div class="board_bg">
-                    <ul class="board_title">
-                        <li class="clearfix">
-                            <h4>게시판</h4>
-                            <form action="#">
-                                <Select name="board" class="select_board">
-                                    <option value="none">전체보기</option>
-                                    <option value="free">자유글</option>
-                                    <option value="interest">관심사 공유</option>
-                                    <option value="review">정모후기</option>
-                                    <option value="greetings">가입인사</option>
-                                    <option value="notification">공지사항</option>
-                                </Select>
-                            </form>
-                            <div class="search">
-                                <input type="text" placeholder="검색어 입력">
-                                <a href="#"><img src="image/search.png"></a>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="board_notification">
-                        <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">하이미디어 볼링센터 이용 가이드🎳</span></a></li>
-                        <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">작당모의 볼링클럽모임 방칙 ⭐</span></a></li>
-                        <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">가입인사 참고사항</span></a></li>
-                    </ul>
-                    <ul class="board_post">
-                        <a href="#">
-                            <ul class="posts clearfix">
-                                <img class="post_writerimg"src="image/Gathering_img1.png">
-                                <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img" src="image/newsPost_img1.png"></li>
-
-                                <li><p class="post_boardName">정모후기</p></li>
-                                <li><p class="post_writerName">신우철</p></li>
-                                <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
-                                <li>
-                                    <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
-                                        아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
-                                        행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
-                                        당신은 누구입니까 당신의 이름은 무엇입니까
-                                        asdasdtestestestestest
-                                        asdasdasdasdasdasdasdAsdasd
-                                        asdasdasd.</p>
-                                </li>
-                                <li><span>좋아요 3개</span><span>댓글 2개</span></li>
-                            </ul>
-                        </a>
-                        <a href="#">
-                            <ul class="posts clearfix">
-                                <img class="post_writerimg"src="image/Gathering_img1.png">
-                                <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img" src="image/newsPost_img1.png"></li>
-
-                                <li><p class="post_boardName">정모후기</p></li>
-                                <li><p class="post_writerName">신우철</p></li>
-                                <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
-                                <li>
-                                    <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
-                                        아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
-                                        행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
-                                        당신은 누구입니까 당신의 이름은 무엇입니까
-                                        asdasdtestestestestest
-                                        asdasdasdasdasdasdasdAsdasd
-                                        asdasdasd.</p>
-                                </li>
-                                <li><span>좋아요 3개</span><span>댓글 2개</span></li>
-                            </ul>
-                        </a>
-                        <a href="#">
-                            <ul class="posts clearfix">
-                                <img class="post_writerimg"src="image/Gathering_img1.png">
-                                <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img" src="image/newsPost_img1.png"></li>
-
-                                <li><p class="post_boardName">정모후기</p></li>
-                                <li><p class="post_writerName">신우철</p></li>
-                                <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
-                                <li>
-                                    <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
-                                        아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
-                                        행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
-                                        당신은 누구입니까 당신의 이름은 무엇입니까
-                                        asdasdtestestestestest
-                                        asdasdasdasdasdasdasdAsdasd
-                                        asdasdasd.</p>
-                                </li>
-                                <li><span>좋아요 3개</span><span>댓글 2개</span></li>
-                            </ul>
-                        </a>
-                        <a href="#">
-                            <ul class="posts clearfix">
-                                <img class="post_writerimg"src="image/Gathering_img1.png">
-                                <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img" src="image/newsPost_img1.png"></li>
-
-                                <li><p class="post_boardName">정모후기</p></li>
-                                <li><p class="post_writerName">신우철</p></li>
-                                <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
-                                <li>
-                                    <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
-                                        아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
-                                        행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
-                                        당신은 누구입니까 당신의 이름은 무엇입니까
-                                        asdasdtestestestestest
-                                        asdasdasdasdasdasdasdAsdasd
-                                        asdasdasd.</p>
-                                </li>
-                                <li><span>좋아요 3개</span><span>댓글 2개</span></li>
-                            </ul>
-                        </a>
-                        <a href="#">
-                            <ul class="posts clearfix">
-                                <img class="post_writerimg"src="image/Gathering_img1.png">
-                                <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img" src="image/newsPost_img1.png"></li>
-
-                                <li><p class="post_boardName">정모후기</p></li>
-                                <li><p class="post_writerName">신우철</p></li>
-                                <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
-                                <li>
-                                    <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
-                                        아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
-                                        행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
-                                        당신은 누구입니까 당신의 이름은 무엇입니까
-                                        asdasdtestestestestest
-                                        asdasdasdasdasdasdasdAsdasd
-                                        asdasdasd.</p>
-                                </li>
-                                <li><span>좋아요 3개</span><span>댓글 2개</span></li>
-                            </ul>
-                        </a>
-                        <a href="#">
-                            <ul class="posts clearfix">
-                                <img class="post_writerimg"src="image/Gathering_img1.png">
-                                <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img" src="image/newsPost_img1.png"></li>
-
-                                <li><p class="post_boardName">정모후기</p></li>
-                                <li><p class="post_writerName">신우철</p></li>
-                                <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
-                                <li>
-                                    <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
-                                        아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
-                                        행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
-                                        당신은 누구입니까 당신의 이름은 무엇입니까
-                                        asdasdtestestestestest
-                                        asdasdasdasdasdasdasdAsdasd
-                                        asdasdasd.</p>
-                                </li>
-                                <li><span>좋아요 3개</span><span>댓글 2개</span></li>
-                            </ul>
-                        </a>
-                    </ul>
+<div th:replace="/Gathering.html"></div>
+<div id="board">
+    <div class="board_bg">
+        <ul class="board_title">
+            <li class="clearfix">
+                <h4>게시판</h4>
+                <form action="#">
+                    <Select name="board" class="select_board">
+                        <option value="none">전체보기</option>
+                        <option value="free">자유글</option>
+                        <option value="interest">관심사 공유</option>
+                        <option value="review">정모후기</option>
+                        <option value="greetings">가입인사</option>
+                        <option value="notification">공지사항</option>
+                    </Select>
+                </form>
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <a href="#"><img src="image/search.png"></a>
                 </div>
-            </div>
-        </div>
-        <div th:replace="/footer.html"></div>
+            </li>
+        </ul>
+        <ul class="board_notification">
+            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">하이미디어 볼링센터 이용 가이드🎳</span></a>
+            </li>
+            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">작당모의 볼링클럽모임 방칙 ⭐</span></a>
+            </li>
+            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">가입인사 참고사항</span></a></li>
+        </ul>
+        <ul class="board_post">
+            <a href="http://localhost:8080/Gathering_Post">
+                <ul class="posts clearfix">
+                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
+                                                                                      src="image/newsPost_img2.png">
+                    </li>
+
+                    <li><p class="post_boardName">정모후기</p></li>
+                    <li><p class="post_writerName">신우철</p></li>
+                    <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+                    <li>
+                        <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
+                            아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
+                            행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
+                            당신은 누구입니까 당신의 이름은 무엇입니까
+                            asdasdtestestestestest
+                            asdasdasdasdasdasdasdAsdasd
+                            asdasdasd.</p>
+                    </li>
+                    <li><span>좋아요 3개</span><span>댓글 2개</span></li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul class="posts clearfix">
+                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
+                                                                                      src="image/newsPost_img1.png">
+                    </li>
+
+                    <li><p class="post_boardName">정모후기</p></li>
+                    <li><p class="post_writerName">신우철</p></li>
+                    <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+                    <li>
+                        <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
+                            아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
+                            행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
+                            당신은 누구입니까 당신의 이름은 무엇입니까
+                            asdasdtestestestestest
+                            asdasdasdasdasdasdasdAsdasd
+                            asdasdasd.</p>
+                    </li>
+                    <li><span>좋아요 3개</span><span>댓글 2개</span></li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul class="posts clearfix">
+                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
+                                                                                      src="image/newsPost_img2.png">
+                    </li>
+
+                    <li><p class="post_boardName">정모후기</p></li>
+                    <li><p class="post_writerName">신우철</p></li>
+                    <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+                    <li>
+                        <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
+                            아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
+                            행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
+                            당신은 누구입니까 당신의 이름은 무엇입니까
+                            asdasdtestestestestest
+                            asdasdasdasdasdasdasdAsdasd
+                            asdasdasd.</p>
+                    </li>
+                    <li><span>좋아요 3개</span><span>댓글 2개</span></li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul class="posts clearfix">
+                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
+                                                                                      src="image/newsPost_img1.png">
+                    </li>
+
+                    <li><p class="post_boardName">정모후기</p></li>
+                    <li><p class="post_writerName">신우철</p></li>
+                    <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+                    <li>
+                        <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
+                            아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
+                            행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
+                            당신은 누구입니까 당신의 이름은 무엇입니까
+                            asdasdtestestestestest
+                            asdasdasdasdasdasdasdAsdasd
+                            asdasdasd.</p>
+                    </li>
+                    <li><span>좋아요 3개</span><span>댓글 2개</span></li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul class="posts clearfix">
+                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
+                                                                                      src="image/newsPost_img2.png">
+                    </li>
+
+                    <li><p class="post_boardName">정모후기</p></li>
+                    <li><p class="post_writerName">신우철</p></li>
+                    <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+                    <li>
+                        <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
+                            아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
+                            행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
+                            당신은 누구입니까 당신의 이름은 무엇입니까
+                            asdasdtestestestestest
+                            asdasdasdasdasdasdasdAsdasd
+                            asdasdasd.</p>
+                    </li>
+                    <li><span>좋아요 3개</span><span>댓글 2개</span></li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul class="posts clearfix">
+                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
+                                                                                      src="image/newsPost_img1.png">
+                    </li>
+
+                    <li><p class="post_boardName">정모후기</p></li>
+                    <li><p class="post_writerName">신우철</p></li>
+                    <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+                    <li>
+                        <p class="post_contents">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
+                            아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
+                            행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
+                            당신은 누구입니까 당신의 이름은 무엇입니까
+                            asdasdtestestestestest
+                            asdasdasdasdasdasdasdAsdasd
+                            asdasdasd.</p>
+                    </li>
+                    <li><span>좋아요 3개</span><span>댓글 2개</span></li>
+                </ul>
+            </a>
+        </ul>
     </div>
+</div>
+<div th:replace="/footer.html"></div>
 </div>
 </body>
 </html>

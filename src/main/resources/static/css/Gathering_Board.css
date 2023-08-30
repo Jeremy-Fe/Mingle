@@ -1,9 +1,5 @@
-#board {
+#board {}
 
-}
-img{
-    object-fit: cover;
-}
 #board > .board_bg {
     width: 1450px;
     background-color: #fff;

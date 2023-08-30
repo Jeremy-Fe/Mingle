@@ -64,3 +64,6 @@
     margin: 50px;
     padding: 13px;
 }
+img{
+    object-fit: cover;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>모임이름-게시판</title>
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <!--css-->
+    <link href="/CSS/Gathering_Post.css" type="text/css" rel="stylesheet">
+    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <style>
+        .view > .g_title > ul > li > a:first-child {
+            margin-left: 70px;
+        }
+
+        .view > .g_title > ul > li > a:nth-child(2) {
+            color: #542DFF;
+            border-bottom: 3px solid #542DFF;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="/defaultUI.html"></div>
+
+<div th:replace="/Gathering.html"></div>
+<div id="Post">
+    <a href="http://localhost:8080/Gathering_Board"><img src="image/back.png"></a>
+    <div class="Post_bg">
+        <ul class="clearfix">
+            <img class="post_writerimg"src="image/Gathering_img1.png">
+            <li><p class="post_boardName">정모후기</p></li>
+            <li><p class="post_writerName">신우철</p></li>
+            <li><p class="post_date">7월 23일 오후 10:19</p></li>
+            <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+            <li>
+                <p class="post_contents">웅기형님이
+                    하이미디어 볼링장에서 저랑 같이 치다가
+                    3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
+                    아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
+                    행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
+                    당신은 누구입니까 당신의 이름은 무엇입니까.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
