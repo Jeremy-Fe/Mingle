@@ -5,8 +5,10 @@ import Mingle.MingleProject.entity.Interest;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.entity.ProfileImg;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Date;
 
 
 @Getter
@@ -19,7 +21,8 @@ public class MemberDTO {
     private String mPwd;
     private String mName;
     private String mGender;
-    private Date mBirth;
+    @DateTimeFormat(pattern = "yyyyMMdd")
+    private LocalDate mBirth;
     private String mEmail;
     private String mCity;
     private String mDistrict;
