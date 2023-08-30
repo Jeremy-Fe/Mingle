@@ -311,10 +311,24 @@
                         </div>
                     </div>
 
+
+<!--                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>-->
+
+
                     <!--내게시물-->
                     <p class="title_03">내 게시물</p>
-                    <div class="myPost clearfix">
-                        <ul class="post_01 clearfix">
+                    <div class="swiper-container mp clearfix">
+                    <div class="swiper-wrapper myPost clearfix">
+                        <ul class="swiper-slide post_01 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
                             </a>
@@ -324,7 +338,7 @@
                             </a>
                         </ul>
 
-                        <ul class="post_02 clearfix">
+                        <ul class="swiper-slide post_02 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지2" src="/image/DefaultClass_logo.png">
                             </a>
@@ -334,7 +348,7 @@
                             </a>
                         </ul>
 
-                        <ul class="post_03 clearfix">
+                        <ul class="swiper-slide post_03 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -344,7 +358,7 @@
                             </a>
                         </ul>
 
-                        <ul class="post_04 clearfix">
+                        <ul class="swiper-slide post_04 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -354,7 +368,7 @@
                             </a>
                         </ul>
 
-                        <ul class="post_05 clearfix">
+                        <ul class="swiper-slide post_05 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -364,7 +378,7 @@
                             </a>
                         </ul>
 
-                        <ul class="post_06 clearfix">
+                        <ul class="swiper-slide post_06 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -372,13 +386,6 @@
                             <span>모임 회식</span>
                             <p class="day_01">2023.09.03<p class="viewcount_01">조회 112</p></p>
                             </a>
-                        </ul>
-
-                        <ul class="Allpost clearfix">
-                            <a>
-                                <img alt="전체 보기" src="/image/전체 보기.png">
-                            </a>
-                            <p>전체 보기</p>
                         </ul>
 
                         <!--
@@ -399,6 +406,7 @@
                                          }
                                      </script>-->
                     </div>
+                </div>
                     <!--내 댓글-->
                     <p class="title_04">내 댓글</p>
                     <div class="myComment clearfix">
@@ -455,6 +463,24 @@
     </section>
 
 </div>
+
+<script>
+
+    const swiper = new Swiper('.swiper-container', {
+        loop: false,
+        centeredSlides: false,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+
+        grid: {
+            rows: 2, // 그리드의 행 수
+            fill: 'row', // "row" 또는 "column", 행을 채우는 방식 선택
+        },
+
+
+    });
+
+</script>
 
 </body>
 </html>
