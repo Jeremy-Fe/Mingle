@@ -203,9 +203,18 @@ body{z-index: 2}
 
 
 /*---내모임 제목(감추기)---*/
-.view > .MyPage .myclass {
+
+.view > .MyPage .mc {
     width: 1400px;
     background-color: rgba(255,255,255,0.65);
+    height: 300px;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    /*---내모임 제목(감추기)(끝)---*/
+}
+.view > .MyPage .mc #myclass {
+    width: 100%;
     height: 300px;
     margin: auto;
     border-radius: 20px;
@@ -215,131 +224,53 @@ body{z-index: 2}
 
 
 /*---내모임 출력(감추기)---*/
-.view > .MyPage .myclass > ul {
+.view > .MyPage .mc #myclass > div {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     width: 195px;
     height: 240px;
     background-color: #fff;
     border-radius: 20px;
     margin-top: 30px;
+    margin-left: 30px;
     float: left;
 }
 
-.view > .MyPage .myclass > ul > p {
+.view > .MyPage .mc #myclass > div:last-child {
+    margin-right: 30px;
+}
+
+.view > .MyPage .mc #myclass > div > p {
     width: 195px;
     height: 240px;
     color: #2C244F;
     font-weight: bold;
     font-size: 16px;
     text-align: center;
-    line-height: 290px;
+    line-height: 355px;
     display: block;
     position: absolute;
 }
 
-.view > .MyPage .myclass > ul > span {
+.view > .MyPage .mc #myclass > div > span {
     width: 195px;
     height: 240px;
     color: #8B8B8B;
     font-weight: bold;
     font-size: 16px;
     text-align: center;
-    line-height: 340px;
+    line-height: 410px;
     display: block;
     position: absolute;
 }
 
-.view > .MyPage .myclass > ul > a > img{
+.view > .MyPage .mc #myclass > div > a > img{
     width: 120px;
     height: 120px;
     left: 35px;
-    bottom: 110px;
-    border-radius: 100%;
-    position: absolute;
-}
-
-.view > .MyPage .myclass .mycb_01 {
-    margin-left: 30px;
-    opacity: 0.65;
-    z-index: 1;
-    position: absolute;
-}
-
-.view > .MyPage .myclass .mycb_01-1 {
-    left: 60px;
-    z-index: 2;
-    position: absolute;
-}
-
-.view > .MyPage .myclass .mycb_02 {
-    left: 300px;
-    opacity: 0.65;
-    z-index: 1;
-    position: absolute;
-}
-
-.view > .MyPage .myclass .mycb_02-1 {
-    left: 330px;
-    z-index: 2;
-    position: absolute;
-}
-
-.view > .MyPage .myclass .mycb_03 {
-    left: 570px;
-    opacity: 0.65;
-    z-index: 1;
-    position: absolute;
-}
-
-.view > .MyPage .myclass .mycb_03-1 {
-    left: 600px;
-    z-index: 2;
-    position: absolute;
-}
-
-.view > .MyPage .myclass .mycb_04 {
-    left: 840px;
-    opacity: 0.65;
-    z-index: 1;
-    position: absolute;
-}
-
-.view > .MyPage .myclass .mycb_04-1 {
-    left: 870px;
-    z-index: 2;
-    position: absolute;
-}
-
-#allwrap{
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    width: 240px;
-    height: 240px;
-    background-color: #fff;
-    left: 1120px;
-    margin-top: 30px;
-    border-radius: 20px;
-    position: relative;
-    position: absolute;
-}
-
-#allview {
-    border-radius: 100%;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    width: 80px;
-    height: 80px;
-    left: 80px;
     bottom: 90px;
+    border-radius: 100%;
     position: absolute;
 }
-
-#allviewtext {
-    font-size: 20px;
-    color: #8B8B8B;
-    left: 80px;
-    bottom: 50px;
-    position: absolute;
-}
-
 
 #peple_01 {
     bottom: 15px;
@@ -428,7 +359,7 @@ body{z-index: 2}
     overflow: hidden;
 }
 .view > .MyPage .mp .myPost {
-    /*width: 1400px;*/
+    width: 100%;
     height: 540px;
     margin: auto;
     position: absolute;
@@ -445,8 +376,6 @@ body{z-index: 2}
     border-radius: 20px;
     /*---내게시물 제목(끝)---*/
 }
-
-
 
 /*---내게시물 출력---*/
 .view > .MyPage .mp .myPost > .post_01 {
