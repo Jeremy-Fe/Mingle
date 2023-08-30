@@ -154,13 +154,22 @@
 .view > #g_contents > #g_member > ul:last-child{
     margin-bottom: 0;
 }
-.view > #g_contents > #g_member > ul > li{}
-.view > #g_contents > #g_member > ul > li > img{
+.view > #g_contents > #g_member > ul > li{
+    position: relative;
+}
+.view > #g_contents > #g_member > ul > li > .profileimg{
     display: inline;
     width: 60px;
     height: 60px;
     margin-right: 10px;
     float: left;
+}
+.view > #g_contents > #g_member > ul > li > .leadercrown{
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    width: 22px;
+    height: 22px;
 }
 .view > #g_contents > #g_member > ul > li > ul > li{}
 .view > #g_contents > #g_member > ul > li > ul > li > h4 {

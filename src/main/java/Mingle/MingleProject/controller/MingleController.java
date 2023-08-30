@@ -58,6 +58,11 @@ public class MingleController {
     @GetMapping("Mbti_banner*")
     public String Mbti_banner() {return "Mbti_banner";}
 
+    @GetMapping("Gathering_Home")
+    public String Gathering_Home() {return "Gathering_Home";}
+
+    @GetMapping("Gathering_Board")
+    public String Gathering_Board() {return "Gathering_Board";}
 
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
