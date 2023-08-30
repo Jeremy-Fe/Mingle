@@ -9,7 +9,7 @@
 
 
     <!--css-->
-    <link href="/CSS/MyPage.css?after" type="text/css" rel="stylesheet">
+    <link href="/CSS/MyPage.css" type="text/css" rel="stylesheet">
 
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -50,7 +50,7 @@
             </ul>
         </div>
 
-<!--        <html xmlns:th="http://www.thymeleaf.org">
+        <!--<html xmlns:th="http://www.thymeleaf.org">
 
         <div th:replace="/defaultUI.html"></div>-->
 
@@ -62,6 +62,7 @@
                 <div class="MyPage">
                     <img alt="큰제목" src="/image/MyPageTitle.png">
                     <p>마이페이지</p>
+
                     <div class="profile">
                         <ul>
                             <li class="pimg">
@@ -93,7 +94,7 @@
                     </div>
 
                     <!--내모임-->
-                    <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부 <input class="check" type="checkbox" name="xxx" value="yyy" checked></p></p>
+                    <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부</p></p>
                     <div class="myclass clearfix">
                         <ul class="mycb_01">
                             <a>
@@ -310,23 +311,10 @@
                         </div>
                     </div>
 
- <!--                   <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">Slide 1</div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                    </div>-->
-
-
                     <!--내게시물-->
                     <p class="title_03">내 게시물</p>
-                    <div class="swiper-container mp clearfix">
-                    <div class="swiper-wrapper myPost clearfix">
-                        <ul class="swiper-slide post_01 clearfix">
+                    <div class="myPost clearfix">
+                        <ul class="post_01 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
                             </a>
@@ -336,7 +324,7 @@
                             </a>
                         </ul>
 
-                        <ul class="swiper-slide post_02 clearfix">
+                        <ul class="post_02 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지2" src="/image/DefaultClass_logo.png">
                             </a>
@@ -346,7 +334,7 @@
                             </a>
                         </ul>
 
-                        <ul class="swiper-slide post_03 clearfix">
+                        <ul class="post_03 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -356,7 +344,7 @@
                             </a>
                         </ul>
 
-                        <ul class="swiper-slide post_04 clearfix">
+                        <ul class="post_04 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -366,7 +354,7 @@
                             </a>
                         </ul>
 
-                        <ul class="swiper-slide post_05 clearfix">
+                        <ul class="post_05 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -376,7 +364,7 @@
                             </a>
                         </ul>
 
-                        <ul class="swiper-slide post_06 clearfix">
+                        <ul class="post_06 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -386,16 +374,12 @@
                             </a>
                         </ul>
 
-      <!--                  <ul class="Allpost clearfix">
-                                <button id="button"><img id="allview2" alt="전체 보기" src="/image/전체 보기.png"></button>
-                            <script>
-                                const button = document.getElementById('button');
-                                button.addEventListener('click', function() {
-                                    window.location.href = 'Allview.html.html';
-                                });
-                            </script>
+                        <ul class="Allpost clearfix">
+                            <a>
+                                <img alt="전체 보기" src="/image/전체 보기.png">
+                            </a>
                             <p>전체 보기</p>
-                        </ul>-->
+                        </ul>
 
                         <!--
                         <div id="myclass" class="clearfix">
@@ -415,7 +399,6 @@
                                          }
                                      </script>-->
                     </div>
-                </div>
                     <!--내 댓글-->
                     <p class="title_04">내 댓글</p>
                     <div class="myComment clearfix">
@@ -472,51 +455,6 @@
     </section>
 
 </div>
-
-<!--<script>
-    var swiper = new Swiper(".swiper-container", {
-        /*spaceBetween: 30,    // 슬라이드 사이 여백*/
-
-        slidesPerView : 'auto', // 한 슬라이드에 보여줄 갯수
-        centeredSlides: true,    //센터모드
-        autoplay: false{     //자동슬라이드 (false-비활성화)
-            delay: 2500, // 시간 설정
-            disableOnInteraction: false, // false-스와이프 후 자동 재생
-        },
-
-        loop : false,   // 슬라이드 반복 여부
-
-        loopAdditionalSlides : 1,
-
-        grid: {
-            rows: 2, // 그리드의 행 수
-            fill: 'row', // "row" 또는 "column", 행을 채우는 방식 선택
-        },
-
-        navigation: {   // 버튼
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
-
-</script>-->
-
-<script>
-
-    const swiper = new Swiper('.swiper-container', {
-        loop: false,
-        centeredSlides: false,
-        slidesPerView: 'auto',
-        slideToClickedSlide: true,
-        grid: {
-            rows: 2, // 그리드의 행 수
-            fill: 'row', // "row" 또는 "column", 행을 채우는 방식 선택
-        },
-
-
-    });
-
-</script>
 
 </body>
 </html>

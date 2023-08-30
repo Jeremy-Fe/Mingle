@@ -1,0 +1,253 @@
+
+.view > #g_contents > div {
+    margin-top: 20px;
+    border-radius: 20px;
+}
+.view > #g_contents > #g_introduction {
+    width: 440px;
+    height: auto;
+    background-color: white;
+    float: left;
+}
+.view > #g_contents > #g_introduction > h4 {
+    display: block;
+    margin: 10px 20px;
+    font-size: 35px;
+    font-family:'GmarketSans';
+    font-weight: 500;
+}
+.view > #g_contents > #g_introduction > #g_introduction_content{
+    font-size: 24px;
+    white-space: pre-line;
+    text-align: center;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+}
+
+.view > #g_contents > #g_introduction > #g_introduction_more {
+    appearance: none;
+    padding: 0.3em;
+    cursor: pointer;
+    margin: 1rem;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #919191;
+
+}
+
+
+.view > #g_contents > #g_introduction > #g_introduction_more::before {
+    content: '더보기';
+}
+
+.view > #g_contents > #g_introduction > #g_introduction_more:checked::before {
+    content: '줄이기';
+}
+
+.view > #g_contents > #g_introduction > #g_introduction_content:has(+ #g_introduction_more:checked){
+    -webkit-line-clamp: unset;
+}
+
+.view > #g_contents > #g_news{
+    float : right;
+    width: 985px;
+    height: auto;
+    margin-right: 5px;
+    background-color: #fff;
+}
+.view > #g_contents > #g_news > .g_news_bg {
+    padding-bottom: 20px;
+}
+
+
+.view > #g_contents > #g_news > .g_news_bg > li > h4{
+    display: block;
+    margin: 10px 20px;
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.view > #g_contents > #g_news > .g_news_bg > ul{
+    margin: 10px 40px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > p{
+    font-size: 24px;
+    color: #585858;
+    margin-bottom: 10px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule{
+    box-shadow: 0px 0px 15px  #bcbcbc;
+    border-radius: 20px;
+    padding: 25px 0px;
+    margin-bottom: 20px;
+}
+
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li {
+    padding-left: 50px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > span {
+    font-size: 26px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > a {
+    width: 120px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    font-size: 26px;
+    border: 0px;
+    text-align: center;
+    line-height: 60px;
+    float: right;
+    font-weight: 500;
+    margin-right: 50px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > span:first-child {
+    margin-right: 15px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_date1{
+    color: red;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_date2{
+    color: #0047FF;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_title{
+    display: block;
+    margin-bottom: 40px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_subject{
+    font-size: 18px;
+    color: #727272;
+    margin-right: 15px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > .schedule_detail{
+    font-size: 18px;
+}
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > img{
+    width: 30px;
+    height: 30px;
+    display: inline;
+
+}
+
+
+.view > #g_contents > #g_member{
+    width: 440px;
+    height: 500px;
+    float: left;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.view > #g_contents > #g_member > h4 {
+    font-size: 35px;
+    font-family:'GmarketSans';
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.view > #g_contents > #g_member > ul{
+    margin-bottom: 20px;
+}
+.view > #g_contents > #g_member > ul:last-child{
+    margin-bottom: 0;
+}
+.view > #g_contents > #g_member > ul > li{
+    position: relative;
+}
+.view > #g_contents > #g_member > ul > li > .profileimg{
+    display: inline;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    float: left;
+}
+.view > #g_contents > #g_member > ul > li > .leadercrown{
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    width: 22px;
+    height: 22px;
+}
+.view > #g_contents > #g_member > ul > li > ul > li{}
+.view > #g_contents > #g_member > ul > li > ul > li > h4 {
+    font-size: 26px;
+    font-family:'GmarketSans';
+    font-weight: 500;
+    float: left;
+    margin-top: 5px;
+    width: 320px;
+}
+.view > #g_contents > #g_member > ul > li > ul > li >  p {
+    float: left;
+    margin-top: 10px;
+    color: #7A7A7A;
+}
+
+.g_news_post_box {
+    box-shadow: 0px 0px 15px  #bcbcbc;
+    border-radius: 20px;
+    padding: 25px 40px 15px 40px;
+    margin-bottom: 20px;
+}
+.g_news_post_box > .g_news_post{
+    border-bottom: 1px solid #c8c8c8;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+}
+.g_news_post_box > .g_news_post > .post_writerImg {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 130px;
+    display: inline;
+    float: left;
+    margin-right: 20px;
+}
+.g_news_post_box > .g_news_post > li{}
+.g_news_post_box > .g_news_post > li > p{
+    width: 430px;
+}
+
+.g_news_post_box > .g_news_post > li > .post_boardName{
+    color: #808080;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.g_news_post_box > .g_news_post > li > .post_writerName{
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+.g_news_post_box > .g_news_post > li > .post_date{
+    color: #808080;
+    font-size: 15px;
+}
+.g_news_post_box > .g_news_post > li > .post_title{
+    font-size: 24px;
+    margin: 10px 0px;
+    width: 500px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.g_news_post_box > .g_news_post > li > .post_contents{
+    font-size: 18px;
+    white-space: pre-line;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.g_news_post_box > .g_news_post > .post_img{
+    float: right;
+    width: 120px;
+    height: 170px;
+    border-radius: 10px;
+}
+.g_news_post_box > li > span{
+    margin-right: 20px;
+    color: #666666;
+}
+

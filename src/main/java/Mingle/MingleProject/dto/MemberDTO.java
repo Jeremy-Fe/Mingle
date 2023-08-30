@@ -1,12 +1,14 @@
 package Mingle.MingleProject.dto;
 
-import Mingle.MingleProject.entity.City;
+import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.entity.Interest;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.entity.ProfileImg;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Date;
 
 
 @Getter
@@ -15,16 +17,18 @@ import java.sql.Date;
 @AllArgsConstructor  //필드를 모두 매개변수로 하는 생성자를 만들어줌
 @ToString // toString 자동으로
 public class MemberDTO {
-    private Long id;
     private String mId;
     private String mPwd;
     private String mName;
     private String mGender;
-    private Date mBirth;
+    @DateTimeFormat(pattern = "yyyyMMdd")
+    private LocalDate mBirth;
     private String mEmail;
-    private City mAddress;
-    private City mInteregion;
-    private Interest mInterest;
+    private String mCity;
+    private String mDistrict;
+    private String mIcity;
+    private String mIDistrict;
+    private String mInterest;
     private String mGGathering;
     private ProfileImg mPiProfileimg;
     private String mIntroduction;
@@ -40,8 +44,10 @@ public class MemberDTO {
         memberDTO.setMGender(memberEntity.getMGender());
         memberDTO.setMBirth(memberEntity.getMBirth());
         memberDTO.setMEmail(memberEntity.getMEmail());
-        memberDTO.setMAddress(memberEntity.getMAddress());
-        memberDTO.setMInteregion(memberEntity.getMInteregion());
+        memberDTO.setMCity(memberEntity.getMCity());
+        memberDTO.setMDistrict(memberEntity.getMDistrict());
+        memberDTO.setMIcity(memberEntity.getMIcity());
+        memberDTO.setMIDistrict(memberEntity.getMIDistrict());
         memberDTO.setMInterest(memberEntity.getMInterest());
         memberDTO.setMGGathering(memberEntity.getMGGathering());
         memberDTO.setMPiProfileimg(memberEntity.getMPiProfileimg());

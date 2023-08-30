@@ -18,42 +18,61 @@
                 <a href="/Main_UnLogIn"><img src="image/login_logo.png" alt="메인페이지가기"></a>   <!-- 메인창 url넣기 -->
             </h1>
             <p>Join</p>
-            <form action="/url" method="post">    <!-- 메인창 url넣기 -->
-                <div class="drop_member_id">
-                    <input type="text" name="member_id" class="member_id" placeholder="아이디" maxlength="16" />
+            <form action="/join" method="post">    <!-- 메인창 url넣기 -->
+                <div class="drop_mId">
+                    <input type="text" name="mId" class="mId" placeholder="아이디" maxlength="16" />
                     <img src="image/login_id.png">
                 </div> <!--id -->
-                <div class="drop_member_pw">
-                    <input type="password" name="member_pw" class="member_pw" placeholder="비밀번호" maxlength="16" />
+                <div class="drop_mPwd">
+                    <input type="password" name="mPwd" class="mPwd" placeholder="비밀번호" maxlength="16" />
                     <img src="image/login_pw.png">
                 </div> <!-- pw -->
                 <div class="error_text" id="idMsg1">아이디: 사용할 수 없는 아이디입니다. 다른 아이디를 입력해 주세요.</div>
                 <div class="error_text" id="idMsg2">아이디: 5~16자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</div>
                 <div class="error_text" id="pwMsg">비밀번호: 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.</div> <!-- id, pw, error -->
-                <div class="drop_member_name">
-                    <input type="text" name="member_name" class="member_name" placeholder="이름" maxlength="16" />
+                <div class="drop_mName">
+                    <input type="text" name="mName" class="mName" placeholder="이름" maxlength="16" />
                     <img src="image/login_id.png">
                 </div> <!-- name -->
-                <div class="drop_member_birth">
-                    <input type="text" name="member_birth" class="member_birth" placeholder="생년월일 8자리" maxlength="8" />
+                <div class="drop_mBirth">
+                    <input type="text" name="mBirth" class="mBirth" placeholder="생년월일 8자리" maxlength="8" />
                     <img src="image/join_birth.png">
                 </div> <!-- birth -->
                 <div class="gender_btn gender_btn1">
-                    <input type="radio" id="radio-1" name="userSex" value="male">
+                    <input type="radio" id="radio-1" name="mGender" value="남">
                     <label for="radio-1">남자</label>
                 </div>
                 <div class="gender_btn gender_btn2">
-                    <input type="radio" id="radio-2" name="userSex" value="female">
+                    <input type="radio" id="radio-2" name="mGender" value="여">
                     <label for="radio-2">여자</label>
                 </div> <!-- gender -->
-                <div class="drop_member_email">
-                    <input type="email" name="member_email" class="member_email" placeholder="이메일" maxlength="25" />
+                <div class="drop_mEmail">
+                    <input type="email" name="mEmail" class="mEmail" placeholder="이메일" maxlength="25" />
                     <img src="image/join_email.png">
                 </div> <!-- email -->
+                <div class="error_text" id="birthMsg">생년월일: 생년월일은 8자리 숫자로 입력해 주세요.</div>
+                <div class="error_text" id="emailMsg">이메일: 이메일 주소가 정확한지 확인해 주세요.</div>
                 <div class="my_place"><img src="image/join_marker.png">내 거주지</div>
-
-
-
+                <select name="mCity" class="city select_box">
+                    <option value="none">시/도 선택</option>
+                    <option value="경기도">경기도</option>
+                </select>
+                <select name="mDistrict" class="county select_box">
+                    <option value="none">구/군 선택</option>
+                    <option value="시흥시">시흥시</option>
+                </select> <!-- 내 거주지 -->
+                <div class="interest_place"><img src="image/join_star.png">관심지역</div>
+                <select name="mIcity" class="city2 select_box">
+                    <option value="none">시/도 선택</option>
+                    <option value="경기도">경기도</option>
+                </select>
+                <select name="mIDistrict" class="county2 select_box">
+                    <option value="none">구/군 선택</option>
+                    <option value="시흥시">시흥시</option>
+                </select> <!-- 관심지역 -->
+                <button type="button" id="interest_bt"><img src="image/join_interest.png" alt="관심사 이미지" onclick=""></button>
+                <div class="interest">관심사</div><!-- 관심사 -->
+                <input type="text" name="mInterest" class="mInterest" placeholder="게임/오락" maxlength="16" />
                 <input type="submit" id="join" value="회원가입"/>
             </form>
         </div> <!-- 구성창 끝 -->

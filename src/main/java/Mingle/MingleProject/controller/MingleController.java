@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 
 @Controller
 @RequiredArgsConstructor
@@ -55,8 +57,14 @@ public class MingleController {
     @GetMapping("Create_Meet*")
     public String Create_Meet() {return "Create_Meet";}
 
-    @GetMapping("yeon*")
-    public String yeon() {return "yeon";}
+    @GetMapping("Mbti_banner*")
+    public String Mbti_banner() {return "Mbti_banner";}
+
+    @GetMapping("Gathering_Home")
+    public String Gathering_Home() {return "Gathering_Home";}
+
+    @GetMapping("Gathering_Board")
+    public String Gathering_Board() {return "Gathering_Board";}
 
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
@@ -71,6 +79,16 @@ public class MingleController {
             return "login";
         }
     }
+
+    @PostMapping("join")
+    public String save(@ModelAttribute MemberDTO memberDTO) {
+        System.out.println("MemberController.save");
+        System.out.println("memberDTO = " + memberDTO);
+//        MemberService memberService = new MemberService(); -> @RequiredArgsConstructor 이걸로 대체
+        memberService.save(memberDTO);
+        return "login";
+    }
+
 
 }
 

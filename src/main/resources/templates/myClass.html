@@ -1,108 +1,142 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!--css-->
-    <link href="/css/myClass.css?after" type="text/css" rel="stylesheet">
+    <link href="../css/myClass.css?after" rel="stylesheet">
+
+    <!--font-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
 </head>
 <body>
-<div th:replace="/defaultUI.html"></div>
-<div id="view" style="overflow:scroll;">
-    <!-- 바꿔야하는 부분 -->
-    <div class="view">
-        <!--내 모임-->
-        <div class="logo1">
-            <div class="my_home">
-                <ul class="meet clearfix">
-                    <li class="jjim"><a href="#">0</a><br><a href="#">찜 모임</a></li>
-                    <li class="resent"><a href="#">0</a><br><a href="#">최근 본 모임</a></li>
-                    <li class="interest"><a href="#">0</a><br><a href="#">내 관심사</a></li>
-                </ul>
-            </div>
+<div id="wrap" class="clearfix">
+    <header id="header" class="clearfix">
+        <h1 class="logo">
+            <a href="index.html">
+                <img alt="로고_L" src="image/로고_L.png">
+            </a>
+        </h1>
+        <nav class="menu">
             <ul>
-                <img src="/image/내모임prf.png">
-                <li class="my1"><a href="#">내 모임</a></li>
+                <li><a href="#"><img src="image/Menu_내모임.png">내 모임</a></li>
+                <li><a href="#"><img src="image/Menu_스케줄.png">스케줄</a></li>
+                <li><a href="#"><img src="image/Menu_모임검색.png">모임 검색</a></li>
+                <li><a href="#"><img src="image/Menu_HOT모임.png">HOT 모임</a></li>
+                <li><a href="#"><img src="image/Menu_모임만들기.png">모임 만들기</a></li>
             </ul>
-
-            <!--가입한 모임-->
-        </div>
-        <div class="logo2">
-            <ul>
-                <li class="my2"><a>가입한 모임</a></li>
+        </nav>
+    </header>
+    <!--헤더 + 뷰-->
+    <section id="box" class="clearfix">
+        <!--헤더-->
+        <div id="user">
+            <ul class="user_wrap" >
+                <li><a>로그인 하세요</a></li>
+                <li class="icon_a"> <!--<img alt="user_img" src="#">--></li>
+                <li class="icon_b"><img alt="_mymenu" src="image/Main_마이메뉴.png"></li>
             </ul>
-            <div class="join_class">
-                <div class="container1"></div>
-                <div class="container2"></div>
-                <div class="container3"></div>
-                <div class="container4"></div>
-                <div class="container5">
-                    <ul>
-                        <button type="button" class="all_bt" onclick="alert('클릭!')">
-                            <img src="/image/전체 보기.png"/>
-                        </button>
-                        <li><a>전체 보기</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
 
-        <!--맞춤 추천 영역-->
-        <div class="recommend">
-            <ul>
-                <li class="rec1"><a>000님 맞춤 추천</a></li>
-            </ul>
-            <div class="recommend2">
-                <div class="container6">
-                    <ul>
-                        <img class="dd_img1" src="/image/동아리 이미지1.png"/>
-                    </ul>
-                    <ul>
-                        <button type="button" class="sh_bt1" onclick="alert('클릭!')">
-                            <img src="/image/바로가기.png"/>
-                        </button>
+        <!--뷰-->
+        <div id="view"style="overflow:scroll;">
+            <!-- 바꿔야하는 부분 -->
+            <div class="view">
+            <!--내 모임-->
+            <div class="logo1">
+                <div class="my_home">
+                    <ul class="meet clearfix">
+                        <li class="jjim"><a href="#">0</a><br><a href="#">찜 모임</a></li>
+                        <li class="resent"><a href="#">0</a><br><a href="#">최근 본 모임</a></li>
+                        <li class="interest"><a href="#">0</a><br><a href="#">내 관심사</a></li>
                     </ul>
                 </div>
-                <div class="container7">
-                    <ul>
-                        <img class="dd_img2" src="/image/동아리 이미지2.png"/>
-                    </ul>
-                    <ul>
-                        <button type="button" class="sh_bt2" onclick="alert('클릭!')">
-                            <img src="/image/바로가기.png"/>
-                        </button>
-                    </ul>
-                </div>
-                <div class="container8">
-                    <ul>
-                        <img class="dd_img3" src="/image/동아리 이미지3.png"/>
-                    </ul>
-                    <ul>
-                        <button type="button" class="sh_bt3" onclick="alert('클릭!')">
-                            <img src="/image/바로가기.png"/>
-                        </button>
-                    </ul>
-                </div>
-                <div class="container9">
-                    <ul>
-                        <img class="dd_img4" src="/image/동아리 이미지4.png"/>
-                    </ul>
-                    <ul>
-                        <button type="button" class="sh_bt4" onclick="alert('클릭!')">
-                            <img src="/image/바로가기.png"/>
-                        </button>
-                    </ul>
-                </div>
-            </div>
-            <div class="make_meet">
                 <ul>
-                    <button type="button" class="meet_bt" onclick="alert('클릭!')">
-                        <img src="/image/모임 만들기bt.png"/>
-                    </button>
-                    <li><a>모임 만들기</a></li>
+                    <img src="/image/내모임prf.png">
+                    <li class="my1"><a href="#">내 모임</a></li>
                 </ul>
+
+                <!--가입한 모임-->
             </div>
-        </div>
+            <div class="logo2">
+                <ul>
+                    <li class="my2"><a>가입한 모임</a></li>
+                </ul>
+                <div class="join_class">
+                    <div class="container1"></div>
+                    <div class="container2"></div>
+                    <div class="container3"></div>
+                    <div class="container4"></div>
+                    <div class="container5">
+                        <ul>
+                            <button type="button" class="all_bt" onclick="alert('클릭!')">
+                                <img src="/image/전체 보기.png"/>
+                            </button>
+                            <li><a>전체 보기</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--맞춤 추천 영역-->
+            <div class="recommend">
+                <ul>
+                    <li class="rec1"><a>000님 맞춤 추천</a></li>
+                </ul>
+                <div class="recommend2">
+                    <div class="container6">
+                        <ul>
+                            <img class="dd_img1" src="/image/동아리 이미지1.png"/>
+                        </ul>
+                        <ul>
+                            <button type="button" class="sh_bt1" onclick="alert('클릭!')">
+                                <img src="/image/바로가기.png"/>
+                            </button>
+                        </ul>
+                    </div>
+                    <div class="container7">
+                        <ul>
+                            <img class="dd_img2" src="/image/동아리 이미지2.png"/>
+                        </ul>
+                        <ul>
+                            <button type="button" class="sh_bt2" onclick="alert('클릭!')">
+                                <img src="/image/바로가기.png"/>
+                            </button>
+                        </ul>
+                    </div>
+                    <div class="container8">
+                        <ul>
+                            <img class="dd_img3" src="/image/동아리 이미지3.png"/>
+                        </ul>
+                        <ul>
+                            <button type="button" class="sh_bt3" onclick="alert('클릭!')">
+                                <img src="/image/바로가기.png"/>
+                            </button>
+                        </ul>
+                    </div>
+                    <div class="container9">
+                        <ul>
+                            <img class="dd_img4" src="/image/동아리 이미지4.png"/>
+                        </ul>
+                        <ul>
+                            <button type="button" class="sh_bt4" onclick="alert('클릭!')">
+                                <img src="/image/바로가기.png"/>
+                            </button>
+                        </ul>
+                    </div>
+                </div>
+                <div class="make_meet">
+                    <ul>
+                        <button type="button" class="meet_bt" onclick="alert('클릭!')">
+                            <img src="/image/모임 만들기bt.png"/>
+                        </button>
+                        <li><a>모임 만들기</a></li>
+                    </ul>
+                </div>
+            </div>
         <div id="footer">
             <div class="footer_menu">
                 <a href="#">이용약관</a>
@@ -117,9 +151,9 @@
                 <p>All Rights Reserved.</p>
             </div> <!--copyright -->
         </div>
-    </div>
-</div>
-</section>
+            </div>
+        </div>
+    </section>
 </div>
 </body>
 </html>
