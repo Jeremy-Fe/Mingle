@@ -4,26 +4,34 @@
     font-weight: bold;
     font-style: normal;
 }
+
 /*contents 영역*/
-.contents{height: 842px;
+.contents {
+    height: 842px;
     position: relative;
 }
-.contents>ul>li{
+
+.contents > ul > li {
     font-size: 32px;
     position: absolute;
     top: 72px;
     left: 130px;
 }
-.contents .select1{
-    width: 259px; height: 74px; background-color:rgba(255,255,255,0.65);
+
+.contents .select1 {
+    width: 259px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
     margin: auto;
     border-radius: 20px;
     position: absolute;
     top: 51px;
     left: 216px;
 }
-.select_city{
-    width: 239px; height: 55px;
+
+.select_city {
+    width: 239px;
+    height: 55px;
     border-radius: 5px;
     position: absolute;
     top: 9px;
@@ -32,21 +40,26 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border:0 solid white;
+    border: 0 solid white;
     font-size: 32px;
     font-family: 'GmarketSansMedium';
     color: #8B8B8B;
 }
-.contents .select2{
-    width: 259px; height: 74px; background-color:rgba(255,255,255,0.65);
+
+.contents .select2 {
+    width: 259px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
     margin: auto;
     border-radius: 20px;
     position: absolute;
     top: 51px;
     left: 513px;
 }
-.select_county{
-    width: 239px; height: 55px;
+
+.select_county {
+    width: 239px;
+    height: 55px;
     border-radius: 5px;
     position: absolute;
     top: 9px;
@@ -58,29 +71,68 @@
     border: none;
     font-size: 32px;
     font-family: 'GmarketSansMedium';
-    border:0 solid white;
+    border: 0 solid white;
     color: #8B8B8B;
 }
-.contents>ul> .marker{
+
+.contents > ul > .marker {
     position: absolute;
     top: 62px;
     left: 72px;
 }
-.meet_name2{
-    width: 587px; height: 74px; background-color:rgba(255,255,255,0.65);
+
+.meet_name2 {
+    width: 587px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
     margin: auto;
     border-radius: 20px;
     position: absolute;
     top: 191px;
     left: 185px;
 }
-.meet_bt{
+
+#btn {
     position: absolute;
     left: 72px;
     top: 186px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
 }
-.g_name{
-    width: 560px; height: 55px;
+#modalWrap {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+#modalContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.g_name {
+    width: 560px;
+    height: 55px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -91,16 +143,21 @@
     top: 9px;
     left: 13px;
 }
-.meet_introduce{
-    width: 1018px; height: 290px; background-color:rgba(255,255,255,0.65);
+
+.meet_introduce {
+    width: 1018px;
+    height: 290px;
+    background-color: rgba(255, 255, 255, 0.65);
     margin: auto;
     border-radius: 20px;
     position: absolute;
     top: 317px;
     left: 68px;
 }
-.m_introduce{
-    width: 970px; height: 244px;
+
+.m_introduce {
+    width: 970px;
+    height: 244px;
     border-radius: 5px;
     resize: none;
     border: none;
@@ -113,26 +170,33 @@
     left: 24px;
 
 }
-.personnel>ul .person{
+
+.personnel > ul .person {
     position: absolute;
     top: 660px;
     left: 73px;
 }
-.personnel>ul>li{
+
+.personnel > ul > li {
     position: absolute;
     top: 673px;
     left: 128px;
     font-size: 32px;
 }
-.personnel_box{
-    width: 173px; height: 74px; background-color:rgba(255,255,255,0.65);
+
+.personnel_box {
+    width: 173px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
     border-radius: 20px;
     position: absolute;
     top: 650px;
     left: 399px;
 }
-.G_personnel{
-    width: 147px; height: 55px;
+
+.G_personnel {
+    width: 147px;
+    height: 55px;
     border-radius: 5px;
     resize: none;
     border: none;
@@ -144,39 +208,49 @@
     top: 9px;
     left: 13px;
 }
-.create_bt2{
+
+.create_bt2 {
     font-size: 27px;
     position: absolute;
     top: 790px;
     left: 690px;
 }
-.G_create_bt{
-    width: 441px; height: 80px; background-color:rgba(255,255,255,0.65);
+
+.G_create_bt {
+    width: 441px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.65);
     border-radius: 20px;
     position: absolute;
     top: 763px;
     left: 535px;
     border: 0;
 }
-.G_create_bt:hover{
+
+.G_create_bt:hover {
     background-color: #968ACD;
-    cursor:pointer;
+    cursor: pointer;
 }
+
 /*footer 영역*/
-.footer{height: 319px;
-position: relative;
+.footer {
+    height: 319px;
+    position: relative;
 }
-.footer_menu{
+
+.footer_menu {
     position: absolute;
     top: 179px;
     left: 415px;
 }
-.footer_menu > a{
+
+.footer_menu > a {
     position: relative;
     color: #FFFFFF;
     margin-right: 30px;
 }
-.footer_menu > a::before{
+
+.footer_menu > a::before {
     content: "";
     position: absolute;
     width: 2px;
@@ -185,32 +259,37 @@ position: relative;
     top: 1px;
     left: -15px;
 }
-.footer_menu > a:first-child:before{
+
+.footer_menu > a:first-child:before {
     width: 0;
 }
-.footer_menu > a:last-child{
+
+.footer_menu > a:last-child {
     margin-right: 0;
 }
 
 /* footer CopyRight */
-.f_copyright{
+.f_copyright {
     position: absolute;
     top: 113px;
     height: 0;
     left: 475px;
 }
-.f_copyright > img{
+
+.f_copyright > img {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
 
 }
-.f_copyright > p{
+
+.f_copyright > p {
     display: inline;
     text-align: center;
     vertical-align: middle;
     color: #EEEEEE;
 }
-.f_copyright .corp{
+
+.f_copyright .corp {
     color: #FFFFFF;
 }
