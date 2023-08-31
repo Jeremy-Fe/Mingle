@@ -17,12 +17,23 @@
 </head>
 <body>
     <div id="wrap" class="clearfix">
-        <div><input id="regiSearch" type="search"  placeholder="동 . 읍.  면을 선택해주세요."></input></div>
+        <div>
+            <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
+        </div>
         <div>
             <a id="showRegi" href="">
                 <p>가리봉동 (서울특별시 구로구)</p>
+                <p>th:text={}</p>
             </a>
         </div>
     </div>
+    function enterkey() {
+    if (window.event.keyCode == 13) {
+    const regiSearch = document.getElementById('regiSearch').value;
+
+
+
+    }
+    }
 </body>
 </html>

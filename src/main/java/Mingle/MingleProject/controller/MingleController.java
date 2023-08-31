@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Member;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class MingleController {
     //생성자 주입
     private final MemberService memberService;
+    private final
 
     //기본페이지 요청메소드
     @GetMapping("/")
@@ -96,6 +98,9 @@ public class MingleController {
 
     @GetMapping("selectResi")
     public String selectResi(@ModelAttribute CityDTO cityDTO) {
+        List<CityDTO> regiSearch = CityService.findAll().stream()
+                .map(CityDTO::new)
+                .toList();
 
         return "selectResi";
     }
