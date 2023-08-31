@@ -7,26 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CityService {
     private final CityRepository cityRepository;
-
-//    public List<CityDTO> getAllCities() {
-//        List<CityEntity> cityEntityList = cityRepository.findAll();
-////        Set<CityDTO> uniqueCityDTOs = new HashSet<>();
-//        List<CityDTO> cityDTOList = new ArrayList<>();
-//        for (CityEntity cityEntity : cityEntityList) {
-//            cityDTOList.add(CityDTO.toCityDTO(cityEntity));
-//        }
-//        return new ArrayList<>(cityDTOList);
-//    }
 
     public List<String> getDistinctBcNames() {
         List<String> bcNames = cityRepository.findAll().stream()
@@ -36,13 +23,27 @@ public class CityService {
         return bcNames;
     }
 
-    public List<String> getDistinctMcNames() {
-        List<String> mcNames = cityRepository.findAll().stream()
-                .map(CityEntity::getMcName)
-                .distinct()
-                .collect(Collectors.toList());
-        return mcNames;
+    public Map<String, List<String>> getCityToDistrictMap() {
+        List<CityEntity> cities = cityRepository.findAll();
+        Map<String, List<String>> cityToDistrictMap = new HashMap<>();
+
+        for (CityEntity city : cities) {
+            String cityKey = city.getBcName();
+            String districtValue = city.getMcName();
+
+            cityToDistrictMap.computeIfAbsent(cityKey, k -> new ArrayList<>()).add(districtValue);
+        }
+
+        // Remove duplicates from the district lists
+        for (List<String> districts : cityToDistrictMap.values()) {
+            Set<String> uniqueDistricts = new HashSet<>(districts);
+            districts.clear();
+            districts.addAll(uniqueDistricts);
+        }
+
+        return cityToDistrictMap;
     }
+
 }
 
 
