@@ -6,6 +6,8 @@
 
      <!--css-->
     <link rel="stylesheet" href="/CSS/selectResi.css">
+    <!--script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -16,32 +18,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="wrap" class="clearfix">
+    <div id="wrap" class="clearfix" style="overflow:scroll;">
         <div>
             <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
         </div>
-        <div>
-            <a id="showRegi" href="">
-                <p>가리봉동 (서울특별시 구로구)</p>
-                <p>th:text={}</p>
+        <div><!--th:each="CityEntity : ${list}"-->
+            <a id="showRegi" href="" >
+                <p>가리봉동 (서울특별시 구로구)</p><!--th:text="${CityEntity.scName}"-->
+                <p></p>
             </a>
         </div>
     </div>
     <script>
-    function enterkey() {
-    if (window.event.keyCode == 13) {
-    const regiSearch = document.getElementById('regiSearch').value;
-        $.get("/search", { keyword: regiSearch }, function(data) {
-            // Clear previous results
-            $("#showRegi").empty();
+        function enterkey() {
+            if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
+                const regiSearch = document.getElementById('regiSearch').value; // 'regiSearch' id를 가진 요소에서 값을 가져옴
+                    system.out.print(regiSearch);
+                $.get("selectResi", { keyword: regiSearch }, function(data) {
+                    // 서버로 GET 요청을 보냄. 경로는 "selectResi/search"이며, 검색어를 파라미터로 전달
 
-            // Append new results to the div
-            data.forEach(function(item) {
-                $("#showRegi").append('<p>' + item + '</p>');
-            });
-        });
-    }
-    }
+                    // 이전 결과를 지우고 새로운 결과를 화면에 출력
+                    $("#showRegi").empty(); // '#showRegi' 요소 내부의 내용을 비움
+
+                    data.forEach(function(item) {
+                        $("#showRegi").append('<p>' + item + '</p>');
+                        // 받은 데이터 배열의 각 항목을 '<p>...</p>' 형태로 추가하여 출력
+                    });
+                });
+            }
+        }
+
     </script>
 </body>
 </html>

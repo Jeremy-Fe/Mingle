@@ -5,6 +5,8 @@ import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.repository.CityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,9 +16,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class CityService {
+
+    @Autowired
     private final CityRepository cityRepository;
+
+
 
 //    public List<CityDTO> getAllCities() {
 //        List<CityEntity> cityEntityList = cityRepository.findAll();
@@ -43,13 +48,13 @@ public class CityService {
                 .collect(Collectors.toList());
         return mcNames;
     }
-    public List<String> getDistinctScNames() {
-        List<String> scNames = cityRepository.findAll()
-                .stream()
-                .map(CityEntity::getMcName)
-                .distinct()
-                .collect(Collectors.toList());
-        return scNames;
+//    지역 검색
+    public CityService(CityRepository cityRepository) {
+        this.cityRepository = cityRepository;
+    }
+
+    public List<CityEntity> searchByKeyword(String keyword) {
+        return cityRepository.findByScNameContainingIgnoreCase(keyword);
     }
 
 

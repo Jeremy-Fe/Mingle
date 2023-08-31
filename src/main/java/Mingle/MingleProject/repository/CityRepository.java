@@ -1,14 +1,15 @@
 package Mingle.MingleProject.repository;
 
-import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.entity.CityEntity;
-import Mingle.MingleProject.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
-import java.util.Optional;
 
-public interface CityRepository extends JpaRepository<CityEntity, Long> {
+@Transactional(readOnly = true)
+public interface CityRepository extends JpaRepository<CityEntity, Long>{
 
+    List<CityEntity> findByScNameContainingIgnoreCase(String keyword);
 }
