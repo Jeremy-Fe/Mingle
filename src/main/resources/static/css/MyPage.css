@@ -431,33 +431,31 @@ body{z-index: 2}
 
 }
 
+.view > .MyPage .myComment .accordion {
+    margin-top: 30px;
+    width: 48px;
+    height: 51px;
+    position: relative;
+}
+
+.view > .MyPage .myComment .accordion. accordion-item {
+    left: 10px;
+}
+
+#accordion-button-1 {
+    text-align: center;
+    position: absolute;
+    left: 10px;
+    border: none;
+}
 #seemore {
     width: 24px;
     height: 31px;
-    left: 700px;
-    bottom: 50px;
+    text-align: center;
 }
 
 #seemoretext {
-    width: 60px;
-    height: 15px;
-    left: 690px;
-    bottom: 30px;
-}
-
-/*
-.view> .l_news>li{float: left}
-.view> .l_news> .inBox>p{
-    float: left ; line-height: 80px;
-    font-size: 32px;  font-weight: 300; color: grey}
-.view> .l_news> .inBox>p:first-child{margin-right: 40px}
-.view> .inBox>h3{
-    float: left ;line-height: 75px ; margin-left: 10px;
-    font-size: 48px; font-weight: 500}
-*/
-
-.view > .MyPage .myComment .accordion {
-    width: 30px;
-    height: 30px;
-    position: absolute;
+    width: 48px;
+    height: 51px;
+    line-height: 90px;
 }
