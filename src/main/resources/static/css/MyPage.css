@@ -47,7 +47,7 @@ body{z-index: 2}
 
 
 /* section */
-#box{width: 1515px; height: 1000px;  float: left; ;}
+#box{width: 1515px; height: 100%px;  float: left; ;}
 #box>div{float: left}
 #user{width: 100%; height: 65px;}
 
@@ -60,7 +60,7 @@ body{z-index: 2}
 #box>#user >ul>.icon_b>img{width: 30px; height: 30px;  margin-top: 20px ;}
 
 /*view*/
-#view{width: 100%; height: 1035px;
+#view{width: 100%; height: 100%;
     background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
     border-radius: 20px 0 0 0;
     padding-top: 40px;
@@ -71,7 +71,8 @@ body{z-index: 2}
 /*-------페이지 기본구성(끝)*-------*/
 /*view_바꿔야할 부분*/
 .view{width: 100%;
-    height: 2000px;/* 임의지정 값*/
+    height: 100%;/* 임의지정 값*/
+    margin-bottom: 30px;
     border-radius: 20px 0 0 0;
 }
 
@@ -272,76 +273,6 @@ body{z-index: 2}
     position: absolute;
 }
 
-#peple_01 {
-    bottom: 15px;
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    position: absolute;
-    left: 10px;
-    z-index: 1;
-
-}
-
-#peple_02 {
-    bottom: 15px;
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    position: absolute;
-    left: 40px;
-    z-index: 2;
-
-}
-
-#peple_03 {
-    bottom: 15px;
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    position: absolute;
-    left: 70px;
-    z-index: 3;
-
-}
-
-#peple_04 {
-    bottom: 15px;
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    position: absolute;
-    left: 100px;
-    z-index: 4;
-
-}
-
-#peple_05 {
-    bottom: 15px;
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    position: absolute;
-    left: 130px;
-    z-index: 5;
-
-}
-#peple_etc {
-    left: 150px;
-    bottom: 15px;
-    width: 35px;
-    height: 35px;
-    line-height: 40px;
-    font-weight: normal;
-    text-align: center;
-    background-color: #D9D9D9;
-    border-radius: 100%;
-    position: absolute;
-    font-family:'GmarketSans';
-    z-index: 6;
-    /*---내모임 출력(끝)---*/
-}
-
 .view > .MyPage .title_03 {
     margin-top: 20px;
 }
@@ -355,68 +286,59 @@ body{z-index: 2}
     height: 540px;
     margin: auto;
     border-radius: 20px;
-    position: relative;
+    /*position: relative;*/
     overflow: hidden;
 }
-.view > .MyPage .mp .myPost {
+.view > .MyPage .mp #myPost {
     width: 100%;
     height: 540px;
     margin: auto;
-    position: absolute;
-
+    position: relative;
+    /*position: absolute;
+*/
 }
 
-.view > .MyPage .mp .myPost > ul {
+.view > .MyPage .mp #myPost > div {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    margin-left: 90px;
+    margin-left: 60px;
     width: 600px;
     height: 150px;
     margin-top: 30px;
     background-color: #fff;
     border-radius: 20px;
+    float: left;
     /*---내게시물 제목(끝)---*/
 }
 
+.view > .MyPage .mp #myPost > div:last-child {
+    margin-right: 15px;
+}
+
 /*---내게시물 출력---*/
-.view > .MyPage .mp .myPost > .post_01 {
-    position: absolute;
-    float: left;
-}
-
-.view > .MyPage .mp .myPost > .post_02 {
+/*.view > .MyPage .mp #myPost > .post_02 {
     bottom : 195px;
-    position: absolute;
-    float: left;
 }
 
-.view > .MyPage .mp .myPost > .post_03 {
+.view > .MyPage .mp #myPost > .post_03 {
     bottom : 30px;
-    position: absolute;
-    float: left;
 }
 
-.view > .MyPage .mp .myPost > .post_04 {
+.view > .MyPage .mp #myPost > .post_04 {
     bottom : 360px;
     left: 620px;
-    position: absolute;
-    float: left;
 }
 
-.view > .MyPage .mp .myPost > .post_05 {
+.view > .MyPage .mp #myPost > .post_05 {
     bottom : 195px;
     left: 620px;
-    position: absolute;
-    float: left;
 }
 
-.view > .MyPage .mp .myPost > .post_06 {
+.view > .MyPage .mp #myPost > .post_06 {
     bottom : 30px;
     left: 620px;
-    position: absolute;
-    float: left;
-}
+}*/
 
-.view > .MyPage .mp .myPost .postimg_01 {
+.view > .MyPage .mp #myPost .postimg_01 {
     width: 110px;
     height: 110px;
     margin-left: 20px;
@@ -424,14 +346,14 @@ body{z-index: 2}
     position: absolute;
 }
 
-.view > .MyPage .mp .myPost > ul > .postname_01 {
+.view > .MyPage .mp #myPost > div > .postname_01 {
     left: 145px;
     top:25px;
     position: absolute;
     font-weight: lighter;
 }
 
-.view > .MyPage .mp .myPost > ul > span {
+.view > .MyPage .mp #myPost > div > span {
     width: 460px;
     left: 145px;
     top: 50px;
@@ -441,7 +363,7 @@ body{z-index: 2}
     font-family: 'GmarketSans';
 }
 
-.view > .MyPage .mp .myPost > ul .day_01 {
+.view > .MyPage .mp #myPost > div .day_01 {
     left: 145px;
     top: 110px;
     font-size: 20px;
@@ -450,7 +372,7 @@ body{z-index: 2}
     color: #767676;
 }
 
-.view > .MyPage .mp .myPost > ul .viewcount_01 {
+.view > .MyPage .mp #myPost > div .viewcount_01 {
     left: 500px;
     bottom: 15px;
     font-size: 20px;
@@ -458,46 +380,6 @@ body{z-index: 2}
     color: #6B6B6B;
     /*---내게시물 출력(끝)---*/
 }
-
-/*---내게시물 전체 보기---*/
-.view > .MyPage .mp .myPost .Allpost {
-    width: 130px;
-    height: 120px;
-    background-color: #fff;
-    border-radius: 20px;
-    bottom : 210px;
-    left: 1260px;
-    position: absolute;
-    float: left;
-
-}
-
-
-#button {
-    z-index: 10;
-}
-
-#allview2 {
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 100%;
-    width : 55px;
-    height: 55px;
-    left: 38px;
-    bottom: 38px;
-    position: absolute;
-
-}
-
-.view > .MyPage .myPost .Allpost > p {
-    left: 40px;
-    bottom: 15px;
-    font-size: 12px;
-    font-weight: normal;
-    color: #8B8B8B;
-    position: absolute;
-    /*---내게시물 전체 보기(끝)---*/
-}
-
 
 
 .view > .MyPage .title_04 {
@@ -508,85 +390,33 @@ body{z-index: 2}
 .view > .MyPage .myComment {
     width: 1400px;
     background-color: rgba(255,255,255,0.65);
-    height: 585px;
     border-radius: 20px;
     position: relative;
+    padding: 30px;
 
 }
 .view > .MyPage .myComment > ul {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    width: 1340px;
+    height: 47px;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-color: #EEF1FF;
     /*---내 댓글 제목(끝)---*/
 }
 
-.view > .MyPage .myComment .comment_01 {
-    width: 1340px;
-    height: 47px;
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 20px;
-    background-color: #EEF1FF;
-    position: relative;
-    position: absolute;
+.view > .MyPage .myComment > ul:first-child {
+    margin-top: 0px;
 }
 
-.view > .MyPage .myComment .comment_02 {
-    width: 1340px;
-    height: 47px;
-    top: 80px;
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 20px;
-    background-color: #EEF1FF;
+.view > .MyPage .myComment > ul > p {
+    width: 1280px;
+    line-height: 50px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: normal;
+    color: #8B8B8B;
     position: relative;
-    position: absolute;
-}
-
-.view > .MyPage .myComment .comment_03 {
-    width: 1340px;
-    height: 47px;
-    top: 160px;
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 20px;
-    background-color: #EEF1FF;
-    position: relative;
-    position: absolute;
-}
-
-.view > .MyPage .myComment .comment_04 {
-    width: 1340px;
-    height: 47px;
-    top: 240px;
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 20px;
-    background-color: #EEF1FF;
-    position: relative;
-    position: absolute;
-}
-
-.view > .MyPage .myComment .comment_05 {
-    width: 1340px;
-    height: 47px;
-    top: 320px;
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 20px;
-    background-color: #EEF1FF;
-    position: relative;
-    position: absolute;
-}
-
-.view > .MyPage .myComment .comment_06 {
-    width: 1340px;
-    height: 47px;
-    top: 400px;
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 20px;
-    background-color: #EEF1FF;
-    position: relative;
-    position: absolute;
 }
 
 .view > .MyPage .myComment > ul > p > span {
@@ -594,21 +424,11 @@ body{z-index: 2}
     left: 40px;
     width: 1280px;
     font-size: 23px;
-    position: absolute;
     font-weight: normal;
     text-align: left;
     color: #000000;
-
-}
-
-.view > .MyPage .myComment > ul > p {
-    width: 1280px;
-    line-height: 50px;
-    text-align: right;
     position: absolute;
-    font-size: 18px;
-    font-weight: normal;
-    color: #8B8B8B;
+
 }
 
 #seemore {
@@ -616,7 +436,6 @@ body{z-index: 2}
     height: 31px;
     left: 700px;
     bottom: 50px;
-    position: absolute;
 }
 
 #seemoretext {
@@ -624,7 +443,6 @@ body{z-index: 2}
     height: 15px;
     left: 690px;
     bottom: 30px;
-    position: absolute;
 }
 
 /*
@@ -637,3 +455,9 @@ body{z-index: 2}
     float: left ;line-height: 75px ; margin-left: 10px;
     font-size: 48px; font-weight: 500}
 */
+
+.view > .MyPage .myComment .accordion {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+}

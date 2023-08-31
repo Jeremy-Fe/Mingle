@@ -107,8 +107,8 @@
                     </div>
 
                     <!--내모임-->
-                    <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부</p></p>
-                    <div class="swiper-container mc clearfix">
+                    <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부 <input class="check" type="checkbox" name="xxx" value="yyy"></p></p>
+                    <div id="sc1" class="swiper-container mc clearfix">
                     <div id="myclass" class="swiper-wrapper clearfix">
                         <div class="swiper-slide mycb_01">
                             <a>
@@ -178,6 +178,13 @@
                                 "데이터 1",
                                 "데이터 2",
                                 "데이터 3",
+                                "데이터 4",
+                                "데이터 5",
+                                "데이터 6",
+                                "데이터 7",
+                                "데이터 8",
+
+
                                 // ... 더 많은 데이터 ...
                             ];
 
@@ -197,9 +204,9 @@
 
                     <!--내게시물-->
                     <p class="title_03">내 게시물</p>
-                    <div class="swiper-container mp clearfix">
-                    <div class="swiper-wrapper myPost clearfix">
-                        <ul class="swiper-slide post_01 clearfix">
+                    <div id="sc2" class="swiper-container mp clearfix">
+                    <div id="myPost" class="swiper-wrapper clearfix">
+                        <div class="swiper-slide post_01 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
                             </a>
@@ -207,9 +214,9 @@
                             <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
                             <p class="day_01">2023. 05. 19<p class="viewcount_01">조회 012</p></p>
                             </a>
-                        </ul>
+                        </div>
 
-                        <ul class="swiper-slide post_02 clearfix">
+                        <div class="swiper-slide post_02 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지2" src="/image/DefaultClass_logo.png">
                             </a>
@@ -217,9 +224,9 @@
                             <span>20년만에 돌아오는 천체 관측 하는 날 끝나고 맥주 한잔 할 살암</span>
                             <p class="day_01">2023. 07. 15<p class="viewcount_01">조회 112</p></p>
                             </a>
-                        </ul>
+                        </div>
 
-                        <ul class="swiper-slide post_03 clearfix">
+                        <div class="swiper-slide post_03 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -227,9 +234,9 @@
                             <span>플스 하는 날 (피파, 철권, 킹오파, 다디졌다)</span>
                             <p class="day_01">2023. 08. 06<p class="viewcount_01">조회 002</p></p>
                             </a>
-                        </ul>
+                        </div>
 
-                        <ul class="swiper-slide post_04 clearfix">
+                        <div class="swiper-slide post_04 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -237,9 +244,9 @@
                             <span>동네 아재들 다 모여라 배드민턴 함치자~!</span>
                             <p class="day_01">2023. 08. 14<p class="viewcount_01">조회 001</p></p>
                             </a>
-                        </ul>
+                        </div>
 
-                        <ul class="swiper-slide post_05 clearfix">
+                        <div class="swiper-slide post_05 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -247,9 +254,9 @@
                             <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
                             <p class="day_01">2023. 08. 31<p class="viewcount_01">조회 012</p></p>
                             </a>
-                        </ul>
+                        </div>
 
-                        <ul class="swiper-slide post_06 clearfix">
+                        <div class="swiper-slide post_06 clearfix">
                             <a>
                                 <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
                             </a>
@@ -257,87 +264,124 @@
                             <span>모임 회식</span>
                             <p class="day_01">2023.09.03<p class="viewcount_01">조회 112</p></p>
                             </a>
-                        </ul>
-
-                        <!--
-                        <div id="myclass" class="clearfix">
-                                     <script>
-                                         for (var i = 0; i < 4; i++) {
-
-                                             // ul 요소 생성
-                                             var ulElement1 = document.createElement("ul");
-                                             ulElement1.className = "mycb_0"+(i+1);
-
-                                             var ulElement2 = document.createElement("ul");
-                                             ulElement2.className = "mycb_0"+(i+1)+"-"+(i+1);
-
-                                             var myclass = document.getElementById("myclass");
-                                             myclass.appendChild(ulElement1);
-                                             myclass.appendChild(ulElement2);
-                                         }
-                                     </script>-->
+                        </div>
                     </div>
-                </div>
+
+                        <script>
+                            // 가상의 데이터베이스 데이터 배열
+                            var databaseData = [
+                                "데이터 1",
+                                "데이터 2",
+                                "데이터 3",
+                                "데이터 4",
+                                "데이터 5",
+                                "데이터 6",
+                                "데이터 7",
+                                "데이터 8",
+                                "데이터 9",
+                                // ... 더 많은 데이터 ...
+                            ];
+
+                            var myPost = document.getElementById("myPost");
+
+                            // 데이터베이스 데이터의 수만큼 <div> 생성
+                            for (var i = 0; i < databaseData.length; i++) {
+                                var dataDiv = document.createElement("div");
+                                dataDiv.className = "swiper-slide post_"+i; // 클래스 지정
+                                dataDiv.textContent = databaseData[i]; // 데이터 추가
+                                myPost.appendChild(dataDiv); // <div>를 컨테이너에 추가
+                            }
+                        </script>
+                    </div>
                     <!--내 댓글-->
                     <p class="title_04">내 댓글</p>
-                    <div class="myComment clearfix">
-                        <ul class="comment_01 clearfix">
-                            <p class="commenttext_01">
-                                <span>ㅋㅋㅋ 나 그날 러닝 뛰고 집에 오는길에 맥주 한캔 사서 집 들어옴 ㅋㅋㅋ</span>
-                                2023. 08. 27 - 질풍가도 | 자유게시판
-                            </p>
-                        </ul>
+                        <div class="myComment clearfix">
+                            <ul class="comment_01">
+                                <p class="commenttext_01">
+                                    <span>ㅋㅋㅋ 나 그날 러닝 뛰고 집에 오는길에 맥주 한캔 사서 집 들어옴 ㅋㅋㅋ</span>
+                                    2023. 08. 27 - 질풍가도 | 자유게시판
+                                </p>
+                            </ul>
 
-                        <ul class="comment_02 clearfix">
-                            <p class="commenttext_01">
-                                <span>이 천체 관측날 캠핑 용품 준비 해가야 하나요??</span>
-                                2023. 08. 15 - 우주먼지 | 자유게시판
-                            </p>
-                        </ul>
+                            <ul class="comment_02">
+                                <p class="commenttext_01">
+                                    <span>이 천체 관측날 캠핑 용품 준비 해가야 하나요??</span>
+                                    2023. 08. 15 - 우주먼지 | 자유게시판
+                                </p>
+                            </ul>
 
-                        <ul class="comment_03 clearfix">
-                            <p class="commenttext_01">
-                                <span>혹시 회원님들 중에 라켓 저렴하고 좋은것 파는곳 정보 아시는분 있나요??</span>
-                                2023. 07. 22 - 스플래쉬 | 자유게시판
-                            </p>
-                        </ul>
+                            <ul class="comment_03">
+                                <p class="commenttext_01">
+                                    <span>혹시 회원님들 중에 라켓 저렴하고 좋은것 파는곳 정보 아시는분 있나요??</span>
+                                    2023. 07. 22 - 스플래쉬 | 자유게시판
+                                </p>
+                            </ul>
 
-                        <ul class="comment_04 clearfix">
-                            <p class="commenttext_01">
-                                <span>아니 근데 저기서 마지막 챕터 보스몹 잡는거 너무 빡세던데.. 이거 못잡는거 아...</span>
-                                2023. 07. 15 - 빽투더퓨처 | 자유게시판
-                            </p>
-                        </ul>
+                            <ul class="comment_04">
+                                <p class="commenttext_01">
+                                    <span>아니 근데 저기서 마지막 챕터 보스몹 잡는거 너무 빡세던데.. 이거 못잡는거 아...</span>
+                                    2023. 07. 15 - 빽투더퓨처 | 자유게시판
+                                </p>
+                            </ul>
 
-                        <ul class="comment_05 clearfix">
-                            <p class="commenttext_01">
-                                <span>이제 맥주 그만 먹어야되는데.. 러닝뛴거 그대로 살로 다 가겠음ㅋㅋㅋㅋ</span>
-                                2023. 07. 02 - 질풍가도 | 자유게시판
-                            </p>
-                        </ul>
+                            <ul class="comment_05">
+                                <p class="commenttext_01">
+                                    <span>이제 맥주 그만 먹어야되는데.. 러닝뛴거 그대로 살로 다 가겠음ㅋㅋㅋㅋ</span>
+                                    2023. 07. 02 - 질풍가도 | 자유게시판
+                                </p>
+                            </ul>
+                            <ul class="comment_06">
+                                <p class="commenttext_01">
+                                    <span>이 지역 보스몹 잡아 보셨나요?</span>
+                                    2023. 05. 18  - 빽투더퓨처 | 자유게시판
+                                </p>
+                            </ul>
+                            <div class="accordion">
+                                <div class="accordion-item">
+                                    <button id="accordion-button-1" aria-expanded="false">
+                                        <span class="icon" aria-hidden="true"></span>
+                                        <img id="seemore" alt="더보기" src="/image/더보기.png">
 
-                        <ul class="comment_06 clearfix">
-                            <p class="commenttext_01">
-                                <span>이 지역 보스몹 잡아 보셨나요?</span>
-                                2023. 05. 18  - 빽투더퓨처 | 자유게시판
-                            </p>
-                        </ul>
-                        <ul>
-                            <a>
-                                <img id="seemore" alt="더보기" src="/image/더보기.png">
-                                <p id="seemoretext">더보기</p>
-                            </a>
-                        </ul>
+                                    </button>
+
+                                    <p id="seemoretext">더보기</p>
+
+                                </div>
+                            </div>
+                            <ul class="comment_07">
+                                <p class="commenttext_01">
+                                    <span>이 지역 보스몹 잡아 보셨나요?</span>
+                                    2023. 05. 18  - 빽투더퓨처 | 자유게시판
+                                </p>
+                            </ul>
 
                     </div>
+                    <script>
+                        const items = document.querySelectorAll(".accordion button");
+
+                        function toggleAccordion() {
+                            const itemToggle = this.getAttribute('aria-expanded');
+
+                            for (i = 0; i < items.length; i++) {
+                                items[i].setAttribute('aria-expanded', 'false');
+                            }
+
+                            if (itemToggle == 'false') {
+                                this.setAttribute('aria-expanded', 'true');
+                            }
+                        }
+
+                        items.forEach(item => item.addEventListener('click', toggleAccordion));
+                    </script>
                 </div>
+
     </section>
 
 </div>
 
 <script>
 
-    const swiper = new Swiper('.swiper-container', {
+    const swiper1 = new Swiper('#sc1', {
         loop: false,
         centeredSlides: false,
         slidesPerView: 'auto',
@@ -345,6 +389,24 @@
 
         grid: {
             rows: 1, // 그리드의 행 수
+            fill: 'row', // "row" 또는 "column", 행을 채우는 방식 선택
+        },
+
+
+    });
+
+</script>
+
+<script>
+
+    const swiper2 = new Swiper('#sc2', {
+        loop: false,
+        centeredSlides: false,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+
+        grid: {
+            rows: 3, // 그리드의 행 수
             fill: 'row', // "row" 또는 "column", 행을 채우는 방식 선택
         },
 
