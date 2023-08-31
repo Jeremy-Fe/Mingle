@@ -40,24 +40,11 @@ public class MingleController {
     @GetMapping("find_pw*")
     public String find_pw() { return "find_pw"; }
 
-//    @GetMapping("join")
-////    public String join() { return "join"; }
-//    public String showCities(Model model) {
-//        List<CityDTO> cities = cityService.getAllCities();
-//        System.out.println(cities);
-//        model.addAttribute("cities", cities);
-//        System.out.println("model = " + model);
-//        return "join";
-//    }
-
     @GetMapping("join")
-//    public String join() { return "join"; }
     public String showCities(Model model) {
         List<String> bcNames = cityService.getDistinctBcNames();
-        List<String> mcNames = cityService.getDistinctMcNames();
 
         model.addAttribute("bcNames", bcNames);
-        model.addAttribute("mcNames", mcNames);
         return "join";
     }
 
