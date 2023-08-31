@@ -1,5 +1,6 @@
 /* footer 메뉴 */
 #footer{
+    margin-top: 50px;
     height: 100px;
     text-align: center;
 }
