@@ -1,0 +1,107 @@
+ <!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <title>search</title>
+
+    <!--css-->
+    <link href="/CSS/search2.css" type="text/css" rel="stylesheet">
+      <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- font-family: 'NexonLv1Gothic'; -->
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+</head>
+<body>
+  <div id="wrap" class="clearfix">
+      <div th:replace="/defaultUI.html"></div>
+            <!-- 바꿔야하는 부분 -->
+            <div class="view">
+
+              <!-- 검색창 -->
+              <div id="search">
+                <ul>
+                  <li>
+                    <img src="image/search_지역.png"> 
+                    <p>구로구 구로동</p>
+                    <a href="#"><img src="image/오른쪽화살표.png"></a>
+                  </li>
+                  <input type="search" name="" id="Stext">
+                  <img id="search_I"  class="search" src="image/search_검색버튼.png"><a  href="#"></a></img>
+                </ul>
+              </div>
+              
+              <!-- 검색 모임 -->
+              <section id="chMingle">
+                <!-- 검색 모임 헤더 -->
+                <header id="cM_header">
+                  <a id="mainC" href="#">
+                    <img src="image/inter/운동스포츠.png">
+                    <p>스포츠</p>
+                  </a>
+                  <a id="subC" href="#">
+                    전체
+                    <img src="image/오른쪽화살표.png">
+                  </a>
+                  <a id="array" href="#">최신순</a>
+                </header>
+                <!-- / 검색 모임 헤더 -->
+
+                <div id="inMingle" style="overflow:scroll;">
+                  <div id="mingle">
+                    <ul>
+                        <img src="image/Main_Login_내게시물.png">
+                        <li id="mTitle"><h4>모임명</h4> <img src=""></li>
+                        <li id="mCategorie">모임 카테고리</li>
+                        <li id="mRogi">서울 구로구</li>
+                        <li id="mUser"><a href="#">96</a>명이 참여 중</li>
+                    </ul>
+                    <p id="mIntd">모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 
+                    </p>
+                  </div>
+                  <div id="mingle"></div>
+                  <div id="mingle"></div>
+                  <div id="mingle"></div>
+                  <div id="mingle"></div>
+                  <div id="mingle"></div>
+                  <div id="mingle"></div>
+                  <div id="mingle"></div>
+                  <div id="mingle"></div>
+                  <div id="mingle"></div>
+                </div>
+              </section>
+              <!-- / 관심사 -->
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+</div>
+<script>
+// 검색창
+$("#Stext").focus(function(){
+  $("#search>ul>li").hide();
+	$("#Stext").animate({
+			"width": "1290px"
+	}, 300, function() {});
+});
+$("#Stext").blur(function(){
+  $("#search>ul>li").show(150);
+	$("#Stext").animate({
+			"width": "970px"
+	}, 100, function() {});
+});
+
+
+</script>
+</body>
+</html> 
