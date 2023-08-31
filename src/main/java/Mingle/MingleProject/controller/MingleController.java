@@ -1,22 +1,27 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.entity.CityEntity;
+import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Member;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class MingleController {
     //생성자 주입
     private final MemberService memberService;
+    private final CityService cityService;
 
     //기본페이지 요청메소드
     @GetMapping("/")
@@ -36,7 +41,12 @@ public class MingleController {
     public String find_pw() { return "find_pw"; }
 
     @GetMapping("join")
-    public String join() { return "join"; }
+    public String showCities(Model model) {
+        List<String> bcNames = cityService.getDistinctBcNames();
+
+        model.addAttribute("bcNames", bcNames);
+        return "join";
+    }
 
     @GetMapping("Main_UnLogIn*")
     public String Main_UnLogIn() {
