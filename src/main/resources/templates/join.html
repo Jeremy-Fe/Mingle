@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
@@ -55,20 +55,18 @@
                 <div class="my_place"><img src="image/join_marker.png">내 거주지</div>
                 <select name="mCity" class="city select_box">
                     <option value="none">시/도 선택</option>
-                    <option value="경기도">경기도</option>
+                    <option th:each="bcName : ${bcNames}" th:value="${bcName}" th:text="${bcName}"></option>
                 </select>
                 <select name="mDistrict" class="county select_box">
-                    <option value="none">구/군 선택</option>
-                    <option value="시흥시">시흥시</option>
+                    <option value="none">시/구/군 선택</option>
                 </select> <!-- 내 거주지 -->
                 <div class="interest_place"><img src="image/join_star.png">관심지역</div>
-                <select name="mIcity" class="city2 select_box">
+                <select name="mIcity" class="city select_box city2">
                     <option value="none">시/도 선택</option>
-                    <option value="경기도">경기도</option>
+                    <option th:each="bcName : ${bcNames}" th:value="${bcName}" th:text="${bcName}"></option>
                 </select>
-                <select name="mIDistrict" class="county2 select_box">
-                    <option value="none">구/군 선택</option>
-                    <option value="시흥시">시흥시</option>
+                <select name="mIDistrict" class="county select_box county2">
+                    <option value="none">시/구/군 선택</option>
                 </select> <!-- 관심지역 -->
                 <button type="button" id="interest_bt"><img src="image/join_interest.png" alt="관심사 이미지" onclick=""></button>
                 <div class="interest">관심사</div><!-- 관심사 -->
@@ -91,5 +89,55 @@
     </section>
 
 </div><!-- wrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var cityToDistrictMap = {};
+
+        // Fetch cityToDistrictMap from the server
+        $.ajax({
+            url: '/fetchDistrictMap',
+            type: 'GET',
+            success: function(data) {
+                cityToDistrictMap = data;
+
+                // Populate mCity options
+                var mCitySelect = $('.city.select_box');
+                mCitySelect.find('option:not([value="none"])').remove(); // Remove existing options
+                for (var city in cityToDistrictMap) {
+                    mCitySelect.append($('<option>', {
+                        value: city,
+                        text: city
+                    }));
+                }
+            }
+        });
+
+        // Handle mCity change event
+        $('.city.select_box').on('change', function() {
+            var selectedCity = $(this).val();
+            populateDistrictOptions(selectedCity);
+        });
+
+        function populateDistrictOptions(selectedCity) {
+            var districtSelect = $('.county.select_box');
+            districtSelect.empty();
+            districtSelect.append($('<option>', {
+                value: 'none',
+                text: '시/구/군 선택'
+            }));
+
+            var districtOptions = cityToDistrictMap[selectedCity];
+            if (districtOptions) {
+                districtOptions.forEach(function(districtOption) {
+                    districtSelect.append($('<option>', {
+                        value: districtOption,
+                        text: districtOption
+                    }));
+                });
+            }
+        }
+    });
+</script>
 </body>
 </html>
