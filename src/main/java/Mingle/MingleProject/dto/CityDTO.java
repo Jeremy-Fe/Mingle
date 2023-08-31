@@ -3,6 +3,8 @@ package Mingle.MingleProject.dto;
 import Mingle.MingleProject.entity.CityEntity;
 import lombok.*;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 @NoArgsConstructor  // 기본생성자 자동으로 만들어줌
@@ -23,4 +25,17 @@ public class CityDTO {
 
         return cityDTO;
     }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        CityDTO cityDTO = (CityDTO) o;
+//        return Objects.equals(bcName, cityDTO.bcName);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(bcName);
+//    }
 }
