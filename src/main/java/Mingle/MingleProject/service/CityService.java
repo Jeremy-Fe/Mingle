@@ -43,6 +43,16 @@ public class CityService {
                 .collect(Collectors.toList());
         return mcNames;
     }
+    public List<String> getDistinctScNames() {
+        List<String> scNames = cityRepository.findAll()
+                .stream()
+                .map(CityEntity::getMcName)
+                .distinct()
+                .collect(Collectors.toList());
+        return scNames;
+    }
+
+
 }
 
 

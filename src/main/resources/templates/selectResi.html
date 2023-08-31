@@ -27,13 +27,21 @@
             </a>
         </div>
     </div>
+    <script>
     function enterkey() {
     if (window.event.keyCode == 13) {
     const regiSearch = document.getElementById('regiSearch').value;
+        $.get("/search", { keyword: regiSearch }, function(data) {
+            // Clear previous results
+            $("#showRegi").empty();
 
-
-
+            // Append new results to the div
+            data.forEach(function(item) {
+                $("#showRegi").append('<p>' + item + '</p>');
+            });
+        });
     }
     }
+    </script>
 </body>
 </html>

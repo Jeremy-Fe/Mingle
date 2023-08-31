@@ -8,9 +8,7 @@ import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -117,9 +115,21 @@ public class MingleController {
     public String search2() {return "search1";}
 
     @GetMapping("selectResi")
-    public String selectResi() {return "selectResi";}
-
+    public String selectResi(@ModelAttribute Model model) {
+        return "selectResi";
+    }
+//    @ResponseBody // 응답 본문에 직접 결과 데이터를 작성하기 위해 사용합니다.
+//    @GetMapping("/search")
+//    public List<String> searchCity(@RequestParam String keyword) {
+//        return cityRepository.findAll()
+//                .stream()
+//                .filter(city -> city.getMcName().contains(keyword))
+//                .map(CityEntity::getMcName)
+//                .collect(Collectors.toList());
+//    }
 }
+
+
 
 
 
