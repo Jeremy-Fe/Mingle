@@ -1,10 +1,8 @@
 package Mingle.MingleProject.service;
 
-import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.repository.CityRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
