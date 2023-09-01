@@ -1,8 +1,6 @@
 package Mingle.MingleProject.controller;
 
-import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -79,6 +77,26 @@ public class MingleController {
     @GetMapping("Gathering_Post")
     public String Gathering_Post() {return "Gathering_Post";}
 
+    @GetMapping("Gathering_Album_All")
+    public String Gathering_Album_All() {return "Gathering_Album_All";}
+
+    @GetMapping("Gathering_Album_Board")
+    public String Gathering_Album_Board() {return "Gathering_Album_Board";}
+
+    @GetMapping("Gathering_Album_BoardReview")
+    public String Gathering_Album_BoardReview() {return "Gathering_Album_BoardReview";}
+
+    @GetMapping("Gathering_Album_BoardFree")
+    public String Gathering_Album_BoardFree() {return "Gathering_Album_BoardFree";}
+
+    @GetMapping("Gathering_Album_BoardShareInterest")
+    public String Gathering_Album_BoardShareInterest() {return "Gathering_Album_BoardShareInterest";}
+
+    @GetMapping("Gathering_Album_BoardJoin")
+    public String Gathering_Album_BoardJoin() {return "Gathering_Album_BoardJoin";}
+
+    @GetMapping("Gathering_Album_BoardNotification")
+    public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);

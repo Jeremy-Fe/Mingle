@@ -58,7 +58,7 @@
     margin-bottom: 30px;
 }
 
-.Post_bg > .contents > li > .post_img {
+.Post_bg > .contents > li > a > .post_img {
     width: 1150px;
     height: 800px;
     object-fit: contain;
@@ -67,11 +67,9 @@
 
 .Post_bg > .like > li{
     height: 95px;
-    padding: 30px 0px;
+    padding-top: 30px;
     border-top: 1px solid #DADADA;
-    border-bottom: 1px solid #DADADA;
     display: flex;
-    margin-bottom: 30px;
 }
 .Post_bg > .like > li > a {
     position: relative;
@@ -89,6 +87,31 @@
     line-height: 40px;
     position: absolute;
     width: 150px;
+}
+
+
+.search{
+    margin-bottom: 30px;
+}
+
+.search > input{
+    width: 1213px;
+    height: 60px;
+    border-radius: 20px;
+    border: none;
+    background-color: #EEEEEE;
+    font-size: 25px;
+    padding-left: 30px;
+}
+
+.search > button{
+    width: 120px;
+    height: 60px;
+    border: none;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    color: #fff;
+    font-size: 22px;
 }
 
 .Post_bg > .comments{}

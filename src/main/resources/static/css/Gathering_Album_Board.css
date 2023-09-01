@@ -1,0 +1,89 @@
+#album{}
+
+.album_bg{
+    width: 1450px;
+    background-color: #fff;
+    float: left;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 35px 50px 95px 50px;
+}
+
+.album_bg > .submenu{}
+.album_bg > .submenu > li{
+    padding: 15px 15px 15px 0px;
+    border-bottom: 2px solid #747474;
+    margin-bottom: 20px;
+}
+.album_bg > .submenu > li > a{
+    font-size: 25px;
+    margin: 30px 30px 30px 0px;
+    padding: 13px;
+}
+.album_bg > .submenu > li > a:hover{
+    color: #542DFF;
+}
+
+.album_bg > .submenu > li > a:nth-child(2){
+    margin: 30px;
+    margin: 30px;
+    color: #542DFF;
+    border-bottom: 3px solid #542DFF;
+}
+
+.album_bg > .allimg{}
+.album_bg > .allimg > li{
+    padding: 0px 0px 0px 15px;
+}
+.album_bg > .allimg > li > .board_box{
+    position: relative;
+}
+.album_bg > .allimg > li > .board_box > img{
+    width: 248px;
+    height: 248px;
+    border-radius: 10px;
+    display: inline;
+    margin: 0px 15px 15px 0px;
+}
+
+.album_bg > .allimg > li > .board_box > .board_title{
+    font-size: 25px;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 0px;
+    bottom: -30px;
+}
+
+.album_bg > .allimg > li > .board_box > .board_imgcount{
+    font-size: 20px;
+    color: #656565;
+    position: absolute;
+    left: 0px;
+    bottom: -55px;
+}
+
+.board_name{
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+.board_countimg{
+    font-size: 20px;
+    color: #656565;
+    margin-bottom: 10px;
+}
+
+.board_img{}
+.board_img > li{
+    padding: 0px 0px 0px 15px;
+}
+.board_img > li > a{}
+.board_img > li > a:hover{
+    color: #542DFF;
+}
+.board_img > li > a > img{
+    width: 248px;
+    height: 248px;
+    border-radius: 10px;
+    display: inline;
+    margin: 0px 15px 15px 0px;
+}

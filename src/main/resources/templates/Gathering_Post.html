@@ -29,7 +29,9 @@
             border-bottom: 3px solid #542DFF;
         }
     </style>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
@@ -52,9 +54,9 @@
                     행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
                     당신은 누구입니까 당신의 이름은 무엇입니까.</p>
             </li>
-            <li><img class="post_img" src="image/postimg1.png"></li>
-            <li><img class="post_img" src="image/newsPost_img2.png"></li>
-            <li><img class="post_img" src="image/newsPost_img2.png"></li>
+            <li><a href="image/postimg1.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="image/postimg1.png"></a></li>
+            <li><a href="image/postimg2.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="image/postimg2.png"></a></li>
+            <li><a href="image/postimg3.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="image/postimg3.png"></a></li>
         </ul>
         <ul class="like">
             <li>
@@ -63,7 +65,10 @@
             </li>
         </ul>
         <ul class="input_comment">
-
+        <div class="search">
+            <input type="text" placeholder="댓글을 달아주세요.">
+            <button type="button">전송</button>
+        </div>
         </ul>
         <ul class="comments">
             <ul class="comment clearfix">
@@ -104,7 +109,6 @@
             </ul>
         </ul>
     </div>
-
 </div>
 <div th:replace="/footer.html"></div>
 </body>
