@@ -76,6 +76,9 @@ public class MingleController {
     @GetMapping("Gathering_Board")
     public String Gathering_Board() {return "Gathering_Board";}
 
+    @GetMapping("Gathering_AllPicture")
+    public String Gathering_AllPicture() {return "Gathering_AllPicture";}
+
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
