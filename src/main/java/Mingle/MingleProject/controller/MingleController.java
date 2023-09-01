@@ -30,7 +30,9 @@ public class MingleController {
     }
 
     @GetMapping("login")
-    public String loginForm() { return "login"; }
+    public String loginForm() {
+        return "login";
+    }
 
     @GetMapping("find_id*")
     public String find_id() { return "find_id"; }
@@ -43,7 +45,7 @@ public class MingleController {
         List<String> bcNames = cityService.getDistinctBcNames();
 
         model.addAttribute("bcNames", bcNames);
-        return "join";   //city테이블 콤보박스에 가져올때 필요
+        return "join";
     }
 
     @GetMapping("Main_UnLogIn*")
@@ -51,8 +53,7 @@ public class MingleController {
         return "Main_UnLogIn";}
 
     @GetMapping("Main_LogIn*")
-    public String Main_LogIn() {
-        return "Main_LogIn"; }
+    public String Main_LogIn() { return "Main_LogIn"; }
 
     @GetMapping("myClass*")
     public String myClass() {return "myClass";}
@@ -75,9 +76,29 @@ public class MingleController {
     @GetMapping("Gathering_Board")
     public String Gathering_Board() {return "Gathering_Board";}
 
-    @GetMapping("Gathering_AllPicture")
-    public String Gathering_AllPicture() {return "Gathering_AllPicture";}
+    @GetMapping("Gathering_Post")
+    public String Gathering_Post() {return "Gathering_Post";}
 
+    @GetMapping("Gathering_Album_All")
+    public String Gathering_Album_All() {return "Gathering_Album_All";}
+
+    @GetMapping("Gathering_Album_Board")
+    public String Gathering_Album_Board() {return "Gathering_Album_Board";}
+
+    @GetMapping("Gathering_Album_BoardReview")
+    public String Gathering_Album_BoardReview() {return "Gathering_Album_BoardReview";}
+
+    @GetMapping("Gathering_Album_BoardFree")
+    public String Gathering_Album_BoardFree() {return "Gathering_Album_BoardFree";}
+
+    @GetMapping("Gathering_Album_BoardShareInterest")
+    public String Gathering_Album_BoardShareInterest() {return "Gathering_Album_BoardShareInterest";}
+
+    @GetMapping("Gathering_Album_BoardJoin")
+    public String Gathering_Album_BoardJoin() {return "Gathering_Album_BoardJoin";}
+
+    @GetMapping("Gathering_Album_BoardNotification")
+    public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
@@ -98,7 +119,7 @@ public class MingleController {
         System.out.println("memberDTO = " + memberDTO);
 //        MemberService memberService = new MemberService(); -> @RequiredArgsConstructor 이걸로 대체
         memberService.save(memberDTO);
-        return "login"; //회원가입
+        return "login";
     }
     @GetMapping("search1")
     public String search1() {return "search1";}

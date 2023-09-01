@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>모임이름-사진첩-게시판 별 사진</title>
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <!--css-->
+    <link href="/CSS/Gathering_Album_Board.css" type="text/css" rel="stylesheet">
+    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <style>
+        .view > .g_title > ul > li > a:first-child {
+            margin-left: 70px;
+        }
+
+        .view > .g_title > ul > li > a:nth-child(3) {
+            color: #542DFF;
+            border-bottom: 3px solid #542DFF;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+
+</head>
+<body>
+<div th:replace="/defaultUI.html"></div>
+<div th:replace="/Gathering.html"></div>
+<div id="album">
+    <div class="album_bg">
+        <ul class="submenu">
+            <li>
+                <a href="http://localhost:8080/Gathering_Album_All">전체사진</a>
+                <a href="http://localhost:8080/Gathering_Album_Board">게시판 별 사진</a>
+            </li>
+        </ul>
