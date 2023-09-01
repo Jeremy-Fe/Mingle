@@ -37,6 +37,7 @@
                     success: function(data) {
                         // 성공적으로 응답 받았을 때 처리할 로직 작성
                         console.log(data);
+                        $("#showRegi>").remove();
                         for (var i = 0; i < data.length; i++) {
                             var city = data[i];
                             var city1 = city.scName;

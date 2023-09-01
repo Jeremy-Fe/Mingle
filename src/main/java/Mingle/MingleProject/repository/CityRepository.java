@@ -12,4 +12,5 @@ import java.util.List;
 public interface CityRepository extends JpaRepository<CityEntity, Long>{
 
     List<CityEntity> findByScNameContainingIgnoreCase(String keyword);
+
 }

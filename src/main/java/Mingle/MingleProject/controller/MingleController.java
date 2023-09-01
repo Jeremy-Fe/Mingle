@@ -132,7 +132,7 @@ public class MingleController {
 
 
     @GetMapping("selectRegi/regiSearch")
-    public ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
+    public @ResponseBody ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
         // 검색어를 기반으로 도시 목록을 조회하는 메서드 호출
         List<CityEntity> cities = cityService.searchByKeyword(keyword);
 
