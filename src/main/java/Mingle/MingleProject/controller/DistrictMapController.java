@@ -21,5 +21,5 @@ public class DistrictMapController {
     public ResponseEntity<Map<String, List<String>>> fetchDistrictMap() {
         Map<String, List<String>> cityToDistrictMap = cityService.getCityToDistrictMap();
         return ResponseEntity.ok(cityToDistrictMap);
-    }
+    }    //회원가입 콤보박스에 필요
 }

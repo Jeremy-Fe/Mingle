@@ -1,6 +1,8 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
