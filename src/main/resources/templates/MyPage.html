@@ -9,7 +9,7 @@
 
 
     <!--css-->
-    <link href="/CSS/MyPage.css?after" type="text/css" rel="stylesheet">
+    <link href="/CSS/MyPage.css" type="text/css" rel="stylesheet">
 
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -171,7 +171,7 @@
                             <p>우주먼지</p>
                             <span><천체관측 모임... ></span>
                         </div>
-
+                        <!--가입한 모임 블럭 생성-->
                         <script>
                             // 가상의 데이터베이스 데이터 배열
                             var databaseData = [
@@ -266,7 +266,7 @@
                             </a>
                         </div>
                     </div>
-
+                        <!--내 게시물 블럭 생성-->
                         <script>
                             // 가상의 데이터베이스 데이터 배열
                             var databaseData = [
@@ -292,6 +292,7 @@
                                 myPost.appendChild(dataDiv); // <div>를 컨테이너에 추가
                             }
                         </script>
+
                     </div>
                     <!--내 댓글-->
                     <p class="title_04">내 댓글</p>
@@ -336,17 +337,15 @@
                                     2023. 05. 18  - 빽투더퓨처 | 자유게시판
                                 </p>
                             </ul>
-                            <div class="accordion">
+                            <li class="accordion clearfix">
                                 <div class="accordion-item">
                                     <button id="accordion-button-1" aria-expanded="false">
-                                        <span class="icon" aria-hidden="true"></span>
+                                        <!--<span class="icon" aria-hidden="true"></span>-->
                                         <img id="seemore" alt="더보기" src="/image/더보기.png">
                                     </button>
-
                                     <p id="seemoretext">더보기</p>
-
                                 </div>
-                            </div>
+                            </li>
                             <ul class="comment_07">
                                 <p class="commenttext_01">
                                     <span>이 지역 보스몹 잡아 보셨나요?</span>
@@ -354,7 +353,22 @@
                                 </p>
                             </ul>
 
+                            <ul class="comment_08">
+                                <p class="commenttext_01">
+                                    <span>이 지역 보스몹 잡아 보셨나요?</span>
+                                    2023. 05. 18  - 빽투더퓨처 | 자유게시판
+                                </p>
+                            </ul>
+
+                            <ul class="comment_09">
+                                <p class="commenttext_01">
+                                    <span>이 지역 보스몹 잡아 보셨나요?</span>
+                                    2023. 05. 18  - 빽투더퓨처 | 자유게시판
+                                </p>
+                            </ul>
+
                     </div>
+                    <!--더보기 버튼 활성화-->
                     <script>
                         const items = document.querySelectorAll(".accordion button");
 
@@ -371,6 +385,53 @@
                         }
 
                         items.forEach(item => item.addEventListener('click', toggleAccordion));
+                    </script>
+
+                    <!--더보기 클릭 후 확장-->
+                    <script>
+                        const button = document.getElementById('accordion-button-1');
+                        const myComment = document.querySelector('.myComment');
+                        const myComment2 = document.querySelector('.myComment2');
+
+
+                        button.addEventListener('click', function() {
+                            const ariaExpandedValue = button.getAttribute('aria-expanded');
+
+                            if (ariaExpandedValue === 'true') {
+                                myComment.classList.add('myComment'); // A 스타일 클래스 추가
+                                myComment.classList.remove('myComment2'); // B 스타일 클래스 제거
+                            } else {
+                                myComment.classList.remove('myComment'); // A 스타일 클래스 제거
+                                myComment.classList.add('myComment2'); // B 스타일 클래스 추가
+                            }
+                        });
+                    </script>
+
+                    <!--내 댓글 블럭 생성-->
+                    <script>
+                        // 가상의 데이터베이스 데이터 배열
+                        var databaseData = [
+                            "데이터 1",
+                            "데이터 2",
+                            "데이터 3",
+                            "데이터 4",
+                            "데이터 5",
+                            "데이터 6",
+                            "데이터 7",
+                            "데이터 8",
+                            "데이터 9",
+                            // ... 더 많은 데이터 ...
+                        ];
+
+                        var myComment = document.getElementById("myComment");
+
+                        // 데이터베이스 데이터의 수만큼 <ul> 생성
+                        for (var i = 0; i < databaseData.length; i++) {
+                            var dataUl = document.createElement("ul");
+                            dataUl.className = "comment_1"+i; // 클래스 지정
+                            dataUl.textContent = databaseData[i]; // 데이터 추가
+                            myComment.appendChild(dataUl); // <ul>를 컨테이너에 추가
+                        }
                     </script>
                 </div>
 
