@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>select_Resion</title>
 
      <!--css-->
-    <link rel="stylesheet" href="/CSS/selectResi.css">
+    <link rel="stylesheet" href="/CSS/selectRegi.css">
     <!--script-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -22,28 +22,35 @@
         <div>
             <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
         </div>
-        <div><!--th:each="CityEntity : ${list}"-->
-            <a id="showRegi" href="" >
-                <p>가리봉동 (서울특별시 구로구)</p><!--th:text="${CityEntity.scName}"-->
-                <p></p>
-            </a>
+        <div id="showRegi">
         </div>
     </div>
     <script>
         function enterkey() {
             if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
                 const regiSearch = document.getElementById('regiSearch').value; // 'regiSearch' id를 가진 요소에서 값을 가져옴
-                    system.out.print(regiSearch);
-                $.get("selectResi", { keyword: regiSearch }, function(data) {
-                    // 서버로 GET 요청을 보냄. 경로는 "selectResi/search"이며, 검색어를 파라미터로 전달
+                console.log("ReTest1 : "+regiSearch);
+                $.ajax({
+                    url: "selectRegi/regiSearch",
+                    method: "GET",
+                    data: { keyword: regiSearch },
+                    success: function(data) {
+                        // 성공적으로 응답 받았을 때 처리할 로직 작성
+                        console.log(data);
+                        for (var i = 0; i < data.length; i++) {
+                            var city = data[i];
+                            var city1 = city.scName;
+                            var city2 = city.bcName;
+                            var city3 = city.mcName;
+                            var html = '<a><p>' + city1 + ' (' + city2 +" " + city3+ ')' + '</p></a>';
+                            $("#showRegi").append(html);
+                        }
 
-                    // 이전 결과를 지우고 새로운 결과를 화면에 출력
-                    $("#showRegi").empty(); // '#showRegi' 요소 내부의 내용을 비움
-
-                    data.forEach(function(item) {
-                        $("#showRegi").append('<p>' + item + '</p>');
-                        // 받은 데이터 배열의 각 항목을 '<p>...</p>' 형태로 추가하여 출력
-                    });
+                    },
+                    error: function(xhr, status, error) {
+                        // 에러 발생 시 처리할 로직 작성
+                        console.error(error);
+                    }
                 });
             }
         }
