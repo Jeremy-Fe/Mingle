@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>select_Resion</title>
+
+     <!--css-->
+    <link rel="stylesheet" href="/CSS/selectRegi.css">
+    <!--script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap" class="clearfix" style="overflow:scroll;">
+        <div>
+            <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
+        </div>
+        <div id="showRegi">
+        </div>
+    </div>
+    <script>
+        function enterkey() {
+            if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
+                const regiSearch = document.getElementById('regiSearch').value; // 'regiSearch' id를 가진 요소에서 값을 가져옴
+                console.log("ReTest1 : "+regiSearch);
+                $.ajax({
+                    url: "selectRegi/regiSearch",
+                    method: "GET",
+                    data: { keyword: regiSearch },
+                    success: function(data) {
+                        // 성공적으로 응답 받았을 때 처리할 로직 작성
+                        console.log(data);
+                        $("#showRegi>").remove();
+                        for (var i = 0; i < data.length; i++) {
+                            var city = data[i];
+                            var city1 = city.scName;
+                            var city2 = city.bcName;
+                            var city3 = city.mcName;
+                            var html = '<a><p>' + city1 + ' (' + city2 +" " + city3+ ')' + '</p></a>';
+                            $("#showRegi").append(html);
+                        }
+
+                    },
+                    error: function(xhr, status, error) {
+                        // 에러 발생 시 처리할 로직 작성
+                        console.error(error);
+                    }
+                });
+            }
+        }
+
+    </script>
+</body>
+</html>
