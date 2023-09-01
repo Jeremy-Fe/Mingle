@@ -63,7 +63,10 @@ public class MingleController {
     public String Mypage() {return "Mypage";}
 
     @GetMapping("Create_Meet*")
-    public String Create_Meet() {return "Create_Meet";}
+    public String Create_Meet(Model model) {
+//        List<String> = cityService.getDistinctBcNames();
+//        model.addAttribute("",);
+        return "Create_Meet";}
 
     @GetMapping("Mbti_banner*")
     public String Mbti_banner() {return "Mbti_banner";}

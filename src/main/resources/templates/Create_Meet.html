@@ -95,7 +95,7 @@
     </div>
     <ul>
         <form action="#">
-        <button value="기본값" type="button" id="btn"><img id="selectedInterestImage" src="image/모임 버튼.png" alt="관심사 이미지" onclick=""></button>
+            <button value="기본값" type="button" id="btn"><img id="selectedInterestImage" src="image/모임 버튼.png" alt="관심사 이미지" onclick=""></button>
         </form>
     </ul>
     <div id="modalWrap" style="display: none;">
@@ -145,6 +145,10 @@
         const closeBtn = document.getElementById('closeBtn');
 
         const selectedInterestImage = document.querySelector('#selectedInterestImage');
+        const selectedInterestButton = document.querySelector('#btn');
+
+        // 버튼의 초기값을 저장합니다.
+        const initialButtonValue = selectedInterestButton.value;
 
         btn.onclick = function () {
             modal.style.display = 'block';
@@ -186,6 +190,7 @@
                 const interest = this.value;
                 const imageFileName = interestImages[interest];
                 selectedInterestImage.src = imageFileName;
+                selectedInterestButton.value = interest; // 버튼의 값을 클릭한 관심사로 업데이트합니다.
                 modal.style.display = 'none';
             });
         });
