@@ -30,9 +30,7 @@ public class MingleController {
     }
 
     @GetMapping("login")
-    public String loginForm() {
-        return "login";
-    }
+    public String loginForm() { return "login"; }
 
     @GetMapping("find_id*")
     public String find_id() { return "find_id"; }
@@ -45,7 +43,7 @@ public class MingleController {
         List<String> bcNames = cityService.getDistinctBcNames();
 
         model.addAttribute("bcNames", bcNames);
-        return "join";
+        return "join";   //city테이블 콤보박스에 가져올때 필요
     }
 
     @GetMapping("Main_UnLogIn*")
@@ -53,7 +51,8 @@ public class MingleController {
         return "Main_UnLogIn";}
 
     @GetMapping("Main_LogIn*")
-    public String Main_LogIn() { return "Main_LogIn"; }
+    public String Main_LogIn() {
+        return "Main_LogIn"; }
 
     @GetMapping("myClass*")
     public String myClass() {return "myClass";}
@@ -99,7 +98,7 @@ public class MingleController {
         System.out.println("memberDTO = " + memberDTO);
 //        MemberService memberService = new MemberService(); -> @RequiredArgsConstructor 이걸로 대체
         memberService.save(memberDTO);
-        return "login";
+        return "login"; //회원가입
     }
     @GetMapping("search1")
     public String search1() {return "search1";}

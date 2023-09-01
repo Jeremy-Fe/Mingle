@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class CityService {
     private final CityRepository cityRepository;
 
+    //시/군 필드조회 + 중복제거
     public List<String> getDistinctBcNames() {
         List<String> bcNames = cityRepository.findAll().stream()
                 .map(CityEntity::getBcName)
@@ -21,6 +22,7 @@ public class CityService {
         return bcNames;
     }
 
+    // 동적 콤보박스 만들기 (시/군 + 시/구/군 묶기)
     public Map<String, List<String>> getCityToDistrictMap() {
         List<CityEntity> cities = cityRepository.findAll();
         Map<String, List<String>> cityToDistrictMap = new HashMap<>();

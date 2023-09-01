@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
@@ -46,7 +46,8 @@
             <!--헤더-->
             <div id="user">
                 <ul class="user_wrap" >
-                    <li><a href="">로그인 하세요</a></li>
+                    <li><a href="login" th:if="${session.loginId == null}">로그인 하세요</a></li>
+                    <li><a th:unless="${session.loginId == null}" th:text="${session.loginId}"></a></li>  <!-- Controller @PostMapping("login")에서 받아옴 -->
                     <li class="icon_a"><a href="Mypage"><!--<img alt="user_img" src="#">--></a></li>
                     <li class="icon_b"><img alt="_mymenu" src="image/Main_마이메뉴.png"></li>
                 </ul>
