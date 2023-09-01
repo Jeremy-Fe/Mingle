@@ -17,18 +17,7 @@ public class CityService {
     @Autowired
     private final CityRepository cityRepository;
 
-
-
-//    public List<CityDTO> getAllCities() {
-//        List<CityEntity> cityEntityList = cityRepository.findAll();
-////        Set<CityDTO> uniqueCityDTOs = new HashSet<>();
-//        List<CityDTO> cityDTOList = new ArrayList<>();
-//        for (CityEntity cityEntity : cityEntityList) {
-//            cityDTOList.add(CityDTO.toCityDTO(cityEntity));
-//        }
-//        return new ArrayList<>(cityDTOList);
-//    }
-
+    //시/군 필드조회 + 중복제거
     public List<String> getDistinctBcNames() {
         List<String> bcNames = cityRepository.findAll().stream()
                 .map(CityEntity::getBcName)
@@ -37,6 +26,7 @@ public class CityService {
         return bcNames;
     }
 
+    // 동적 콤보박스 만들기 (시/군 + 시/구/군 묶기)
     public Map<String, List<String>> getCityToDistrictMap() {
         List<CityEntity> cities = cityRepository.findAll();
         Map<String, List<String>> cityToDistrictMap = new HashMap<>();
