@@ -16,16 +16,15 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     width: 1360px; height: 55px; margin: auto; 
 }
 /* 지역선택창 */
-#search>ul>li{ display: flex;width: 320px; height: 55px; float: left;}
-#search>ul>li>img{width: 55px; margin-right: 20px; float: left;}
-#search>ul>li>p{
+#regi{ display: flex;width: 320px; height: 55px; float: left;}
+#regi>img:first-child{width: 55px; margin-right: 20px; float: left;}
+#regi>p{
     width: 195px; height: 55px; 
     float: left; line-height: 65px;
     font-size: 32px; font-weight: lighter;
 }
-#search>ul>li>a{margin: auto;}
-#search>ul>li>a>img{
-    width: 40px;  float: left;
+#regi>img:last-child{
+    width: 40px;  float: left;margin-top: 10px;
 }
 /* 검색창 */
 #Stext{

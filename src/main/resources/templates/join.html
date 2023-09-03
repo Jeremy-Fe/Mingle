@@ -20,11 +20,11 @@
             <p>Join</p>
             <form action="/join" method="post">    <!-- 메인창 url넣기 -->
                 <div class="drop_mId">
-                    <input type="text" name="mId" class="mId" placeholder="아이디" maxlength="16" />
+                    <input type="text" name="mId" id="mId" class="mId" placeholder="아이디" maxlength="16" onblur="idCheck(); idCheck2();" />
                     <img src="image/login_id.png">
                 </div> <!--id -->
                 <div class="drop_mPwd">
-                    <input type="password" name="mPwd" class="mPwd" placeholder="비밀번호" maxlength="16" />
+                    <input type="password" name="mPwd" id="mPwd" class="mPwd" placeholder="비밀번호" maxlength="16" onblur="pwCheck()"/>
                     <img src="image/login_pw.png">
                 </div> <!-- pw -->
                 <div class="error_text" id="idMsg1">아이디: 사용할 수 없는 아이디입니다. 다른 아이디를 입력해 주세요.</div>
@@ -35,7 +35,7 @@
                     <img src="image/login_id.png">
                 </div> <!-- name -->
                 <div class="drop_mBirth">
-                    <input type="text" name="mBirth" class="mBirth" placeholder="생년월일 8자리" maxlength="8" />
+                    <input type="text" name="mBirth" id="mBirth" class="mBirth" placeholder="생년월일 8자리" maxlength="8" onblur="birthCheck()"/>
                     <img src="image/join_birth.png">
                 </div> <!-- birth -->
                 <div class="gender_btn gender_btn1">
@@ -47,7 +47,7 @@
                     <label for="radio-2">여자</label>
                 </div> <!-- gender -->
                 <div class="drop_mEmail">
-                    <input type="email" name="mEmail" class="mEmail" placeholder="이메일" maxlength="25" />
+                    <input type="email" name="mEmail" id="mEmail" class="mEmail" placeholder="이메일" maxlength="25" onblur="emailCheck()"/>
                     <img src="image/join_email.png">
                 </div> <!-- email -->
                 <div class="error_text" id="birthMsg">생년월일: 생년월일은 8자리 숫자로 입력해 주세요.</div>
@@ -70,6 +70,7 @@
                 </select> <!-- 관심지역 -->
                 <button type="button" id="interest_bt"><img src="image/join_interest.png" alt="관심사 이미지" onclick=""></button>
                 <div class="interest">관심사</div><!-- 관심사 -->
+                <div th:replace="/interest_modal.html"></div>
                 <input type="text" name="mInterest" class="mInterest" placeholder="게임/오락" maxlength="16" />
                 <input type="submit" id="join" value="회원가입"/>
             </form>
@@ -93,6 +94,134 @@
 <!-- 콤보박스 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+
+    //아이디유효성 검사
+    const idCheck2 = () => {
+        const id = document.getElementById("mId").value;
+        const idPattern = /^[a-z0-9_-]{5,16}$/;
+
+        if (!id.match(idPattern)) {
+            console.log("아이디 형식이 올바르지 않습니다.");
+            $("#idMsg2").show();
+            $("#mId").css({border:"1px solid #FF7171"});
+            return false;
+        } else {
+            $("#idMsg2").hide();
+            $("#mId").css({border:"none"});
+            return true;
+        }
+    }
+
+    //비밀번호유효성 검사
+    const pwCheck = () => {
+        const pw = document.getElementById("mPwd").value;
+        const pwPattern = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+
+        if (!pw.match(pwPattern)) {
+            console.log("비밀번호 형식이 올바르지 않습니다.");
+            $("#pwMsg").show();
+            $("#mPwd").css({ border: "1px solid #FF7171" });
+            return false;
+        } else {
+            $("#pwMsg").hide();
+            $("#mPwd").css({ border: "none" });
+            return true;
+        }
+    }
+
+    //생년월일유효성 검사
+    const birthCheck = () => {
+        const birth = document.getElementById("mBirth").value;
+        const birthPattern = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/
+
+        if(!birth.match(birthPattern)) {
+            console.log("생년월일 형식이 올바르지 않습니다.");
+            $("#birthMsg").show();
+            $("#mBirth").css({border:"1px solid #FF7171"});
+            return false;
+        } else {
+            $("#birthMsg").hide();
+            $("#mBirth").css({border:"none"});
+            return true;
+        }
+    }
+
+    //이메일유효성 검사
+    const emailCheck = () => {
+        const email = document.getElementById("mEmail").value;
+        const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+        if(!email.match(emailPattern)) {
+            console.log("이메일 형식이 올바르지 않습니다.");
+            $("#emailMsg").show();
+            $("#mEmail").css({border:"1px solid #FF7171"});
+            return false;
+        } else {
+            $("#emailMsg").hide();
+            $("#mEmail").css({border:"none"});
+            return true;
+        }
+    }
+
+    // 양식의 제출 이벤트에 이벤트 리스너를 추가합니다.
+    document.querySelector('form').addEventListener('submit', function(event) {
+        // 기본 제출 동작을 방지합니다.
+        event.preventDefault();
+
+        // 아이디 중복 체크를 위해 idCheck 함수 호출
+        idCheck(function(isIdValid) {
+            // 검증 함수를 실행합니다.
+            const idValid = idCheck2();
+            const pwValid = pwCheck();
+            const birthValid = birthCheck();
+            const emailValid = emailCheck();
+
+            // 모든 검증이 통과되었는지 확인합니다.
+            if (isIdValid && idValid && pwValid && birthValid && emailValid) {
+                // 모든 검증이 통과되면 양식을 제출합니다.
+                const form = document.querySelector('form'); // 양식 요소 가져오기
+                form.submit(); // 양식 제출
+                alert("밍글되었습니다♡");
+            } else {
+                // 검증 오류가 있는 경우 사용자에게 메시지를 표시하거나 적절한 조치를 취합니다.
+                // 예를 들어 경고 표시나 페이지에 메시지를 업데이트할 수 있습니다.
+                alert("양식과 다른부분이 있는지 확인해주세요.");
+            }
+        });
+    });
+
+    // 아이디 중복 체크
+    const idCheck = (callback) => {
+        const id = document.getElementById("mId").value;
+
+        console.log("입력값: ", id);
+        $.ajax({
+            type: "post",
+            url: "/join/id-check",
+            data: {
+                "mId": id
+            },
+            success: function (res) {
+                console.log("요청성공", res);
+                if (res == "ok") {
+                    console.log("사용가능한 아이디");
+                    $("#idMsg1").hide();
+                    callback(true); // 아이디 중복 여부를 콜백에 전달
+                } else {
+                    console.log("이미 사용중인 아이디");
+                    $("#idMsg1").show();
+                    $("#mId").css({border:"1px solid #FF7171"});
+                    callback(false); // 아이디 중복 여부를 콜백에 전달
+                }
+            },
+            error: function (err) {
+                console.log("에러발생", err);
+                callback(false); // 에러 발생 시도 아이디 중복 여부를 콜백에 전달
+            }
+        });
+    }
+
+    // 콤보박스
     $(document).ready(function() {
         var cityToDistrictMap = {};
 

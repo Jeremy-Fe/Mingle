@@ -6,7 +6,6 @@ img{display: block;}
 .clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
 p{font-family: 'GmarketSans'; }
 h3{font-family: 'GmarketSans';}
-body{z-index: 2}
 /* 스크롤바 스타일링 */
 ::-webkit-scrollbar {
     z-index: 0;

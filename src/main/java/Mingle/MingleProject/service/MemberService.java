@@ -55,4 +55,15 @@ public class MemberService {
         }
         return memberDTOList;
     }
+
+    public String idCheck(String mId) {
+        Optional<MemberEntity> byMId = memberRepository.findBymId(mId);
+        if (byMId.isPresent()) {
+            //조회결과가 있다 -> 사용할 수 없다.
+        } else {
+            //조회결과가 없다 -> 사용할 수 있다.
+            return "ok";
+        }
+        return mId;
+    }
 }
