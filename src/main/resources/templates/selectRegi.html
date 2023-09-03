@@ -18,13 +18,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="wrap" class="clearfix" style="overflow:scroll;">
+    <div id="regiModal" class="clearfix" style="overflow:scroll;">
         <div>
             <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
         </div>
-        <div id="showRegi">
+        <div id="showRegi" >
         </div>
+        <a href="#" rel="modal:close"></a>
     </div>
+
     <script>
         function enterkey() {
             if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
@@ -43,10 +45,29 @@
                             var city1 = city.scName;
                             var city2 = city.bcName;
                             var city3 = city.mcName;
-                            var html = '<a><p>' + city1 + ' (' + city2 +" " + city3+ ')' + '</p></a>';
+                            var html = '<a class="sResult" data-index="' + i + '"><p>' + city1 + ' (' + city2 + " " + city3 + ')' + '</p></a>';
                             $("#showRegi").append(html);
                         }
+                        $(document).on("click", ".sResult", function(event) {
+                                var dataIndex = $(this).data("index");
+                                console.log(data[dataIndex]);
 
+                            // 선택한 데이터의 값을 URL 파라미터로 전달하기 위해 data 객체에 추가
+                            var url = "selectRegi/regiSearch?selectedData=" + encodeURIComponent(data[dataIndex]);
+                            $.ajax({
+                                url: url,
+                                method: "GET",
+                                success: function(response) {
+                                    // 성공적으로 응답 받았을 때 처리할 로직 작성
+                                    console.log(response);
+                                    // ...
+                                },
+                                error: function(xhr, status, error) {
+                                    // 에러 발생 시 처리할 로직 작성
+                                    console.error(error);
+                                }
+                            });
+                        });
                     },
                     error: function(xhr, status, error) {
                         // 에러 발생 시 처리할 로직 작성
@@ -55,6 +76,8 @@
                 });
             }
         }
+
+
 
     </script>
 </body>

@@ -66,9 +66,9 @@
     border-radius: 20px;
     display: flex; text-align: center;
 }
-#regi>ul{width: 685px; height: 55px; margin: auto;}
-#regi>ul>li{height: 100%; line-height: 55px;}
-#regi>ul>li img{width: 55px; height: 55px;}
+#regi>button{width: 685px; height: 55px; margin: auto;background: none; border: none;}
+#regi>button>li{height: 100%; line-height: 55px;}
+#regi>button>li img{width: 55px; height: 55px;}
 #r_img{float: left; margin-right: 15px;}
 #r_text{
     font-size: 36px; font-weight: 300;
@@ -109,3 +109,5 @@
     font-size: 30px; font-weight: lighter; 
     background-color: #fff;  color: #676767;
 }
+
+/*지역검색 모달창*/

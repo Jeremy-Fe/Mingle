@@ -142,6 +142,7 @@ public class MingleController {
         // 조회된 도시 목록을 응답(Response)에 담아 반환
         return ResponseEntity.ok(cities);
     }
+
 }
 
 
