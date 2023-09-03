@@ -151,6 +151,14 @@ public class MingleController {
         return ResponseEntity.ok(cities);
     }
 
+    @PostMapping("selectRegi/selectedRegi")
+    public @ResponseBody List<String> selectedRegi(@RequestParam("selectedRegi") String selectedRegi) {
+        // selectedData 값 활용
+
+        List<String> selectRegi = null;
+        return selectRegi;
+    }
+
 }
 
 

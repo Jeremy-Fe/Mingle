@@ -52,15 +52,14 @@
                                 var dataIndex = $(this).data("index");
                                 console.log(data[dataIndex]);
 
-                            // 선택한 데이터의 값을 URL 파라미터로 전달하기 위해 data 객체에 추가
-                            var url = "selectRegi/regiSearch?selectedData=" + encodeURIComponent(data[dataIndex]);
+
                             $.ajax({
-                                url: url,
-                                method: "GET",
-                                success: function(response) {
+                                url: "selectRegi/selectedRegi",
+                                method: "post",
+                                data: { selectedRegi: data[dataIndex] },
+                                success: function(data) {
                                     // 성공적으로 응답 받았을 때 처리할 로직 작성
-                                    console.log(response);
-                                    // ...
+                                    console.log(data);
                                 },
                                 error: function(xhr, status, error) {
                                     // 에러 발생 시 처리할 로직 작성
