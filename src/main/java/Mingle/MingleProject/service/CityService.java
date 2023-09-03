@@ -3,14 +3,18 @@ package Mingle.MingleProject.service;
 import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.repository.CityRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class CityService {
+
+    @Autowired
     private final CityRepository cityRepository;
 
     //시/군 필드조회 + 중복제거
@@ -43,6 +47,15 @@ public class CityService {
 
         return cityToDistrictMap;
     }
+//    지역 검색
+    public CityService(CityRepository cityRepository) {
+        this.cityRepository = cityRepository;
+    }
+
+    public List<CityEntity> searchByKeyword(String keyword) {
+        return cityRepository.findByScNameContainingIgnoreCase(keyword);
+    }
+
 
 }
 
