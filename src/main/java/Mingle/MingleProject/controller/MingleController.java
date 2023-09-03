@@ -1,5 +1,6 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.service.CityService;
@@ -133,6 +134,13 @@ public class MingleController {
         return "selectRegi";
     }
 
+
+    @PostMapping("/join/id-check")
+    public @ResponseBody String idCheck(@RequestParam("mId") String mId) {
+        System.out.println("mId = " + mId);
+        String checkResult = memberService.idCheck(mId);
+        return checkResult;
+    }
 
     @GetMapping("selectRegi/regiSearch")
     public @ResponseBody ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
