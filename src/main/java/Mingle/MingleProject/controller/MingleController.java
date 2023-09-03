@@ -8,9 +8,7 @@ import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -99,6 +97,15 @@ public class MingleController {
 
     @GetMapping("Gathering_Album_BoardNotification")
     public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
+
+    @GetMapping("search1")
+    public String search1() {return "search1";}
+    @GetMapping("search2")
+    public String search2() {return "search1";}
+
+    @GetMapping("selectResi")
+    public String selectResi() {return "selectResi";}
+
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
@@ -121,13 +128,14 @@ public class MingleController {
         memberService.save(memberDTO);
         return "login";
     }
-    @GetMapping("search1")
-    public String search1() {return "search1";}
-    @GetMapping("search2")
-    public String search2() {return "search1";}
 
-    @GetMapping("selectResi")
-    public String selectResi() {return "selectResi";}
+    @PostMapping("/join/id-check")
+    public @ResponseBody String idCheck(@RequestParam("mId") String mId) {
+        System.out.println("mId = " + mId);
+        String checkResult = memberService.idCheck(mId);
+        return checkResult;
+    }
+
 
 }
 
