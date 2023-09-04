@@ -1,6 +1,5 @@
 package Mingle.MingleProject.controller;
 
-import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.service.CityService;
@@ -143,7 +142,7 @@ public class MingleController {
     }
 
     @GetMapping("selectRegi/regiSearch")
-    public @ResponseBody ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
+    public  ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
         // 검색어를 기반으로 도시 목록을 조회하는 메서드 호출
         List<CityEntity> cities = cityService.searchByKeyword(keyword);
 
@@ -151,12 +150,11 @@ public class MingleController {
         return ResponseEntity.ok(cities);
     }
 
-    @PostMapping("selectRegi/selectedRegi")
-    public @ResponseBody List<String> selectedRegi(@RequestParam("selectedRegi") String selectedRegi) {
+    @GetMapping("selectRegi/selectedRegi")
+    public @ResponseBody String selectedRegi(@RequestParam("selectedRegi") String selectedRegi) {
         // selectedData 값 활용
 
-        List<String> selectRegi = null;
-        return selectRegi;
+    return selectedRegi;
     }
 
 }

@@ -51,12 +51,15 @@
                         $(document).on("click", ".sResult", function(event) {
                                 var dataIndex = $(this).data("index");
                                 console.log(data[dataIndex]);
-
-
+                                var selectedRegi = data[dataIndex];
+                                var sRegi1 = selectedRegi.bcName;
+                                var sRegi2 = selectedRegi.scName;
+                                var sRegi = sRegi1+ " " + sRegi2;
+                                console.log(sRegi);
                             $.ajax({
                                 url: "selectRegi/selectedRegi",
-                                method: "post",
-                                data: { selectedRegi: data[dataIndex] },
+                                method: "GET",
+                                data: { selectedRegi: sRegi },
                                 success: function(data) {
                                     // 성공적으로 응답 받았을 때 처리할 로직 작성
                                     console.log(data);
