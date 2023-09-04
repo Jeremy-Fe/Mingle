@@ -1,5 +1,7 @@
 package Mingle.MingleProject.entity;
 
+import Mingle.MingleProject.dto.CityDTO;
+import Mingle.MingleProject.dto.GatheringDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,5 +45,22 @@ public class Gathering {
     private String gSubleader3;
     @Column(name = "G_PRIVATE", nullable = false)
     private Long gPrivate;
-
+    public static Gathering gathering(GatheringDTO gatheringDTO) {
+        Gathering gathering = new Gathering();
+        gathering.setId(gatheringDTO.getId());
+        gathering.setGName(gatheringDTO.getGName());
+        gathering.setGIntroduction(gatheringDTO.getGIntroduction());
+        gathering.setGMainsubject(gatheringDTO.getGMainsubject());
+        gathering.setGSubject(gatheringDTO.getGSubject());
+        gathering.setGCity(gatheringDTO.getGCity());
+        gathering.setGDistrict(gatheringDTO.getGDistrict());
+        gathering.setGDate(gatheringDTO.getGDate());
+        gathering.setGMaxheadcount(gatheringDTO.getGMaxheadcount());
+        gathering.setGMainleader(gatheringDTO.getGMainleader());
+        gathering.setGSubleader1(gatheringDTO.getGSubleader1());
+        gathering.setGSubleader2(gatheringDTO.getGSubleader2());
+        gathering.setGSubleader3(gatheringDTO.getGSubleader3());
+        gathering.setGPrivate(gatheringDTO.getGPrivate());
+        return gathering;
+    }
 }
