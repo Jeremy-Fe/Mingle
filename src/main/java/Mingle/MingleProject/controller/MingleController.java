@@ -99,6 +99,10 @@ public class MingleController {
 
     @GetMapping("Gathering_Album_BoardNotification")
     public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
+
+    @GetMapping("Gathering_Schedule")
+    public String Gathering_Schedule() {return "Gathering_Schedule";}
+
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);

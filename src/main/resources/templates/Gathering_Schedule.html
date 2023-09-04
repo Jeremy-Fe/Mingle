@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>모임이름-게시판</title>
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <!--css-->
+    <link href="/CSS/Gathering_Schedule.css" type="text/css" rel="stylesheet">
+    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <style>
+        .view > .g_title > ul > li > a:first-child {
+            margin-left: 70px;
+        }
+
+        .view > .g_title > ul > li > a:nth-child(4) {
+            color: #542DFF;
+            border-bottom: 3px solid #542DFF;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="/defaultUI.html"></div>
+<div th:replace="/Gathering.html"></div>
+<div id="schedule">
+    <div class="schedule_bg">
+        <ul class="schedule">
+            <li><span>8/12 (토)</span><span class="schedule_date1">D-16</span></li>
+            <li><span class="schedule_title">8월 1차 정기전🎳</span></li>
+            <li><span class="schedule_subject">일시</span><span class="schedule_detail">8월12일 (토) 오후 7:30</span>
+            </li>
+            <li><span class="schedule_subject">위치</span><span class="schedule_detail">하이미디어 볼링센터</span></li>
+            <li><span class="schedule_subject">금액</span><span class="schedule_detail">N빵!! (4게임 17,200원)</span>
+            </li>
+            <li>
+                <span class="schedule_subject">참여</span><span class="schedule_detail">4/20</span><span
+                    class="schedule_subject">(16자리 남음)</span>
+                <a href="#">참석하기</a>
+            </li>
+            <li>
+                <img src="image/Gathering_img1.png">
+                <img src="image/Gathering_img2.png">
+                <img src="image/Gathering_img3.png">
+                <img src="image/Gathering_img4.png">
+            </li>
+        </ul>
+        <ul class="schedule">
+            <li><span>8/12 (토)</span><span class="schedule_date1">D-16</span></li>
+            <li><span class="schedule_title">8월 1차 정기전🎳</span></li>
+            <li><span class="schedule_subject">일시</span><span class="schedule_detail">8월12일 (토) 오후 7:30</span>
+            </li>
+            <li><span class="schedule_subject">위치</span><span class="schedule_detail">하이미디어 볼링센터</span></li>
+            <li><span class="schedule_subject">금액</span><span class="schedule_detail">N빵!! (4게임 17,200원)</span>
+            </li>
+            <li>
+                <span class="schedule_subject">참여</span><span class="schedule_detail">4/20</span><span
+                    class="schedule_subject">(16자리 남음)</span>
+                <a href="#">참석하기</a>
+            </li>
+            <li>
+                <img src="image/Gathering_img1.png">
+                <img src="image/Gathering_img2.png">
+                <img src="image/Gathering_img3.png">
+                <img src="image/Gathering_img4.png">
+            </li>
+        </ul>
+        <ul class="schedule">
+            <li><span>8/12 (토)</span><span class="schedule_date2">D+5</span></li>
+            <li><span class="schedule_title">7월 2차 정기전🎳</span></li>
+            <li><span class="schedule_subject">일시</span><span class="schedule_detail">7월22일 (토) 오후 7:30</span>
+            </li>
+            <li><span class="schedule_subject">위치</span><span class="schedule_detail">하이미디어 볼링센터</span></li>
+            <li><span class="schedule_subject">금액</span><span class="schedule_detail">N빵!! (4게임 17,200원)</span>
+            </li>
+            <li><span class="schedule_subject">참여</span><span class="schedule_detail">4/20</span></li>
+            <li>
+                <img src="image/Gathering_img1.png">
+                <img src="image/Gathering_img2.png">
+                <img src="image/Gathering_img3.png">
+                <img src="image/Gathering_img4.png">
+            </li>
+        </ul>
+        <ul class="schedule">
+            <li><span>8/12 (토)</span><span class="schedule_date2">D+5</span></li>
+            <li><span class="schedule_title">7월 2차 정기전🎳</span></li>
+            <li><span class="schedule_subject">일시</span><span class="schedule_detail">7월22일 (토) 오후 7:30</span>
+            </li>
+            <li><span class="schedule_subject">위치</span><span class="schedule_detail">하이미디어 볼링센터</span></li>
+            <li><span class="schedule_subject">금액</span><span class="schedule_detail">N빵!! (4게임 17,200원)</span>
+            </li>
+            <li><span class="schedule_subject">참여</span><span class="schedule_detail">4/20</span></li>
+            <li>
+                <img src="image/Gathering_img1.png">
+                <img src="image/Gathering_img2.png">
+                <img src="image/Gathering_img3.png">
+                <img src="image/Gathering_img4.png">
+            </li>
+        </ul>
+        <ul class="schedule">
+            <li><span>8/12 (토)</span><span class="schedule_date2">D+5</span></li>
+            <li><span class="schedule_title">7월 2차 정기전🎳</span></li>
+            <li><span class="schedule_subject">일시</span><span class="schedule_detail">7월22일 (토) 오후 7:30</span>
+            </li>
+            <li><span class="schedule_subject">위치</span><span class="schedule_detail">하이미디어 볼링센터</span></li>
+            <li><span class="schedule_subject">금액</span><span class="schedule_detail">N빵!! (4게임 17,200원)</span>
+            </li>
+            <li><span class="schedule_subject">참여</span><span class="schedule_detail">4/20</span></li>
+            <li>
+                <img src="image/Gathering_img1.png">
+                <img src="image/Gathering_img2.png">
+                <img src="image/Gathering_img3.png">
+                <img src="image/Gathering_img4.png">
+            </li>
+        </ul>
+    </div>
+</div>
+<div th:replace="/footer.html"></div>
+</body>
+</html>
