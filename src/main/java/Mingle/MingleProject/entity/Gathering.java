@@ -22,7 +22,7 @@ public class Gathering {
     @Column(name = "G_INTRODUCTION", nullable = false, length = 4000)
     private String gIntroduction;
     @Column(name = "G_INTEREST", nullable = false)
-    private Long gInterest;
+    private String gInterest;
     @Column(name = "G_CITY", nullable = false, length = 1000)
     private String gCity;
     @Column(name = "G_DISTRICT", nullable = false, length = 1000)
