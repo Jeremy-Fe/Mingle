@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!--css-->
-    <link href="/css/Create_Meet.css?after" type="text/css" rel="stylesheet">
+    <link href="/css/Create_Meet.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
@@ -84,13 +84,9 @@
     <div class="create_bt">
         <ul>
             <li>
-                <form action="#">
-                    <button name="G_create_bt" class="G_create_bt"></button>
-                </form>
+                <!-- 모임 만들기 버튼 클릭 시 createGathering 함수 호출 -->
+                <button name="G_create_bt" class="G_create_bt" onclick="createGathering()">모임 만들기</button>
             </li>
-        </ul>
-        <ul>
-            <li class="create_bt2">모임 만들기</li>
         </ul>
     </div>
     <ul>
@@ -103,23 +99,42 @@
             <div id="modalBody">
                 <span id="closeBtn">&times;</span>
                 <p>관심사 선택</p>
-                <button value="여행" type="button" id="btn1"><img src="image/create_meet_image/create_여행.png" alt="관심사 이미지" onclick="">여행</button>
-                <button value="운동/스포츠" type="button" id="btn2"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지" onclick="">운동/스포츠</button>
-                <button value="독서" type="button" id="btn3"><img src="image/create_meet_image/create_독서.png" alt="관심사 이미지" onclick="">독서</button>
-                <button value="업종/직무" type="button" id="btn4"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지" onclick="">업종/직무</button>
-                <button value="문화/공연/축제" type="button" id="btn5"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지" onclick="">문화/공연/축제</button>
-                <button value="음악/악기" type="button" id="btn6"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지" onclick="">음악/악기</button>
-                <button value="공예/만들기" type="button" id="btn7"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지" onclick="">공예/만들기</button>
-                <button value="댄스/무용" type="button" id="btn8"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지" onclick="">댄스/무용</button>
-                <button value="사교/인맥" type="button" id="btn9"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지" onclick="">사교/인맥</button>
-                <button value="차/오토바이" type="button" id="btn10"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지" onclick="">차/오토바이</button>
-                <button value="사진/영상" type="button" id="btn11"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지" onclick="">사진/영상</button>
-                <button value="게임/오락" type="button" id="btn12"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지" onclick="">게임/오락</button>
-                <button value="요리/제조" type="button" id="btn13"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지" onclick="">요리/제조</button>
-                <button value="반려/동물" type="button" id="btn14"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지" onclick="">반려/동물</button>
-                <button value="가족/결혼" type="button" id="btn15"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지" onclick="">가족/결혼</button>
-                <button value="자유주제" type="button" id="btn16"><img src="image/create_meet_image/create_자유주제.png" alt="관심사 이미지" onclick="">자유주제</button>
+                <button value="여행" type="button" id="btn1"><img src="image/create_meet_image/create_여행.png" alt="관심사 이미지" onclick="openSubModal('여행')">여행</button>
+                <button value="운동/스포츠" type="button" id="btn2"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지" onclick="openSubModal('운동/스포츠')">운동/스포츠</button>
+                <button value="독서" type="button" id="btn3"><img src="image/create_meet_image/create_독서.png" alt="관심사 이미지" onclick="openSubModal('독서')">독서</button>
+                <button value="업종/직무" type="button" id="btn4"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지" onclick="openSubModal('업종/직무')">업종/직무</button>
+                <button value="문화/공연/축제" type="button" id="btn5"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지" onclick="openSubModal('문화/공연/축제')">문화/공연/축제</button>
+                <button value="음악/악기" type="button" id="btn6"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지" onclick="openSubModal('음악/악기')">음악/악기</button>
+                <button value="공예/만들기" type="button" id="btn7"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지" onclick="openSubModal('공예/만들기')">공예/만들기</button>
+                <button value="댄스/무용" type="button" id="btn8"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지" onclick="openSubModal('댄스/무용')">댄스/무용</button>
+                <button value="사교/인맥" type="button" id="btn9"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지" onclick="openSubModal('사교/인맥')">사교/인맥</button>
+                <button value="차/오토바이" type="button" id="btn10"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지" onclick="openSubModal('차/오토바이')">차/오토바이</button>
+                <button value="사진/영상" type="button" id="btn11"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지" onclick="openSubModal('사진/영상')">사진/영상</button>
+                <button value="게임/오락" type="button" id="btn12"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지" onclick="openSubModal('게임/오락')">게임/오락</button>
+                <button value="요리/제조" type="button" id="btn13"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지" onclick="openSubModal('요리/제조')">요리/제조</button>
+                <button value="반려/동물" type="button" id="btn14"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지" onclick="openSubModal('반려/동물')">반려/동물</button>
+                <button value="가족/결혼" type="button" id="btn15"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지" onclick="openSubModal('가족/결혼')">가족/결혼</button>
+                <button value="자유주제" type="button" id="btn16"><img src="image/create_meet_image/create_자유주제.png" alt="관심사 이미지" onclick="openSubModal('자유주제')">자유주제</button>
             </div>
+        </div>
+    </div>
+    <!-- 새로운 모달 창을 위한 추가 코드 -->
+    <div id="subModalWrap" style="display: none;">
+        <div id="subModalContent">
+            <span id="subCloseBtn">&times;</span> <!-- 닫기 버튼 추가 -->
+            <p>새로운 모달 창 내용</p>
+        </div>
+    </div>
+    <!-- 새로운 모달 창을 위한 추가 코드 끝 -->
+    <div class="interest1">
+        <div class="interest2">
+            <ul>
+                <li>
+                    <form action="#">
+                        <input type="text" name="I_INTEREST" class="I_interest" placeholder="세부 관심사 선택" maxlength="16"/>
+                    </form>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -129,13 +144,13 @@
         <a href="#">개인정보처리방침</a>
         <a href="#">책임의 한계와 법적고지</a>
         <a href="#">회원정보 고객센터</a>
-    </div> <!--footer메뉴 -->
+    </div>
     <div class="f_copyright">
         <img src="image/login_footer.png">
         <p>Copyright ⓒ </p>
         <p class="corp">mingle Corp. </p>
         <p>All Rights Reserved.</p>
-    </div> <!--copyright -->
+    </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -192,9 +207,29 @@
                 selectedInterestImage.src = imageFileName;
                 selectedInterestButton.value = interest; // 버튼의 값을 클릭한 관심사로 업데이트합니다.
                 modal.style.display = 'none';
+                openSubModal(); // 새로운 모달 창 열기
             });
         });
+
+        // 새로운 모달 창을 열기 위한 함수
+        function openSubModal() {
+            subModal.style.display = 'block';
+        }
+
+        // 새로운 모달 창을 닫기 위한 함수
+        function closeSubModal() {
+            subModal.style.display = 'none';
+        }
+
+        // 추가된 부분: 새로운 모달 창과 닫기 버튼 요소를 가져옵니다.
+        const subModal = document.getElementById('subModalWrap');
+        const subCloseBtn = document.getElementById('subCloseBtn');
+
+        // 새로운 모달 창의 닫기 버튼에 이벤트를 추가합니다.
+        subCloseBtn.onclick = closeSubModal;
     });
+
+
 </script>
 </body>
 </html>

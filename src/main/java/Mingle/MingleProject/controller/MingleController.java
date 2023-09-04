@@ -2,9 +2,11 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.CityEntity;
+import Mingle.MingleProject.repository.CityRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,11 +64,13 @@ public class MingleController {
     @GetMapping("Mypage*")
     public String Mypage() {return "Mypage";}
 
-    @GetMapping("Create_Meet*")
+    @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
-//        List<String> = cityService.getDistinctBcNames();
-//        model.addAttribute("",);
-        return "Create_Meet";}
+        List<String> bcNames = cityService.getDistinctBcNames();
+
+        model.addAttribute("bcNames", bcNames);
+        return "Create_Meet";
+    }
 
     @GetMapping("Mbti_banner*")
     public String Mbti_banner() {return "Mbti_banner";}
@@ -161,6 +165,8 @@ public class MingleController {
     }
 
 }
+
+
 
 
 
