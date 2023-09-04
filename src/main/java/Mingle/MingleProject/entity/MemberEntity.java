@@ -85,7 +85,7 @@ public class MemberEntity {
         memberEntity.setMGGathering(memberDTO.getMGGathering());
         memberEntity.setMPiProfileimg(memberDTO.getMPiProfileimg());
         memberEntity.setMIntroduction(memberDTO.getMIntroduction());
-        memberEntity.setMMbti(memberEntity.getMMbti());
+        memberEntity.setMMbti(memberDTO.getMMbti());
         return memberEntity;
     }
 

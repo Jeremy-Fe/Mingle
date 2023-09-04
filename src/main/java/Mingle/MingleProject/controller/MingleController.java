@@ -6,11 +6,10 @@ import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -65,7 +64,10 @@ public class MingleController {
     public String Mypage() {return "Mypage";}
 
     @GetMapping("Create_Meet*")
-    public String Create_Meet() {return "Create_Meet";}
+    public String Create_Meet(Model model) {
+//        List<String> = cityService.getDistinctBcNames();
+//        model.addAttribute("",);
+        return "Create_Meet";}
 
     @GetMapping("Mbti_banner*")
     public String Mbti_banner() {return "Mbti_banner";}
@@ -128,12 +130,32 @@ public class MingleController {
     @GetMapping("search1")
     public String search1() {return "search1";}
     @GetMapping("search2")
-    public String search2() {return "search1";}
+    public String search2() {return "search2";}
 
-    @GetMapping("selectResi")
-    public String selectResi() {return "selectResi";}
 
+    @GetMapping("selectRegi")
+    public String selectRegi() {
+        return "selectRegi";
+    }
+
+
+    @PostMapping("/join/id-check")
+    public @ResponseBody String idCheck(@RequestParam("mId") String mId) {
+        System.out.println("mId = " + mId);
+        String checkResult = memberService.idCheck(mId);
+        return checkResult;
+    }
+
+    @GetMapping("selectRegi/regiSearch")
+    public @ResponseBody ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
+        // 검색어를 기반으로 도시 목록을 조회하는 메서드 호출
+        List<CityEntity> cities = cityService.searchByKeyword(keyword);
+
+        // 조회된 도시 목록을 응답(Response)에 담아 반환
+        return ResponseEntity.ok(cities);
+    }
 }
+
 
 
 
