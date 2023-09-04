@@ -150,6 +150,7 @@ body{z-index: 2}
     border-radius: 100%;
     margin-right: 50px;
     z-index: 2;
+    cursor: pointer;
     /*---프로필 사진(끝)---*/
 }
 
@@ -161,6 +162,77 @@ body{z-index: 2}
     z-index: 1;
     right: 40px;
     bottom: 20px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#ex1 {
+    max-width: 800px;
+    height: 400px;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    position: relative;
+}
+
+#ex1 > button {
+    top: 340px;
+    left: 380px;
+    width: 70px;
+    height: 40px;
+    font-family: 'Jalnan';
+    background-color: rgba(255, 255, 255, 0.65);
+    font-size: 16px;
+    float: left;
+    position: absolute;
+    border-radius: 20%;
+    border-style: none;
+}
+
+#ex1 > button:hover {
+    background-color: #968ACD;
+    cursor: pointer;
+}
+
+#modalContent .proimg {
+    top: 30px;
+    left: 45px;
+    width: 320px;
+    height: 320px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+    font-size: 32px;
+    float: left;
+    position: absolute;
+    border-radius: 100%;
+}
+
+#modalContent .name {
+    top: 95px;
+    left: 550px;
+    width: 50px;
+    height: 16px;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+    position: absolute;
+}
+
+#modalContent .edit {
+    top: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#modalContent .info {
+    top: 140px;
+    left: 550px;
+    width: 50px;
+    height: 16px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Jalnan';
     position: absolute;
 }
 
@@ -489,6 +561,7 @@ body{z-index: 2}
     border: none;
     background-color: transparent;
     position: absolute;
+    cursor: pointer;
 }
 #seemore {
     width: 24px;
@@ -501,3 +574,56 @@ body{z-index: 2}
     line-height: 85px;
 }
 /*---더보기 버튼(끝)---*/
+
+/* footer 메뉴 */
+#footer{
+    height: 196px;
+    position: relative;
+}
+.footer_menu{
+    position: absolute;
+    top: 78px;
+    left: 415px;
+}
+.footer_menu > a{
+    position: relative;
+    color: #FFFFFF;
+    margin-right: 30px;
+}
+.footer_menu > a::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #FFFFFF;
+    top: 1px;
+    left: -15px;
+}
+.footer_menu > a:first-child:before{
+    width: 0;
+}
+.footer_menu > a:last-child{
+    margin-right: 0;
+}
+
+/* footer CopyRight */
+.f_copyright{
+    position: absolute;
+    top: 113px;
+    left: 475px;
+}
+.f_copyright > img{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+}
+.f_copyright > p{
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    color: #EEEEEE;
+}
+.f_copyright .corp{
+    color: #FFFFFF;
+}

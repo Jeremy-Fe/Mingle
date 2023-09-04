@@ -6,10 +6,15 @@
     <!--swiper-->
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
+    
+    <!--jQuery 모달-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+z
 
     <!--css-->
-    <link href="/CSS/MyPage.css" type="text/css" rel="stylesheet">
+    <link href="/CSS/MyPage.css?after" type="text/css" rel="stylesheet">
 
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -18,58 +23,12 @@
     <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
     <!--font-family: 'Jalnan';-->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<div id="wrap" class="clearfix">
-    <header id="header" class="clearfix">
-        <h1 class="logo">
-            <a href="index.html">
-                <img alt="로고_L" src="image/로고_L.png">
-            </a>
-        </h1>
-        <nav class="menu">
-            <ul>
-                <li><a href="#"><img src="image/Menu_내모임.png">내 모임</a></li>
-                <li><a href="#"><img src="image/Menu_스케줄.png">스케줄</a></li>
-                <li><a href="#"><img src="image/Menu_모임검색.png">모임 검색</a></li>
-                <li><a href="#"><img src="image/Menu_HOT모임.png">HOT 모임</a></li>
-                <li><a href="#"><img src="image/Menu_모임만들기.png">모임 만들기</a></li>
-            </ul>
-        </nav>
+        <html xmlns:th="http://www.thymeleaf.org">
+        <div th:replace="/defaultUI.html"></div>
 
-        <style>
-            /* 스타일을 원하는 대로 설정하세요 */
-            .data-div {
-                border: 1px solid black;
-                padding: 10px;
-                margin: 5px;
-                width: 30px;
-                background-color: #fff;
-                height: 30px;
-            }
-        </style>
-
-    </header>
-
-    <!--헤더 + 뷰-->
-    <section id="box" class="clearfix">
-
-        <!--헤더-->
-        <div id="user">
-            <ul class="user_wrap" >
-                <li><a>로그인 하세요</a></li>
-                <li class="icon_a"> <!--<img alt="user_img" src="#">--></li>
-                <li class="icon_b"><img alt="_mymenu" src="image/Main_마이메뉴.png"></li>
-            </ul>
-        </div>
-
-        <!--<html xmlns:th="http://www.thymeleaf.org">
-
-        <div th:replace="/defaultUI.html"></div>-->
-
-        <!--뷰-->
-        <div id="view"style="overflow:scroll;">
-            <!-- 바꿔야하는 부분 -->
             <div class="view">
                 <!--마이페이지-->
                 <div class="MyPage">
@@ -79,10 +38,11 @@
                     <div class="profile">
                         <ul>
                             <li class="pimg">
-                                <a href="">
+                                <!--프로필 수정 버튼-->
+                                <a href="#ex1" rel="modal:open">
                                     <img class="edit" alt="프로필수정" src="/image/ProfileEdit_w.png">
                                 </a>
-                                <a href="index.html">
+                                <a href="#">
                                     <img class="proimg" alt="프로필사진" src="/image/DefaultProfile_logo.png">
                                 </a>
                             </li>
@@ -91,21 +51,46 @@
                                 <p class="name">Amelia</p>
                                 <p class="info">1998.01.18<br><br>여</p>
                             </li>
-
                             <li class="inBox">
-                                <p class="coment">누구를위한 삶인가       .//... 인생이란 무엇인가
+                                <p class="coment" contenteditable="true">누구를위한 삶인가       .//... 인생이란 무엇인가
                                     인생은 부먹인가 찍먹인가
                                     소주와 맥주는 대체 왜 먹는것일까
                                     그렇지만 없다면 나는 살수 없다
                                     한잔 허쉴?
                                 </p>
                             </li>
-                            <a href="">
+                            <a href="#" class="edit_2_link">
                                 <img class="edit_2" alt="프로필수정" src="/image/ProfileEdit_b.png">
                             </a>
                         </ul>
                     </div>
+                    <script>
+                        $(document).ready(function () {
+                            $(".edit_2_link").click(function (event) {
+                                event.preventDefault();
+                                var newText = $(".coment").text();
 
+
+                                $.ajax({
+                                    url: '서버_요청_경로', // 실제 서버 요청 경로로 변경
+                                    type: 'POST', // 또는 'PUT', 'PATCH' 등 HTTP 메서드 선택
+                                    data: { newText: newText }, // 수정된 텍스트를 데이터로 전송
+                                    success: function (response) {
+                                        // 서버에서 응답을 처리하는 코드 (예: 성공 메시지 표시)
+                                        alert('수정된 내용이 저장되었습니다.');
+                                    },
+                                    error: function () {
+                                        // 오류 발생 시 처리하는 코드 (예: 오류 메시지 표시)
+                                        alert('내용을 저장하는 중 오류가 발생했습니다.');
+                                    }
+                                    });
+                                alert('수정 완료!');
+
+                                });
+
+
+                        });
+                    </script>
                     <!--내모임-->
                     <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부 <input class="check" type="checkbox" name="xxx" value="yyy"></p></p>
                     <div id="sc1" class="swiper-container mc clearfix">
@@ -174,7 +159,7 @@
                         <!--가입한 모임 블럭 생성-->
                         <script>
                             // 가상의 데이터베이스 데이터 배열
-                            var databaseData = [
+                            var databaseData1 = [
                                 "데이터 1",
                                 "데이터 2",
                                 "데이터 3",
@@ -191,10 +176,10 @@
                             var myclass = document.getElementById("myclass");
 
                             // 데이터베이스 데이터의 수만큼 <div> 생성
-                            for (var i = 0; i < databaseData.length; i++) {
+                            for (var i = 0; i < databaseData1.length; i++) {
                                 var dataDiv = document.createElement("div");
                                 dataDiv.className = "swiper-slide mycb_"+i; // 클래스 지정
-                                dataDiv.textContent = databaseData[i]; // 데이터 추가
+                                dataDiv.textContent = databaseData1[i]; // 데이터 추가
                                 myclass.appendChild(dataDiv); // <div>를 컨테이너에 추가
                             }
                         </script>
@@ -346,26 +331,6 @@
                                     <p id="seemoretext">더보기</p>
                                 </div>
                             </li>
-                            <ul class="comment_07">
-                                <p class="commenttext_01">
-                                    <span>이 지역 보스몹 잡아 보셨나요?</span>
-                                    2023. 05. 18  - 빽투더퓨처 | 자유게시판
-                                </p>
-                            </ul>
-
-                            <ul class="comment_08">
-                                <p class="commenttext_01">
-                                    <span>이 지역 보스몹 잡아 보셨나요?</span>
-                                    2023. 05. 18  - 빽투더퓨처 | 자유게시판
-                                </p>
-                            </ul>
-
-                            <ul class="comment_09">
-                                <p class="commenttext_01">
-                                    <span>이 지역 보스몹 잡아 보셨나요?</span>
-                                    2023. 05. 18  - 빽투더퓨처 | 자유게시판
-                                </p>
-                            </ul>
                     </div>
                     <!--더보기 버튼 활성화-->
                     <script>
@@ -389,19 +354,18 @@
                     <!--더보기 클릭 후 확장-->
                     <script>
                         const button = document.getElementById('accordion-button-1');
-                        const myComment = document.querySelector('.myComment');
-                        const myComment2 = document.querySelector('.myComment2');
+                        const myComment1 = document.querySelector('.myComment');
 
 
                         button.addEventListener('click', function() {
                             const ariaExpandedValue = button.getAttribute('aria-expanded');
 
                             if (ariaExpandedValue === 'true') {
-                                myComment.classList.add('myComment'); // A 스타일 클래스 추가
-                                myComment.classList.remove('myComment2'); // B 스타일 클래스 제거
+                                myComment1.classList.add('myComment'); // A 스타일 클래스 추가
+                                myComment1.classList.remove('myComment2'); // B 스타일 클래스 제거
                             } else {
-                                myComment.classList.remove('myComment'); // A 스타일 클래스 제거
-                                myComment.classList.add('myComment2'); // B 스타일 클래스 추가
+                                myComment1.classList.remove('myComment'); // A 스타일 클래스 제거
+                                myComment1.classList.add('myComment2'); // B 스타일 클래스 추가
                             }
                         });
                     </script>
@@ -422,7 +386,7 @@
                             // ... 더 많은 데이터 ...
                         ];
 
-                        var myComment = document.getElementsByClassName("myComment");
+                        var myComment = document.getElementsByClassName("myComment")[0];
 
                         // 데이터베이스 데이터의 수만큼 <ul> 생성
                         for (var i = 0; i < databaseData.length; i++) {
@@ -432,8 +396,31 @@
                             myComment.appendChild(dataUl); // <ul>를 컨테이너에 추가
                         }
                     </script>
+                    <!--프로필수정 모달창--->
+                    <div id="ex1" class="modal clearfix">
+                        <div id="modalContent">
+                            <img class="proimg" alt="프로필사진" src="">
+                            <p class="name"></p>
+                            <p class="info"></p>
+                            <img class="edit" alt="프로필사진" src="">
+                        </div>
+                        <button>수정하기</button>
+                    </div>
+                    <div id="footer">
+                        <div class="footer_menu">
+                            <a href="#">이용약관</a>
+                            <a href="#">개인정보처리방침</a>
+                            <a href="#">책임의 한계와 법적고지</a>
+                            <a href="#">회원정보 고객센터</a>
+                        </div> <!--footer메뉴 -->
+                        <div class="f_copyright">
+                            <img src="image/login_footer.png">
+                            <p>Copyright ⓒ </p>
+                            <p class="corp">mingle Corp. </p>
+                            <p>All Rights Reserved.</p>
+                        </div> <!--copyright -->
+                    </div>
                 </div>
-
     </section>
 
 </div>
@@ -472,8 +459,28 @@
 
     });
 
+</script>
+<script>
+    // 모달이 열릴 때
+    $(document).on('modal:open', '#ex1', function() {
+    // 프로필 정보 가져와서 모달 내에 출력
+        var profileContainer = $('#box #view .view .MyPage .profile');
+        var proimgSrc = profileContainer.find('.pimg .proimg').attr('src');
+        var nameText = profileContainer.find('.text .name').text();
+        var infoText = profileContainer.find('.text .info').html();
+        var editimgSrc = profileContainer.find('.pimg .edit').attr('src');
 
+        console.log(proimgSrc);
+        console.log(nameText);
+        console.log(infoText);
+        console.log(editimgSrc);
 
+    // 모달 내의 요소에 정보 출력
+    $('#modalContent .proimg').attr('src', proimgSrc);
+    $('#modalContent .name').text(nameText);
+    $('#modalContent .info').html(infoText);
+    $('#modalContent .edit').attr('src', editimgSrc);
+    });
 </script>
 
 </body>
