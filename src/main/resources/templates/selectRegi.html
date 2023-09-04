@@ -52,17 +52,20 @@
                                 var dataIndex = $(this).data("index");
                                 console.log(data[dataIndex]);
                                 var selectedRegi = data[dataIndex];
-                                var sRegi1 = selectedRegi.bcName;
+                                var sRegi1 = selectedRegi.mcName;
                                 var sRegi2 = selectedRegi.scName;
                                 var sRegi = sRegi1+ " " + sRegi2;
-                                console.log(sRegi);
+                                console.log("받을 값"+sRegi);
                             $.ajax({
                                 url: "selectRegi/selectedRegi",
-                                method: "GET",
+                                method: "POST",
                                 data: { selectedRegi: sRegi },
                                 success: function(data) {
                                     // 성공적으로 응답 받았을 때 처리할 로직 작성
-                                    console.log(data);
+                                    console.log("받은 값"+data);
+                                    // document.querySelector('a[rel="modal:close"]').click();
+                                    // location.reload("search2.html");
+
                                 },
                                 error: function(xhr, status, error) {
                                     // 에러 발생 시 처리할 로직 작성

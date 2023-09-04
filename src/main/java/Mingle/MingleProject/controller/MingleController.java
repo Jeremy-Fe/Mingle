@@ -125,8 +125,13 @@ public class MingleController {
     @GetMapping("search1")
     public String search1() {return "search1";}
     @GetMapping("search2")
-    public String search2() {return "search2";}
+    public String search2 () { return "search2";}
 
+    @PostMapping("search2")
+    public String search2(@RequestParam("regi") String selectedRegi, Model model) {
+        model.addAttribute("selectedRegi", selectedRegi);
+        return "search2";
+    }
 
     @GetMapping("selectRegi")
     public String selectRegi() {
@@ -150,11 +155,9 @@ public class MingleController {
         return ResponseEntity.ok(cities);
     }
 
-    @GetMapping("selectRegi/selectedRegi")
+    @PostMapping("selectRegi/selectedRegi")
     public @ResponseBody String selectedRegi(@RequestParam("selectedRegi") String selectedRegi) {
-        // selectedData 값 활용
-
-    return selectedRegi;
+        return "redirect:/search2?regi=" + selectedRegi;
     }
 
 }

@@ -90,19 +90,19 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 }
 
 /* 모임카드 */
-#inMingle > #mingle{
+#inMingle > .mingle{
     display: block; float: left;
     width: 440px; height: 275px; padding: 15px; margin: 10px;
     border-radius: 20px; background-color: #fff;
     margin-left: 0;
 }
 /* 모임카드 상단 */
-#mingle ul {
+.mingle ul {
     width: 405px; height: 160px;
     margin: auto; 
 }
-#mingle>ul>img{  width: 175px; height: 160px;float: left;}
-#mingle>ul>li{
+.mingle>ul>img{  width: 175px; height: 160px;float: left;}
+.mingle>ul>li{
     float: right; width: 200px; margin: 5px;
 }
 #mTitle{font-size: 32px;color: #6554AF; line-height: 36px;}
