@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!--css-->
-    <link href="/css/Create_Meet.css?after" type="text/css" rel="stylesheet">
+    <link href="/css/Create_Meet.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
@@ -84,13 +84,9 @@
     <div class="create_bt">
         <ul>
             <li>
-                <form action="#">
-                    <button name="G_create_bt" class="G_create_bt"></button>
-                </form>
+                <!-- 모임 만들기 버튼 클릭 시 createGathering 함수 호출 -->
+                <button name="G_create_bt" class="G_create_bt" onclick="createGathering()">모임 만들기</button>
             </li>
-        </ul>
-        <ul>
-            <li class="create_bt2">모임 만들기</li>
         </ul>
     </div>
     <ul>

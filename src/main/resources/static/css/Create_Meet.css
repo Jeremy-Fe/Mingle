@@ -295,19 +295,14 @@
     top: 9px;
     left: 13px;
 }
-
-.create_bt2 {
-    font-size: 27px;
-    position: absolute;
-    top: 790px;
-    left: 690px;
-}
-
 .G_create_bt {
     width: 441px;
     height: 80px;
     background-color: rgba(255, 255, 255, 0.65);
     border-radius: 20px;
+    font-size: 27px;
+    font-family: 'GmarketSansMedium';
+    color: #2C244F;
     position: absolute;
     top: 763px;
     left: 535px;
