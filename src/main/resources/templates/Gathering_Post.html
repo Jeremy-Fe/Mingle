@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>모임이름-게시글</title>
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <!--css-->
+    <link href="/CSS/Gathering_Post.css" type="text/css" rel="stylesheet">
+    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <style>
+        .view > .g_title > ul > li > a:first-child {
+            margin-left: 70px;
+        }
+
+        .view > .g_title > ul > li > a:nth-child(2) {
+            color: #542DFF;
+            border-bottom: 3px solid #542DFF;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+</head>
+<body>
+<div th:replace="/defaultUI.html"></div>
+
+<div th:replace="/Gathering.html"></div>
+<div id="Post">
+    <a href="http://localhost:8080/Gathering_Board"><img src="image/back.png"></a>
+    <div class="Post_bg">
+        <ul class="contents clearfix">
+            <img class="post_writerimg"src="image/Gathering_img1.png">
+            <li><a href="#"><img class="menu" src="image/menudot.png"></a><p class="post_boardName">정모후기</p></li>
+            <li><p class="post_writerName">신우철</p></li>
+            <li><p class="post_date">7월 23일 오후 10:19</p></li>
+            <li class="title_line"><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+            <li>
+                <p class="post_contents">웅기형님이
+                    하이미디어 볼링장에서 저랑 같이 치다가
+                    3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
+                    아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
+                    행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
+                    당신은 누구입니까 당신의 이름은 무엇입니까.</p>
+            </li>
+            <li><a href="image/postimg1.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="image/postimg1.png"></a></li>
+            <li><a href="image/postimg2.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="image/postimg2.png"></a></li>
+            <li><a href="image/postimg3.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="image/postimg3.png"></a></li>
+        </ul>
+        <ul class="like">
+            <li>
+                <a href="#"><img src="image/like.png"><span>종아요 3</span></a>
+                <a href="#"><img src="image/comment.png"><span>댓글 3</span></a>
+            </li>
+        </ul>
+        <ul class="input_comment">
+        <div class="search">
+            <input type="text" placeholder="댓글을 달아주세요.">
+            <button type="button">전송</button>
+        </div>
+        </ul>
+        <ul class="comments">
+            <ul class="comment clearfix">
+                <img class="comment_profileimg" src="image/Gathering_img2.png">
+                <li><span class="comment_writer">정웅기</span><span class="comment_date">7월 23일 오후 11:01</span></li>
+                <li><span class="comment_contents">우철아 맛있게 잘 먹었다 ㅋㅋㄹㅃㅃ~~</span></li>
+                <li>
+                    <a class="comment_like clearfix" href="#"><img class="tabom" src="image/tabom.png"><span>종아요 3</span></a>
+                    <a class="comment_reply" href="#">답글달기</a>
+                </li>
+                <ul class="reply">
+                    <img class="comment_profileimg" src="image/Gathering_img1.png">
+                    <li><span class="comment_writer">신우철</span><span class="comment_date">7월 23일 오후 11:21</span></li>
+                    <li><span class="comment_contents">@정웅기 아 형님 ㅡㅡ 딱밤 딱 대</span></li>
+                    <li>
+                        <a class="comment_like clearfix" href="#"><img class="tabom" src="image/tabom.png"><span>종아요 1</span></a>
+                        <a class="comment_reply" href="#">답글달기</a>
+                    </li>
+                </ul>
+            </ul>
+            <ul class="comment clearfix">
+                <img class="comment_profileimg" src="image/Gathering_img6.png">
+                <li><span class="comment_writer">강승진</span><span class="comment_date">7월 25일 오전 10:15</span></li>
+                <li><span class="comment_contents">웅기씨 혼나보실래요? 딱밤 딱 대</span></li>
+                <li>
+                    <a class="comment_like clearfix" href="#"><img class="tabom" src="image/tabom.png"><span>종아요 3</span></a>
+                    <a class="comment_reply" href="#">답글달기</a>
+                </li>
+            </ul>
+            <ul class="comment clearfix">
+                <img class="comment_profileimg" src="image/Gathering_img6.png">
+                <li><span class="comment_writer">강승진</span><span class="comment_date">7월 25일 오전 10:15</span></li>
+                <li><span class="comment_contents">웅기씨 혼나보실래요? 딱밤 딱 대</span></li>
+                <li>
+                    <a class="comment_like clearfix" href="#"><img class="tabom" src="image/tabom.png"><span>종아요 3</span></a>
+                    <a class="comment_reply" href="#">답글달기</a>
+                </li>
+            </ul>
+        </ul>
+    </div>
+</div>
+<div th:replace="/footer.html"></div>
+</body>
+</html>

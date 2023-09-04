@@ -1,0 +1,43 @@
+#album{}
+
+.album_bg{
+    width: 1450px;
+    background-color: #fff;
+    float: left;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 35px 50px;
+}
+
+.album_bg > .submenu{}
+.album_bg > .submenu > li{
+    padding: 15px 15px 15px 0px;
+    border-bottom: 2px solid #747474;
+    margin-bottom: 20px;
+}
+.album_bg > .submenu > li > a{
+    font-size: 25px;
+    margin: 30px;
+    padding: 13px;
+}
+.album_bg > .submenu > li > a:first-child{
+    margin-left: 0px;
+    color: #542DFF;
+    border-bottom: 3px solid #542DFF;
+}
+
+.album_bg > .allimg{}
+.album_bg > .allimg > li{
+    padding: 0px 0px 0px 15px;
+}
+.album_bg > .allimg > li > a{}
+.album_bg > .allimg > li > a:hover{
+    color: #542DFF;
+}
+.album_bg > .allimg > li > a > img{
+    width: 248px;
+    height: 248px;
+    border-radius: 10px;
+    display: inline;
+    margin: 0px 15px 15px 0px;
+}
