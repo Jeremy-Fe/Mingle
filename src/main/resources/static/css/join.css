@@ -351,6 +351,7 @@ body{
     font-size: 30px;
     padding: 10px;
     padding-left: 20px;
+    pointer-events: none;
 }
 
 /* 회원가입 버튼 */
