@@ -14,7 +14,8 @@ public class GatheringDTO {
     private long id;
     private String gName;
     private String gIntroduction;
-    private long gInterest;
+    private String gMainsubject;
+    private String gSubject;
     private String gCity;
     private String gDistrict;
     @DateTimeFormat(pattern = "yyyyMMdd")
@@ -31,6 +32,8 @@ public class GatheringDTO {
         gatheringDTO.setId(gathering.getId());
         gatheringDTO.setGName(gathering.getGName());
         gatheringDTO.setGIntroduction(gathering.getGIntroduction());
+        gatheringDTO.setGMainsubject(gathering.getGMainsubject());
+        gatheringDTO.setGSubject(gathering.getGSubject());
         gatheringDTO.setGCity(gathering.getGCity());
         gatheringDTO.setGDistrict(gathering.getGDistrict());
         gatheringDTO.setGDate(gathering.getGDate());
