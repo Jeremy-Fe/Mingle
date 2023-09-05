@@ -18,13 +18,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="wrap" class="clearfix" style="overflow:scroll;">
+    <div id="regiModal" class="clearfix" style="overflow:scroll;">
         <div>
             <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
         </div>
-        <div id="showRegi">
+        <div id="showRegi" >
         </div>
+        <a href="#" rel="modal:close"></a>
     </div>
+
     <script>
         function enterkey() {
             if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
@@ -43,10 +45,40 @@
                             var city1 = city.scName;
                             var city2 = city.bcName;
                             var city3 = city.mcName;
-                            var html = '<a><p>' + city1 + ' (' + city2 +" " + city3+ ')' + '</p></a>';
+                            var html = '<a class="sResult" data-index="' + i + '"><p>' + city1 + ' (' + city2 + " " + city3 + ')' + '</p></a>';
                             $("#showRegi").append(html);
                         }
+                        $(document).on("click", ".sResult", function(event) {
+                                var dataIndex = $(this).data("index");
+                                console.log("data[dataIndex] = "+data[dataIndex]);
+                                var selectedRegi = data[dataIndex];
+                                var sRegi1 = selectedRegi.mcName;
+                                var sRegi2 = selectedRegi.scName;
+                                var sRegi = sRegi1+ " " + sRegi2;
+                                console.log("받을 값 = "+sRegi);
+                            $.ajax({
+                                url: "search2/selectedRegion",
+                                type : 'POST',
+                                data: { selectedRegion: sRegi },
+                                success: function(response) {
 
+                                    console.log("selectedRegi = " + sRegi);
+
+                                    document.querySelector('a[rel="modal:close"]').click();
+
+                                    var selectedRegiElement = document.getElementById("selectedRegi");
+                                    selectedRegiElement.innerText = "";
+
+                                    $("#selectedRegi").append(sRegi);
+
+
+                                },
+                                error: function(xhr, status, error) {
+                                    // 에러 발생 시 처리할 로직 작성
+                                    console.error(error);
+                                }
+                            });
+                        });
                     },
                     error: function(xhr, status, error) {
                         // 에러 발생 시 처리할 로직 작성
@@ -55,6 +87,8 @@
                 });
             }
         }
+
+
 
     </script>
 </body>

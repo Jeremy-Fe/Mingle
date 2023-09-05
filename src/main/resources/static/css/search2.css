@@ -16,20 +16,19 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     width: 1360px; height: 55px; margin: auto; 
 }
 /* 지역선택창 */
-#search>ul>li{ display: flex;width: 320px; height: 55px; float: left;}
-#search>ul>li>img{width: 55px; margin-right: 20px; float: left;}
-#search>ul>li>p{
-    width: 195px; height: 55px; 
+#regi{ display: flex;width: 370px; height: 55px; float: left;}
+#regi>img:first-child{width: 55px; margin-right: 20px; float: left;}
+#regi>p{
+    width: 235px; height: 55px;
     float: left; line-height: 65px;
     font-size: 32px; font-weight: lighter;
 }
-#search>ul>li>a{margin: auto;}
-#search>ul>li>a>img{
-    width: 40px;  float: left;
+#regi>img:last-child{
+    width: 40px;  float: left;margin-top: 10px;
 }
 /* 검색창 */
 #Stext{
-    width: 970px; height: 55px; 
+    width: 920px; height: 55px;
     border: none; border-radius: 15px;
     font-size: 28px; font-weight: lighter;
     font-family: 'NexonLv1Gothic'; 
@@ -91,19 +90,19 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 }
 
 /* 모임카드 */
-#inMingle > #mingle{
+#inMingle > .mingle{
     display: block; float: left;
     width: 440px; height: 275px; padding: 15px; margin: 10px;
     border-radius: 20px; background-color: #fff;
     margin-left: 0;
 }
 /* 모임카드 상단 */
-#mingle ul {
+.mingle ul {
     width: 405px; height: 160px;
     margin: auto; 
 }
-#mingle>ul>img{  width: 175px; height: 160px;float: left;}
-#mingle>ul>li{
+.mingle>ul>img{  width: 175px; height: 160px;float: left;}
+.mingle>ul>li{
     float: right; width: 200px; margin: 5px;
 }
 #mTitle{font-size: 32px;color: #6554AF; line-height: 36px;}
