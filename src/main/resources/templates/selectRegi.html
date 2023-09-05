@@ -50,21 +50,27 @@
                         }
                         $(document).on("click", ".sResult", function(event) {
                                 var dataIndex = $(this).data("index");
-                                console.log(data[dataIndex]);
+                                console.log("data[dataIndex] = "+data[dataIndex]);
                                 var selectedRegi = data[dataIndex];
                                 var sRegi1 = selectedRegi.mcName;
                                 var sRegi2 = selectedRegi.scName;
                                 var sRegi = sRegi1+ " " + sRegi2;
-                                console.log("받을 값"+sRegi);
+                                console.log("받을 값 = "+sRegi);
                             $.ajax({
-                                url: "selectRegi/selectedRegi",
-                                method: "POST",
-                                data: { selectedRegi: sRegi },
-                                success: function(data) {
-                                    // 성공적으로 응답 받았을 때 처리할 로직 작성
-                                    console.log("받은 값"+data);
-                                    // document.querySelector('a[rel="modal:close"]').click();
-                                    // location.reload("search2.html");
+                                url: "search2/selectedRegion",
+                                type : 'POST',
+                                data: { selectedRegion: sRegi },
+                                success: function(response) {
+
+                                    console.log("selectedRegi = " + sRegi);
+
+                                    document.querySelector('a[rel="modal:close"]').click();
+
+                                    var selectedRegiElement = document.getElementById("selectedRegi");
+                                    selectedRegiElement.innerText = "";
+
+                                    $("#selectedRegi").append(sRegi);
+
 
                                 },
                                 error: function(xhr, status, error) {

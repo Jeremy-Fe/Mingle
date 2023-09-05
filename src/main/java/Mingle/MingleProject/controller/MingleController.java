@@ -131,11 +131,7 @@ public class MingleController {
     @GetMapping("search2")
     public String search2 () { return "search2";}
 
-    @PostMapping("search2")
-    public String search2(@RequestParam("regi") String selectedRegi, Model model) {
-        model.addAttribute("selectedRegi", selectedRegi);
-        return "search2";
-    }
+
 
     @GetMapping("selectRegi")
     public String selectRegi() {
@@ -150,19 +146,6 @@ public class MingleController {
         return checkResult;
     }
 
-    @GetMapping("selectRegi/regiSearch")
-    public  ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
-        // 검색어를 기반으로 도시 목록을 조회하는 메서드 호출
-        List<CityEntity> cities = cityService.searchByKeyword(keyword);
-
-        // 조회된 도시 목록을 응답(Response)에 담아 반환
-        return ResponseEntity.ok(cities);
-    }
-
-    @PostMapping("selectRegi/selectedRegi")
-    public @ResponseBody String selectedRegi(@RequestParam("selectedRegi") String selectedRegi) {
-        return "redirect:/search2?regi=" + selectedRegi;
-    }
 
 }
 

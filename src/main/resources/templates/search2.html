@@ -37,7 +37,8 @@
                 <ul>
                     <a id="regi" href="/selectRegi" rel="modal:open" style="display: block">
                     <img src="image/search_지역.png">
-                    <p th:text="${selectedRegi}">구로구 구로동</p>
+                    <p id="selectedRegi">구로구 구로동</p>
+<!--                    <p  th:unless="${selectedRegion == null}" th:text="${selectedRegion}"></p>-->
                     <img src="image/오른쪽화살표.png">
                    </a>
                   <input type="search" name="" id="Stext">
