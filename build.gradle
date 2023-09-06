@@ -22,6 +22,10 @@ repositories { //의존성을 받을 저정소 지정란
 }
 
 dependencies { //필요한 기능 의존성 입력란
+	// spring mail
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 

@@ -26,9 +26,10 @@ body{z-index: 2}
     background: rgba(0,0,255,0.4);
 }
 
-#wrap{
+#regiModal{
     width: 400px; height: 700px; 
     margin: 0 auto; padding: 20px 10px;
+    background-color: #ffffff;
 }
 #regiSearch{
     width: 350px; height: 50px;
