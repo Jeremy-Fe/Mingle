@@ -136,15 +136,6 @@ public class MingleController {
         return "selectRegi";
     }
 
-    @GetMapping("selectRegi/regiSearch")
-    public @ResponseBody ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
-        // 검색어를 기반으로 도시 목록을 조회하는 메서드 호출
-        List<CityEntity> cities = cityService.searchByKeyword(keyword);
-
-        // 조회된 도시 목록을 응답(Response)에 담아 반환
-        return ResponseEntity.ok(cities);
-    }
-
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
