@@ -2,9 +2,10 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.CityEntity;
-import Mingle.MingleProject.repository.CityRepository;
+import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
+import Mingle.MingleProject.service.RegisterMail;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class MingleController {
     private final MemberService memberService;
     private final CityService cityService;
 
+    // 회원가입 메일 서비스
+    @Autowired
+    RegisterMail registerMail;
+    private final MemberRepository memberRepository;
+
     //기본페이지 요청메소드
     @GetMapping("/")
     public String index(){
@@ -31,12 +37,28 @@ public class MingleController {
     }
 
     @GetMapping("login")
-    public String loginForm() {
+    public String loginForm(Model model) {
+        List<MemberDTO> memberDTOList = memberService.findAll();
+//        어떠한 html로 가져갈 데이터가 있다면 model사용
+        model.addAttribute("memberList", memberDTOList);
+        System.out.println("model = " + model);
         return "login";
     }
 
     @GetMapping("find_id*")
     public String find_id() { return "find_id"; }
+
+    @GetMapping("/find_id/checkMember")
+    @ResponseBody
+    public String checkMember(@RequestParam("mEmail") String mEmail, @RequestParam("mName") String mName) {
+        // 여기에서 데이터베이스에서 이메일과 mName으로 검색하여 일치하는 레코드가 있는지 확인
+        boolean existsInDatabase = memberService.emailExistsInDatabase(mEmail, mName);
+        if (existsInDatabase ) {
+            return "recordExists";
+        } else {
+            return "recordNotFound";
+        }
+    }
 
     @GetMapping("find_pw*")
     public String find_pw() { return "find_pw"; }
@@ -105,7 +127,17 @@ public class MingleController {
 
     @GetMapping("Gathering_Album_BoardNotification")
     public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
-    @PostMapping("Main_LogIn")
+
+    @GetMapping("search1")
+    public String search1() {return "search1";}
+    @GetMapping("search2")
+    public String search2() {return "search2";}
+    @GetMapping("selectRegi")
+    public String selectRegi() {
+        return "selectRegi";
+    }
+
+    @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
         System.out.println(memberDTO);
@@ -129,18 +161,6 @@ public class MingleController {
         memberService.save(memberDTO);
         return "login";
     }
-    @GetMapping("search1")
-    public String search1() {return "search1";}
-    @GetMapping("search2")
-    public String search2 () { return "search2";}
-
-
-
-    @GetMapping("selectRegi")
-    public String selectRegi() {
-        return "selectRegi";
-    }
-
 
     @PostMapping("/join/id-check")
     public @ResponseBody String idCheck(@RequestParam("mId") String mId) {
@@ -149,6 +169,30 @@ public class MingleController {
         return checkResult;
     }
 
+    // 이메일 인증코드 발송
+    @PostMapping("/find_id/mailConfirm")
+    @ResponseBody
+    String mailConfirm(@RequestParam("mEmail") String mEmail) throws Exception {
+
+        String code = registerMail.sendSimpleMessage(mEmail);
+        System.out.println("인증코드 : " + code);
+        return code;
+    }
+
+
+    @PostMapping("/find_id/findMId")
+    public ResponseEntity<String> findMemberId(@RequestParam String mName, @RequestParam String mEmail) {
+        // mName과 mEmail을 기반으로 mId를 조회하는 로직을 구현하세요.
+        // 실제로는 데이터베이스에서 해당 회원을 찾고 mId를 반환합니다.
+
+        String memberId = memberRepository.findMemberIdByNameAndEmail(mName, mEmail); // 회원 아이디를 조회하는 메서드 구현 필요
+
+        if (memberId != null) {
+            return ResponseEntity.ok(memberId);
+        } else {
+            return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
+        }
+    }
 
 }
 
