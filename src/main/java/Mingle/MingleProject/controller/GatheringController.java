@@ -29,6 +29,8 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
+        List<GatheringDTO> gatheringMemberDTO = gatheringService.findByGatheringMember(gatheringDTO.getGName());
+        model.addAttribute("GatheringMember", gatheringMemberDTO);
         
         return "Gathering_Home";
     }

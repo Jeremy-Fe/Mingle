@@ -3,6 +3,7 @@ package Mingle.MingleProject.service;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.entity.Gathering;
 import Mingle.MingleProject.repository.GatheringRepository;
+import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class GatheringService {
     private final GatheringRepository gatheringRepository;
+    private final MemberRepository memberRepository;
 
 
     public List<GatheringDTO> findAll() {
@@ -36,5 +38,15 @@ public class GatheringService {
         } else {
             return null;
         }
+    }
+
+    public List<GatheringDTO> findByGatheringMember(String gatheringName){
+        List<Gathering> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);
+        List<GatheringDTO> gatheringMemberDTOList = new ArrayList<>();
+        for (Gathering gatheringMemberEntity : gatheringMemberEntityList) {
+            gatheringMemberDTOList.add(GatheringDTO.gatheringDTO((gatheringMemberEntity)));
+        }
+
+        return gatheringMemberDTOList;
     }
 }
