@@ -192,6 +192,10 @@ body{z-index: 2}
     cursor: pointer;
 }
 
+#fileInput {
+    display: none;
+}
+
 #modalContent .proimg {
     top: 30px;
     left: 45px;

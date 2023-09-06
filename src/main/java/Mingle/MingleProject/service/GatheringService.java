@@ -1,11 +1,15 @@
 package Mingle.MingleProject.service;
 
 import Mingle.MingleProject.dto.GatheringDTO;
+import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.Gathering;
+import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.GatheringRepository;
+import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class GatheringService {
     private final GatheringRepository gatheringRepository;
-
-
+    private final MemberRepository memberRepository;
 
 
     public List<GatheringDTO> findAll() {
