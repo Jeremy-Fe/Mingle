@@ -1,9 +1,7 @@
 package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.repository.MemberRepository;
-import Mingle.MingleProject.repository.CityRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
@@ -53,6 +51,18 @@ public class MingleController {
     public String checkMember(@RequestParam("mEmail") String mEmail, @RequestParam("mName") String mName) {
         // 여기에서 데이터베이스에서 이메일과 mName으로 검색하여 일치하는 레코드가 있는지 확인
         boolean existsInDatabase = memberService.emailExistsInDatabase(mEmail, mName);
+        if (existsInDatabase ) {
+            return "recordExists";
+        } else {
+            return "recordNotFound";
+        }
+    }
+
+    @GetMapping("/find_pw/checkMember")
+    @ResponseBody
+    public String checkMemberPw(@RequestParam("mEmail") String mEmail, @RequestParam("mId") String mId) {
+        // 여기에서 데이터베이스에서 이메일과 mName으로 검색하여 일치하는 레코드가 있는지 확인
+        boolean existsInDatabase = memberService.emailExistsInDatabasePw(mEmail, mId);
         if (existsInDatabase ) {
             return "recordExists";
         } else {
@@ -207,6 +217,21 @@ public class MingleController {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
     }
+
+    @PostMapping("/find_id/findMPw")
+    public ResponseEntity<String> findMemberPw(@RequestParam String mId, @RequestParam String mEmail) {
+        // mId mEmail을 기반으로 mPw를 조회하는 로직을 구현하세요.
+        // 실제로는 데이터베이스에서 해당 회원을 찾고 mId를 반환합니다.
+
+        String memberPw = memberRepository.findMemberPwdByIdAndEmail(mId, mEmail); // 회원 아이디를 조회하는 메서드 구현 필요
+
+        if (memberPw != null) {
+            return ResponseEntity.ok(memberPw);
+        } else {
+            return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
+        }
+    }
+
 
 }
 
