@@ -29,11 +29,14 @@
             border-bottom: 3px solid #542DFF;
         }
     </style>
+    <script>
+
+    </script>
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
 
-<div th:replace="/Gathering.html"></div>
+<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id})}"></div>
 <div id="board">
     <div class="board_bg">
         <ul class="board_title">
@@ -51,7 +54,7 @@
                 </form>
                 <div class="search">
                     <input type="text" placeholder="검색어 입력">
-                    <a href="#"><img src="image/search.png"></a>
+                    <a href="#"><img src="/image/search.png"></a>
                 </div>
             </li>
         </ul>
@@ -65,9 +68,9 @@
         <ul class="board_post">
             <a href="http://localhost:8080/Gathering_Post">
                 <ul class="posts clearfix">
-                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <img class="post_writerimg" src="/image/Gathering_img1.png">
                     <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
-                                                                                      src="image/newsPost_img2.png">
+                                                                                      src="/image/newsPost_img2.png">
                     </li>
 
                     <li><p class="post_boardName">정모후기</p></li>
@@ -87,9 +90,9 @@
             </a>
             <a href="#">
                 <ul class="posts clearfix">
-                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <img class="post_writerimg" src="/image/Gathering_img1.png">
                     <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
-                                                                                      src="image/newsPost_img1.png">
+                                                                                      src="/image/newsPost_img1.png">
                     </li>
 
                     <li><p class="post_boardName">정모후기</p></li>
@@ -109,9 +112,9 @@
             </a>
             <a href="#">
                 <ul class="posts clearfix">
-                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <img class="post_writerimg" src="/image/Gathering_img1.png">
                     <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
-                                                                                      src="image/newsPost_img2.png">
+                                                                                      src="/image/newsPost_img2.png">
                     </li>
 
                     <li><p class="post_boardName">정모후기</p></li>
@@ -131,9 +134,9 @@
             </a>
             <a href="#">
                 <ul class="posts clearfix">
-                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <img class="post_writerimg" src="/image/Gathering_img1.png">
                     <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
-                                                                                      src="image/newsPost_img1.png">
+                                                                                      src="/image/newsPost_img1.png">
                     </li>
 
                     <li><p class="post_boardName">정모후기</p></li>
@@ -153,9 +156,9 @@
             </a>
             <a href="#">
                 <ul class="posts clearfix">
-                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <img class="post_writerimg" src="/image/Gathering_img1.png">
                     <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
-                                                                                      src="image/newsPost_img2.png">
+                                                                                      src="/image/newsPost_img2.png">
                     </li>
 
                     <li><p class="post_boardName">정모후기</p></li>
@@ -175,9 +178,9 @@
             </a>
             <a href="#">
                 <ul class="posts clearfix">
-                    <img class="post_writerimg" src="image/Gathering_img1.png">
+                    <img class="post_writerimg" src="/image/Gathering_img1.png">
                     <li class="date_img"><p class="post_date">7월 23일 오후 10:19</p><img class="post_img"
-                                                                                      src="image/newsPost_img1.png">
+                                                                                      src="/image/newsPost_img1.png">
                     </li>
 
                     <li><p class="post_boardName">정모후기</p></li>

@@ -1,25 +1,24 @@
-<head>
-    <link href="/CSS/Gathering.css?after" type="text/css" rel="stylesheet">
-</head>
 <!-- 바꿔야하는 부분 -->
-<div class="view clearfix">
+<div class="view clearfix" th:fragment="gatheringParam ( gCoverimg ,District, GMainsubject, gName, Gathering_id)">
+    <head>
+        <link href="/CSS/Gathering.css" type="text/css" rel="stylesheet">
+    </head>
     <!-- 타이틀 -->
     <div class="g_title">
         <ul>
-            <li><img class="title_img" src="image/testimg.png" alt="테스트"></li>
+            <li><img class="title_img" th:src="|${gCoverimg}|"  alt="테스트"></li> <!----><!--src="/image/testimg.png"-->
             <ul class="title_subject">
                 <li>
-                    <a class="title_detail" href="">금천구</a>
-                    <a class="title_detail" href="">운동/스포츠</a>
-                    <a class="title_detail" href="">멤버 18</a>
+                    <a class="title_detail" th:text="|${District}|"></a><!---->
+                    <a class="title_detail" th:text="|${GMainsubject}|"></a><!---->
                 </li>
-                <li><h3 class="title_title">작당모의 볼링 클럽 🎳 신입 환영 🎳 <a href="#">가입하기</a></h3></li>
+                <li><h3 class="title_title" th:text="|${gName}|">안녕<!----><a href="#">가입하기</a></h3></li>
             </ul>
-            <li>
-                <a class="title_nav" href="http://localhost:8080/Gathering_Home">홈</a>
-                <a class="title_nav" href="http://localhost:8080/Gathering_Board">게시판</a>
-                <a class="title_nav" href="http://localhost:8080/Gathering_Album_All">사진첩</a>
-                <a class="title_nav" href="">일정</a>
+            <li th:with="gatheringId=${Gathering_id}">
+                <a class="title_nav" th:href="@{|/Gathering_Home/${gatheringId}|}">홈</a><!---->
+                <a class="title_nav" th:href="@{|/Gathering_Board/${gatheringId}|}">게시판</a><!---->
+                <a class="title_nav" th:href="@{|/Gathering_Album_All/${gatheringId}|}">사진첩</a><!---->
+                <a class="title_nav" th:href="@{|/Gathering_Schedule/${gatheringId}|}">일정</a><!---->
             </li>
         </ul>
     </div>
