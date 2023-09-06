@@ -1,11 +1,11 @@
 package Mingle.MingleProject.repository;
 
-import Mingle.MingleProject.entity.Gathering;
 import Mingle.MingleProject.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,4 +38,5 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     @Query(value="select m FROM MemberEntity m WHERE m.mGGathering = :gatheringName")
     List<MemberEntity> findByGatheringMember(@Param("gatheringName") String gatheringName);
 
+    void updateMPiProfileimg(@Param("mPiProfileimg") String mPiProfileimg);
 }
