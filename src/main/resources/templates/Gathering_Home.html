@@ -138,17 +138,18 @@
         </ul>
     </div>
     <div id="g_member">
-        <h4>모임 멤버 (18)</h4>
-        <ul>
+        <h4 th:text="'모임 멤버 (' + ${headcount} + '명)'"></h4>
+        <ul th:each="member: ${GatheringMember}">
             <li class="clearfix">
-                <img class="profileimg" src="/image/Gathering_img1.png">
+                <img class="profileimg" th:src="${member.getMPiProfileimg()}">
                 <img class="leadercrown" src="/image/leadercrown.png">
                 <ul>
-                    <li><h4><a href="#">신우철</a></h4></li>
-                    <li><p>내 인생의 절반은 볼링이야.. 라고할뻔</p></li>
+                    <li><h4><a href="#" th:text="${member.getMName()}"></a></h4></li>
+                    <li><p th:text="${member.getMIntroduction()}"></p></li>
                 </ul>
             </li>
         </ul>
+<!--        멤버 수 출력이랑 리더 서브리더 크라운 달아주기 -->
 <!--        <ul>-->
 <!--            <li class="clearfix">-->
 <!--                <img class="profileimg" src="/image/Gathering_img1.png">-->

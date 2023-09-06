@@ -97,27 +97,43 @@ public class MemberService {
 
     @Transactional
     /*public void introduce(MemberDTO memberDTO)*/
-    public void introduce(String mIntroduction, String mId) {
+    public void introduce(String mIntroduction) {
 
             /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
             MemberEntity memberEntity = new MemberEntity();
             memberEntity.setMIntroduction(mIntroduction);
 
             // MemberEntity 객체를 저장
-            memberRepository.updateMIntroduction(mIntroduction, mId);
+            memberRepository.updateMIntroduction(mIntroduction);
 
     }
 
     @Transactional
     /*public void introduce(MemberDTO memberDTO)*/
-    public void proimg(String mPiProfileimg) {
+//    public void proimg(String mPiProfileimg) {
+//
+//        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+//        MemberEntity memberEntity = new MemberEntity();
+//        memberEntity.setMPiProfileimg(mPiProfileimg);
+//
+//        // MemberEntity 객체를 저장
+//        memberRepository.updateMPiProfileimg(mPiProfileimg);
+//
+//    }
 
-        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
-        MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setMPiProfileimg(mPiProfileimg);
+    public List<MemberDTO> findByGatheringMember(String gatheringName){
+        List<MemberEntity> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);
+        List<MemberDTO> gatheringMemberDTOList = new ArrayList<>();
+        for (MemberEntity gatheringMemberEntity : gatheringMemberEntityList) {
+            gatheringMemberDTOList.add(MemberDTO.toMemberDTO(gatheringMemberEntity));
+        }
 
-        // MemberEntity 객체를 저장
-        memberRepository.updateMIntroduction(mPiProfileimg);
+        return gatheringMemberDTOList;
+    }
 
+    public int findByGatheringHeadcount(String gName) {
+        int headcount = memberRepository.findByGatheringHeadcount(gName);
+
+        return headcount;
     }
 }
