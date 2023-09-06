@@ -105,13 +105,13 @@ public class MingleController {
 
     }
 
-    @PostMapping("/Mypage/mPiProfileimg")
-    public String proimg(@RequestParam("mPiProfileimg") String mPiProfileimg) {
-        System.out.println("mPiProfileimg : " + mPiProfileimg);
-        memberService.proimg(mPiProfileimg);
-        return "Mypage"; // 결과 페이지로 이동
-
-    }
+//    @PostMapping("/Mypage/mPiProfileimg")
+//    public String proimg(@RequestParam("mPiProfileimg") String mPiProfileimg) {
+//        System.out.println("mPiProfileimg : " + mPiProfileimg);
+//        memberService.proimg(mPiProfileimg);
+//        return "Mypage"; // 결과 페이지로 이동
+//
+//    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
