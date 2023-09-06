@@ -19,4 +19,6 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     // mName과 mEmail을 기반으로 mId를 조회하는 메서드
     @Query("SELECT m.mId FROM MemberEntity m WHERE m.mName = ?1 AND m.mEmail = ?2")
     String findMemberIdByNameAndEmail(String mName, String mEmail);
+
+
 }

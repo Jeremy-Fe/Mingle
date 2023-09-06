@@ -22,13 +22,12 @@ public class LoginedMainController {
     private final GatheringService gatheringService;
 
 
-//    @PostMapping("Main_LogIn/")
+//    @PostMapping("Main_LogIn/findMyMingles")
 //    public ResponseEntity<List<Gathering>> getMeetings(HttpSession session, Model model) {
 //        String userId = (String) session.getAttribute("loginId");
 //        System.out.println("getAttribute 확인 = "+userId);
-//        MemberDTO memberDTO = new MemberDTO();
-//        List<MemberDTO> memMin = memberService.findAll(String userId);
-//        List<Gathering> mingles = gatheringService.searchByMingle(memMin);
+//
+////        List<Gathering> mingles = findMatchingGatheringsByMemberId(userId);
 //        model.addAttribute("mingles",mingles);
 //
 //        System.out.println("mingles 확인 = "+mingles);
