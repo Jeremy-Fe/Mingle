@@ -1,7 +1,6 @@
 package Mingle.MingleProject.repository;
 
 import Mingle.MingleProject.entity.MemberEntity;
-import Mingle.MingleProject.entity.ProfileImg;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -33,5 +32,5 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
     @Modifying
     @Query(value = "UPDATE MemberEntity m SET m.mPiProfileimg  = :mPiProfileimg where m.mId ='himedia'")
-    void updateMIntroduction(@Param("mPiProfileimg") ProfileImg mPiProfileimg);
+    void updateMIntroduction(@Param("mPiProfileimg") String mPiProfileimg);
 }

@@ -3,7 +3,6 @@ package Mingle.MingleProject.controller;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.repository.MemberRepository;
-import Mingle.MingleProject.entity.ProfileImg;
 import Mingle.MingleProject.repository.CityRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
@@ -94,21 +93,13 @@ public class MingleController {
         memberService.introduce(mIntroduction, mId);
         return "Mypage"; // 결과 페이지로 이동
 
-        /*MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setMIntroduction(mIntroduction);*/
-        /*memberService.introduce(memberDTO);*/
-
     }
 
     @PostMapping("/Mypage/mPiProfileimg")
-    public String introduce(@RequestParam("mPiProfileimg") ProfileImg mPiProfileimg) {
+    public String introduce(@RequestParam("mPiProfileimg") String mPiProfileimg) {
         System.out.println("mPiProfileimg : " + mPiProfileimg);
         memberService.proimg(mPiProfileimg);
         return "Mypage"; // 결과 페이지로 이동
-
-        /*MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setMIntroduction(mIntroduction);*/
-        /*memberService.introduce(memberDTO);*/
 
     }
 

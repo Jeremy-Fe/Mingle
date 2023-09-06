@@ -2,7 +2,6 @@ package Mingle.MingleProject.service;
 
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.MemberEntity;
-import Mingle.MingleProject.entity.ProfileImg;
 import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
@@ -100,7 +99,7 @@ public class MemberService {
 
     @Transactional
     /*public void introduce(MemberDTO memberDTO)*/
-    public void proimg(ProfileImg mPiProfileimg) {
+    public void proimg(String mPiProfileimg) {
 
         /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
         MemberEntity memberEntity = new MemberEntity();
