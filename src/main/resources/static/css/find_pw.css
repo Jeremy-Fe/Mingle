@@ -191,6 +191,10 @@ body{
     font-size: 18px;
 }
 
+#check_bt:hover{
+    background-color: #514680;
+}
+
 /* 비밀번호 찾기 버튼 */
 #find_pw_bt{
     position: absolute;
