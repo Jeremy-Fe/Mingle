@@ -1,14 +1,10 @@
 package Mingle.MingleProject.dto;
 
-import Mingle.MingleProject.entity.CityEntity;
-import Mingle.MingleProject.entity.Interest;
 import Mingle.MingleProject.entity.MemberEntity;
-import Mingle.MingleProject.entity.ProfileImg;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 
 @Getter
@@ -30,7 +26,7 @@ public class MemberDTO {
     private String mIDistrict;
     private String mInterest;
     private String mGGathering;
-    private ProfileImg mPiProfileimg;
+    private String mPiProfileimg;
     private String mIntroduction;
     private String mMbti;
 
