@@ -264,6 +264,7 @@ body{z-index: 2}
     font-size: 30px;
     font-family: 'GmarketSans';
     white-space: pre-line;
+    /*border-style: none;*/
 }
 .view .MyPage .edit_2 {
     width: 30px;

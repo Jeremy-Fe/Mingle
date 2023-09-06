@@ -3,6 +3,7 @@ package Mingle.MingleProject.controller;
 import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.CityEntity;
+import Mingle.MingleProject.entity.ProfileImg;
 import Mingle.MingleProject.repository.CityRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
@@ -21,8 +22,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MingleController {
     //생성자 주입
-    private final MemberService memberService;
-    private final CityService cityService;
+    private final MemberService memberService ;
+    private final CityService cityService ;
 
     //기본페이지 요청메소드
     @GetMapping("/")
@@ -63,7 +64,31 @@ public class MingleController {
     public String schedule() {return "schedule";}
 
     @GetMapping("Mypage*")
-    public String Mypage() {return "Mypage";}
+    public String Mypage(){return "Mypage";}
+
+    @PostMapping("/Mypage/mIntroduction")
+    public String introduce(@RequestParam("mIntroduction") String mIntroduction, @RequestParam("mId") String mId) {
+        System.out.println("mIntroduction, mId : " + mIntroduction+" "+mId);
+        memberService.introduce(mIntroduction, mId);
+        return "Mypage"; // 결과 페이지로 이동
+
+        /*MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMIntroduction(mIntroduction);*/
+        /*memberService.introduce(memberDTO);*/
+
+    }
+
+    @PostMapping("/Mypage/mPiProfileimg")
+    public String introduce(@RequestParam("mPiProfileimg") ProfileImg mPiProfileimg) {
+        System.out.println("mPiProfileimg : " + mPiProfileimg);
+        memberService.proimg(mPiProfileimg);
+        return "Mypage"; // 결과 페이지로 이동
+
+        /*MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMIntroduction(mIntroduction);*/
+        /*memberService.introduce(memberDTO);*/
+
+    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
