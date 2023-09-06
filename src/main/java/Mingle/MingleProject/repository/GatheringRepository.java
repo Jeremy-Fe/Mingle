@@ -10,5 +10,4 @@ import java.util.List;
 public interface GatheringRepository extends JpaRepository<Gathering, Long> {
 //    List<Gathering> findByGMainsubjectContainingIgnoreCase(String keyword);
 
-    // 다른 메서드들...
 }

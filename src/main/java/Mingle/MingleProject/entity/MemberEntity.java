@@ -56,9 +56,8 @@ public class MemberEntity {
     @Column(name = "M_G_GATHERING", length = 2000)
     private String mGGathering;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "M_PI_PROFILEIMG")
-    private ProfileImg mPiProfileimg;
+    @Column(name = "M_PI_PROFILEIMG", length = 1000)
+    private String mPiProfileimg;
 
     @Column(name = "M_INTRODUCTION", length = 1000)
     private String mIntroduction;
@@ -66,8 +65,6 @@ public class MemberEntity {
     @Column(name = "M_MBTI", length = 4)
     private String mMbti;
 
-    @OneToMany(mappedBy = "piM")
-    private Set<ProfileImg> profileImgs = new LinkedHashSet<>();
 
     public static MemberEntity toMemberEntity(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();

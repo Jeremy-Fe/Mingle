@@ -4,6 +4,8 @@ import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -15,6 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+
     public void save(MemberDTO memberDTO) {
         // 1. dto -> entity 변환
         // 2. repository의 save 메소드 호출
@@ -66,4 +69,16 @@ public class MemberService {
         }
         return mId;
     }
+
+    public boolean emailExistsInDatabase(String mEmail, String mName) {
+        // MemberEntity 클래스는 데이터베이스 테이블과 매핑되는 엔티티 클래스입니다.
+        // findByMEmailAndMName 메서드는 JpaRepository에서 자동 생성됩니다.
+        // 이 메서드를 사용하여 이메일과 mName으로 레코드를 조회합니다.
+        List<MemberEntity> member = memberRepository.findMembersByEmailAndName(mEmail, mName);
+
+        // member가 존재하면(true) 이메일과 mName으로 레코드가 일치하는 것이고,
+        // member가 존재하지 않으면(false) 일치하지 않는 것입니다.
+        return !member.isEmpty();
+    }
+
 }

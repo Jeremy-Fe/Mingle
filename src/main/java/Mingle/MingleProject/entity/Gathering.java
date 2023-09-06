@@ -45,6 +45,9 @@ public class Gathering {
     private String gSubleader3;
     @Column(name = "G_PRIVATE", nullable = false)
     private Long gPrivate;
+    @Column(name = "G_COVERIMG", length = 300)
+    private String gCoverimg;
+
     public static Gathering gathering(GatheringDTO gatheringDTO) {
         Gathering gathering = new Gathering();
         gathering.setId(gatheringDTO.getId());
@@ -61,6 +64,7 @@ public class Gathering {
         gathering.setGSubleader2(gatheringDTO.getGSubleader2());
         gathering.setGSubleader3(gatheringDTO.getGSubleader3());
         gathering.setGPrivate(gatheringDTO.getGPrivate());
+        gathering.setGCoverimg((gatheringDTO.getGCoverimg()));
         return gathering;
     }
 }

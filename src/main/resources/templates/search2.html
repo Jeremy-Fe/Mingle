@@ -8,7 +8,15 @@
 
     <!--css-->
     <link href="/CSS/search2.css" type="text/css" rel="stylesheet">
-      <!--font-->
+
+    <!-- include jQuery :) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <!--font-->
     <!--font-family: 'GmarketSans';-->
     <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
     <!--font-family: 'Orbitron', sans-serif;-->
@@ -19,7 +27,7 @@
     <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
 </head>
 <body>
-  <div id="wrap" class="clearfix">
+
       <div th:replace="/defaultUI.html"></div>
             <!-- 바꿔야하는 부분 -->
             <div class="view">
@@ -27,11 +35,12 @@
               <!-- 검색창 -->
               <div id="search">
                 <ul>
-                  <li>
-                    <img src="image/search_지역.png"> 
-                    <p>구로구 구로동</p>
-                    <a href="#"><img src="image/오른쪽화살표.png"></a>
-                  </li>
+                    <a id="regi" href="/selectRegi" rel="modal:open" style="display: block">
+                    <img src="image/search_지역.png">
+                    <p id="selectedRegi">구로구 구로동</p>
+<!--                    <p  th:unless="${selectedRegion == null}" th:text="${selectedRegion}"></p>-->
+                    <img src="image/오른쪽화살표.png">
+                   </a>
                   <input type="search" name="" id="Stext">
                   <img id="search_I"  class="search" src="image/search_검색버튼.png"><a  href="#"></a></img>
                 </ul>
@@ -54,7 +63,7 @@
                 <!-- / 검색 모임 헤더 -->
 
                 <div id="inMingle" style="overflow:scroll;">
-                  <div id="mingle">
+                  <div class="mingle">
                     <ul>
                         <img src="image/Main_Login_내게시물.png">
                         <li id="mTitle"><h4>모임명</h4> <img src=""></li>
@@ -65,15 +74,15 @@
                     <p id="mIntd">모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 모임 소개글 
                     </p>
                   </div>
-                  <div id="mingle"></div>
-                  <div id="mingle"></div>
-                  <div id="mingle"></div>
-                  <div id="mingle"></div>
-                  <div id="mingle"></div>
-                  <div id="mingle"></div>
-                  <div id="mingle"></div>
-                  <div id="mingle"></div>
-                  <div id="mingle"></div>
+                  <div class="mingle"></div>
+                  <div class="mingle"></div>
+                  <div class="mingle"></div>
+                  <div class="mingle"></div>
+                  <div class="mingle"></div>
+                  <div class="mingle"></div>
+                  <div class="mingle"></div>
+                  <div class="mingle"></div>
+                  <div class="mingle"></div>
                 </div>
               </section>
               <!-- / 관심사 -->
@@ -89,13 +98,13 @@
 <script>
 // 검색창
 $("#Stext").focus(function(){
-  $("#search>ul>li").hide();
+  $("#regi").hide();
 	$("#Stext").animate({
 			"width": "1290px"
 	}, 300, function() {});
 });
 $("#Stext").blur(function(){
-  $("#search>ul>li").show(150);
+  $("#regi").show(150);
 	$("#Stext").animate({
 			"width": "970px"
 	}, 100, function() {});
