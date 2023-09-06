@@ -17,12 +17,12 @@
             <button type="button" class="pw_bt" onclick="location.href='find_pw'">비밀번호 찾기</button>
             <form method="Post" name="form">
                 <div class="textFiled">
-                    <div class="drop_member_id">
-                        <input type="text" name="member_id" class="member_id" placeholder="아이디" maxlength="16" />
+                    <div class="drop_mId">
+                        <input type="text" name="mId" class="mId" placeholder="아이디" maxlength="16" />
                         <img src="image/login_id.png">
                     </div> <!-- name -->
-                    <div class="drop_member_email">
-                        <input type="email" name="member_email" class="member_email" placeholder="이메일" maxlength="25" />
+                    <div class="drop_mEmail">
+                        <input type="email" name="mEmail" class="mEmail" placeholder="이메일" maxlength="25" />
                         <img src="image/login_email.png">
                     </div> <!-- email -->
                     <input type="text" name="member_check" class="member_check" placeholder="인증번호 6자리 숫자 입력" maxlength="6" />
@@ -46,7 +46,88 @@
     </section>
 </div><!-- wrap -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // 이메일 인증번호
+    document.getElementById("check_bt").addEventListener("click", function () {
+        // 이메일 주소를 가져옵니다.
+        const mEmail = document.querySelector(".mId").value;
+        const mName = document.querySelector(".mEmail").value;
+
+        // 서버로 이메일과 이름을 전송하여 확인 요청
+        fetch("/find_id/checkMember?mEmail=" + mEmail + "&mName=" + mName, {
+            method: "GET"
+        })
+            .then(response => response.text())
+            .then(data => {
+                if (data === "recordExists") {
+                    // 일치하는 레코드가 있을 경우에만 인증 코드를 요청
+                    sendVerificationCode(mEmail);
+                } else {
+                    alert("이름과 이메일이 일치하는지 확인하세요.");
+                }
+            })
+            .catch(error => {
+                console.error("레코드 검색 오류:", error);
+                alert("레코드를 검색하는 중 오류가 발생했습니다.");
+            });
+    });
+
+    function sendVerificationCode(mEmail) {
+        // 이메일 주소를 서버로 보내 인증 코드를 요청
+        fetch("/find_id/mailConfirm?mEmail=" + mEmail, {
+            method: "POST"
+        })
+            .then(response => response.text())
+            .then(data => {
+                alert("인증 코드가 이메일로 전송되었습니다.");
+                console.log("data : " + data);
+                sessionStorage.setItem("ePw", data);
+            })
+            .catch(error => {
+                console.error("인증 코드 전송 오류:", error);
+                alert("인증 코드를 전송하는 중 오류가 발생했습니다.");
+            });
+    }
+
+    document.querySelector('form').addEventListener('submit', function(event) {
+        // 기본 제출 동작을 방지합니다.
+        event.preventDefault();
+
+        const ePw = sessionStorage.getItem("ePw");
+        const member_check = document.getElementById("member_check").value;
+        console.log(ePw);
+        if (ePw !== member_check) {
+            $("#member_check").css({border:"2px solid #FF7171"});
+            alert("인증번호가 일치 하지 않습니다.");
+        } else  {
+            $("#member_check").css({border:"2px solid #B1B2FF"});
+            alert("인증번호 확인이 완료되었습니다.")
+
+            const form = document.querySelector('form'); // 양식 요소 가져오기
+            // mName과 mEmail 값을 가져옵니다.
+            const mName = document.querySelector(".mName").value;
+            const mEmail = document.querySelector(".mEmail").value;
+
+            // Ajax 요청을 사용하여 mName과 mEmail을 서버로 보냅니다.
+            $.ajax({
+                url: "/find_id/findMId",
+                type: "POST",
+                data: { mName: mName, mEmail: mEmail },
+                success: function(response) {
+                    // 서버로부터 받은 mId를 처리합니다.
+                    alert(`회원 아이디: ${response}`);
+                },
+                error: function() {
+                    alert("회원 아이디를 찾는 중 오류가 발생했습니다.");
+                }
+            });
+            form.submit(); // 양식 제출
+        }
+    });
+
+
+</script>
 
 </body>
 </html>
