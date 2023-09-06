@@ -42,6 +42,8 @@ public class GatheringService {
             return null;
         }
     }
-
+    public List<Gathering> findMyMingles(String userId) {
+        return gatheringRepository.findMatchingGatheringsByMemberId(userId);
+    }
 
 }
