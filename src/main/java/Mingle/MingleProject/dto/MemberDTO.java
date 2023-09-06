@@ -26,7 +26,7 @@ public class MemberDTO {
     private String mIDistrict;
     private String mInterest;
     private String mGGathering;
-    private String mPiProfileimg;
+    private byte[] mProfileimg;
     private String mIntroduction;
     private String mMbti;
 
@@ -46,7 +46,7 @@ public class MemberDTO {
         memberDTO.setMIDistrict(memberEntity.getMIDistrict());
         memberDTO.setMInterest(memberEntity.getMInterest());
         memberDTO.setMGGathering(memberEntity.getMGGathering());
-        memberDTO.setMPiProfileimg(memberEntity.getMPiProfileimg());
+        memberDTO.setMProfileimg(memberEntity.getMProfileimg());
         memberDTO.setMIntroduction(memberEntity.getMIntroduction());
         memberDTO.setMMbti(memberEntity.getMMbti());
         return memberDTO;

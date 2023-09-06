@@ -180,8 +180,12 @@
 }
 .view > #g_contents > #g_member > ul > li > ul > li >  p {
     float: left;
+    width: 320px;
     margin-top: 10px;
     color: #7A7A7A;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .g_news_post_box {
