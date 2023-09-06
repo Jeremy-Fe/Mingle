@@ -3,6 +3,7 @@ package Mingle.MingleProject.controller;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.repository.MemberRepository;
+import Mingle.MingleProject.repository.CityRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
@@ -22,8 +23,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MingleController {
     //생성자 주입
-    private final MemberService memberService;
-    private final CityService cityService;
+    private final MemberService memberService ;
+    private final CityService cityService ;
 
     // 회원가입 메일 서비스
     @Autowired
@@ -85,7 +86,23 @@ public class MingleController {
     public String schedule() {return "schedule";}
 
     @GetMapping("Mypage*")
-    public String Mypage() {return "Mypage";}
+    public String Mypage(){return "Mypage";}
+
+    @PostMapping("/Mypage/mIntroduction")
+    public String introduce(@RequestParam("mIntroduction") String mIntroduction, @RequestParam("mId") String mId) {
+        System.out.println("mIntroduction, mId : " + mIntroduction+" "+mId);
+        memberService.introduce(mIntroduction, mId);
+        return "Mypage"; // 결과 페이지로 이동
+
+    }
+
+    @PostMapping("/Mypage/mPiProfileimg")
+    public String introduce(@RequestParam("mPiProfileimg") String mPiProfileimg) {
+        System.out.println("mPiProfileimg : " + mPiProfileimg);
+        memberService.proimg(mPiProfileimg);
+        return "Mypage"; // 결과 페이지로 이동
+
+    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
