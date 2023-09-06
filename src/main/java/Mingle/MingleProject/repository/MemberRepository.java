@@ -26,11 +26,11 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     /*@Query(value = "UPDATE MEMBER SET M_INTRODUCTION = 'test' WHERE M_ID = 'himedia1'", nativeQuery = true)*/
 
     @Modifying
-    @Query(value = "UPDATE MemberEntity m SET m.mIntroduction  = :mIntroduction where m.mId =:mId")
-    void updateMIntroduction(@Param("mIntroduction") String mIntroduction, @Param("mId") String mId);
+    @Query(value = "UPDATE MemberEntity m SET m.mIntroduction  = :mIntroduction where m.mId ='himedia'")
+    void updateMIntroduction(@Param("mIntroduction") String mIntroduction);
 
 
     @Modifying
     @Query(value = "UPDATE MemberEntity m SET m.mPiProfileimg  = :mPiProfileimg where m.mId ='himedia'")
-    void updateMIntroduction(@Param("mPiProfileimg") String mPiProfileimg);
+    void updateMPiProfileimg(@Param("mPiProfileimg") String mPiProfileimg);
 }

@@ -88,15 +88,15 @@ public class MingleController {
     public String Mypage(){return "Mypage";}
 
     @PostMapping("/Mypage/mIntroduction")
-    public String introduce(@RequestParam("mIntroduction") String mIntroduction, @RequestParam("mId") String mId) {
-        System.out.println("mIntroduction, mId : " + mIntroduction+" "+mId);
-        memberService.introduce(mIntroduction, mId);
+    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
+        System.out.println("mIntroduction : " + mIntroduction);
+        memberService.introduce(mIntroduction);
         return "Mypage"; // 결과 페이지로 이동
 
     }
 
     @PostMapping("/Mypage/mPiProfileimg")
-    public String introduce(@RequestParam("mPiProfileimg") String mPiProfileimg) {
+    public String proimg(@RequestParam("mPiProfileimg") String mPiProfileimg) {
         System.out.println("mPiProfileimg : " + mPiProfileimg);
         memberService.proimg(mPiProfileimg);
         return "Mypage"; // 결과 페이지로 이동

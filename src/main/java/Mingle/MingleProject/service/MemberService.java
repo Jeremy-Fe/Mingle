@@ -86,14 +86,14 @@ public class MemberService {
 
     @Transactional
     /*public void introduce(MemberDTO memberDTO)*/
-    public void introduce(String mIntroduction, String mId) {
+    public void introduce(String mIntroduction) {
 
             /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
             MemberEntity memberEntity = new MemberEntity();
             memberEntity.setMIntroduction(mIntroduction);
 
             // MemberEntity 객체를 저장
-            memberRepository.updateMIntroduction(mIntroduction, mId);
+            memberRepository.updateMIntroduction(mIntroduction);
 
     }
 
@@ -106,7 +106,7 @@ public class MemberService {
         memberEntity.setMPiProfileimg(mPiProfileimg);
 
         // MemberEntity 객체를 저장
-        memberRepository.updateMIntroduction(mPiProfileimg);
+        memberRepository.updateMPiProfileimg(mPiProfileimg);
 
     }
 }
