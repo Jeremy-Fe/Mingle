@@ -30,7 +30,8 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 
-<div th:replace="/Gathering.html"></div>
+<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id})}"></div>
+
 <!-- 소개 -->
 <div id="g_contents">
     <div id="g_introduction">

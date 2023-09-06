@@ -10,9 +10,8 @@ import java.util.List;
 
 public interface GatheringRepository extends JpaRepository<Gathering, Long> {
 
-    List<Gathering> findBygNameContainingIgnoreCase(String userId);
 
-    @Query("SELECT g FROM Gathering g WHERE g.gName IN (SELECT m.mGGathering FROM MemberEntity m WHERE m.mId = :mId)")
-    List<Gathering> findMatchingGatheringsByMemberId(@Param("mId") String memberId);
+    @Query("SELECT g FROM Gathering g WHERE g.gName IN (SELECT m.mGGathering FROM MemberEntity m WHERE m.mId = ?1)")
+    List<Gathering> findMatchingGatheringsByMemberId(String userId);
 
 }

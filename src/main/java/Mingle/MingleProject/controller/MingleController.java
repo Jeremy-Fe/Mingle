@@ -8,7 +8,6 @@ import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -42,7 +41,7 @@ public class MingleController {
         List<MemberDTO> memberDTOList = memberService.findAll();
 //        어떠한 html로 가져갈 데이터가 있다면 model사용
         model.addAttribute("memberList", memberDTOList);
-        System.out.println("model = " + model);
+//        System.out.println("model = " + model);
         return "login";
     }
 
@@ -161,8 +160,6 @@ public class MingleController {
         if(loginResult != null) {
             //login 성공
             session.setAttribute("loginId", loginResult.getMId());
-            System.out.println(loginResult.getMId());
-            System.out.println(session.getAttribute("loginId"));
             return "Main_LogIn";
         }else {
             //login 실패

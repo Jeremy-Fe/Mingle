@@ -21,18 +21,19 @@ public class LoginedMainController {
     private final MemberService memberService;
     private final GatheringService gatheringService;
 
+//    @CrossOrigin
+    @GetMapping("Main_LogIn/findMyMingles")
+    public ResponseEntity<List<Gathering>> getMeetings(HttpSession session, Model model) {
+        String userId = (String) session.getAttribute("loginId");
+        System.out.println("getAttribute 확인 = "+userId);
 
-//    @PostMapping("Main_LogIn/findMyMingles")
-//    public ResponseEntity<List<Gathering>> getMeetings(HttpSession session, Model model) {
-//        String userId = (String) session.getAttribute("loginId");
-//        System.out.println("getAttribute 확인 = "+userId);
-//
-////        List<Gathering> mingles = findMatchingGatheringsByMemberId(userId);
-//        model.addAttribute("mingles",mingles);
-//
-//        System.out.println("mingles 확인 = "+mingles);
-//        return ResponseEntity.ok(mingles);
-//    }
+        List<Gathering> mingles = gatheringService.findMyMingles(userId);
+
+        model.addAttribute("mingles",mingles);
+        System.out.println("mingles 확인 = "+ mingles);
+
+        return ResponseEntity.ok(mingles);
+    }
 }
 
 
