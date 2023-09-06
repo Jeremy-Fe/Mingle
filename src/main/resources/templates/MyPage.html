@@ -440,7 +440,51 @@
     </section>
 
 </div>
+
         <script>
+
+            $(document).ready(function () {
+                $("#editex").click(function (event) {
+                    event.preventDefault();
+                    // 파일 업로드 input을 클릭합니다.
+                    $("#fileInput").click();
+
+                });
+                $("#fileInput").change(function () {
+                    var fileInput = $("#fileInput")[0].files[0]; // 파일 인풋에서 선택한 파일을 가져옵니다.
+
+                    // 파일을 선택한 후, 해당 파일의 경로를 img 요소의 src 속성에 설정합니다.
+                    var fileURL = URL.createObjectURL(fileInput);
+                    $(".proimg").attr("src", fileURL);
+                });
+
+            $(document).ready(function () {
+                $(".edit_2_link").click(function (event) {
+                    event.preventDefault();
+                    var newText = $(".coment").text();
+                    console.log("내용확인  : " + newText);
+
+                    $.ajax({
+                        url: '/Mypage/mIntroduction', // 실제 서버 요청 경로로 변경
+                        type: 'POST', // 또는 'PUT', 'PATCH' 등 HTTP 메서드 선택
+                        data: { mIntroduction : newText }, // 수정된 텍스트를 데이터로 전송
+                        success: function (data) {
+                            // 서버에서 응답을 처리하는 코드 (예: 성공 메시지 표시)
+                            alert('수정된 내용이 저장되었습니다.');
+
+                        },
+                        error: function () {
+                            // 오류 발생 시 처리하는 코드 (예: 오류 메시지 표시)
+                            alert('내용을 저장하는 중 오류가 발생했습니다.');
+
+                        }
+                    });
+                    alert('수정 완료!');
+
+                });
+            });
+        </script>
+        <!--<script>
             $(document).ready(function () {
                 $("#editex").click(function (event) {
                     event.preventDefault();
@@ -482,7 +526,7 @@
                     });
                 });
              });
-        </script>
+        </script>-->
 
 <script>
 
