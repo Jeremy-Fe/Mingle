@@ -181,7 +181,7 @@
         };
 
         interestButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const interest = this.value;
                 const imageFileName = interestImages[interest];
                 selectedInterestImage.src = imageFileName;
@@ -204,74 +204,91 @@
             subModal.style.display = 'none';
         }
 
-        // 추가된 부분: 새로운 모달 창과 닫기 버튼 요소를 가져옵니다.
-        const subModal = document.getElementById('subModalWrap');
-        const subCloseBtn = document.getElementById('subCloseBtn');
+        // 관심사 이미지를 클릭했을 때 모달 창 열기
+        function openModal() {
+            var modal = document.getElementById("modalWrap");
+            modal.style.display = "block";
+        }
 
-        // 새로운 모달 창의 닫기 버튼에 이벤트를 추가합니다.
-        subCloseBtn.onclick = closeSubModal;
-    });
+        // 모달 창 닫기 버튼 클릭 시
+        document.getElementById("closeBtn").onclick = function () {
+            var modal = document.getElementById("modalWrap");
+            modal.style.display = "none";
+        }
+    })
 
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const interestInput = document.querySelector('.I_interest');
-        const subModal = document.getElementById('subModalWrap');
-        const subCloseBtn = document.getElementById('subCloseBtn');
-
-        // 세부 관심사 모달을 열기 위한 이벤트 핸들러
-        interestInput.addEventListener('focus', function() {
-            subModal.style.display = 'block';
-        });
-
-        // 새로운 모달 창을 닫기 위한 함수
-        subCloseBtn.addEventListener('click', function() {
-            subModal.style.display = 'none';
-        });
-
-        // 세부 관심사 선택이 완료되면 이벤트 핸들러를 추가하여 선택한 값을 필드에 표시합니다.
-        const subInterestButtons = document.querySelectorAll('#subModalContent p');
-        subInterestButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                selectedSubInterest = this.textContent; // 변수 할당
-                interestInput.value = selectedSubInterest;
-                subModal.style.display = 'none';
-            });
-        });
-    });
-
-    // 관심사 데이터를 가져오고 새 모달에 표시하는 함수
+</script>
+<script>
     function openSubModal(interest) {
         const subModal = document.getElementById('subModalWrap');
         const selectedInterestElement = document.getElementById('selectedInterest');
-        selectedInterestElement.textContent = interest;
+        selectedInterestElement.textContent = interest; // 선택된 관심사를 업데이트
+        subModal.style.display = 'block';
 
-        // 서버에서 관심사 데이터를 가져오기 위한 AJAX 요청
+        // 선택한 관심사를 백엔드로 전송하고 세부 관심사를 가져옵니다.
+        loadSubInterests(interest);
+    }
+
+    const interestButtons2 = document.querySelectorAll('#modalBody > button[id^="btn"]');
+
+    interestButtons2.forEach(button => {
+        button.addEventListener('click', function () {
+            const interest = this.value;
+            console.log(interest);
+            loadSubInterests(interest); // 클릭한 관심사로 세부 관심사를 가져오는 함수 호출
+        });
+    });
+
+    function loadSubInterests(interest) {
         $.ajax({
-            url: '/mainSubjects',
+            url: '/interests/subInterests/' + interest,
             type: 'GET',
-            success: function (data) {
-                const subInterestList = document.getElementById('subInterestList');
-                subInterestList.innerHTML = ''; // 기존 목록 지우기
-
-                // 새 모달에 가져온 관심사 데이터 추가
-                data.forEach(function (interest) {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = interest;
-                    subInterestList.appendChild(listItem);
-                });
-
-                subModal.style.display = 'block';
+            success: function(data) {
+                displaySubInterests(data);
+                alert('제발 뜨게 해주세요');
             },
-            error: function (error) {
-                console.error('관심사 데이터 가져오기 오류: ' + error);
+            error: function(xhr, status, error) {
+                console.error('조 트 같은 에러:', status, error);
             }
         });
     }
 
+    function displaySubInterests(subInterests) {
+        var subInterestList = document.getElementById("subInterestList");
+        subInterestList.innerHTML = ""; // 기존 목록 초기화
 
+        subInterests.forEach(function(subInterest) {
+            var li = document.createElement("li");
+            li.textContent = subInterest;
+            subInterestList.appendChild(li);
 
+            // 세부 관심사를 선택했을 때 해당 세부 관심사를 입력 필드에 추가하는 코드
+            li.onclick = function() {
+                var selectedSubInterest = li.textContent;
+                var inputInterest = document.getElementById("I_INTEREST");
+                inputInterest.value = selectedSubInterest;
 
-        // 콤보박스
+                // 세부 관심사 모달 창 닫기
+                var subModal = document.getElementById("subModalWrap");
+                subModal.style.display = "none";
+            };
+        });
+
+        // 세부 관심사 모달 창 열기
+        var subModal = document.getElementById("subModalWrap");
+        subModal.style.display = "block";
+    }
+
+    // 모달 창에서 세부 관심사 선택 시
+    document.getElementById("subCloseBtn").onclick = function() {
+        var subModal = document.getElementById("subModalWrap");
+        subModal.style.display = "none";
+    }
+</script>
+</script>
+
+<script>
+    // 콤보박스
     $(document).ready(function() {
         var cityToDistrictMap = {};
 

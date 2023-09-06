@@ -10,6 +10,7 @@ import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

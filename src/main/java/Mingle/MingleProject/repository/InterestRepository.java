@@ -13,4 +13,5 @@ public interface InterestRepository extends JpaRepository<Interest, Long> {
 
     @Query("SELECT DISTINCT i.iSubject FROM Interest i WHERE i.iMainsubject = :mainSubject")
     List<String> findSubInterestsByMainSubject(@Param("mainSubject") String mainSubject);
+
 }
