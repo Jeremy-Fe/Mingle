@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedHashSet;
@@ -20,6 +21,9 @@ import java.util.Set;
 @Table(name = "MEMBER")
 public class MemberEntity {
     @Id
+    /*@GeneratedValue(strategy = GenerationType.IDENTITY) // 또는 다른 적절한 전략 선택
+    private Long id; // ID 필드*/
+
     @Column(name = "M_ID", nullable = false, length = 50)
     private String mId;
 
@@ -56,8 +60,8 @@ public class MemberEntity {
     @Column(name = "M_G_GATHERING", length = 2000)
     private String mGGathering;
 
-    @Column(name = "M_PI_PROFILEIMG", length = 1000)
-    private String mPiProfileimg;
+    @Lob
+    private byte[] mProfileimg;
 
     @Column(name = "M_INTRODUCTION", length = 1000)
     private String mIntroduction;
@@ -80,7 +84,7 @@ public class MemberEntity {
         memberEntity.setMIDistrict(memberDTO.getMIDistrict());
         memberEntity.setMInterest(memberDTO.getMInterest());
         memberEntity.setMGGathering(memberDTO.getMGGathering());
-        memberEntity.setMPiProfileimg(memberDTO.getMPiProfileimg());
+        memberEntity.setMProfileimg(memberDTO.getMProfileimg());
         memberEntity.setMIntroduction(memberDTO.getMIntroduction());
         memberEntity.setMMbti(memberDTO.getMMbti());
         return memberEntity;

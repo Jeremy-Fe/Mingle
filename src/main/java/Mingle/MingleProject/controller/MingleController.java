@@ -1,7 +1,6 @@
 package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.entity.CityEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.entity.Interest;
 import Mingle.MingleProject.repository.InterestRepository;
@@ -22,8 +21,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MingleController {
     //생성자 주입
-    private final MemberService memberService;
-    private final CityService cityService;
+    private final MemberService memberService ;
+    private final CityService cityService ;
 
     // 회원가입 메일 서비스
     @Autowired
@@ -60,6 +59,18 @@ public class MingleController {
         }
     }
 
+    @GetMapping("/find_pw/checkMember")
+    @ResponseBody
+    public String checkMemberPw(@RequestParam("mEmail") String mEmail, @RequestParam("mId") String mId) {
+        // 여기에서 데이터베이스에서 이메일과 mName으로 검색하여 일치하는 레코드가 있는지 확인
+        boolean existsInDatabase = memberService.emailExistsInDatabasePw(mEmail, mId);
+        if (existsInDatabase ) {
+            return "recordExists";
+        } else {
+            return "recordNotFound";
+        }
+    }
+
     @GetMapping("find_pw*")
     public String find_pw() { return "find_pw"; }
 
@@ -85,7 +96,23 @@ public class MingleController {
     public String schedule() {return "schedule";}
 
     @GetMapping("Mypage*")
-    public String Mypage() {return "Mypage";}
+    public String Mypage(){return "Mypage";}
+
+    @PostMapping("/Mypage/mIntroduction")
+    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
+        System.out.println("mIntroduction : " + mIntroduction);
+        memberService.introduce(mIntroduction);
+        return "Mypage"; // 결과 페이지로 이동
+
+    }
+
+//    @PostMapping("/Mypage/mPiProfileimg")
+//    public String proimg(@RequestParam("mPiProfileimg") String mPiProfileimg) {
+//        System.out.println("mPiProfileimg : " + mPiProfileimg);
+//        memberService.proimg(mPiProfileimg);
+//        return "Mypage"; // 결과 페이지로 이동
+//
+//    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
@@ -192,6 +219,21 @@ public class MingleController {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
     }
+
+    @PostMapping("/find_id/findMPw")
+    public ResponseEntity<String> findMemberPw(@RequestParam String mId, @RequestParam String mEmail) {
+        // mId mEmail을 기반으로 mPw를 조회하는 로직을 구현하세요.
+        // 실제로는 데이터베이스에서 해당 회원을 찾고 mId를 반환합니다.
+
+        String memberPw = memberRepository.findMemberPwdByIdAndEmail(mId, mEmail); // 회원 아이디를 조회하는 메서드 구현 필요
+
+        if (memberPw != null) {
+            return ResponseEntity.ok(memberPw);
+        } else {
+            return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
+        }
+    }
+
 
 }
 

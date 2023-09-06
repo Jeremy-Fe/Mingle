@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -81,4 +82,58 @@ public class MemberService {
         return !member.isEmpty();
     }
 
+    public boolean emailExistsInDatabasePw(String mEmail, String mId) {
+        // MemberEntity 클래스는 데이터베이스 테이블과 매핑되는 엔티티 클래스입니다.
+        // findByMEmailAndMName 메서드는 JpaRepository에서 자동 생성됩니다.
+        // 이 메서드를 사용하여 이메일과 mName으로 레코드를 조회합니다.
+        List<MemberEntity> member = memberRepository.findMembersByEmailAndId(mEmail, mId);
+
+        // member가 존재하면(true) 이메일과 mName으로 레코드가 일치하는 것이고,
+        // member가 존재하지 않으면(false) 일치하지 않는 것입니다.
+        return !member.isEmpty();
+    }
+
+
+
+    @Transactional
+    /*public void introduce(MemberDTO memberDTO)*/
+    public void introduce(String mIntroduction) {
+
+            /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+            MemberEntity memberEntity = new MemberEntity();
+            memberEntity.setMIntroduction(mIntroduction);
+
+            // MemberEntity 객체를 저장
+            memberRepository.updateMIntroduction(mIntroduction);
+
+    }
+
+    @Transactional
+    /*public void introduce(MemberDTO memberDTO)*/
+//    public void proimg(String mPiProfileimg) {
+//
+//        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+//        MemberEntity memberEntity = new MemberEntity();
+//        memberEntity.setMPiProfileimg(mPiProfileimg);
+//
+//        // MemberEntity 객체를 저장
+//        memberRepository.updateMPiProfileimg(mPiProfileimg);
+//
+//    }
+
+    public List<MemberDTO> findByGatheringMember(String gatheringName){
+        List<MemberEntity> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);
+        List<MemberDTO> gatheringMemberDTOList = new ArrayList<>();
+        for (MemberEntity gatheringMemberEntity : gatheringMemberEntityList) {
+            gatheringMemberDTOList.add(MemberDTO.toMemberDTO(gatheringMemberEntity));
+        }
+
+        return gatheringMemberDTOList;
+    }
+
+    public int findByGatheringHeadcount(String gName) {
+        int headcount = memberRepository.findByGatheringHeadcount(gName);
+
+        return headcount;
+    }
 }

@@ -2,6 +2,9 @@ package Mingle.MingleProject.repository;
 
 import Mingle.MingleProject.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -18,4 +21,31 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     // mName과 mEmail을 기반으로 mId를 조회하는 메서드
     @Query("SELECT m.mId FROM MemberEntity m WHERE m.mName = ?1 AND m.mEmail = ?2")
     String findMemberIdByNameAndEmail(String mName, String mEmail);
+
+    // 사용자 정의 JPQL 쿼리를 사용하여 mEmail과 mId 같은 레코드를 조회
+    @Query("SELECT m FROM MemberEntity m WHERE m.mEmail = ?1 AND m.mId = ?2")
+    List<MemberEntity> findMembersByEmailAndId(String mEmail, String mId);
+
+    // mId와 mEmail을 기반으로 mPwd를 조회하는 메서드
+    @Query("SELECT m.mPwd FROM MemberEntity m WHERE m.mId = ?1 AND m.mEmail = ?2")
+    String findMemberPwdByIdAndEmail(String mId, String mEmail);
+
+    // 모임에 포함된 멤버를 조회하는 메서드
+    @Query(value="select m FROM MemberEntity m WHERE m.mGGathering like %:gatheringName%")
+    List<MemberEntity> findByGatheringMember(@Param("gatheringName") String gatheringName);
+
+    //UPDATE MEMBER SET M_INTRODUCTION = 'test' WHERE M_ID = 'himedia1'
+    /*@Query(value = "UPDATE MEMBER SET M_INTRODUCTION = 'test' WHERE M_ID = 'himedia1'", nativeQuery = true)*/
+
+
+    @Modifying
+    @Query(value = "UPDATE MemberEntity m SET m.mIntroduction  = :mIntroduction where m.mId ='himedia'")
+    void updateMIntroduction(@Param("mIntroduction") String mIntroduction);
+
+//    @Modifying
+//    @Query(value = "UPDATE MemberEntity m SET m.mPiProfileimg  = :mPiProfileimg where m.mId ='himedia'")
+//    void updateMPiProfileimg(@Param("mPiProfileimg") String mPiProfileimg);
+
+    @Query(value = "select COUNT(*) from MemberEntity m where m.mGGathering like %:gName%")
+    int findByGatheringHeadcount(@Param("gName") String gName);
 }

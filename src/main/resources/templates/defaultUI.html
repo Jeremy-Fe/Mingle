@@ -12,9 +12,13 @@
     <div id="wrap" class="clearfix">
         <header id="header" class="clearfix">
             <h1 class="logo">
-                <a href="/Main_UnLogIn">
+                <a th:if="${session.loginId == null}" href="/Main_UnLogIn">
                     <img alt="로고_L" src="/image/로고_L.png">
                 </a>
+                <a th:unless="${session.loginId == null}" href="/Main_LogIn">
+                    <img alt="로고_L" src="/image/로고_L.png">
+                </a>
+
             </h1>
             <nav class="menu">
                 <ul>
