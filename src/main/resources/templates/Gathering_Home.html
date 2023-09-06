@@ -138,7 +138,7 @@
         </ul>
     </div>
     <div id="g_member">
-        <h4>모임 멤버 (18)</h4>
+        <h4 th:text="'모임 멤버 (' + ${headcount} + '명)'"></h4>
         <ul th:each="member: ${GatheringMember}">
             <li class="clearfix">
                 <img class="profileimg" th:src="${member.getMPiProfileimg()}">

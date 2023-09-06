@@ -43,13 +43,5 @@ public class GatheringService {
         }
     }
 
-    public List<MemberDTO> findByGatheringMember(String gatheringName){
-        List<MemberEntity> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);
-        List<MemberDTO> gatheringMemberDTOList = new ArrayList<>();
-        for (MemberEntity gatheringMemberEntity : gatheringMemberEntityList) {
-            gatheringMemberDTOList.add(MemberDTO.toMemberDTO(gatheringMemberEntity));
-        }
 
-        return gatheringMemberDTOList;
-    }
 }
