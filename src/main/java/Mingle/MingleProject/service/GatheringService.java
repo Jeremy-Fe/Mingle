@@ -1,12 +1,15 @@
 package Mingle.MingleProject.service;
 
 import Mingle.MingleProject.dto.GatheringDTO;
+import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.Gathering;
+import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.GatheringRepository;
 import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,11 +43,11 @@ public class GatheringService {
         }
     }
 
-    public List<GatheringDTO> findByGatheringMember(String gatheringName){
-        List<Gathering> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);
-        List<GatheringDTO> gatheringMemberDTOList = new ArrayList<>();
-        for (Gathering gatheringMemberEntity : gatheringMemberEntityList) {
-            gatheringMemberDTOList.add(GatheringDTO.gatheringDTO((gatheringMemberEntity)));
+    public List<MemberDTO> findByGatheringMember(String gatheringName){
+        List<MemberEntity> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);
+        List<MemberDTO> gatheringMemberDTOList = new ArrayList<>();
+        for (MemberEntity gatheringMemberEntity : gatheringMemberEntityList) {
+            gatheringMemberDTOList.add(MemberDTO.toMemberDTO(gatheringMemberEntity));
         }
 
         return gatheringMemberDTOList;

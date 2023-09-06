@@ -1,8 +1,11 @@
 package Mingle.MingleProject.repository;
 
+import Mingle.MingleProject.entity.Gathering;
 import Mingle.MingleProject.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +35,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     void updateMIntroduction(@Param("mPiProfileimg") String mPiProfileimg);
 
     // 모임에 포함된 멤버를 조회하는 메서드
-    @Query(value="select m.mId, m.mPiProfileimg, m.mIntroduction FROM MemberEntity m WHERE m.mGGathering = :gatheringName")
-    List<Gathering> findByGatheringMember(@Param("gatheringName") String gatheringName);
+    @Query(value="select m FROM MemberEntity m WHERE m.mGGathering = :gatheringName")
+    List<MemberEntity> findByGatheringMember(@Param("gatheringName") String gatheringName);
 
 }

@@ -1,6 +1,7 @@
 package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.GatheringDTO;
+import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
@@ -29,7 +30,8 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        List<GatheringDTO> gatheringMemberDTO = gatheringService.findByGatheringMember(gatheringDTO.getGName());
+        List<MemberDTO> gatheringMemberDTO = gatheringService.findByGatheringMember(gatheringDTO.getGName());
+        System.out.println("gatheringMemberDTO = " + gatheringMemberDTO);
         model.addAttribute("GatheringMember", gatheringMemberDTO);
         
         return "Gathering_Home";
