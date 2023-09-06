@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -81,4 +82,31 @@ public class MemberService {
         return !member.isEmpty();
     }
 
+
+
+    @Transactional
+    /*public void introduce(MemberDTO memberDTO)*/
+    public void introduce(String mIntroduction, String mId) {
+
+            /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+            MemberEntity memberEntity = new MemberEntity();
+            memberEntity.setMIntroduction(mIntroduction);
+
+            // MemberEntity 객체를 저장
+            memberRepository.updateMIntroduction(mIntroduction, mId);
+
+    }
+
+    @Transactional
+    /*public void introduce(MemberDTO memberDTO)*/
+    public void proimg(String mPiProfileimg) {
+
+        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setMPiProfileimg(mPiProfileimg);
+
+        // MemberEntity 객체를 저장
+        memberRepository.updateMIntroduction(mPiProfileimg);
+
+    }
 }
