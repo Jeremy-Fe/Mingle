@@ -89,7 +89,6 @@
                                     }
                                 });
                                 alert('수정 완료!');
-
                             });
                         });
                     </script>
@@ -445,13 +444,27 @@
                     // 파일을 선택한 후, 해당 파일의 경로를 img 요소의 src 속성에 설정합니다.
                     var fileURL = URL.createObjectURL(fileInput);
                     $(".proimg").attr("src", fileURL);
-                });
 
             $(document).ready(function () {
                 $("#editcp").click(function (event) {
                     event.preventDefault();
                     var newSrc = $(".proimg").attr("src");
                     console.log("내용확인  : " + newSrc);
+
+                  /*  // 이미지를 서버로 업로드하고 서버에서 URL 생성
+                    var formData = new FormData();
+                    formData.append('image', $("#fileInput")[0].files[0]);
+                    $.ajax({
+                        url: '/Mypage/uploadImage', // 이미지 업로드를 처리하는 서버 엔드포인트로 변경
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            var serverImageUrl = data.imageUrl; // 서버에서 생성된 이미지 URL을 받아옵니다.
+
+                            // 이제 serverImageUrl을 사용하여 서버 측에서 이미지를 불러올 수 있습니다.
+                            console.log('서버 이미지 URL: ' + serverImageUrl);   */
 
                     $.ajax({
                         url: '/Mypage/mPiProfileimg', // 실제 서버 요청 경로로 변경
