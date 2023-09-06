@@ -1,20 +1,19 @@
 package Mingle.MingleProject.controller;
 
-import Mingle.MingleProject.dto.CityDTO;
+
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.CityEntity;
-import Mingle.MingleProject.repository.CityRepository;
+import Mingle.MingleProject.entity.Interest;
+import Mingle.MingleProject.repository.InterestRepository;
 import Mingle.MingleProject.service.CityService;
+import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
-
 import java.util.List;
 
 @Controller
@@ -23,6 +22,7 @@ public class MingleController {
     //생성자 주입
     private final MemberService memberService;
     private final CityService cityService;
+
 
     //기본페이지 요청메소드
     @GetMapping("/")
@@ -68,11 +68,9 @@ public class MingleController {
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
         List<String> bcNames = cityService.getDistinctBcNames();
-
         model.addAttribute("bcNames", bcNames);
         return "Create_Meet";
     }
-
     @GetMapping("Mbti_banner*")
     public String Mbti_banner() {return "Mbti_banner";}
 
