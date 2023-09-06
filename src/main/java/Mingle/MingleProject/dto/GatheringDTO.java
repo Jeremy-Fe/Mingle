@@ -26,6 +26,7 @@ public class GatheringDTO {
     private String gSubleader2;
     private String gSubleader3;
     private Long gPrivate;
+    private String gCoverimg;
 
     public static GatheringDTO gatheringDTO(Gathering gathering) {
         GatheringDTO gatheringDTO = new GatheringDTO();
@@ -43,6 +44,7 @@ public class GatheringDTO {
         gatheringDTO.setGSubleader2(gathering.getGSubleader2());
         gatheringDTO.setGSubleader3(gathering.getGSubleader3());
         gatheringDTO.setGPrivate(gathering.getGPrivate());
+        gatheringDTO.setGCoverimg((gathering.getGCoverimg()));
         return gatheringDTO;
     }
 }

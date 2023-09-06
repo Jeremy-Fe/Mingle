@@ -30,36 +30,14 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 
-<div th:replace="/Gathering.html"></div>
+<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id})}"></div>
+
 <!-- 소개 -->
 <div id="g_contents">
     <div id="g_introduction">
         <h4>소개</h4>
-        <p id="g_introduction_content">🎊 since. 2022. 10 🎊
-            현 금천구 위너스 볼링장 상주
-            2030 신생 볼링 모임
-            • 2030 볼링 고수 & 초보 환영!!!!
-            @@@
-            ㅎㅎ
-            안녕하세요 저는 신우철입니다 입니다.
-            반가워요^^
+        <p id="g_introduction_content" th:text="${GatheringHome.getGIntroduction()}">
 
-            안녕하세요 저는 정웅철입니다 입니다.
-            반갑습네다
-            안녕하세요 저는 김강철입니다 입니다.
-            당신은 누구시죠?
-            안녕하세요 저는 전예철입니다 입니다.
-            안녕하세요 저는 정예철입니다 입니다.
-            동해물과
-            별헤는 밤
-            해병의 긍지
-            나는 국가전략 기동부대의 인원으로서
-            선봉군임을 자랑한다.
-            하나.
-            나는 찬란한 해병대 정신을
-            이어받은 무적 해병이다.
-            둘.
-            나는 불가능을 모르는 전천후 해병이다.
         </p>
         <input type="checkbox" id="g_introduction_more">
         <script>
@@ -67,7 +45,7 @@
             var moreButton = document.getElementById("g_introduction_more");
             var background = document.getElementById("g_introduction");
 
-            if (contentLength < 200) {
+            if (contentLength < 100) {
                 moreButton.style.display = "none";
                 background.style.paddingBottom = "30px";
             }
@@ -93,10 +71,10 @@
                         <a href="#">참석하기</a>
                     </li>
                     <li>
-                        <img src="image/Gathering_img1.png">
-                        <img src="image/Gathering_img2.png">
-                        <img src="image/Gathering_img3.png">
-                        <img src="image/Gathering_img4.png">
+                        <img src="/image/Gathering_img1.png">
+                        <img src="/image/Gathering_img2.png">
+                        <img src="/image/Gathering_img3.png">
+                        <img src="/image/Gathering_img4.png">
                     </li>
                 </ul>
                 <ul class="g_news_schedule">
@@ -109,18 +87,18 @@
                     </li>
                     <li><span class="schedule_subject">참여</span><span class="schedule_detail">4/20</span></li>
                     <li>
-                        <img src="image/Gathering_img1.png">
-                        <img src="image/Gathering_img2.png">
-                        <img src="image/Gathering_img3.png">
-                        <img src="image/Gathering_img4.png">
+                        <img src="/image/Gathering_img1.png">
+                        <img src="/image/Gathering_img2.png">
+                        <img src="/image/Gathering_img3.png">
+                        <img src="/image/Gathering_img4.png">
                     </li>
                 </ul>
                 <p>게시글</p>
                 <a href="#">
                     <ul class="g_news_post_box">
                         <ul class="g_news_post clearfix">
-                            <img class="post_writerImg" src="image/Gathering_img1.png">
-                            <img class="post_img" src="image/newsPost_img1.png">
+                            <img class="post_writerImg" src="/image/Gathering_img1.png">
+                            <img class="post_img" src="/image/newsPost_img1.png">
                             <li><p class="post_boardName">정모후기</p></li>
                             <li><p class="post_writerName">신우철</p></li>
                             <li><p class="post_date">7월 23일 오후 10:19</p></li>
@@ -140,8 +118,8 @@
                 <a href="#">
                     <ul class="g_news_post_box">
                         <ul class="g_news_post clearfix">
-                            <img class="post_writerImg" src="image/Gathering_img2.png">
-                            <img class="post_img" src="image/newsPost_img2.png">
+                            <img class="post_writerImg" src="/image/Gathering_img2.png">
+                            <img class="post_img" src="/image/newsPost_img2.png">
                             <li><p class="post_boardName">정모후기</p></li>
                             <li><p class="post_writerName">정웅기</p></li>
                             <li><p class="post_date">7월 22일 오후 12:21</p></li>
@@ -163,8 +141,8 @@
         <h4>모임 멤버 (18)</h4>
         <ul>
             <li class="clearfix">
-                <img class="profileimg" src="image/Gathering_img1.png">
-                <img class="leadercrown" src="image/leadercrown.png">
+                <img class="profileimg" src="/image/Gathering_img1.png">
+                <img class="leadercrown" src="/image/leadercrown.png">
                 <ul>
                     <li><h4><a href="#">신우철</a></h4></li>
                     <li><p>내 인생의 절반은 볼링이야.. 라고할뻔</p></li>
@@ -173,8 +151,8 @@
         </ul>
         <ul>
             <li class="clearfix">
-                <img class="profileimg" src="image/Gathering_img2.png">
-                <img class="leadercrown" src="image/subleaderstar.png">
+                <img class="profileimg" src="/image/Gathering_img2.png">
+                <img class="leadercrown" src="/image/subleaderstar.png">
                 <ul>
                     <li><h4><a href="#">정웅기</a></h4></li>
                     <li><p>인생이란 무엇일까...</p></li>
@@ -183,8 +161,8 @@
         </ul>
         <ul>
             <li class="clearfix">
-                <img class="profileimg" src="image/Gathering_img3.png">
-                <img class="leadercrown" src="image/subleaderstar.png">
+                <img class="profileimg" src="/image/Gathering_img3.png">
+                <img class="leadercrown" src="/image/subleaderstar.png">
                 <ul>
                     <li><h4><a href="#">정예은</a></h4></li>
                     <li><p>No Pay, No Gain.</p></li>
@@ -193,7 +171,7 @@
         </ul>
         <ul>
             <li class="clearfix">
-                <img class="profileimg" src="image/Gathering_img4.png">
+                <img class="profileimg" src="/image/Gathering_img4.png">
                 <ul>
                     <li><h4><a href="#">김강연</a></h4></li>
                     <li><p>노력은 배신하지 않는다.</p></li>
@@ -202,7 +180,7 @@
         </ul>
         <ul>
             <li class="clearfix">
-                <img class="profileimg" src="image/Gathering_img5.png">
+                <img class="profileimg" src="/image/Gathering_img5.png">
                 <ul>
                     <li><h4><a href="#">전예서</a></h4></li>
                     <li><p>초대 X</p></li>
