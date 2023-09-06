@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+
 /*view*/
 
 .view{width: 100%; 
@@ -36,13 +37,13 @@
 .inBox>ul{width: 1320px}
 
 /* 뷰_최근모임_더보기  */
-#more{width: 45px;  
+.more{width: 45px;
     background-color: #fff;
     border-radius: 15px; border: none;
     float: right;
    display: flex;
 }
-#more>img{width:30px; margin: auto; align-items: center;}
+.more>img{width:30px; margin: auto; align-items: center;}
 /* / */
 
 /*내모임*/
@@ -51,6 +52,7 @@
 #myMingles>li{float: left; }
 
 #myMingles>li>img{
+    width: 150px; height: 150px;
     float: left;  margin: 15px;
      border: 10px solid rgba(255,255,255,0.70); border-radius: 55px
     }
@@ -63,7 +65,7 @@
 
 /*내게시글*/
 #myPost{margin: auto;height: 135px;}
-#myPost>#more{height: 125px; }
+#myPost>.more{height: 125px; }
 #myPost>div{
     width: 600px;height: 125px; 
     padding: 15px; background-color: #fff; 

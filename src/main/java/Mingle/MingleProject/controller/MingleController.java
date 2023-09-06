@@ -6,6 +6,7 @@ import Mingle.MingleProject.repository.CityRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -104,13 +105,15 @@ public class MingleController {
 
     @GetMapping("Gathering_Album_BoardNotification")
     public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
-    @PostMapping("login")
+    @PostMapping("Main_LogIn")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
         System.out.println(memberDTO);
         if(loginResult != null) {
             //login 성공
             session.setAttribute("loginId", loginResult.getMId());
+            System.out.println(loginResult.getMId());
+            System.out.println(session.getAttribute("loginId"));
             return "Main_LogIn";
         }else {
             //login 실패

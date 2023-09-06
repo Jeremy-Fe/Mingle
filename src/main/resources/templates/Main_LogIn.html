@@ -33,13 +33,13 @@
                         <div class="inBox">
                             <!--내모임-->
                             <ul id="myMingles">
-                                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
+                                <li class="mingle_img1"><img src=""><p th:text = "${mingles}"></p></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_search"><img src="image/Main_Login_내모임.png"><p>모임 찾아보기</p></li>
-                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
+                                <a  class="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
                             <!-- / -->
                             <!--내게시글-->
@@ -52,7 +52,7 @@
                                 </li>
                                 </div>
                                 <div></div>
-                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
+                                <a  class="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
                             <!-- / -->
                             <!--내스케줄-->
@@ -108,7 +108,7 @@
                                         </ul>
                                     </div> 
                                 </div>
-                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
+                                <a  class="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
                             <!-- / -->
                         </div>
@@ -119,7 +119,7 @@
                     <div class="swiper-container banner" >
                          <div class="swiper-wrapper ul">
                             <div class="swiper-slide B_mbti"><img rel="mbti" src="image/배너_mbti.png"></div>
-                            <div class="swiper-slide B_hot"><img rel="hot" src="image/배너_%20HOT.png"></div>
+                            <div class="swiper-slide B_hot"><img rel="hot" src="image/배너_HOT.png"></div>
                             <div class="swiper-slide B_mypage"><img rel="mypage" src="image/배너_MYPAGE.png"></div>
                             <div class="swiper-slide B_mimgle"><img rel="mimgle" src="image/배너_mingle.png"></div>
                         </div>
@@ -183,6 +183,9 @@
                 slideShadows: false, // 슬라이드 그림자 사용 여부
             },
         });
+
+
+
 
     </script>
 </body>
