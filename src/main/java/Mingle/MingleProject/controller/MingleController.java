@@ -35,13 +35,7 @@ public class MingleController {
     }
 
     @GetMapping("login")
-    public String loginForm(Model model) {
-        List<MemberDTO> memberDTOList = memberService.findAll();
-//        어떠한 html로 가져갈 데이터가 있다면 model사용
-        model.addAttribute("memberList", memberDTOList);
-        System.out.println("model = " + model);
-        return "login";
-    }
+    public String loginForm() { return "login"; }
 
     @GetMapping("find_id*")
     public String find_id() { return "find_id"; }
@@ -94,8 +88,8 @@ public class MingleController {
     @GetMapping("schedule*")
     public String schedule() {return "schedule";}
 
-    @GetMapping("Mypage*")
-    public String Mypage(){return "Mypage";}
+    @GetMapping("MyPage*")
+    public String MyPage(){return "MyPage";}
 
     @PostMapping("/Mypage/mIntroduction")
     public String introduce(@RequestParam("mIntroduction") String mIntroduction, @RequestParam("mId") String mId) {
@@ -164,12 +158,13 @@ public class MingleController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);
-        System.out.println(memberDTO);
+        System.out.println(loginResult);
         if(loginResult != null) {
             //login 성공
             session.setAttribute("loginId", loginResult.getMId());
+            model.addAttribute("memberDTO",loginResult);
             return "Main_LogIn";
         }else {
             //login 실패

@@ -59,7 +59,7 @@ h3{font-family: 'GmarketSans';}
 #user{width: 100%; height: 65px;}
 
 /*section_ user*/
-#box>#user >ul{float: right}
+#box>#user >ul{float: right; padding-right: 20px}
 #box>#user >ul>li{float: left; line-height: 65px;}
 #box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
 #box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}

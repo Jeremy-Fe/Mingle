@@ -3,7 +3,7 @@
 <head>
 
     <!--css-->
-    <link href="/CSS/defaultUI.css" type="text/css" rel="stylesheet">
+    <link href="/CSS/defaultUI.css?after" type="text/css" rel="stylesheet">
 
   </head>
     <!--<html xmlns:th="http://www.thymeleaf.org">
@@ -40,7 +40,7 @@
                     <li><a href="login" th:if="${session.loginId == null}">로그인 하세요</a></li>
                     <li><a th:unless="${session.loginId == null}" th:text="${session.loginId}"></a></li>  <!-- Controller @PostMapping("login")에서 받아옴 -->
                     <li class="icon_a"><a href="Mypage"><!--<img alt="user_img" src="#">--></a></li>
-                    <li class="icon_b"><img alt="_mymenu" src="/image/Main_마이메뉴.png"></li>
+                    <li class="icon_b"><button type="button" id="logout"><img alt="_mymenu" src="/image/Main_마이메뉴.png"></button></li>
                 </ul>
             </div>
             <div id="view"style="overflow:scroll;">
