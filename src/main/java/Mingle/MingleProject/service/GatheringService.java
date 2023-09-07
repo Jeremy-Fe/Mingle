@@ -10,9 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Member;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -42,8 +40,31 @@ public class GatheringService {
             return null;
         }
     }
-    public List<Gathering> findMyMingles(String userId) {
-        return gatheringRepository.findMatchingGatheringsByMemberId(userId);
+
+//    public List<Gathering> findMyMingles(String userId) {
+//        return gatheringRepository.findMatchingGatheringsByMemberId();
+//    }
+/*public List<Gathering> findMyMingles(String userId) {
+    Optional<MemberEntity> member = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
+    System.out.println("findByMId = "+userId);
+    List<String> gNames = Arrays.asList(member.getMGGathering().split(",\\s*"));  // 쉼표를 기준으로 문자열을 분할하여 리스트로 변환
+    System.out.println("getMGGathering = "+gNames);
+    return gatheringRepository.findMatchingGatheringsByGName(gNames);
+}*/
+public List<Gathering> findMyMingles(String userId) {
+    Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
+
+    if (memberOptional.isPresent()) {  // Optional 객체가 존재하는지 확인
+        MemberEntity member = memberOptional.get();
+        System.out.println("findByMId = " + userId);
+        List<String> gNames = Arrays.asList(member.getMGGathering().split(",\\s*"));  // 쉼표를 기준으로 문자열을 분할하여 리스트로 변환
+        System.out.println("getMGahtering = " + gNames);
+        return gatheringRepository.findMatchingGatheringsByGName(gNames);
+    } else {
+        return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
     }
+}
+
+
 
 }

@@ -35,12 +35,12 @@ public class MingleController {
     }
 
     @GetMapping("login")
-    public String loginForm(Model model) {
-        List<MemberDTO> memberDTOList = memberService.findAll();
-//        어떠한 html로 가져갈 데이터가 있다면 model사용
-        model.addAttribute("memberList", memberDTOList);
-//        System.out.println("model = " + model);
-        return "login";
+    public String loginForm() { return "login"; }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "Main_UnLogIn";
     }
 
     @GetMapping("find_id*")
@@ -94,8 +94,8 @@ public class MingleController {
     @GetMapping("schedule*")
     public String schedule() {return "schedule";}
 
-    @GetMapping("Mypage*")
-    public String Mypage(){return "Mypage";}
+    @GetMapping("MyPage*")
+    public String MyPage(){return "MyPage";}
 
     @PostMapping("/Mypage/mIntroduction")
     public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
@@ -164,12 +164,13 @@ public class MingleController {
     }
 
     @PostMapping("login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);
-        System.out.println(memberDTO);
+        System.out.println(loginResult);
         if(loginResult != null) {
             //login 성공
             session.setAttribute("loginId", loginResult.getMId());
+            model.addAttribute("memberDTO",loginResult);
             return "Main_LogIn";
         }else {
             //login 실패
@@ -179,8 +180,8 @@ public class MingleController {
 
     @PostMapping("join")
     public String save(@ModelAttribute MemberDTO memberDTO) {
-        System.out.println("MemberController.save");
-        System.out.println("memberDTO = " + memberDTO);
+//        System.out.println("MemberController.save");
+//        System.out.println("memberDTO = " + memberDTO);
 //        MemberService memberService = new MemberService(); -> @RequiredArgsConstructor 이걸로 대체
         memberService.save(memberDTO);
         return "login";
@@ -230,6 +231,10 @@ public class MingleController {
         } else {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
+    }
+    @GetMapping("gatheringCreate")
+    public String gatheringCreate(){
+        return "gatheringCreate";
     }
 
 
