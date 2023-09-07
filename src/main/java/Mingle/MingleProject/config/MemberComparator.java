@@ -1,4 +1,4 @@
-package Mingle.MingleProject.controller;
+package Mingle.MingleProject.config;
 
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;

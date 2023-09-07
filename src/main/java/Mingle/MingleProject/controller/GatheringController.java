@@ -1,5 +1,6 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.config.MemberComparator;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.service.CityService;
@@ -9,9 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
 import java.util.List;
