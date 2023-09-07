@@ -14,14 +14,12 @@ public class CityDTO {
     private Long cNum;
     private String bcName;
     private String mcName;
-    private String scName;
 
     public static CityDTO toCityDTO(CityEntity cityEntity) {
         CityDTO cityDTO = new CityDTO();
         cityDTO.setCNum(cityEntity.getCNum());
         cityDTO.setBcName(cityEntity.getBcName());
         cityDTO.setMcName(cityEntity.getMcName());
-        cityDTO.setScName(cityEntity.getScName());
 
         return cityDTO;
     }
