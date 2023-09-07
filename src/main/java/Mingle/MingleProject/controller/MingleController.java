@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
@@ -161,6 +162,18 @@ public class MingleController {
     @GetMapping("selectRegi")
     public String selectRegi() {
         return "selectRegi";
+    }
+
+    @GetMapping("/delete/{mId}")
+    public String deleteById(@PathVariable("mId") String mID, Model model, RedirectAttributes redirectAttributes) {
+        boolean deleted = memberService.deleteMemberById(mID);
+        if (deleted) {
+            // 회원 탈퇴가 성공적으로 이루어지면 메시지를 추가합니다.
+            redirectAttributes.addFlashAttribute("message", "회원 탈퇴가 성공적으로 완료되었습니다.");
+        } else {
+            redirectAttributes.addFlashAttribute("message", "회원 탈퇴를 실패했습니다.");
+        }
+        return "redirect:/Main_UnLogIn";
     }
 
     @PostMapping("login")

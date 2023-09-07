@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -136,4 +137,18 @@ public class MemberService {
 
         return headcount;
     }
+
+    public boolean deleteMemberById(String mId) {
+        // memberId를 사용하여 회원을 찾습니다.
+        MemberEntity member = memberRepository.findBymId(mId).orElse(null);
+
+        if (member != null) {
+            // 회원을 찾았을 경우 삭제합니다.
+            memberRepository.delete(member);
+            return true; // 삭제 성공
+        } else {
+            return false; // 회원이 없음
+        }
+    }
+
 }
