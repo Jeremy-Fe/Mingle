@@ -21,8 +21,8 @@ import java.util.Set;
 @Table(name = "MEMBER")
 public class MemberEntity {
     @Id
-    /*@GeneratedValue(strategy = GenerationType.IDENTITY) // 또는 다른 적절한 전략 선택
-    private Long id; // ID 필드*/
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 또는 다른 적절한 전략 선택
+    private Long id; // ID 필드
 
     @Column(name = "M_ID", nullable = false, length = 50)
     private String mId;
@@ -61,7 +61,7 @@ public class MemberEntity {
     private String mGGathering;
 
     @Lob
-    private byte[] mProfileimg;
+    private Blob mProfileimg;
 
     @Column(name = "M_INTRODUCTION", length = 1000)
     private String mIntroduction;

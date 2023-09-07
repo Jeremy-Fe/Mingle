@@ -4,20 +4,36 @@ import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
+import lombok.AllArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
+
 @Service
-@RequiredArgsConstructor
+/*@RequiredArgsConstructor*/
+@AllArgsConstructor
 public class MemberService {
+
     private final MemberRepository memberRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public void save(MemberDTO memberDTO) {
         // 1. dto -> entity 변환
@@ -35,16 +51,16 @@ public class MemberService {
         if (byMemberId.isPresent()) {
             //조회 결가가 있다(해당 아이디를 가진 회원 정보가 있다)
             MemberEntity memberEntity = byMemberId.get();
-            if(memberEntity.getMPwd().equals(memberDTO.getMPwd())){
+            if (memberEntity.getMPwd().equals(memberDTO.getMPwd())) {
                 //비밀번호가 일치
                 //entity -> dto 변환 후 리턴
                 MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
                 return dto;
-            }else {
+            } else {
                 //비밀번호가 불일치(로그인 실패)
                 return null;
             }
-        }else {
+        } else {
             //조회 결과가 없다(해당 아이디을 가진 회원이 없다)
             return null;
         }
@@ -54,7 +70,7 @@ public class MemberService {
     public List<MemberDTO> findAll() {
         List<MemberEntity> memberEntityList = memberRepository.findAll();
         List<MemberDTO> memberDTOList = new ArrayList<>();
-        for(MemberEntity memberEntity : memberEntityList) {
+        for (MemberEntity memberEntity : memberEntityList) {
             memberDTOList.add(MemberDTO.toMemberDTO(memberEntity));
         }
         return memberDTOList;
@@ -94,32 +110,46 @@ public class MemberService {
     }
 
 
-
     @Transactional
     /*public void introduce(MemberDTO memberDTO)*/
     public void introduce(String mIntroduction) {
 
-            /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
-            MemberEntity memberEntity = new MemberEntity();
-            memberEntity.setMIntroduction(mIntroduction);
+        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setMIntroduction(mIntroduction);
 
-            // MemberEntity 객체를 저장
-            memberRepository.updateMIntroduction(mIntroduction);
+        // MemberEntity 객체를 저장
+        memberRepository.updateMIntroduction(mIntroduction);
 
     }
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
+    private Blob createBlobFromMultipartFile(MultipartFile multipartFile) throws IOException, SQLException {
+        byte[] fileBytes = multipartFile.getBytes();
+       /* try {*/
+            return new SerialBlob(fileBytes);
+       /* } catch (IOException e) {
+            throw new SQLException("이미지를 Blob으로 변환하는 중 오류가 발생했습니다.", e);
+        }*/
+    }
     @Transactional
-    /*public void introduce(MemberDTO memberDTO)*/
-//    public void proimg(String mPiProfileimg) {
-//
-//        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
-//        MemberEntity memberEntity = new MemberEntity();
-//        memberEntity.setMPiProfileimg(mPiProfileimg);
-//
-//        // MemberEntity 객체를 저장
-//        memberRepository.updateMPiProfileimg(mPiProfileimg);
-//
-//    }
+    public void uploadImage(@NotNull MultipartFile mProfileimg) {
+        try {
+            MemberEntity memberEntity = new MemberEntity();
+            Blob mProfileBlob = createBlobFromMultipartFile(mProfileimg);
+            memberEntity.setMProfileimg(mProfileBlob);
+            memberRepository.updatemProfileimg(mProfileBlob);
+
+        } catch (IOException | SQLException e) {
+            e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
+            throw new RuntimeException("이미지 업로드 중 오류가 발생했습니다.");
+        }
+    }
+
+
 
     public List<MemberDTO> findByGatheringMember(String gatheringName){
         List<MemberEntity> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);
