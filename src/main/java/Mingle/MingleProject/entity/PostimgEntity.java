@@ -31,7 +31,5 @@ public class PostimgEntity {
     @JoinColumn(name = "PI_P_NUM", nullable = false)
     private PostEntity piPNum;
 
-    @OneToMany(mappedBy = "pPiRoot")
-    private Set<PostEntity> posts = new LinkedHashSet<>();
 
 }

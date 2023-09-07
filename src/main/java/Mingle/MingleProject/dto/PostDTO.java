@@ -19,7 +19,6 @@ public class PostDTO {
     Long pLike;
     Long pViews;
     String pMId;
-    String pPiRoot;
     LocalDate pDate;
 
 

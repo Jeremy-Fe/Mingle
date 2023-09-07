@@ -41,10 +41,6 @@ public class PostEntity {
     @JoinColumn(name = "P_M_ID", nullable = false)
     private MemberEntity pMId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "P_PI_ROOT", nullable = false)
-    private PostimgEntity pPiRoot;
-
     @Column(name = "P_DATE", nullable = false)
     private LocalDate pDate;
 
