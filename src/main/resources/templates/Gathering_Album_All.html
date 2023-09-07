@@ -41,8 +41,8 @@
     <div class="album_bg">
         <ul class="submenu">
             <li>
-                <a href="http://localhost:8080/Gathering_Album_All">전체사진</a>
-                <a href="http://localhost:8080/Gathering_Album_Board">게시판 별 사진</a>
+                <a th:href="@{|/Gathering_Album_All/${GatheringHome.getId()}|}">전체사진</a>
+                <a th:href="@{|/Gathering_Album_Board/${GatheringHome.getId()}|}">게시판 별 사진</a>
             </li>
         </ul>
         <ul class="allimg">

@@ -18,7 +18,7 @@
 .album_bg > .submenu > li > a{
     font-size: 25px;
     margin: 30px;
-    padding: 13px;
+    padding: 15px;
 }
 .album_bg > .submenu > li > a:first-child{
     margin-left: 0px;
@@ -35,8 +35,8 @@
     color: #542DFF;
 }
 .album_bg > .allimg > li > a > img{
-    width: 248px;
-    height: 248px;
+    width: 247px;
+    height: 247px;
     border-radius: 10px;
     display: inline;
     margin: 0px 15px 15px 0px;
