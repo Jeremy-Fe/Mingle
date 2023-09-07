@@ -30,7 +30,7 @@
                     <div id="l_news">
                         <ul class="header">
                             <li><p>내 모임 최근 소식</p></li>
-                            <li><a hred="#">마이 페이지<img rel="오른쪽화살표.png" src="image/오른쪽화살표.png"></a></li>
+                            <li><a href="/MyPage">마이 페이지<img rel="오른쪽화살표.png" src="image/오른쪽화살표.png"></a></li>
                         </ul>
                         <div class="inBox">
                             <!--내모임-->
@@ -117,10 +117,10 @@
                     <!--배너-->
                     <div class="swiper-container banner" >
                          <div class="swiper-wrapper ul">
-                            <div class="swiper-slide B_mbti"><img rel="mbti" src="image/배너_mbti.png"></div>
+                            <div class="swiper-slide B_mbti"><a href="/Mbti_banner"><img rel="mbti" src="image/배너_mbti.png"></a></div>
                             <div class="swiper-slide B_hot"><img rel="hot" src="image/배너_HOT.png"></div>
-                            <div class="swiper-slide B_mypage"><img rel="mypage" src="image/배너_MYPAGE.png"></div>
-                            <div class="swiper-slide B_mimgle"><img rel="mimgle" src="image/배너_mingle.png"></div>
+                             <div class="swiper-slide B_mypage"><a href="/MyPage"><img rel="mypage" src="image/배너_MYPAGE.png"></a></div>
+                             <div class="swiper-slide B_mimgle"><a href="/join"><img rel="mimgle" src="image/배너_mingle.png"></a></div>
                         </div>
                     <div class="swiper-pagination"></div>
                     <div class="swiper-button-prev"></div>
@@ -168,7 +168,7 @@
             slidesPerView: 'auto',
             slideToClickedSlide: true,
             effect: 'coverflow',
-            autoplay: true,
+
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
