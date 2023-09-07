@@ -232,10 +232,7 @@ public class MingleController {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
     }
-    @GetMapping("gatheringCreate")
-    public String gatheringCreate(){
-        return "gatheringCreate";
-    }
+
 
 
 }
