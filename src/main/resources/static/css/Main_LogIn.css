@@ -133,19 +133,64 @@
 /* / 배너*/
 
 /*핫모임 section_ view_hotMeeting*/
-#mingle{
+.mingle{
     width: 1400px; height: 350px; 
     border-radius: 20px; background-color:rgba(255,255,255,0.5);
     margin: auto ; margin-top: 20px; 
     }
-#mingle>ul{
+.mingle>ul{
     width: 1315px; height: 300px;
     margin: auto ;
 }
-#mingle>ul>h3{
+.mingle>ul>h3{
     font-family: 'Jalnan'; font-size: 36px;
     line-height: 100px; color: #564797; float: left;
 }
 /* / 핫모임 */
+
+
+
+
+/* 모임카드 */
+#inMingle > .mingle{
+    display: block; float: left;
+    width: 440px; height: 275px; padding: 15px; margin: 10px;
+    border-radius: 20px; background-color: #fff;
+    margin-left: 0;
+}
+/* 모임카드 상단 */
+.mingle ul {
+    width: 405px; height: 160px;
+    margin: auto;
+}
+.mingle>ul>img{  width: 175px; height: 160px;float: left;}
+.mingle>ul>li{
+    float: right; width: 200px; margin: 5px;
+}
+#mTitle{font-size: 32px;color: #6554AF; line-height: 36px;}
+#mCategorie{
+    height: 35px; font-size: 20px;
+    line-height: 35px; padding-left: 20px;
+    border-radius: 10px; background-color: #ececec;
+}
+#mRogi{
+    color: #737373;  text-align: right;
+    font-weight: lighter;font-family: 'NexonLv1Gothic';
+}
+#mUserImg{width: 100%;height: 35px;}
+#mUser{
+    font-size: 20px;
+    text-align: right;
+    font-family: 'NexonLv1Gothic';
+}
+#mUser>a{color: #4364B0; text-decoration: underline;}
+/* 모임 설명 */
+#mIntd{
+    width: 405px;height: 90px;
+    margin: auto;padding: 10px;
+    line-height: 20px; font-size: 16px;
+
+    overflow: hidden; text-overflow: ellipsis;
+}
 
     

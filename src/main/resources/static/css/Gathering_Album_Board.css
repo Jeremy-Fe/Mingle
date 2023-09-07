@@ -18,7 +18,7 @@
 .album_bg > .submenu > li > a{
     font-size: 25px;
     margin: 30px 30px 30px 0px;
-    padding: 13px;
+    padding: 15px;
 }
 .album_bg > .submenu > li > a:hover{
     color: #542DFF;
@@ -40,8 +40,8 @@
     position: relative;
 }
 .album_bg > .allimg > li > .board_box > img{
-    width: 248px;
-    height: 248px;
+    width: 247px;
+    height: 247px;
     border-radius: 10px;
     display: inline;
     margin: 0px 15px 15px 0px;
@@ -82,8 +82,8 @@
     color: #542DFF;
 }
 .board_img > li > a > img{
-    width: 248px;
-    height: 248px;
+    width: 247px;
+    height: 247px;
     border-radius: 10px;
     display: inline;
     margin: 0px 15px 15px 0px;

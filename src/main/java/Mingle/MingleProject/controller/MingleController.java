@@ -180,7 +180,7 @@ public class MingleController {
 
     @PostMapping("join")
     public String save(@ModelAttribute MemberDTO memberDTO) {
-        System.out.println("MemberController.save");
+//        System.out.println("MemberController.save");
 //        System.out.println("memberDTO = " + memberDTO);
 //        MemberService memberService = new MemberService(); -> @RequiredArgsConstructor 이걸로 대체
         memberService.save(memberDTO);

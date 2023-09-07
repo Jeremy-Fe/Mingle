@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+    <!--ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!--css-->
     <link href="/CSS/Main_LogIn.css" type="text/css" rel="stylesheet">
@@ -39,7 +41,6 @@
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_search"><img src="image/Main_Login_내모임.png"><p>모임 찾아보기</p></li>
-                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
                             <!-- / -->
                             <!--내게시글-->
@@ -52,7 +53,6 @@
                                 </li>
                                 </div>
                                 <div></div>
-                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
                             <!-- / -->
                             <!--내스케줄-->
@@ -108,7 +108,6 @@
                                         </ul>
                                     </div> 
                                 </div>
-                                <a  id="more" href="#"><img src="image/오른쪽화살표.png"></a>
                             </ul>
                             <!-- / -->
                         </div>
@@ -130,18 +129,18 @@
                     <!-- / 배너-->
 
                     <!--내모임-->
-                    <div id="mingle" class="myMingle">
+                    <div id="myMingle" class="mingle">
                         <ul>
                             <h3>내 모임</h3>
-                            <ul>
-                                <li></li>
-                            </ul>
+                            <div id="myMingCard">
+
+                            </div>
                          </ul>
                     </div>
                     <!-- / 내모임-->
                     
                     <!--추천모임-->
-                    <div id="mingle" class="recMingle">
+                    <div id="recMingle" class="mingle">
                         <ul>
                             <h3>추천모임</h3>
                             <ul>
@@ -160,9 +159,7 @@
 
         <div th:replace="/footer.html"></div>
     </div>
-
-
-
+    <input type="hidden" id="loginId" th:value="${session.loginId}">
     <script>
 
         const swiper = new Swiper('.swiper-container', {
@@ -183,6 +180,54 @@
                 slideShadows: false, // 슬라이드 그림자 사용 여부
             },
         });
+        window.onload = function() {
+            var loginId = document.getElementById("loginId").value;
+            console.log("loginId = "+loginId);
+
+            if(loginId == null){
+                alert("(error)"+"로그인이 필요한 항목입니다.\n"+"회원 가입 또는 로그인을 해주세요");
+            }
+            else{
+                $.ajax({
+                    url: "Main_LogIn/findMyMingles",
+                    type : 'GET',
+                    success: function(response) {
+                        console.log("response = "+response)
+
+                        for (var i = 0; i < response.length; i++) {
+                            var mingles = response[i];
+                            console.log("response[i] =", mingles);
+                            var 모임명 = mingles.gname;
+                            var 모임이미지 = mingles.gcoverimg;
+                            var 모임카테고리 = mingles.gMainsubject;
+                            var 모임지역 = (mingles.gcity)+""+(mingles.gdistrict);
+                            var 모임소개글 = mingles.gintroduction;
+                            console.log("ajax : 모임명 확인 =", 모임명);
+                            console.log("ajax : response.length+1 확인 =", response.length);
+                            var htmlMingle =
+                                '<div className="mingle">\n' +
+                                '<ul>\n' +
+                                '<img src="'+모임이미지+'">\n' +
+                                '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
+                                '<li id="mCategorie">'+모임카테고리+'</li>\n' +
+                                '<li id="mRogi">'+모임지역+'</li>\n' +
+                                '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+                                '</ul>\n' +
+                                '<p id="mIntd">'+모임소개글+'</p>\n' +
+                                '</div>';
+
+                            $("#myMingCard").append(htmlMingle);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+
+            }
+        };
+
+
 
     </script>
 </body>

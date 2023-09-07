@@ -9,7 +9,7 @@
 
 
     <!--css-->
-    <link href="/CSS/Gathering_Home.css" type="text/css" rel="stylesheet">
+    <link href="/CSS/Gathering_Home.css?after" type="text/css" rel="stylesheet">
     <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -141,8 +141,9 @@
         <h4 th:text="'모임 멤버 (' + ${headcount} + '명)'"></h4>
         <ul th:each="member: ${GatheringMember}">
             <li class="clearfix">
-                <img class="profileimg" th:src="${member.getMPiProfileimg()}">
-                <img class="leadercrown" src="/image/leadercrown.png">
+                <img class="profileimg" th:src="${member.getMProfileimg()}">
+                <img class="leadercrown" src="/image/leadercrown.png" th:if="${member.getMId() == GatheringHome.getGMainleader()}">
+                <img class="leadercrown" src="/image/subleaderstar.png" th:if="${member.getMId() == GatheringHome.getGSubleader1() || member.getMId() == GatheringHome.getGSubleader2() || member.getMId() == GatheringHome.getGSubleader3()}">
                 <ul>
                     <li><h4><a href="#" th:text="${member.getMName()}"></a></h4></li>
                     <li><p th:text="${member.getMIntroduction()}"></p></li>
