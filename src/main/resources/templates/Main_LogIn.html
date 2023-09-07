@@ -132,7 +132,9 @@
                     <div id="myMingle" class="mingles">
                         <ul>
                             <h3>내 모임</h3>
-                            <div id="myMingCard">
+                            <div id="myMingCard" style="overflow-x:auto; overflow-y: hidden" >
+                                <div id="myMingCardInner" style="height: 250px; width: max-content;">
+                                </div>
 
                             </div>
                          </ul>
@@ -216,7 +218,7 @@
                                 '<p id="mIntd">'+모임소개글+'</p>\n' +
                                 '</div>';
 
-                            $("#myMingCard").append(htmlMingle);
+                            $("#myMingCardInner").append(htmlMingle);
                         }
                     },
                     error: function(xhr, status, error) {
