@@ -37,6 +37,12 @@ public class MingleController {
     @GetMapping("login")
     public String loginForm() { return "login"; }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "Main_UnLogIn";
+    }
+
     @GetMapping("find_id*")
     public String find_id() { return "find_id"; }
 
@@ -175,7 +181,7 @@ public class MingleController {
     @PostMapping("join")
     public String save(@ModelAttribute MemberDTO memberDTO) {
         System.out.println("MemberController.save");
-        System.out.println("memberDTO = " + memberDTO);
+//        System.out.println("memberDTO = " + memberDTO);
 //        MemberService memberService = new MemberService(); -> @RequiredArgsConstructor 이걸로 대체
         memberService.save(memberDTO);
         return "login";
