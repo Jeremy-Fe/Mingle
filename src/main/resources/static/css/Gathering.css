@@ -16,11 +16,12 @@
 }
 
 .view > .g_title > ul > li {}
-.view > .g_title > ul > li > .title_img {
+.view > .g_title > ul > li > .title_img_a >.title_img {
     border-radius: 20px 20px 0px 0px;
     width: 1450px;
     height: 290px;
     margin-bottom: 20px;
+    margin-top: -21px;
 }
 .view > .g_title > ul > .title_subject {
     border-bottom: 1px solid #565656;

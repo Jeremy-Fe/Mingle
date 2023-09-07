@@ -3,6 +3,7 @@ package Mingle.MingleProject.dto;
 import Mingle.MingleProject.entity.MemberEntity;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.sql.Blob;
 
 import java.time.LocalDate;
 
@@ -26,7 +27,7 @@ public class MemberDTO {
     private String mIDistrict;
     private String mInterest;
     private String mGGathering;
-    private byte[] mProfileimg;
+    private Blob mProfileimg;
     private String mIntroduction;
     private String mMbti;
 
