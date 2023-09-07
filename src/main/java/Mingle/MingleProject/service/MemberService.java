@@ -35,6 +35,9 @@ public class MemberService {
     @PersistenceContext
     private EntityManager entityManager;
 
+
+
+
     public void save(MemberDTO memberDTO) {
         // 1. dto -> entity 변환
         // 2. repository의 save 메소드 호출
@@ -162,4 +165,9 @@ public class MemberService {
 
         return headcount;
     }
+
+    public MemberDTO findbyIdMyPage(String logInId) {
+        Optional<MemberEntity> myPageMemberEntity = MemberRepository.findById(logInId);
+    }
+
 }

@@ -12,6 +12,8 @@ import java.util.Optional;
 import java.sql.Blob;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
+
+
     // 아이디로 회원 정보 조회 (select * from member where mId=?)
     Optional<MemberEntity> findBymId(String mId);
 

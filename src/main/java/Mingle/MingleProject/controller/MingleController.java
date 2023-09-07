@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import java.sql.Blob;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -99,8 +100,17 @@ public class MingleController {
     @GetMapping("schedule*")
     public String schedule() {return "schedule";}
 
-    @GetMapping("MyPage*")
-    public String MyPage(){return "MyPage";}
+
+//    @GetMapping("MyPage*")
+//    public String MyPage(){return "MyPage";}
+
+    @GetMapping("MyPage")
+    public String MyPag1e(HttpSession session, Model model){
+        String logInId = (String) session.getAttribute("loginId");
+        MemberDTO memberDTO = MemberService.findbyIdMyPage(logInId);
+
+        return "MyPage";
+    }
 
     @PostMapping("/Mypage/mIntroduction")
     public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
