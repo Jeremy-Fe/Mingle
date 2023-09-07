@@ -129,11 +129,7 @@ public class MemberService {
 
     private Blob createBlobFromMultipartFile(MultipartFile multipartFile) throws IOException, SQLException {
         byte[] fileBytes = multipartFile.getBytes();
-       /* try {*/
             return new SerialBlob(fileBytes);
-       /* } catch (IOException e) {
-            throw new SQLException("이미지를 Blob으로 변환하는 중 오류가 발생했습니다.", e);
-        }*/
     }
     @Transactional
     public void uploadImage(@NotNull MultipartFile mProfileimg) {
