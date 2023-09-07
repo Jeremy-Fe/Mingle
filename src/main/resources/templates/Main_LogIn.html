@@ -129,10 +129,12 @@
                     <!-- / 배너-->
 
                     <!--내모임-->
-                    <div id="myMingle" class="mingle">
+                    <div id="myMingle" class="mingles">
                         <ul>
                             <h3>내 모임</h3>
-                            <div id="myMingCard">
+                            <div id="myMingCard" style="overflow-x:auto; overflow-y: hidden" >
+                                <div id="myMingCardInner" style="height: 250px; width: max-content;">
+                                </div>
 
                             </div>
                          </ul>
@@ -140,7 +142,7 @@
                     <!-- / 내모임-->
                     
                     <!--추천모임-->
-                    <div id="recMingle" class="mingle">
+                    <div id="recMingle" class="mingles">
                         <ul>
                             <h3>추천모임</h3>
                             <ul>
@@ -199,13 +201,13 @@
                             console.log("response[i] =", mingles);
                             var 모임명 = mingles.gname;
                             var 모임이미지 = mingles.gcoverimg;
-                            var 모임카테고리 = mingles.gMainsubject;
-                            var 모임지역 = (mingles.gcity)+""+(mingles.gdistrict);
+                            var 모임카테고리 = mingles.gmainsubject;
+                            var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
                             var 모임소개글 = mingles.gintroduction;
                             console.log("ajax : 모임명 확인 =", 모임명);
                             console.log("ajax : response.length+1 확인 =", response.length);
                             var htmlMingle =
-                                '<div className="mingle">\n' +
+                                '<div class="mingle">\n' +
                                 '<ul>\n' +
                                 '<img src="'+모임이미지+'">\n' +
                                 '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
@@ -216,7 +218,7 @@
                                 '<p id="mIntd">'+모임소개글+'</p>\n' +
                                 '</div>';
 
-                            $("#myMingCard").append(htmlMingle);
+                            $("#myMingCardInner").append(htmlMingle);
                         }
                     },
                     error: function(xhr, status, error) {
