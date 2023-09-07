@@ -183,7 +183,9 @@
             },
         });
         window.onload = function() {
-            var loginId = document.getElementById("loginId").value;
+            var loginId1 = document.getElementById("loginId").value;
+            var loginId = loginId1 ? loginId1.textContent : null;
+
             console.log("loginId = "+loginId);
 
             if(loginId == null){

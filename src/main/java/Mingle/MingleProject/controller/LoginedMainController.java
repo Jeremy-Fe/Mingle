@@ -34,6 +34,17 @@ public class LoginedMainController {
 
         return ResponseEntity.ok(mingles);
     }
+//    @GetMapping("search2/searchMingle")
+//    public ResponseEntity<List<Gathering>> searchMingle(String selectedRegi,String mainCtName,String subC, Model model) {
+//        List<Gathering> searchMingle = gatheringService.searchMingleMingles(selectedRegi ,mainCtName, subC);
+//
+//        model.addAttribute("searchMingle",searchMingle);
+//        System.out.println("searchMingle 확인 = "+ searchMingle);
+//
+//        return ResponseEntity.ok(searchMingle);
+//    }
+
+
 }
 
 

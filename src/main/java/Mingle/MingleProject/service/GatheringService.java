@@ -41,16 +41,7 @@ public class GatheringService {
         }
     }
 
-//    public List<Gathering> findMyMingles(String userId) {
-//        return gatheringRepository.findMatchingGatheringsByMemberId();
-//    }
-/*public List<Gathering> findMyMingles(String userId) {
-    Optional<MemberEntity> member = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
-    System.out.println("findByMId = "+userId);
-    List<String> gNames = Arrays.asList(member.getMGGathering().split(",\\s*"));  // 쉼표를 기준으로 문자열을 분할하여 리스트로 변환
-    System.out.println("getMGGathering = "+gNames);
-    return gatheringRepository.findMatchingGatheringsByGName(gNames);
-}*/
+
 public List<Gathering> findMyMingles(String userId) {
     Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
 
@@ -66,5 +57,8 @@ public List<Gathering> findMyMingles(String userId) {
 }
 
 
-
+ /*   public List<Gathering> searchMingleMingles(String selectedRegi, String mainCtName, String subC) {
+        List<String> selectedRegi = Arrays.asList(member.getMGGathering().split(",\\s*"));
+    return gatheringRepository.searchMingleMingles(selectedRegi,mainCtName,subC);
+    }*/
 }

@@ -19,7 +19,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 #regi{ display: flex;width: 370px; height: 55px; float: left;}
 #regi>img:first-child{width: 55px; margin-right: 20px; float: left;}
 #regi>p{
-    width: 235px; height: 55px;
+    width: max-content; height: 55px;
     float: left; line-height: 65px;
     font-size: 32px; font-weight: lighter;
 }
@@ -28,14 +28,15 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 }
 /* 검색창 */
 #Stext{
-    width: 920px; height: 55px;
+    width: 900px; height: 55px;
     border: none; border-radius: 15px;
     font-size: 28px; font-weight: lighter;
     font-family: 'NexonLv1Gothic'; 
-    padding-left: 50px;
+
+    float: right;
 }
 /* 검색버튼 */
-#search_I{width: 55px; height: 100%;  float: right; }
+#search_I{width: 55px; height: 100%;  float: right; margin-left: 10px;}
 
 /* / 검색창 */
 
@@ -52,18 +53,19 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 
 /* 관심사 선택버튼 */
 #mainC{
-    width: 250px; height: 70px;
+    width: max-content; height: 70px;
     display: flex; float: left;
     background-color: #fff; border-radius: 10px;
+    padding-right: 20px;
 }
 #mainC>p{    
     font-size: 40px; font-weight: bolder; 
     font-family: 'NexonLv1Gothic';
-    margin: auto; line-height: 70px;
+     line-height: 70px;
 }
 #mainC>img{
-    width: 60px;height: 60px; 
-    margin: 5px; 
+    width: 60px; height: 60px;
+    margin: 5px 15px;
 }
 /* 세부카테고리 버튼 */
 #subC{

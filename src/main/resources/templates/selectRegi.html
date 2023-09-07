@@ -32,45 +32,50 @@
             if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
                 const regiSearch = document.getElementById('regiSearch').value; // 'regiSearch' id를 가진 요소에서 값을 가져옴
                 console.log("ReTest1 : "+regiSearch);
+
                 $.ajax({
                     url: "selectRegi/regiSearch",
                     method: "GET",
                     data: { keyword: regiSearch },
                     success: function(data) {
                         // 성공적으로 응답 받았을 때 처리할 로직 작성
-                        console.log(data);
+                        console.log(data)
                         $("#showRegi>").remove();
                         for (var i = 0; i < data.length; i++) {
                             var city = data[i];
-                            var city1 = city.scName;
-                            var city2 = city.bcName;
-                            var city3 = city.mcName;
-                            var html = '<a class="sResult" data-index="' + i + '"><p>' + city1 + ' (' + city2 + " " + city3 + ')' + '</p></a>';
+                            var 시도 = city.bcName;
+                            var 군구 = city.mcName;
+                            var html = '<a class="sResult" data-index="' + i + '"><p>' + 군구 + ' (' + 시도 + ')' + '</p></a>';
                             $("#showRegi").append(html);
                         }
                         $(document).on("click", ".sResult", function(event) {
+                            console.log("데이터 길이 = "+data.length)
                                 var dataIndex = $(this).data("index");
+                                console.log("dataIndex = "+ dataIndex)
                                 console.log("data[dataIndex] = "+data[dataIndex]);
                                 var selectedRegi = data[dataIndex];
                                 var sRegi1 = selectedRegi.mcName;
-                                var sRegi2 = selectedRegi.scName;
-                                var sRegi = sRegi1+ " " + sRegi2;
-                                console.log("받을 값 = "+sRegi);
+                                // var sRegi2 = selectedRegi.scName; 동 삭제;
+                                // var sRegi = sRegi1+ " " + sRegi2;
+                                console.log("받을 값 = "+sRegi1);
                             $.ajax({
                                 url: "search2/selectedRegion",
                                 type : 'POST',
-                                data: { selectedRegion: sRegi },
+                                data: { selectedRegion: sRegi1 },
                                 success: function(response) {
 
-                                    console.log("selectedRegi = " + sRegi);
+                                    console.log("selectedRegi = " + sRegi1);
 
                                     document.querySelector('a[rel="modal:close"]').click();
-
+                                    // location.reload();
                                     var selectedRegiElement = document.getElementById("selectedRegi");
                                     selectedRegiElement.innerText = "";
 
-                                    $("#selectedRegi").append(sRegi);
 
+                                    $("#selectedRegi").append(sRegi1);
+
+                                    data = null;
+                                    console.log("리프레쉬"+data);
 
                                 },
                                 error: function(xhr, status, error) {

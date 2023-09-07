@@ -41,8 +41,8 @@
 <!--                    <p  th:unless="${selectedRegion == null}" th:text="${selectedRegion}"></p>-->
                     <img src="image/오른쪽화살표.png">
                    </a>
+                    <img id="search_I"  class="search" src="image/search_검색버튼.png"><a  href="#"></a></img>
                   <input type="search" name="" id="Stext">
-                  <img id="search_I"  class="search" src="image/search_검색버튼.png"><a  href="#"></a></img>
                 </ul>
               </div>
               
@@ -52,12 +52,9 @@
                 <header id="cM_header">
                   <a id="mainC" href="#">
                     <img src="image/inter/운동스포츠.png">
-                    <p>스포츠</p>
+                    <p id="mainCtName">스포츠</p>
                   </a>
-                  <a id="subC" href="#">
-                    전체
-                    <img src="image/오른쪽화살표.png">
-                  </a>
+                  <a id="subC" href="#">전체<img src="image/오른쪽화살표.png"></a>
                   <a id="array" href="#">최신순</a>
                 </header>
                 <!-- / 검색 모임 헤더 -->
@@ -106,10 +103,57 @@ $("#Stext").focus(function(){
 $("#Stext").blur(function(){
   $("#regi").show(150);
 	$("#Stext").animate({
-			"width": "970px"
+			"width": "920px"
 	}, 100, function() {});
 });
 
+var 선택한지역= document.getElementById("selectedRegi").textContent;
+console.log("선택한지역 = "+선택한지역)
+
+var 메인카테고리= document.getElementById("mainCtName").textContent;
+console.log("메인카테고리= "+메인카테고리)
+
+var 세부카테고리1= document.getElementById("subC").textContent;
+var 세부카테고리 = 세부카테고리1 !== "전체" ? 세부카테고리1.textContent : null;
+console.log("세부카테고리 = "+세부카테고리)
+
+//
+// $.ajax({
+//     url: "",
+//     type : 'GET',
+//     data : '',
+//     success: function(response) {
+//         console.log("response = "+response)
+//
+//         for (var i = 0; i < response.length; i++) {
+//             var mingles = response[i];
+//             console.log("response[i] =", mingles);
+//             var 모임명 = mingles.gname;
+//             var 모임이미지 = mingles.gcoverimg;
+//             var 모임카테고리 = mingles.gmainsubject;
+//             var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
+//             var 모임소개글 = mingles.gintroduction;
+//             console.log("ajax : 모임명 확인 =", 모임명);
+//             console.log("ajax : response.length+1 확인 =", response.length);
+//             var htmlMingle =
+//                 '<div class="mingle">\n' +
+//                 '<ul>\n' +
+//                 '<img src="'+모임이미지+'">\n' +
+//                 '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
+//                 '<li id="mCategorie">'+모임카테고리+'</li>\n' +
+//                 '<li id="mRogi">'+모임지역+'</li>\n' +
+//                 '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+//                 '</ul>\n' +
+//                 '<p id="mIntd">'+모임소개글+'</p>\n' +
+//                 '</div>';
+//
+//             $("#myMingCardInner").append(htmlMingle);
+//         }
+//     },
+//     error: function(xhr, status, error) {
+//         console.error(error);
+//     }
+// });
 
 </script>
 </body>
