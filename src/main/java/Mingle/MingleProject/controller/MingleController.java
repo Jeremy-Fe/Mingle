@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 
+import java.sql.Blob;
 import java.util.List;
 
 @Controller
@@ -110,10 +111,10 @@ public class MingleController {
     }
 
     @PostMapping("/Mypage/uploadImage")
-        public void uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
+        public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
         System.out.println("mProfileimg : " + mProfileimg);
         memberService.uploadImage(mProfileimg);
-
+        return "Mypage";
     }
 
     @GetMapping("Create_Meet")

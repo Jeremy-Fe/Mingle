@@ -41,7 +41,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
     @Modifying
     @Query(value = "UPDATE MemberEntity m SET m.mProfileimg  = :mProfileimg where m.mId ='himedia'")
-    void updatemProfileimg(Blob mProfileBlob);
+    void updatemProfileimg(@Param("mProfileimg") Blob mProfileimg);
 
     @Query(value = "select COUNT(*) from MemberEntity m where m.mGGathering like %:gName%")
     int findByGatheringHeadcount(@Param("gName") String gName);
