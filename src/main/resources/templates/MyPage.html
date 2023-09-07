@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>MyPage</title>
     <!--swiper-->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
+
     <!--jQuery 모달-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 
 
     <!--css-->
@@ -22,476 +22,469 @@
     <!--font-family: 'Orbitron', sans-serif;-->
     <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
     <!--font-family: 'Jalnan';-->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 
 </head>
 <body>
-        <html xmlns:th="http://www.thymeleaf.org">
-        <div th:replace="/defaultUI.html"></div>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/defaultUI.html"></div>
 
-            <div class="view">
-                <!--마이페이지-->
-                <div class="MyPage">
-                    <img alt="큰제목" src="/image/MyPageTitle.png">
-                    <p>마이페이지</p>
+<div class="view">
+    <!--마이페이지-->
+    <div class="MyPage">
+        <img alt="큰제목" src="/image/MyPageTitle.png">
+        <p>마이페이지</p>
 
-                    <div class="profile">
+        <div class="profile">
 
-                        <ul>
-                            <li class="pimg">
-                                <!--프로필 수정 버튼-->
-                                <a href="#ex1" rel="modal:open">
-                                    <img class="edit" alt="프로필수정" src="/image/ProfileEdit_w.png">
-                                </a>
-                                <a href="#">
-                                    <img id="profileimg" class="proimg" name="mPiProfileimg" alt="프로필사진" src="/image/DefaultProfile_logo.png">
-                                </a>
-                            </li>
+            <ul>
+                <li class="pimg">
+                    <!--프로필 수정 버튼-->
+                    <a href="#ex1" rel="modal:open">
+                        <img class="edit" alt="프로필수정" src="/image/ProfileEdit_w.png">
+                    </a>
+                    <a href="#">
+                        <img id="profileimg" class="proimg" name="mPiProfileimg" alt="프로필사진"
+                             src="/image/DefaultProfile_logo.png">
+                    </a>
+                </li>
 
-                            <li class="text">
-                                <p class="name">Amelia</p>
-                                <p class="info">1998.01.18<br><br>여</p>
-                            </li>
-                            <li class="inBox">
-                                <p id="commentText" class="coment" name="mIntroduction" contenteditable="true">누구를위한 삶인가       .//... 인생이란 무엇인가
-                                    인생은 부먹인가 찍먹인가
-                                    소주와 맥주는 대체 왜 먹는것일까
-                                    그렇지만 없다면 나는 살수 없다
-                                    한잔 허쉴?
-                                </p>
-                            </li>
-                            <a id="submitButton" href="#" class="edit_2_link">
-                                <img class="edit_2" alt="프로필수정" src="/image/ProfileEdit_b.png">
-                            </a>
-                        </ul>
+                <li class="text">
+                    <p class="name">Amelia</p>
+                    <p class="info">1998.01.18<br><br>여</p>
+                </li>
+                <li class="inBox">
+                    <p id="commentText" class="coment" name="mIntroduction" contenteditable="true">누구를위한 삶인가 .//... 인생이란
+                        무엇인가
+                        인생은 부먹인가 찍먹인가
+                        소주와 맥주는 대체 왜 먹는것일까
+                        그렇지만 없다면 나는 살수 없다
+                        한잔 허쉴?
+                    </p>
+                </li>
+                <a id="submitButton" href="#" class="edit_2_link">
+                    <img class="edit_2" alt="프로필수정" src="/image/ProfileEdit_b.png">
+                </a>
+            </ul>
 
-                    </div>
-                    <script>
-                        $(document).ready(function () {
-                            $(".edit_2_link").click(function (event) {
-                                event.preventDefault();
-                                var newText = $(".coment").text();
-                                console.log("내용확인  : " + newText);
+        </div>
+        <script>
+            $(document).ready(function () {
+                $(".edit_2_link").click(function (event) {
+                    event.preventDefault();
+                    var newText = $(".coment").text();
+                    console.log("내용확인  : " + newText);
 
-                                $.ajax({
-                                    url: '/Mypage/mIntroduction', // 실제 서버 요청 경로로 변경
-                                    type: 'POST', // 또는 'PUT', 'PATCH' 등 HTTP 메서드 선택
-                                    data: { mIntroduction : newText }, // 수정된 텍스트를 데이터로 전송
-                                    success: function (data) {
-                                        // 서버에서 응답을 처리하는 코드 (예: 성공 메시지 표시)
-                                        alert('수정된 내용이 저장되었습니다.');
+                    $.ajax({
+                        url: '/Mypage/mIntroduction', // 실제 서버 요청 경로로 변경
+                        type: 'POST', // 또는 'PUT', 'PATCH' 등 HTTP 메서드 선택
+                        data: {mIntroduction: newText}, // 수정된 텍스트를 데이터로 전송
+                        success: function (data) {
+                            // 서버에서 응답을 처리하는 코드 (예: 성공 메시지 표시)
+                            alert('수정된 내용이 저장되었습니다.');
 
-                                    },
-                                    error: function () {
-                                        // 오류 발생 시 처리하는 코드 (예: 오류 메시지 표시)
-                                        alert('내용을 저장하는 중 오류가 발생했습니다.');
+                        },
+                        error: function () {
+                            // 오류 발생 시 처리하는 코드 (예: 오류 메시지 표시)
+                            alert('내용을 저장하는 중 오류가 발생했습니다.');
 
-                                    }
-                                });
-                                alert('수정 완료!');
-                            });
-                        });
-                    </script>
-                    <!--내모임-->
-                    <p class="title_02">가입한 모임 <p class="title_02-1">/ 공개여부 <input class="check" type="checkbox" name="xxx" value="yyy"></p></p>
-                    <div id="sc1" class="swiper-container mc clearfix">
-                    <div id="myclass" class="swiper-wrapper clearfix">
-                        <div class="swiper-slide mycb_01">
-                            <a>
-                                <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p>질풍가도</p>
-                            <span><도심속 러닝 모...></span>
-                        </div>
-
-                        <div class="swiper-slide mycb_01-1">
-                            <a>
-                                <img alt="모임 이미지2" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p>질풍가도</p>
-                            <span><도심속 러닝 모...></span>
-                        </div>
-
-                        <div class="swiper-slide mycb_02">
-                            <a>
-                                <img alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p>스플래쉬</p>
-                            <span><회사인 배드민턴 모...></span>
-                        </div>
-                        <div class="swiper-slide mycb_02-1">
-                            <a>
-                                <img alt="모임 이미지4" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p>스플래쉬</p>
-                            <span><회사인 배드민턴 모...></span>
-                        </div>
-
-                        <div class="swiper-slide mycb_03">
-                            <a>
-                                <img alt="모임 이미지5" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p>빽투더퓨처</p>
-                            <span><레트로 게임 메니아... ></span>
-                        </div>
-
-                        <div class="swiper-slide mycb_03-1">
-                            <a>
-                                <img alt="모임 이미지6" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p>빽투더퓨처</p>
-                            <span><레트로 게임 메니아... ></span>
-                        </div>
-
-                        <div class="swiper-slide mycb_04">
-                            <a>
-                                <img alt="모임 이미지7" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p>우주먼지</p>
-                            <span><천체관측 모임... ></span>
-                        </div>
-                        <div class="swiper-slide mycb_04-1">
-                            <a>
-                                <img alt="모임 이미지8" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p>우주먼지</p>
-                            <span><천체관측 모임... ></span>
-                        </div>
-                        <!--가입한 모임 블럭 생성-->
-                        <script>
-                            // 가상의 데이터베이스 데이터 배열
-                            var databaseData1 = [
-                                "데이터 1",
-                                "데이터 2",
-                                "데이터 3",
-                                "데이터 4",
-                                "데이터 5",
-                                "데이터 6",
-                                "데이터 7",
-                                "데이터 8",
-
-
-                                // ... 더 많은 데이터 ...
-                            ];
-
-                            var myclass = document.getElementById("myclass");
-
-                            // 데이터베이스 데이터의 수만큼 <div> 생성
-                            for (var i = 0; i < databaseData1.length; i++) {
-                                var dataDiv = document.createElement("div");
-                                dataDiv.className = "swiper-slide mycb_"+i; // 클래스 지정
-                                dataDiv.textContent = databaseData1[i]; // 데이터 추가
-                                myclass.appendChild(dataDiv); // <div>를 컨테이너에 추가
-                            }
-                        </script>
-
-                    </div>
-                    </div>
-
-                    <!--내게시물-->
-                    <p class="title_03">내 게시물</p>
-                    <div id="sc2" class="swiper-container mp clearfix">
-                    <div id="myPost" class="swiper-wrapper clearfix">
-                        <div class="swiper-slide post_01 clearfix">
-                            <a>
-                                <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p class="postname_01">질풍가도</p>
-                            <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
-                            <p class="day_01">2023. 05. 19<p class="viewcount_01">조회 012</p></p>
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide post_02 clearfix">
-                            <a>
-                                <img class="postimg_01" alt="모임 이미지2" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p class="postname_01">우주먼지</p>
-                            <span>20년만에 돌아오는 천체 관측 하는 날 끝나고 맥주 한잔 할 살암</span>
-                            <p class="day_01">2023. 07. 15<p class="viewcount_01">조회 112</p></p>
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide post_03 clearfix">
-                            <a>
-                                <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p class="postname_01">빽투더퓨처</p>
-                            <span>플스 하는 날 (피파, 철권, 킹오파, 다디졌다)</span>
-                            <p class="day_01">2023. 08. 06<p class="viewcount_01">조회 002</p></p>
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide post_04 clearfix">
-                            <a>
-                                <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p class="postname_01">스플래쉬</p>
-                            <span>동네 아재들 다 모여라 배드민턴 함치자~!</span>
-                            <p class="day_01">2023. 08. 14<p class="viewcount_01">조회 001</p></p>
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide post_05 clearfix">
-                            <a>
-                                <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p class="postname_01">질풍가도</p>
-                            <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
-                            <p class="day_01">2023. 08. 31<p class="viewcount_01">조회 012</p></p>
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide post_06 clearfix">
-                            <a>
-                                <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                            </a>
-                            <p class="postname_01">우주먼지</p>
-                            <span>모임 회식</span>
-                            <p class="day_01">2023.09.03<p class="viewcount_01">조회 112</p></p>
-                            </a>
-                        </div>
-                    </div>
-                        <!--내 게시물 블럭 생성-->
-                        <script>
-                            // 가상의 데이터베이스 데이터 배열
-                            var databaseData = [
-                                "데이터 1",
-                                "데이터 2",
-                                "데이터 3",
-                                "데이터 4",
-                                "데이터 5",
-                                "데이터 6",
-                                "데이터 7",
-                                "데이터 8",
-                                "데이터 9",
-                                // ... 더 많은 데이터 ...
-                            ];
-
-                            var myPost = document.getElementById("myPost");
-
-                            // 데이터베이스 데이터의 수만큼 <div> 생성
-                            for (var i = 0; i < databaseData.length; i++) {
-                                var dataDiv = document.createElement("div");
-                                dataDiv.className = "swiper-slide post_"+i; // 클래스 지정
-                                dataDiv.textContent = databaseData[i]; // 데이터 추가
-                                myPost.appendChild(dataDiv); // <div>를 컨테이너에 추가
-                            }
-                        </script>
-
-                    </div>
-                    <!--내 댓글-->
-                    <p class="title_04">내 댓글</p>
-                        <div class="myComment clearfix">
-                            <ul class="comment_01">
-                                <p class="commenttext_01">
-                                    <span>ㅋㅋㅋ 나 그날 러닝 뛰고 집에 오는길에 맥주 한캔 사서 집 들어옴 ㅋㅋㅋ</span>
-                                    2023. 08. 27 - 질풍가도 | 자유게시판
-                                </p>
-                            </ul>
-
-                            <ul class="comment_02">
-                                <p class="commenttext_01">
-                                    <span>이 천체 관측날 캠핑 용품 준비 해가야 하나요??</span>
-                                    2023. 08. 15 - 우주먼지 | 자유게시판
-                                </p>
-                            </ul>
-
-                            <ul class="comment_03">
-                                <p class="commenttext_01">
-                                    <span>혹시 회원님들 중에 라켓 저렴하고 좋은것 파는곳 정보 아시는분 있나요??</span>
-                                    2023. 07. 22 - 스플래쉬 | 자유게시판
-                                </p>
-                            </ul>
-
-                            <ul class="comment_04">
-                                <p class="commenttext_01">
-                                    <span>아니 근데 저기서 마지막 챕터 보스몹 잡는거 너무 빡세던데.. 이거 못잡는거 아...</span>
-                                    2023. 07. 15 - 빽투더퓨처 | 자유게시판
-                                </p>
-                            </ul>
-
-                            <ul class="comment_05">
-                                <p class="commenttext_01">
-                                    <span>이제 맥주 그만 먹어야되는데.. 러닝뛴거 그대로 살로 다 가겠음ㅋㅋㅋㅋ</span>
-                                    2023. 07. 02 - 질풍가도 | 자유게시판
-                                </p>
-                            </ul>
-                            <ul class="comment_06">
-                                <p class="commenttext_01">
-                                    <span>이 지역 보스몹 잡아 보셨나요?</span>
-                                    2023. 05. 18  - 빽투더퓨처 | 자유게시판
-                                </p>
-                            </ul>
-                            <li class="accordion clearfix">
-                                <div class="accordion-item">
-                                    <button id="accordion-button-1" aria-expanded="false">
-                                        <!--<span class="icon" aria-hidden="true"></span>-->
-                                        <img id="seemore" alt="더보기" src="/image/더보기.png">
-                                    </button>
-                                    <p id="seemoretext">더보기</p>
-                                </div>
-                            </li>
-                    </div>
-                    <!--더보기 버튼 활성화-->
-                    <script>
-                        const items = document.querySelectorAll(".accordion button");
-
-                        function toggleAccordion() {
-                            const itemToggle = this.getAttribute('aria-expanded');
-
-                            for (i = 0; i < items.length; i++) {
-                                items[i].setAttribute('aria-expanded', 'false');
-                            }
-
-                            if (itemToggle == 'false') {
-                                this.setAttribute('aria-expanded', 'true');
-                            }
                         }
-
-                        items.forEach(item => item.addEventListener('click', toggleAccordion));
-                    </script>
-
-                    <!--더보기 클릭 후 확장-->
-                    <script>
-                        const button = document.getElementById('accordion-button-1');
-                        const myComment1 = document.querySelector('.myComment');
-
-
-                        button.addEventListener('click', function() {
-                            const ariaExpandedValue = button.getAttribute('aria-expanded');
-
-                            if (ariaExpandedValue === 'true') {
-                                myComment1.classList.add('myComment'); // A 스타일 클래스 추가
-                                myComment1.classList.remove('myComment2'); // B 스타일 클래스 제거
-                            } else {
-                                myComment1.classList.remove('myComment'); // A 스타일 클래스 제거
-                                myComment1.classList.add('myComment2'); // B 스타일 클래스 추가
-                            }
-                        });
-                    </script>
-
-                    <!--내 댓글 블럭 생성-->
-                    <script>
-                        // 가상의 데이터베이스 데이터 배열
-                        var databaseData = [
-                            "데이터 1",
-                            "데이터 2",
-                            "데이터 3",
-                            "데이터 4",
-                            "데이터 5",
-                            "데이터 6",
-                            "데이터 7",
-                            "데이터 8",
-                            "데이터 9",
-                            // ... 더 많은 데이터 ...
-                        ];
-
-                        var myComment = document.getElementsByClassName("myComment")[0];
-
-                        // 데이터베이스 데이터의 수만큼 <ul> 생성
-                        for (var i = 0; i < databaseData.length; i++) {
-                            var dataUl = document.createElement("ul");
-                            dataUl.className = "comment_1"+i; // 클래스 지정
-                            dataUl.textContent = databaseData[i]; // 데이터 추가
-                            myComment.appendChild(dataUl); // <ul>를 컨테이너에 추가
-                        }
-                    </script>
-                    <!--프로필수정 모달창--->
-                    <div id="ex1" class="modal clearfix">
-                        <div id="modalContent">
-                            <img class="proimg" alt="프로필사진" src=""> <!--프로필사진 이미지-->
-                            <p class="name"></p>
-                            <p class="info"></p>
-                            <img id="editex" class="edit" alt="프로필사진" src=""><!--흰색 수정버 튼 이미지-->
-                        </div>
-                        <button id="editcp" >수정하기</button><!--최종 수정하기 버튼 이미지-->
-                        <input type="file" id="fileInput"><!--수정할 이미지 불러오기 윈도우 창-->
-                    </div>
-
-
-                    <div id="footer">
-                        <div class="footer_menu">
-                            <a href="#">이용약관</a>
-                            <a href="#">개인정보처리방침</a>
-                            <a href="#">책임의 한계와 법적고지</a>
-                            <a href="#">회원정보 고객센터</a>
-                        </div> <!--footer메뉴 -->
-                        <div class="f_copyright">
-                            <img src="image/login_footer.png">
-                            <p>Copyright ⓒ </p>
-                            <p class="corp">mingle Corp. </p>
-                            <p>All Rights Reserved.</p>
-                        </div> <!--copyright -->
-                    </div>
+                    });
+                    alert('수정 완료!');
+                });
+            });
+        </script>
+        <!--내모임-->
+        <p class="title_02">가입한 모임
+        <p class="title_02-1">/ 공개여부 <input class="check" type="checkbox" name="xxx" value="yyy"></p></p>
+        <div id="sc1" class="swiper-container mc clearfix">
+            <div id="myclass" class="swiper-wrapper clearfix">
+                <div class="swiper-slide mycb_01">
+                    <a>
+                        <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p>질풍가도</p>
+                    <span><도심속 러닝 모...></span>
                 </div>
+
+                <div class="swiper-slide mycb_01-1">
+                    <a>
+                        <img alt="모임 이미지2" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p>질풍가도</p>
+                    <span><도심속 러닝 모...></span>
+                </div>
+
+                <div class="swiper-slide mycb_02">
+                    <a>
+                        <img alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p>스플래쉬</p>
+                    <span><회사인 배드민턴 모...></span>
+                </div>
+                <div class="swiper-slide mycb_02-1">
+                    <a>
+                        <img alt="모임 이미지4" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p>스플래쉬</p>
+                    <span><회사인 배드민턴 모...></span>
+                </div>
+
+                <div class="swiper-slide mycb_03">
+                    <a>
+                        <img alt="모임 이미지5" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p>빽투더퓨처</p>
+                    <span><레트로 게임 메니아...></span>
+                </div>
+
+                <div class="swiper-slide mycb_03-1">
+                    <a>
+                        <img alt="모임 이미지6" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p>빽투더퓨처</p>
+                    <span><레트로 게임 메니아...></span>
+                </div>
+
+                <div class="swiper-slide mycb_04">
+                    <a>
+                        <img alt="모임 이미지7" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p>우주먼지</p>
+                    <span><천체관측 모임...></span>
+                </div>
+                <div class="swiper-slide mycb_04-1">
+                    <a>
+                        <img alt="모임 이미지8" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p>우주먼지</p>
+                    <span><천체관측 모임...></span>
+                </div>
+                <!--가입한 모임 블럭 생성-->
+                <script>
+                    // 가상의 데이터베이스 데이터 배열
+                    var databaseData1 = [
+                        "데이터 1",
+                        "데이터 2",
+                        "데이터 3",
+                        "데이터 4",
+                        "데이터 5",
+                        "데이터 6",
+                        "데이터 7",
+                        "데이터 8",
+
+
+                        // ... 더 많은 데이터 ...
+                    ];
+
+                    var myclass = document.getElementById("myclass");
+
+                    // 데이터베이스 데이터의 수만큼 <div> 생성
+                    for (var i = 0; i < databaseData1.length; i++) {
+                        var dataDiv = document.createElement("div");
+                        dataDiv.className = "swiper-slide mycb_" + i; // 클래스 지정
+                        dataDiv.textContent = databaseData1[i]; // 데이터 추가
+                        myclass.appendChild(dataDiv); // <div>를 컨테이너에 추가
+                    }
+                </script>
+
+            </div>
+        </div>
+
+        <!--내게시물-->
+        <p class="title_03">내 게시물</p>
+        <div id="sc2" class="swiper-container mp clearfix">
+            <div id="myPost" class="swiper-wrapper clearfix">
+                <div class="swiper-slide post_01 clearfix">
+                    <a>
+                        <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p class="postname_01">질풍가도</p>
+                    <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
+                    <p class="day_01">2023. 05. 19
+                    <p class="viewcount_01">조회 012</p></p>
+                    </a>
+                </div>
+
+                <div class="swiper-slide post_02 clearfix">
+                    <a>
+                        <img class="postimg_01" alt="모임 이미지2" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p class="postname_01">우주먼지</p>
+                    <span>20년만에 돌아오는 천체 관측 하는 날 끝나고 맥주 한잔 할 살암</span>
+                    <p class="day_01">2023. 07. 15
+                    <p class="viewcount_01">조회 112</p></p>
+                    </a>
+                </div>
+
+                <div class="swiper-slide post_03 clearfix">
+                    <a>
+                        <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p class="postname_01">빽투더퓨처</p>
+                    <span>플스 하는 날 (피파, 철권, 킹오파, 다디졌다)</span>
+                    <p class="day_01">2023. 08. 06
+                    <p class="viewcount_01">조회 002</p></p>
+                    </a>
+                </div>
+
+                <div class="swiper-slide post_04 clearfix">
+                    <a>
+                        <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p class="postname_01">스플래쉬</p>
+                    <span>동네 아재들 다 모여라 배드민턴 함치자~!</span>
+                    <p class="day_01">2023. 08. 14
+                    <p class="viewcount_01">조회 001</p></p>
+                    </a>
+                </div>
+
+                <div class="swiper-slide post_05 clearfix">
+                    <a>
+                        <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p class="postname_01">질풍가도</p>
+                    <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
+                    <p class="day_01">2023. 08. 31
+                    <p class="viewcount_01">조회 012</p></p>
+                    </a>
+                </div>
+
+                <div class="swiper-slide post_06 clearfix">
+                    <a>
+                        <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <p class="postname_01">우주먼지</p>
+                    <span>모임 회식</span>
+                    <p class="day_01">2023.09.03
+                    <p class="viewcount_01">조회 112</p></p>
+                    </a>
+                </div>
+            </div>
+            <!--내 게시물 블럭 생성-->
+            <script>
+                // 가상의 데이터베이스 데이터 배열
+                var databaseData = [
+                    "데이터 1",
+                    "데이터 2",
+                    "데이터 3",
+                    "데이터 4",
+                    "데이터 5",
+                    "데이터 6",
+                    "데이터 7",
+                    "데이터 8",
+                    "데이터 9",
+                    // ... 더 많은 데이터 ...
+                ];
+
+                var myPost = document.getElementById("myPost");
+
+                // 데이터베이스 데이터의 수만큼 <div> 생성
+                for (var i = 0; i < databaseData.length; i++) {
+                    var dataDiv = document.createElement("div");
+                    dataDiv.className = "swiper-slide post_" + i; // 클래스 지정
+                    dataDiv.textContent = databaseData[i]; // 데이터 추가
+                    myPost.appendChild(dataDiv); // <div>를 컨테이너에 추가
+                }
+            </script>
+
+        </div>
+        <!--내 댓글-->
+        <p class="title_04">내 댓글</p>
+        <div class="myComment clearfix">
+            <ul class="comment_01">
+                <p class="commenttext_01">
+                    <span>ㅋㅋㅋ 나 그날 러닝 뛰고 집에 오는길에 맥주 한캔 사서 집 들어옴 ㅋㅋㅋ</span>
+                    2023. 08. 27 - 질풍가도 | 자유게시판
+                </p>
+            </ul>
+
+            <ul class="comment_02">
+                <p class="commenttext_01">
+                    <span>이 천체 관측날 캠핑 용품 준비 해가야 하나요??</span>
+                    2023. 08. 15 - 우주먼지 | 자유게시판
+                </p>
+            </ul>
+
+            <ul class="comment_03">
+                <p class="commenttext_01">
+                    <span>혹시 회원님들 중에 라켓 저렴하고 좋은것 파는곳 정보 아시는분 있나요??</span>
+                    2023. 07. 22 - 스플래쉬 | 자유게시판
+                </p>
+            </ul>
+
+            <ul class="comment_04">
+                <p class="commenttext_01">
+                    <span>아니 근데 저기서 마지막 챕터 보스몹 잡는거 너무 빡세던데.. 이거 못잡는거 아...</span>
+                    2023. 07. 15 - 빽투더퓨처 | 자유게시판
+                </p>
+            </ul>
+
+            <ul class="comment_05">
+                <p class="commenttext_01">
+                    <span>이제 맥주 그만 먹어야되는데.. 러닝뛴거 그대로 살로 다 가겠음ㅋㅋㅋㅋ</span>
+                    2023. 07. 02 - 질풍가도 | 자유게시판
+                </p>
+            </ul>
+            <ul class="comment_06">
+                <p class="commenttext_01">
+                    <span>이 지역 보스몹 잡아 보셨나요?</span>
+                    2023. 05. 18 - 빽투더퓨처 | 자유게시판
+                </p>
+            </ul>
+            <li class="accordion clearfix">
+                <div class="accordion-item">
+                    <button id="accordion-button-1" aria-expanded="false">
+                        <!--<span class="icon" aria-hidden="true"></span>-->
+                        <img id="seemore" alt="더보기" src="/image/더보기.png">
+                    </button>
+                    <p id="seemoretext">더보기</p>
+                </div>
+            </li>
+        </div>
+        <!--더보기 버튼 활성화-->
+        <script>
+            const items = document.querySelectorAll(".accordion button");
+
+            function toggleAccordion() {
+                const itemToggle = this.getAttribute('aria-expanded');
+
+                for (i = 0; i < items.length; i++) {
+                    items[i].setAttribute('aria-expanded', 'false');
+                }
+
+                if (itemToggle == 'false') {
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            }
+
+            items.forEach(item => item.addEventListener('click', toggleAccordion));
+        </script>
+
+        <!--더보기 클릭 후 확장-->
+        <script>
+            const button = document.getElementById('accordion-button-1');
+            const myComment1 = document.querySelector('.myComment');
+
+
+            button.addEventListener('click', function () {
+                const ariaExpandedValue = button.getAttribute('aria-expanded');
+
+                if (ariaExpandedValue === 'true') {
+                    myComment1.classList.add('myComment'); // A 스타일 클래스 추가
+                    myComment1.classList.remove('myComment2'); // B 스타일 클래스 제거
+                } else {
+                    myComment1.classList.remove('myComment'); // A 스타일 클래스 제거
+                    myComment1.classList.add('myComment2'); // B 스타일 클래스 추가
+                }
+            });
+        </script>
+
+        <!--내 댓글 블럭 생성-->
+        <script>
+            // 가상의 데이터베이스 데이터 배열
+            var databaseData = [
+                "데이터 1",
+                "데이터 2",
+                "데이터 3",
+                "데이터 4",
+                "데이터 5",
+                "데이터 6",
+                "데이터 7",
+                "데이터 8",
+                "데이터 9",
+                // ... 더 많은 데이터 ...
+            ];
+
+            var myComment = document.getElementsByClassName("myComment")[0];
+
+            // 데이터베이스 데이터의 수만큼 <ul> 생성
+            for (var i = 0; i < databaseData.length; i++) {
+                var dataUl = document.createElement("ul");
+                dataUl.className = "comment_1" + i; // 클래스 지정
+                dataUl.textContent = databaseData[i]; // 데이터 추가
+                myComment.appendChild(dataUl); // <ul>를 컨테이너에 추가
+            }
+        </script>
+        <!--프로필수정 모달창--->
+        <div id="ex1" class="modal clearfix">
+            <div id="modalContent">
+                <img class="proimg" alt="프로필사진" src=""> <!--프로필사진 이미지-->
+                <p class="name"></p>
+                <p class="info"></p>
+                <img id="editex" class="edit" alt="프로필사진" src=""><!--흰색 수정버 튼 이미지-->
+            </div>
+            <button id="editcp">수정하기</button><!--최종 수정하기 버튼 이미지-->
+            <input type="file" id="fileInput"><!--수정할 이미지 불러오기 윈도우 창-->
+        </div>
+
+
+        <div id="footer">
+            <div class="footer_menu">
+                <a href="#">이용약관</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">책임의 한계와 법적고지</a>
+                <a href="#">회원정보 고객센터</a>
+            </div> <!--footer메뉴 -->
+            <div class="f_copyright">
+                <img src="image/login_footer.png">
+                <p>Copyright ⓒ </p>
+                <p class="corp">mingle Corp. </p>
+                <p>All Rights Reserved.</p>
+            </div> <!--copyright -->
+        </div>
+    </div>
     </section>
 
 </div>
 
-        <script>
-            $(document).ready(function () {
-                $("#editex").click(function (event) {
-                    event.preventDefault();
-                    // 파일 업로드 input을 클릭합니다.
-                    $("#fileInput").click();
-                });
+<script>
+    $(document).ready(function () {
+        $("#editex").click(function (event) {
+            event.preventDefault();
+            // 파일 업로드 input을 클릭합니다.
+            $("#fileInput").click();
+        });
 
-                $("#fileInput").change(function () {
-                    var fileInput = $("#fileInput")[0].files[0]; // 파일 인풋에서 선택한 파일을 가져옵니다.
+        $("#fileInput").change(function () {
+            var fileInput = $("#fileInput")[0].files[0]; // 파일 인풋에서 선택한 파일을 가져옵니다.
 
-                    // 파일을 선택한 후, 해당 파일의 경로를 img 요소의 src 속성에 설정합니다.
-                    var fileURL = URL.createObjectURL(fileInput);
-                    $(".proimg").attr("src", fileURL);
-                });
+            // 파일을 선택한 후, 해당 파일의 경로를 img 요소의 src 속성에 설정합니다.
+            var fileURL = URL.createObjectURL(fileInput);
+            $(".proimg").attr("src", fileURL);
+        });
 
-                $("#editcp").click(function (event) {
-                    event.preventDefault();
-                    var newSrc = $(".proimg").attr("src");
-                    console.log("내용확인  : " + newSrc);
+        $("#editcp").click(function (event) {
+            event.preventDefault();
+            var newSrc = $(".proimg").attr("src");
+            console.log("내용확인  : " + newSrc);
 
-                    // 이미지를 서버로 업로드하고 서버에서 URL 생성
-                    var formData = new FormData();
-                    formData.append('mProfileimg', $("#fileInput")[0].files[0]); // 서버 컨트롤러에서 사용하는 파라미터 이름에 맞게 설정
+            // 이미지를 서버로 업로드하고 서버에서 URL 생성
+            var formData = new FormData();
+            formData.append('mProfileimg', $("#fileInput")[0].files[0]); // 서버 컨트롤러에서 사용하는 파라미터 이름에 맞게 설정
 
-                    $.ajax({
-                        url: '/Mypage/uploadImage',
-                        type: 'POST',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        success: function (data) {
-                            var serverImageUrl = data.imageUrl; // 서버에서 생성된 이미지 URL을 받아옵니다.
+            $.ajax({
+                url: '/Mypage/uploadImage',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    var serverImageUrl = data.imageUrl; // 서버에서 생성된 이미지 URL을 받아옵니다.
 
-                            // 이제 serverImageUrl을 사용하여 서버 측에서 이미지를 불러올 수 있습니다.
-                            console.log('서버 이미지 URL: ' + serverImageUrl);
-                            // 이후 서버 이미지 URL을 사용하여 필요한 작업을 수행할 수 있습니다.
-                            alert('이미지 업로드 성공.');
-                        },
-                        error: function () {
-                            alert('이미지 업로드 중 오류가 발생했습니다.');
-                        }
-                    });
-                });
+                    // 이제 serverImageUrl을 사용하여 서버 측에서 이미지를 불러올 수 있습니다.
+                    console.log('서버 이미지 URL: ' + serverImageUrl);
+                    // 이후 서버 이미지 URL을 사용하여 필요한 작업을 수행할 수 있습니다.
+                    alert('이미지 업로드 성공.');
+                },
+                error: function () {
+                    alert('이미지 업로드 중 오류가 발생했습니다.');
+                }
             });
-        </script>
-
-        <!--$.ajax({
-        url: '/Mypage/mPiProfileimg', // 실제 서버 요청 경로로 변경
-        type: 'POST', // 또는 'PUT', 'PATCH' 등 HTTP 메서드 선택
-        data: { mPiProfileimg : newSrc }, // 수정된 텍스트를 데이터로 전송
-        success: function (data) {
-        // 서버에서 응답을 처리하는 코드 (예: 성공 메시지 표시)
-        alert('수정된 내용이 저장되었습니다.');
-        alert('수정 완료!');
-        },
-        error: function () {
-        // 오류 발생 시 처리하는 코드 (예: 오류 메시지 표시)
-        alert('내용을 저장하는 중 오류가 발생했습니다.');
-
-        }
-        });-->
-
+        });
+    });
+</script>
 <script>
 
     const swiper1 = new Swiper('#sc1', {
@@ -529,8 +522,8 @@
 </script>
 <script>
     // 모달이 열릴 때
-    $(document).on('modal:open', '#ex1', function() {
-    // 프로필 정보 가져와서 모달 내에 출력
+    $(document).on('modal:open', '#ex1', function () {
+        // 프로필 정보 가져와서 모달 내에 출력
         var profileContainer = $('#box #view .view .MyPage .profile');
         var proimgSrc = profileContainer.find('.pimg .proimg').attr('src');
         var nameText = profileContainer.find('.text .name').text();
@@ -542,11 +535,11 @@
         console.log(infoText);
         console.log(editimgSrc);
 
-    // 모달 내의 요소에 정보 출력
-    $('#modalContent .proimg').attr('src', proimgSrc);
-    $('#modalContent .name').text(nameText);
-    $('#modalContent .info').html(infoText);
-    $('#modalContent .edit').attr('src', editimgSrc);
+        // 모달 내의 요소에 정보 출력
+        $('#modalContent .proimg').attr('src', proimgSrc);
+        $('#modalContent .name').text(nameText);
+        $('#modalContent .info').html(infoText);
+        $('#modalContent .edit').attr('src', editimgSrc);
     });
 </script>
 
