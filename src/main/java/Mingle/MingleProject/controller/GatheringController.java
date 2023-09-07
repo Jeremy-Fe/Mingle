@@ -1,7 +1,9 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.config.MemberComparator;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
@@ -9,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
 import java.util.List;
@@ -33,14 +33,10 @@ public class GatheringController {
 
         List<MemberDTO> gatheringMemberDTO = memberService.findByGatheringMember(gatheringDTO.getGName());
 
+        // 객체 정렬 (모임장 1순위 운영진 2순위 회원 3순위 오름차순 정렬
         MemberComparator memberComparator = new MemberComparator(gatheringDTO);
-
         Collections.sort(gatheringMemberDTO, memberComparator);
-
-        System.out.println("gatheringMemberDTO = " + gatheringMemberDTO);
         model.addAttribute("GatheringMember", gatheringMemberDTO);
-
-
 
         int gatheringHeadcount = memberService.findByGatheringHeadcount(gatheringDTO.getGName());
         model.addAttribute("headcount", gatheringHeadcount);
@@ -138,6 +134,9 @@ public class GatheringController {
         
         return "Gathering_Schedule";}
 
-
+    @GetMapping("Gathering_Post_Write")
+    public String Gathering_Post_Write(){
+        return "Gathering_Post_Write";
+    }
 
 }

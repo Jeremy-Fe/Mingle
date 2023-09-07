@@ -2,11 +2,14 @@
 <div class="view clearfix" th:fragment="gatheringParam ( gCoverimg ,District, GMainsubject, gName, Gathering_id)">
     <head>
         <link href="/CSS/Gathering.css?after" type="text/css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
     </head>
     <!-- 타이틀 -->
     <div class="g_title">
         <ul>
-            <li><img class="title_img" th:src="|${gCoverimg}|"  alt="테스트"></li> <!----><!--src="/image/testimg.png"-->
+            <li><a class="title_img_a" th:href="|${gCoverimg}|" data-lightbox="example-set"><img class="title_img" th:src="|${gCoverimg}|"></a></li> <!----><!--src="/image/testimg.png"-->
             <ul class="title_subject">
                 <li>
                     <a class="title_detail" th:text="|${District}|"></a><!---->
