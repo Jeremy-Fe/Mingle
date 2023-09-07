@@ -4,21 +4,36 @@ import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
+import lombok.AllArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
 import java.lang.reflect.Member;
+import java.io.IOException;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
+
 @Service
-@RequiredArgsConstructor
+/*@RequiredArgsConstructor*/
+@AllArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public void save(MemberDTO memberDTO) {
         // 1. dto -> entity 변환
@@ -95,32 +110,42 @@ public class MemberService {
     }
 
 
-
     @Transactional
     /*public void introduce(MemberDTO memberDTO)*/
     public void introduce(String mIntroduction) {
 
-            /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
-            MemberEntity memberEntity = new MemberEntity();
-            memberEntity.setMIntroduction(mIntroduction);
+        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setMIntroduction(mIntroduction);
 
-            // MemberEntity 객체를 저장
-            memberRepository.updateMIntroduction(mIntroduction);
+        // MemberEntity 객체를 저장
+        memberRepository.updateMIntroduction(mIntroduction);
 
     }
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
+    private Blob createBlobFromMultipartFile(MultipartFile multipartFile) throws IOException, SQLException {
+        byte[] fileBytes = multipartFile.getBytes();
+            return new SerialBlob(fileBytes);
+    }
     @Transactional
-    /*public void introduce(MemberDTO memberDTO)*/
-//    public void proimg(String mPiProfileimg) {
-//
-//        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
-//        MemberEntity memberEntity = new MemberEntity();
-//        memberEntity.setMPiProfileimg(mPiProfileimg);
-//
-//        // MemberEntity 객체를 저장
-//        memberRepository.updateMPiProfileimg(mPiProfileimg);
-//
-//    }
+    public void uploadImage(@NotNull MultipartFile mProfileimg) {
+        try {
+            MemberEntity memberEntity = new MemberEntity();
+            Blob mProfileBlob = createBlobFromMultipartFile(mProfileimg);
+            memberEntity.setMProfileimg(mProfileBlob);
+            memberRepository.updatemProfileimg(mProfileBlob);
+
+        } catch (IOException | SQLException e) {
+            e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
+            throw new RuntimeException("이미지 업로드 중 오류가 발생했습니다.");
+        }
+    }
+
+
 
     public List<MemberDTO> findByGatheringMember(String gatheringName){
         List<MemberEntity> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);

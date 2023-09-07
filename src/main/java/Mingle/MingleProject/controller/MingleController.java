@@ -12,9 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile;
+
+
 
 import javax.servlet.http.HttpSession;
 
+import java.sql.Blob;
 import java.util.List;
 
 @Controller
@@ -28,6 +32,7 @@ public class MingleController {
     @Autowired
     RegisterMail registerMail;
     private final MemberRepository memberRepository;
+
 
     //기본페이지 요청메소드
     @GetMapping("/")
@@ -106,13 +111,12 @@ public class MingleController {
 
     }
 
-//    @PostMapping("/Mypage/mPiProfileimg")
-//    public String proimg(@RequestParam("mPiProfileimg") String mPiProfileimg) {
-//        System.out.println("mPiProfileimg : " + mPiProfileimg);
-//        memberService.proimg(mPiProfileimg);
-//        return "Mypage"; // 결과 페이지로 이동
-//
-//    }
+    @PostMapping("/Mypage/uploadImage")
+        public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
+        System.out.println("mProfileimg : " + mProfileimg);
+        memberService.uploadImage(mProfileimg);
+        return "Mypage";
+    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
