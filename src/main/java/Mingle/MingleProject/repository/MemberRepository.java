@@ -45,4 +45,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
     @Query(value = "select COUNT(*) from MemberEntity m where m.mGGathering like %:gName%")
     int findByGatheringHeadcount(@Param("gName") String gName);
+
+
+
 }

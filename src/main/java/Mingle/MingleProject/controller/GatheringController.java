@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -31,8 +32,15 @@ public class GatheringController {
         model.addAttribute("GatheringHome", gatheringDTO);
 
         List<MemberDTO> gatheringMemberDTO = memberService.findByGatheringMember(gatheringDTO.getGName());
+
+        MemberComparator memberComparator = new MemberComparator(gatheringDTO);
+
+        Collections.sort(gatheringMemberDTO, memberComparator);
+
         System.out.println("gatheringMemberDTO = " + gatheringMemberDTO);
         model.addAttribute("GatheringMember", gatheringMemberDTO);
+
+
 
         int gatheringHeadcount = memberService.findByGatheringHeadcount(gatheringDTO.getGName());
         model.addAttribute("headcount", gatheringHeadcount);
