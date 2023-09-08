@@ -1,6 +1,5 @@
 package Mingle.MingleProject.repository;
 
-import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.Gathering;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,13 +16,32 @@ public interface GatheringRepository extends JpaRepository<Gathering, Long> {
     @Query("SELECT g FROM Gathering g WHERE g.gName IN :gNames")
     List<Gathering> findMatchingGatheringsByGName(@Param("gNames") List<String> gNames);
 
-    /* @Query("SELECT g FROM Gathering g WHERE m.gDistrict = ?1 AND m.gMainsubject = ?2 AND m.gSubject= ?3")
-    List<Gathering> searchMingleCase1(String selectedRegi, String mainCtName, String subC);*/
+    /*카테고리 검색*/
+    /*전체 검색*/
+     @Query("SELECT g FROM Gathering g WHERE g.gDistrict = ?1 AND g.gMainsubject = ?2 AND g.gSubject= ?3")
+    List<Gathering> searchMingleCase1(String selectedRegi, String mainCtName, String subC);
 
-    /*    @Query("SELECT g FROM Gathering g WHERE m.gDistrict = ?1 AND m.gMainsubject = ?2  AND m.gName =?3)
-    List<Gathering> searchMingleCase2(String selectedRegi, String mainCtName, String subC);*/
+     /*2개 해당*/
+    /*지역 & 메인 = "전체" \ 세부 != "전체" */
+    @Query("SELECT g FROM Gathering g WHERE g.gDistrict = ?1 AND g.gMainsubject = ?2")
+    List<Gathering> searchMingleCase2_1(String selectedRegi, String mainCtName);
+    /*메인 & 세부 = "전체" \ 지역 != "전체" */
+    @Query("SELECT g FROM Gathering g WHERE g.gMainsubject = ?1 AND g.gSubject = ?2")
+    List<Gathering> searchMingleCase2_2(String selectedRegi, String mainCtName);
+    /*세부 & 지역 = "전체" \ 메인 != "전체" */
+    @Query("SELECT g FROM Gathering g WHERE g.gSubject = ?1 AND g.gDistrict = ?2")
+    List<Gathering> searchMingleCase2_3(String selectedRegi, String mainCtName);
 
-    /*    @Query("SELECT g FROM Gathering g WHERE m.gDistrict = ?1 AND m.gMainsubject = ?2 )
-    List<Gathering> searchMingleCase3(String selectedRegi, String mainCtName, String subC);*/
+    /*하나만 해당*/
+    @Query("SELECT g FROM Gathering g WHERE g.gDistrict = ?1 or g.gMainsubject = ?1 or g.gSubject= ?1")
+    List<Gathering> searchMingleCase3(String selectedRegi);
+
+
+    /*검색창 검색*/
+    @Query("SELECT g FROM Gathering g WHERE g.gName = ?1 ")
+    List<Gathering> searchNameCase1(String searchName);
+
+
+
 
 }

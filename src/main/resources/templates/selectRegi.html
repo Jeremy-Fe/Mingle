@@ -31,7 +31,7 @@
         function enterkey() {
             if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
                 const regiSearch = document.getElementById('regiSearch').value; // 'regiSearch' id를 가진 요소에서 값을 가져옴
-                console.log("ReTest1 : "+regiSearch);
+                console.log("1.ReTest1 : "+regiSearch);
 
                 $.ajax({
                     url: "selectRegi/regiSearch",
@@ -39,7 +39,7 @@
                     data: { keyword: regiSearch },
                     success: function(data) {
                         // 성공적으로 응답 받았을 때 처리할 로직 작성
-                        console.log(data)
+                        console.log("2."+data)
                         $("#showRegi>").remove();
                         for (var i = 0; i < data.length; i++) {
                             var city = data[i];
@@ -49,22 +49,20 @@
                             $("#showRegi").append(html);
                         }
                         $(document).on("click", ".sResult", function(event) {
-                            console.log("데이터 길이 = "+data.length)
+                                console.log("3.불러온 데이터 길이 = "+data.length)
                                 var dataIndex = $(this).data("index");
-                                console.log("dataIndex = "+ dataIndex)
-                                console.log("data[dataIndex] = "+data[dataIndex]);
+                                console.log("4. 선택한 dataIndex = "+ dataIndex)
                                 var selectedRegi = data[dataIndex];
                                 var sRegi1 = selectedRegi.mcName;
-                                // var sRegi2 = selectedRegi.scName; 동 삭제;
-                                // var sRegi = sRegi1+ " " + sRegi2;
-                                console.log("받을 값 = "+sRegi1);
+                                var sRegi2 = selectedRegi.bcName;
+                                console.log("5.받을 값 = "+sRegi1);
                             $.ajax({
                                 url: "search2/selectedRegion",
                                 type : 'POST',
                                 data: { selectedRegion: sRegi1 },
                                 success: function(response) {
 
-                                    console.log("selectedRegi = " + sRegi1);
+                                    console.log("6.selectedRegi = " + sRegi1);
 
                                     document.querySelector('a[rel="modal:close"]').click();
                                     // location.reload();
@@ -74,10 +72,10 @@
                                     selectedRegiElement.innerText = "";
 
 
-                                    $("#selectedRegi").append(sRegi1);
+                                    $("#selectedRegi").append(sRegi2+" "+sRegi1);
 
                                     data = null;
-                                    console.log("리프레쉬"+data);
+                                    console.log("7. data = null ?"+data);
 
                                 },
                                 error: function(xhr, status, error) {
