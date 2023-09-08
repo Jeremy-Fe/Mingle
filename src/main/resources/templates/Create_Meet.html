@@ -13,7 +13,7 @@
     <form action="/create-gathering" method="post">
         <ul>
             <img class="marker" src="image/meet_marker.png">
-            <li th:unless="${session.loginId == null}" th:text="${session.loginId}" class="maker2">지역</li>
+            <li class="maker2">지역</li>
         </ul>
         <div class="select1">
             <select name="gCity" class="city select_box">
@@ -120,23 +120,25 @@
                 </ul>
             </div>
         </div>
-    </form>
-</div>
-<div class="footer">
-    <div class="footer_menu">
-        <a href="#">이용약관</a>
-        <a href="#">개인정보처리방침</a>
-        <a href="#">책임의 한계와 법적고지</a>
-        <a href="#">회원정보 고객센터</a>
-    </div>
-    <div class="f_copyright">
-        <img src="image/login_footer.png">
-        <p>Copyright ⓒ </p>
-        <p class="corp">mingle Corp. </p>
-        <p>All Rights Reserved.</p>
-    </div>
-</div>
-<!-- JavaScript 코드 추가 -->
+        <!-- 로그인 세션 가져오고 넘기는 코드 -->
+            <input type="hidden" name="gMainleader" th:value="${session.loginId}">
+     </form>
+ </div>
+ <div class="footer">
+     <div class="footer_menu">
+         <a href="#">이용약관</a>
+         <a href="#">개인정보처리방침</a>
+         <a href="#">책임의 한계와 법적고지</a>
+         <a href="#">회원정보 고객센터</a>
+     </div>
+     <div class="f_copyright">
+         <img src="image/login_footer.png">
+         <p>Copyright ⓒ </p>
+         <p class="corp">mingle Corp. </p>
+         <p>All Rights Reserved.</p>
+     </div>
+ </div>
+ <!-- JavaScript 코드 추가 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
     function vlaue_bt(value) {
