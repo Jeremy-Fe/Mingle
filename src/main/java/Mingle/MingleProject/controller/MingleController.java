@@ -5,7 +5,6 @@ import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.entity.Interest;
 import Mingle.MingleProject.repository.InterestRepository;
 import Mingle.MingleProject.service.CityService;
-import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
 import lombok.RequiredArgsConstructor;
@@ -160,6 +159,16 @@ public class MingleController {
 
     @GetMapping("Gathering_Album_BoardNotification")
     public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
+
+    @GetMapping("search1")
+    public String search1() {return "search1";}
+    @GetMapping("search2")
+    public String search2() {return "search2";}
+    @GetMapping("selectRegi")
+    public String selectRegi() {
+        return "selectRegi";
+    }
+
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);
@@ -183,17 +192,6 @@ public class MingleController {
         memberService.save(memberDTO);
         return "login";
     }
-    @GetMapping("search1")
-    public String search1() {return "search1";}
-    @GetMapping("search2")
-    public String search2() {return "search2";}
-
-
-    @GetMapping("selectRegi")
-    public String selectRegi() {
-        return "selectRegi";
-    }
-
 
     @PostMapping("/join/id-check")
     public @ResponseBody String idCheck(@RequestParam("mId") String mId) {

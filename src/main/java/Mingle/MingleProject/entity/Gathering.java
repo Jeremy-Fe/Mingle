@@ -23,7 +23,7 @@ public class Gathering {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "G_NUM", nullable = false)
     private Long id;
-    @Column(name = "G_NAME", length = 100)
+    @Column(name = "G_NAME", nullable = false, length = 100)
     private String gName;
     @Column(name = "G_INTRODUCTION", nullable = false, length = 4000)
     private String gIntroduction;

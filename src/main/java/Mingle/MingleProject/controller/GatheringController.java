@@ -4,6 +4,7 @@ import Mingle.MingleProject.config.MemberComparator;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.Gathering;
+import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
@@ -54,6 +55,10 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
+        List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
+
+
+        return "Gathering_Board";}
 
         return "Gathering_Board";
     }
