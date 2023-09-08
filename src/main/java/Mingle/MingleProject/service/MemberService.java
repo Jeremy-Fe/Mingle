@@ -1,6 +1,8 @@
 package Mingle.MingleProject.service;
 
+import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.entity.Gathering;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -167,7 +169,31 @@ public class MemberService {
     }
 
     public MemberDTO findbyIdMyPage(String logInId) {
-        Optional<MemberEntity> myPageMemberEntity = MemberRepository.findById(logInId);
+        Optional<MemberEntity> myPageMemberEntity = memberRepository.findBymId(logInId);
+        if(myPageMemberEntity.isPresent()){
+            MemberEntity memberEntity = myPageMemberEntity.get();
+            MemberDTO memberDTO = MemberDTO.toMemberDTO(memberEntity);
+
+            return memberDTO;
+        } else {
+            return null;
+        }
     }
 
+    public byte[] getProfileimgData(String logInId) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findBymId(logInId);
+        if (optionalMemberEntity.isPresent()) {
+            MemberEntity profileEntity = optionalMemberEntity.get();
+            Blob blobTypeProfileimg = profileEntity.getMProfileimg();
+
+            if (blobTypeProfileimg != null) {
+                try {
+                    return blobTypeProfileimg.getBytes(1, (int) blobTypeProfileimg.length());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
 }

@@ -8,5 +8,6 @@ public class MingleProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MingleProjectApplication.class, args);
+
 	}
 }

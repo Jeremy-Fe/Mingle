@@ -107,7 +107,17 @@ public class MingleController {
     @GetMapping("MyPage")
     public String MyPag1e(HttpSession session, Model model){
         String logInId = (String) session.getAttribute("loginId");
-        MemberDTO memberDTO = MemberService.findbyIdMyPage(logInId);
+        MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
+        model.addAttribute("myPagemId", memberDTO);
+
+        byte[] profileimg = memberService.getProfileimgData(logInId);
+        model.addAttribute("profileimg", profileimg);
+
+        System.out.println(profileimg);
+        System.out.println(profileimg);
+        System.out.println(profileimg);
+        System.out.println(profileimg);
+        System.out.println(profileimg);
 
         return "MyPage";
     }
