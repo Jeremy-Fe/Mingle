@@ -1,5 +1,7 @@
 package Mingle.MingleProject.entity;
 
+import Mingle.MingleProject.dto.GatheringDTO;
+import Mingle.MingleProject.dto.InterestDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,4 +23,11 @@ public class Interest {
     @Column(name = "I_SUBJECT", nullable = false, length = 100)
     private String iSubject;
 
+    public static Interest interest(InterestDTO interestDTO) {
+        Interest interest = new Interest();
+        interest.setINum(interestDTO.getINum());
+        interest.setIMainsubject(interestDTO.getIMainsubject());
+        interest.setISubject(interestDTO.getISubject());
+        return interest;
+    }
 }
