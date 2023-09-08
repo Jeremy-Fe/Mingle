@@ -1,5 +1,6 @@
 package Mingle.MingleProject.service;
 
+import Mingle.MingleProject.Mapper.EntityDTOMapper;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
@@ -12,16 +13,20 @@ import Mingle.MingleProject.repository.GatheringRepository;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Member;
 import java.util.*;
+import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
 public class GatheringService {
     private final GatheringRepository gatheringRepository;
     private final MemberRepository memberRepository;
+    private final PostRepository postRepository;
 
 
     public List<GatheringDTO> findAll() {
@@ -72,13 +77,14 @@ public List<Gathering> findMyMingles(String userId) {
 
     public List<PostDTO> findByNotificationPost(Long id) {
         Long bNum = 5L;
-        List<PostEntity> PostEntityList = postRepository.findByNotificationPost(id, bNum);
+        List<PostEntity> postEntityList = postRepository.findByBoardAndGathering(id, bNum);
 
-        List<PostDTO> PostDTOList = new ArrayList<>();
 
-        for (PostEntity postEntity: PostEntityList) {
-            PostDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
+        List<PostDTO> postDTOList = new ArrayList<>();
+        for (PostEntity postEntity: postEntityList) {
+            postDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
         }
-        return PostDTOList;
+
+        return postDTOList;
     }
 }

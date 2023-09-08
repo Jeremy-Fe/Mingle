@@ -37,7 +37,7 @@ public class PostEntity {
     @Column(name = "P_VIEWS")
     private Long pViews;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "P_M_ID", nullable = false)
     private MemberEntity pMId;
 

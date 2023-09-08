@@ -43,6 +43,7 @@ public class GatheringController {
         Collections.sort(gatheringMemberDTO, memberComparator);
         model.addAttribute("GatheringMember", gatheringMemberDTO);
 
+
         int gatheringHeadcount = memberService.findByGatheringHeadcount(gatheringDTO.getGName());
         model.addAttribute("headcount", gatheringHeadcount);
 
@@ -56,8 +57,9 @@ public class GatheringController {
         model.addAttribute("GatheringHome", gatheringDTO);
 
         List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
+        model.addAttribute("Notification", postDTOList);
 
-        
+
         return "Gathering_Board";}
 
     @GetMapping("Gathering_Post/{id}")
@@ -141,13 +143,13 @@ public class GatheringController {
         
         return "Gathering_Schedule";}
 
-    @PostMapping("/create-gathering")
-    public String save(@ModelAttribute GatheringDTO gatheringDTO){
-        gatheringService.save(gatheringDTO);
-        System.out.println("GatheringController.save");
-        System.out.println("GatheringDTO = " + gatheringDTO);
-        return "myClass";
-    }
+//    @PostMapping("/create-gathering")
+//    public String save(@ModelAttribute GatheringDTO gatheringDTO){
+//        gatheringService.save(gatheringDTO);
+//        System.out.println("GatheringController.save");
+//        System.out.println("GatheringDTO = " + gatheringDTO);
+//        return "myClass";
+//    }
 
     @GetMapping("Gathering_Post_Write")
     public String Gathering_Post_Write(){

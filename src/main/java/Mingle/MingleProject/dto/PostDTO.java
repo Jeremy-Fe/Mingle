@@ -23,16 +23,4 @@ public class PostDTO {
     private LocalDate pDate;
 
 
-//    public static Gathering gathering(GatheringDTO gatheringDTO) {
-//        Gathering gathering = new Gathering();
-//        gathering.setId(gatheringDTO.getId());
-//        gathering.setGName(gatheringDTO.getGName());
-//        return gathering;
-//    }
-//    public static PostDTO toPostEntity(PostDTO postDTO){
-//        PostEntity postEntity = new PostEntity();
-//        postEntity.setPNum(postDTO.getPNum());
-//        postEntity.setPBNum(postDTO.getPBNum());
-//
-//    }
 }

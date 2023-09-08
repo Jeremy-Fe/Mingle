@@ -11,7 +11,8 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<PostEntity, Long> {
 
-    @Query("SELECT p FROM PostEntity p WHERE p.pGNum.id = :pGNum AND p.pBNum.bNum = :pBNum ORDER BY p.pDate DESC")
-    List<PostEntity> findByNotificationPost(@Param("pGNum") Long pGNum, @Param("pBNum") Long pBNum);
+    @Query("SELECT p FROM PostEntity p WHERE p.pBNum.bNum = :pBNum AND p.pGNum.id = :pGNum")
+    List<PostEntity> findByBoardAndGathering(Long pGNum, Long pBNum);
+
 
 }
