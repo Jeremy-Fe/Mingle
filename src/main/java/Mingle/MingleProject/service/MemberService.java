@@ -1,11 +1,8 @@
 package Mingle.MingleProject.service;
 
-import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.entity.Gathering;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +15,12 @@ import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
-
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.IOException;
-import java.sql.Blob;
-import java.sql.SQLException;
+import java.nio.charset.StandardCharsets;
 
 @Service
 /*@RequiredArgsConstructor*/
@@ -115,8 +110,8 @@ public class MemberService {
     }
 
 
+    //Mypage 자기 소개 수정
     @Transactional
-    /*public void introduce(MemberDTO memberDTO)*/
     public void introduce(String mIntroduction) {
 
         /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
@@ -127,6 +122,8 @@ public class MemberService {
         memberRepository.updateMIntroduction(mIntroduction);
 
     }
+
+    //MYpage 자기 프로필 사진 업로드
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
@@ -150,6 +147,40 @@ public class MemberService {
         }
     }
 
+    //Mypage 자기 프로필 사진 DB에서 부터 출력
+    public String getProfileimgData(String logInId) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findBymId(logInId);
+        if (optionalMemberEntity.isPresent()) {
+            MemberEntity profileEntity = optionalMemberEntity.get();
+            MemberDTO profileDto = MemberDTO.toMemberDTO(profileEntity);
+            Blob blobTypeProfileimg = profileDto.getMProfileimg();
+
+            if (blobTypeProfileimg != null) {
+                try {
+                    byte[] byteArray = blobTypeProfileimg.getBytes(1, (int) blobTypeProfileimg.length());
+                    String base64Iamge = Base64.getEncoder().encodeToString(byteArray);
+                    return base64Iamge;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
+
+    //MYpage 헤더로부터 로그인 된 ID 정보 유지
+    public MemberDTO findbyIdMyPage(String logInId) {
+        Optional<MemberEntity> myPageMemberEntity = memberRepository.findBymId(logInId);
+        if(myPageMemberEntity.isPresent()){
+            MemberEntity memberEntity = myPageMemberEntity.get();
+            MemberDTO memberDTO = MemberDTO.toMemberDTO(memberEntity);
+
+            return memberDTO;
+        } else {
+            return null;
+        }
+    }
 
 
     public List<MemberDTO> findByGatheringMember(String gatheringName){
@@ -168,32 +199,4 @@ public class MemberService {
         return headcount;
     }
 
-    public MemberDTO findbyIdMyPage(String logInId) {
-        Optional<MemberEntity> myPageMemberEntity = memberRepository.findBymId(logInId);
-        if(myPageMemberEntity.isPresent()){
-            MemberEntity memberEntity = myPageMemberEntity.get();
-            MemberDTO memberDTO = MemberDTO.toMemberDTO(memberEntity);
-
-            return memberDTO;
-        } else {
-            return null;
-        }
-    }
-
-    public byte[] getProfileimgData(String logInId) {
-        Optional<MemberEntity> optionalMemberEntity = memberRepository.findBymId(logInId);
-        if (optionalMemberEntity.isPresent()) {
-            MemberEntity profileEntity = optionalMemberEntity.get();
-            Blob blobTypeProfileimg = profileEntity.getMProfileimg();
-
-            if (blobTypeProfileimg != null) {
-                try {
-                    return blobTypeProfileimg.getBytes(1, (int) blobTypeProfileimg.length());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return null;
-    }
 }

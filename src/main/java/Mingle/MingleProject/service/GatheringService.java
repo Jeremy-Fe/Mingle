@@ -64,10 +64,6 @@ public List<Gathering> findMyMingles(String userId) {
     } else {
         return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
     }
-}
+  }
 
-
-    public List<PostDTO> findByNotificationPost(Long id) {
-        공지사항 가져올 거다 우철아 디비버에 쿼리문 적어놨으니까 여기서부터 빡 집중해라 시발아
-    }
 }

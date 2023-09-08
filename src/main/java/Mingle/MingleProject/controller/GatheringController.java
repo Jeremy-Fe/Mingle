@@ -51,7 +51,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
+        /*List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);*/
 
         
         return "Gathering_Board";}
