@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'GmarketSansMedium';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+
     font-weight: bold;
     font-style: normal;
 }
@@ -174,19 +175,6 @@
     z-index: 9999; /* 다른 요소 위에 표시되도록 설정 */
 }
 
-#subModalContent {
-    width: 764px;
-    height: 610px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 10000; /* 모달 창 위에 표시되도록 설정 */
-}
 
 #subCloseBtn {
     position: absolute;
@@ -320,15 +308,49 @@
     background-color: #968ACD;
     cursor: pointer;
 }
-#subModalContent{
+#subModalContent {
+    width: 1400px;
+    height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #EEF1FF;
-
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr); /* 5행으로 설정 */
+    grid-gap: 10px;
+    justify-content: flex-start;
+    align-content: flex-start;
 }
-#subInterestList{
+
+#subInterestList {
     width: 211px;
+    height: 75px;
+    font-size: 38px;
+    background-color: #FFFFFF;
+    font-family: 'GmarketSansMedium';
+    cursor: pointer;
+    grid-row: span 1; /* 각 요소가 1행에 위치하도록 설정 */
+    grid-column: span 1; /* 각 요소가 1열에 위치하도록 설정 */
+}
+#subInterestList>li{
+    width: 100%; /* 각 아이템을 100% 너비로 설정 */
     height: 75px;
     background-color: #FFFFFF;
 }
+#selectedInterest{
+    font-size: 48px;
+    font-weight: bold;
+    font-family: 'GmarketSansMedium';
+}
+
+
+
 
 /*footer 영역*/
 .footer {
