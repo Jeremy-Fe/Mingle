@@ -2,8 +2,6 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.repository.MemberRepository;
-import Mingle.MingleProject.entity.Interest;
-import Mingle.MingleProject.repository.InterestRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
@@ -15,12 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
-
-
 import javax.servlet.http.HttpSession;
-
-import java.sql.Blob;
 import java.util.List;
 
 @Controller
@@ -104,21 +97,6 @@ public class MingleController {
 
     @GetMapping("MyPage*")
     public String MyPage(){return "MyPage";}
-
-    @PostMapping("/Mypage/mIntroduction")
-    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
-        System.out.println("mIntroduction : " + mIntroduction);
-        memberService.introduce(mIntroduction);
-        return "Mypage"; // 결과 페이지로 이동
-
-    }
-
-    @PostMapping("/Mypage/uploadImage")
-        public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
-        System.out.println("mProfileimg : " + mProfileimg);
-        memberService.uploadImage(mProfileimg);
-        return "Mypage";
-    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
@@ -252,6 +230,21 @@ public class MingleController {
         } else {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
+    }
+
+    @PostMapping("/Mypage/mIntroduction")
+    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
+        System.out.println("mIntroduction : " + mIntroduction);
+        memberService.introduce(mIntroduction);
+        return "Mypage"; // 결과 페이지로 이동
+
+    }
+
+    @PostMapping("/Mypage/uploadImage")
+    public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
+        System.out.println("mProfileimg : " + mProfileimg);
+        memberService.uploadImage(mProfileimg);
+        return "Mypage";
     }
 
 
