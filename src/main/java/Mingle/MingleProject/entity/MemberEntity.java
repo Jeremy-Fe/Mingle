@@ -61,7 +61,7 @@ public class MemberEntity {
     private String mGGathering;
 
     @Lob
-    private byte[] mProfileimg;
+    private Blob mProfileimg;
 
     @Column(name = "M_INTRODUCTION", length = 1000)
     private String mIntroduction;

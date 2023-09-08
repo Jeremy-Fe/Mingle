@@ -14,7 +14,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+
+
 import javax.servlet.http.HttpSession;
+
+import java.sql.Blob;
 import java.util.List;
 
 @Controller
@@ -29,6 +35,7 @@ public class MingleController {
     RegisterMail registerMail;
     private final MemberRepository memberRepository;
 
+
     //기본페이지 요청메소드
     @GetMapping("/")
     public String index(){
@@ -36,12 +43,12 @@ public class MingleController {
     }
 
     @GetMapping("login")
-    public String loginForm(Model model) {
-        List<MemberDTO> memberDTOList = memberService.findAll();
-//        어떠한 html로 가져갈 데이터가 있다면 model사용
-        model.addAttribute("memberList", memberDTOList);
-        System.out.println("model = " + model);
-        return "login";
+    public String loginForm() { return "login"; }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "Main_UnLogIn";
     }
 
     @GetMapping("find_id*")
@@ -95,8 +102,8 @@ public class MingleController {
     @GetMapping("schedule*")
     public String schedule() {return "schedule";}
 
-    @GetMapping("Mypage*")
-    public String Mypage(){return "Mypage";}
+    @GetMapping("MyPage*")
+    public String MyPage(){return "MyPage";}
 
     @PostMapping("/Mypage/mIntroduction")
     public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
@@ -106,13 +113,12 @@ public class MingleController {
 
     }
 
-//    @PostMapping("/Mypage/mPiProfileimg")
-//    public String proimg(@RequestParam("mPiProfileimg") String mPiProfileimg) {
-//        System.out.println("mPiProfileimg : " + mPiProfileimg);
-//        memberService.proimg(mPiProfileimg);
-//        return "Mypage"; // 결과 페이지로 이동
-//
-//    }
+    @PostMapping("/Mypage/uploadImage")
+        public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
+        System.out.println("mProfileimg : " + mProfileimg);
+        memberService.uploadImage(mProfileimg);
+        return "Mypage";
+    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
@@ -155,12 +161,13 @@ public class MingleController {
     @GetMapping("Gathering_Album_BoardNotification")
     public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
     @PostMapping("login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);
-        System.out.println(memberDTO);
+        System.out.println(loginResult);
         if(loginResult != null) {
             //login 성공
             session.setAttribute("loginId", loginResult.getMId());
+            model.addAttribute("memberDTO",loginResult);
             return "Main_LogIn";
         }else {
             //login 실패
@@ -170,8 +177,8 @@ public class MingleController {
 
     @PostMapping("join")
     public String save(@ModelAttribute MemberDTO memberDTO) {
-        System.out.println("MemberController.save");
-        System.out.println("memberDTO = " + memberDTO);
+//        System.out.println("MemberController.save");
+//        System.out.println("memberDTO = " + memberDTO);
 //        MemberService memberService = new MemberService(); -> @RequiredArgsConstructor 이걸로 대체
         memberService.save(memberDTO);
         return "login";
@@ -233,6 +240,7 @@ public class MingleController {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
     }
+
 
 
 }

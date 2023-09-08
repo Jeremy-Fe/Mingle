@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
+import java.sql.Blob;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     // 아이디로 회원 정보 조회 (select * from member where mId=?)
@@ -34,18 +35,17 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     @Query(value="select m FROM MemberEntity m WHERE m.mGGathering like %:gatheringName%")
     List<MemberEntity> findByGatheringMember(@Param("gatheringName") String gatheringName);
 
-    //UPDATE MEMBER SET M_INTRODUCTION = 'test' WHERE M_ID = 'himedia1'
-    /*@Query(value = "UPDATE MEMBER SET M_INTRODUCTION = 'test' WHERE M_ID = 'himedia1'", nativeQuery = true)*/
-
-
     @Modifying
     @Query(value = "UPDATE MemberEntity m SET m.mIntroduction  = :mIntroduction where m.mId ='himedia'")
     void updateMIntroduction(@Param("mIntroduction") String mIntroduction);
 
-//    @Modifying
-//    @Query(value = "UPDATE MemberEntity m SET m.mPiProfileimg  = :mPiProfileimg where m.mId ='himedia'")
-//    void updateMPiProfileimg(@Param("mPiProfileimg") String mPiProfileimg);
+    @Modifying
+    @Query(value = "UPDATE MemberEntity m SET m.mProfileimg  = :mProfileimg where m.mId ='himedia'")
+    void updatemProfileimg(@Param("mProfileimg") Blob mProfileimg);
 
     @Query(value = "select COUNT(*) from MemberEntity m where m.mGGathering like %:gName%")
     int findByGatheringHeadcount(@Param("gName") String gName);
+
+
+
 }

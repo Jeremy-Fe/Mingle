@@ -10,6 +10,7 @@ import java.util.List;
 
 @Transactional(readOnly = true)
 public interface CityRepository extends JpaRepository<CityEntity, Long>{
+
     List<CityEntity> findByScNameContainingIgnoreCase(String keyword);
 
 }

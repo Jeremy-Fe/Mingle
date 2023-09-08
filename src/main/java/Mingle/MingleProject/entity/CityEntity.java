@@ -22,15 +22,12 @@ public class CityEntity {
     @Column(name = "MC_NAME", nullable = false, length = 100)
     private String mcName;
 
-    @Column(name = "SC_NAME", length = 100)
-    private String scName;
 
     public static CityEntity toCityEntity(CityDTO cityDTO) {
         CityEntity cityEntity = new CityEntity();
         cityEntity.setCNum(cityDTO.getCNum());
         cityEntity.setBcName(cityDTO.getBcName());
         cityEntity.setMcName(cityDTO.getMcName());
-        cityEntity.setScName(cityDTO.getScName());
 
         return cityEntity;
     }
