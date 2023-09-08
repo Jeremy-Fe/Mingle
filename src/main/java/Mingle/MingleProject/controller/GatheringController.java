@@ -3,6 +3,7 @@ package Mingle.MingleProject.controller;
 import Mingle.MingleProject.config.MemberComparator;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
@@ -49,6 +50,8 @@ public class GatheringController {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
+
+        List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
 
         
         return "Gathering_Board";}
