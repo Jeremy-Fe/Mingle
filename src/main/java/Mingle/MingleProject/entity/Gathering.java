@@ -4,18 +4,25 @@ import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.GatheringDTO;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@DynamicInsert
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
 @Entity
 @Table(name = "GATHERING")
 public class Gathering {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "G_NUM", nullable = false)
     private Long id;
     @Column(name = "G_NAME", nullable = false, length = 100)
@@ -31,7 +38,8 @@ public class Gathering {
     @Column(name = "G_DISTRICT", nullable = false, length = 1000)
     private String gDistrict;
     @Column(name = "G_DATE", nullable = false)
-    private LocalDate gDate;
+    @CreatedDate
+    private Date gDate;
     @Column(name = "G_MAXHEADCOUNT", nullable = false)
     private Long   gMaxheadcount;
     @Column(name = "G_MAINLEADER", nullable = false, length = 50)
@@ -42,10 +50,14 @@ public class Gathering {
     private String gSubleader2;
     @Column(name = "G_SUBLEADER_3", length = 50)
     private String gSubleader3;
-    @Column(name = "G_PRIVATE")
+    @Column(name = "G_PRIVATE", nullable = false)
     private Long gPrivate;
     @Column(name = "G_COVERIMG", length = 300)
     private String gCoverimg;
+    @PrePersist
+    protected void onCreate() {
+        gDate = new Date();
+    }
 
     @OneToMany(mappedBy = "pGNum")
     private Set<PostEntity> postGNum = new LinkedHashSet<>();

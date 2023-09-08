@@ -1,6 +1,5 @@
 package Mingle.MingleProject.service;
 
-import Mingle.MingleProject.Mapper.EntityDTOMapper;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
@@ -15,7 +14,6 @@ import Mingle.MingleProject.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.lang.reflect.Member;
 import java.util.*;
 
@@ -24,8 +22,7 @@ import java.util.*;
 public class GatheringService {
     private final GatheringRepository gatheringRepository;
     private final MemberRepository memberRepository;
-    private final PostRepository postRepository;
-    private final BoardRepository boardRepository;
+
 
     public List<GatheringDTO> findAll() {
         // 엔티티 객체를 DTO 객체로 옮겨 담기

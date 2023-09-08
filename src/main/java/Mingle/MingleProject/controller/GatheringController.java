@@ -3,16 +3,20 @@ package Mingle.MingleProject.controller;
 import Mingle.MingleProject.config.MemberComparator;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.entity.Gathering;
 import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -52,16 +56,8 @@ public class GatheringController {
         model.addAttribute("GatheringHome", gatheringDTO);
 
         List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
-        model.addAttribute("notificationPost",postDTOList);
 
-        System.out.println(postDTOList);
-        System.out.println(postDTOList);
-        System.out.println(postDTOList);
-        System.out.println(postDTOList);
-        System.out.println(postDTOList);
-        System.out.println(postDTOList);
-        System.out.println(postDTOList);
-
+        
         return "Gathering_Board";}
 
     @GetMapping("Gathering_Post/{id}")
@@ -144,6 +140,14 @@ public class GatheringController {
 
         
         return "Gathering_Schedule";}
+
+    @PostMapping("/create-gathering")
+    public String save(@ModelAttribute GatheringDTO gatheringDTO){
+        gatheringService.save(gatheringDTO);
+        System.out.println("GatheringController.save");
+        System.out.println("GatheringDTO = " + gatheringDTO);
+        return "myClass";
+    }
 
     @GetMapping("Gathering_Post_Write")
     public String Gathering_Post_Write(){

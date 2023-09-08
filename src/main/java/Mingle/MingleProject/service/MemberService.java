@@ -19,17 +19,11 @@ import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.IOException;
-import java.sql.Blob;
 import java.sql.SQLException;
 
 @Service
-/*@RequiredArgsConstructor*/
 @AllArgsConstructor
 public class MemberService {
-
     private final MemberRepository memberRepository;
 
     @PersistenceContext
@@ -51,16 +45,16 @@ public class MemberService {
         if (byMemberId.isPresent()) {
             //조회 결가가 있다(해당 아이디를 가진 회원 정보가 있다)
             MemberEntity memberEntity = byMemberId.get();
-            if (memberEntity.getMPwd().equals(memberDTO.getMPwd())) {
+            if(memberEntity.getMPwd().equals(memberDTO.getMPwd())){
                 //비밀번호가 일치
                 //entity -> dto 변환 후 리턴
                 MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
                 return dto;
-            } else {
+            }else {
                 //비밀번호가 불일치(로그인 실패)
                 return null;
             }
-        } else {
+        }else {
             //조회 결과가 없다(해당 아이디을 가진 회원이 없다)
             return null;
         }
@@ -70,7 +64,7 @@ public class MemberService {
     public List<MemberDTO> findAll() {
         List<MemberEntity> memberEntityList = memberRepository.findAll();
         List<MemberDTO> memberDTOList = new ArrayList<>();
-        for (MemberEntity memberEntity : memberEntityList) {
+        for(MemberEntity memberEntity : memberEntityList) {
             memberDTOList.add(MemberDTO.toMemberDTO(memberEntity));
         }
         return memberDTOList;
@@ -162,4 +156,18 @@ public class MemberService {
 
         return headcount;
     }
+
+    public boolean deleteMemberById(String mId) {
+        // memberId를 사용하여 회원을 찾습니다.
+        MemberEntity member = memberRepository.findBymId(mId).orElse(null);
+
+        if (member != null) {
+            // 회원을 찾았을 경우 삭제합니다.
+            memberRepository.delete(member);
+            return true; // 삭제 성공
+        } else {
+            return false; // 회원이 없음
+        }
+    }
+
 }
