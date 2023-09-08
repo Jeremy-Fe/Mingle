@@ -14,20 +14,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
-import java.lang.reflect.Member;
 import java.io.IOException;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.IOException;
-import java.sql.Blob;
 import java.sql.SQLException;
 
 @Service
-/*@RequiredArgsConstructor*/
 @AllArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;

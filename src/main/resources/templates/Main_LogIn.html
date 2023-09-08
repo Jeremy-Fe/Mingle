@@ -35,6 +35,7 @@
                         <div class="inBox">
                             <!--내모임-->
                             <ul id="myMingles">
+                                <li th:unless="${session.loginId == null}" id="delete" style="padding-top: 80px; margin-left: 10px; margin-bottom: 0;"><a  th:href="@{|/delete/${memberDTO.getMId()}|}" style="font-size: 20px">회원탈퇴</a></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
                                 <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>

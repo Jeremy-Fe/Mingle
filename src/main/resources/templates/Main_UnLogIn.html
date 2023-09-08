@@ -58,8 +58,6 @@
                     </ul>
                 </div>
             </div>
-
-
         <div th:replace="/footer.html"></div>
     </div>
 
@@ -85,6 +83,18 @@
                 slideShadows: false, // 슬라이드 그림자 사용 여부
             },
         });
+
+            // Flash 속성에서 메시지 가져오기
+            var message = "${flash.message}";
+            var error = "${flash.error}";
+
+            // 메시지가 있는 경우에만 alert 창 표시
+            if (message && message.length > 0) {
+            alert(message);
+        }
+            if (error && error.length > 0) {
+            alert(error);
+        }
 
     </script>
 </body>

@@ -169,13 +169,16 @@ public class MingleController {
     }
 
     @GetMapping("/delete/{mId}")
-    public String deleteById(@PathVariable("mId") String mID, Model model, RedirectAttributes redirectAttributes) {
+    public String deleteById(@PathVariable("mId") String mID, RedirectAttributes redirectAttributes, HttpSession session) {
         boolean deleted = memberService.deleteMemberById(mID);
         if (deleted) {
-            // 회원 탈퇴가 성공적으로 이루어지면 메시지를 추가합니다.
-            redirectAttributes.addFlashAttribute("message", "회원 탈퇴가 성공적으로 완료되었습니다.");
+            // 세션 무효화 (세션 종료)
+            session.invalidate();
+            // 로그아웃 메시지 추가
+            redirectAttributes.addFlashAttribute("message", "회원탈퇴가 완료되었습니다. 로그아웃 되었습니다.");
         } else {
-            redirectAttributes.addFlashAttribute("message", "회원 탈퇴를 실패했습니다.");
+            // 회원 삭제가 실패한 경우
+            redirectAttributes.addFlashAttribute("error", "회원탈퇴에 실패하였습니다.");
         }
         return "redirect:/Main_UnLogIn";
     }
