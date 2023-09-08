@@ -52,8 +52,16 @@ public class GatheringController {
         model.addAttribute("GatheringHome", gatheringDTO);
 
         List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
+        model.addAttribute("notificationPost",postDTOList);
 
-        
+        System.out.println(postDTOList);
+        System.out.println(postDTOList);
+        System.out.println(postDTOList);
+        System.out.println(postDTOList);
+        System.out.println(postDTOList);
+        System.out.println(postDTOList);
+        System.out.println(postDTOList);
+
         return "Gathering_Board";}
 
     @GetMapping("Gathering_Post/{id}")

@@ -5,11 +5,10 @@ import Mingle.MingleProject.dto.GatheringDTO;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -43,10 +42,16 @@ public class Gathering {
     private String gSubleader2;
     @Column(name = "G_SUBLEADER_3", length = 50)
     private String gSubleader3;
-    @Column(name = "G_PRIVATE", nullable = false)
+    @Column(name = "G_PRIVATE")
     private Long gPrivate;
     @Column(name = "G_COVERIMG", length = 300)
     private String gCoverimg;
+
+    @OneToMany(mappedBy = "pGNum")
+    private Set<PostEntity> postGNum = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "piGNum")
+    private Set<PostimgEntity> piGNum = new LinkedHashSet<>();
 
     public static Gathering gathering(GatheringDTO gatheringDTO) {
         Gathering gathering = new Gathering();

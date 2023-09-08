@@ -60,7 +60,8 @@
             </li>
         </ul>
         <ul class="board_notification">
-            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">하이미디어 볼링센터 이용 가이드🎳</span></a></li>
+                <li th:each="notiPost:${notificationPost}"><a href="#"><span class="post_board">[공지]</span><span class="post_title">하이미디어 볼링센터 이용 가이드🎳</span></a></li>
+<!--            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">하이미디어 볼링센터 이용 가이드🎳</span></a></li>-->
 <!--            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">작당모의 볼링클럽모임 방칙 ⭐</span></a></li>-->
 <!--            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">가입인사 참고사항</span></a></li>-->
         </ul>

@@ -1,15 +1,21 @@
 package Mingle.MingleProject.service;
 
+import Mingle.MingleProject.Mapper.EntityDTOMapper;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
+import Mingle.MingleProject.entity.BoardEntity;
 import Mingle.MingleProject.entity.Gathering;
 import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.PostEntity;
+import Mingle.MingleProject.repository.BoardRepository;
 import Mingle.MingleProject.repository.GatheringRepository;
 import Mingle.MingleProject.repository.MemberRepository;
+import Mingle.MingleProject.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.lang.reflect.Member;
 import java.util.*;
 
@@ -18,7 +24,8 @@ import java.util.*;
 public class GatheringService {
     private final GatheringRepository gatheringRepository;
     private final MemberRepository memberRepository;
-
+    private final PostRepository postRepository;
+    private final BoardRepository boardRepository;
 
     public List<GatheringDTO> findAll() {
         // 엔티티 객체를 DTO 객체로 옮겨 담기
@@ -66,8 +73,15 @@ public List<Gathering> findMyMingles(String userId) {
     }
 }
 
-
     public List<PostDTO> findByNotificationPost(Long id) {
-        공지사항 가져올 거다 우철아 디비버에 쿼리문 적어놨으니까 여기서부터 빡 집중해라 시발아
+        Long bNum = 5L;
+        List<PostEntity> PostEntityList = postRepository.findByNotificationPost(id, bNum);
+
+        List<PostDTO> PostDTOList = new ArrayList<>();
+
+        for (PostEntity postEntity: PostEntityList) {
+            PostDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
+        }
+        return PostDTOList;
     }
 }

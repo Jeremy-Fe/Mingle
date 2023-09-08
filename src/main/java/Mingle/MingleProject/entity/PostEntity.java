@@ -17,11 +17,11 @@ public class PostEntity {
     @Column(name = "P_NUM", nullable = false)
     private Long pNum;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "P_B_NUM", nullable = false)
     private BoardEntity pBNum;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "P_G_NUM", nullable = false)
     private Gathering pGNum;
 
