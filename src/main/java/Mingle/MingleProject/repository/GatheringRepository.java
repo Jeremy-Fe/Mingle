@@ -17,6 +17,13 @@ public interface GatheringRepository extends JpaRepository<Gathering, Long> {
     @Query("SELECT g FROM Gathering g WHERE g.gName IN :gNames")
     List<Gathering> findMatchingGatheringsByGName(@Param("gNames") List<String> gNames);
 
-/*    @Query("SELECT g FROM Gathering g WHERE m.mName = ?1 AND m.mEmail = ?2 AND = ?3")
-    List<Gathering> searchMingleMingles(String selectedRegi, String mainCtName, String subC);*/
+    /* @Query("SELECT g FROM Gathering g WHERE m.gDistrict = ?1 AND m.gMainsubject = ?2 AND m.gSubject= ?3")
+    List<Gathering> searchMingleCase1(String selectedRegi, String mainCtName, String subC);*/
+
+    /*    @Query("SELECT g FROM Gathering g WHERE m.gDistrict = ?1 AND m.gMainsubject = ?2  AND m.gName =?3)
+    List<Gathering> searchMingleCase2(String selectedRegi, String mainCtName, String subC);*/
+
+    /*    @Query("SELECT g FROM Gathering g WHERE m.gDistrict = ?1 AND m.gMainsubject = ?2 )
+    List<Gathering> searchMingleCase3(String selectedRegi, String mainCtName, String subC);*/
+
 }

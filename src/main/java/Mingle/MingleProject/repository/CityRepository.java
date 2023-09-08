@@ -8,9 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional(readOnly = true)
 public interface CityRepository extends JpaRepository<CityEntity, Long>{
 
-    List<CityEntity> findByBcNameContainingIgnoreCase(String keyword);
+    List<CityEntity> findBymcNameContainsIgnoreCase(String keyword);
 
 }

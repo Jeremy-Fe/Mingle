@@ -25,9 +25,10 @@ public class RegionController {
     /*지역 검색*/
     @GetMapping("selectRegi/regiSearch")
     public ResponseEntity<List<CityEntity>> searchCities(@RequestParam("keyword") String keyword) {
+        System.out.println("keyword ck = "+keyword);
         // 검색어를 기반으로 도시 목록을 조회하는 메서드 호출
         List<CityEntity> cities = cityService.searchByKeyword(keyword);
-
+        System.out.println("cities ck = "+cities);
         // 조회된 도시 목록을 응답(Response)에 담아 반환
         return ResponseEntity.ok(cities);
     }
