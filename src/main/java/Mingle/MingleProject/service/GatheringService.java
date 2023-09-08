@@ -32,9 +32,9 @@ public class GatheringService {
         return gatheringDTOList;
     }
 
-    public  GatheringDTO findByGathering(Long id){
+    public GatheringDTO findByGathering(Long id) {
         Optional<Gathering> optionalGathering = gatheringRepository.findById(id);
-        if(optionalGathering.isPresent()){
+        if (optionalGathering.isPresent()) {
             Gathering gathering = optionalGathering.get();
             GatheringDTO gatheringDTO = GatheringDTO.gatheringDTO(gathering);
             return gatheringDTO;
@@ -43,5 +43,13 @@ public class GatheringService {
         }
     }
 
+    public void save(GatheringDTO gatheringDTO){
+        Gathering gathering = Gathering.gathering(gatheringDTO);
+        gatheringRepository.save(gathering);
+    }
+
 
 }
+
+
+

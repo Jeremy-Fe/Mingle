@@ -10,19 +10,19 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 <div class="contents">
-    <form action="#" method="post">
+    <form action="/create-gathering" method="post">
         <ul>
             <img class="marker" src="image/meet_marker.png">
-            <li class="maker2">지역</li>
+            <li th:unless="${session.loginId == null}" th:text="${session.loginId}" class="maker2">지역</li>
         </ul>
         <div class="select1">
-            <select name="mCity" class="city select_box">
+            <select name="gCity" class="city select_box">
                 <option value="none">시/도 선택</option>
                 <option th:each="bcName : ${bcNames}" th:value="${bcName}" th:text="${bcName}"></option>
             </select>
         </div>
         <div class="select2">
-            <select name="mDistrict" class="county select_box">
+            <select name="gDistrict" class="county select_box">
                 <option value="none">시/구/군 선택</option>
             </select> <!-- 내 거주지 -->
         </div>
@@ -30,7 +30,8 @@
             <div class="meet_name2">
                 <ul>
                     <li>
-                        <input type="text" name="G_NAME" class="g_name" placeholder="모임 이름" maxlength="16"/>
+                        <input type="text" name="gName" class="g_name" placeholder="모임 이름" maxlength="16"/>
+                        <input type="text" name="gPrivate" style="display: none" value="0"/>
                     </li>
                 </ul>
             </div>
@@ -39,7 +40,7 @@
             <div class="meet_introduce2">
                 <ul>
                     <li>
-                        <textarea name="M_INTRODUCTION" class="m_introduce" placeholder="모임의 소개글을 적어주세요."></textarea>
+                        <input type="text" name="gIntroduction" class="m_introduce" placeholder="모임의 소개글을 적어주세요.">
                     </li>
                 </ul>
             </div>
@@ -54,7 +55,7 @@
             <div class="personnel_box2">
                 <ul>
                     <li>
-                        <input type="number"  name="G_personnel" class="G_personnel"></input>
+                        <input type="number"  name="gMaxheadcount" class="G_personnel"></input>
                     </li>
                 </ul>
             </div>
@@ -68,29 +69,34 @@
             </ul>
         </div>
         <ul>
-            <button value="기본값" type="button" id="btn" onclick="openSubModal('기본값')"><img id="selectedInterestImage" src="image/모임 버튼.png" alt="관심사 이미지"></button>
+            <button value="기본값" type="button" id="btn">
+                <input id="gMainsubject_value" type="hidden" name="gMainsubject">
+                <img id="selectedInterestImage" src="image/모임 버튼.png" alt="관심사 이미지">
+            </button>
         </ul>
         <div id="modalWrap" style="display: none;">
             <div id="modalContent">
                 <div id="modalBody">
                     <span id="closeBtn">&times;</span>
                     <p>관심사 선택</p>
-                    <button value="여행" type="button" id="btn1"><img src="image/create_meet_image/create_여행.png" alt="관심사 이미지">여행</button>
-                    <button value="운동/스포츠" type="button" id="btn2"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지">운동/스포츠</button>
-                    <button value="독서" type="button" id="btn3"><img src="image/create_meet_image/create_독서.png" alt="관심사 이미지">독서</button>
-                    <button value="업종/직무" type="button" id="btn4"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지">업종/직무</button>
-                    <button value="문화/공연/축제" type="button" id="btn5"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지">문화/공연/축제</button>
-                    <button value="음악/악기" type="button" id="btn6"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지">음악/악기</button>
-                    <button value="공예/만들기" type="button" id="btn7"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지">공예/만들기</button>
-                    <button value="댄스/무용" type="button" id="btn8"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지">댄스/무용</button>
-                    <button value="사교/인맥" type="button" id="btn9"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지">사교/인맥</button>
-                    <button value="차/오토바이" type="button" id="btn10"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지">차/오토바이</button>
-                    <button value="사진/영상" type="button" id="btn11"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지">사진/영상</button>
-                    <button value="게임/오락" type="button" id="btn12"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지">게임/오락</button>
-                    <button value="요리/제조" type="button" id="btn13"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지">요리/제조</button>
-                    <button value="반려/동물" type="button" id="btn14"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지">반려/동물</button>
-                    <button value="가족/결혼" type="button" id="btn15"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지">가족/결혼</button>
-                    <button value="자유주제" type="button" id="btn16"><img src="image/create_meet_image/create_자유주제.png" alt="관심사 이미지">자유주제</button>
+                    <button value="여행" type="button" id="btn1" onclick="vlaue_bt(this.value); openSubModal(value);">
+                        <img src="image/create_meet_image/create_여행.png" alt="관심사 이미지">여행
+                    </button>
+                    <button value="운동/스포츠" type="button" id="btn2" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지">운동/스포츠</button>
+                    <button value="독서" type="button" id="btn3" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_독서.png" alt="관심사 이미지">독서</button>
+                    <button value="업종/직무" type="button" id="btn4" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지">업종/직무</button>
+                    <button value="문화/공연/축제" type="button" id="btn5" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지">문화/공연/축제</button>
+                    <button value="음악/악기" type="button" id="btn6" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지">음악/악기</button>
+                    <button value="공예/만들기" type="button" id="btn7" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지">공예/만들기</button>
+                    <button value="댄스/무용" type="button" id="btn8" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지">댄스/무용</button>
+                    <button value="사교/인맥" type="button" id="btn9" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지">사교/인맥</button>
+                    <button value="차/오토바이" type="button" id="btn10" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지">차/오토바이</button>
+                    <button value="사진/영상" type="button" id="btn11" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지">사진/영상</button>
+                    <button value="게임/오락" type="button" id="btn12" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지">게임/오락</button>
+                    <button value="요리/제조" type="button" id="btn13" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지">요리/제조</button>
+                    <button value="반려/동물" type="button" id="btn14" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지">반려/동물</button>
+                    <button value="가족/결혼" type="button" id="btn15" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지">가족/결혼</button>
+                    <button value="자유주제" type="button" id="btn16" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_자유주제.png" alt="관심사 이미지">자유주제</button>
                 </div>
             </div>
         </div>
@@ -109,7 +115,7 @@
             <div class="interest2">
                 <ul>
                     <li>
-                        <input type="text" name="I_INTEREST" class="I_interest" placeholder="세부 관심사 선택" maxlength="16"/>
+                        <input type="text" name="gSubject" class="I_interest" placeholder="세부 관심사 선택" maxlength="16"/>
                     </li>
                 </ul>
             </div>
@@ -133,6 +139,12 @@
 <!-- JavaScript 코드 추가 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+    function vlaue_bt(value) {
+        const inputElement = document.getElementById("gMainsubject_value");
+        inputElement.value = value;
+        console.log("value : " + value);
+
+    }
     document.addEventListener("DOMContentLoaded", function() {
         const btn = document.getElementById('btn');
         const modal = document.getElementById('modalWrap');
@@ -191,19 +203,6 @@
             });
         });
 
-        // 새로운 모달 창을 열기 위한 함수
-        function openSubModal(interest) {
-            const subModal = document.getElementById('subModalWrap');
-            const selectedInterestElement = document.getElementById('selectedInterest');
-            selectedInterestElement.textContent = interest; // 선택된 관심사를 업데이트
-            subModal.style.display = 'block';
-        }
-
-        function closeSubModal() {
-            const subModal = document.getElementById('subModalWrap');
-            subModal.style.display = 'none';
-        }
-
         // 관심사 이미지를 클릭했을 때 모달 창 열기
         function openModal() {
             var modal = document.getElementById("modalWrap");
@@ -235,6 +234,8 @@
         button.addEventListener('click', function () {
             const interest = this.value;
             console.log(interest);
+            console.log('버튼이 클릭되었습니다. 관심사:', interest);
+            console.log('선택된 버튼 수:', interestButtons2.length);
             loadSubInterests(interest); // 클릭한 관심사로 세부 관심사를 가져오는 함수 호출
         });
     });
@@ -245,17 +246,15 @@
             type: 'GET',
             success: function(data) {
                 displaySubInterests(data);
-                alert('제발 뜨게 해주세요');
             },
             error: function(xhr, status, error) {
-                console.error('조 트 같은 에러:', status, error);
+                console.error('에러:', status, error);
             }
         });
     }
 
     function displaySubInterests(subInterests) {
         var subInterestList = document.getElementById("subInterestList");
-        subInterestList.innerHTML = ""; // 기존 목록 초기화
 
         subInterests.forEach(function(subInterest) {
             var li = document.createElement("li");
@@ -271,6 +270,8 @@
                 // 세부 관심사 모달 창 닫기
                 var subModal = document.getElementById("subModalWrap");
                 subModal.style.display = "none";
+
+
             };
         });
 
