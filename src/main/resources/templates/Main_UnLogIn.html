@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!--swiper-->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 
@@ -17,85 +17,89 @@
     <!--font-family: 'Orbitron', sans-serif;-->
     <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
     <!--font-family: 'Jalnan';-->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-        <div th:replace="/defaultUI.html"></div>
+<div th:replace="/defaultUI.html"></div>
 
 
-            <!--뷰-->
-            <div id="view">
-                <!--최근 소식-->
-                <div class="l_news">
-                    <ul>
-                        <li><p>내 모임 최근 소식</p></li>
-                        <li><a href="/login">로그인 하기<img  src="image/오른쪽화살표.png"></a> </li>
-                    </ul>
-                    <div class="inBox">
-                        <p >아직 밍글되지 않으셨네요.</p>
-                        <h3>로그인</h3><p>하고</p><h3>밍글</h3><p>과 함께해 즐겨주세요.</p>
-                    </div>
-                </div>
-                <!--배너-->
-                <div class="swiper-container banner" >
-                    <div class="swiper-wrapper ul">
-                        <div class="swiper-slide B_mbti"><img rel="mbti" src="image/배너_mbti.png"></div>
-                        <div class="swiper-slide B_hot"><img rel="hot" src="image/배너_HOT.png"></div>
-                        <div class="swiper-slide B_mypage"><img rel="mypage" src="image/배너_MYPAGE.png"></div>
-                        <div class="swiper-slide B_mimgle"><img rel="mimgle" src="image/배너_mingle.png"></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-                <!--핫모임-->
-                <div class="hotMeeting">
-                    <ul>
-                        <h3>HOT 모임</h3>
-                        <ul>
-                            <li></li>
-                        </ul>
-                    </ul>
-                </div>
-            </div>
-        <div th:replace="/footer.html"></div>
+<!--뷰-->
+<div id="view">
+    <!--최근 소식-->
+    <div class="l_news">
+        <ul>
+            <li><p>내 모임 최근 소식</p></li>
+            <li><a href="/login">로그인 하기<img src="image/오른쪽화살표.png"></a></li>
+        </ul>
+        <div class="inBox">
+            <p>아직 밍글되지 않으셨네요.</p>
+            <h3>로그인</h3>
+            <p>하고</p>
+            <h3>밍글</h3>
+            <p>과 함께해 즐겨주세요.</p>
+        </div>
     </div>
+    <!--배너-->
+    <div class="swiper-container banner">
+        <div class="swiper-wrapper ul">
+            <div class="swiper-slide B_mbti"><img rel="mbti" src="image/배너_mbti.png"></div>
+            <div class="swiper-slide B_hot"><img rel="hot" src="image/배너_HOT.png"></div>
+            <div class="swiper-slide B_mypage"><img rel="mypage" src="image/배너_MYPAGE.png"></div>
+            <div class="swiper-slide B_mimgle"><img rel="mimgle" src="image/배너_mingle.png"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <!--핫모임-->
+    <div class="hotMeeting">
+        <ul>
+            <h3>HOT 모임</h3>
+            <ul>
+                <li></li>
+            </ul>
+        </ul>
+    </div>
+</div>
 
+<div th:replace="/footer.html"></div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
 
-    <script>
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+        effect: 'coverflow',
 
-        const swiper = new Swiper('.swiper-container', {
-            loop: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            slideToClickedSlide: true,
-            effect: 'coverflow',
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        coverflowEffect: {
+            rotate: 0, // 회전 각도
+            stretch: 910, // 슬라이드 겹침 정도
+            depth: 300, // 원근 거리
+            slideShadows: false, // 슬라이드 그림자 사용 여부
+        },
+    });
 
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            coverflowEffect: {
-                rotate: 0, // 회전 각도
-                stretch: 910, // 슬라이드 겹침 정도
-                depth: 300, // 원근 거리
-                slideShadows: false, // 슬라이드 그림자 사용 여부
-            },
-        });
+    // 회원탈퇴 시 알림창
 
-            // Flash 속성에서 메시지 가져오기
-            var message = "${flash.message}";
-            var error = "${flash.error}";
+    $(document).ready(function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        var message = urlParams.get("message");
 
-            // 메시지가 있는 경우에만 alert 창 표시
-            if (message && message.length > 0) {
-            alert(message);
+        if (message === "success") {
+            alert("회원 삭제가 성공적으로 완료되었습니다.");
+        } else if (message === "fail") {
+            alert("회원 삭제에 실패하였습니다.");
         }
-            if (error && error.length > 0) {
-            alert(error);
-        }
+    });
 
-    </script>
+</script>
 </body>
 </html>

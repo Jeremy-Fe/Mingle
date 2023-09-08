@@ -45,16 +45,16 @@ public class GatheringController {
         return "Gathering_Home";
     }
 
-    @GetMapping("Gathering_Board/{id}")
-    public String Gathering_Board(@PathVariable Long id, Model model) {
-        // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
-        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
-        model.addAttribute("GatheringHome", gatheringDTO);
-
-        List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
-
-        
-        return "Gathering_Board";}
+//    @GetMapping("Gathering_Board/{id}")
+//    public String Gathering_Board(@PathVariable Long id, Model model) {
+//        // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
+//        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+//        model.addAttribute("GatheringHome", gatheringDTO);
+//
+//        List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
+//
+//
+//        return "Gathering_Board";}
 
     @GetMapping("Gathering_Post/{id}")
     public String Gathering_Post(@PathVariable Long id, Model model) {
