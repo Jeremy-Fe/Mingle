@@ -67,7 +67,7 @@ public List<Gathering> findMyMingles(String userId) {
 }
 
 
-    public List<PostDTO> findByNotificationPost(Long id) {
+  /*  public List<PostDTO> findByNotificationPost(Long id) {
         공지사항 가져올 거다 우철아 디비버에 쿼리문 적어놨으니까 여기서부터 빡 집중해라 시발아
-    }
+    }*/
 }
