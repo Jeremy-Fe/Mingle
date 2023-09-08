@@ -2,8 +2,6 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.repository.MemberRepository;
-import Mingle.MingleProject.entity.Interest;
-import Mingle.MingleProject.repository.InterestRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
@@ -13,13 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
-
-
 import javax.servlet.http.HttpSession;
-
-import java.sql.Blob;
 import java.util.List;
 
 @Controller
@@ -92,7 +86,7 @@ public class MingleController {
     public String Main_UnLogIn() {
         return "Main_UnLogIn";}
 
-    @GetMapping("Main_LogIn*")
+    @GetMapping("/Main_LogIn")
     public String Main_LogIn() { return "Main_LogIn"; }
 
     @GetMapping("myClass*")
@@ -103,21 +97,6 @@ public class MingleController {
 
     @GetMapping("MyPage*")
     public String MyPage(){return "MyPage";}
-
-    @PostMapping("/Mypage/mIntroduction")
-    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
-        System.out.println("mIntroduction : " + mIntroduction);
-        memberService.introduce(mIntroduction);
-        return "Mypage"; // 결과 페이지로 이동
-
-    }
-
-    @PostMapping("/Mypage/uploadImage")
-        public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
-        System.out.println("mProfileimg : " + mProfileimg);
-        memberService.uploadImage(mProfileimg);
-        return "Mypage";
-    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
@@ -169,6 +148,20 @@ public class MingleController {
         return "selectRegi";
     }
 
+    @GetMapping("/delete/{mId}")
+    public String deleteById(@PathVariable("mId") String mID, RedirectAttributes redirectAttributes, HttpSession session) {
+        boolean deleted = memberService.deleteMemberById(mID);
+        if (deleted) {
+            // 세션 무효화 (세션 종료)
+            session.invalidate();
+            // 로그아웃 메시지 추가
+        } else {
+            // 회원 삭제가 실패한 경우
+            redirectAttributes.addFlashAttribute("error", "fail");
+        }
+        return "redirect:/Main_UnLogIn?message=success";
+    }
+
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);
@@ -176,18 +169,18 @@ public class MingleController {
         if(loginResult != null) {
             //login 성공
             session.setAttribute("loginId", loginResult.getMId());
+            session.setAttribute("memberDTO", loginResult);
             model.addAttribute("memberDTO",loginResult);
             return "Main_LogIn";
         }else {
             //login 실패
-            return "login";
+            model.addAttribute("loginError", "아이디 또는 비밀번호가 올바르지 않습니다.");
+            return "/login";
         }
     }
 
     @PostMapping("join")
     public String save(@ModelAttribute MemberDTO memberDTO) {
-//        System.out.println("MemberController.save");
-//        System.out.println("memberDTO = " + memberDTO);
 //        MemberService memberService = new MemberService(); -> @RequiredArgsConstructor 이걸로 대체
         memberService.save(memberDTO);
         return "login";
@@ -239,6 +232,20 @@ public class MingleController {
         }
     }
 
+    @PostMapping("/Mypage/mIntroduction")
+    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
+        System.out.println("mIntroduction : " + mIntroduction);
+        memberService.introduce(mIntroduction);
+        return "Mypage"; // 결과 페이지로 이동
+
+    }
+
+    @PostMapping("/Mypage/uploadImage")
+    public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
+        System.out.println("mProfileimg : " + mProfileimg);
+        memberService.uploadImage(mProfileimg);
+        return "Mypage";
+    }
 
 
 }
