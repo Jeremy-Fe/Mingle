@@ -29,23 +29,6 @@
     left: 216px;
 }
 
-.select_city {
-    width: 239px;
-    height: 55px;
-    border-radius: 5px;
-    position: absolute;
-    top: 9px;
-    left: 10px;
-    -o-appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: 0 solid white;
-    font-size: 32px;
-    font-family: 'GmarketSansMedium';
-    color: #8B8B8B;
-}
-
 .contents .select2 {
     width: 259px;
     height: 74px;
@@ -56,8 +39,8 @@
     top: 51px;
     left: 513px;
 }
-
-.select_county {
+/*시,도 콤보 박스*/
+.city {
     width: 239px;
     height: 55px;
     border-radius: 5px;
@@ -74,11 +57,35 @@
     border: 0 solid white;
     color: #8B8B8B;
 }
-
-.contents > ul > .marker {
+/*구,군 콤보 박스*/
+.county {
+    width: 239px;
+    height: 55px;
+    border-radius: 5px;
     position: absolute;
-    top: 62px;
-    left: 72px;
+    top: 9px;
+    left: 10px;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0 solid white;
+    font-size: 32px;
+    font-family: 'GmarketSansMedium';
+    color: #8B8B8B;
+}
+/*지역 이미지*/
+.marker {
+    position: absolute;
+    top: 59px;
+    left: 45px;
+}
+/*지역 이미지 옆에 글씨*/
+.maker2{
+    position: absolute;
+    top: 72px;
+    left: 103px;
+    font-size: 32px;
 }
 
 .meet_name2 {
@@ -312,6 +319,15 @@
 .G_create_bt:hover {
     background-color: #968ACD;
     cursor: pointer;
+}
+#subModalContent{
+    background-color: #EEF1FF;
+
+}
+#subInterestList{
+    width: 211px;
+    height: 75px;
+    background-color: #FFFFFF;
 }
 
 /*footer 영역*/

@@ -31,15 +31,20 @@ public class GatheringService {
         return gatheringDTOList;
     }
 
-    public  GatheringDTO findByGathering(Long id){
+    public GatheringDTO findByGathering(Long id) {
         Optional<Gathering> optionalGathering = gatheringRepository.findById(id);
-        if(optionalGathering.isPresent()){
+        if (optionalGathering.isPresent()) {
             Gathering gathering = optionalGathering.get();
             GatheringDTO gatheringDTO = GatheringDTO.gatheringDTO(gathering);
             return gatheringDTO;
         } else {
             return null;
         }
+    }
+
+    public void save(GatheringDTO gatheringDTO){
+        Gathering gathering = Gathering.gathering(gatheringDTO);
+        gatheringRepository.save(gathering);
     }
 
 //    public List<Gathering> findMyMingles(String userId) {
@@ -67,3 +72,6 @@ public List<Gathering> findMyMingles(String userId) {
   }
 
 }
+
+
+

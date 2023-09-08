@@ -2,6 +2,8 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.repository.MemberRepository;
+import Mingle.MingleProject.entity.Interest;
+import Mingle.MingleProject.repository.InterestRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
@@ -148,6 +150,35 @@ public class MingleController {
     @GetMapping("Mbti_banner*")
     public String Mbti_banner() {return "Mbti_banner";}
 
+    @GetMapping("Gathering_Home")
+    public String Gathering_Home() {return "Gathering_Home";}
+
+    @GetMapping("Gathering_Board")
+    public String Gathering_Board() {return "Gathering_Board";}
+
+    @GetMapping("Gathering_Post")
+    public String Gathering_Post() {return "Gathering_Post";}
+
+    @GetMapping("Gathering_Album_All")
+    public String Gathering_Album_All() {return "Gathering_Album_All";}
+
+    @GetMapping("Gathering_Album_Board")
+    public String Gathering_Album_Board() {return "Gathering_Album_Board";}
+
+    @GetMapping("Gathering_Album_BoardReview")
+    public String Gathering_Album_BoardReview() {return "Gathering_Album_BoardReview";}
+
+    @GetMapping("Gathering_Album_BoardFree")
+    public String Gathering_Album_BoardFree() {return "Gathering_Album_BoardFree";}
+
+    @GetMapping("Gathering_Album_BoardShareInterest")
+    public String Gathering_Album_BoardShareInterest() {return "Gathering_Album_BoardShareInterest";}
+
+    @GetMapping("Gathering_Album_BoardJoin")
+    public String Gathering_Album_BoardJoin() {return "Gathering_Album_BoardJoin";}
+
+    @GetMapping("Gathering_Album_BoardNotification")
+    public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
 
     @GetMapping("search1")
     public String search1() {return "search1";}
