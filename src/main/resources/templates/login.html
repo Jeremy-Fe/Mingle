@@ -52,7 +52,17 @@
       <p>All Rights Reserved.</p>
     </div> <!--copyright -->
   </section>
-
 </div><!-- wrap -->
+
+<!-- 로그인 실패 시 에러 메시지 표시 -->
+<div th:if="${loginError}">
+  <script th:inline="javascript">
+
+    var errorMessage = [[${loginError}]];
+    if (errorMessage) {
+      alert(errorMessage);
+    }
+  </script>
+</div>
 </body>
 </html>

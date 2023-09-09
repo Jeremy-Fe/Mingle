@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'GmarketSansMedium';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+
     font-weight: bold;
     font-style: normal;
 }
@@ -29,23 +30,6 @@
     left: 216px;
 }
 
-.select_city {
-    width: 239px;
-    height: 55px;
-    border-radius: 5px;
-    position: absolute;
-    top: 9px;
-    left: 10px;
-    -o-appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: 0 solid white;
-    font-size: 32px;
-    font-family: 'GmarketSansMedium';
-    color: #8B8B8B;
-}
-
 .contents .select2 {
     width: 259px;
     height: 74px;
@@ -56,8 +40,8 @@
     top: 51px;
     left: 513px;
 }
-
-.select_county {
+/*시,도 콤보 박스*/
+.city {
     width: 239px;
     height: 55px;
     border-radius: 5px;
@@ -74,11 +58,35 @@
     border: 0 solid white;
     color: #8B8B8B;
 }
-
-.contents > ul > .marker {
+/*구,군 콤보 박스*/
+.county {
+    width: 239px;
+    height: 55px;
+    border-radius: 5px;
     position: absolute;
-    top: 62px;
-    left: 72px;
+    top: 9px;
+    left: 10px;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0 solid white;
+    font-size: 32px;
+    font-family: 'GmarketSansMedium';
+    color: #8B8B8B;
+}
+/*지역 이미지*/
+.marker {
+    position: absolute;
+    top: 59px;
+    left: 45px;
+}
+/*지역 이미지 옆에 글씨*/
+.maker2{
+    position: absolute;
+    top: 72px;
+    left: 103px;
+    font-size: 32px;
 }
 
 .meet_name2 {
@@ -167,19 +175,6 @@
     z-index: 9999; /* 다른 요소 위에 표시되도록 설정 */
 }
 
-#subModalContent {
-    width: 764px;
-    height: 610px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 10000; /* 모달 창 위에 표시되도록 설정 */
-}
 
 #subCloseBtn {
     position: absolute;
@@ -313,6 +308,49 @@
     background-color: #968ACD;
     cursor: pointer;
 }
+#subModalContent {
+    width: 1400px;
+    height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #EEF1FF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr); /* 5행으로 설정 */
+    grid-gap: 10px;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+#subInterestList {
+    width: 211px;
+    height: 75px;
+    font-size: 38px;
+    background-color: #FFFFFF;
+    font-family: 'GmarketSansMedium';
+    cursor: pointer;
+    grid-row: span 1; /* 각 요소가 1행에 위치하도록 설정 */
+    grid-column: span 1; /* 각 요소가 1열에 위치하도록 설정 */
+}
+#subInterestList>li{
+    width: 100%; /* 각 아이템을 100% 너비로 설정 */
+    height: 75px;
+    background-color: #FFFFFF;
+}
+#selectedInterest{
+    font-size: 48px;
+    font-weight: bold;
+    font-family: 'GmarketSansMedium';
+}
+
+
+
 
 /*footer 영역*/
 .footer {

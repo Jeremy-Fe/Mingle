@@ -1,169 +1,167 @@
+
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <!--css-->
-    <link href="/css/Create_Meet.css" type="text/css" rel="stylesheet">
+    <link href="/css/Create_Meet.css?after" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
 <div class="contents">
-    <ul>
-        <img class="marker" src="image/meet_marker.png">
-        <li>지역</li>
-    </ul>
-    <div class="select1">
+    <form action="/create-gathering" method="post">
         <ul>
-            <li>
-                <form action="#">
-                    <Select name="city" class="select_city">
-                        <option value="none">시/도 선택</option>
-                        <option value="gyeonggi_do">부천시</option>
-                        <option value="gyeonggi_do">광명시</option>
-                        <option value="gyeonggi_do">서울시</option>
-                        <option value="gyeonggi_do">부산시</option>
-                    </Select>
-                </form>
-            </li>
+            <img class="marker" src="image/meet_marker.png">
+            <li class="maker2">지역</li>
         </ul>
-    </div>
-
-    <div class="select2">
-        <ul>
-            <li>
-                <form action="#">
-                    <Select name="county" class="select_county">
-                        <option value="none">구/군 선택</option>
-                        <option value="gyeonggi_do">경기도</option>
-                        <option value="gyeonggi_do">경기도</option>
-                        <option value="gyeonggi_do">경기도</option>
-                        <option value="gyeonggi_do">경기도</option>
-                    </Select>
-                </form>
-            </li>
-        </ul>
-    </div>
-    <div class="meet_name1">
-        <div class="meet_name2">
-            <ul>
-                <li>
-                    <input type="text" name="G_NAME" class="g_name" placeholder="모임 이름" maxlength="16"/>
-                </li>
-            </ul>
+        <div class="select1">
+            <select name="gCity" class="city select_box">
+                <option value="none">시/도 선택</option>
+                <option th:each="bcName : ${bcNames}" th:value="${bcName}" th:text="${bcName}"></option>
+            </select>
         </div>
-    </div>
-    <div class="meet_introduce">
-        <div class="meet_introduce2">
-            <ul>
-                <li>
-                    <form action="#">
-                        <textarea name="M_INTRODUCTION" class="m_introduce" placeholder="모임의 소개글을 적어주세요."></textarea>
-                    </form>
-                </li>
-            </ul>
+        <div class="select2">
+            <select name="gDistrict" class="county select_box">
+                <option value="none">시/구/군 선택</option>
+            </select> <!-- 내 거주지 -->
         </div>
-    </div>
-    <div class="personnel">
-        <ul>
-            <img class="person" src="image/모임 만들기_사람.png">
-            <li>정원(최대300명)</li>
-        </ul>
-    </div>
-    <div class="personnel_box">
-        <div class="personnel_box2">
-            <ul>
-                <li>
-                    <form action="#">
-                        <input type="number"  name="G_personnel" class="G_personnel"></input>
-                    </form>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="create_bt">
-        <ul>
-            <li>
-                <!-- 모임 만들기 버튼 클릭 시 createGathering 함수 호출 -->
-                <button name="G_create_bt" class="G_create_bt" onclick="createGathering()">모임 만들기</button>
-            </li>
-        </ul>
-    </div>
-    <ul>
-        <form action="#">
-            <button value="기본값" type="button" id="btn"><img id="selectedInterestImage" src="image/모임 버튼.png" alt="관심사 이미지" onclick=""></button>
-        </form>
-    </ul>
-    <div id="modalWrap" style="display: none;">
-        <div id="modalContent">
-            <div id="modalBody">
-                <span id="closeBtn">&times;</span>
-                <p>관심사 선택</p>
-                <button value="여행" type="button" id="btn1"><img src="image/create_meet_image/create_여행.png" alt="관심사 이미지" onclick="openSubModal('여행')">여행</button>
-                <button value="운동/스포츠" type="button" id="btn2"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지" onclick="openSubModal('운동/스포츠')">운동/스포츠</button>
-                <button value="독서" type="button" id="btn3"><img src="image/create_meet_image/create_독서.png" alt="관심사 이미지" onclick="openSubModal('독서')">독서</button>
-                <button value="업종/직무" type="button" id="btn4"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지" onclick="openSubModal('업종/직무')">업종/직무</button>
-                <button value="문화/공연/축제" type="button" id="btn5"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지" onclick="openSubModal('문화/공연/축제')">문화/공연/축제</button>
-                <button value="음악/악기" type="button" id="btn6"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지" onclick="openSubModal('음악/악기')">음악/악기</button>
-                <button value="공예/만들기" type="button" id="btn7"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지" onclick="openSubModal('공예/만들기')">공예/만들기</button>
-                <button value="댄스/무용" type="button" id="btn8"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지" onclick="openSubModal('댄스/무용')">댄스/무용</button>
-                <button value="사교/인맥" type="button" id="btn9"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지" onclick="openSubModal('사교/인맥')">사교/인맥</button>
-                <button value="차/오토바이" type="button" id="btn10"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지" onclick="openSubModal('차/오토바이')">차/오토바이</button>
-                <button value="사진/영상" type="button" id="btn11"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지" onclick="openSubModal('사진/영상')">사진/영상</button>
-                <button value="게임/오락" type="button" id="btn12"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지" onclick="openSubModal('게임/오락')">게임/오락</button>
-                <button value="요리/제조" type="button" id="btn13"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지" onclick="openSubModal('요리/제조')">요리/제조</button>
-                <button value="반려/동물" type="button" id="btn14"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지" onclick="openSubModal('반려/동물')">반려/동물</button>
-                <button value="가족/결혼" type="button" id="btn15"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지" onclick="openSubModal('가족/결혼')">가족/결혼</button>
-                <button value="자유주제" type="button" id="btn16"><img src="image/create_meet_image/create_자유주제.png" alt="관심사 이미지" onclick="openSubModal('자유주제')">자유주제</button>
+        <div class="meet_name1">
+            <div class="meet_name2">
+                <ul>
+                    <li>
+                        <input type="text" name="gName" class="g_name" placeholder="모임 이름" maxlength="16"/>
+                        <input type="text" name="gPrivate" style="display: none" value="0"/>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-    <!-- 새로운 모달 창을 위한 추가 코드 -->
-    <div id="subModalWrap" style="display: none;">
-        <div id="subModalContent">
-            <span id="subCloseBtn">&times;</span> <!-- 닫기 버튼 추가 -->
-            <p>새로운 모달 창 내용</p>
+        <div class="meet_introduce">
+            <div class="meet_introduce2">
+                <ul>
+                    <li>
+                        <input type="text" name="gIntroduction" class="m_introduce" placeholder="모임의 소개글을 적어주세요.">
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <!-- 새로운 모달 창을 위한 추가 코드 끝 -->
-    <div class="interest1">
-        <div class="interest2">
+        <div class="personnel">
+            <ul>
+                <img class="person" src="image/모임 만들기_사람.png">
+                <li>정원(최대300명)</li>
+            </ul>
+        </div>
+        <div class="personnel_box">
+            <div class="personnel_box2">
+                <ul>
+                    <li>
+                        <input type="number"  name="gMaxheadcount" class="G_personnel"></input>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="create_bt">
             <ul>
                 <li>
-                    <form action="#">
-                        <input type="text" name="I_INTEREST" class="I_interest" placeholder="세부 관심사 선택" maxlength="16"/>
-                    </form>
+                    <!-- 모임 만들기 버튼 클릭 시 createGathering 함수 호출 -->
+                    <input type="submit" class="G_create_bt" value="모임 만들기"/>
                 </li>
             </ul>
         </div>
-    </div>
-</div>
-<div class="footer">
-    <div class="footer_menu">
-        <a href="#">이용약관</a>
-        <a href="#">개인정보처리방침</a>
-        <a href="#">책임의 한계와 법적고지</a>
-        <a href="#">회원정보 고객센터</a>
-    </div>
-    <div class="f_copyright">
-        <img src="image/login_footer.png">
-        <p>Copyright ⓒ </p>
-        <p class="corp">mingle Corp. </p>
-        <p>All Rights Reserved.</p>
-    </div>
-</div>
+        <ul>
+            <button value="기본값" type="button" id="btn">
+                <input id="gMainsubject_value" type="hidden" name="gMainsubject">
+                <img id="selectedInterestImage" src="image/모임 버튼.png" alt="관심사 이미지">
+            </button>
+        </ul>
+        <div id="modalWrap" style="display: none;">
+            <div id="modalContent">
+                <div id="modalBody">
+                    <span id="closeBtn">&times;</span>
+                    <p>관심사 선택</p>
+                    <button value="여행" type="button" id="btn1" onclick="vlaue_bt(this.value); openSubModal(value);"><img src="image/create_meet_image/create_여행.png" alt="관심사 이미지">여행
+                    </button>
+                    <button value="운동스포츠" type="button" id="btn2" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지">운동/스포츠</button>
+                    <button value="독서" type="button" id="btn3" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_독서.png" alt="관심사 이미지">독서</button>
+                    <button value="업종직무" type="button" id="btn4" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지">업종/직무</button>
+                    <button value="문화공연축제" type="button" id="btn5" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지">문화/공연/축제</button>
+                    <button value="음악악기" type="button" id="btn6" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지">음악/악기</button>
+                    <button value="공예만들기" type="button" id="btn7" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지">공예/만들기</button>
+                    <button value="댄스무용" type="button" id="btn8" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지">댄스/무용</button>
+                    <button value="사교인맥" type="button" id="btn9" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지">사교/인맥</button>
+                    <button value="차오토바이" type="button" id="btn10" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지">차/오토바이</button>
+                    <button value="사진영상" type="button" id="btn11" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지">사진/영상</button>
+                    <button value="게임오락" type="button" id="btn12" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지">게임/오락</button>
+                    <button value="요리제조" type="button" id="btn13" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지">요리/제조</button>
+                    <button value="반려동물" type="button" id="btn14" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지">반려/동물</button>
+                    <button value="가족결혼" type="button" id="btn15" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지">가족/결혼</button>
+                    <button value="자유주제" type="button" id="btn16" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_자유주제.png" alt="관심사 이미지">자유주제</button>
+                </div>
+            </div>
+        </div>
+        <!-- 새로운 모달 창을 위한 추가 코드 -->
+        <div id="subModalWrap" style="display: none;">
+            <div id="subModalContent">
+                <span id="subCloseBtn" onclick="closeSubModal()">&times;</span>
+                <p><span id="selectedInterest"></span></p>
+                <ul id="subInterestList">
+                    <!-- 세부 관심사가 여기에 추가됩니다. -->
+                </ul>
+            </div>
+        </div>
+        <!-- 새로운 모달 창을 위한 추가 코드 끝 -->
+        <div class="interest1">
+            <div class="interest2">
+                <ul>
+                    <li>
+                        <input type="text" name="gSubject" class="I_interest" placeholder="세부 관심사 선택" maxlength="16"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 로그인 세션 가져오고 넘기는 코드 -->
+            <input type="hidden" name="gMainleader" th:value="${session.loginId}">
+     </form>
+ </div>
+ <div class="footer">
+     <div class="footer_menu">
+         <a href="#">이용약관</a>
+         <a href="#">개인정보처리방침</a>
+         <a href="#">책임의 한계와 법적고지</a>
+         <a href="#">회원정보 고객센터</a>
+     </div>
+     <div class="f_copyright">
+         <img src="image/login_footer.png">
+         <p>Copyright ⓒ </p>
+         <p class="corp">mingle Corp. </p>
+         <p>All Rights Reserved.</p>
+     </div>
+ </div>
+ <!-- JavaScript 코드 추가 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+    function vlaue_bt(value) {
+        const inputElement = document.getElementById("gMainsubject_value");
+        inputElement.value = value;
+        inputElement.value = '/' + value; // 슬래시를 추가
+        console.log("value : " + value);
+
+    }
     document.addEventListener("DOMContentLoaded", function() {
         const btn = document.getElementById('btn');
         const modal = document.getElementById('modalWrap');
         const closeBtn = document.getElementById('closeBtn');
+        let selectedInterest = '';
+        let initialButtonValue = '';
+
+
 
         const selectedInterestImage = document.querySelector('#selectedInterestImage');
         const selectedInterestButton = document.querySelector('#btn');
 
         // 버튼의 초기값을 저장합니다.
-        const initialButtonValue = selectedInterestButton.value;
+        initialButtonValue = selectedInterestButton.value;
 
         btn.onclick = function () {
             modal.style.display = 'block';
@@ -171,8 +169,10 @@
 
         closeBtn.onclick = function () {
             modal.style.display = 'none';
+            // 모달이 닫힐 때 초기값으로 버튼을 초기화합니다.
+            selectedInterestImage.src = 'image/모임 버튼.png';
+            selectedInterestButton.value = initialButtonValue;
         }
-
         window.onclick = function (event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
@@ -183,53 +183,183 @@
 
         const interestImages = {
             '여행': 'image/create_meet_image/create_여행.png',
-            '운동/스포츠': 'image/create_meet_image/create_운동.png',
+            '운동스포츠': 'image/create_meet_image/create_운동.png',
             '독서': 'image/create_meet_image/create_독서.png',
-            '업종/직무': 'image/create_meet_image/create_업종.png',
-            '문화/공연/축제': 'image/create_meet_image/create_문화.png',
-            '음악/악기': 'image/create_meet_image/create_음악.png',
-            '공예/만들기': 'image/create_meet_image/create_공예.png',
-            '댄스/무용': 'image/create_meet_image/create_댄스.png',
-            '사교/인맥': 'image/create_meet_image/create_사교.png',
-            '차/오토바이': 'image/create_meet_image/create_차.png',
-            '사진/영상': 'image/create_meet_image/create_사진.png',
-            '게임/오락': 'image/create_meet_image/create_게임.png',
-            '요리/제조': 'image/create_meet_image/create_요리.png',
-            '반려/동물': 'image/create_meet_image/create_반려.png',
-            '가족/결혼': 'image/create_meet_image/create_가족.png',
+            '업종직무': 'image/create_meet_image/create_업종.png',
+            '문화공연축제': 'image/create_meet_image/create_문화.png',
+            '음악악기': 'image/create_meet_image/create_음악.png',
+            '공예만들기': 'image/create_meet_image/create_공예.png',
+            '댄스무용': 'image/create_meet_image/create_댄스.png',
+            '사교인맥': 'image/create_meet_image/create_사교.png',
+            '차오토바이': 'image/create_meet_image/create_차.png',
+            '사진영상': 'image/create_meet_image/create_사진.png',
+            '게임오락': 'image/create_meet_image/create_게임.png',
+            '요리제조': 'image/create_meet_image/create_요리.png',
+            '반려동물': 'image/create_meet_image/create_반려.png',
+            '가족결혼': 'image/create_meet_image/create_가족.png',
             '자유주제': 'image/create_meet_image/create_자유주제.png',
         };
 
         interestButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const interest = this.value;
                 const imageFileName = interestImages[interest];
                 selectedInterestImage.src = imageFileName;
                 selectedInterestButton.value = interest; // 버튼의 값을 클릭한 관심사로 업데이트합니다.
                 modal.style.display = 'none';
-                openSubModal(); // 새로운 모달 창 열기
+                selectedInterest = interest;
+                openSubModal(interest); // 선택된 관심사를 새로운 모달 창에 표시
             });
         });
-
-        // 새로운 모달 창을 열기 위한 함수
-        function openSubModal() {
-            subModal.style.display = 'block';
+        // 관심사 이미지를 클릭했을 때 모달 창 열기
+        function openModal() {
+            var modal = document.getElementById("modalWrap");
+            modal.style.display = "block";
         }
 
-        // 새로운 모달 창을 닫기 위한 함수
-        function closeSubModal() {
-            subModal.style.display = 'none';
+        // 모달 창 닫기 버튼 클릭 시
+        document.getElementById("closeBtn").onclick = function () {
+            var modal = document.getElementById("modalWrap");
+            modal.style.display = "none";
         }
+    })
 
-        // 추가된 부분: 새로운 모달 창과 닫기 버튼 요소를 가져옵니다.
+
+
+    function openSubModal(interest) {
         const subModal = document.getElementById('subModalWrap');
-        const subCloseBtn = document.getElementById('subCloseBtn');
+        const selectedInterestElement = document.getElementById('selectedInterest');
+        selectedInterestElement.textContent = interest; // 선택된 관심사를 업데이트
+        subModal.style.display = 'block';
 
-        // 새로운 모달 창의 닫기 버튼에 이벤트를 추가합니다.
-        subCloseBtn.onclick = closeSubModal;
+        // 선택한 관심사를 백엔드로 전송하고 세부 관심사를 가져옵니다.
+        getMainSubjectsContainingText(interest);
+    }
+
+    const interestButtons2 = document.querySelectorAll('#modalBody > button[id^="btn"]');
+
+    interestButtons2.forEach(button => {
+        button.addEventListener('click', function () {
+            const interest = this.value;
+            console.log(interest);
+            console.log('버튼이 클릭되었습니다. 관심사:', interest);
+            console.log('선택된 버튼 수:', interestButtons2.length);
+            getMainSubjectsContainingText(interest); // 클릭한 관심사로 세부 관심사를 가져오는 함수 호출
+        });
     });
 
+    function getMainSubjectsContainingText(interest) {
+        // 슬래시('/')를 문자열로 인식하도록 encodeURIComponent를 사용합니다.
+        var encodedInterest = encodeURIComponent(interest);
+        $.ajax({
+            url: '/interests/subInterests/' + encodedInterest, // 수정된 부분
+            type: 'GET',
+            success: function(data) {
+                displaySubInterests(data);
+            },
+            error: function(xhr, status, error) {
+                console.error('에러:', status, error);
+            }
+        });
+    }
 
+    function displaySubInterests(subInterests) {
+        var subInterestList = document.getElementById("subInterestList");
+        // 모달 창이 열리기 전에 기존의 내용을 모두 지우기
+        subInterestList.innerHTML = "";
+
+        subInterests.forEach(function(subInterest) {
+            var li = document.createElement("li");
+            li.textContent = subInterest;
+            subInterestList.appendChild(li);
+
+            // 세부 관심사를 선택했을 때 해당 세부 관심사를 입력 필드에 추가하는 코드
+            li.onclick = function() {
+                var selectedSubInterest = li.textContent;
+                var inputInterest = document.querySelector("input[name='gSubject']"); // 수정된 부분
+                inputInterest.value = selectedSubInterest; // 선택한 세부 관심사를 입력 필드에 추가
+
+                // 세부 관심사 모달 창 닫기
+                var subModal = document.getElementById("subModalWrap");
+                subModal.style.display = "none";
+            };
+        });
+
+        // 세부 관심사 모달 창 열기
+        var subModal = document.getElementById("subModalWrap");
+        subModal.style.display = "block";
+    }
+
+    // 모달 창에서 세부 관심사 선택 시
+    document.getElementById("subCloseBtn").onclick = function () {
+        var subModal = document.getElementById("subModalWrap");
+        subModal.style.display = "none";
+        selectedInterest = ''; // 초기화
+    };
+
+
+    // 콤보박스
+    $(document).ready(function() {
+        var cityToDistrictMap = {};
+
+        // Fetch cityToDistrictMap from the server
+        $.ajax({
+            url: '/fetchDistrictMap',
+            type: 'GET',
+            success: function(data) {
+                cityToDistrictMap = data;
+            }
+        });
+
+        // Handle mCity change event
+        $('.city.select_box').on('change', function() {
+            var selectedCity = $(this).val();
+            populateDistrictOptions(selectedCity);
+        });
+
+        function populateDistrictOptions(selectedCity) {
+            var districtSelect = $('.county.select_box');
+            districtSelect.empty();
+            districtSelect.append($('<option>', {
+                value: 'none',
+                text: '시/구/군 선택'
+            }));
+
+            var districtOptions = cityToDistrictMap[selectedCity];
+            if (districtOptions) {
+                districtOptions.forEach(function(districtOption) {
+                    districtSelect.append($('<option>', {
+                        value: districtOption,
+                        text: districtOption
+                    }));
+                });
+            }
+        }
+
+        // Handle mCity change event
+        $('.city2.select_box').on('change', function() {
+            var selectedCity = $(this).val();
+            populateDistrictOptions2(selectedCity);
+        });
+        function populateDistrictOptions2(selectedCity) {
+            var districtSelect2 = $('.county2.select_box');
+            districtSelect2.empty();
+            districtSelect2.append($('<option>', {
+                value: 'none',
+                text: '시/구/군 선택'
+            }));
+
+            var districtOptions = cityToDistrictMap[selectedCity];
+            if (districtOptions) {
+                districtOptions.forEach(function(districtOption) {
+                    districtSelect2.append($('<option>', {
+                        value: districtOption,
+                        text: districtOption
+                    }));
+                });
+            }
+        }
+    });
 </script>
 </body>
 </html>
