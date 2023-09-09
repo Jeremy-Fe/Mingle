@@ -84,7 +84,18 @@ body{z-index: 2}
 .view > div {width: 1400px;
     margin: auto; margin-top: 20px;
     border-radius: 20px;
+    position: relative;
     /*---뷰 전체 기본설정(끝)---*/
+}
+
+#delete{
+    position: absolute;
+    border-bottom: 1px solid #ffffff;
+    left: 1310px;
+    top: -20px;
+}
+#delete > a {
+    color: #ffffff;
 }
 
 

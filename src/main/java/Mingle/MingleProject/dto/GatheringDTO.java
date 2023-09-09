@@ -19,7 +19,7 @@ public class GatheringDTO {
     private String gCity;
     private String gDistrict;
     @DateTimeFormat(pattern = "yyyyMMdd")
-    private LocalDate gDate;
+    private Date gDate;
     private Long gMaxheadcount;
     private String gMainleader;
     private String gSubleader1;
