@@ -91,7 +91,7 @@ $("#Stext").blur(function(){
 
 
 
-window.onload = function() {
+window.onload = function 모임업데이트() {
     var 추출한텍스트 = document.getElementById("selectedRegi").textContent;
     var 띄어쓰기_인덱스 = 추출한텍스트.indexOf(" ");
     var 선택한지역 = 추출한텍스트.substring(띄어쓰기_인덱스 + 1);
@@ -107,14 +107,12 @@ window.onload = function() {
         url: "search2/searchMingle",
         type : 'GET',
         data : {selectedRegi: 선택한지역,mainCtName: 메인카테고리,subC: 세부카테고리},
-        success: function(response) {
-/*            var 모임카드초기화 = document.getElementsByClassName("mingle");
-            모임카드초기화.remove();*/
+        success: function(모임카드) {
             $(".mingle").remove();
-            console.log("response = "+response)
+            console.log("response = "+모임카드)
             console.log("선택한지역: "+ 선택한지역+" 메인카테고리: "+메인카테고리+" 세부카테고리: "+세부카테고리);
-            for (var i = 0; i < response.length; i++) {
-                var mingles = response[i];
+            for (var i = 0; i < 모임카드.length; i++) {
+                var mingles = 모임카드[i];
                 console.log("response[i] =", mingles);
                 var 모임명 = mingles.gname;
                 var 모임이미지 = mingles.gcoverimg;
@@ -122,7 +120,7 @@ window.onload = function() {
                 var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
                 var 모임소개글 = mingles.gintroduction;
                 console.log("ajax : 모임명 확인 =", 모임명);
-                console.log("ajax : response.length+1 확인 =", response.length);
+                console.log("ajax : response.length+1 확인 =", 모임카드.length);
                 var htmlMingle =
                     '<div class="mingle">\n' +
                     '<ul>\n' +
@@ -136,43 +134,39 @@ window.onload = function() {
                     '</div>';
 
                 $("#inMingle").append(htmlMingle);
-                $("#search_I").click(function() {
-                    console.log("검색")
-                    const 검색한이름 = document.getElementById('Stext').value;
-                    console.log("검색한이름 : "+검색한이름);
-                    $.ajax({
-                        url: "search2/searchName",
-                        type : 'GET',
-                        data : {searchName : 검색한이름},
-                        success: function(response) {
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(error);
-                        }
-                    });
-                });
-
             }
         },
         error: function(xhr, status, error) {
             console.error(error);
         }
     });
-}
-/*$("#search_I").click(function() {
+}/*
+$("#search_I").click(function() {
     console.log("검색")
-    /!* const 검색한이름 = document.getElementById('Stext').value;
-     console.log("검색한이름 : "+검색한이름);
-     $.ajax({
-         url: "search2/searchName",
-         type : 'GET',
-         data : {searchName : 검색한이름},
-         success: function(response) {
-         },
-         error: function(xhr, status, error) {
-             console.error(error);
-         }
-     });*!/
+    모임업데이트();
+    console.log("모임카드 : " + 모임카드 )
+    var 검색된모임 = []; // 일치하는 모임명을 제외한 모임들을 담을 새로운 배열
+    for (var i = 0; i < 모임카드.length; i++) {
+        var mingles = 모임카드[i];
+        var 모임명 = mingles.gname;
+        if (검색한이름 !== 모임명) {
+            검색된모임.push(mingles); // 검색한이름과 일치하지 않는 경우에만 새로운 배열에 추가
+        }
+    }
+    $(".mingle").remove();
+    모임카드 = 검색된모임;
+    for (var i = 0; i < 모임카드.length; i++) {
+        var mingles = 모임카드[i];
+        console.log("response[i] =", mingles);
+        var 모임명 = mingles.gname;
+        var 모임이미지 = mingles.gcoverimg;
+        var 모임카테고리 = mingles.gmainsubject;
+        var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
+        var 모임소개글 = mingles.gintroduction;
+        console.log("ajax : 모임명 확인 =", 모임명);
+        console.log("ajax : response.length+1 확인 =", 모임카드.length);
+        $("#inMingle").append(htmlMingle);
+    }
 });*/
 
 

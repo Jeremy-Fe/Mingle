@@ -71,6 +71,7 @@ public List<Gathering> findMyMingles(String userId) {
     }
 }
 
+    /*serach*/
 
     /*카테고리 검색*/
     /*전체 검색*/

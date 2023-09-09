@@ -20,8 +20,9 @@ public class LoginedMainController {
     //생성자 주입
     private final MemberService memberService;
     private final GatheringService gatheringService;
+    private Object gatheringRepository;
 
-//    @CrossOrigin
+    //    @CrossOrigin
     @GetMapping("Main_LogIn/findMyMingles")
     public ResponseEntity<List<Gathering>> getMeetings(HttpSession session, Model model) {
         String userId = (String) session.getAttribute("loginId");
@@ -87,14 +88,20 @@ public class LoginedMainController {
         }
     }
 
+/*
     @GetMapping("search2/searchName")
     public ResponseEntity<List<Gathering>> searchName(String searchName, Model model) {
-            List<Gathering> searchMingle = gatheringService.searchName(searchName);
-            System.out.println("searchMingle 확인 = "+ searchMingle);
-            model.addAttribute("searchMingle",searchMingle);
-            return ResponseEntity.ok(searchMingle);
+        List<Gathering> searchMingle = gatheringService.searchName(searchName);
+        String selectedRegi = null;
+        String mainCtName = null;
+        String subC = null;
+        ResponseEntity<List<Gathering>> response = searchMingle(selectedRegi, mainCtName, subC, model);
+        List<Gathering> searchMingleResult = response.getBody();
 
+        System.out.println("searchMingleResult : "+searchMingleResult);
+        return ResponseEntity.ok(searchMingle);
     }
+*/
 
 
 }
