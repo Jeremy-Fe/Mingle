@@ -155,7 +155,7 @@ public class GatheringController {
 
     @PostMapping("/create-gathering")
     public String save(@ModelAttribute GatheringDTO gatheringDTO){
-        gatheringService.save(gatheringDTO);
+//        gatheringService.save(gatheringDTO);
         System.out.println("GatheringController.save");
         System.out.println("GatheringDTO = " + gatheringDTO);
         return "myClass";
