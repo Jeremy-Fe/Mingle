@@ -3,6 +3,7 @@ package Mingle.MingleProject.service;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,25 +16,18 @@ import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
-import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 
 @Service
-/*@RequiredArgsConstructor*/
 @AllArgsConstructor
 public class MemberService {
-
     private final MemberRepository memberRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
-
-
-
 
     public void save(MemberDTO memberDTO) {
         // 1. dto -> entity 변환
@@ -112,7 +106,8 @@ public class MemberService {
 
     //Mypage 자기 소개 수정
     @Transactional
-    public void introduce(String mIntroduction, String mId) {
+    /*public void introduce(MemberDTO memberDTO)*/
+    public void introduce(String mIntroduction) {
 
       /*  memberEntity.setMIntroduction(memberDTO.getMIntroduction());
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
@@ -136,12 +131,12 @@ public class MemberService {
             return new SerialBlob(fileBytes);
     }
     @Transactional
-    public void uploadImage(@NotNull MultipartFile mProfileimg, String mId) {
+    public void uploadImage(@NotNull MultipartFile mProfileimg) {
         try {
             MemberEntity memberEntity = new MemberEntity();
             Blob mProfileBlob = createBlobFromMultipartFile(mProfileimg);
             memberEntity.setMProfileimg(mProfileBlob);
-            memberRepository.updatemProfileimg(mProfileBlob, mId);
+            memberRepository.updatemProfileimg(mProfileBlob);
 
         } catch (IOException | SQLException e) {
             e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
@@ -201,6 +196,19 @@ public class MemberService {
         int headcount = memberRepository.findByGatheringHeadcount(gName);
 
         return headcount;
+    }
+
+    public boolean deleteMemberById(String mId) {
+        // memberId를 사용하여 회원을 찾습니다.
+        MemberEntity member = memberRepository.findBymId(mId).orElse(null);
+
+        if (member != null) {
+            // 회원을 찾았을 경우 삭제합니다.
+            memberRepository.delete(member);
+            return true; // 삭제 성공
+        } else {
+            return false; // 회원이 없음
+        }
     }
 
 }

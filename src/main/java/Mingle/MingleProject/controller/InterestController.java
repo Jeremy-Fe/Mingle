@@ -2,10 +2,7 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.service.InterestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +17,8 @@ public class InterestController {
     }
 
     @GetMapping("/mainSubjects")
-    public List<String> getAllMainSubjects() {
-        return interestService.getAllMainSubjects();
+    public List<String> getMainSubjectsContainingText(@RequestParam("searchTerm") String searchTerm) {
+        return interestService.getMainSubjectsContainingText(searchTerm);
     }
 
     @GetMapping("/subInterests/{mainSubject}")
@@ -31,5 +28,7 @@ public class InterestController {
         return subInterests;
 
     }
+
+
 
 }
