@@ -1,6 +1,5 @@
 package Mingle.MingleProject.entity;
 
-import Mingle.MingleProject.dto.CityDTO;
 import Mingle.MingleProject.dto.GatheringDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +8,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -20,7 +18,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "GATHERING")
-public class Gathering {
+public class GatheringEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "G_NUM", nullable = false)
@@ -59,29 +57,29 @@ public class Gathering {
         gDate = new Date();
     }
 
-    @OneToMany(mappedBy = "pGNum")
+    @OneToMany(mappedBy = "GatheringEntity")
     private Set<PostEntity> postGNum = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "piGNum")
+    @OneToMany(mappedBy = "GatheringEntity")
     private Set<PostimgEntity> piGNum = new LinkedHashSet<>();
 
-    public static Gathering gathering(GatheringDTO gatheringDTO) {
-        Gathering gathering = new Gathering();
-        gathering.setId(gatheringDTO.getId());
-        gathering.setGName(gatheringDTO.getGName());
-        gathering.setGIntroduction(gatheringDTO.getGIntroduction());
-        gathering.setGMainsubject(gatheringDTO.getGMainsubject());
-        gathering.setGSubject(gatheringDTO.getGSubject());
-        gathering.setGCity(gatheringDTO.getGCity());
-        gathering.setGDistrict(gatheringDTO.getGDistrict());
-        gathering.setGDate(gatheringDTO.getGDate());
-        gathering.setGMaxheadcount(gatheringDTO.getGMaxheadcount());
-        gathering.setGMainleader(gatheringDTO.getGMainleader());
-        gathering.setGSubleader1(gatheringDTO.getGSubleader1());
-        gathering.setGSubleader2(gatheringDTO.getGSubleader2());
-        gathering.setGSubleader3(gatheringDTO.getGSubleader3());
-        gathering.setGPrivate(gatheringDTO.getGPrivate());
-        gathering.setGCoverimg((gatheringDTO.getGCoverimg()));
-        return gathering;
+    public static GatheringEntity gathering(GatheringDTO gatheringDTO) {
+        GatheringEntity gatheringEntity = new GatheringEntity();
+        gatheringEntity.setId(gatheringDTO.getId());
+        gatheringEntity.setGName(gatheringDTO.getGName());
+        gatheringEntity.setGIntroduction(gatheringDTO.getGIntroduction());
+        gatheringEntity.setGMainsubject(gatheringDTO.getGMainsubject());
+        gatheringEntity.setGSubject(gatheringDTO.getGSubject());
+        gatheringEntity.setGCity(gatheringDTO.getGCity());
+        gatheringEntity.setGDistrict(gatheringDTO.getGDistrict());
+        gatheringEntity.setGDate(gatheringDTO.getGDate());
+        gatheringEntity.setGMaxheadcount(gatheringDTO.getGMaxheadcount());
+        gatheringEntity.setGMainleader(gatheringDTO.getGMainleader());
+        gatheringEntity.setGSubleader1(gatheringDTO.getGSubleader1());
+        gatheringEntity.setGSubleader2(gatheringDTO.getGSubleader2());
+        gatheringEntity.setGSubleader3(gatheringDTO.getGSubleader3());
+        gatheringEntity.setGPrivate(gatheringDTO.getGPrivate());
+        gatheringEntity.setGCoverimg((gatheringDTO.getGCoverimg()));
+        return gatheringEntity;
     }
 }

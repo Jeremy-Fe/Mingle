@@ -170,4 +170,11 @@ public class MemberService {
         }
     }
 
+    public MemberDTO findByWriter(String pMId) {
+        Optional<MemberEntity> writer = memberRepository.findBymId(pMId);
+
+        MemberDTO memberDTO = MemberDTO.toMemberDTO(writer.get());
+
+        return memberDTO;
+    }
 }

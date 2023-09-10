@@ -1,7 +1,5 @@
 package Mingle.MingleProject.dto;
 
-import Mingle.MingleProject.entity.Gathering;
-import Mingle.MingleProject.entity.PostEntity;
 import lombok.*;
 
 import java.time.LocalDate;

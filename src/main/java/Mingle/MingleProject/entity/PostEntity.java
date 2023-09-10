@@ -14,6 +14,7 @@ import java.util.Set;
 @Table(name = "POST")
 public class PostEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "P_NUM", nullable = false)
     private Long pNum;
 
@@ -23,7 +24,7 @@ public class PostEntity {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "P_G_NUM", nullable = false)
-    private Gathering pGNum;
+    private GatheringEntity GatheringEntity;
 
     @Column(name = "P_TITLE", nullable = false, length = 100)
     private String pTitle;

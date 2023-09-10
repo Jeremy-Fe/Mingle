@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Table(name = "REPLY")
 public class ReplyEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "R_NUM", nullable = false)
     private Long rNum;
 

@@ -3,21 +3,17 @@ package Mingle.MingleProject.controller;
 import Mingle.MingleProject.config.MemberComparator;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.entity.Gathering;
 import Mingle.MingleProject.dto.PostDTO;
-import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -47,6 +43,7 @@ public class GatheringController {
         int gatheringHeadcount = memberService.findByGatheringHeadcount(gatheringDTO.getGName());
         model.addAttribute("headcount", gatheringHeadcount);
 
+
         return "Gathering_Home";
     }
 
@@ -56,19 +53,52 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        List<PostDTO> postDTOList = gatheringService.findByNotificationPost(id);
-        model.addAttribute("Notification", postDTOList);
+        List<PostDTO> postDTONotiList = gatheringService.findByNotificationPost(id);
+        model.addAttribute("Notification", postDTONotiList);
 
+        List<PostDTO> postDTOList = gatheringService.findByPost(id);
+        model.addAttribute("Post", postDTOList);
+
+        model.addAttribute("PostBoard", BoardName(postDTOList));
+
+        List<MemberDTO> writerList = new ArrayList<>();
+        for (PostDTO postDTO: postDTOList) {
+            writerList.add(memberService.findByWriter(postDTO.getPMId()));
+        }
+        model.addAttribute("PostWriter", writerList);
 
         return "Gathering_Board";}
 
-    @GetMapping("Gathering_Post/{id}")
-    public String Gathering_Post(@PathVariable Long id, Model model) {
+    public List BoardName(List<PostDTO> list) {
+        List boardName = new ArrayList();
+        for (PostDTO postDTO : list) {
+            Long bNum = postDTO.getPBNum();
+            if(bNum == 1L){
+                boardName.add("정모 후기");
+            } else if(bNum == 2L) {
+                boardName.add("자유게시판");
+            } else if(bNum == 3L) {
+                boardName.add("관심사 공유");
+            } else if(bNum == 4L) {
+                boardName.add("가입인사");
+            } else if(bNum == 5L) {
+                boardName.add("공지사항");
+            }
+
+        }
+
+        return boardName;
+    }
+
+    @GetMapping("Gathering_Post/{id}/{pNum}")
+    public String Gathering_Post(@PathVariable Long id, @PathVariable Long pNum, Model model) {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
+
+
         return "Gathering_Post";}
 
     @GetMapping("Gathering_Album_All/{id}")
