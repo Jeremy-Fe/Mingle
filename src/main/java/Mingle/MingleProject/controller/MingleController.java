@@ -279,23 +279,6 @@ public class MingleController {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
     }
-
-    @PostMapping("/Mypage/mIntroduction")
-    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
-        System.out.println("mIntroduction : " + mIntroduction);
-        memberService.introduce(mIntroduction);
-        return "Mypage"; // 결과 페이지로 이동
-
-    }
-
-    @PostMapping("/Mypage/uploadImage")
-    public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
-        System.out.println("mProfileimg : " + mProfileimg);
-        memberService.uploadImage(mProfileimg);
-        return "Mypage";
-    }
-
-
 }
 
 

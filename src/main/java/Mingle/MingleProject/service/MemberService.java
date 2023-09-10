@@ -12,11 +12,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.sql.SQLException;
@@ -107,7 +109,7 @@ public class MemberService {
     //Mypage 자기 소개 수정
     @Transactional
     /*public void introduce(MemberDTO memberDTO)*/
-    public void introduce(String mIntroduction) {
+    public void introduce(String mIntroduction, String mId) {
 
       /*  memberEntity.setMIntroduction(memberDTO.getMIntroduction());
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
@@ -131,12 +133,12 @@ public class MemberService {
             return new SerialBlob(fileBytes);
     }
     @Transactional
-    public void uploadImage(@NotNull MultipartFile mProfileimg) {
+    public void uploadImage(@NotNull MultipartFile mProfileimg, String mId) {
         try {
             MemberEntity memberEntity = new MemberEntity();
             Blob mProfileBlob = createBlobFromMultipartFile(mProfileimg);
             memberEntity.setMProfileimg(mProfileBlob);
-            memberRepository.updatemProfileimg(mProfileBlob);
+            memberRepository.updatemProfileimg(mProfileBlob,mId);
 
         } catch (IOException | SQLException e) {
             e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
