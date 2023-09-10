@@ -62,8 +62,8 @@ h3{font-family: 'GmarketSans';}
 #box>#user >ul{float: right; padding-right: 20px; position: relative;}
 #box>#user >ul>li{float: left; line-height: 65px;}
 #box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
-#box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
-#box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
+#box>#user >ul>li>a>img{width: 45px; height: 45px; border-radius: 50%;}
+#box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF; margin: 10px;}
 #box>#user >ul>.icon_a>a{display: inline-block; width: 45px; height: 45px;}
 #box>#user >ul>.icon_b>#logout>img{width: 30px; height: 30px;  margin-top: 20px;}
 

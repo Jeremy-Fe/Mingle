@@ -114,28 +114,42 @@ public class MingleController {
 
         String profileimg = memberService.getProfileimgData(logInId);
         model.addAttribute("profileimg", profileimg);
-
-        System.out.println(profileimg);
-        System.out.println(profileimg);
-        System.out.println(profileimg);
-        System.out.println(profileimg);
         System.out.println(profileimg);
 
         return "MyPage";
     }
 
+
+   /* @GetMapping("defaultUI")
+    public String defaultUI(HttpSession session){
+        String loginId = (String) session.getAttribute("loginId");
+        MemberDTO memberDTO = memberService.findbyIdMyPage(loginId);
+        session.setAttribute("deUIlogInId", memberDTO);
+       *//* model.addAttribute("deUIlogInId", memberDTO);*//*
+
+        String profileimg2 = memberService.getProfileimgData(loginId);
+        session.setAttribute("profileimg2",profileimg2);
+        *//*model.addAttribute("profileimg", profileimg);*//*
+        System.out.println("profileimg2 : " + profileimg2);
+
+        return "defaultUI";
+    }*/
+
+
     @PostMapping("/Mypage/mIntroduction")
-    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
-        System.out.println("mIntroduction : " + mIntroduction);
-        memberService.introduce(mIntroduction);
+    public String introduce(@RequestParam("mIntroduction") String mIntroduction, HttpSession session) {
+        String logInId = (String) session.getAttribute("loginId");
+        System.out.println("mIntroduction : " + mIntroduction + " " + logInId);
+        memberService.introduce(mIntroduction,logInId);
         return "Mypage"; // 결과 페이지로 이동
 
     }
 
     @PostMapping("/Mypage/uploadImage")
-        public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
-        System.out.println("mProfileimg : " + mProfileimg);
-        memberService.uploadImage(mProfileimg);
+        public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg, HttpSession session) {
+        String logInId = (String) session.getAttribute("loginId");
+        System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
+        memberService.uploadImage(mProfileimg,logInId);
         return "Mypage";
     }
 

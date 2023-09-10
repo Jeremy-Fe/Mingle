@@ -112,14 +112,16 @@ public class MemberService {
 
     //Mypage 자기 소개 수정
     @Transactional
-    public void introduce(String mIntroduction) {
+    public void introduce(String mIntroduction, String mId) {
 
-        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+      /*  memberEntity.setMIntroduction(memberDTO.getMIntroduction());
+        MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMIntroduction(mIntroduction);
+        memberEntity.setMId(mId);*/
 
         // MemberEntity 객체를 저장
-        memberRepository.updateMIntroduction(mIntroduction);
+        memberRepository.updateMIntroduction(mIntroduction,mId);
 
     }
 
@@ -134,12 +136,12 @@ public class MemberService {
             return new SerialBlob(fileBytes);
     }
     @Transactional
-    public void uploadImage(@NotNull MultipartFile mProfileimg) {
+    public void uploadImage(@NotNull MultipartFile mProfileimg, String mId) {
         try {
             MemberEntity memberEntity = new MemberEntity();
             Blob mProfileBlob = createBlobFromMultipartFile(mProfileimg);
             memberEntity.setMProfileimg(mProfileBlob);
-            memberRepository.updatemProfileimg(mProfileBlob);
+            memberRepository.updatemProfileimg(mProfileBlob, mId);
 
         } catch (IOException | SQLException e) {
             e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
@@ -154,6 +156,8 @@ public class MemberService {
             MemberEntity profileEntity = optionalMemberEntity.get();
             MemberDTO profileDto = MemberDTO.toMemberDTO(profileEntity);
             Blob blobTypeProfileimg = profileDto.getMProfileimg();
+
+
 
             if (blobTypeProfileimg != null) {
                 try {
