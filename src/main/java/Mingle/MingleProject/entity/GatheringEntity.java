@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -50,8 +51,8 @@ public class GatheringEntity {
     private String gSubleader3;
     @Column(name = "G_PRIVATE", nullable = false)
     private Long gPrivate;
-    @Column(name = "G_COVERIMG", length = 300)
-    private String gCoverimg;
+    @Lob
+    private Blob gCoverimg;
     @PrePersist
     protected void onCreate() {
         gDate = new Date();

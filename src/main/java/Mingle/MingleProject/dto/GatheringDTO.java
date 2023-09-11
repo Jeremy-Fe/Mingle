@@ -3,6 +3,7 @@ import Mingle.MingleProject.entity.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.sql.Blob;
 import java.util.Date;
 @Getter
 @Setter
@@ -25,7 +26,7 @@ public class GatheringDTO {
     private String gSubleader2;
     private String gSubleader3;
     private Long gPrivate;
-    private String gCoverimg;
+    private Blob gCoverimg;
 
     public static GatheringDTO gatheringDTO(GatheringEntity gatheringEntity) {
         GatheringDTO gatheringDTO = new GatheringDTO();
