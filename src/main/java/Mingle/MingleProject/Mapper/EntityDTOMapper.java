@@ -48,12 +48,7 @@ public class EntityDTOMapper {
     }
 
     // 게시글 사진 맵핑
-    public static PostimgDTO entityToDTO(PostimgEntity postimgEntity) {
-        return modelMapper.map(postimgEntity, PostimgDTO.class);
-    }
-    public static PostimgEntity DTOToEntity(PostimgDTO postimgDTO) {
-        return modelMapper.map(postimgDTO, PostimgEntity.class);
-    }
+
 
     // 댓글 맵핑
     public static CommentsDTO entityToDTO(CommentsEntity commentsEntity) {

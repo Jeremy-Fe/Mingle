@@ -45,6 +45,19 @@ public class GatheringController {
         int gatheringHeadcount = gatheringMemberDTO.size();
         model.addAttribute("headcount", gatheringHeadcount);
 
+        List<PostDTO> postDTOList = gatheringService.findByPosts(id);
+        List<PostDTO> postDTO2List = postDTOList.subList(0, 2);
+        model.addAttribute("Post", postDTO2List);
+
+        model.addAttribute("PostBoard", BoardName(postDTO2List));
+
+        List<MemberDTO> writerList = new ArrayList<>();
+        for (PostDTO postDTO: postDTOList) {
+            writerList.add(memberService.findByWriter(postDTO.getPMId()));
+        }
+        List<MemberDTO> writer2List = writerList.subList(0, 2);
+        model.addAttribute("PostWriter", writer2List);
+
         return "Gathering_Home";
     }
 
@@ -57,7 +70,7 @@ public class GatheringController {
         List<PostDTO> postDTONotiList = gatheringService.findByNotificationPost(id);
         model.addAttribute("Notification", postDTONotiList);
 
-        List<PostDTO> postDTOList = gatheringService.findByPost(id);
+        List<PostDTO> postDTOList = gatheringService.findByPosts(id);
         model.addAttribute("Post", postDTOList);
 
         model.addAttribute("PostBoard", BoardName(postDTOList));
@@ -68,28 +81,10 @@ public class GatheringController {
         }
         model.addAttribute("PostWriter", writerList);
 
-        return "Gathering_Board";}
-
-    public List BoardName(List<PostDTO> list) {
-        List boardName = new ArrayList();
-        for (PostDTO postDTO : list) {
-            Long bNum = postDTO.getPBNum();
-            if(bNum == 1L){
-                boardName.add("정모 후기");
-            } else if(bNum == 2L) {
-                boardName.add("자유게시판");
-            } else if(bNum == 3L) {
-                boardName.add("관심사 공유");
-            } else if(bNum == 4L) {
-                boardName.add("가입인사");
-            } else if(bNum == 5L) {
-                boardName.add("공지사항");
-            }
-
-        }
-
-        return boardName;
+        return "Gathering_Board";
     }
+
+
 
     @GetMapping("Gathering_Post/{id}/{pNum}")
     public String Gathering_Post(@PathVariable Long id, @PathVariable Long pNum, Model model) {
@@ -97,10 +92,16 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
+        PostDTO postDTO = gatheringService.findByPost(pNum);
+        model.addAttribute("post", postDTO);
 
+        model.addAttribute("boardName", BoardName(postDTO));
 
+        MemberDTO memberDTO = memberService.findByWriter(postDTO.getPMId());
+        model.addAttribute("writer", memberDTO);
 
-        return "Gathering_Post";}
+        return "Gathering_Post";
+    }
 
     @GetMapping("Gathering_Album_All/{id}")
     public String Gathering_Album_All(@PathVariable Long id, Model model) {
@@ -182,10 +183,51 @@ public class GatheringController {
         return "myClass";
     }
 
+    @GetMapping("Gathering_Post_Write/{id}")
+    public String Gathering_Post_Write(@PathVariable Long id, Model model){
+        // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
+        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+        model.addAttribute("GatheringHome", gatheringDTO);
 
-    @GetMapping("Gathering_Post_Write")
-    public String Gathering_Post_Write(){
         return "Gathering_Post_Write";
+    }
+
+    public List BoardName(List<PostDTO> list) {
+        List boardName = new ArrayList();
+        for (PostDTO postDTO : list) {
+            Long bNum = postDTO.getPBNum();
+            if(bNum == 1L){
+                boardName.add("정모 후기");
+            } else if(bNum == 2L) {
+                boardName.add("자유게시판");
+            } else if(bNum == 3L) {
+                boardName.add("관심사 공유");
+            } else if(bNum == 4L) {
+                boardName.add("가입인사");
+            } else if(bNum == 5L) {
+                boardName.add("공지사항");
+            }
+
+        }
+
+        return boardName;
+    }
+    public String BoardName(PostDTO board) {
+        Long bNum = board.getPBNum();
+        String boardName = null;
+        if(bNum == 1L){
+            boardName = "정모후기";
+        } else if(bNum == 2L) {
+            boardName = "자유게시판";
+        } else if(bNum == 3L) {
+            boardName = "관심사 공유";
+        } else if(bNum == 4L) {
+            boardName = "가입인사";
+        } else if(bNum == 5L) {
+            boardName = "공지사항";
+        }
+
+        return boardName;
     }
 
 }
