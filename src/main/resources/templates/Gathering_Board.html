@@ -116,20 +116,22 @@
 
     document.getElementById("boardSelect").addEventListener("change", function() {
         var sValue = document.getElementById('boardSelect');
-        alert("value:" + sValue.options[sValue.selectedIndex].value);
+        alert("value: " + sValue.options[sValue.selectedIndex].value);
 
         const 게시물들 = document.querySelectorAll('.board_post');
 
         게시물들.forEach(function(게시물) {
             // 각 게시물의 제목 요소를 선택합니다.
-            const 제목요소 = 게시물.querySelector('.post_boardName');
-
-            if (!제목요소.textContent.includes(검색한이름)) {
+            const 게시판 = 게시물.querySelector('.post_boardName');
+            console.log("게시판 : "+게시판)
+            if (!게시판.textContent.includes(sValue.options[sValue.selectedIndex].value)) {
                 // 검색한 이름이 포함되지 않는 경우 해당 게시물 요소를 숨깁니다.
                 게시물.style.display = 'none';
+                console.log("nope");
             } else {
                 // 검색한 이름이 포함된 경우 해당 게시물 요소를 보여줍니다.
                 게시물.style.display = 'block';
+                console.log("yes");
             }
         });
     });
