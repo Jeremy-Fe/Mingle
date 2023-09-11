@@ -32,7 +32,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     border: none; border-radius: 15px;
     font-size: 28px; font-weight: lighter;
     font-family: 'NexonLv1Gothic';
-    padding-left: 30px;
+    padding: 0px 30px;
     float: right;
 }
 /* 검색버튼 */
