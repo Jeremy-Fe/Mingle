@@ -88,7 +88,7 @@
         <!--내게시물-->
         <p class="title_03">내 게시물</p>
         <div id="sc2" class="swiper-container mp clearfix">
-            <div id="myPost" class="swiper-wrapper clearfix">
+            <div id="myPost" th:each="mypost :${post}" class="swiper-wrapper clearfix">
                 <div class="swiper-slide post_01 clearfix">
                     <a>
                         <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
