@@ -14,16 +14,17 @@ import java.util.Set;
 @Table(name = "POST")
 public class PostEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "P_NUM", nullable = false)
     private Long pNum;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "P_B_NUM", nullable = false)
     private BoardEntity pBNum;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "P_G_NUM", nullable = false)
-    private Gathering pGNum;
+    private GatheringEntity GatheringEntity;
 
     @Column(name = "P_TITLE", nullable = false, length = 100)
     private String pTitle;
@@ -37,7 +38,7 @@ public class PostEntity {
     @Column(name = "P_VIEWS")
     private Long pViews;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "P_M_ID", nullable = false)
     private MemberEntity pMId;
 
