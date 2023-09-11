@@ -35,47 +35,49 @@
 
         <!-- 바꿔야하는 부분 -->
         <div class="view">
-          <!-- 헤더 -->
-          <div id="viewHeader">
-            <li id="hGtrImg"><img src="image/Main_Login_내게시물.png" alt=""></li>
-            <li id="hGtrExp">
-              <div>
-                 <a class="title_detail">금천구</a><!-- th:text="|${District}|"-->
-                <a class="title_detail" >운동/스포츠</a><!--th:text="|${GMainsubject}|"-->
-              </div>
-             
-              <h3 class="title_title">작당모의 볼링 클럽 🎳 신입 환영 🎳</h3><!-- th:text="|${gName}|"-->
-            </li>
-            <li id="hSelCatg">
-              <h4>게시판</h4>
-              <select name="board" class="select_board">
-                <option value="none">전체보기</option>
-                <option value="free">자유글</option>
-                <option value="interest">관심사 공유</option>
-                <option value="review">정모후기</option>
-                <option value="greetings">가입인사</option>
-                <option value="notification">공지사항</option>
-            </select>
-            </li>
-          </div>
-          <!-- // 헤더 -->
+            <form action="Gathering_Post_Write" method="post">
+            <!-- 헤더 -->
+                <div id="viewHeader">
+                  <li id="hGtrImg"><img src="image/Main_Login_내게시물.png" alt=""></li>
+                  <li id="hGtrExp">
+                    <div>
+                       <a class="title_detail" th:text="${GatheringHome.getGDistrict()}">지역</a><!-- th:text="|${District}|"-->
+                      <a class="title_detail" th:text="${GatheringHome.getGMainsubject()}">관심사</a><!--th:text="|${GMainsubject}|"-->
+                    </div>
 
-          <!-- 글작성페이지 -->
-          <section id="createView">
-            <form id="createViewInner">
-              <li><input id="cTitle" type="text"placeholder="제목을 입력하세요."></li>
-              <li><textarea id="cText" placeholder="내용을 입력하세요."></textarea></li>
-              <li>
-                <input class="cImg" type="file">
-                <input id="cCreate" type="submit" value="작성하기">
-              </li>
-              <!--
-              <input id="cCreate" type="submit" th:if(작성 )>
-              <input id="cCreate" type="submit" th:if(수정 )>
-              -->
+                    <h3 class="title_title" th:text="${GatheringHome.getGName()}">모임 이름</h3><!-- th:text="|${gName}|"-->
+                  </li>
+                  <li id="hSelCatg">
+                    <h4>게시판</h4>
+                    <select name="bName" class="select_board">
+                      <option value="none">게시판 선택</option>
+                      <option value="free">자유글</option>
+                      <option value="interest">관심사 공유</option>
+                      <option value="review">정모후기</option>
+                      <option value="greetings">가입인사</option>
+                      <option value="notification">공지사항</option>
+                  </select>
+                  </li>
+                </div>
+                <!-- // 헤더 -->
+
+                <!-- 글작성페이지 -->
+                <section id="createView">
+                  <form id="createViewInner">
+                    <li><input id="cTitle" name="pTitle" type="text"placeholder="제목을 입력하세요."></li>
+                    <li><textarea id="cText" name="pContents" placeholder="내용을 입력하세요."></textarea></li>
+                    <li>
+                      <input class="cImg" type="file">
+                      <input id="cCreate" type="submit" value="작성하기">
+                    </li>
+                    <!--
+                    <input id="cCreate" type="submit" th:if(작성 )>
+                    <input id="cCreate" type="submit" th:if(수정 )>
+                    -->
+                  </form>
+                </section>
+                <!-- // 글작성페이지 -->
             </form>
-          </section>
-          <!-- // 글작성페이지 -->
         </div>
       </div>
     </section>

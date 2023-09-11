@@ -141,7 +141,7 @@ public class GatheringService {
         return postDTOList;
     }
 
-    public List<PostDTO> findByPost(Long id) {
+    public List<PostDTO> findByPosts(Long id) {
         Long bNum = 5L;
         List<PostEntity> postEntityList = postRepository.findByBoardAndGatheringPost(id, bNum);
 
@@ -162,5 +162,20 @@ public class GatheringService {
         GatheringEntity gatheringEntity = GatheringEntity.gathering(gatheringDTO);
         gatheringRepository.save(gatheringEntity);
         // repository의 save메소드 호출 (조건. entity객체를 넘겨줘야 함)
+    }
+
+    // 게시글 뷰
+    public PostDTO findByPost(Long pNum) {
+        Optional<PostEntity> OptionalPostEntity = postRepository.findById(pNum);
+
+        if(OptionalPostEntity.isPresent()){
+            PostEntity postEntity = OptionalPostEntity.get();
+            PostDTO postDTO = EntityDTOMapper.entityToDTO(postEntity);
+
+            return postDTO;
+        } else {
+            return null;
+        }
+
     }
 }

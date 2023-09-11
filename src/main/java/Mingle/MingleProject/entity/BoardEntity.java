@@ -22,7 +22,5 @@ public class BoardEntity {
     @OneToMany(mappedBy = "pBNum")
     private Set<PostEntity> posts = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "piBNum")
-    private Set<PostimgEntity> postImgs = new LinkedHashSet<>();
 
 }

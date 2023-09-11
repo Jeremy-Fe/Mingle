@@ -1,5 +1,17 @@
 #board {}
 
+#board > .board_bg > .writeButton{
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+
+}
+
+#board > .board_bg > .writeButton > img{
+    border-radius: 50%;
+
+}
+
 #board > .board_bg {
     width: 1450px;
     background-color: #fff;

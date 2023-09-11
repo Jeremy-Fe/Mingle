@@ -14,6 +14,7 @@ import java.util.Set;
 @Table(name = "COMMENTS")
 public class CommentsEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "C_NUM", nullable = false)
     private Long cNum;
 
