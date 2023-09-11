@@ -3,8 +3,19 @@ package Mingle.MingleProject.Mapper;
 import Mingle.MingleProject.dto.*;
 import Mingle.MingleProject.entity.*;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
+
 public class EntityDTOMapper {
-    private static final ModelMapper modelMapper = new ModelMapper();
+    public static final ModelMapper modelMapper = new ModelMapper();
+
+    public EntityDTOMapper () {
+        modelMapper();
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
     // 메소드 오버로딩을 이용하여 같은 이름의 메소드이지만 파라미터 값이 다르기에 작동 가능
     // 혹시 몰라서 그냥 다 맵핑 만들어씀

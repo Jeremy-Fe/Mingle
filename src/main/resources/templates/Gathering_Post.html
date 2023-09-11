@@ -36,9 +36,9 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 
-<div th:replace="/Gathering.html"></div>
+<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id})}"></div>
 <div id="Post">
-    <a href="http://localhost:8080/Gathering_Board"><img src="/image/back.png"></a>
+    <a th:href="@{|/Gathering_Board/${GatheringHome.id}|}"><img src="/image/back.png"></a>
     <div class="Post_bg">
         <ul class="contents clearfix">
             <img class="post_writerimg"src="/image/Gathering_img1.png">

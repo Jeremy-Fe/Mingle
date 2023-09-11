@@ -1,8 +1,6 @@
 package Mingle.MingleProject.controller;
 
-import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.entity.Gathering;
-import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -23,11 +21,11 @@ public class LoginedMainController {
 
 //    @CrossOrigin
     @GetMapping("Main_LogIn/findMyMingles")
-    public ResponseEntity<List<Gathering>> getMeetings(HttpSession session, Model model) {
+    public ResponseEntity<List<GatheringEntity>> getMeetings(HttpSession session, Model model) {
         String userId = (String) session.getAttribute("loginId");
         System.out.println("getAttribute 확인 = "+userId);
 
-        List<Gathering> mingles = gatheringService.findMyMingles(userId);
+        List<GatheringEntity> mingles = gatheringService.findMyMingles(userId);
 
         model.addAttribute("mingles",mingles);
         System.out.println("mingles 확인 = "+ mingles);
