@@ -147,10 +147,39 @@ public class MemberService {
         for (MemberEntity gatheringMemberEntity : gatheringMemberEntityList) {
             gatheringMemberDTOList.add(MemberDTO.toMemberDTO(gatheringMemberEntity));
         }
+    
+        
+        // 삭제 인덱스를 저장할 변수 초기화(향상 for문은 index가 없기때문에 직접 만들기)
+        int index = 0;
+        // 향상된 for 문으로 배열 순회
+        for (MemberDTO memberDTO: gatheringMemberDTOList) {
+            // n번째 list에 memberDTO.getMGGathering() 을 spilt으로 쪼개기
+            String[] gatheringNameList = memberDTO.getMGGathering().split(",");
+            // 조건문에 들어갈 변수 초기화
+            boolean include = true;
+            // 쪼개진 문자열을 저장한 배열을 순회하면서 모임이름이 포함되는지 확인
+            for (int i = 0; i < gatheringNameList.length; i++) {
+                if(gatheringNameList[i].equals(gatheringName)) {
+                    include = false;
+                }
+            }
+            
+            // 만약 포함이 되지않아 include가 true이면 index 순서의 list null값으로 변경
+            if(include){
+                gatheringMemberDTOList.set(index, null);
+            }
+            // 향상 for문에 index값 증가
+            index++;
+        }
+        // 리스트중에 null값이 있다면 삭제
+        while(gatheringMemberDTOList.remove(null)){}
+        
+        // 이렇게 해서 모임이름이 정확하지 않는 멤버 DTO를 삭제할 수 있음
 
         return gatheringMemberDTOList;
     }
 
+    // 필요없는 메소드
     public int findByGatheringHeadcount(String gName) {
         int headcount = memberRepository.findByGatheringHeadcount(gName);
 

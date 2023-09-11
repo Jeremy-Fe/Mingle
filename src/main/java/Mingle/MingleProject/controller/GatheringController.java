@@ -40,7 +40,7 @@ public class GatheringController {
         model.addAttribute("GatheringMember", gatheringMemberDTO);
 
 
-        int gatheringHeadcount = memberService.findByGatheringHeadcount(gatheringDTO.getGName());
+        int gatheringHeadcount = gatheringMemberDTO.size();
         model.addAttribute("headcount", gatheringHeadcount);
 
 
