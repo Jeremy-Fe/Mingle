@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.lang.reflect.Member;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -264,6 +265,7 @@ public class MemberService {
             memberRepository.save(member);
         }
     }
+
 
 
 }
