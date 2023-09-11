@@ -350,6 +350,7 @@ body{z-index: 2}
     margin-top: 30px;
     margin-left: 30px;
     float: left;
+
 }
 
 .view > .MyPage .mc #myclass > div:last-child {
@@ -378,6 +379,11 @@ body{z-index: 2}
     line-height: 410px;
     display: block;
     position: absolute;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px ;
+    padding-right: 5px ;
 }
 
 .view > .MyPage .mc #myclass > div > a > img{

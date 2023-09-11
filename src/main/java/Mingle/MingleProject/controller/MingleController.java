@@ -1,7 +1,7 @@
 package Mingle.MingleProject.controller;
 
-import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
@@ -13,10 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -109,21 +109,16 @@ public class MingleController {
         MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
         model.addAttribute("myPagemId", memberDTO);
 
-        /*String joinGathering = memberDTO.getMGGathering();
-        String[] joinGatheringList = joinGathering.split(",");
-
-        List<GatheringDTO> gatheringDTOList = new ArrayList<>();
-        for (int i = 0; i < joinGatheringList.length; i++) {
-            gatheringDTOList.add(gatheringService.findByGName(joinGatheringList[i]));
-        }*/
-
         String profileimg = memberService.getProfileimgData(logInId);
         model.addAttribute("profileimg", profileimg);
         System.out.println(profileimg);
 
+        List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);
+        model.addAttribute("mingles",mingles);
+        System.out.println("mingles 확인 = "+ mingles);
+
         return "MyPage";
     }
-
 
     @PostMapping("/Mypage/mIntroduction")
     public String introduce(@RequestParam("mIntroduction") String mIntroduction, HttpSession session) {

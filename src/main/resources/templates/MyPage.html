@@ -36,8 +36,7 @@
                     <p>마이페이지</p>
                     <li th:unless="${session.loginId == null}" id="delete"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px">회원탈퇴</a></li>
                     <div class="profile">
-
-            <ul>
+                <ul>
                 <li class="pimg">
                     <!--프로필 수정 버튼-->
                     <a href="#ex1" rel="modal:open">
@@ -73,141 +72,19 @@
             </ul>
 
         </div>
-        <script>
-
-            var comment = document.getElementById("commentText").textContent;
-            console.log("DB에 현재 저장된 내용: " + comment);
-
-            /*--자기소개 텍스트 수정--*/
-            $(document).ready(function () {
-                $(".edit_2_link").click(function (event) {
-                    event.preventDefault();
-                    var newText = $(".coment").text();
-                    console.log("내용확인  : " + newText);
-
-                    $.ajax({
-                        url: '/Mypage/mIntroduction', // 실제 서버 요청 경로로 변경
-                        type: 'POST', // 또는 'PUT', 'PATCH' 등 HTTP 메서드 선택
-                        data: {mIntroduction: newText}, // 수정된 텍스트를 데이터로 전송
-                        success: function (data) {
-                            // 서버에서 응답을 처리하는 코드 (예: 성공 메시지 표시)
-                            alert('수정된 내용이 저장되었습니다.');
-                            alert('수정 완료!');
-
-                        },
-                        error: function () {
-                            // 오류 발생 시 처리하는 코드 (예: 오류 메시지 표시)
-                            alert('수정된 내용이 저장되었습니다.');
-                            alert('수정 완료!');
-                        }
-                    });
-                });
-            });
-        </script>
         <!--내모임-->
         <p class="title_02">가입한 모임
         <div id="sc1" class="swiper-container mc clearfix">
             <div id="myclass" class="swiper-wrapper clearfix">
-                <div class="swiper-slide mycb_01">
+                <div id ="myMingCardInner" class="swiper-slide mycb_01" th:each="gathering :${mingles}">
                     <a>
-                        <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                        <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}" src="/image/DefaultClass_logo.png">
                     </a>
-                    <p>질풍가도</p>
-                    <span><도심속 러닝 모...></span>
+                    <p th:text="${gathering.getGName()}" >질풍가도</p>
+                    <span th:text="${gathering.getGIntroduction()}"><도심속 러닝 모...></span>
                 </div>
-
-                <div class="swiper-slide mycb_01-1">
-                    <a>
-                        <img alt="모임 이미지2" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p>질풍가도</p>
-                    <span><도심속 러닝 모...></span>
-                </div>
-
-                <div class="swiper-slide mycb_02">
-                    <a>
-                        <img alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p>스플래쉬</p>
-                    <span><회사인 배드민턴 모...></span>
-                </div>
-                <div class="swiper-slide mycb_02-1">
-                    <a>
-                        <img alt="모임 이미지4" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p>스플래쉬</p>
-                    <span><회사인 배드민턴 모...></span>
-                </div>
-
-                <div class="swiper-slide mycb_03">
-                    <a>
-                        <img alt="모임 이미지5" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p>빽투더퓨처</p>
-                    <span><레트로 게임 메니아...></span>
-                </div>
-
-                <div class="swiper-slide mycb_03-1">
-                    <a>
-                        <img alt="모임 이미지6" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p>빽투더퓨처</p>
-                    <span><레트로 게임 메니아...></span>
-                </div>
-
-                <div class="swiper-slide mycb_04">
-                    <a>
-                        <img alt="모임 이미지7" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p>우주먼지</p>
-                    <span><천체관측 모임...></span>
-                </div>
-                <div class="swiper-slide mycb_04-1">
-                    <a>
-                        <img alt="모임 이미지8" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p>우주먼지</p>
-                    <span><천체관측 모임...></span>
-                </div>
-                <!--가입한 모임 블럭 생성-->
-                <script>
-                    // 가상의 데이터베이스 데이터 배열
-                    var databaseData1 = [
-                        "데이터 1",
-                        "데이터 2",
-                        "데이터 3",
-                        "데이터 4",
-                        "데이터 5",
-                        "데이터 6",
-                        "데이터 7",
-                        "데이터 8",
-
-
-                        // ... 더 많은 데이터 ...
-                    ];
-
-                    var myclass = document.getElementById("myclass");
-
-                    // 데이터베이스 데이터의 수만큼 <div> 생성
-                    for (var i = 0; i < databaseData1.length; i++) {
-                        var dataDiv = document.createElement("div");
-                        var dataA = document.createElement("a");
-                        var dataP-document.createElement("p");
-                        var dataImg = document.createElement("img");
-                        var dataSpan = document.createElement("span");
-                        dataDiv.className = "swiper-slide mycb_" + i; // 클래스 지정
-                        dataDiv.textContent = databaseData1[i]; // 데이터 추가
-                        myclass.appendChild(dataDiv); // <div>를 컨테이너에 추가
-                        myclass.appendChild(dataA); // <a>를 컨테이너에 추가
-                        myclass.appendChild(dataP); // <p>를 컨테이너에 추가
-                        myclass.appendChild(dataImg); // <img>를 컨테이너에 추가
-                        myclass.appendChild(dataSpan); // <span>를 컨테이너에 추가
-                    }
-                </script>
-
             </div>
         </div>
-
         <!--내게시물-->
         <p class="title_03">내 게시물</p>
         <div id="sc2" class="swiper-container mp clearfix">
@@ -278,32 +155,6 @@
                     </a>
                 </div>
             </div>
-            <!--내 게시물 블럭 생성-->
-            <script>
-                // 가상의 데이터베이스 데이터 배열
-                var databaseData = [
-                    "데이터 1",
-                    "데이터 2",
-                    "데이터 3",
-                    "데이터 4",
-                    "데이터 5",
-                    "데이터 6",
-                    "데이터 7",
-                    "데이터 8",
-                    "데이터 9",
-                    // ... 더 많은 데이터 ...
-                ];
-
-                var myPost = document.getElementById("myPost");
-
-                // 데이터베이스 데이터의 수만큼 <div> 생성
-                for (var i = 0; i < databaseData.length; i++) {
-                    var dataDiv = document.createElement("div");
-                    dataDiv.className = "swiper-slide post_" + i; // 클래스 지정
-                    dataDiv.textContent = databaseData[i]; // 데이터 추가
-                    myPost.appendChild(dataDiv); // <div>를 컨테이너에 추가
-                }
-            </script>
 
         </div>
         <!--내 댓글-->
@@ -359,70 +210,7 @@
                 </div>
             </li>
         </div>
-        <!--더보기 버튼 활성화-->
-        <script>
-            const items = document.querySelectorAll(".accordion button");
 
-            function toggleAccordion() {
-                const itemToggle = this.getAttribute('aria-expanded');
-
-                for (i = 0; i < items.length; i++) {
-                    items[i].setAttribute('aria-expanded', 'false');
-                }
-
-                if (itemToggle == 'false') {
-                    this.setAttribute('aria-expanded', 'true');
-                }
-            }
-
-            items.forEach(item => item.addEventListener('click', toggleAccordion));
-        </script>
-
-        <!--더보기 클릭 후 확장-->
-        <script>
-            const button = document.getElementById('accordion-button-1');
-            const myComment1 = document.querySelector('.myComment');
-
-
-            button.addEventListener('click', function () {
-                const ariaExpandedValue = button.getAttribute('aria-expanded');
-
-                if (ariaExpandedValue === 'true') {
-                    myComment1.classList.add('myComment'); // A 스타일 클래스 추가
-                    myComment1.classList.remove('myComment2'); // B 스타일 클래스 제거
-                } else {
-                    myComment1.classList.remove('myComment'); // A 스타일 클래스 제거
-                    myComment1.classList.add('myComment2'); // B 스타일 클래스 추가
-                }
-            });
-        </script>
-
-        <!--내 댓글 블럭 생성-->
-        <script>
-            // 가상의 데이터베이스 데이터 배열
-            var databaseData = [
-                "데이터 1",
-                "데이터 2",
-                "데이터 3",
-                "데이터 4",
-                "데이터 5",
-                "데이터 6",
-                "데이터 7",
-                "데이터 8",
-                "데이터 9",
-                // ... 더 많은 데이터 ...
-            ];
-
-            var myComment = document.getElementsByClassName("myComment")[0];
-
-            // 데이터베이스 데이터의 수만큼 <ul> 생성
-            for (var i = 0; i < databaseData.length; i++) {
-                var dataUl = document.createElement("ul");
-                dataUl.className = "comment_1" + i; // 클래스 지정
-                dataUl.textContent = databaseData[i]; // 데이터 추가
-                myComment.appendChild(dataUl); // <ul>를 컨테이너에 추가
-            }
-        </script>
         <!--프로필수정 모달창--->
         <div id="ex1" class="modal clearfix">
             <div id="modalContent">
@@ -455,34 +243,111 @@
     </section>
 
 </div>
+
+<input type="hidden" id="loginId" th:value="${session.loginId}">
+
+
+<!--내모임 불러오기-->
+
 <script>
-        // 모달이 열릴 때
-        /*$(document).on('modal:open', '#ex1', function ()*/
-        $('.edit').on('click', function () {
-            console.log('프로필 정보 가져오기가 실행됨');
-            // 프로필 정보 가져와서 모달 내에 출력
-            var profileContainer = $('#box #view .view .MyPage .profile');
-            var proimgSrc = profileContainer.find('#profileimg').attr('src');
-            var nameText = profileContainer.find('.text .name').text();
-            var birthText = profileContainer.find('.text .birth').text();
-            var genderText = profileContainer.find('.text .gender').text();
-            var editimgSrc = profileContainer.find('.pimg .edit').attr('src');
+    window.onload = function() {
+        var loginId = document.getElementById("loginId").value;
+        console.log("loginId = "+loginId);
 
-            console.log(proimgSrc);
-            console.log(nameText);
-            console.log(birthText);
-            console.log(genderText );
-            console.log(editimgSrc);
+        if(loginId == null){
+            alert("(error)"+"로그인이 필요한 항목입니다.\n"+"회원 가입 또는 로그인을 해주세요");
+        }
+        else{
+            $.ajax({
+                url: "Mypage",
+                type : 'GET',
+                success: function(response) {
+                    console.log("response = "+response)
 
-            // 모달 내의 요소에 정보 출력
-            $('#modalContent .proimg').attr('src', proimgSrc);
-            $('#modalContent .name').text(nameText);
-            $('#modalContent .birth').text(birthText);
-            $('#modalContent .gender').text(genderText);
-            $('#modalContent .edit').attr('src', editimgSrc);
+                    for (var i = 0; i < response.length; i++) {
+                        var mycb = response[i];
+                        console.log("response[i] =", mycb);
+                        var 모임명 = mycb.gname;
+                        var 모임이미지 = mycb.gcoverimg;
+                        var 모임소개글 = mycb.gintroduction;
+                        console.log("ajax : 모임명 확인 =", 모임명);
+                        console.log("ajax : response.length+1 확인 =", response.length);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    };
+
+
+
+</script>
+
+<!--프로필 수정-->
+<script>
+
+    var comment = document.getElementById("commentText").textContent;
+    console.log("DB에 현재 저장된 내용: " + comment);
+
+    /*--자기소개 텍스트 수정--*/
+    $(document).ready(function () {
+        $(".edit_2_link").click(function (event) {
+            event.preventDefault();
+            var newText = $(".coment").text();
+            console.log("내용확인  : " + newText);
+
+            $.ajax({
+                url: '/Mypage/mIntroduction', // 실제 서버 요청 경로로 변경
+                type: 'POST', // 또는 'PUT', 'PATCH' 등 HTTP 메서드 선택
+                data: {mIntroduction: newText}, // 수정된 텍스트를 데이터로 전송
+                success: function (data) {
+                    // 서버에서 응답을 처리하는 코드 (예: 성공 메시지 표시)
+                    alert('수정된 내용이 저장되었습니다.');
+                    alert('수정 완료!');
+
+                },
+                error: function () {
+                    // 오류 발생 시 처리하는 코드 (예: 오류 메시지 표시)
+                    alert('수정된 내용이 저장되었습니다.');
+                    alert('수정 완료!');
+                }
+            });
+        });
     });
 </script>
 
+<!--프로필 수정 모달장-->
+<script>
+    // 모달이 열릴 때
+    /*$(document).on('modal:open', '#ex1', function ()*/
+    $('.edit').on('click', function () {
+        console.log('프로필 정보 가져오기가 실행됨');
+        // 프로필 정보 가져와서 모달 내에 출력
+        var profileContainer = $('#box #view .view .MyPage .profile');
+        var proimgSrc = profileContainer.find('#profileimg').attr('src');
+        var nameText = profileContainer.find('.text .name').text();
+        var birthText = profileContainer.find('.text .birth').text();
+        var genderText = profileContainer.find('.text .gender').text();
+        var editimgSrc = profileContainer.find('.pimg .edit').attr('src');
+
+        console.log(proimgSrc);
+        console.log(nameText);
+        console.log(birthText);
+        console.log(genderText );
+        console.log(editimgSrc);
+
+        // 모달 내의 요소에 정보 출력
+        $('#modalContent .proimg').attr('src', proimgSrc);
+        $('#modalContent .name').text(nameText);
+        $('#modalContent .birth').text(birthText);
+        $('#modalContent .gender').text(genderText);
+        $('#modalContent .edit').attr('src', editimgSrc);
+    });
+</script>
+
+<!--프로필 이미지 불러오기 및 업로드-->
 <script>
     $(document).ready(function () {
         $("#editex").click(function (event) {
@@ -528,6 +393,98 @@
                 }
             });
         });
+    });
+</script>
+<!--내 게시물 블럭 생성-->
+<script>
+    // 가상의 데이터베이스 데이터 배열
+    var databaseData = [
+        "데이터 1",
+        "데이터 2",
+        "데이터 3",
+        "데이터 4",
+        "데이터 5",
+        "데이터 6",
+        "데이터 7",
+        "데이터 8",
+        "데이터 9",
+        // ... 더 많은 데이터 ...
+    ];
+
+    var myPost = document.getElementById("myPost");
+
+    // 데이터베이스 데이터의 수만큼 <div> 생성
+    for (var i = 0; i < databaseData.length; i++) {
+        var dataDiv = document.createElement("div");
+        dataDiv.className = "swiper-slide post_" + i; // 클래스 지정
+        dataDiv.textContent = databaseData[i]; // 데이터 추가
+        myPost.appendChild(dataDiv); // <div>를 컨테이너에 추가
+    }
+</script>
+
+<!--내 댓글 블럭 생성-->
+<script>
+    // 가상의 데이터베이스 데이터 배열
+    var databaseData = [
+        "데이터 1",
+        "데이터 2",
+        "데이터 3",
+        "데이터 4",
+        "데이터 5",
+        "데이터 6",
+        "데이터 7",
+        "데이터 8",
+        "데이터 9",
+        // ... 더 많은 데이터 ...
+    ];
+
+    var myComment = document.getElementsByClassName("myComment")[0];
+
+    // 데이터베이스 데이터의 수만큼 <ul> 생성
+    for (var i = 0; i < databaseData.length; i++) {
+        var dataUl = document.createElement("ul");
+        dataUl.className = "comment_1" + i; // 클래스 지정
+        dataUl.textContent = databaseData[i]; // 데이터 추가
+        myComment.appendChild(dataUl); // <ul>를 컨테이너에 추가
+    }
+</script>
+
+
+<!--더보기 버튼 활성화-->
+<script>
+    const items = document.querySelectorAll(".accordion button");
+
+    function toggleAccordion() {
+        const itemToggle = this.getAttribute('aria-expanded');
+
+        for (i = 0; i < items.length; i++) {
+            items[i].setAttribute('aria-expanded', 'false');
+        }
+
+        if (itemToggle == 'false') {
+            this.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    items.forEach(item => item.addEventListener('click', toggleAccordion));
+</script>
+
+<!--더보기 클릭 후 확장-->
+<script>
+    const button = document.getElementById('accordion-button-1');
+    const myComment1 = document.querySelector('.myComment');
+
+
+    button.addEventListener('click', function () {
+        const ariaExpandedValue = button.getAttribute('aria-expanded');
+
+        if (ariaExpandedValue === 'true') {
+            myComment1.classList.add('myComment'); // A 스타일 클래스 추가
+            myComment1.classList.remove('myComment2'); // B 스타일 클래스 제거
+        } else {
+            myComment1.classList.remove('myComment'); // A 스타일 클래스 제거
+            myComment1.classList.add('myComment2'); // B 스타일 클래스 추가
+        }
     });
 </script>
 <script>
