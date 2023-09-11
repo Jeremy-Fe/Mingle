@@ -1,13 +1,11 @@
 package Mingle.MingleProject.service;
 
 import Mingle.MingleProject.Mapper.EntityDTOMapper;
-import Mingle.MingleProject.Mapper.EntityDTOMapper;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
-import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.repository.GatheringRepository;
 import Mingle.MingleProject.repository.MemberRepository;
@@ -85,11 +83,11 @@ public List<GatheringEntity> findMyMingles(String userId) {
     /*전체 검색*/
 
     /*3개 해당*/
-    public List<Gathering> searchMingleCase1(String selectedRegi, String mainCtName, String subC) {
+    public List<GatheringEntity> searchMingleCase1(String selectedRegi, String mainCtName, String subC) {
     return gatheringRepository.searchMingleCase1(selectedRegi,mainCtName,subC);
     }
     /*2개 해당*/
-    public List<Gathering> searchMingleCase2(String selectedRegi, String mainCtName, String subC) {
+    public List<GatheringEntity> searchMingleCase2(String selectedRegi, String mainCtName, String subC) {
         if(!subC.equals("전체")){
             /*지역 & 메인 = "전체" \ 세부 != "전체" */
             return gatheringRepository.searchMingleCase2_1(selectedRegi,mainCtName);
@@ -102,7 +100,7 @@ public List<GatheringEntity> findMyMingles(String userId) {
         }
     }
     /*하나만 해당*/
-    public List<Gathering> searchMingleCase3(String selectedRegi, String mainCtName, String subC) {
+    public List<GatheringEntity> searchMingleCase3(String selectedRegi, String mainCtName, String subC) {
         if(selectedRegi.equals("전체")){
             /*지역 = "전체"*/
             return gatheringRepository.searchMingleCase3(selectedRegi);
@@ -117,10 +115,10 @@ public List<GatheringEntity> findMyMingles(String userId) {
     /*@카테고리 검색@*/
 
     /*검색창 검색*/
-    public List<Gathering> searchName(String searchName) {
+    public List<GatheringEntity> searchName(String searchName) {
     return gatheringRepository.searchNameCase1(searchName);
     }
-    public List<Gathering> searchAll() {
+    public List<GatheringEntity> searchAll() {
         return gatheringRepository.findAll();
     }
     /*@검색창 검색@*/
