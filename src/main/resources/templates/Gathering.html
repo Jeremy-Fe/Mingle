@@ -15,7 +15,8 @@
                     <a class="title_detail" th:text="|${District}|"></a>
                     <a class="title_detail" th:text="|${GMainsubject}|"></a>
                 </li>
-                <li><h3 class="title_title" th:inline="text">[[${gName}]]<a href="#">가입하기</a></h3></li>
+                <li th:text="${session.memberDTO.getMId()}"></li>
+                <li><h3 class="title_title" th:inline="text">[[${gName}]]<a th:unless="${session.memberDTO != null and session.memberDTO.getMGGathering() != null and !session.memberDTO.getMGGathering().contains(gName)}" href="#">가입하기</a></h3></li>
             </ul>
             <li th:with="gatheringId=${Gathering_id}">
                 <a class="title_nav" th:href="@{|/Gathering_Home/${gatheringId}|}">홈</a>
@@ -25,3 +26,15 @@
             </li>
         </ul>
     </div>
+
+    <script>
+        // session.memberDTO가 비어 있는지 확인
+        $(document).ready(function() {
+            if ("${session.memberDTO.getMGGathering()}") {
+                console.log("session.memberDTO는 비어 있습니다.");
+            } else {
+                console.log("session.memberDTO는 비어 있지 않습니다.");
+            }
+        });
+
+    </script>
