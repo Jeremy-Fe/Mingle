@@ -17,6 +17,7 @@ public class CityService {
     @Autowired
     private final CityRepository cityRepository;
 
+
     //시/군 필드조회 + 중복제거
     public List<String> getDistinctBcNames() {
         List<String> bcNames = cityRepository.findAll().stream()
@@ -55,6 +56,7 @@ public class CityService {
     public List<CityEntity> searchByKeyword(String keyword) {
         return cityRepository.findBymcNameContainsIgnoreCase(keyword);
     }
+
 
 
 }

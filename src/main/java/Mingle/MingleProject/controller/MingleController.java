@@ -186,6 +186,10 @@ public class MingleController {
     public String selectRegi() {
         return "selectRegi";
     }
+    @GetMapping("selectInter")
+    public String selectInter() {
+        return "selectInter";
+    }
 
     @GetMapping("/delete/{mId}")
     public String deleteById(@PathVariable("mId") String mID, RedirectAttributes redirectAttributes, HttpSession session) {
