@@ -82,49 +82,6 @@ body{z-index: 2}
 #box>.view>ul{}
 #box>.view>ul>li{}
 #box>.view>ul>li>a{font-family: 'Orbitron', sans-serif;}
-/*section_ view_logo1*/
-.view>.logo1{
-    width: 100%;
-    height: 300px;
-    position: relative;
-}
-.view>.logo1>ul>img{
-    position: absolute;
-    top: 59px;
-    left: 50px;
-}
-.my1{
-    font-size: 38px;
-    font-family: 'Jalnan';
-    color: #2C244F;
-    position: absolute;
-    top: 57px;
-    left: 111px;
-}
-.view>.logo1 .my_home{width: 1400px; height: 100px; background-color:rgba(255,255,255,0.65);
-    margin: auto;
-    border-radius: 20px;
-    position: absolute;
-    top: 160px;
-    left: 55px;
-}
-.meet{
-    width: 1200px;
-    margin: auto;
-}
-.meet>li{
-    width:400px;
-    height: 75px;
-    float: left;
-    margin-top: 20px;
-
-}
-.meet>li>a{
-    display:inline-block; width:400px;font-size: 27px ; text-align: center;
-}
-.meet>.jjim{}
-
-
 /*가입한 모임 두번 째 섹션 */
 .view>.logo2{
     width: 100%;
@@ -214,6 +171,8 @@ body{z-index: 2}
     position: absolute;
     top: 41px;
     left: 55px;
+    font-family: 'Jalnan';
+    color: #2C244F;
 }
 .view>.recommend>ul>li>a{
     font-family: 'Jalnan';
@@ -390,4 +349,3 @@ body{z-index: 2}
 .f_copyright .corp{
     color: #FFFFFF;
 }
-

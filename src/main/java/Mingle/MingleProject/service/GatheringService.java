@@ -36,9 +36,9 @@ public class GatheringService {
         return gatheringDTOList;
     }
 
-    public  GatheringDTO findByGathering(Long id){
+    public GatheringDTO findByGathering(Long id) {
         Optional<GatheringEntity> optionalGathering = gatheringRepository.findById(id);
-        if(optionalGathering.isPresent()){
+        if (optionalGathering.isPresent()) {
             GatheringEntity gatheringEntity = optionalGathering.get();
             GatheringDTO gatheringDTO = GatheringDTO.gatheringDTO(gatheringEntity);
             return gatheringDTO;
@@ -47,7 +47,7 @@ public class GatheringService {
         }
     }
 
-/* 메인페이지_내모임*/
+    /* 메인페이지_내모임*/
 /*public List<Gathering> findMyMingles(String userId) {
     Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
 
@@ -119,8 +119,9 @@ public List<GatheringEntity> findMyMingles(String userId) {
 
     /*검색창 검색*/
     public List<GatheringEntity> searchName(String searchName) {
-    return gatheringRepository.searchNameCase1(searchName);
+        return gatheringRepository.searchNameCase1(searchName);
     }
+
     public List<GatheringEntity> searchAll() {
         return gatheringRepository.findAll();
     }
@@ -132,24 +133,48 @@ public List<GatheringEntity> findMyMingles(String userId) {
 
 
         List<PostDTO> postDTOList = new ArrayList<>();
-        for (PostEntity postEntity: postEntityList) {
+        for (PostEntity postEntity : postEntityList) {
             postDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
         }
 
         return postDTOList;
     }
 
-    public List<PostDTO> findByPost(Long id) {
+    public List<PostDTO> findByPosts(Long id) {
         Long bNum = 5L;
         List<PostEntity> postEntityList = postRepository.findByBoardAndGatheringPost(id, bNum);
 
 
         List<PostDTO> postDTOList = new ArrayList<>();
-        for (PostEntity postEntity: postEntityList) {
+        for (PostEntity postEntity : postEntityList) {
             postDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
 
         }
         // 게시글들을 가져오는 건 성공했지만 게시판 번호, 이름, 프로필 이미지 등등 가공해야할 데이터가 많음
         return postDTOList;
+    }
+
+    //    모임만들기
+    public void save(GatheringDTO gatheringDTO) {
+        // 1. dto -> entity 변환
+        // 2. repository의 save 메소드 호출
+        GatheringEntity gatheringEntity = GatheringEntity.gathering(gatheringDTO);
+        gatheringRepository.save(gatheringEntity);
+        // repository의 save메소드 호출 (조건. entity객체를 넘겨줘야 함)
+    }
+
+    // 게시글 뷰
+    public PostDTO findByPost(Long pNum) {
+        Optional<PostEntity> OptionalPostEntity = postRepository.findById(pNum);
+
+        if(OptionalPostEntity.isPresent()){
+            PostEntity postEntity = OptionalPostEntity.get();
+            PostDTO postDTO = EntityDTOMapper.entityToDTO(postEntity);
+
+            return postDTO;
+        } else {
+            return null;
+        }
+
     }
 }

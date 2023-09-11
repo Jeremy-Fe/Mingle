@@ -80,18 +80,13 @@
                     <li><p class="post_writerName" th:text="${PostWriter.get(postStat.index).getMName()}">작성자</p></li>
                     <li><p class="post_title" th:text="${post.getPTitle}">게시글 제목</p></li>
                     <li>
-                        <p class="post_contents" th:text="${post.getPContents()}">웅기형님이 하이미디어 볼링장에서 저랑 같이 치다가 3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
-                            아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
-                            행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
-                            당신은 누구입니까 당신의 이름은 무엇입니까
-                            asdasdtestestestestest
-                            asdasdasdasdasdasdasdAsdasd
-                            asdasdasd.</p>
+                        <p class="post_contents" th:text="${post.getPContents()}"></p>
                     </li>
                     <li><span th:text="'좋아요 '+${post.getPLike}+ '개'">좋아요 갯수</span><span>댓글 갯수</span></li>
                 </ul>
             </a>
         </ul>
+        <a class="writeButton" th:href="@{|/Gathering_Post_Write/${id}|}"><img src="/image/write.png"></a>
     </div>
 </div>
 <div th:replace="/footer.html"></div>

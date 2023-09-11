@@ -21,7 +21,7 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 <div class="contents">
-    <form action="/create-gatheringEntity" method="post">
+    <form action="/create-gathering" method="post">
         <ul>
             <img class="marker" src="image/meet_marker.png">
             <li class="maker2">지역</li>
@@ -125,7 +125,7 @@
             <div class="interest2">
                 <ul>
                     <li>
-                        <input type="text" name="gSubject" class="I_interest" placeholder="세부 관심사 선택" maxlength="16"/>
+                        <input type="text" name="gSubject" class="I_interest" placeholder="세부 관심사 선택" readonly maxlength="16" />
                     </li>
                 </ul>
             </div>
@@ -154,9 +154,7 @@
     function vlaue_bt(value) {
         const inputElement = document.getElementById("gMainsubject_value");
         inputElement.value = value;
-        inputElement.value = '/' + value; // 슬래시를 추가
         console.log("value : " + value);
-
     }
     document.addEventListener("DOMContentLoaded", function() {
         const btn = document.getElementById('btn');
@@ -306,7 +304,30 @@
         subModal.style.display = "none";
         selectedInterest = ''; // 초기화
     };
+    // 유효성 검사
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form[action='/create-gathering']");
+        const nameInput = document.querySelector("input[name='gName']");
+        const introductionInput = document.querySelector("input[name='gIntroduction']");
+        const maxHeadcountInput = document.querySelector("input[name='gMaxheadcount']");
+        const subjectInput = document.querySelector("input[name='gSubject']");
 
+        form.addEventListener("submit", function(event) {
+            if (!nameInput.value.trim()) {
+                alert("모임 이름을 입력하세요.");
+                event.preventDefault(); // 폼 제출을 막음
+            } else if (!introductionInput.value.trim()) {
+                alert("모임 소개글을 입력하세요.");
+                event.preventDefault(); // 폼 제출을 막음
+            } else if (!maxHeadcountInput.value.trim()) {
+                alert("최대 정원을 입력하세요.");
+                event.preventDefault(); // 폼 제출을 막음
+            } else if (!subjectInput.value.trim()) {
+                alert("세부 관심사를 입력하세요.");
+                event.preventDefault(); // 폼 제출을 막음
+            }
+        });
+    });
 
     // 콤보박스
     $(document).ready(function() {

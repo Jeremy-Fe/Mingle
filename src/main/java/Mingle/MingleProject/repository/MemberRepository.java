@@ -12,6 +12,8 @@ import java.util.Optional;
 import java.sql.Blob;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
+
+
     // 아이디로 회원 정보 조회 (select * from member where mId=?)
     Optional<MemberEntity> findBymId(String mId);
 
@@ -36,12 +38,12 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     List<MemberEntity> findByGatheringMember(@Param("gatheringName") String gatheringName);
 
     @Modifying
-    @Query(value = "UPDATE MemberEntity m SET m.mIntroduction  = :mIntroduction where m.mId ='himedia'")
-    void updateMIntroduction(@Param("mIntroduction") String mIntroduction);
+    @Query(value = "UPDATE MemberEntity m SET m.mIntroduction  = :mIntroduction WHERE m.mId =:mId")
+    void updateMIntroduction(@Param("mIntroduction") String mIntroduction, @Param("mId") String mId);
 
     @Modifying
-    @Query(value = "UPDATE MemberEntity m SET m.mProfileimg  = :mProfileimg where m.mId ='himedia'")
-    void updatemProfileimg(@Param("mProfileimg") Blob mProfileimg);
+    @Query(value = "UPDATE MemberEntity m SET m.mProfileimg  = :mProfileimg WHERE m.mId =:mId")
+    void updatemProfileimg(@Param("mProfileimg") Blob mProfileimg, @Param("mId") String mId);
 
     @Query(value = "select COUNT(*) from MemberEntity m where m.mGGathering like %:gName%")
     int findByGatheringHeadcount(@Param("gName") String gName);
