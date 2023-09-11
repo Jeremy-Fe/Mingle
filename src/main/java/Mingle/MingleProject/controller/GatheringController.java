@@ -183,8 +183,12 @@ public class GatheringController {
         return "myClass";
     }
 
-    @GetMapping("Gathering_Post_Write")
-    public String Gathering_Post_Write(){
+    @GetMapping("Gathering_Post_Write/{id}")
+    public String Gathering_Post_Write(@PathVariable Long id, Model model){
+        // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
+        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+        model.addAttribute("GatheringHome", gatheringDTO);
+
         return "Gathering_Post_Write";
     }
 

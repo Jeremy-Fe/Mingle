@@ -2,6 +2,7 @@ package Mingle.MingleProject.dto;
 
 import lombok.*;
 
+import java.sql.Blob;
 import java.time.LocalDate;
 
 @Getter
@@ -16,9 +17,13 @@ public class PostDTO {
     private String pTitle;
     private String pContents;
     private Long pLike;
-    private Long pViews;
     private String pMId;
     private LocalDate pDate;
+    private Blob pImg1;
+    private Blob pImg2;
+    private Blob pImg3;
+    private Blob pImg4;
+    private Blob pImg5;
 
 
 }
