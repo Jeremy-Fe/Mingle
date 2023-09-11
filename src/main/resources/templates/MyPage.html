@@ -43,8 +43,10 @@
                     <a href="#ex1" rel="modal:open">
                         <img class="edit" alt="프로필수정" src="/image/ProfileEdit_w.png">
                     </a>
-                    <a href="#">
-                        <!--<img id="profileimg" class="proimg" name="mPiProfileimg" alt="프로필사진" src="/image/DefaultProfile_logo.png">-->
+                    <a th:if="${myPagemId.getMProfileimg() == null}" href="/Mypage">
+                        <img id="profileimg"  class="proimg" name="mPiProfileimg" alt="프로필사진" src="/image/DefaultProfile_logo.png" >
+                    </a>
+                    <a th:unless="${myPagemId.getMProfileimg() == null}" href="/Mypage">
                         <img id="profileimg"  class="proimg" th:src="'data:image/png;base64,' + ${#strings.toString(profileimg)}" name="mPiProfileimg" alt="프로필사진" src="/image/DefaultProfile_logo.png" >
                     </a>
                 </li>
@@ -56,10 +58,14 @@
 
                 </li>
                 <li class="inBox">
-                    <p id="commentText" class="coment" th:text="${myPagemId.getMIntroduction()}" name="mIntroduction"  contenteditable="true">
-                    <!--<p id="commentText" class="coment" name="mIntroduction"  contenteditable="true" >-->
-                        로그인을 해주세요.
-                    </p>
+                    <a th:if="${myPagemId.getMIntroduction() == null}" href="#">
+                        <p id="commentText" class="coment"  name="mIntroduction"  contenteditable="true">자기소개를 입력해주세요.
+                        </p>
+                    </a>
+                    <a th:unless="${myPagemId.getMIntroduction() == null}" href="#">
+                        <p id="commentText" class="coment" th:text="${myPagemId.getMIntroduction()}" name="mIntroduction"  contenteditable="true">
+                        </p>
+                    </a>
                 </li>
                 <a id="submitButton" href="#" class="edit_2_link">
                     <img class="edit_2" alt="프로필수정" src="/image/ProfileEdit_b.png">
@@ -100,7 +106,6 @@
         </script>
         <!--내모임-->
         <p class="title_02">가입한 모임
-        <p class="title_02-1">/ 공개여부 <input class="check" type="checkbox" name="xxx" value="yyy"></p></p>
         <div id="sc1" class="swiper-container mc clearfix">
             <div id="myclass" class="swiper-wrapper clearfix">
                 <div class="swiper-slide mycb_01">
@@ -186,9 +191,17 @@
                     // 데이터베이스 데이터의 수만큼 <div> 생성
                     for (var i = 0; i < databaseData1.length; i++) {
                         var dataDiv = document.createElement("div");
+                        var dataA = document.createElement("a");
+                        var dataP-document.createElement("p");
+                        var dataImg = document.createElement("img");
+                        var dataSpan = document.createElement("span");
                         dataDiv.className = "swiper-slide mycb_" + i; // 클래스 지정
                         dataDiv.textContent = databaseData1[i]; // 데이터 추가
                         myclass.appendChild(dataDiv); // <div>를 컨테이너에 추가
+                        myclass.appendChild(dataA); // <a>를 컨테이너에 추가
+                        myclass.appendChild(dataP); // <p>를 컨테이너에 추가
+                        myclass.appendChild(dataImg); // <img>를 컨테이너에 추가
+                        myclass.appendChild(dataSpan); // <span>를 컨테이너에 추가
                     }
                 </script>
 
@@ -494,6 +507,7 @@
             // 이미지를 서버로 업로드하고 서버에서 URL 생성
             var formData = new FormData();
             formData.append('mProfileimg', $("#fileInput")[0].files[0]); // 서버 컨트롤러에서 사용하는 파라미터 이름에 맞게 설정
+            console.log("폼데이터확인  : " + formData);
 
             $.ajax({
                 url: '/Mypage/uploadImage',

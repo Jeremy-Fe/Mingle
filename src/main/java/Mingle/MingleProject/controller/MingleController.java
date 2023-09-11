@@ -1,8 +1,10 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
+import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,6 +25,7 @@ public class MingleController {
     //생성자 주입
     private final MemberService memberService ;
     private final CityService cityService ;
+    private final GatheringService gatheringService;
 
     // 회원가입 메일 서비스
     @Autowired
@@ -105,28 +109,20 @@ public class MingleController {
         MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
         model.addAttribute("myPagemId", memberDTO);
 
+        /*String joinGathering = memberDTO.getMGGathering();
+        String[] joinGatheringList = joinGathering.split(",");
+
+        List<GatheringDTO> gatheringDTOList = new ArrayList<>();
+        for (int i = 0; i < joinGatheringList.length; i++) {
+            gatheringDTOList.add(gatheringService.findByGName(joinGatheringList[i]));
+        }*/
+
         String profileimg = memberService.getProfileimgData(logInId);
         model.addAttribute("profileimg", profileimg);
         System.out.println(profileimg);
 
         return "MyPage";
     }
-
-
-   /* @GetMapping("defaultUI")
-    public String defaultUI(HttpSession session){
-        String loginId = (String) session.getAttribute("loginId");
-        MemberDTO memberDTO = memberService.findbyIdMyPage(loginId);
-        session.setAttribute("deUIlogInId", memberDTO);
-       *//* model.addAttribute("deUIlogInId", memberDTO);*//*
-
-        String profileimg2 = memberService.getProfileimgData(loginId);
-        session.setAttribute("profileimg2",profileimg2);
-        *//*model.addAttribute("profileimg", profileimg);*//*
-        System.out.println("profileimg2 : " + profileimg2);
-
-        return "defaultUI";
-    }*/
 
 
     @PostMapping("/Mypage/mIntroduction")
