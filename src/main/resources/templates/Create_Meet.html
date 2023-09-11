@@ -6,11 +6,12 @@
     <title>Title</title>
     <!--css-->
     <link href="/css/Create_Meet.css?after" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
 <div class="contents">
-    <form action="/create-gathering" method="post">
+    <form action="/create-gatheringEntity" method="post">
         <ul>
             <img class="marker" src="image/meet_marker.png">
             <li class="maker2">지역</li>
@@ -79,23 +80,22 @@
                 <div id="modalBody">
                     <span id="closeBtn">&times;</span>
                     <p>관심사 선택</p>
-                    <button value="여행" type="button" id="btn1" onclick="vlaue_bt(this.value); openSubModal(value);">
-                        <img src="image/create_meet_image/create_여행.png" alt="관심사 이미지">여행
+                    <button value="여행" type="button" id="btn1" onclick="vlaue_bt(this.value); openSubModal(value);"><img src="image/create_meet_image/create_여행.png" alt="관심사 이미지">여행
                     </button>
-                    <button value="운동/스포츠" type="button" id="btn2" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지">운동/스포츠</button>
+                    <button value="운동스포츠" type="button" id="btn2" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지">운동/스포츠</button>
                     <button value="독서" type="button" id="btn3" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_독서.png" alt="관심사 이미지">독서</button>
-                    <button value="업종/직무" type="button" id="btn4" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지">업종/직무</button>
-                    <button value="문화/공연/축제" type="button" id="btn5" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지">문화/공연/축제</button>
-                    <button value="음악/악기" type="button" id="btn6" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지">음악/악기</button>
-                    <button value="공예/만들기" type="button" id="btn7" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지">공예/만들기</button>
-                    <button value="댄스/무용" type="button" id="btn8" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지">댄스/무용</button>
-                    <button value="사교/인맥" type="button" id="btn9" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지">사교/인맥</button>
-                    <button value="차/오토바이" type="button" id="btn10" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지">차/오토바이</button>
-                    <button value="사진/영상" type="button" id="btn11" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지">사진/영상</button>
-                    <button value="게임/오락" type="button" id="btn12" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지">게임/오락</button>
-                    <button value="요리/제조" type="button" id="btn13" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지">요리/제조</button>
-                    <button value="반려/동물" type="button" id="btn14" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지">반려/동물</button>
-                    <button value="가족/결혼" type="button" id="btn15" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지">가족/결혼</button>
+                    <button value="업종직무" type="button" id="btn4" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지">업종/직무</button>
+                    <button value="문화공연축제" type="button" id="btn5" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지">문화/공연/축제</button>
+                    <button value="음악악기" type="button" id="btn6" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지">음악/악기</button>
+                    <button value="공예만들기" type="button" id="btn7" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지">공예/만들기</button>
+                    <button value="댄스무용" type="button" id="btn8" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지">댄스/무용</button>
+                    <button value="사교인맥" type="button" id="btn9" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지">사교/인맥</button>
+                    <button value="차오토바이" type="button" id="btn10" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지">차/오토바이</button>
+                    <button value="사진영상" type="button" id="btn11" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지">사진/영상</button>
+                    <button value="게임오락" type="button" id="btn12" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지">게임/오락</button>
+                    <button value="요리제조" type="button" id="btn13" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지">요리/제조</button>
+                    <button value="반려동물" type="button" id="btn14" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지">반려/동물</button>
+                    <button value="가족결혼" type="button" id="btn15" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지">가족/결혼</button>
                     <button value="자유주제" type="button" id="btn16" onclick="vlaue_bt(this.value); openSubModal(value)"><img src="image/create_meet_image/create_자유주제.png" alt="관심사 이미지">자유주제</button>
                 </div>
             </div>
@@ -144,6 +144,7 @@
     function vlaue_bt(value) {
         const inputElement = document.getElementById("gMainsubject_value");
         inputElement.value = value;
+        inputElement.value = '/' + value; // 슬래시를 추가
         console.log("value : " + value);
 
     }
@@ -151,13 +152,16 @@
         const btn = document.getElementById('btn');
         const modal = document.getElementById('modalWrap');
         const closeBtn = document.getElementById('closeBtn');
+        let selectedInterest = '';
+        let initialButtonValue = '';
+
 
 
         const selectedInterestImage = document.querySelector('#selectedInterestImage');
         const selectedInterestButton = document.querySelector('#btn');
 
         // 버튼의 초기값을 저장합니다.
-        const initialButtonValue = selectedInterestButton.value;
+        initialButtonValue = selectedInterestButton.value;
 
         btn.onclick = function () {
             modal.style.display = 'block';
@@ -165,8 +169,10 @@
 
         closeBtn.onclick = function () {
             modal.style.display = 'none';
+            // 모달이 닫힐 때 초기값으로 버튼을 초기화합니다.
+            selectedInterestImage.src = 'image/모임 버튼.png';
+            selectedInterestButton.value = initialButtonValue;
         }
-
         window.onclick = function (event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
@@ -177,20 +183,20 @@
 
         const interestImages = {
             '여행': 'image/create_meet_image/create_여행.png',
-            '운동/스포츠': 'image/create_meet_image/create_운동.png',
+            '운동스포츠': 'image/create_meet_image/create_운동.png',
             '독서': 'image/create_meet_image/create_독서.png',
-            '업종/직무': 'image/create_meet_image/create_업종.png',
-            '문화/공연/축제': 'image/create_meet_image/create_문화.png',
-            '음악/악기': 'image/create_meet_image/create_음악.png',
-            '공예/만들기': 'image/create_meet_image/create_공예.png',
-            '댄스/무용': 'image/create_meet_image/create_댄스.png',
-            '사교/인맥': 'image/create_meet_image/create_사교.png',
-            '차/오토바이': 'image/create_meet_image/create_차.png',
-            '사진/영상': 'image/create_meet_image/create_사진.png',
-            '게임/오락': 'image/create_meet_image/create_게임.png',
-            '요리/제조': 'image/create_meet_image/create_요리.png',
-            '반려/동물': 'image/create_meet_image/create_반려.png',
-            '가족/결혼': 'image/create_meet_image/create_가족.png',
+            '업종직무': 'image/create_meet_image/create_업종.png',
+            '문화공연축제': 'image/create_meet_image/create_문화.png',
+            '음악악기': 'image/create_meet_image/create_음악.png',
+            '공예만들기': 'image/create_meet_image/create_공예.png',
+            '댄스무용': 'image/create_meet_image/create_댄스.png',
+            '사교인맥': 'image/create_meet_image/create_사교.png',
+            '차오토바이': 'image/create_meet_image/create_차.png',
+            '사진영상': 'image/create_meet_image/create_사진.png',
+            '게임오락': 'image/create_meet_image/create_게임.png',
+            '요리제조': 'image/create_meet_image/create_요리.png',
+            '반려동물': 'image/create_meet_image/create_반려.png',
+            '가족결혼': 'image/create_meet_image/create_가족.png',
             '자유주제': 'image/create_meet_image/create_자유주제.png',
         };
 
@@ -201,10 +207,10 @@
                 selectedInterestImage.src = imageFileName;
                 selectedInterestButton.value = interest; // 버튼의 값을 클릭한 관심사로 업데이트합니다.
                 modal.style.display = 'none';
+                selectedInterest = interest;
                 openSubModal(interest); // 선택된 관심사를 새로운 모달 창에 표시
             });
         });
-
         // 관심사 이미지를 클릭했을 때 모달 창 열기
         function openModal() {
             var modal = document.getElementById("modalWrap");
@@ -218,8 +224,8 @@
         }
     })
 
-</script>
-<script>
+
+
     function openSubModal(interest) {
         const subModal = document.getElementById('subModalWrap');
         const selectedInterestElement = document.getElementById('selectedInterest');
@@ -227,7 +233,7 @@
         subModal.style.display = 'block';
 
         // 선택한 관심사를 백엔드로 전송하고 세부 관심사를 가져옵니다.
-        loadSubInterests(interest);
+        getMainSubjectsContainingText(interest);
     }
 
     const interestButtons2 = document.querySelectorAll('#modalBody > button[id^="btn"]');
@@ -238,13 +244,15 @@
             console.log(interest);
             console.log('버튼이 클릭되었습니다. 관심사:', interest);
             console.log('선택된 버튼 수:', interestButtons2.length);
-            loadSubInterests(interest); // 클릭한 관심사로 세부 관심사를 가져오는 함수 호출
+            getMainSubjectsContainingText(interest); // 클릭한 관심사로 세부 관심사를 가져오는 함수 호출
         });
     });
 
-    function loadSubInterests(interest) {
+    function getMainSubjectsContainingText(interest) {
+        // 슬래시('/')를 문자열로 인식하도록 encodeURIComponent를 사용합니다.
+        var encodedInterest = encodeURIComponent(interest);
         $.ajax({
-            url: '/interests/subInterests/' + interest,
+            url: '/interests/subInterests/' + encodedInterest, // 수정된 부분
             type: 'GET',
             success: function(data) {
                 displaySubInterests(data);
@@ -257,6 +265,8 @@
 
     function displaySubInterests(subInterests) {
         var subInterestList = document.getElementById("subInterestList");
+        // 모달 창이 열리기 전에 기존의 내용을 모두 지우기
+        subInterestList.innerHTML = "";
 
         subInterests.forEach(function(subInterest) {
             var li = document.createElement("li");
@@ -266,14 +276,12 @@
             // 세부 관심사를 선택했을 때 해당 세부 관심사를 입력 필드에 추가하는 코드
             li.onclick = function() {
                 var selectedSubInterest = li.textContent;
-                var inputInterest = document.getElementById("I_INTEREST");
-                inputInterest.value = selectedSubInterest;
+                var inputInterest = document.querySelector("input[name='gSubject']"); // 수정된 부분
+                inputInterest.value = selectedSubInterest; // 선택한 세부 관심사를 입력 필드에 추가
 
                 // 세부 관심사 모달 창 닫기
                 var subModal = document.getElementById("subModalWrap");
                 subModal.style.display = "none";
-
-
             };
         });
 
@@ -283,14 +291,13 @@
     }
 
     // 모달 창에서 세부 관심사 선택 시
-    document.getElementById("subCloseBtn").onclick = function() {
+    document.getElementById("subCloseBtn").onclick = function () {
         var subModal = document.getElementById("subModalWrap");
         subModal.style.display = "none";
-    }
-</script>
-</script>
+        selectedInterest = ''; // 초기화
+    };
 
-<script>
+
     // 콤보박스
     $(document).ready(function() {
         var cityToDistrictMap = {};

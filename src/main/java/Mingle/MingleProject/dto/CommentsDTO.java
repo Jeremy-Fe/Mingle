@@ -13,11 +13,11 @@ import java.util.Date;
 @AllArgsConstructor  //필드를 모두 매개변수로 하는 생성자를 만들어줌
 @ToString // toString 자동으로
 public class CommentsDTO {
-    Long cNum;
-    Long cPNum;
-    String cMId;
-    String cComments;
-    LocalDate cDate;
+    private Long cNum;
+    private Long cPNum;
+    private String cMId;
+    private String cComments;
+    private LocalDate cDate;
 
 
 

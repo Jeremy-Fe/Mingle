@@ -10,9 +10,9 @@ import java.time.LocalDate;
 @AllArgsConstructor  //필드를 모두 매개변수로 하는 생성자를 만들어줌
 @ToString // toString 자동으로
 public class ReplyDTO {
-    Long rNum;
-    Long rCNum;
-    String rMId;
-    String rReply;
-    LocalDate rDate;
+    private Long rNum;
+    private Long rCNum;
+    private String rMId;
+    private String rReply;
+    private LocalDate rDate;
 }
