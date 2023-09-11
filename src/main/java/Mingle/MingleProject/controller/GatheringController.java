@@ -11,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -173,13 +175,13 @@ public class GatheringController {
         
         return "Gathering_Schedule";}
 
-//    @PostMapping("/create-gathering")
-//    public String save(@ModelAttribute GatheringDTO gatheringDTO){
-//        gatheringService.save(gatheringDTO);
-//        System.out.println("GatheringController.save");
-//        System.out.println("GatheringDTO = " + gatheringDTO);
-//        return "myClass";
-//    }
+    @PostMapping("/create-gathering")
+    public String save(@ModelAttribute GatheringDTO gatheringDTO){
+        gatheringService.save(gatheringDTO);
+        System.out.println("GatheringController.save");
+        System.out.println("GatheringDTO = " + gatheringDTO);
+        return "myClass";
+    }
 
     @GetMapping("Gathering_Post_Write")
     public String Gathering_Post_Write(){
