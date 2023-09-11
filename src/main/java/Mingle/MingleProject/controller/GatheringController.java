@@ -45,7 +45,6 @@ public class GatheringController {
         int gatheringHeadcount = gatheringMemberDTO.size();
         model.addAttribute("headcount", gatheringHeadcount);
 
-
         return "Gathering_Home";
     }
 
@@ -109,7 +108,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_All";}
 
     @GetMapping("Gathering_Album_Board/{id}")
@@ -118,7 +117,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_Board";}
 
     @GetMapping("Gathering_Album_BoardReview/{id}")
@@ -127,7 +126,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardReview";}
 
     @GetMapping("Gathering_Album_BoardFree/{id}")
@@ -136,7 +135,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardFree";}
 
     @GetMapping("Gathering_Album_BoardShareInterest/{id}")
@@ -145,7 +144,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardShareInterest";}
 
     @GetMapping("Gathering_Album_BoardJoin/{id}")
@@ -154,7 +153,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardJoin";}
 
     @GetMapping("Gathering_Album_BoardNotification/{id}")
@@ -163,7 +162,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardNotification";}
 
     @GetMapping("Gathering_Schedule/{id}")
@@ -172,7 +171,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Schedule";}
 
     @PostMapping("/create-gathering")
