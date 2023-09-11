@@ -8,9 +8,9 @@ import lombok.*;
 @AllArgsConstructor  //필드를 모두 매개변수로 하는 생성자를 만들어줌
 @ToString // toString 자동으로
 public class PostimgDTO {
-    Long piNum;
-    Long piGNum;
-    Long piBNum;
-    Long piPNum;
-    String piRoot;
+    private Long piNum;
+    private Long piGNum;
+    private Long piBNum;
+    private Long piPNum;
+    private String piRoot;
 }

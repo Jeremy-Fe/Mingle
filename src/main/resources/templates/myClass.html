@@ -16,7 +16,22 @@
 <div th:replace="/defaultUI.html"></div>
             <!-- 바꿔야하는 부분 -->
             <div class="view">
+            <!--내 모임-->
+            <div class="logo1">
+                <div class="my_home">
+                    <ul class="meet clearfix">
+                        <li class="jjim"><a href="#">0</a><br><a href="#">찜 모임</a></li>
+                        <li class="resent"><a href="#">0</a><br><a href="#">최근 본 모임</a></li>
+                        <li class="interest"><a href="#">0</a><br><a href="#">내 관심사</a></li>
+                    </ul>
+                </div>
+                <ul>
+                    <img src="/image/내모임prf.png">
+                    <li class="my1"><a href="#">내 모임</a></li>
+                </ul>
 
+                <!--가입한 모임-->
+            </div>
             <div class="logo2">
                 <ul>
                     <li class="my2"><a>가입한 모임</a></li>
@@ -86,14 +101,19 @@
                 </div>
                 <div class="make_meet">
                     <ul>
-                        <button type="button" class="meet_bt">
-                            <a href="/Create_Meet">
-                                <img src="/image/모임 만들기bt.png" alt="이미지 설명">
-                            </a>
-                        </button>
-                        <li><a href="/Create_Meet">모임 만들기</a></li>
+                        <button type="button" class="meet_bt" onclick="location.href='Create_Meet'">모임 만들기</button>
+                        <img src="/image/모임 만들기bt.png"/>
                     </ul>
                 </div>
+
+<!--                <div class="make_meet">-->
+<!--                    <ul>-->
+<!--                        <button type="button" class="meet_bt" onclick="location.href='Create_Meet'">-->
+<!--                            <img src="/image/모임 만들기bt.png"/>-->
+<!--                        </button>-->
+<!--                        <li><a>모임 만들기</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
         <div id="footer">
             <div class="footer_menu">

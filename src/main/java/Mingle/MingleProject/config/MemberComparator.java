@@ -2,7 +2,6 @@ package Mingle.MingleProject.config;
 
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.entity.Gathering;
 
 import java.util.Comparator;
 
