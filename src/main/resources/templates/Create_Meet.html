@@ -21,7 +21,7 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 <div class="contents">
-    <form action="/create-gathering" method="post">
+    <form  id="createGatheringForm" action="/create-gathering" method="post">
         <ul>
             <img class="marker" src="image/meet_marker.png">
             <li class="maker2">지역</li>
@@ -329,7 +329,6 @@
             }
         });
     });
-
     // 콤보박스
     $(document).ready(function() {
         var cityToDistrictMap = {};

@@ -28,7 +28,4 @@ public class InterestController {
         return subInterests;
 
     }
-
-
-
 }

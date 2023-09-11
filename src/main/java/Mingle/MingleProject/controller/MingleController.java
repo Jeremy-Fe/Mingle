@@ -280,6 +280,14 @@ public class MingleController {
         }
     }
 
+    @GetMapping("/countMembersByGatheringName")
+    @ResponseBody
+    public int countMembersByGatheringName(@RequestParam("gatheringName") String gatheringName) {
+        // gatheringName과 관련된 멤버 수를 조회하는 메서드를 MemberService에서 호출
+        int memberCount = memberService.countMembersByGatheringName(gatheringName);
+        return memberCount;
+    }
+
 
 }
 

@@ -222,13 +222,6 @@ public class MemberService {
         return gatheringMemberDTOList;
     }
 
-    // 필요없는 메소드
-    public int findByGatheringHeadcount(String gName) {
-        int headcount = memberRepository.findByGatheringHeadcount(gName);
-
-        return headcount;
-    }
-
     public boolean deleteMemberById(String mId) {
         // memberId를 사용하여 회원을 찾습니다.
         MemberEntity member = memberRepository.findBymId(mId).orElse(null);
@@ -248,6 +241,28 @@ public class MemberService {
         MemberDTO memberDTO = MemberDTO.toMemberDTO(writer.get());
 
         return memberDTO;
+    }
+
+    @Transactional
+    public void updateMGathering(String mId, String gName) {
+        // mId를 사용하여 회원을 찾습니다.
+        Optional<MemberEntity> memberOptional = memberRepository.findBymId(mId);
+
+        if (memberOptional.isPresent()) {
+            MemberEntity member = memberOptional.get();
+            String currentMGathering = member.getMGathering();
+
+            // 현재 mGGathering 값에 새로운 gName을 추가합니다.
+            if (currentMGathering != null) {
+                currentMGathering += "," + gName;
+            } else {
+                currentMGathering = gName;
+            }
+
+            // 새로운 mGGathering 값을 설정합니다.
+            member.setMGathering(currentMGathering);
+            memberRepository.save(member);
+        }
     }
 
 
