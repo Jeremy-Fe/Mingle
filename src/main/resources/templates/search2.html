@@ -95,17 +95,24 @@ var 추출한텍스트 = document.getElementById("selectedRegi").textContent;
 var 띄어쓰기_인덱스 = 추출한텍스트.indexOf(" ");
 var 선택한지역 = 추출한텍스트.substring(띄어쓰기_인덱스 + 1);
 
-
 var 메인카테고리= document.getElementById("mainCtName").textContent;
-
 
 var 세부카테고리= document.getElementById("subC").textContent;
 
-console.log("세부카테고리 = "+세부카테고리);
 function 모임업데이트(){
+
+    var 추출한텍스트 = document.getElementById("selectedRegi").textContent;
+    var 띄어쓰기_인덱스 = 추출한텍스트.indexOf(" ");
+    var 선택한지역 = 추출한텍스트.substring(띄어쓰기_인덱스 + 1);
+
+    var 메인카테고리= document.getElementById("mainCtName").textContent;
+
+    var 세부카테고리= document.getElementById("subC").textContent;
+
     console.log("선택한 지역 = " + 선택한지역);
     console.log("메인카테고리= "+메인카테고리);
     console.log("세부카테고리 = "+세부카테고리);
+    $(".mingle").remove();
     $.ajax({
         url: "search2/searchMingle",
         type : 'GET',
@@ -114,7 +121,7 @@ function 모임업데이트(){
             $(".mingle").remove();
             모임카드 = null;
             모임카드 = data;
-            console.log("response = "+data)
+            console.log("data = "+data)
             console.log("선택한지역: "+ 선택한지역+" 메인카테고리: "+메인카테고리+" 세부카테고리: "+세부카테고리);
             for (var i = 0; i < data.length; i++) {
                 var mingles = data[i];
