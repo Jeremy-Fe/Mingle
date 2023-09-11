@@ -141,7 +141,7 @@ public class GatheringService {
         return postDTOList;
     }
 
-    public List<PostDTO> findByPost(Long id) {
+    public List<PostDTO> findByPosts(Long id) {
         Long bNum = 5L;
         List<PostEntity> postEntityList = postRepository.findByBoardAndGatheringPost(id, bNum);
 
