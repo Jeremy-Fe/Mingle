@@ -24,6 +24,7 @@
 <!--                        <a th:if="${session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}" th:onclick="'joinGathering(\'' + ${gName} + '\', \'' + ${session.memberDTO.getMId()} + '\')'">가입하기</a>-->
                         <a th:if="${session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}"
                            th:attr="data-gname=${gName}, data-mid=${session.memberDTO.getMId()}"
+                           id="joinButton"
                            onclick="joinGathering(this.getAttribute('data-gname'), this.getAttribute('data-mid'))">
                             가입하기
                         </a>
@@ -57,6 +58,11 @@
                     if (response === true) {
                         alert("가입이 완료되었습니다.");
                         // 원하는 동작을 수행하도록 추가 코드 작성
+                        var joinButton = document.getElementById("joinButton");
+                        if (joinButton) {
+                            joinButton.style.display = "none"; // 숨기기
+                            // 또는 joinButtonContainer.remove(); // 삭제
+                        }
                     } else {
                         alert("가입에 실패했습니다.");
                     }
