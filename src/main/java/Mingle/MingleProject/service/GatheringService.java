@@ -11,9 +11,17 @@ import Mingle.MingleProject.repository.GatheringRepository;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.sql.rowset.serial.SerialBlob;
+import javax.transaction.Transactional;
+import java.io.IOException;
 import java.lang.reflect.Member;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.*;
 
 
@@ -177,5 +185,25 @@ public class GatheringService {
             return null;
         }
 
+    }
+
+
+
+    private Blob createBlobFromMultipartFile(MultipartFile multipartFile) throws IOException, SQLException {
+        byte[] fileBytes = multipartFile.getBytes();
+        return new SerialBlob(fileBytes);
+    }
+    @Transactional
+    public void uploadImage(@NotNull MultipartFile mProfileimg, String mId) {
+        try {
+            MemberEntity memberEntity = new MemberEntity();
+            Blob mProfileBlob = createBlobFromMultipartFile(mProfileimg);
+            memberEntity.setMProfileimg(mProfileBlob);
+            memberRepository.updatemProfileimg(mProfileBlob,mId);
+
+        } catch (IOException | SQLException e) {
+            e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
+            throw new RuntimeException("이미지 업로드 중 오류가 발생했습니다.");
+        }
     }
 }

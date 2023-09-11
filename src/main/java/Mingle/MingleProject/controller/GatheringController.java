@@ -4,17 +4,25 @@ import Mingle.MingleProject.config.MemberComparator;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
+import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
+import javax.sql.rowset.serial.SerialBlob;
+import javax.transaction.Transactional;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -191,6 +199,15 @@ public class GatheringController {
 
         return "Gathering_Post_Write";
     }
+
+    @PostMapping("/Mypage/uploadImage")
+    public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg, HttpSession session) {
+        String logInId = (String) session.getAttribute("loginId");
+        System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
+        memberService.uploadImage(mProfileimg,logInId);
+        return "Mypage";
+    }
+
 
     public List BoardName(List<PostDTO> list) {
         List boardName = new ArrayList();
