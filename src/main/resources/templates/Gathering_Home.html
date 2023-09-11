@@ -94,46 +94,41 @@
                     </li>
                 </ul>
                 <p>게시글</p>
-                <a href="#">
+                <a th:href="@{|/Gathering_Post/${id}/${posts.getPNum()}|}" th:each="posts, postsStat :${Post}">
                     <ul class="g_news_post_box">
                         <ul class="g_news_post clearfix">
-                            <img class="post_writerImg" src="/image/Gathering_img1.png">
+                            <img class="post_writerImg" th:src="${PostWriter.get(postsStat.index).getMProfileimg()}" src="/image/Gathering_img1.png">
                             <img class="post_img" src="/image/newsPost_img1.png">
-                            <li><p class="post_boardName">정모후기</p></li>
-                            <li><p class="post_writerName">신우철</p></li>
-                            <li><p class="post_date">7월 23일 오후 10:19</p></li>
-                            <li><p class="post_title">웅기형님 께서 249점 하이 갱신!!</p></li>
+                            <li><p class="post_boardName" th:text="${PostBoard}">게시판 이름</p></li>
+                            <li><p class="post_writerName" th:text="${PostWriter.get(postsStat.index).getMName()}">작성자</p></li>
+                            <li><p class="post_date" th:text="${posts.getPDate()}">0월 00일 오후 0:00</p></li>
+                            <li><p class="post_title" th:text="${posts.getPTitle()}">제목</p></li>
                             <li>
-                                <p class="post_contents">웅기형님이
-                                    하이미디어 볼링장에서 저랑 같이 치다가
-                                    3번째 게임 2바리 하면서 249점을 치셨네요 ㅋㅋㅋㅋ
-                                    아니 이게... 무슨.. 일 인가요 하하하 저좀살려주세요
-                                    행님들 자신들이 ㄴ안안ㅇ마러ㅣㄴㅇ리ㅏㅓㄴ이ㅏ런이ㅏㄹ
-                                    당신은 누구입니까 당신의 이름은 무엇입니까.</p>
+                                <p class="post_contents" th:text="${posts.getPContents()}">글 내용</p>
                             </li>
                         </ul>
-                        <li><span>좋아요 3개</span><span>댓글 2개</span></li>
+                        <li><span th:text="'좋아요 '+${posts.getPLike()}+ '개'">좋아요 갯수</span><span>댓글 2개</span></li>
                     </ul>
                 </a>
-                <a href="#">
-                    <ul class="g_news_post_box">
-                        <ul class="g_news_post clearfix">
-                            <img class="post_writerImg" src="/image/Gathering_img2.png">
-                            <img class="post_img" src="/image/newsPost_img2.png">
-                            <li><p class="post_boardName">정모후기</p></li>
-                            <li><p class="post_writerName">정웅기</p></li>
-                            <li><p class="post_date">7월 22일 오후 12:21</p></li>
-                            <li><p class="post_title">아아아아 퇴근하고싶다... 코딩 시바
-                                좋같네시이발ㄴ망ㅁㄴㅁㄴㅁㄴㅁㄴㅁㄴㅁㄴㅁㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
-                                ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ</p></li>
-                            <li>
-                                <p class="post_contents">아직 점심인데 왜 이렇게 퇴근하고싶냐 나 좀 살려주세요
-                                    혹시 내일 밤에 볼링 칠 사람 있나요</p>
-                            </li>
-                        </ul>
-                        <li><span>좋아요 3개</span><span>댓글 2개</span></li>
-                    </ul>
-                </a>
+<!--                <a href="#">-->
+<!--                    <ul class="g_news_post_box">-->
+<!--                        <ul class="g_news_post clearfix">-->
+<!--                            <img class="post_writerImg" src="/image/Gathering_img2.png">-->
+<!--                            <img class="post_img" src="/image/newsPost_img2.png">-->
+<!--                            <li><p class="post_boardName">정모후기</p></li>-->
+<!--                            <li><p class="post_writerName">정웅기</p></li>-->
+<!--                            <li><p class="post_date">7월 22일 오후 12:21</p></li>-->
+<!--                            <li><p class="post_title">아아아아 퇴근하고싶다... 코딩 시바-->
+<!--                                좋같네시이발ㄴ망ㅁㄴㅁㄴㅁㄴㅁㄴㅁㄴㅁㄴㅁㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ-->
+<!--                                ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ</p></li>-->
+<!--                            <li>-->
+<!--                                <p class="post_contents">아직 점심인데 왜 이렇게 퇴근하고싶냐 나 좀 살려주세요-->
+<!--                                    혹시 내일 밤에 볼링 칠 사람 있나요</p>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                        <li><span>좋아요 3개</span><span>댓글 2개</span></li>-->
+<!--                    </ul>-->
+<!--                </a>-->
             </ul>
         </ul>
     </div>

@@ -82,7 +82,7 @@ public List<GatheringEntity> findMyMingles(String userId) {
         return postDTOList;
     }
 
-    public List<PostDTO> findByPost(Long id) {
+    public List<PostDTO> findByPosts(Long id) {
         Long bNum = 5L;
         List<PostEntity> postEntityList = postRepository.findByBoardAndGatheringPost(id, bNum);
         
@@ -92,7 +92,21 @@ public List<GatheringEntity> findMyMingles(String userId) {
             postDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
 
         }
-        // 게시글들을 가져오는 건 성공했지만 게시판 번호, 이름, 프로필 이미지 등등 가공해야할 데이터가 많음
         return postDTOList;
+    }
+
+    // 게시글 뷰
+    public PostDTO findByPost(Long pNum) {
+        Optional<PostEntity> OptionalPostEntity = postRepository.findById(pNum);
+
+        if(OptionalPostEntity.isPresent()){
+            PostEntity postEntity = OptionalPostEntity.get();
+            PostDTO postDTO = EntityDTOMapper.entityToDTO(postEntity);
+
+            return postDTO;
+        } else {
+            return null;
+        }
+
     }
 }
