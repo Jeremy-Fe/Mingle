@@ -1,8 +1,10 @@
 package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
+import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.RegisterMail;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class MingleController {
     //생성자 주입
     private final MemberService memberService ;
     private final CityService cityService ;
+    private final GatheringService gatheringService;
 
     // 회원가입 메일 서비스
     @Autowired
@@ -95,8 +99,43 @@ public class MingleController {
     @GetMapping("schedule*")
     public String schedule() {return "schedule";}
 
-    @GetMapping("MyPage*")
-    public String MyPage(){return "MyPage";}
+
+//    @GetMapping("MyPage*")
+//    public String MyPage(){return "MyPage";}
+
+    @GetMapping("MyPage")
+    public String MyPage(HttpSession session, Model model){
+        String logInId = (String) session.getAttribute("loginId");
+        MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
+        model.addAttribute("myPagemId", memberDTO);
+
+        String profileimg = memberService.getProfileimgData(logInId);
+        model.addAttribute("profileimg", profileimg);
+        System.out.println(profileimg);
+
+        List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);
+        model.addAttribute("mingles",mingles);
+        System.out.println("mingles 확인 = "+ mingles);
+
+        return "MyPage";
+    }
+
+    @PostMapping("/Mypage/mIntroduction")
+    public String introduce(@RequestParam("mIntroduction") String mIntroduction, HttpSession session) {
+        String logInId = (String) session.getAttribute("loginId");
+        System.out.println("mIntroduction : " + mIntroduction + " " + logInId);
+        memberService.introduce(mIntroduction,logInId);
+        return "Mypage"; // 결과 페이지로 이동
+
+    }
+
+    @PostMapping("/Mypage/uploadImage")
+        public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg, HttpSession session) {
+        String logInId = (String) session.getAttribute("loginId");
+        System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
+        memberService.uploadImage(mProfileimg,logInId);
+        return "Mypage";
+    }
 
     @GetMapping("Create_Meet")
     public String Create_Meet(Model model) {
@@ -231,23 +270,6 @@ public class MingleController {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
     }
-
-    @PostMapping("/Mypage/mIntroduction")
-    public String introduce(@RequestParam("mIntroduction") String mIntroduction) {
-        System.out.println("mIntroduction : " + mIntroduction);
-        memberService.introduce(mIntroduction);
-        return "Mypage"; // 결과 페이지로 이동
-
-    }
-
-    @PostMapping("/Mypage/uploadImage")
-    public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg) {
-        System.out.println("mProfileimg : " + mProfileimg);
-        memberService.uploadImage(mProfileimg);
-        return "Mypage";
-    }
-
-
 }
 
 
