@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -35,9 +36,6 @@ public class PostEntity {
     @Column(name = "P_LIKE")
     private Long pLike;
 
-    @Column(name = "P_VIEWS")
-    private Long pViews;
-
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "P_M_ID", nullable = false)
     private MemberEntity pMId;
@@ -45,10 +43,24 @@ public class PostEntity {
     @Column(name = "P_DATE", nullable = false)
     private LocalDate pDate;
 
+    @Lob
+    private Blob pImg1;
+
+    @Lob
+    private Blob pImg2;
+
+    @Lob
+    private Blob pImg3;
+
+    @Lob
+    private Blob pImg4;
+
+    @Lob
+    private Blob pImg5;
+
+
     @OneToMany(mappedBy = "cPNum")
     private Set<CommentsEntity> comments = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "piPNum")
-    private Set<PostimgEntity> postImgs = new LinkedHashSet<>();
 
 }
