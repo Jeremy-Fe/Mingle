@@ -82,33 +82,36 @@ public List<GatheringEntity> findMyMingles(String userId) {
     /*카테고리 검색*/
     /*전체 검색*/
 
-    /*3개 해당*/
+    /*전체 0 검색 3 3개 해당*/
     public List<GatheringEntity> searchMingleCase1(String selectedRegi, String mainCtName, String subC) {
     return gatheringRepository.searchMingleCase1(selectedRegi,mainCtName,subC);
     }
-    /*2개 해당*/
+    /* 전체 1 검색 2 2개 해당*/
     public List<GatheringEntity> searchMingleCase2(String selectedRegi, String mainCtName, String subC) {
-        if(!subC.equals("전체")){
-            /*지역 & 메인 = "전체" \ 세부 != "전체" */
+        if(!selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&subC.equals("전체")){
+            /*지역 & 메인 != "전체" \ 세부 = "전체" */
             return gatheringRepository.searchMingleCase2_1(selectedRegi,mainCtName);
-        }else if(!selectedRegi.equals("전체")){
-            /*메인 & 세부 = "전체" \ 지역 != "전체" */
+        }else if(selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&!subC.equals("전체")){
+            /*메인 & 세부 != "전체" \ 지역 = "전체" */
             return gatheringRepository.searchMingleCase2_2(mainCtName,subC);
         }else{
-            /*세부 & 지역 = "전체" \ 메인 != "전체" */
+            /*세부 & 지역 != "전체" \ 메인 = "전체" */
             return gatheringRepository.searchMingleCase2_3(subC,selectedRegi);
         }
     }
-    /*하나만 해당*/
+    /* 전체 2 검색 1 하나만 해당*/
     public List<GatheringEntity> searchMingleCase3(String selectedRegi, String mainCtName, String subC) {
-        if(selectedRegi.equals("전체")){
-            /*지역 = "전체"*/
+        if(!selectedRegi.equals("전체")&&mainCtName.equals("전체")&&subC.equals("전체")){
+            /*지역 != "전체"*/
+            System.out.println("지역만 값이 있을 때 ");
             return gatheringRepository.searchMingleCase3(selectedRegi);
-        }else if(mainCtName.equals("전체")){
-            /*메인 카테고리 = "전체"*/
+        }else if(selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&subC.equals("전체")){
+            /*메인 카테고리 != "전체"*/
+            System.out.println("메인만 값이 있을 때 ");
             return gatheringRepository.searchMingleCase3(mainCtName);
         } else {
-            /*세부 카테고리 = "전체"*/
+            /*세부 카테고리 != "전체"*/
+            System.out.println("세부만 값이 있을 때 ");
             return gatheringRepository.searchMingleCase3(subC);
         }
     }

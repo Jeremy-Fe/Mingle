@@ -57,27 +57,27 @@ public class LoginedMainController {
         if (selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&!subC.equals("전체")||
                 !selectedRegi.equals("전체")&&mainCtName.equals("전체")&&!subC.equals("전체")||
                 !selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&subC.equals("전체")){
-            /*1개의 조건이 있을때*/System.out.printf("1개의 조건이 있을때 = %s %s %s \n",selectedRegi, mainCtName, subC);
-            List<GatheringEntity> searchMingle = gatheringService.searchMingleCase3(selectedRegi, mainCtName,subC);
+            /*전체 1 검색 2*/System.out.printf("전체 2 검색 1 = %s %s %s \n",selectedRegi, mainCtName, subC);
+            List<GatheringEntity> searchMingle = gatheringService.searchMingleCase2(selectedRegi, mainCtName,subC);
             System.out.println("검색페이지_searchMingle 확인 = " + searchMingle);
             model.addAttribute("searchMingle", searchMingle);
             return ResponseEntity.ok(searchMingle);
         }else if (selectedRegi.equals("전체")&&mainCtName.equals("전체")&&!subC.equals("전체")||
                 !selectedRegi.equals("전체")&&mainCtName.equals("전체")&&subC.equals("전체")||
                 selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&subC.equals("전체")){
-            /*2개의 조건이 있을때*/System.out.printf("2개의 조건이 있을때 = %s %s %s \n",selectedRegi, mainCtName, subC);
-            List<GatheringEntity> searchMingle = gatheringService.searchMingleCase2(selectedRegi, mainCtName,subC);
+            /*전체 2 검색 1*/System.out.printf("전체 2 검색 1 = %s %s %s \n",selectedRegi, mainCtName, subC);
+            List<GatheringEntity> searchMingle = gatheringService.searchMingleCase3(selectedRegi, mainCtName,subC);
             System.out.println("검색페이지_searchMingle 확인 = " + searchMingle);
             model.addAttribute("searchMingle", searchMingle);
             return ResponseEntity.ok(searchMingle);
         }else if(selectedRegi.equals("전체")&&mainCtName.equals("전체")&&subC.equals("전체")){
-            /*전체 검색*/
-            System.out.printf("전체 검색 = %s %s %s \n ",selectedRegi, mainCtName, subC);
+            /*전체 3 검색 0*/
+            System.out.printf("전체 3 검색 0 = %s %s %s \n ",selectedRegi, mainCtName, subC);
             List<GatheringEntity> searchMingle =gatheringService.searchAll();
             return ResponseEntity.ok(searchMingle);
         }else{
-            /*모든 조건이 있을때*/
-            System.out.printf("모든 조건이 있을때 = %s %s %s \n ",selectedRegi, mainCtName, subC);
+            /*전체 0 검색 3*/
+            System.out.printf("전체 0 검색 3 = %s %s %s \n ",selectedRegi, mainCtName, subC);
             List<GatheringEntity> searchMingle = gatheringService.searchMingleCase1(selectedRegi, mainCtName, subC);
             System.out.println("검색페이지_searchMingle 확인 = "+ searchMingle);
             model.addAttribute("searchMingle",searchMingle);
