@@ -57,11 +57,12 @@ public class GatheringEntity {
         gDate = new Date();
     }
 
-    @OneToMany(mappedBy = "GatheringEntity")
+
+/*  @OneToMany(mappedBy = "GatheringEntity", fetch = FetchType.EAGER)
     private Set<PostEntity> postGNum = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "GatheringEntity")
-    private Set<PostimgEntity> piGNum = new LinkedHashSet<>();
+    private Set<PostimgEntity> piGNum = new LinkedHashSet<>();*/
 
     public static GatheringEntity gathering(GatheringDTO gatheringDTO) {
         GatheringEntity gatheringEntity = new GatheringEntity();

@@ -5,13 +5,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!--css-->
-    <link href="/css/Create_Meet.css?after" type="text/css" rel="stylesheet">
+    <link href="/css/Create_Meet.css" type="text/css" rel="stylesheet">
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- font-family: 'NexonLv1Gothic'; -->
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
 <div class="contents">
-    <form action="/create-gatheringEntity" method="post">
+    <form action="/create-gathering" method="post">
         <ul>
             <img class="marker" src="image/meet_marker.png">
             <li class="maker2">지역</li>
@@ -105,7 +114,7 @@
             <div id="subModalContent">
                 <span id="subCloseBtn" onclick="closeSubModal()">&times;</span>
                 <p><span id="selectedInterest"></span></p>
-                <ul id="subInterestList">
+                <ul id="subInterestList" style="overflow-y: auto">
                     <!-- 세부 관심사가 여기에 추가됩니다. -->
                 </ul>
             </div>

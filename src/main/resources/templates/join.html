@@ -163,6 +163,47 @@
         }
     }
 
+    // 라디오버튼 체크 확인
+    function genderCheck() {
+        var radioButtons = document.getElementsByName("mGender");
+        var isChecked = false;
+
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+                isChecked = true;
+                break;
+            }
+        }
+        return isChecked;
+    }
+
+    // select box 체크 확인
+    function selectCheck() {
+        var mCitySelect = document.getElementsByName("mCity")[0];
+        var mDistrictSelect = document.getElementsByName("mDistrict")[0];
+        var mIcitySelect = document.getElementsByName("mIcity")[0];
+        var mIDistrictSelect = document.getElementsByName("mIDistrict")[0];
+
+        if (mCitySelect.value === "none" || mDistrictSelect.value === "none" || mIcitySelect.value === "none" || mIDistrictSelect.value === "none") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //관심사 체크 확인
+    function interestCheck() {
+        var selectedInterest = document.getElementById("selectedInterest").value;
+
+        if (selectedInterest === null || selectedInterest.trim() === "") {
+            $("#selectedInterest").css({ border: "1px solid #FF7171" });
+            return false;
+        } else {
+            $("#selectedInterest").css({border:"none"});
+            return true;
+        }
+    }
+
     // 양식의 제출 이벤트에 이벤트 리스너를 추가합니다.
     document.querySelector('form').addEventListener('submit', function(event) {
         // 기본 제출 동작을 방지합니다.
@@ -175,16 +216,17 @@
             const pwValid = pwCheck();
             const birthValid = birthCheck();
             const emailValid = emailCheck();
+            const genderValid = genderCheck();
+            const selectValid = selectCheck();
+            const interestValid = interestCheck();
 
             // 모든 검증이 통과되었는지 확인합니다.
-            if (isIdValid && idValid && pwValid && birthValid && emailValid) {
+            if (isIdValid && idValid && pwValid && birthValid && emailValid && genderValid && selectValid && interestValid) {
                 // 모든 검증이 통과되면 양식을 제출합니다.
                 const form = document.querySelector('form'); // 양식 요소 가져오기
                 form.submit(); // 양식 제출
                 alert("밍글되었습니다♡");
             } else {
-                // 검증 오류가 있는 경우 사용자에게 메시지를 표시하거나 적절한 조치를 취합니다.
-                // 예를 들어 경고 표시나 페이지에 메시지를 업데이트할 수 있습니다.
                 alert("양식과 다른부분이 있는지 확인해주세요.");
             }
         });
@@ -225,7 +267,6 @@
     $(document).ready(function() {
         var cityToDistrictMap = {};
 
-        // Fetch cityToDistrictMap from the server
         $.ajax({
             url: '/fetchDistrictMap',
             type: 'GET',

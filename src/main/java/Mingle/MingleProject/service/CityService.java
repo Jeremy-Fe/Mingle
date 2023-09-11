@@ -53,8 +53,7 @@ public class CityService {
     }
 
     public List<CityEntity> searchByKeyword(String keyword) {
-        return cityRepository.findByBcNameContainingIgnoreCase(keyword);
-//        return cityRepository.findAll(keyword);
+        return cityRepository.findBymcNameContainsIgnoreCase(keyword);
     }
 
 

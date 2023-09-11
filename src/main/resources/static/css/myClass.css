@@ -1,4 +1,10 @@
 @charset "utf-8";
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
 *{margin: 0;padding: 0; box-sizing: border-box; }
 li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
 a{text-decoration: none; color: #2C244F;}
@@ -304,27 +310,33 @@ body{z-index: 2}
 }
 /*모임 만들기 컨테이너*/
 .view>.recommend .make_meet{
-    width: 730px; height: 80px; background-color:#EEF1FF;
+    width: 730px;
+    height: 80px;
     margin: auto;
     border-radius: 20px;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 406px;
+    background-color: #EEF1FF;
+}
+.view>.recommend .make_meet:hover {
+    background-color: #968ACD;
 }
 .view>.recommend .make_meet .meet_bt{
+    width: 730px;
+    height: 80px;
     border: none;
     background: none;
-    position: absolute;
-    top: 24px;
-    left: 268px;
-}
-.view>.recommend .make_meet>ul>li{
     font-size: 27px;
-    position: absolute;
-    top: 27px;
-    left: 308px;
+    font-family: 'GmarketSansMedium';
+    text-align: center;
 }
-
+.view>.recommend .make_meet > ul > img{
+    position: absolute;
+    z-index: 100;
+    left: 220px;
+    top: 24px;
+}
 
 /* footer 메뉴 */
 #footer{

@@ -34,7 +34,7 @@
                 <div class="MyPage">
                     <img alt="큰제목" src="/image/MyPageTitle.png">
                     <p>마이페이지</p>
-                    <li th:unless="${session.loginId == null}" id="delete"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px">회원탈퇴</a></li>
+                    <li th:unless="${session.loginId == null}" id="delete"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px" onclick="return confirm('정말로 회원탈퇴하시겠습니까?')">회원탈퇴</a></li>
                     <div class="profile">
                 <ul>
                 <li class="pimg">
