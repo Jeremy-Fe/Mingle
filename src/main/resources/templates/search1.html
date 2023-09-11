@@ -6,7 +6,7 @@
     <title>search</title>
 
     <!--css-->
-    <link href="/CSS/search1.css" type="text/css" rel="stylesheet">
+    <link href="/CSS/search1.css?after" type="text/css" rel="stylesheet">
 
 
     <!-- include jQuery :) -->
@@ -28,7 +28,6 @@
       <div th:replace="/defaultUI.html"></div>
             <!-- 바꿔야하는 부분 -->
             <div class="view">
-
               <!-- 검색창 -->
               <div id="search">
                 <ul>
@@ -74,7 +73,7 @@
                 <a id="regi" href="/selectRegi" rel="modal:open" >
                   <button>
                     <li id="r_img"><img src="image/search_지역.png" alt=""></li>
-                    <li id="r_text">서울시 구로구 구로동</li>
+                    <li id="selectedRegi">구로구</li>
                     <li id="r_plus"><img src="image/오른쪽화살표.png"></li>
                   </button>
                 </a>
