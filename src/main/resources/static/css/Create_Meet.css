@@ -320,28 +320,27 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 10000;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr); /* 5행으로 설정 */
-    grid-gap: 10px;
-    justify-content: flex-start;
-    align-content: flex-start;
 }
 
+
 #subInterestList {
-    width: 211px;
-    height: 75px;
-    font-size: 38px;
+    font-size: 30px;
     background-color: #FFFFFF;
     font-family: 'GmarketSansMedium';
     cursor: pointer;
-    grid-row: span 1; /* 각 요소가 1행에 위치하도록 설정 */
-    grid-column: span 1; /* 각 요소가 1열에 위치하도록 설정 */
+    width: calc(100% - 40px); /* subModalContent의 padding을 고려하여 계산 */
+    height: auto; /* 높이를 자동으로 조정하도록 변경 */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 30px;
 }
 #subInterestList>li{
-    width: 100%; /* 각 아이템을 100% 너비로 설정 */
-    height: 75px;
-    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    background-color:#FDFDFF;
+    text-align: center;
+    border-radius: 10px;
 }
 #selectedInterest{
     font-size: 48px;
