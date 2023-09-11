@@ -184,6 +184,18 @@ body{z-index: 2}
     position: relative;
 }
 
+/*.view> .MyPage .profile li .birth {
+    padding-top: 15px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+}
+.view> .MyPage .profile li .gender{
+    padding-top: 15px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+    !*---기본정보 텍스트(끝)---*!
+}*/
+
 #ex1 > button {
     top: 340px;
     left: 380px;
@@ -223,7 +235,7 @@ body{z-index: 2}
 #modalContent .name {
     top: 95px;
     left: 550px;
-    width: 50px;
+    width: 150px;
     height: 16px;
     font-size: 32px;
     font-weight: bold;
@@ -240,10 +252,21 @@ body{z-index: 2}
     cursor: pointer;
 }
 
-#modalContent .info {
+#modalContent .birth {
     top: 140px;
     left: 550px;
-    width: 50px;
+    width: 150px;
+    height: 16px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+    position: absolute;
+}
+
+#modalContent .gender {
+    top: 185px;
+    left: 550px;
+    width: 100px;
     height: 16px;
     font-size: 24px;
     font-weight: bold;
@@ -252,7 +275,7 @@ body{z-index: 2}
 }
 
 .view> .MyPage .profile .text{
-    margin-right: 70px;
+    margin-right: 55px;
 }
 .view> .MyPage .profile li .name {
     font-size: 32px;
@@ -260,7 +283,12 @@ body{z-index: 2}
     font-weight: bold;
     font-family: 'Jalnan';
 }
-.view> .MyPage .profile li .info{
+.view> .MyPage .profile li .birth {
+    padding-top: 15px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+}
+.view> .MyPage .profile li .gender{
     padding-top: 15px;
     font-weight: bold;
     font-family: 'Jalnan';
@@ -322,6 +350,7 @@ body{z-index: 2}
     margin-top: 30px;
     margin-left: 30px;
     float: left;
+
 }
 
 .view > .MyPage .mc #myclass > div:last-child {
@@ -350,6 +379,11 @@ body{z-index: 2}
     line-height: 410px;
     display: block;
     position: absolute;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px ;
+    padding-right: 5px ;
 }
 
 .view > .MyPage .mc #myclass > div > a > img{
@@ -374,7 +408,6 @@ body{z-index: 2}
     height: 540px;
     margin: auto;
     border-radius: 20px;
-    /*position: relative;*/
     overflow: hidden;
 }
 .view > .MyPage .mp #myPost {
@@ -382,8 +415,7 @@ body{z-index: 2}
     height: 540px;
     margin: auto;
     position: relative;
-    /*position: absolute;
-*/
+
 }
 
 .view > .MyPage .mp #myPost > div {

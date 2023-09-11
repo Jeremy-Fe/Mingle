@@ -109,7 +109,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_All";}
 
     @GetMapping("Gathering_Album_Board/{id}")

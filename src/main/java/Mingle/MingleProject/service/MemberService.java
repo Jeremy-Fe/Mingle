@@ -12,11 +12,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.sql.SQLException;
@@ -45,16 +47,16 @@ public class MemberService {
         if (byMemberId.isPresent()) {
             //조회 결가가 있다(해당 아이디를 가진 회원 정보가 있다)
             MemberEntity memberEntity = byMemberId.get();
-            if(memberEntity.getMPwd().equals(memberDTO.getMPwd())){
+            if (memberEntity.getMPwd().equals(memberDTO.getMPwd())) {
                 //비밀번호가 일치
                 //entity -> dto 변환 후 리턴
                 MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
                 return dto;
-            }else {
+            } else {
                 //비밀번호가 불일치(로그인 실패)
                 return null;
             }
-        }else {
+        } else {
             //조회 결과가 없다(해당 아이디을 가진 회원이 없다)
             return null;
         }
@@ -64,7 +66,7 @@ public class MemberService {
     public List<MemberDTO> findAll() {
         List<MemberEntity> memberEntityList = memberRepository.findAll();
         List<MemberDTO> memberDTOList = new ArrayList<>();
-        for(MemberEntity memberEntity : memberEntityList) {
+        for (MemberEntity memberEntity : memberEntityList) {
             memberDTOList.add(MemberDTO.toMemberDTO(memberEntity));
         }
         return memberDTOList;
@@ -104,18 +106,23 @@ public class MemberService {
     }
 
 
+    //Mypage 자기 소개 수정
     @Transactional
     /*public void introduce(MemberDTO memberDTO)*/
-    public void introduce(String mIntroduction) {
+    public void introduce(String mIntroduction, String mId) {
 
-        /*memberEntity.setMIntroduction(memberDTO.getMIntroduction());*/
+      /*  memberEntity.setMIntroduction(memberDTO.getMIntroduction());
+        MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMIntroduction(mIntroduction);
+        memberEntity.setMId(mId);*/
 
         // MemberEntity 객체를 저장
-        memberRepository.updateMIntroduction(mIntroduction);
+        memberRepository.updateMIntroduction(mIntroduction,mId);
 
     }
+
+    //MYpage 자기 프로필 사진 업로드
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
@@ -126,12 +133,12 @@ public class MemberService {
             return new SerialBlob(fileBytes);
     }
     @Transactional
-    public void uploadImage(@NotNull MultipartFile mProfileimg) {
+    public void uploadImage(@NotNull MultipartFile mProfileimg, String mId) {
         try {
             MemberEntity memberEntity = new MemberEntity();
             Blob mProfileBlob = createBlobFromMultipartFile(mProfileimg);
             memberEntity.setMProfileimg(mProfileBlob);
-            memberRepository.updatemProfileimg(mProfileBlob);
+            memberRepository.updatemProfileimg(mProfileBlob,mId);
 
         } catch (IOException | SQLException e) {
             e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
@@ -139,6 +146,42 @@ public class MemberService {
         }
     }
 
+    //Mypage 자기 프로필 사진 DB에서 부터 출력
+    public String getProfileimgData(String logInId) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findBymId(logInId);
+        if (optionalMemberEntity.isPresent()) {
+            MemberEntity profileEntity = optionalMemberEntity.get();
+            MemberDTO profileDto = MemberDTO.toMemberDTO(profileEntity);
+            Blob blobTypeProfileimg = profileDto.getMProfileimg();
+
+
+
+            if (blobTypeProfileimg != null) {
+                try {
+                    byte[] byteArray = blobTypeProfileimg.getBytes(1, (int) blobTypeProfileimg.length());
+                    String base64Iamge = Base64.getEncoder().encodeToString(byteArray);
+                    return base64Iamge;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
+
+    //MYpage 헤더로부터 로그인 된 ID 정보 유지
+    public MemberDTO findbyIdMyPage(String logInId) {
+        Optional<MemberEntity> myPageMemberEntity = memberRepository.findBymId(logInId);
+        if(myPageMemberEntity.isPresent()){
+            MemberEntity memberEntity = myPageMemberEntity.get();
+            MemberDTO memberDTO = MemberDTO.toMemberDTO(memberEntity);
+
+            return memberDTO;
+        } else {
+            return null;
+        }
+    }
 
 
     public List<MemberDTO> findByGatheringMember(String gatheringName){
