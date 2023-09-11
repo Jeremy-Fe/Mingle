@@ -162,5 +162,6 @@ public class GatheringService {
         GatheringEntity gatheringEntity = GatheringEntity.gathering(gatheringDTO);
         gatheringRepository.save(gatheringEntity);
         // repository의 save메소드 호출 (조건. entity객체를 넘겨줘야 함)
+
     }
 }

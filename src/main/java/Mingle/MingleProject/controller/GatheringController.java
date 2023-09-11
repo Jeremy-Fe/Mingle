@@ -182,6 +182,7 @@ public class GatheringController {
         return "myClass";
     }
 
+
     @GetMapping("Gathering_Post_Write")
     public String Gathering_Post_Write(){
         return "Gathering_Post_Write";

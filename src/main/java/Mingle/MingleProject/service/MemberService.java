@@ -249,4 +249,6 @@ public class MemberService {
 
         return memberDTO;
     }
+
+
 }
