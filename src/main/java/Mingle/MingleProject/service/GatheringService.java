@@ -1,29 +1,37 @@
 package Mingle.MingleProject.service;
 
+import Mingle.MingleProject.Mapper.EntityDTOMapper;
+import Mingle.MingleProject.Mapper.EntityDTOMapper;
 import Mingle.MingleProject.dto.GatheringDTO;
 import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.entity.Gathering;
+import Mingle.MingleProject.dto.PostDTO;
+import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.PostEntity;
+import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.repository.GatheringRepository;
 import Mingle.MingleProject.repository.MemberRepository;
+import Mingle.MingleProject.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Member;
 import java.util.*;
 
+
 @Service
 @RequiredArgsConstructor
 public class GatheringService {
     private final GatheringRepository gatheringRepository;
     private final MemberRepository memberRepository;
+    private final PostRepository postRepository;
 
 
     public List<GatheringDTO> findAll() {
         // 엔티티 객체를 DTO 객체로 옮겨 담기
-        List<Gathering> gatheringEntityList = gatheringRepository.findAll();
+        List<GatheringEntity> gatheringEntityList = gatheringRepository.findAll();
         List<GatheringDTO> gatheringDTOList = new ArrayList<>();
-        for (Gathering gatheringEntity : gatheringEntityList) {
+        for (GatheringEntity gatheringEntity : gatheringEntityList) {
             gatheringDTOList.add(GatheringDTO.gatheringDTO(gatheringEntity));
         }
 
@@ -31,10 +39,10 @@ public class GatheringService {
     }
 
     public  GatheringDTO findByGathering(Long id){
-        Optional<Gathering> optionalGathering = gatheringRepository.findById(id);
+        Optional<GatheringEntity> optionalGathering = gatheringRepository.findById(id);
         if(optionalGathering.isPresent()){
-            Gathering gathering = optionalGathering.get();
-            GatheringDTO gatheringDTO = GatheringDTO.gatheringDTO(gathering);
+            GatheringEntity gatheringEntity = optionalGathering.get();
+            GatheringDTO gatheringDTO = GatheringDTO.gatheringDTO(gatheringEntity);
             return gatheringDTO;
         } else {
             return null;
@@ -55,7 +63,7 @@ public class GatheringService {
         return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
     }
 }*/
-public List<Gathering> findMyMingles(String userId) {
+public List<GatheringEntity> findMyMingles(String userId) {
     Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
 
     if (memberOptional.isPresent()) {  // member가 null인지 확인
@@ -117,7 +125,30 @@ public List<Gathering> findMyMingles(String userId) {
     }
     /*@검색창 검색@*/
 
-  /*  public List<PostDTO> findByNotificationPost(Long id) {
-        공지사항 가져올 거다 우철아 디비버에 쿼리문 적어놨으니까 여기서부터 빡 집중해라 시발아
-    }*/
+    public List<PostDTO> findByNotificationPost(Long id) {
+        Long bNum = 5L;
+        List<PostEntity> postEntityList = postRepository.findByBoardAndGathering(id, bNum);
+
+
+        List<PostDTO> postDTOList = new ArrayList<>();
+        for (PostEntity postEntity: postEntityList) {
+            postDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
+        }
+
+        return postDTOList;
+    }
+
+    public List<PostDTO> findByPost(Long id) {
+        Long bNum = 5L;
+        List<PostEntity> postEntityList = postRepository.findByBoardAndGatheringPost(id, bNum);
+
+
+        List<PostDTO> postDTOList = new ArrayList<>();
+        for (PostEntity postEntity: postEntityList) {
+            postDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
+
+        }
+        // 게시글들을 가져오는 건 성공했지만 게시판 번호, 이름, 프로필 이미지 등등 가공해야할 데이터가 많음
+        return postDTOList;
+    }
 }

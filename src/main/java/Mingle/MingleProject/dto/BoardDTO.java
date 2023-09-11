@@ -11,8 +11,8 @@ import java.io.Serializable;
 @AllArgsConstructor  //필드를 모두 매개변수로 하는 생성자를 만들어줌
 @ToString // toString 자동으로
 public class BoardDTO {
-    Long bNum;
-    String bName;
+    private Long bNum;
+    private String bName;
 
 
 }

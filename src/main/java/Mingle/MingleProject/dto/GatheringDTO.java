@@ -3,7 +3,6 @@ import Mingle.MingleProject.entity.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
 import java.util.Date;
 @Getter
 @Setter
@@ -28,23 +27,23 @@ public class GatheringDTO {
     private Long gPrivate;
     private String gCoverimg;
 
-    public static GatheringDTO gatheringDTO(Gathering gathering) {
+    public static GatheringDTO gatheringDTO(GatheringEntity gatheringEntity) {
         GatheringDTO gatheringDTO = new GatheringDTO();
-        gatheringDTO.setId(gathering.getId());
-        gatheringDTO.setGName(gathering.getGName());
-        gatheringDTO.setGIntroduction(gathering.getGIntroduction());
-        gatheringDTO.setGMainsubject(gathering.getGMainsubject());
-        gatheringDTO.setGSubject(gathering.getGSubject());
-        gatheringDTO.setGCity(gathering.getGCity());
-        gatheringDTO.setGDistrict(gathering.getGDistrict());
-        gatheringDTO.setGDate(gathering.getGDate());
-        gatheringDTO.setGMaxheadcount(gathering.getGMaxheadcount());
-        gatheringDTO.setGMainleader(gathering.getGMainleader());
-        gatheringDTO.setGSubleader1(gathering.getGSubleader1());
-        gatheringDTO.setGSubleader2(gathering.getGSubleader2());
-        gatheringDTO.setGSubleader3(gathering.getGSubleader3());
-        gatheringDTO.setGPrivate(gathering.getGPrivate());
-        gatheringDTO.setGCoverimg((gathering.getGCoverimg()));
+        gatheringDTO.setId(gatheringEntity.getId());
+        gatheringDTO.setGName(gatheringEntity.getGName());
+        gatheringDTO.setGIntroduction(gatheringEntity.getGIntroduction());
+        gatheringDTO.setGMainsubject(gatheringEntity.getGMainsubject());
+        gatheringDTO.setGSubject(gatheringEntity.getGSubject());
+        gatheringDTO.setGCity(gatheringEntity.getGCity());
+        gatheringDTO.setGDistrict(gatheringEntity.getGDistrict());
+        gatheringDTO.setGDate(gatheringEntity.getGDate());
+        gatheringDTO.setGMaxheadcount(gatheringEntity.getGMaxheadcount());
+        gatheringDTO.setGMainleader(gatheringEntity.getGMainleader());
+        gatheringDTO.setGSubleader1(gatheringEntity.getGSubleader1());
+        gatheringDTO.setGSubleader2(gatheringEntity.getGSubleader2());
+        gatheringDTO.setGSubleader3(gatheringEntity.getGSubleader3());
+        gatheringDTO.setGPrivate(gatheringEntity.getGPrivate());
+        gatheringDTO.setGCoverimg((gatheringEntity.getGCoverimg()));
         return gatheringDTO;
     }
 }
