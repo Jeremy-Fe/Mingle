@@ -351,6 +351,9 @@
     background-color: #FFFFFF;
     float: left;cursor: pointer;
 }
+#subInterestList>li:hover{
+    background-color: #968ACD;
+}
 
 
 
