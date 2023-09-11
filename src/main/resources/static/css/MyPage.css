@@ -408,7 +408,6 @@ body{z-index: 2}
     height: 540px;
     margin: auto;
     border-radius: 20px;
-    /*position: relative;*/
     overflow: hidden;
 }
 .view > .MyPage .mp #myPost {
@@ -416,8 +415,7 @@ body{z-index: 2}
     height: 540px;
     margin: auto;
     position: relative;
-    /*position: absolute;
-*/
+
 }
 
 .view > .MyPage .mp #myPost > div {
