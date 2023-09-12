@@ -1,10 +1,10 @@
 @charset "utf-8";
-@font-face {
+/*@font-face {
     font-family: 'GmarketSansMedium';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-}
+}*/
 *{margin: 0;padding: 0; box-sizing: border-box; }
 li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
 a{text-decoration: none; color: #2C244F;}
@@ -66,53 +66,196 @@ body{z-index: 2}
 #box>#user >ul>.icon_b>img{width: 30px; height: 30px;  margin-top: 20px ;}
 
 /*view*/
-#view{width: 100%; height: 1035px;
+#view{width: 100%; height: 100%;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    border-radius: 20px 0 0 0;
+    padding-top: 40px;
+}
+#view::-webkit-scrollbar {
+    display: none;
+}
+/*-------페이지 기본구성(끝)*-------*/
+/*view_바꿔야할 부분*/
+.view{width: 100%;
+    height: 100%;/* 임의지정 값*/
+    margin-bottom: 30px;
+    border-radius: 20px 0 0 0;
     background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
     border-radius: 20px 0 0 0;
 }
+/*<section_ view>*/
 
-.view{width: 100%; height: 2027px;
-    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
-    border-radius: 20px 0 0 0;
+/*---뷰 전체 기본설정---*/
+.view > div {
+    width: 1400px;
+    margin: auto; margin-top: 20px;
+    border-radius: 20px;
+    position: relative;
+    /*---뷰 전체 기본설정(끝)---*/
 }
 
-
-/*section_ view*/
-#box>.view{}
-#box>.view>ul{}
-#box>.view>ul>li{}
-#box>.view>ul>li>a{font-family: 'Orbitron', sans-serif;}
-/*가입한 모임 두번 째 섹션 */
-.view>.logo2{
+/*--가입한 모임--*/
+#MyPage > p{
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 40px;
+    font-family: 'Jalnan';
+}
+#title_02 {
+    font-size: 38px;
+    font-weight: bold;
+    line-height: 40px;
+    font-family: 'Jalnan';
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+#sc1 {
+    width: 1400px;
+    background-color: rgba(255,255,255,0.65);
+    height: 300px;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    left: -10px;
+}
+#myclass {
     width: 100%;
-    height: 370px;
+    height: 300px;
+    margin: auto;
+    border-radius: 20px;
     position: relative;
 }
+
+/*---내모임 출력(감추기)---*/
+#myclass > div {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    width: 195px;
+    height: 240px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    float: left;
+
+}
+
+#myclass > div:last-child {
+    margin-right: 30px;
+}
+
+#myclass > div > p {
+    width: 195px;
+    height: 240px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 355px;
+    display: block;
+    position: absolute;
+}
+
+#myclass > div > span {
+    width: 195px;
+    height: 240px;
+    color: #8B8B8B;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 410px;
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px ;
+    padding-right: 5px ;
+}
+
+#myclass > div > a > img{
+    width: 120px;
+    height: 120px;
+    left: 35px;
+    bottom: 90px;
+    border-radius: 100%;
+    position: absolute;
+}
+
+/*.view>.logo2{
+    width: 1564px;
+    height: 370px;
+    position: relative;
+    !*background-color: #000;*!
+    margin-left: -50px;
+    padding-left: 50px;
+    padding-right: 110px;
+}
+
+
+#myMingCardInner {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    width: 195px; height: 236px; background-color:#FFFFFF;
+    margin-left: 30px;
+    margin-top: 30px;
+    border-radius: 20px;
+    float: left;
+}
+
+
+#ptec {
+    width: 195px;
+    height: 200px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 290px;
+    display: block;
+    position: absolute;
+}
+
+
+#stec {
+    width: 195px;
+    height: 90px;
+    color: #8B8B8B;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 100px;
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px ;
+    padding-right: 5px ;
+}
+
+#imtec{
+    margin-left: 40px;
+    margin-top: 30px;
+    border-radius: 100%;
+}
+
 .view>.logo2>ul>.my2{
     font-size: 38px;
-    position: absolute;
-    top: 0px;
-    left: 55px;
+    height: 0px;
+    padding-left: 60px;
 }
 .view>.logo2>ul>.my2>a{
     font-family: 'Jalnan';
 }
 .view>.logo2 .join_class{
-    width: 1400px; height: 306px; background-color:rgba(255,255,255,0.65);
+    width: 100%; height: 306px; background-color:rgba(255,255,255,0.65);
     margin: auto;
     border-radius: 20px;
-    position: absolute;
+    position: relative;
     top: 55px;
     left: 50px;
+    overflow: hidden;
 }
-.view>.logo2 .join_class .container1{
-    width: 195px; height: 236px; background-color:#FFFFFF;
-    margin: auto;
-    border-radius: 20px;
-    position: absolute;
-    top: 35px;
-    left: 34px;
-}
+
 .view>.logo2 .join_class .container2{
     width: 195px; height: 236px; background-color:#FFFFFF;
     margin: auto;
@@ -130,7 +273,7 @@ body{z-index: 2}
     left: 580px;
 }
 .view>.logo2 .join_class .container4{
-    width: 195px; height: 236px; background-color:#FFFFFF;
+    width: 100%; height: 236px; background-color:#FFFFFF;
     margin: auto;
     border-radius: 20px;
     position: absolute;
@@ -151,7 +294,10 @@ body{z-index: 2}
     position: absolute;
     top: 160px;
     left: 94px;
-}
+    overflow: hidden;
+}*/
+
+
 .all_bt{
     border: none;
     background: none;

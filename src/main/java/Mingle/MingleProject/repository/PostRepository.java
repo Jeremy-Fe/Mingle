@@ -18,5 +18,6 @@ public interface PostRepository extends JpaRepository<PostEntity, Long> {
     List<PostEntity> findByBoardAndGatheringPost(Long pGNum, Long pBNum);
 
 
-    List<PostEntity> findByPMId(String logInId);
+    @Query("select p from PostEntity p where p.pMId.mId =:logInId")
+    List<PostEntity> findBypMId(String logInId);
 }
