@@ -35,7 +35,7 @@
 
         <!-- 바꿔야하는 부분 -->
         <div class="view">
-            <form action="Gathering_Post_Write" method="post">
+            <form th:action="@{|/Gathering_Post_Write/${id}|}" method="post">
             <!-- 헤더 -->
                 <div id="viewHeader">
                   <li id="hGtrImg"><img src="image/Main_Login_내게시물.png" alt=""></li>
@@ -49,13 +49,12 @@
                   </li>
                   <li id="hSelCatg">
                     <h4>게시판</h4>
-                    <select name="bName" class="select_board">
-                      <option value="none">게시판 선택</option>
-                      <option value="free">자유글</option>
-                      <option value="interest">관심사 공유</option>
-                      <option value="review">정모후기</option>
-                      <option value="greetings">가입인사</option>
-                      <option value="notification">공지사항</option>
+                    <select name="pBNum" class="select_board">
+                      <option name="pBNum" value="2">자유글</option>
+                      <option name="pBNum" value="3">관심사 공유</option>
+                      <option name="pBNum" value="1">정모후기</option>
+                      <option name="pBNum" value="4">가입인사</option>
+                      <option name="pBNum" value="5">공지사항</option>
                   </select>
                   </li>
                 </div>
@@ -63,7 +62,7 @@
 
                 <!-- 글작성페이지 -->
                 <section id="createView">
-                  <form id="createViewInner" action="" method="post">
+                  <div id="createViewInner">
                     <li><input id="cTitle" name="pTitle" type="text"placeholder="제목을 입력하세요."></li>
                     <li><textarea id="cText" name="pContents" placeholder="내용을 입력하세요."></textarea></li>
                     <li>
@@ -73,7 +72,7 @@
                     <input id="cCreate" type="submit" th:if(작성 )>
                     <input id="cCreate" type="submit" th:if(수정 )>
                     -->
-                  </form>
+                  </div>
                 </section>
                 <!-- // 글작성페이지 -->
             </form>

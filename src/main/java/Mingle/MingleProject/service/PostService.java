@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,5 +29,13 @@ public class PostService {
         }
 
         return postDTOList;
+    }
+
+    public void uploadPost(PostDTO postDTO) {
+        PostEntity postEntity = EntityDTOMapper.DTOToEntity(postDTO);
+        System.out.println(postEntity.getGatheringEntity());
+        System.out.println(postEntity.getPNum());
+
+        postRepository.save(postEntity);
     }
 }
