@@ -45,7 +45,7 @@
                     <!--<img alt="user_img" src="#">-->
                 </li>
                 <li th:unless="${session.loginId == null}" class="icon_a"><a href="/MyPage">
-                    <img alt="user_img" th:src="'data:image/png;base64,' + ${#strings.toString(profileimg)}"></a></li>
+                    <img alt="user_img" th:src="'data:image/png;base64,' + ${#strings.toString(session.profileimg)}"></a></li>
                     <!--<img alt="user_img" th:src="${session.profileimg2}"></a></li>-->
                 <li th:unless="${session.loginId == null}" class="icon_b">
                     <button type="button" id="logout"><img alt="_mymenu" src="/image/Main_마이메뉴.png"></button>
