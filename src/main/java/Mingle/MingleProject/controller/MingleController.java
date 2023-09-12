@@ -220,6 +220,9 @@ public class MingleController {
         return "redirect:/Main_UnLogIn?message=success";
     }
 
+    @PostMapping("/loginForm")
+    public String id_pwFind() { return "login"; }
+
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginResult = memberService.login(memberDTO);

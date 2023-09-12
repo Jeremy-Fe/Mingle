@@ -90,7 +90,7 @@ h3{font-family: 'GmarketSans';}
 /*배너 section_ view_banner*/
 #view > .banner{width: 1400px; margin: auto; overflow: hidden;
     border-radius: 20px; background-color:rgba(255,255,255,0.5);
-    margin-top: 20px;
+    margin-top: 20px
 }
 #view > .banner>.ul{width: 1400px ; margin-left: 180px}
 #view > .banner>.ul>.swiper-slide{}
@@ -100,10 +100,3 @@ h3{font-family: 'GmarketSans';}
 .swiper-button-prev,
 .swiper-button-next {font-size: 100px;font-weight: bold; color: #564797}
 
-/*핫모임 section_ view_hotMeeting*/
-#view >.hotMeeting{height: 350px}
-#view >.hotMeeting>ul{width: 1300px; margin: auto ;}
-#view >.hotMeeting>ul>h3{
-    font-family: 'Jalnan'; font-size: 36px;
-    line-height: 100px; color: #564797; float: left;
-}
