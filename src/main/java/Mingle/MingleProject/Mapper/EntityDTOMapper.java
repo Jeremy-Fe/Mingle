@@ -3,6 +3,7 @@ package Mingle.MingleProject.Mapper;
 import Mingle.MingleProject.dto.*;
 import Mingle.MingleProject.entity.*;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
 
 public class EntityDTOMapper {
@@ -44,10 +45,11 @@ public class EntityDTOMapper {
     public static PostDTO entityToDTO(PostEntity postEntity) {
         return modelMapper.map(postEntity, PostDTO.class);
     }
-    public static PostEntity DTOToEntity(PostDTO postDTO) {
+    public static PostEntity dtoToEntity(PostDTO postDTO) {
         return modelMapper.map(postDTO, PostEntity.class);
 
     }
+
 
     // 게시글 사진 맵핑
 
