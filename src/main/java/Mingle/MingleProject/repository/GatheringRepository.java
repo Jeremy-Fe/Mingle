@@ -17,8 +17,11 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
     @Query("SELECT g FROM Gathering g WHERE g.gName IN (SELECT m.mGGathering FROM MemberEntity m WHERE m.mId = ?1)")
     List<Gathering> findMatchingGatheringsByMemberId(String userId);
 */
+    /*내모임 확인*/
     @Query("SELECT g FROM GatheringEntity g WHERE g.gName IN :gNames")
     List<GatheringEntity> findMatchingGatheringsByGName(@Param("gNames") List<String> gNames);
+    @Query("SELECT g FROM GatheringEntity g WHERE g.gMainsubject IN :gInter")
+    List<GatheringEntity> findMatchingMInterestByMGahtering(@Param("gInter") String gInter);
 
     /*카테고리 검색*/
     /*전체 검색*/

@@ -21,6 +21,7 @@ public class LoginedMainController {
     private Object gatheringRepository;
 
     //    @CrossOrigin
+    /*내모임*/
     @GetMapping("Main_LogIn/findMyMingles")
     public ResponseEntity<List<GatheringEntity>> getMeetings(HttpSession session, Model model) {
         String userId = (String) session.getAttribute("loginId");
@@ -33,22 +34,20 @@ public class LoginedMainController {
 
         return ResponseEntity.ok(mingles);
     }
+    /*추천모임*/
+     @GetMapping("Main_LogIn/recomMingle")
+    public ResponseEntity<List<GatheringEntity>> recomMingle(HttpSession session, Model model) {
+        String userId = (String) session.getAttribute("loginId");
+        System.out.println("메인페이지_아이디_getAttribute 확인 = "+userId);
 
-/*    @GetMapping("search2/searchMingle")
-    public ResponseEntity<List<Gathering>> searchMingle(String selectedRegi,String mainCtName,String subC, Model model) {
-        System.out.println("selectedRegi 확인 = "+ selectedRegi + "mainCtName 확인 = "+mainCtName+"subC 확인"+subC);
-        if(subC.equals("전체")){
-            List<Gathering> searchMingle = gatheringService.searchMingleCase2(selectedRegi ,mainCtName);
-            System.out.println("searchMingle 확인 = "+ searchMingle);
-            model.addAttribute("searchMingle",searchMingle);
-            return ResponseEntity.ok(searchMingle);
-        }else {
-            List<Gathering> searchMingle = gatheringService.searchMingleCase1(selectedRegi, mainCtName, subC);
-            System.out.println("searchMingle 확인 = "+ searchMingle);
-            model.addAttribute("searchMingle",searchMingle);
-            return ResponseEntity.ok(searchMingle);
-        }
-    }*/
+        List<GatheringEntity> mingles = gatheringService.findRecomMingles(userId);
+
+        model.addAttribute("mingles",mingles);
+        System.out.println("메인페이지_추천모임(mingles) 확인 = "+ mingles);
+
+        return ResponseEntity.ok(mingles);
+    }
+
     /*모임*/
     @GetMapping("search2/searchMingle")
     public ResponseEntity<List<GatheringEntity>> searchMingle(String selectedRegi,String mainCtName,String subC, Model model) {
@@ -85,6 +84,7 @@ public class LoginedMainController {
             return ResponseEntity.ok(searchMingle);
         }
     }
+
 
 }
 
