@@ -1,7 +1,10 @@
 package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
+import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
@@ -18,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -94,28 +98,44 @@ public class MingleController {
     public String Main_LogIn() { return "Main_LogIn"; }
 
     @GetMapping("myClass*")
-    public String myClass() {return "myClass";}
-
-    @GetMapping("schedule*")
-    public String schedule() {return "schedule";}
-
-
-//    @GetMapping("MyPage*")
-//    public String MyPage(){return "MyPage";}
-
-    @GetMapping("MyPage")
-    public String MyPage(HttpSession session, Model model){
+    public String myClass(HttpSession session, Model model) {
+        /*--헤더의 로그인 된 ID값 세션에서 받아오기--*/
         String logInId = (String) session.getAttribute("loginId");
         MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
         model.addAttribute("myPagemId", memberDTO);
 
+        /*--가입한 모임 출력--*/
+        List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);
+        model.addAttribute("mingles",mingles);
+        System.out.println("mingles 확인 = "+ mingles);
+
+        return "myClass";
+    }
+
+    @GetMapping("schedule*")
+    public String schedule() {return "schedule";}
+
+    @GetMapping("MyPage")
+    public String MyPage(HttpSession session, Model model){
+        /*--헤더의 로그인 된 ID값 세션에서 받아오기--*/
+        String logInId = (String) session.getAttribute("loginId");
+        MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
+        model.addAttribute("myPagemId", memberDTO);
+
+        /*--프로필 이미지 출력--*/
         String profileimg = memberService.getProfileimgData(logInId);
         model.addAttribute("profileimg", profileimg);
         System.out.println(profileimg);
 
+        /*--가입한 모임 출력--*/
         List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);
         model.addAttribute("mingles",mingles);
         System.out.println("mingles 확인 = "+ mingles);
+
+        /*--내 게시글  출력--*/
+        List<PostDTO> postDTOs = postService.findPost(logInId);
+        model.addAttribute("post",postDTOs);
+        System.out.println("postDTOs 확인 =" + postDTOs);
 
         return "MyPage";
     }
@@ -178,13 +198,15 @@ public class MingleController {
     @GetMapping("Gathering_Album_BoardNotification")
     public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
 
-    @GetMapping("search1")
-    public String search1() {return "search1";}
     @GetMapping("search2")
     public String search2() {return "search2";}
     @GetMapping("selectRegi")
     public String selectRegi() {
         return "selectRegi";
+    }
+    @GetMapping("selectInter")
+    public String selectInter() {
+        return "selectInter";
     }
 
     @GetMapping("/delete/{mId}")
@@ -210,6 +232,11 @@ public class MingleController {
             session.setAttribute("loginId", loginResult.getMId());
             session.setAttribute("memberDTO", loginResult);
             model.addAttribute("memberDTO",loginResult);
+
+            String logInId = (String) session.getAttribute("loginId");
+            String profileimg = memberService.getProfileimgData(logInId);
+            session.setAttribute("profileimg", profileimg);
+
             return "Main_LogIn";
         }else {
             //login 실패
@@ -245,10 +272,8 @@ public class MingleController {
 
     @PostMapping("/find_id/findMId")
     public ResponseEntity<String> findMemberId(@RequestParam String mName, @RequestParam String mEmail) {
-        // mName과 mEmail을 기반으로 mId를 조회하는 로직을 구현하세요.
-        // 실제로는 데이터베이스에서 해당 회원을 찾고 mId를 반환합니다.
 
-        String memberId = memberRepository.findMemberIdByNameAndEmail(mName, mEmail); // 회원 아이디를 조회하는 메서드 구현 필요
+        String memberId = memberRepository.findMemberIdByNameAndEmail(mName, mEmail); // 회원 아이디를 조회하는 메서드
 
         if (memberId != null) {
             return ResponseEntity.ok(memberId);
@@ -259,10 +284,8 @@ public class MingleController {
 
     @PostMapping("/find_id/findMPw")
     public ResponseEntity<String> findMemberPw(@RequestParam String mId, @RequestParam String mEmail) {
-        // mId mEmail을 기반으로 mPw를 조회하는 로직을 구현하세요.
-        // 실제로는 데이터베이스에서 해당 회원을 찾고 mId를 반환합니다.
 
-        String memberPw = memberRepository.findMemberPwdByIdAndEmail(mId, mEmail); // 회원 아이디를 조회하는 메서드 구현 필요
+        String memberPw = memberRepository.findMemberPwdByIdAndEmail(mId, mEmail); // 회원 아이디를 조회하는 메서드 구현
 
         if (memberPw != null) {
             return ResponseEntity.ok(memberPw);
@@ -270,6 +293,32 @@ public class MingleController {
             return ResponseEntity.notFound().build(); // 회원을 찾지 못한 경우 404 응답 반환
         }
     }
+
+    //모임 가입하기
+    @PostMapping("/updateMGGathering")
+    @ResponseBody
+    public boolean updateMGGathering(String gName, String mId) {
+        // mId로 회원을 조회
+        Optional<MemberEntity> optionalMember = memberRepository.findBymId(mId);
+        System.out.println("gName = " + gName + ", mId = " + mId);
+
+        if (optionalMember.isPresent()) {
+            MemberEntity member = optionalMember.get();
+            String currentMGathering = member.getMGathering();
+            if (currentMGathering != null) {
+                currentMGathering += "," + gName;
+            } else {
+                currentMGathering = gName;
+            }
+            // mGGathering 필드를 gName으로 업데이트
+            member.setMGathering(currentMGathering);
+            memberRepository.save(member); // 업데이트된 회원 정보 저장
+            return true; // 업데이트 성공
+        } else {
+            return false; // 회원을 찾을 수 없음
+        }
+    }
+
 }
 
 

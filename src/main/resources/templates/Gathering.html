@@ -15,7 +15,22 @@
                     <a class="title_detail" th:text="|${District}|"></a>
                     <a class="title_detail" th:text="|${GMainsubject}|"></a>
                 </li>
-                <li><h3 class="title_title" th:inline="text">[[${gName}]]<a href="#">가입하기</a></h3></li>
+                <div id="gName" data-gname="${gName}"></div>
+                <div id="mId" data-mid="${session.memberDTO.getMId()}"></div>
+<!--                <div id="mName" data-mname="${session.memberDTO.getMGGathering()}"></div>-->
+<!--                <div id="containsGName" data-containsgname="${session.memberDTO.getMGGathering().contains(gName)}"></div>-->
+                <li>
+                    <h3 class="title_title" th:inline="text">[[${gName}]]
+<!--                        <a th:if="${session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}" th:onclick="'joinGathering(\'' + ${gName} + '\', \'' + ${session.memberDTO.getMId()} + '\')'">가입하기</a>-->
+                        <a th:if="${session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}"
+                           th:attr="data-gname=${gName}, data-mid=${session.memberDTO.getMId()}"
+                           id="joinButton"
+                           onclick="joinGathering(this.getAttribute('data-gname'), this.getAttribute('data-mid'))">
+                            가입하기
+                        </a>
+                    </h3>
+                </li>
+
             </ul>
             <li th:with="gatheringId=${Gathering_id}">
                 <a class="title_nav" th:href="@{|/Gathering_Home/${gatheringId}|}">홈</a>
@@ -25,3 +40,37 @@
             </li>
         </ul>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+
+        // 가입하기 버튼 클릭 시 호출되는 함수
+        function joinGathering(gName, mId) {
+
+            $.ajax({
+                type: "POST",
+                url: "/updateMGGathering",
+                data: {
+                    gName: gName,
+                    mId: mId
+                },
+                success: function(response) {
+                    if (response === true) {
+                        alert("가입이 완료되었습니다.");
+                        // 원하는 동작을 수행하도록 추가 코드 작성
+                        var joinButton = document.getElementById("joinButton");
+                        if (joinButton) {
+                            joinButton.style.display = "none"; // 숨기기
+                            // 또는 joinButtonContainer.remove(); // 삭제
+                        }
+                    } else {
+                        alert("가입에 실패했습니다.");
+                    }
+                },
+                error: function() {
+                    alert("서버 오류로 인해 가입에 실패했습니다.");
+                }
+            });
+        }
+
+    </script>

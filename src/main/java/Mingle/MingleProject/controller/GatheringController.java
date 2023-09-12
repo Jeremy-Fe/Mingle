@@ -1,6 +1,11 @@
 package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.config.MemberComparator;
+import Mingle.MingleProject.dto.GatheringDTO;
+import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.dto.PostDTO;
+import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.dto.*;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.entity.ScheduleEntity;
@@ -25,6 +30,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,6 +39,7 @@ public class GatheringController {
     private final MemberService memberService;
     private final CityService cityService;
     private final GatheringService gatheringService;
+    private final MemberRepository memberRepository;
 
 
     @GetMapping("Gathering_Home/{id}")
@@ -155,7 +162,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_Board";}
 
     @GetMapping("Gathering_Album_BoardReview/{id}")
@@ -164,7 +171,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardReview";}
 
     @GetMapping("Gathering_Album_BoardFree/{id}")
@@ -173,7 +180,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardFree";}
 
     @GetMapping("Gathering_Album_BoardShareInterest/{id}")
@@ -182,7 +189,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardShareInterest";}
 
     @GetMapping("Gathering_Album_BoardJoin/{id}")
@@ -191,7 +198,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardJoin";}
 
     @GetMapping("Gathering_Album_BoardNotification/{id}")
@@ -200,7 +207,7 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
+
         return "Gathering_Album_BoardNotification";}
 
     @GetMapping("Gathering_Schedule/{id}")
@@ -209,6 +216,8 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
+
+        return "Gathering_Schedule";}
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
         model.addAttribute("Schedule", scheduleDTOList);
 
@@ -231,9 +240,28 @@ public class GatheringController {
 
     @PostMapping("/create-gathering")
     public String save(@ModelAttribute GatheringDTO gatheringDTO){
-        gatheringService.save(gatheringDTO);
-        System.out.println("GatheringController.save");
-        System.out.println("GatheringDTO = " + gatheringDTO);
+        String gName = gatheringDTO.getGName();
+        // MemberEntity를 검색합니다. 여기서는 검색 방법에 따라 다를 수 있습니다.
+        Optional<MemberEntity> memberOptional = memberRepository.findBymId(gatheringDTO.getGMainleader());
+
+        if (memberOptional.isPresent()) {
+            // MemberEntity의 M_G_GATHERING 값을 업데이트합니다.
+            MemberEntity member = memberOptional.get();
+
+            member.setMGathering(gName);
+
+            // MemberEntity를 저장 또는 업데이트합니다.
+            memberService.save(MemberDTO.toMemberDTO(member));
+
+            // GatheringDTO를 저장합니다.
+            gatheringService.save(gatheringDTO);
+
+            System.out.println("GatheringController.save");
+            System.out.println("GatheringDTO = " + gatheringDTO);
+        }
+//        gatheringService.save(gatheringDTO);
+//        System.out.println("GatheringController.save");
+//        System.out.println("GatheringDTO = " + gatheringDTO);
         return "myClass";
     }
 

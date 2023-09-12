@@ -93,4 +93,11 @@ public class MemberEntity {
         return memberEntity;
     }
 
+    public void setMGathering(String mGGathering) {
+        this.mGGathering = mGGathering;
+    }
+
+    public String getMGathering() {
+        return this.mGGathering;
+    }
 }

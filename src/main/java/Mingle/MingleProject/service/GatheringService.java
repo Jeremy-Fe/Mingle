@@ -165,6 +165,7 @@ public List<GatheringEntity> findMyMingles(String userId) {
         GatheringEntity gatheringEntity = GatheringEntity.gathering(gatheringDTO);
         gatheringRepository.save(gatheringEntity);
         // repository의 save메소드 호출 (조건. entity객체를 넘겨줘야 함)
+
     }
 
     // 게시글 뷰

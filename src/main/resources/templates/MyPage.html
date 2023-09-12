@@ -73,87 +73,50 @@
 
         </div>
         <!--내모임-->
-        <p class="title_02">가입한 모임
+        <p class="title_02">가입한 모임</p>
         <div id="sc1" class="swiper-container mc clearfix">
             <div id="myclass" class="swiper-wrapper clearfix">
                 <div id ="myMingCardInner" class="swiper-slide mycb_01" th:each="gathering :${mingles}">
-                    <a>
-                        <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}" src="/image/DefaultClass_logo.png">
+                    <a th:if="${gathering.getGCoverimg() == null}" href="Mypage">
+                        <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <a th:unless="${gathering.getGCoverimg() == null}" href="Mypage">
+                        <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}">
                     </a>
                     <p th:text="${gathering.getGName()}" >질풍가도</p>
                     <span th:text="${gathering.getGIntroduction()}"><도심속 러닝 모...></span>
                 </div>
+
+                <div class="swiper-slide"></div><!--빈 페이지-->
+                <div class="swiper-slide"></div><!--빈 페이지-->
+                <div class="swiper-slide"></div><!--빈 페이지-->
+                <div class="swiper-slide"></div><!--빈 페이지-->
+                <div class="swiper-slide"></div><!--빈 페이지-->
+                <div class="swiper-slide"></div><!--빈 페이지-->
             </div>
         </div>
         <!--내게시물-->
         <p class="title_03">내 게시물</p>
         <div id="sc2" class="swiper-container mp clearfix">
             <div id="myPost" class="swiper-wrapper clearfix">
-                <div class="swiper-slide post_01 clearfix">
-                    <a>
+                <div class="swiper-slide post_01 clearfix"  th:each="mypost :${post}" >
+                    <a th:if="${mypost.getPImg1() == null}" href="Mypage">
                         <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
                     </a>
-                    <p class="postname_01">질풍가도</p>
-                    <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
-                    <p class="day_01">2023. 05. 19
-                    <p class="viewcount_01">조회 012</p></p>
+                    <a th:unless="${mypost.getPImg1() == null}" href="Mypage">
+                        <img class="postimg_01" alt="모임 이미지1" th:src="${mypost.getPImg1()}">
+                    </a>
+                    <p class="postname_01" th:text="${mypost.getPGNum()}">질풍가도</p>
+                    <span th:text="${mypost.getPContents()}">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
+                    <p class="day_01" th:text="${mypost.getPDate()}">2023. 05. 19</p>
                     </a>
                 </div>
-
-                <div class="swiper-slide post_02 clearfix">
-                    <a>
-                        <img class="postimg_01" alt="모임 이미지2" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p class="postname_01">우주먼지</p>
-                    <span>20년만에 돌아오는 천체 관측 하는 날 끝나고 맥주 한잔 할 살암</span>
-                    <p class="day_01">2023. 07. 15
-                    <p class="viewcount_01">조회 112</p></p>
-                    </a>
-                </div>
-
-                <div class="swiper-slide post_03 clearfix">
-                    <a>
-                        <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p class="postname_01">빽투더퓨처</p>
-                    <span>플스 하는 날 (피파, 철권, 킹오파, 다디졌다)</span>
-                    <p class="day_01">2023. 08. 06
-                    <p class="viewcount_01">조회 002</p></p>
-                    </a>
-                </div>
-
-                <div class="swiper-slide post_04 clearfix">
-                    <a>
-                        <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p class="postname_01">스플래쉬</p>
-                    <span>동네 아재들 다 모여라 배드민턴 함치자~!</span>
-                    <p class="day_01">2023. 08. 14
-                    <p class="viewcount_01">조회 001</p></p>
-                    </a>
-                </div>
-
-                <div class="swiper-slide post_05 clearfix">
-                    <a>
-                        <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p class="postname_01">질풍가도</p>
-                    <span>이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
-                    <p class="day_01">2023. 08. 31
-                    <p class="viewcount_01">조회 012</p></p>
-                    </a>
-                </div>
-
-                <div class="swiper-slide post_06 clearfix">
-                    <a>
-                        <img class="postimg_01" alt="모임 이미지3" src="/image/DefaultClass_logo.png">
-                    </a>
-                    <p class="postname_01">우주먼지</p>
-                    <span>모임 회식</span>
-                    <p class="day_01">2023.09.03
-                    <p class="viewcount_01">조회 112</p></p>
-                    </a>
-                </div>
+                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
             </div>
 
         </div>
@@ -243,47 +206,6 @@
     </section>
 
 </div>
-
-<input type="hidden" id="loginId" th:value="${session.loginId}">
-
-
-<!--내모임 불러오기-->
-
-<script>
-    window.onload = function() {
-        var loginId = document.getElementById("loginId").value;
-        console.log("loginId = "+loginId);
-
-        if(loginId == null){
-            alert("(error)"+"로그인이 필요한 항목입니다.\n"+"회원 가입 또는 로그인을 해주세요");
-        }
-        else{
-            $.ajax({
-                url: "Mypage",
-                type : 'GET',
-                success: function(response) {
-                    console.log("response = "+response)
-
-                    for (var i = 0; i < response.length; i++) {
-                        var mycb = response[i];
-                        console.log("response[i] =", mycb);
-                        var 모임명 = mycb.gname;
-                        var 모임이미지 = mycb.gcoverimg;
-                        var 모임소개글 = mycb.gintroduction;
-                        console.log("ajax : 모임명 확인 =", 모임명);
-                        console.log("ajax : response.length+1 확인 =", response.length);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        }
-    };
-
-
-
-</script>
 
 <!--프로필 수정-->
 <script>
@@ -395,7 +317,7 @@
         });
     });
 </script>
-<!--내 게시물 블럭 생성-->
+<!--내 게시물 블럭 생성
 <script>
     // 가상의 데이터베이스 데이터 배열
     var databaseData = [
@@ -420,7 +342,7 @@
         dataDiv.textContent = databaseData[i]; // 데이터 추가
         myPost.appendChild(dataDiv); // <div>를 컨테이너에 추가
     }
-</script>
+</script>-->
 
 <!--내 댓글 블럭 생성-->
 <script>
@@ -487,6 +409,7 @@
         }
     });
 </script>
+
 <script>
 
     const swiper1 = new Swiper('#sc1', {

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.lang.reflect.Member;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -257,4 +258,27 @@ public class MemberService {
         MemberDTO memberDTO = MemberDTO.toMemberDTO(memberEntity.get());
         return  memberDTO;
     }
+
+    @Transactional
+    public void updateMGathering(String mId, String gName) {
+        // mId를 사용하여 회원을 찾습니다.
+        Optional<MemberEntity> memberOptional = memberRepository.findBymId(mId);
+
+        if (memberOptional.isPresent()) {
+            MemberEntity member = memberOptional.get();
+            String currentMGathering = member.getMGathering();
+
+            // 현재 mGGathering 값에 새로운 gName을 추가합니다.
+            if (currentMGathering != null) {
+                currentMGathering += "," + gName;
+            } else {
+                currentMGathering = gName;
+            }
+
+            // 새로운 mGGathering 값을 설정합니다.
+            member.setMGathering(currentMGathering);
+            memberRepository.save(member);
+        }
+    }
+
 }

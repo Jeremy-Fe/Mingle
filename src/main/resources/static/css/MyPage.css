@@ -79,9 +79,9 @@ body{z-index: 2}
 
 /*<section_ view>*/
 
-
 /*---뷰 전체 기본설정---*/
-.view > div {width: 1400px;
+.view > div {
+    width: 1400px;
     margin: auto; margin-top: 20px;
     border-radius: 20px;
     position: relative;
@@ -120,17 +120,6 @@ body{z-index: 2}
 .view> .MyPage .title_02 {
     float: left;
 }
-.view> .MyPage .title_02-1{
-    font-size: 20px;
-    /*---마이페이지 텍스트(끝)---*/
-}
-
-.view> .MyPage .title_02-1 .check{
-    width: 20px;
-    height: 20px;
-    /*---마이페이지 텍스트(끝)---*/
-}
-
 
 /*---마이페이지 세부설정---*/
 .view> .MyPage .profile ul{
@@ -183,18 +172,6 @@ body{z-index: 2}
     background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
     position: relative;
 }
-
-/*.view> .MyPage .profile li .birth {
-    padding-top: 15px;
-    font-weight: bold;
-    font-family: 'Jalnan';
-}
-.view> .MyPage .profile li .gender{
-    padding-top: 15px;
-    font-weight: bold;
-    font-family: 'Jalnan';
-    !*---기본정보 텍스트(끝)---*!
-}*/
 
 #ex1 > button {
     top: 340px;
@@ -339,7 +316,6 @@ body{z-index: 2}
     /*---내모임 제목(감추기)(끝)---*/
 }
 
-
 /*---내모임 출력(감추기)---*/
 .view > .MyPage .mc #myclass > div {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
@@ -457,6 +433,12 @@ body{z-index: 2}
     font-size: 23px;
     position: absolute;
     font-family: 'GmarketSans';
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 5px;
+    padding-left: 5px;
+
 }
 
 .view > .MyPage .mp #myPost > div .day_01 {
