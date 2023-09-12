@@ -137,7 +137,12 @@ public class GatheringController {
         model.addAttribute("writer", memberDTO);
 
         List<CommentsDTO> commentsDTOList = gatheringService.findComments(pNum);
-
+        List<MemberDTO> memberDTOList = new ArrayList<>();
+        for (CommentsDTO commentsDTO: commentsDTOList) {
+            memberDTOList.add(memberService.findByCommentsWriter(commentsDTO.getCMId()));
+        }
+        model.addAttribute("Comments", commentsDTOList);
+        model.addAttribute("CommentsWriter", memberDTOList);
 
         return "Gathering_Post";
     }
@@ -211,8 +216,6 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-
-        return "Gathering_Schedule";}
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
         model.addAttribute("Schedule", scheduleDTOList);
 
@@ -227,11 +230,11 @@ public class GatheringController {
         model.addAttribute("memberCount", memberCount);
         model.addAttribute("remaining", remainingPerson);
 
+        return "Gathering_Schedule";}
 
 
 
-        return "Gathering_Schedule";
-    }
+
 
     @PostMapping("/create-gathering")
     public String save(@ModelAttribute GatheringDTO gatheringDTO){

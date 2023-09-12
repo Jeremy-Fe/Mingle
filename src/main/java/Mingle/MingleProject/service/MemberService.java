@@ -1,5 +1,6 @@
 package Mingle.MingleProject.service;
 
+import Mingle.MingleProject.Mapper.EntityDTOMapper;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
@@ -223,6 +224,8 @@ public class MemberService {
         return gatheringMemberDTOList;
     }
 
+
+
     public boolean deleteMemberById(String mId) {
         // memberId를 사용하여 회원을 찾습니다.
         MemberEntity member = memberRepository.findBymId(mId).orElse(null);
@@ -242,6 +245,13 @@ public class MemberService {
         MemberDTO memberDTO = MemberDTO.toMemberDTO(writer.get());
 
         return memberDTO;
+    }
+
+    public MemberDTO findByCommentsWriter(String cmId) {
+        Optional<MemberEntity> memberEntity = memberRepository.findBymId(cmId);
+
+        MemberDTO memberDTO = MemberDTO.toMemberDTO(memberEntity.get());
+        return  memberDTO;
     }
 
     @Transactional
