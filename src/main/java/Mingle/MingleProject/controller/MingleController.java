@@ -3,6 +3,7 @@ package Mingle.MingleProject.controller;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
+import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
@@ -29,7 +30,6 @@ public class MingleController {
     private final MemberService memberService ;
     private final CityService cityService ;
     private final GatheringService gatheringService;
-    private final PostService postService;
 
     // 회원가입 메일 서비스
     @Autowired
@@ -272,8 +272,6 @@ public class MingleController {
 
     @PostMapping("/find_id/findMId")
     public ResponseEntity<String> findMemberId(@RequestParam String mName, @RequestParam String mEmail) {
-        // mName과 mEmail을 기반으로 mId를 조회하는 로직을 구현하세요.
-        // 실제로는 데이터베이스에서 해당 회원을 찾고 mId를 반환합니다.
 
         String memberId = memberRepository.findMemberIdByNameAndEmail(mName, mEmail); // 회원 아이디를 조회하는 메서드
 
@@ -286,8 +284,6 @@ public class MingleController {
 
     @PostMapping("/find_id/findMPw")
     public ResponseEntity<String> findMemberPw(@RequestParam String mId, @RequestParam String mEmail) {
-        // mId mEmail을 기반으로 mPw를 조회하는 로직을 구현하세요.
-        // 실제로는 데이터베이스에서 해당 회원을 찾고 mId를 반환합니다.
 
         String memberPw = memberRepository.findMemberPwdByIdAndEmail(mId, mEmail); // 회원 아이디를 조회하는 메서드 구현
 

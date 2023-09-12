@@ -11,6 +11,7 @@ public interface InterestRepository extends JpaRepository<Interest, Long> {
 //    @Query("SELECT DISTINCT i.iMainsubject FROM Interest i")
 //    List<String> findAllMainSubjects();
 
+
     @Query("SELECT DISTINCT i.iMainsubject FROM Interest i WHERE i.iMainsubject LIKE %:searchTerm% escape '/'")
     List<String> findMainSubjectsContainingText(@Param("searchTerm") String searchTerm);
 
@@ -21,5 +22,6 @@ public interface InterestRepository extends JpaRepository<Interest, Long> {
     /*세부 괌심사 카테고리*/
     @Query("SELECT DISTINCT i.iSubject FROM Interest i WHERE i.iMainsubject =  ?1")
     List<String> findISubject(String mainSubject);
+
 
 }
