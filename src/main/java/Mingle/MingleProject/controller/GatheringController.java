@@ -210,12 +210,8 @@ public class GatheringController {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
-
-
-        return "Gathering_Schedule";}
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
         model.addAttribute("Schedule", scheduleDTOList);
-
 
         List<Integer> memberCount = new ArrayList<>();
         List<Long> remainingPerson = new ArrayList<>();
@@ -228,10 +224,10 @@ public class GatheringController {
         model.addAttribute("remaining", remainingPerson);
 
 
+        return "Gathering_Schedule";}
 
 
-        return "Gathering_Schedule";
-    }
+
 
     @PostMapping("/create-gathering")
     public String save(@ModelAttribute GatheringDTO gatheringDTO){
