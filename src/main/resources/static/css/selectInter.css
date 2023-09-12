@@ -26,12 +26,11 @@ body{z-index: 2; background-color: aliceblue;}
     background: rgba(0,0,255,0.4);
 }
 
-section{width: fit-content; margin: 0 auto;}
+/*.modal{max-width: max-content; !important;}
+#mainInter{width: max-content !important; margin: 0 auto;}*/
 /* 관심사 선택 1 */
 #inter1{
-    width: 660px;height: 850px;
-    background-color: rgba(255,255,255,0.65);
-    border-radius: 30px;
+    width: 600px; height: 800px;
     display: flex;
     float: left;
 
@@ -63,3 +62,57 @@ section{width: fit-content; margin: 0 auto;}
     width: 720px; height: 890px;position: relative; margin-left: 40px;
 }
 /* / 관심사 선택 1 */
+/*  관심사 선택 2 */
+#subWrap{
+    width: 1400px; height: 800px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+#subContent {
+    width: 1400px;
+    height: 800px;
+
+    background-color: #EEF1FF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+}
+
+#subInterestList {
+    width: 100%;
+    height: 650px;
+    line-height: 85px;
+    background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;
+    padding: 20px;
+
+}
+#subContent>p{
+    width: 100%; height: 100px;
+    padding-left: 20px;
+    font-family: 'Jalnan'; color: #564797; font-weight: bolder;
+    font-size: 48px;
+}
+#selectedInterest{
+    line-height: 100px;
+    font-family: 'Jalnan'; color: #564797; font-weight: bolder;
+    font-size: 48px;
+}
+#subInterestList>li{
+    width: max-content; height: max-content;
+    margin: 10px 20px; padding: 5px 15px;
+    font-size: 34px;
+    border-radius: 10px;
+    font-family: 'NexonLv1Gothic'; font-weight: lighter; text-align: center;
+    background-color: #FFFFFF;
+    float: left;cursor: pointer;
+}
+#subInterestList>li:hover{
+    background-color: #968ACD;
+}
+
+
+
+
+/* / 관심사 선택 2 */

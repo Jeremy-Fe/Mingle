@@ -2,8 +2,11 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.RegionDTO;
 import Mingle.MingleProject.entity.CityEntity;
+import Mingle.MingleProject.entity.Interest;
 import Mingle.MingleProject.service.CityService;
+import Mingle.MingleProject.service.InterestService;
 import Mingle.MingleProject.service.MemberService;
+import Mingle.MingleProject.service.SubInterestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,6 +24,7 @@ public class RegionController {
     //생성자 주입
     private final MemberService memberService;
     private final CityService cityService;
+    private final SubInterestService interestService;
 
     /*지역 검색*/
     @GetMapping("selectRegi/regiSearch")
@@ -45,6 +49,13 @@ public class RegionController {
 
         return "search2";
     }
+    @GetMapping("/selectInter/mS")
+    public ResponseEntity<List<String>> getSubInterestsByMainSubject(String mainSubject) {
+        List<String> subInterests = interestService.findSubInterestsByMainSubject(mainSubject);
+        System.out.println("Sub Interests: " + subInterests);
+        return ResponseEntity.ok(subInterests);
+    }
+
 
 
 
