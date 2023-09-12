@@ -49,51 +49,16 @@
     </div>
     <!--맞춤 추천 영역-->
     <div class="recommend">
+
         <ul>
             <li class="rec1" th:inline="text">[[${session.memberDTO.getMName()}]]<a>님 맞춤 추천</a></li>
         </ul>
-        <div class="recommend2">
-            <div class="container6">
-                <ul>
-                    <img class="dd_img1" src="/image/동아리 이미지1.png"/>
-                </ul>
-                <ul>
-                    <button type="button" class="sh_bt1" onclick="alert('클릭!')">
-                        <img src="/image/바로가기.png"/>
-                    </button>
-                </ul>
-            </div>
-            <div class="container7">
-                <ul>
-                    <img class="dd_img2" src="/image/동아리 이미지2.png"/>
-                </ul>
-                <ul>
-                    <button type="button" class="sh_bt2" onclick="alert('클릭!')">
-                        <img src="/image/바로가기.png"/>
-                    </button>
-                </ul>
-            </div>
-            <div class="container8">
-                <ul>
-                    <img class="dd_img3" src="/image/동아리 이미지3.png"/>
-                </ul>
-                <ul>
-                    <button type="button" class="sh_bt3" onclick="alert('클릭!')">
-                        <img src="/image/바로가기.png"/>
-                    </button>
-                </ul>
-            </div>
-            <div class="container9">
-                <ul>
-                    <img class="dd_img4" src="/image/동아리 이미지4.png"/>
-                </ul>
-                <ul>
-                    <button type="button" class="sh_bt4" onclick="alert('클릭!')">
-                        <img src="/image/바로가기.png"/>
-                    </button>
-                </ul>
-            </div>
+
+        <div class="recMigle">
+
+
         </div>
+
         <div class="make_meet">
             <ul>
                 <button type="button" class="meet_bt" onclick="location.href='Create_Meet'">모임 만들기</button>
@@ -133,6 +98,59 @@
 
 
     });
+
+    /*모임 불러오기*/
+    window.onload = function() {
+        var loginId = document.getElementById("loginId").value;
+
+        console.log("loginId = "+loginId);
+        /*추천모임검색*/
+        $.ajax({
+            url: "Main_LogIn/recomMingle",
+            type : 'GET',
+            success: function(response) {
+                console.log("추천모임 GET = "+response)
+                if(response.length > 0){
+                    for (var i = 0; i < response.length; i++) {
+                        var mingles = response[i];
+                        console.log("추천모임 GET response[i] =", mingles);
+                        var 모임명 = mingles.gname;
+                        var 모임이미지 = mingles.gcoverimg;
+                        var 모임카테고리 = mingles.gmainsubject;
+                        var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
+                        var 모임소개글 = mingles.gintroduction;
+                        console.log("추천된 모임명 확인 =", 모임명);
+                        console.log("추천모임 GET response.length+1 확인 =", response.length);
+                        var htmlMingle =
+                            '<div class="mingle">\n' +
+                            '<ul>\n' +
+                            '<img src="'+모임이미지+'">\n' +
+                            '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
+                            '<li id="mCategorie">'+모임카테고리+'</li>\n' +
+                            '<li id="mRogi">'+모임지역+'</li>\n' +
+                            '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+                            '</ul>\n' +
+                            '<p id="mIntd">'+모임소개글+'</p>\n' +
+                            '</div>';
+
+                        $("#recMingCardInner").append(htmlMingle);
+                    }
+                }else{
+                    var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
+                        '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
+                        '밍글되어있지 않아요.' +
+                        '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
+                        '</div>';
+                    $("#recMingCardInner").append(htmlMingle);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+
+    };
+
 </script>
 </body>
 </html>
