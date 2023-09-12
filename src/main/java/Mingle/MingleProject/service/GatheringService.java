@@ -1,19 +1,23 @@
 package Mingle.MingleProject.service;
 
 import Mingle.MingleProject.Mapper.EntityDTOMapper;
-import Mingle.MingleProject.dto.GatheringDTO;
-import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.dto.PostDTO;
-import Mingle.MingleProject.entity.GatheringEntity;
-import Mingle.MingleProject.entity.MemberEntity;
-import Mingle.MingleProject.entity.PostEntity;
+import Mingle.MingleProject.dto.*;
+import Mingle.MingleProject.entity.*;
 import Mingle.MingleProject.repository.GatheringRepository;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.sql.rowset.serial.SerialBlob;
+import javax.transaction.Transactional;
+import java.io.IOException;
 import java.lang.reflect.Member;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.*;
 
 
@@ -176,5 +180,48 @@ public List<GatheringEntity> findMyMingles(String userId) {
             return null;
         }
 
+    }
+
+
+
+    private Blob createBlobFromMultipartFile(MultipartFile multipartFile) throws IOException, SQLException {
+        byte[] fileBytes = multipartFile.getBytes();
+        return new SerialBlob(fileBytes);
+    }
+    @Transactional
+    public void uploadImage(@NotNull MultipartFile gProfileimg, String mId) {
+        try {
+            GatheringEntity gatheringEntity = new GatheringEntity();
+            Blob mProfileBlob = createBlobFromMultipartFile(gProfileimg);
+            gatheringEntity.setGCoverimg(mProfileBlob);
+            gatheringRepository.updateGatheringCoverimg(mProfileBlob,mId);
+
+        } catch (IOException | SQLException e) {
+            e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
+            throw new RuntimeException("이미지 업로드 중 오류가 발생했습니다.");
+        }
+    }
+
+    public List<ScheduleDTO> findSchedule(Long id) {
+
+        List<ScheduleEntity> scheduleEntityList = gatheringRepository.findBysGNum(id);
+        List<ScheduleDTO> scheduleDTOList = new ArrayList<>();
+        for (ScheduleEntity scheduleEntity: scheduleEntityList) {
+            scheduleDTOList.add(EntityDTOMapper.entityToDTO(scheduleEntity));
+
+        }
+
+
+
+        return scheduleDTOList;
+    }
+
+    public List<CommentsDTO> findComments(Long pNum) {
+//        List<CommentsEntity> commentsEntityList = gatheringRepository.findByPNum(pNum);
+        List<CommentsDTO> commentsDTOList = new ArrayList<>();
+//        for (comments:) {
+//
+//        }
+        return commentsDTOList;
     }
 }

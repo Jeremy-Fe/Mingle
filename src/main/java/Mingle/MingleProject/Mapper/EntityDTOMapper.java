@@ -12,6 +12,8 @@ public class EntityDTOMapper {
         modelMapper();
     }
 
+
+
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
@@ -62,8 +64,11 @@ public class EntityDTOMapper {
     public static ReplyDTO entityToDTO(ReplyEntity replyEntity) {
         return modelMapper.map(replyEntity, ReplyDTO.class);
     }
-    public static ReplyEntity DTOToEntity(ReplyDTO ReplyDTO) {
-        return modelMapper.map(ReplyDTO, ReplyEntity.class);
+    public static ReplyEntity DTOToEntity(ReplyDTO replyDTO) {
+        return modelMapper.map(replyDTO, ReplyEntity.class);
     }
 
+    // 일정 맵핑
+    public static ScheduleDTO entityToDTO(ScheduleEntity scheduleEntity) {return modelMapper.map(scheduleEntity, ScheduleDTO.class);}
+    public static ScheduleEntity DTOToEntity(ScheduleDTO scheduleDTO) {return modelMapper.map(scheduleDTO, ScheduleEntity.class);}
 }

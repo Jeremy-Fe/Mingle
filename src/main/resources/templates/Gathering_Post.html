@@ -41,7 +41,8 @@
     <a th:href="@{|/Gathering_Board/${GatheringHome.id}|}"><img src="/image/back.png"></a>
     <div class="Post_bg">
         <ul class="contents clearfix">
-            <img class="post_writerimg" th:src="${writer.getMProfileimg()}">
+            <img class="post_writerimg" th:if="${writer.getMProfileimg() == null}" src="/image/DefaultProfile_logo.png">
+            <img class="post_writerimg" th:unless="${writer.getMProfileimg() == null}" th:src="${writer.getMProfileimg()}">
             <li><a href="#"><img class="menu" src="/image/menudot.png"></a><p class="post_boardName" th:text="${boardName}">게시판 이름</p></li>
             <li><p class="post_writerName" th:text="${writer.getMName()}">작성자</p></li>
             <li><p class="post_date" th:text="${post.getPDate()}">0월 00일 오후 00:00</p></li>
@@ -49,9 +50,6 @@
             <li>
                 <p class="post_contents" th:text="${post.getPContents()}">내용</p>
             </li>
-            <li><a href="/image/postimg1.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="/image/postimg1.png"></a></li>
-            <li><a href="/image/postimg2.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="/image/postimg2.png"></a></li>
-            <li><a href="/image/postimg3.png" data-title="웅기형님 께서 249점 하이 갱신!!" data-lightbox="example-set"><img class="post_img" src="/image/postimg3.png"></a></li>
         </ul>
         <ul class="like">
             <li>
@@ -70,37 +68,11 @@
                 <img class="comment_profileimg" src="/image/Gathering_img2.png">
                 <li><span class="comment_writer">정웅기</span><span class="comment_date">7월 23일 오후 11:01</span></li>
                 <li><span class="comment_contents">우철아 맛있게 잘 먹었다 ㅋㅋㄹㅃㅃ~~</span></li>
-                <li>
-                    <a class="comment_like clearfix" href="#"><img class="tabom" src="/image/tabom.png"><span>종아요 3</span></a>
-                    <a class="comment_reply" href="#">답글달기</a>
-                </li>
-                <ul class="reply">
-                    <img class="comment_profileimg" src="/image/Gathering_img1.png">
-                    <li><span class="comment_writer">신우철</span><span class="comment_date">7월 23일 오후 11:21</span></li>
-                    <li><span class="comment_contents">@정웅기 아 형님 ㅡㅡ 딱밤 딱 대</span></li>
-                    <li>
-                        <a class="comment_like clearfix" href="#"><img class="tabom" src="/image/tabom.png"><span>종아요 1</span></a>
-                        <a class="comment_reply" href="#">답글달기</a>
-                    </li>
-                </ul>
             </ul>
             <ul class="comment clearfix">
                 <img class="comment_profileimg" src="/image/Gathering_img6.png">
                 <li><span class="comment_writer">강승진</span><span class="comment_date">7월 25일 오전 10:15</span></li>
                 <li><span class="comment_contents">웅기씨 혼나보실래요? 딱밤 딱 대</span></li>
-                <li>
-                    <a class="comment_like clearfix" href="#"><img class="tabom" src="/image/tabom.png"><span>종아요 3</span></a>
-                    <a class="comment_reply" href="#">답글달기</a>
-                </li>
-            </ul>
-            <ul class="comment clearfix">
-                <img class="comment_profileimg" src="/image/Gathering_img6.png">
-                <li><span class="comment_writer">강승진</span><span class="comment_date">7월 25일 오전 10:15</span></li>
-                <li><span class="comment_contents">웅기씨 혼나보실래요? 딱밤 딱 대</span></li>
-                <li>
-                    <a class="comment_like clearfix" href="#"><img class="tabom" src="/image/tabom.png"><span>종아요 3</span></a>
-                    <a class="comment_reply" href="#">답글달기</a>
-                </li>
             </ul>
         </ul>
     </div>

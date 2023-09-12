@@ -56,6 +56,10 @@
     margin-top: 10px;
     font-weight: 500;
 }
+.view > .g_title > ul > .title_subject > li > .title_title > a:hover {
+    background-color: #514680;
+    color: white;
+}
 .view > .g_title > ul >  li > .title_nav:hover{
     color: #542DFF;
 }
