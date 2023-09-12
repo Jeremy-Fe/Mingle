@@ -1,6 +1,7 @@
 package Mingle.MingleProject.entity;
 
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.dto.ScheduleDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -69,6 +70,8 @@ public class MemberEntity {
     @Column(name = "M_MBTI", length = 4)
     private String mMbti;
 
+    @OneToMany(mappedBy = "sMId", fetch = FetchType.EAGER)
+    private Set<ScheduleEntity> sMId = new LinkedHashSet<>();
 
     public static MemberEntity toMemberEntity(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();

@@ -1,10 +1,9 @@
 package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.config.MemberComparator;
-import Mingle.MingleProject.dto.GatheringDTO;
-import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.dto.PostDTO;
+import Mingle.MingleProject.dto.*;
 import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.ScheduleEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
@@ -54,17 +53,39 @@ public class GatheringController {
         model.addAttribute("headcount", gatheringHeadcount);
 
         List<PostDTO> postDTOList = gatheringService.findByPosts(id);
-        List<PostDTO> postDTO2List = postDTOList.subList(0, 2);
-        model.addAttribute("Post", postDTO2List);
+        if(postDTOList.size() > 2) {
+            List<PostDTO> postDTO2List = postDTOList.subList(0, 2);
+            model.addAttribute("Post", postDTO2List);
+            model.addAttribute("PostBoard", BoardName(postDTO2List));
+        } else {
+            model.addAttribute("Post", postDTOList);
+        }
 
-        model.addAttribute("PostBoard", BoardName(postDTO2List));
 
         List<MemberDTO> writerList = new ArrayList<>();
         for (PostDTO postDTO: postDTOList) {
             writerList.add(memberService.findByWriter(postDTO.getPMId()));
         }
-        List<MemberDTO> writer2List = writerList.subList(0, 2);
-        model.addAttribute("PostWriter", writer2List);
+        if(writerList.size() > 2) {
+            List<MemberDTO> writer2List = writerList.subList(0, 2);
+            model.addAttribute("PostWriter", writer2List);
+        } else {
+            model.addAttribute("PostWriter", writerList);
+        }
+
+        List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
+        model.addAttribute("Schedule", scheduleDTOList);
+
+
+        List<Integer> memberCount = new ArrayList<>();
+        List<Long> remainingPerson = new ArrayList<>();
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            String[] member = scheduleDTO.getSMember().split(",");
+            memberCount.add(member.length);
+            remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+        }
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("remaining", remainingPerson);
 
         return "Gathering_Home";
     }
@@ -107,6 +128,9 @@ public class GatheringController {
 
         MemberDTO memberDTO = memberService.findByWriter(postDTO.getPMId());
         model.addAttribute("writer", memberDTO);
+
+        List<CommentsDTO> commentsDTOList = gatheringService.findComments(pNum);
+
 
         return "Gathering_Post";
     }
@@ -180,8 +204,25 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-        
-        return "Gathering_Schedule";}
+        List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
+        model.addAttribute("Schedule", scheduleDTOList);
+
+
+        List<Integer> memberCount = new ArrayList<>();
+        List<Long> remainingPerson = new ArrayList<>();
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            String[] member = scheduleDTO.getSMember().split(",");
+            memberCount.add(member.length);
+            remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+        }
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("remaining", remainingPerson);
+
+
+
+
+        return "Gathering_Schedule";
+    }
 
     @PostMapping("/create-gathering")
     public String save(@ModelAttribute GatheringDTO gatheringDTO){
@@ -200,12 +241,13 @@ public class GatheringController {
         return "Gathering_Post_Write";
     }
 
-    @PostMapping("/Mypage/uploadImage")
-    public String uploadImage(@RequestParam("mProfileimg") MultipartFile mProfileimg, HttpSession session) {
+    @PostMapping("/Gathering_Post_Write/{id}")
+    public String uploadImage(@RequestParam("id") MultipartFile gProfileimg, HttpSession session) {
         String logInId = (String) session.getAttribute("loginId");
-        System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
-        memberService.uploadImage(mProfileimg,logInId);
-        return "Mypage";
+        System.out.println("mProfileimg : " + gProfileimg + " " + logInId);
+        gatheringService.uploadImage(gProfileimg,logInId);
+
+        return "Gathering_Board";
     }
 
 
