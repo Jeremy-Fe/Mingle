@@ -16,26 +16,28 @@
 <div th:replace="/defaultUI.html"></div>
 <!-- 바꿔야하는 부분 -->
 <div class="view">
-    <!--가입한 모임-->
-    <div class="logo2">
-        <ul>
-            <li class="my2"><a>가입한 모임</a></li>
-        </ul>
-        <div class="join_class">
-            <div class="container1">
-<!--                <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}" src="/image/DefaultClass_logo.png">-->
+    <div id="MyPage"></div>
+    <!--내모임-->
+    <p id="title_02">가입한 모임</p>
+    <div id="sc1" class="swiper-container mc clearfix">
+        <div id="myclass" class="swiper-wrapper clearfix">
+            <div id ="myMingCardInner" class="swiper-slide mycb_01" th:each="gathering :${mingles}">
+                <a th:if="${gathering.getGCoverimg() == null}" href="Mypage">
+                    <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                </a>
+                <a th:unless="${gathering.getGCoverimg() == null}" href="Mypage">
+                    <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}">
+                </a>
+                <p th:text="${gathering.getGName()}" >질풍가도</p>
+                <span th:text="${gathering.getGIntroduction()}"><도심속 러닝 모...></span>
             </div>
-            <div class="container2"></div>
-            <div class="container3"></div>
-            <div class="container4"></div>
-            <div class="container5">
-                <ul>
-                    <button type="button" class="all_bt" onclick="alert('클릭!')">
-                        <img src="/image/전체 보기.png"/>
-                    </button>
-                    <li><a>전체 보기</a></li>
-                </ul>
-            </div>
+
+            <div class="swiper-slide"></div><!--빈 페이지-->
+            <div class="swiper-slide"></div><!--빈 페이지-->
+            <div class="swiper-slide"></div><!--빈 페이지-->
+            <div class="swiper-slide"></div><!--빈 페이지-->
+            <div class="swiper-slide"></div><!--빈 페이지-->
+            <div class="swiper-slide"></div><!--빈 페이지-->
         </div>
     </div>
 
@@ -111,5 +113,20 @@
 </div>
 </section>
 </div>
+<script>
+    const swiper1 = new Swiper('#sc1', {
+        loop: false,
+        centeredSlides: false,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+
+        grid: {
+            rows: 1, // 그리드의 행 수
+            fill: 'row', // "row" 또는 "column", 행을 채우는 방식 선택
+        },
+
+
+    });
+</script>
 </body>
 </html>

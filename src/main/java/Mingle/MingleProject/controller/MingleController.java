@@ -1,8 +1,10 @@
 package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
@@ -96,37 +98,44 @@ public class MingleController {
     public String Main_LogIn() { return "Main_LogIn"; }
 
     @GetMapping("myClass*")
-    public String myClass(HttpSession session,Model model) {
+    public String myClass(HttpSession session, Model model) {
+        /*--헤더의 로그인 된 ID값 세션에서 받아오기--*/
         String logInId = (String) session.getAttribute("loginId");
         MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
         model.addAttribute("myPagemId", memberDTO);
 
+        /*--가입한 모임 출력--*/
         List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);
         model.addAttribute("mingles",mingles);
         System.out.println("mingles 확인 = "+ mingles);
+
         return "myClass";
     }
 
     @GetMapping("schedule*")
     public String schedule() {return "schedule";}
 
-
-//    @GetMapping("MyPage*")
-//    public String MyPage(){return "MyPage";}
-
     @GetMapping("MyPage")
     public String MyPage(HttpSession session, Model model){
+        /*--헤더의 로그인 된 ID값 세션에서 받아오기--*/
         String logInId = (String) session.getAttribute("loginId");
         MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
         model.addAttribute("myPagemId", memberDTO);
 
+        /*--프로필 이미지 출력--*/
         String profileimg = memberService.getProfileimgData(logInId);
         model.addAttribute("profileimg", profileimg);
         System.out.println(profileimg);
 
+        /*--가입한 모임 출력--*/
         List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);
         model.addAttribute("mingles",mingles);
         System.out.println("mingles 확인 = "+ mingles);
+
+        /*--내 게시글  출력--*/
+        List<PostDTO> postDTOs = postService.findPost(logInId);
+        model.addAttribute("post",postDTOs);
+        System.out.println("postDTOs 확인 =" + postDTOs);
 
         return "MyPage";
     }
