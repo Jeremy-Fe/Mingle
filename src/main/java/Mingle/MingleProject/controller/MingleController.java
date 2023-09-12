@@ -96,7 +96,16 @@ public class MingleController {
     public String Main_LogIn() { return "Main_LogIn"; }
 
     @GetMapping("myClass*")
-    public String myClass() {return "myClass";}
+    public String myClass(HttpSession session,Model model) {
+        String logInId = (String) session.getAttribute("loginId");
+        MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
+        model.addAttribute("myPagemId", memberDTO);
+
+        List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);
+        model.addAttribute("mingles",mingles);
+        System.out.println("mingles 확인 = "+ mingles);
+        return "myClass";
+    }
 
     @GetMapping("schedule*")
     public String schedule() {return "schedule";}
