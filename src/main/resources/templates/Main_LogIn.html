@@ -125,7 +125,7 @@
                                 console.log("ajax : 내 모임명 확인 =", 모임명);
                                 console.log("ajax : 내 response.length+1 확인 =", response.length);
                                 var htmlMingle =
-                                    '<div class="mingle">\n' +
+                                    '<a class="mingle">\n' +
                                     '<ul>\n' +
                                     '<img src="'+모임이미지+'">\n' +
                                     '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
@@ -134,7 +134,7 @@
                                     '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
                                     '</ul>\n' +
                                     '<p id="mIntd">'+모임소개글+'</p>\n' +
-                                    '</div>';
+                                    '</a>';
 
                                 $("#myMingCardInner").append(htmlMingle);
                             }
