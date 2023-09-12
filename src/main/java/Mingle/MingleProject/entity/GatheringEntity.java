@@ -51,20 +51,22 @@ public class GatheringEntity {
     private String gSubleader3;
     @Column(name = "G_PRIVATE", nullable = false)
     private Long gPrivate;
-    @Lob
-    private Blob gCoverimg;
+    @Column(name = "G_COVERIMG")
+    private String gCoverimg;
     @PrePersist
     protected void onCreate() {
         gDate = new Date();
     }
 
 
-/*  @OneToMany(mappedBy = "GatheringEntity", fetch = FetchType.EAGER)
-    private Set<PostEntity> postGNum = new LinkedHashSet<>();
-    */
+    @OneToMany(mappedBy = "gatheringEntity", fetch = FetchType.EAGER)
+    private Set<PostEntity> pGNum = new LinkedHashSet<>();
+
 
     @OneToMany(mappedBy = "GatheringEntity", fetch = FetchType.EAGER)
     private Set<ScheduleEntity> sGNum = new LinkedHashSet<>();
+
+    // 게더링
 
     public static GatheringEntity gathering(GatheringDTO gatheringDTO) {
         GatheringEntity gatheringEntity = new GatheringEntity();

@@ -28,6 +28,7 @@ public class MingleController {
     private final CityService cityService ;
     private final GatheringService gatheringService;
     private final PostService postService;
+
     // 회원가입 메일 서비스
     @Autowired
     RegisterMail registerMail;
@@ -315,6 +316,8 @@ public class MingleController {
             return false; // 회원을 찾을 수 없음
         }
     }
+
+
 
 }
 

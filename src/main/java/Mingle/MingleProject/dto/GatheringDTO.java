@@ -26,7 +26,7 @@ public class GatheringDTO {
     private String gSubleader2;
     private String gSubleader3;
     private Long gPrivate;
-    private Blob gCoverimg;
+    private String gCoverimg;
 
     public static GatheringDTO gatheringDTO(GatheringEntity gatheringEntity) {
         GatheringDTO gatheringDTO = new GatheringDTO();
