@@ -181,27 +181,6 @@ body{z-index: 2}
     position: absolute;
 }
 
-/*.view>.logo2{
-    width: 1564px;
-    height: 370px;
-    position: relative;
-    !*background-color: #000;*!
-    margin-left: -50px;
-    padding-left: 50px;
-    padding-right: 110px;
-}
-
-
-#myMingCardInner {
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    width: 195px; height: 236px; background-color:#FFFFFF;
-    margin-left: 30px;
-    margin-top: 30px;
-    border-radius: 20px;
-    float: left;
-}
-
-
 #ptec {
     width: 195px;
     height: 200px;
