@@ -88,12 +88,12 @@ public class MingleController {
         return "join";
     }
 
+    @GetMapping("/Main_LogIn")
+    public String Main_LogIn() {return "Main_LogIn"; }
+
     @GetMapping("Main_UnLogIn*")
     public String Main_UnLogIn() {
         return "Main_UnLogIn";}
-
-    @GetMapping("/Main_LogIn")
-    public String Main_LogIn() { return "Main_LogIn"; }
 
     @GetMapping("myClass*")
     public String myClass(HttpSession session, Model model) {

@@ -1,5 +1,6 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
@@ -84,7 +85,10 @@ public class LoginedMainController {
 
             return ResponseEntity.ok(searchMingle);
         }
+
     }
+
+
 
 }
 

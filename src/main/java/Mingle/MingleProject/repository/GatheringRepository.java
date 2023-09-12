@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.sql.Blob;
 import java.util.List;
+import java.util.Optional;
 
 public interface GatheringRepository extends JpaRepository<GatheringEntity, Long> {
 
@@ -55,4 +56,7 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
 
     @Query(value="select c from CommentsEntity c where c.cPNum.pNum = :pNum")
     List<CommentsEntity> findByPNum(@Param("pNum")Long pNum);
+
+    @Query(value="select g from GatheringEntity g where g.gName = :gathering")
+    Optional<GatheringEntity> findByGName(@Param("gathering") String gathering);
 }

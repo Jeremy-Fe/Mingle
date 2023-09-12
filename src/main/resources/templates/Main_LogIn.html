@@ -22,227 +22,227 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-        <div th:replace="/defaultUI.html"></div>
+<div th:replace="/defaultUI.html"></div>
 
-                <!-- 바꿔야하는 부분 -->
-                <div class="view">
-                    <!--최근 소식-->
-                    <div id="l_news">
-                        <ul class="header">
-                            <li><p>내 모임 최근 소식</p></li>
-                            <li><a href="/MyPage">마이 페이지<img rel="오른쪽화살표.png" src="image/오른쪽화살표.png"></a></li>
-                        </ul>
-                        <div class="inBox">
-                            <!--내모임-->
-                            <ul id="myMingles">
-<!--                                <li th:unless="${session.loginId == null}" id="delete" style="padding-top: 80px; margin-left: 10px; margin-bottom: 0;"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px">회원탈퇴</a></li>-->
-                                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
-                                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
-                                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
-                                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
-                                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
-                                <li class="mingle_search"><img src="image/Main_Login_내모임.png"><p>모임 찾아보기</p></li>
-                            </ul>
-                            <!-- / -->
-                            <!--내게시글-->
-                            <ul id="myPost">
-                                <div class="myPost">
-                                <img src="image/Main_Login_내게시물.png">
-                                <a  href="#"> 질풍가도</a><br>
-                                <a href="#">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암 </a>
-                                <li><p>2023. 05. 19</p><p>조회 12</p>
-                                </li>
-                                </div>
-                                <div></div>
-                            </ul>
-                            <!-- / -->
-                            <!--내스케줄-->
-                            <ul id="mySchedule">
-                                <div id="scheduleBox">
-                                    <div id="table">
-                                        <ul id="s1">
-                                            <li><a href="#">MON</a></li>
-                                            <li><a href="#">TUE</a></li>
-                                            <li><a href="#">WED</a></li>
-                                            <li><a href="#">THU</a></li>
-                                            <li><a href="#">FRI</a></li>
-                                            <li><a href="#">SAT</a></li>
-                                            <li><a href="#">SUN</a></li>
-                                        </ul>
-                                        <ul id="s2">
-                                            <li id="MON">
-                                                <a href="#">
-                                                    <img src="image/Main_최근모임스케줄.png" alt="">
-                                                    <img src="image/Main_최근모임스케줄.png" alt="">
-                                                </a>
-                                            </li>
-                                            <li id="TUE">
-                                                <a href="#">
-                                                    <img src="image/Main_최근모임스케줄.png" alt="">
-                                                </a>
-                                            </li>
-                                            <li id="WED">
-                                                <a href="#">
-
-                                                </a>
-                                            </li>
-                                            <li id="THU">
-                                                <a href="#">
-
-                                                </a>
-                                            </li>
-                                            <li id="FRI">
-                                                <a href="#">
-
-                                                </a>
-                                            </li>
-                                            <li id="SAT">
-                                                <a href="#">
-
-                                                </a>
-                                            </li>
-                                            <li id="SUN">
-                                                <a href="#">
-
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </ul>
-                            <!-- / -->
-                        </div>
-                    </div>
-                    <!-- / -->
-
-                    <!--배너-->
-                    <div class="swiper-container banner" >
-                         <div class="swiper-wrapper ul">
-                            <div class="swiper-slide B_mbti"><a href="/Mbti_banner"><img rel="mbti" src="image/배너_mbti.png"></a></div>
-                            <div class="swiper-slide B_hot"><img rel="hot" src="image/배너_HOT.png"></div>
-                             <div class="swiper-slide B_mypage"><a href="/MyPage"><img rel="mypage" src="image/배너_MYPAGE.png"></a></div>
-                             <div class="swiper-slide B_mimgle"><a href="/join"><img rel="mimgle" src="image/배너_mingle.png"></a></div>
-                        </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    </div>
-                    <!-- / 배너-->
-
-                    <!--내모임-->
-                    <div id="myMingle" class="mingles">
-                        <ul>
-                            <h3>내 모임</h3>
-                            <div id="myMingCard" style="overflow-x:auto; overflow-y: hidden" >
-                                <div id="myMingCardInner" style="height: 250px; width: max-content;">
-                                </div>
-
-                            </div>
-                         </ul>
-                    </div>
-                    <!-- / 내모임-->
-
-                    <!--추천모임-->
-                    <div id="recMingle" class="mingles">
-                        <ul>
-                            <h3>추천모임</h3>
-                            <ul>
-                                <li></li>
-                            </ul>
-                         </ul>
-                    </div>
-                    <!-- / 추천모임-->
-
+<!-- 바꿔야하는 부분 -->
+<div class="view">
+    <!--최근 소식-->
+    <div id="l_news">
+        <ul class="header">
+            <li><p>내 모임 최근 소식</p></li>
+            <li><a href="/MyPage">마이 페이지<img rel="오른쪽화살표.png" src="image/오른쪽화살표.png"></a></li>
+        </ul>
+        <div class="inBox">
+            <!--내모임-->
+            <ul id="myMingles">
+                <!--                                <li th:unless="${session.loginId == null}" id="delete" style="padding-top: 80px; margin-left: 10px; margin-bottom: 0;"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px">회원탈퇴</a></li>-->
+                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
+                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
+                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
+                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
+                <li class="mingle_img1"><img src="image/Main_Login_내모임.png"></li>
+                <li class="mingle_search"><img src="image/Main_Login_내모임.png"><p>모임 찾아보기</p></li>
+            </ul>
+            <!-- / -->
+            <!--내게시글-->
+            <ul id="myPost">
+                <div class="myPost">
+                    <img src="image/Main_Login_내게시물.png">
+                    <a  href="#"> 질풍가도</a><br>
+                    <a href="#">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암 </a>
+                    <li><p>2023. 05. 19</p><p>조회 12</p>
+                    </li>
                 </div>
-    
-            </div>
+                <div></div>
+            </ul>
+            <!-- / -->
+            <!--내스케줄-->
+            <ul id="mySchedule">
+                <div id="scheduleBox">
+                    <div id="table">
+                        <ul id="s1">
+                            <li><a href="#">MON</a></li>
+                            <li><a href="#">TUE</a></li>
+                            <li><a href="#">WED</a></li>
+                            <li><a href="#">THU</a></li>
+                            <li><a href="#">FRI</a></li>
+                            <li><a href="#">SAT</a></li>
+                            <li><a href="#">SUN</a></li>
+                        </ul>
+                        <ul id="s2">
+                            <li id="MON">
+                                <a href="#">
+                                    <img src="image/Main_최근모임스케줄.png" alt="">
+                                    <img src="image/Main_최근모임스케줄.png" alt="">
+                                </a>
+                            </li>
+                            <li id="TUE">
+                                <a href="#">
+                                    <img src="image/Main_최근모임스케줄.png" alt="">
+                                </a>
+                            </li>
+                            <li id="WED">
+                                <a href="#">
 
+                                </a>
+                            </li>
+                            <li id="THU">
+                                <a href="#">
 
+                                </a>
+                            </li>
+                            <li id="FRI">
+                                <a href="#">
 
+                                </a>
+                            </li>
+                            <li id="SAT">
+                                <a href="#">
 
-        <div th:replace="/footer.html"></div>
+                                </a>
+                            </li>
+                            <li id="SUN">
+                                <a href="#">
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </ul>
+            <!-- / -->
+        </div>
     </div>
-    <input  id="loginId" th:value="${session.loginId}"><!--type="hidden"-->
-    <script>
-        /*배너*/
-        const swiper = new Swiper('.swiper-container', {
-            loop: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            slideToClickedSlide: true,
-            effect: 'coverflow',
+    <!-- / -->
 
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            coverflowEffect: {
-                rotate: 0, // 회전 각도
-                stretch: 400, // 슬라이드 겹침 정도
-                depth: 300, // 원근 거리
-                slideShadows: false, // 슬라이드 그림자 사용 여부
-            },
-        });
+    <!--배너-->
+    <div class="swiper-container banner" >
+        <div class="swiper-wrapper ul">
+            <div class="swiper-slide B_mbti"><a href="/Mbti_banner"><img rel="mbti" src="image/배너_mbti.png"></a></div>
+            <div class="swiper-slide B_hot"><img rel="hot" src="image/배너_HOT.png"></div>
+            <div class="swiper-slide B_mypage"><a href="/MyPage"><img rel="mypage" src="image/배너_MYPAGE.png"></a></div>
+            <div class="swiper-slide B_mimgle"><a href="/join"><img rel="mimgle" src="image/배너_mingle.png"></a></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <!-- / 배너-->
 
-        /*내 모임*/
-        window.onload = function() {
-            var loginId = document.getElementById("loginId").value;
+    <!--내모임-->
+    <div id="myMingle" class="mingles">
+        <ul>
+            <h3>내 모임</h3>
+            <div id="myMingCard" style="overflow-x:auto; overflow-y: hidden" >
+                <div id="myMingCardInner" style="height: 250px; width: max-content;">
+                </div>
 
-            console.log("loginId = "+loginId);
+            </div>
+        </ul>
+    </div>
+    <!-- / 내모임-->
 
-            if(loginId == null){
-                alert("(error)"+"로그인이 필요한 항목입니다.\n"+"회원 가입 또는 로그인을 해주세요");
-            }
-            else{
-                $.ajax({
-                    url: "Main_LogIn/findMyMingles",
-                    type : 'GET',
-                    success: function(response) {
-                        console.log("response = "+response)
-                        if(response.length > 0){
-                            for (var i = 0; i < response.length; i++) {
-                                var mingles = response[i];
-                                console.log("response[i] =", mingles);
-                                var 모임명 = mingles.gname;
-                                var 모임이미지 = mingles.gcoverimg;
-                                var 모임카테고리 = mingles.gmainsubject;
-                                var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
-                                var 모임소개글 = mingles.gintroduction;
-                                console.log("ajax : 모임명 확인 =", 모임명);
-                                console.log("ajax : response.length+1 확인 =", response.length);
-                                var htmlMingle =
-                                    '<div class="mingle">\n' +
-                                    '<ul>\n' +
-                                    '<img src="'+모임이미지+'">\n' +
-                                    '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
-                                    '<li id="mCategorie">'+모임카테고리+'</li>\n' +
-                                    '<li id="mRogi">'+모임지역+'</li>\n' +
-                                    '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
-                                    '</ul>\n' +
-                                    '<p id="mIntd">'+모임소개글+'</p>\n' +
-                                    '</div>';
+    <!--추천모임-->
+    <div id="recMingle" class="mingles">
+        <ul>
+            <h3>추천모임</h3>
+            <ul>
+                <li></li>
+            </ul>
+        </ul>
+    </div>
+    <!-- / 추천모임-->
 
-                                $("#myMingCardInner").append(htmlMingle);
-                            }
-                        }else{
-                            var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
-                                '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
-                                '밍글되어있지 않아요.' +
-                                '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
+</div>
+
+</div>
+
+
+
+
+<div th:replace="/footer.html"></div>
+</div>
+<input  id="loginId" th:value="${session.loginId}"><!--type="hidden"-->
+<script>
+    /*배너*/
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+        effect: 'coverflow',
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        coverflowEffect: {
+            rotate: 0, // 회전 각도
+            stretch: 400, // 슬라이드 겹침 정도
+            depth: 300, // 원근 거리
+            slideShadows: false, // 슬라이드 그림자 사용 여부
+        },
+    });
+
+    /*내 모임*/
+    window.onload = function() {
+        var loginId = document.getElementById("loginId").value;
+
+        console.log("loginId = "+loginId);
+
+        if(loginId == null){
+            alert("(error)"+"로그인이 필요한 항목입니다.\n"+"회원 가입 또는 로그인을 해주세요");
+        }
+        else{
+            $.ajax({
+                url: "Main_LogIn/findMyMingles",
+                type : 'GET',
+                success: function(response) {
+                    console.log("response = "+response)
+                    if(response.length > 0){
+                        for (var i = 0; i < response.length; i++) {
+                            var mingles = response[i];
+                            console.log("response[i] =", mingles);
+                            var 모임명 = mingles.gname;
+                            var 모임이미지 = mingles.gcoverimg;
+                            var 모임카테고리 = mingles.gmainsubject;
+                            var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
+                            var 모임소개글 = mingles.gintroduction;
+                            console.log("ajax : 모임명 확인 =", 모임명);
+                            console.log("ajax : response.length+1 확인 =", response.length);
+                            var htmlMingle =
+                                '<div class="mingle">\n' +
+                                '<ul>\n' +
+                                '<img src="'+모임이미지+'">\n' +
+                                '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
+                                '<li id="mCategorie">'+모임카테고리+'</li>\n' +
+                                '<li id="mRogi">'+모임지역+'</li>\n' +
+                                '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+                                '</ul>\n' +
+                                '<p id="mIntd">'+모임소개글+'</p>\n' +
                                 '</div>';
+
                             $("#myMingCardInner").append(htmlMingle);
                         }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
+                    }else{
+                        var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
+                            '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
+                            '밍글되어있지 않아요.' +
+                            '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
+                            '</div>';
+                        $("#myMingCardInner").append(htmlMingle);
                     }
-                });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
 
-            }
-        };
+        }
+    };
 
 
 
-    </script>
+</script>
 </body>
 </html>

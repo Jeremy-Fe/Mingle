@@ -17,6 +17,9 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     // 아이디로 회원 정보 조회 (select * from member where mId=?)
     Optional<MemberEntity> findBymId(String mId);
 
+    @Query(value="select m from MemberEntity m where m.mId = :mId")
+    List<MemberEntity> findByGatheringMId(String mId);
+
     // 사용자 정의 JPQL 쿼리를 사용하여 mEmail과 mName이 같은 레코드를 조회
     @Query("SELECT m FROM MemberEntity m WHERE m.mEmail = ?1 AND m.mName = ?2")
     List<MemberEntity> findMembersByEmailAndName(String mEmail, String mName);
@@ -44,10 +47,6 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     @Modifying
     @Query(value = "UPDATE MemberEntity m SET m.mProfileimg  = :mProfileimg WHERE m.mId =:mId")
     void updatemProfileimg(@Param("mProfileimg") Blob mProfileimg, @Param("mId") String mId);
-
-    
-
-
 
 
 
