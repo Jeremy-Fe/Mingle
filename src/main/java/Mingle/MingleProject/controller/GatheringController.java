@@ -6,17 +6,27 @@ import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
+import Mingle.MingleProject.dto.*;
+import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.ScheduleEntity;
+import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
+import javax.sql.rowset.serial.SerialBlob;
+import javax.transaction.Transactional;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -50,17 +60,39 @@ public class GatheringController {
         model.addAttribute("headcount", gatheringHeadcount);
 
         List<PostDTO> postDTOList = gatheringService.findByPosts(id);
-        List<PostDTO> postDTO2List = postDTOList.subList(0, 2);
-        model.addAttribute("Post", postDTO2List);
+        if(postDTOList.size() > 2) {
+            List<PostDTO> postDTO2List = postDTOList.subList(0, 2);
+            model.addAttribute("Post", postDTO2List);
+            model.addAttribute("PostBoard", BoardName(postDTO2List));
+        } else {
+            model.addAttribute("Post", postDTOList);
+        }
 
-        model.addAttribute("PostBoard", BoardName(postDTO2List));
 
         List<MemberDTO> writerList = new ArrayList<>();
         for (PostDTO postDTO: postDTOList) {
             writerList.add(memberService.findByWriter(postDTO.getPMId()));
         }
-        List<MemberDTO> writer2List = writerList.subList(0, 2);
-        model.addAttribute("PostWriter", writer2List);
+        if(writerList.size() > 2) {
+            List<MemberDTO> writer2List = writerList.subList(0, 2);
+            model.addAttribute("PostWriter", writer2List);
+        } else {
+            model.addAttribute("PostWriter", writerList);
+        }
+
+        List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
+        model.addAttribute("Schedule", scheduleDTOList);
+
+
+        List<Integer> memberCount = new ArrayList<>();
+        List<Long> remainingPerson = new ArrayList<>();
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            String[] member = scheduleDTO.getSMember().split(",");
+            memberCount.add(member.length);
+            remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+        }
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("remaining", remainingPerson);
 
         return "Gathering_Home";
     }
@@ -103,6 +135,9 @@ public class GatheringController {
 
         MemberDTO memberDTO = memberService.findByWriter(postDTO.getPMId());
         model.addAttribute("writer", memberDTO);
+
+        List<CommentsDTO> commentsDTOList = gatheringService.findComments(pNum);
+
 
         return "Gathering_Post";
     }
@@ -178,6 +213,25 @@ public class GatheringController {
 
 
         return "Gathering_Schedule";}
+        List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
+        model.addAttribute("Schedule", scheduleDTOList);
+
+
+        List<Integer> memberCount = new ArrayList<>();
+        List<Long> remainingPerson = new ArrayList<>();
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            String[] member = scheduleDTO.getSMember().split(",");
+            memberCount.add(member.length);
+            remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+        }
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("remaining", remainingPerson);
+
+
+
+
+        return "Gathering_Schedule";
+    }
 
     @PostMapping("/create-gathering")
     public String save(@ModelAttribute GatheringDTO gatheringDTO){
@@ -214,6 +268,16 @@ public class GatheringController {
 
         return "Gathering_Post_Write";
     }
+
+    @PostMapping("/Gathering_Post_Write/{id}")
+    public String uploadImage(@RequestParam("id") MultipartFile gProfileimg, HttpSession session) {
+        String logInId = (String) session.getAttribute("loginId");
+        System.out.println("mProfileimg : " + gProfileimg + " " + logInId);
+        gatheringService.uploadImage(gProfileimg,logInId);
+
+        return "Gathering_Board";
+    }
+
 
     public List BoardName(List<PostDTO> list) {
         List boardName = new ArrayList();

@@ -189,13 +189,15 @@ public class MingleController {
     @GetMapping("Gathering_Album_BoardNotification")
     public String Gathering_Album_BoardNotification() {return "Gathering_Album_BoardNotification";}
 
-    @GetMapping("search1")
-    public String search1() {return "search1";}
     @GetMapping("search2")
     public String search2() {return "search2";}
     @GetMapping("selectRegi")
     public String selectRegi() {
         return "selectRegi";
+    }
+    @GetMapping("selectInter")
+    public String selectInter() {
+        return "selectInter";
     }
 
     @GetMapping("/delete/{mId}")
@@ -221,6 +223,11 @@ public class MingleController {
             session.setAttribute("loginId", loginResult.getMId());
             session.setAttribute("memberDTO", loginResult);
             model.addAttribute("memberDTO",loginResult);
+
+            String logInId = (String) session.getAttribute("loginId");
+            String profileimg = memberService.getProfileimgData(logInId);
+            session.setAttribute("profileimg", profileimg);
+
             return "Main_LogIn";
         }else {
             //login 실패
