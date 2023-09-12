@@ -32,8 +32,9 @@ public class PostService {
     }
 
     public void uploadPost(PostDTO postDTO) {
-        PostEntity postEntity = EntityDTOMapper.DTOToEntity(postDTO);
-        System.out.println(postEntity.getGatheringEntity());
+        PostEntity postEntity = EntityDTOMapper.dtoToEntity(postDTO);
+        System.out.println(postEntity.getPGNum());
+        System.out.println(postEntity.getPBNum());
         System.out.println(postEntity.getPNum());
 
         postRepository.save(postEntity);
