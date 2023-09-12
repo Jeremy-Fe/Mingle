@@ -19,8 +19,6 @@ public class BoardEntity {
     @Column(name = "B_NAME", nullable = false, length = 100)
     private String bName;
 
-    @OneToMany(mappedBy = "pBNum")
-    private Set<PostEntity> posts = new LinkedHashSet<>();
 
 
 }
