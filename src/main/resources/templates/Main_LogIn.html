@@ -74,9 +74,8 @@
 
 
 
-        <div th:replace="/footer.html"></div>
     </div>
-    <input  id="loginId" th:value="${session.loginId}"><!--type="hidden"-->
+    <input  id="loginId" th:value="${session.loginId}" type="hidden">
     <script>
         /*배너*/
         const swiper = new Swiper('.swiper-container', {
@@ -139,7 +138,7 @@
                                 $("#myMingCardInner").append(htmlMingle);
                             }
                         }else{
-                            var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
+                            var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search2">'+
                                 '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
                                 '밍글되어있지 않아요.' +
                                 '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
@@ -185,10 +184,10 @@
                             $("#recMingCardInner").append(htmlMingle);
                         }
                     }else{
-                        var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
+                        var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/Create_Meet">'+
                             '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
-                            '밍글되어있지 않아요.' +
-                            '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
+                            '모임이 없습니다.' +
+                            '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 만들기</p></a>' +
                             '</div>';
                         $("#recMingCardInner").append(htmlMingle);
                     }

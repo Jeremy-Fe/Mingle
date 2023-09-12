@@ -36,7 +36,7 @@
                     <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}">
                 </a>
                 <p th:text="${gathering.getGName()}" >질풍가도</p>
-                <span th:text="${gathering.getGIntroduction()}"><도심속 러닝 모...></span>
+                <span th:text="${gathering.getGIntroduction()}">도심속 러닝 모...</span>
             </div>
 
             <div class="swiper-slide"></div><!--빈 페이지-->
@@ -50,13 +50,18 @@
     <!--맞춤 추천 영역-->
     <div class="recommend">
 
-        <ul>
+        <div id="recMingleName">
             <li class="rec1" th:inline="text">[[${session.memberDTO.getMName()}]]<a>님 맞춤 추천</a></li>
-        </ul>
+        </div>
 
-        <div class="recMigle">
+        <div id="recMingle" class="mingles">
+            <ul>
+            <div id="recMingCard" style="overflow-y:auto; overflow-x: hidden" >
+                <div id="recMingCardInner" style="height: max-content; width: 1400px;">
+                </div>
 
-
+            </div>
+            </ul>
         </div>
 
         <div class="make_meet">
@@ -84,6 +89,8 @@
 </div>
 </section>
 </div>
+
+<input  id="loginId" th:value="${session.loginId}" type="hidden">
 <script>
     const swiper1 = new Swiper('#sc1', {
         loop: false,
@@ -122,16 +129,16 @@
                         console.log("추천된 모임명 확인 =", 모임명);
                         console.log("추천모임 GET response.length+1 확인 =", response.length);
                         var htmlMingle =
-                            '<div class="mingle">\n' +
+                            '<a href="#" class="mingle">\n' +
                             '<ul>\n' +
                             '<img src="'+모임이미지+'">\n' +
                             '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
                             '<li id="mCategorie">'+모임카테고리+'</li>\n' +
                             '<li id="mRogi">'+모임지역+'</li>\n' +
-                            '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+                            '<li id="mUser"><p>'+96+'</p>명이 참여 중</li>\n' +
                             '</ul>\n' +
                             '<p id="mIntd">'+모임소개글+'</p>\n' +
-                            '</div>';
+                            '</a>';
 
                         $("#recMingCardInner").append(htmlMingle);
                     }
