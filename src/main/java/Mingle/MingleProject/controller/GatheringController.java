@@ -216,8 +216,6 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
-
-        return "Gathering_Schedule";}
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
         model.addAttribute("Schedule", scheduleDTOList);
 
@@ -232,11 +230,11 @@ public class GatheringController {
         model.addAttribute("memberCount", memberCount);
         model.addAttribute("remaining", remainingPerson);
 
+        return "Gathering_Schedule";}
 
 
 
-        return "Gathering_Schedule";
-    }
+
 
     @PostMapping("/create-gathering")
     public String save(@ModelAttribute GatheringDTO gatheringDTO){

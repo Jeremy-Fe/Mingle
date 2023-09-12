@@ -224,12 +224,7 @@ public class MemberService {
         return gatheringMemberDTOList;
     }
 
-    // 필요없는 메소드
-    public int findByGatheringHeadcount(String gName) {
-        int headcount = memberRepository.findByGatheringHeadcount(gName);
 
-        return headcount;
-    }
 
     public boolean deleteMemberById(String mId) {
         // memberId를 사용하여 회원을 찾습니다.
