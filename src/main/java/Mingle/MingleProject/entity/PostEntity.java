@@ -2,13 +2,14 @@ package Mingle.MingleProject.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
+@DynamicInsert
 @Getter
 @Setter
 @Entity
@@ -23,9 +24,9 @@ public class PostEntity {
     @JoinColumn(name = "P_B_NUM", nullable = false)
     private BoardEntity pBNum;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "P_G_NUM", nullable = false)
-    private GatheringEntity GatheringEntity;
+    private GatheringEntity gatheringEntity;
 
     @Column(name = "P_TITLE", nullable = false, length = 100)
     private String pTitle;

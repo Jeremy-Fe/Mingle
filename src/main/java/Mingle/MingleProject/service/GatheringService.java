@@ -189,19 +189,19 @@ public List<GatheringEntity> findMyMingles(String userId) {
         byte[] fileBytes = multipartFile.getBytes();
         return new SerialBlob(fileBytes);
     }
-    @Transactional
-    public void uploadImage(@NotNull MultipartFile gProfileimg, String mId) {
-        try {
-            GatheringEntity gatheringEntity = new GatheringEntity();
-            Blob mProfileBlob = createBlobFromMultipartFile(gProfileimg);
-            gatheringEntity.setGCoverimg(mProfileBlob);
-            gatheringRepository.updateGatheringCoverimg(mProfileBlob,mId);
-
-        } catch (IOException | SQLException e) {
-            e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
-            throw new RuntimeException("이미지 업로드 중 오류가 발생했습니다.");
-        }
-    }
+//    @Transactional
+//    public void uploadImage(@NotNull MultipartFile gProfileimg, String mId) {
+//        try {
+//            GatheringEntity gatheringEntity = new GatheringEntity();
+//            Blob mProfileBlob = createBlobFromMultipartFile(gProfileimg);
+//            gatheringEntity.setGCoverimg(mProfileBlob);
+//            gatheringRepository.updateGatheringCoverimg(mProfileBlob,mId);
+//
+//        } catch (IOException | SQLException e) {
+//            e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
+//            throw new RuntimeException("이미지 업로드 중 오류가 발생했습니다.");
+//        }
+//    }
 
     public List<ScheduleDTO> findSchedule(Long id) {
 
@@ -218,11 +218,11 @@ public List<GatheringEntity> findMyMingles(String userId) {
     }
 
     public List<CommentsDTO> findComments(Long pNum) {
-//        List<CommentsEntity> commentsEntityList = gatheringRepository.findByPNum(pNum);
+        List<CommentsEntity> commentsEntityList = gatheringRepository.findByPNum(pNum);
         List<CommentsDTO> commentsDTOList = new ArrayList<>();
-//        for (comments:) {
-//
-//        }
+        for (CommentsEntity commentsEntity: commentsEntityList) {
+            commentsDTOList.add(EntityDTOMapper.entityToDTO(commentsEntity));
+        }
         return commentsDTOList;
     }
 }
