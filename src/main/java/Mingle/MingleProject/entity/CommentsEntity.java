@@ -18,11 +18,11 @@ public class CommentsEntity {
     @Column(name = "C_NUM", nullable = false)
     private Long cNum;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "C_P_NUM", nullable = false)
     private PostEntity cPNum;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "C_M_ID", nullable = false)
     private MemberEntity cMId;
 

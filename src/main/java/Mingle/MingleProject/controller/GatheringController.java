@@ -137,7 +137,12 @@ public class GatheringController {
         model.addAttribute("writer", memberDTO);
 
         List<CommentsDTO> commentsDTOList = gatheringService.findComments(pNum);
-
+        List<MemberDTO> memberDTOList = new ArrayList<>();
+        for (CommentsDTO commentsDTO: commentsDTOList) {
+            memberDTOList.add(memberService.findByCommentsWriter(commentsDTO.getCMId()));
+        }
+        model.addAttribute("Comments", commentsDTOList);
+        model.addAttribute("CommentsWriter", memberDTOList);
 
         return "Gathering_Post";
     }
@@ -210,8 +215,10 @@ public class GatheringController {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
+
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
         model.addAttribute("Schedule", scheduleDTOList);
+
 
         List<Integer> memberCount = new ArrayList<>();
         List<Long> remainingPerson = new ArrayList<>();
@@ -223,8 +230,8 @@ public class GatheringController {
         model.addAttribute("memberCount", memberCount);
         model.addAttribute("remaining", remainingPerson);
 
-
         return "Gathering_Schedule";}
+
 
 
 
