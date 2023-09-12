@@ -21,7 +21,7 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 <div class="contents">
-    <form  id="createGatheringForm" action="/create-gathering" method="post">
+    <form action="/create-gathering" method="post">
         <ul>
             <img class="marker" src="image/meet_marker.png">
             <li class="maker2">지역</li>
@@ -132,7 +132,7 @@
         </div>
         <!-- 로그인 세션 가져오고 넘기는 코드 -->
             <input type="hidden" name="gMainleader" th:value="${session.loginId}">
-            <input type="hidden" name="mGGathering" th:value="${session.loginId}">
+<!--            <input type="hidden" name="mGGathering" th:value="${session.loginId}">-->
      </form>
  </div>
  <div class="footer">
