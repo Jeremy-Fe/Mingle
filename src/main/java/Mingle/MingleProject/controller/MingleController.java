@@ -6,10 +6,7 @@ import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.repository.MemberRepository;
-import Mingle.MingleProject.service.CityService;
-import Mingle.MingleProject.service.GatheringService;
-import Mingle.MingleProject.service.MemberService;
-import Mingle.MingleProject.service.RegisterMail;
+import Mingle.MingleProject.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +27,7 @@ public class MingleController {
     private final MemberService memberService ;
     private final CityService cityService ;
     private final GatheringService gatheringService;
-
+    private final PostService postService;
     // 회원가입 메일 서비스
     @Autowired
     RegisterMail registerMail;
