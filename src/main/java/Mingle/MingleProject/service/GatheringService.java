@@ -1,19 +1,23 @@
 package Mingle.MingleProject.service;
 
 import Mingle.MingleProject.Mapper.EntityDTOMapper;
-import Mingle.MingleProject.dto.GatheringDTO;
-import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.dto.PostDTO;
-import Mingle.MingleProject.entity.GatheringEntity;
-import Mingle.MingleProject.entity.MemberEntity;
-import Mingle.MingleProject.entity.PostEntity;
+import Mingle.MingleProject.dto.*;
+import Mingle.MingleProject.entity.*;
 import Mingle.MingleProject.repository.GatheringRepository;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.sql.rowset.serial.SerialBlob;
+import javax.transaction.Transactional;
+import java.io.IOException;
 import java.lang.reflect.Member;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.*;
 
 
@@ -61,58 +65,57 @@ public class GatheringService {
         return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
     }
 }*/
-    public List<GatheringEntity> findMyMingles(String userId) {
-        Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
+public List<GatheringEntity> findMyMingles(String userId) {
+    Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
 
-        if (memberOptional.isPresent()) {  // member가 null인지 확인
-            MemberEntity member = memberOptional.get();
-            System.out.println("findByMId = " + userId);
-            if (member.getMGGathering() != null) {
-                List<String> gNames = Arrays.asList(member.getMGGathering().split(",\\s*"));  // 쉼표를 기준으로 문자열을 분할하여 리스트로 변환
-                System.out.println("getMGahtering = " + gNames);
-                return gatheringRepository.findMatchingGatheringsByGName(gNames);
-            } else {
-                return Collections.emptyList();
-            }
-        } else {
-            return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
-        }
+    if (memberOptional.isPresent()) {  // member가 null인지 확인
+        MemberEntity member = memberOptional.get();
+        System.out.println("findByMId = " + userId);
+        if(member.getMGGathering() != null) {
+            List<String> gNames = Arrays.asList(member.getMGGathering().split(",\\s*"));  // 쉼표를 기준으로 문자열을 분할하여 리스트로 변환
+            System.out.println("getMGahtering = " + gNames);
+            return gatheringRepository.findMatchingGatheringsByGName(gNames);
+        }else {return Collections.emptyList();}
+    } else {
+        return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
     }
+}
 
     /*serach*/
 
     /*카테고리 검색*/
     /*전체 검색*/
 
-    /*3개 해당*/
+    /*전체 0 검색 3 3개 해당*/
     public List<GatheringEntity> searchMingleCase1(String selectedRegi, String mainCtName, String subC) {
-        return gatheringRepository.searchMingleCase1(selectedRegi, mainCtName, subC);
+    return gatheringRepository.searchMingleCase1(selectedRegi,mainCtName,subC);
     }
-
-    /*2개 해당*/
+    /* 전체 1 검색 2 2개 해당*/
     public List<GatheringEntity> searchMingleCase2(String selectedRegi, String mainCtName, String subC) {
-        if (!subC.equals("전체")) {
-            /*지역 & 메인 = "전체" \ 세부 != "전체" */
-            return gatheringRepository.searchMingleCase2_1(selectedRegi, mainCtName);
-        } else if (!selectedRegi.equals("전체")) {
-            /*메인 & 세부 = "전체" \ 지역 != "전체" */
-            return gatheringRepository.searchMingleCase2_2(mainCtName, subC);
-        } else {
-            /*세부 & 지역 = "전체" \ 메인 != "전체" */
-            return gatheringRepository.searchMingleCase2_3(subC, selectedRegi);
+        if(!selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&subC.equals("전체")){
+            /*지역 & 메인 != "전체" \ 세부 = "전체" */
+            return gatheringRepository.searchMingleCase2_1(selectedRegi,mainCtName);
+        }else if(selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&!subC.equals("전체")){
+            /*메인 & 세부 != "전체" \ 지역 = "전체" */
+            return gatheringRepository.searchMingleCase2_2(mainCtName,subC);
+        }else{
+            /*세부 & 지역 != "전체" \ 메인 = "전체" */
+            return gatheringRepository.searchMingleCase2_3(subC,selectedRegi);
         }
     }
-
-    /*하나만 해당*/
+    /* 전체 2 검색 1 하나만 해당*/
     public List<GatheringEntity> searchMingleCase3(String selectedRegi, String mainCtName, String subC) {
-        if (selectedRegi.equals("전체")) {
-            /*지역 = "전체"*/
+        if(!selectedRegi.equals("전체")&&mainCtName.equals("전체")&&subC.equals("전체")){
+            /*지역 != "전체"*/
+            System.out.println("지역만 값이 있을 때 ");
             return gatheringRepository.searchMingleCase3(selectedRegi);
-        } else if (mainCtName.equals("전체")) {
-            /*메인 카테고리 = "전체"*/
+        }else if(selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&subC.equals("전체")){
+            /*메인 카테고리 != "전체"*/
+            System.out.println("메인만 값이 있을 때 ");
             return gatheringRepository.searchMingleCase3(mainCtName);
         } else {
-            /*세부 카테고리 = "전체"*/
+            /*세부 카테고리 != "전체"*/
+            System.out.println("세부만 값이 있을 때 ");
             return gatheringRepository.searchMingleCase3(subC);
         }
     }
@@ -177,5 +180,48 @@ public class GatheringService {
             return null;
         }
 
+    }
+
+
+
+    private Blob createBlobFromMultipartFile(MultipartFile multipartFile) throws IOException, SQLException {
+        byte[] fileBytes = multipartFile.getBytes();
+        return new SerialBlob(fileBytes);
+    }
+    @Transactional
+    public void uploadImage(@NotNull MultipartFile gProfileimg, String mId) {
+        try {
+            GatheringEntity gatheringEntity = new GatheringEntity();
+            Blob mProfileBlob = createBlobFromMultipartFile(gProfileimg);
+            gatheringEntity.setGCoverimg(mProfileBlob);
+            gatheringRepository.updateGatheringCoverimg(mProfileBlob,mId);
+
+        } catch (IOException | SQLException e) {
+            e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
+            throw new RuntimeException("이미지 업로드 중 오류가 발생했습니다.");
+        }
+    }
+
+    public List<ScheduleDTO> findSchedule(Long id) {
+
+        List<ScheduleEntity> scheduleEntityList = gatheringRepository.findBysGNum(id);
+        List<ScheduleDTO> scheduleDTOList = new ArrayList<>();
+        for (ScheduleEntity scheduleEntity: scheduleEntityList) {
+            scheduleDTOList.add(EntityDTOMapper.entityToDTO(scheduleEntity));
+
+        }
+
+
+
+        return scheduleDTOList;
+    }
+
+    public List<CommentsDTO> findComments(Long pNum) {
+//        List<CommentsEntity> commentsEntityList = gatheringRepository.findByPNum(pNum);
+        List<CommentsDTO> commentsDTOList = new ArrayList<>();
+//        for (comments:) {
+//
+//        }
+        return commentsDTOList;
     }
 }

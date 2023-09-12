@@ -12,6 +12,9 @@
     <!--css-->
     <link href="/CSS/Gathering_Board.css" type="text/css" rel="stylesheet">
     <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+
+    <!-- include jQuery :) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <!--font-->
     <!--font-family: 'GmarketSans';-->
     <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
@@ -44,30 +47,32 @@
             <li class="clearfix">
                 <h4>게시판</h4>
                 <form action="#">
-                    <Select name="board" class="select_board">
-                        <option value="none">전체보기</option>
-                        <option value="free">자유게시판</option>
-                        <option value="interest">관심사 공유</option>
-                        <option value="review">정모후기</option>
-                        <option value="greetings">가입인사</option>
-                        <option value="notification">공지사항</option>
+                    <Select name="board" id="boardSelect" class="select_board">
+                        <option value="전체보기">전체보기</option>
+                        <option value="자유게시판">자유게시판</option>
+                        <option value="관심사 공유">관심사 공유</option>
+                        <option value="정모후기">정모후기</option>
+                        <option value="가입인사">가입인사</option>
+                        <option value="공지사항">공지사항</option>
                     </Select>
                 </form>
                 <div class="search">
-                    <input type="text" placeholder="검색어 입력">
-                    <a href="#"><img src="/image/search.png"></a>
+                    <input id="search" type="text" placeholder="검색어 입력">
+                    <a href="#"><img id="searchBtn" src="/image/search.png"></a>
                 </div>
             </li>
         </ul>
         <ul class="board_notification">
             <li th:each="notiPost:${Notification}"><a th:href="|/Gathering_Post/${GatheringHome.id}/${notiPost.getPNum()}|" href="#"><span class="post_board">[공지]</span><span class="post_title" th:text="${notiPost.getPTitle()}"></span></a></li>
+<!--            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">하이미디어 볼링센터 이용 가이드🎳</span></a></li>-->
+<!--            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">작당모의 볼링클럽모임 방칙 ⭐</span></a></li>-->
+<!--            <li><a href="#"><span class="post_board">[공지]</span><span class="post_title">가입인사 참고사항</span></a></li>-->
         </ul>
         <ul class="board_post" th:each="post, postStat: ${Post}">
             <a th:href="@{|/Gathering_Post/${id}/${post.getPNum()}|}">
                 <ul class="posts clearfix">
                     <img class="post_writerimg" th:src="${PostWriter.get(postStat.index).getMProfileimg()}">
                     <li class="date_img"><p class="post_date" th:text="${post.getPDate()}">0월 0일 00:00</p>
-                        <img class="post_img" src="/image/newsPost_img2.png">
                     </li>
 
                     <li><p class="post_boardName" th:text="${PostBoard.get(postStat.index)}">게시판이름</p></li>
@@ -85,5 +90,52 @@
 </div>
 <div th:replace="/footer.html"></div>
 </div>
+<script>
+    /*검색 버튼*/
+    $("#searchBtn").click(function() {
+        const 검색한이름 = document.getElementById('search').value;
+        console.log("검색한이름 : " + 검색한이름);
+
+        // 모든 게시물 요소들을 선택합니다.
+        const 게시물요소들 = document.querySelectorAll('.board_post');
+
+        게시물요소들.forEach(function(게시물요소) {
+            // 각 게시물의 제목 요소를 선택합니다.
+            const 제목요소 = 게시물요소.querySelector('.post_title');
+
+            if (!제목요소.textContent.includes(검색한이름)) {
+                // 검색한 이름이 포함되지 않는 경우 해당 게시물 요소를 숨깁니다.
+                게시물요소.style.display = 'none';
+            } else {
+                // 검색한 이름이 포함된 경우 해당 게시물 요소를 보여줍니다.
+                게시물요소.style.display = 'block';
+            }
+        });
+    });
+
+    document.getElementById("boardSelect").addEventListener("change", function() {
+        var sValue = document.getElementById('boardSelect');
+        alert("value: " + sValue.options[sValue.selectedIndex].value);
+
+        const 게시물들 = document.querySelectorAll('.board_post');
+
+        게시물들.forEach(function(게시물) {
+            // 각 게시물의 제목 요소를 선택합니다.
+            const 게시판 = 게시물.querySelector('.post_boardName');
+            console.log("게시판 : "+게시판)
+            if (!게시판.textContent.includes(sValue.options[sValue.selectedIndex].value)) {
+                // 검색한 이름이 포함되지 않는 경우 해당 게시물 요소를 숨깁니다.
+                게시물.style.display = 'none';
+                console.log("nope");
+            } else {
+                // 검색한 이름이 포함된 경우 해당 게시물 요소를 보여줍니다.
+                게시물.style.display = 'block';
+                console.log("yes");
+            }
+        });
+    });
+
+</script>
+
 </body>
 </html>

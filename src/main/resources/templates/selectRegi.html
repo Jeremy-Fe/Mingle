@@ -18,13 +18,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="regiModal" class="clearfix" style="overflow:scroll;">
+    <div id="regiModal" class="modal1 clearfix">
         <div>
             <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
         </div>
-        <div id="showRegi" >
+        <div id="showRegi"  style="overflow:scroll;">
         </div>
-        <a href="#" rel="modal:close"></a>
+        <button onclick="regiAll()">전체보기</button>
+        <a href="#" rel="modal1:close"></a>
     </div>
 
     <script>
@@ -32,16 +33,17 @@
             if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
                 const regiSearch = document.getElementById('regiSearch').value; // 'regiSearch' id를 가진 요소에서 값을 가져옴
                 console.log("1.ReTest1 : "+regiSearch);
-
+                data = null
                 $.ajax({
                     url: "selectRegi/regiSearch",
                     method: "GET",
                     data: { keyword: regiSearch },
                     success: function(data) {
                         // 성공적으로 응답 받았을 때 처리할 로직 작성
-                        console.log("2."+data)
+
                         $("#showRegi>").remove();
                         for (var i = 0; i < data.length; i++) {
+                            console.log("2."+data)
                             var city = data[i];
                             var 시도 = city.bcName;
                             var 군구 = city.mcName;
@@ -70,13 +72,13 @@
                                     // 기존값 지우기
                                     var selectedRegiElement = document.getElementById("selectedRegi");
                                     selectedRegiElement.innerText = "";
-                                    모임업데이트();
+
 
                                     $("#selectedRegi").append(sRegi2+" "+sRegi1);
 
                                     data = null;
                                     console.log("7. data = null ?"+data);
-
+                                    모임업데이트();
                                 },
                                 error: function(xhr, status, error) {
                                     // 에러 발생 시 처리할 로직 작성
@@ -93,7 +95,13 @@
             }
         }
 
-
+        function regiAll() {
+            var selectedRegiElement = document.getElementById("selectedRegi");
+            selectedRegiElement.innerText = "";
+            $("#selectedRegi").append("전체");
+            document.querySelector('a[rel="modal:close"]').click();
+            모임업데이트();
+        }
 
     </script>
 </body>

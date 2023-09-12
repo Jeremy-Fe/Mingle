@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/js/iziModal.min.js" integrity="sha512-lR/2z/m/AunQdfBTSR8gp9bwkrjwMq1cP0BYRIZu8zd4ycLcpRYJopB+WsBGPDjlkJUwC6VHCmuAXwwPHlacww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- include jQuery :) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <!--css-->
+    <link href="/css/selectInter.css" type="text/css" rel="stylesheet">
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- font-family: 'NexonLv1Gothic'; -->
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+</head>
+<body>
+<div id="mainInter" class="modal2 clearfix">
+    <div id="inter1">
+        <ul>
+            <h2>관심사 선택</h2>
+            <li class="I_Igms1">
+                <a class="mInBtn"  data-value="여행"><img src="image/inter/여행.png" alt="" ><p class="iName">여행</p></a>
+                <a class="mInBtn"  data-value="운동스포츠"><img src="image/inter/운동스포츠.png"alt=""><p class="iName">운동/스포츠</p></a>
+                <a class="mInBtn" data-value="독서"><img src="image/inter/독서.png"alt=""><p class="iName">독서</p></a>
+                <a class="mInBtn" data-value="업종직무"><img src="image/inter/업종직무.png"alt=""><p class="iName">업종/직무</p></a>
+            </li>
+            <li class="I_Igms2">
+                <a class="mInBtn" data-value="문화공연축제"><img src="image/inter/문화공연.png"alt=""><p class="iName">문화/공연/축제</p></a>
+                <a class="mInBtn" data-value="음악악기"><img src="image/inter/음악악기.png"alt=""><p class="iName">음악/악기</p></a>
+                <a class="mInBtn" data-value="공예만들기"><img src="image/inter/공예.png"alt=""><p class="iName">공예/만들기</p></a>
+                <a class="mInBtn" data-value="댄스무용"><img src="image/inter/댄스.png"alt=""><p class="iName">댄스/무용</p></a>
+            </li>
+            <li class="I_Igms3">
+                <a class="mInBtn" data-value="사교인맥"><img src="image/inter/사교.png"alt=""><p class="iName">사교/인맥</p></a>
+                <a class="mInBtn" data-value="차오토바이"><img src="image/inter/차.png"alt=""><p class="iName">차/오토바이</p></a>
+                <a class="mInBtn" data-value="사진영상" ><img src="image/inter/사진.png"alt=""><p class="iName">사진/영상</p></a>
+                <a class="mInBtn" data-value="게임오락" ><img src="image/inter/게임.png"alt=""><p class="iName">게임/오락</p></a>
+            </li>
+            <li class="I_Igms4">
+                <a class="mInBtn" data-value="요리제조"><img src="image/inter/요리.png"alt=""><p class="iName">요리/제조</p></a>
+                <a class="mInBtn" data-value="반려동물"><img src="image/inter/반려동물.png"alt=""><p class="iName">반려동물</p></a>
+                <a class="mInBtn" data-value="가족결혼"><img src="image/inter/가족.png"alt=""><p class="iName">가족/결혼</p></a>
+                <a class="mInBtn" data-value="자유주제"><img src="image/inter/자유주제.png"alt=""><p class="iName">자유주제</p></a>
+            </li>
+        </ul>
+    </div>
+    <a href="#" rel="modal:close"></a>
+</div>
+<div id="subWrap" style="display: none;" >
+    <div id="subContent">
+        <p id="selectedMainInter"></p>
+        <ul id="subInterestList" style="overflow-y: auto">
+            <li class="list">전체</li>
+            <!-- 세부 관심사가 여기에 추가됩니다. -->
+        </ul>
+    </div>
+    <a href="#" rel="modal:close"></a>
+</div>
+<script>
+
+    var myLinks = document.querySelectorAll('.mInBtn');
+
+    myLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // 기본 동작(링크 이동)을 막음.
+
+            var value = this.getAttribute('data-value');
+            console.log('클릭한 a 태그의 값:', value);
+            $("#mainCtName").append(value);
+
+            $("#mainInter").hide();
+            $("#subWrap").show();
+            $("#selectedMainInter").append(value);
+            $.ajax({
+                url: "/selectInter/mS",
+                method: "GET",
+                data: { mainSubject: value },
+                success: function(data){
+                    var mainCtName = document.getElementById('mainCtName');
+                    mainCtName.textContent = '';
+                    $("#mainCtName").append(value);
+                    console.log("get");
+                    console.log("data");
+                    for (var i = 0; i < data.length; i++) {
+                        console.log("2."+data)
+                        var subClist = data[i];
+                        var html = '<li class="list">'+subClist+'</li>';
+                        $("#subInterestList").append(html);
+
+
+
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // 에러 발생 시 처리할 로직 작성
+                    console.error(error);
+                }
+
+        });
+    });
+    });
+    function handleClick() {
+        var subC = document.getElementById('subC');
+        subC.textContent = '';
+        var text = $(this).text();
+        console.log(text);
+        $("#subC").append(text);
+        document.querySelector('a[rel="modal:close"]').click();
+        모임업데이트();
+    }
+    $(document).on('click', '.list', handleClick)
+    $('.list').click(handleClick);
+</script>
+</body>
+</html>

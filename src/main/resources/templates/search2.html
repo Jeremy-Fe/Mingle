@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <title>search</title>
-
     <!--css-->
     <link href="/CSS/search2.css?after" type="text/css" rel="stylesheet">
 
+
+
+
     <!-- include jQuery :) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
 
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -35,7 +37,7 @@
               <!-- 검색창 -->
               <div id="search">
                 <ul>
-                    <a id="regi" href="/selectRegi" rel="modal:open" style="display: block">
+                    <a id="regi" href="/selectRegi" rel="modal:open" style="display: block"><!---->
                     <img src="image/search_지역.png">
                     <p id="selectedRegi">전체</p>
 <!--                    <p  th:unless="${selectedRegion == null}" th:text="${selectedRegion}"></p>-->
@@ -50,9 +52,9 @@
               <section id="chMingle">
                 <!-- 검색 모임 헤더 -->
                 <header id="cM_header">
-                  <a id="mainC" href="#">
+                  <a id="mainC" href="/selectInter" rel="modal:open">
                     <img src="image/inter/운동스포츠.png">
-                    <p id="mainCtName">전체</p>
+                    <p id="mainCtName" >전체</p>
                   </a>
                   <a id="subC" href="#">전체<img src="image/오른쪽화살표.png"></a>
                   <div id="array">최신순</div><!--onclick="update()"-->
@@ -95,17 +97,24 @@ var 추출한텍스트 = document.getElementById("selectedRegi").textContent;
 var 띄어쓰기_인덱스 = 추출한텍스트.indexOf(" ");
 var 선택한지역 = 추출한텍스트.substring(띄어쓰기_인덱스 + 1);
 
-
 var 메인카테고리= document.getElementById("mainCtName").textContent;
-
 
 var 세부카테고리= document.getElementById("subC").textContent;
 
-console.log("세부카테고리 = "+세부카테고리);
 function 모임업데이트(){
+
+    var 추출한텍스트 = document.getElementById("selectedRegi").textContent;
+    var 띄어쓰기_인덱스 = 추출한텍스트.indexOf(" ");
+    var 선택한지역 = 추출한텍스트.substring(띄어쓰기_인덱스 + 1);
+
+    var 메인카테고리= document.getElementById("mainCtName").textContent;
+
+    var 세부카테고리= document.getElementById("subC").textContent;
+
     console.log("선택한 지역 = " + 선택한지역);
     console.log("메인카테고리= "+메인카테고리);
     console.log("세부카테고리 = "+세부카테고리);
+    $(".mingle").remove();
     $.ajax({
         url: "search2/searchMingle",
         type : 'GET',
@@ -114,7 +123,7 @@ function 모임업데이트(){
             $(".mingle").remove();
             모임카드 = null;
             모임카드 = data;
-            console.log("response = "+data)
+            console.log("data = "+data)
             console.log("선택한지역: "+ 선택한지역+" 메인카테고리: "+메인카테고리+" 세부카테고리: "+세부카테고리);
             for (var i = 0; i < data.length; i++) {
                 var mingles = data[i];

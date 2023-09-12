@@ -1,0 +1,118 @@
+@charset "utf-8";
+*{margin: 0;padding: 0; box-sizing: border-box; }
+li{list-style: none; font-family:'GmarketSans'; font-weight: 100}
+a{text-decoration: none; color: #2C244F; display: block;}
+img{display: block;}
+.clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
+p{font-family: 'GmarketSans'; font-weight: 100}
+h3{font-family: 'GmarketSans';}
+body{z-index: 2; background-color: aliceblue;}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    z-index: 0;
+    width: 0.5em; /* 스크롤바 너비 */
+    height: 0.5em; /* 스크롤바 높이 */
+}
+/* 스크롤바의 Track 스타일링 */
+::-webkit-scrollbar-track {background:rgba(255,255,255,0.65) ;}
+/* 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,255,0.1);
+    border-radius: 10px;
+}
+/* 마우스 오버 시 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,255,0.4);
+}
+
+/*.modal{max-width: max-content; !important;}
+#mainInter{width: max-content !important; margin: 0 auto;}*/
+/* 관심사 선택 1 */
+#inter1{
+    width: 600px; height: 800px;
+    display: flex;
+    float: left;
+
+}
+#inter1 >ul{
+    width: 600px; height: 800px;
+    background-color: #fff; margin: auto;
+}
+#inter1 >ul>h2{
+    font-family: 'Jalnan';
+    font-size: 40px; font-weight: 700; color: #424874;
+    text-align: center; line-height: 80px;  padding: 15px;
+}
+#inter1 >ul>li{width: 525px; height: 170px; margin: auto; }
+#inter1 >ul>li>a{width: 100px; height: 135px;margin: 15px; float: left;}
+#inter1 >ul>li>a>img{
+
+    display: flex;
+    width: 100px;
+}
+#inter1 >ul>li>a>p{
+    position: relative;
+    width: 135px; left: -20px;
+    height: 35px; line-height: 55px;
+    text-align: center; font-size: 18px; font-weight: normal;
+}
+
+#re_in{
+    width: 720px; height: 890px;position: relative; margin-left: 40px;
+}
+/* / 관심사 선택 1 */
+/*  관심사 선택 2 */
+#subWrap{
+    width: 1400px; height: 800px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+#subContent {
+    width: 1400px;
+    height: 800px;
+
+    background-color: #EEF1FF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+}
+
+#subInterestList {
+    width: 100%;
+    height: 650px;
+    line-height: 85px;
+    background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;
+    padding: 20px;
+
+}
+#subContent>p{
+    width: 100%; height: 100px;
+    padding-left: 20px;
+    font-family: 'Jalnan'; color: #564797; font-weight: bolder;
+    font-size: 48px;
+}
+#selectedInterest{
+    line-height: 100px;
+    font-family: 'Jalnan'; color: #564797; font-weight: bolder;
+    font-size: 48px;
+}
+#subInterestList>li{
+    width: max-content; height: max-content;
+    margin: 10px 20px; padding: 5px 15px;
+    font-size: 34px;
+    border-radius: 10px;
+    font-family: 'NexonLv1Gothic'; font-weight: lighter; text-align: center;
+    background-color: #FFFFFF;
+    float: left;cursor: pointer;
+}
+#subInterestList>li:hover{
+    background-color: #968ACD;
+}
+
+
+
+
+/* / 관심사 선택 2 */
