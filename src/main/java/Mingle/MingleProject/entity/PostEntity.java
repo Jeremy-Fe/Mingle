@@ -1,5 +1,6 @@
 package Mingle.MingleProject.entity;
 
+import Mingle.MingleProject.dto.PostDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -20,13 +21,11 @@ public class PostEntity {
     @Column(name = "P_NUM", nullable = false)
     private Long pNum;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "P_B_NUM", nullable = false)
-    private BoardEntity pBNum;
+    @Column(name = "P_B_NUM", nullable = false)
+    private Long pBNum;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "P_G_NUM", nullable = false)
-    private GatheringEntity gatheringEntity;
+    @Column(name = "P_G_NUM", nullable = false)
+    private Long pGNum;
 
     @Column(name = "P_TITLE", nullable = false, length = 100)
     private String pTitle;
@@ -37,11 +36,10 @@ public class PostEntity {
     @Column(name = "P_LIKE")
     private Long pLike;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "P_M_ID", nullable = false)
-    private MemberEntity pMId;
+    @Column(name = "P_M_ID", nullable = false)
+    private String pMId;
 
-    @Column(name = "P_DATE", nullable = false)
+    @Column(name = "P_DATE")
     private LocalDate pDate;
 
     @Lob
