@@ -13,6 +13,7 @@ import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.CityService;
 import Mingle.MingleProject.service.GatheringService;
 import Mingle.MingleProject.service.MemberService;
+import Mingle.MingleProject.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class GatheringController {
     private final CityService cityService;
     private final GatheringService gatheringService;
     private final MemberRepository memberRepository;
+    private final PostService postService;
 
 
     @GetMapping("Gathering_Home/{id}")
@@ -275,12 +277,17 @@ public class GatheringController {
     }
 
     @PostMapping("/Gathering_Post_Write/{id}")
-    public String uploadImage(@RequestParam("id") MultipartFile gProfileimg, HttpSession session) {
+    public String uploadPost(@ModelAttribute PostDTO postDTO, @PathVariable Long id, HttpSession session) {
         String logInId = (String) session.getAttribute("loginId");
-        System.out.println("mProfileimg : " + gProfileimg + " " + logInId);
-        gatheringService.uploadImage(gProfileimg,logInId);
+        postDTO.setPMId(logInId);
+        postDTO.setPGNum(id);
+        System.out.println(postDTO);
+        System.out.println(postDTO);
 
-        return "Gathering_Board";
+        postService.uploadPost(postDTO);
+
+
+        return "redirect:/Gathering_Board/" + id;
     }
 
 

@@ -2,9 +2,7 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.RegionDTO;
 import Mingle.MingleProject.entity.CityEntity;
-import Mingle.MingleProject.entity.Interest;
 import Mingle.MingleProject.service.CityService;
-import Mingle.MingleProject.service.InterestService;
 import Mingle.MingleProject.service.MemberService;
 import Mingle.MingleProject.service.SubInterestService;
 import lombok.RequiredArgsConstructor;
@@ -12,15 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-public class RegionController {
+public class ModalController {
     //생성자 주입
     private final MemberService memberService;
     private final CityService cityService;
