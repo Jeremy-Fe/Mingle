@@ -7,60 +7,19 @@ img{display: block; width: 150px;}
 p{font-family: 'GmarketSans'; }
 h3{font-family: 'GmarketSans';}
 
-@media (max-width: 767px){
-
-}
-
-/* wrap */
-#wrap{width: 1900px; margin: 0 auto;}
-
-/*header*/
-#header{width: 400px; height: 1100px; float: left;
-    /*background-color: aliceblue*/
-}
-/*header_logo*/
-#header .logo{width: 100%; height: 200px;}
-#header .logo>a>img{float: left; width:90%; margin: 10px}
-
-/*header_nav*/
-#header .menu{ width: 100%; padding: 20px}
-#header .menu>ul{}
-#header .menu>ul>li{margin-bottom: 82px}
-#header .menu>ul>li>a{font-size: 40px; }
-/*#header .menu>ul>li>a:first-child::before{ line-height: 0px}*/
-
-
-/* section */
-#box{width: 1500px; height: 1100px;  float: left; ;}
-#box>div{float: left}
-#user{width: 100%; height: 65px;}
-#view{width: 100%; height: 1035px;
-    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
-    border-radius: 20px 0 0 0;
-}
-
-/*section_ user*/
-#box>#user >ul{float: right}
-#box>#user >ul>li{float: left; line-height: 65px;}
-#box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
-#box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
-#box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
-#box>#user >ul>.icon_b>img{width: 30px; height: 30px;  margin-top: 20px ;}
-
-/*section_ view*/
-#box>#view{}
-#box>#view>ul{}
-#box>#view>ul>li{}
-#box>#view>ul>li>a{font-family: 'Orbitron', sans-serif;}
-
-#view>div{width: 1400px;  background-color:rgba(255,255,255,0.65);
+.
+.view > div{
+/*    width: 1400px;  background-color:rgba(255,255,255,0.65);
+    margin: auto; margin-top: 20px;
+    border-radius: 20px*/;}
+/*section_ view_l_news*/
+.l_news{height: 240px; margin-top: 40px;
+    width: 1400px;  background-color:rgba(255,255,255,0.65);
     margin: auto; margin-top: 20px;
     border-radius: 20px;}
-/*section_ view_l_news*/
-#view>.l_news{height: 240px; margin-top: 40px;}
-#view>.l_news>ul{width: 1400px;height: 100px}
+.l_news>ul{width: 1400px;height: 100px}
 
-#view>.l_news>ul>li>p{
+.l_news>ul>li>p{
     font-size: 35px;  font-family: 'Jalnan'; color: #564797;
     float: left ; padding-left: 25px; margin-left: 25px;line-height: 100px;
 }
@@ -68,35 +27,43 @@ h3{font-family: 'GmarketSans';}
     margin: 15px;float: right ; line-height: 70px;
     font-size: 25px ;  font-weight:300;
 }
-#view>.l_news>ul>li>a>img{
+.l_news>ul>li>a>img{
     argin: 15px; width: 22px;
     height: 22px; float: right ;
     margin-top: 20px ;padding-left: 10px
 }
-#view> .l_news> .inBox{
+.l_news> .inBox{
     width: 1300px; height: 110px; background-color: #fff;
     border-radius: 20px;
     margin: auto; padding: 20px; padding-left: 40px;
 }
-#view> .l_news>li{float: left}
-#view> .l_news> .inBox>p{
+.l_news>li{float: left}
+.l_news> .inBox>p{
     float: left ; line-height: 80px;
     font-size: 32px;  font-weight: 300; color: grey}
-#view> .l_news> .inBox>p:first-child{margin-right: 40px}
-#view> .l_news> .inBox>h3{
+.l_news> .inBox>p:first-child{margin-right: 40px}
+.l_news> .inBox>h3{
     float: left ;line-height: 75px ; margin-left: 10px;
     font-size: 48px; font-weight: 500}
 
 /*배너 section_ view_banner*/
-#view > .banner{width: 1400px; margin: auto; overflow: hidden;
+.banner{width: 1400px; margin: auto; overflow: hidden;
+    height: 450px !important;
     border-radius: 20px; background-color:rgba(255,255,255,0.5);
-    margin-top: 20px
+    margin-top: 40px;
 }
-#view > .banner>.ul{width: 1400px ; margin-left: 180px}
-#view > .banner>.ul>.swiper-slide{}
-#view > .banner>.ul>.swiper-slide>img{width: 1010px; }
+.banner>.ul{width: 1400px ; margin-left: 180px ;height: 450px !important; padding-top: 50px;}
+.banner>.ul>.swiper-slide{}
+.banner>.ul>.swiper-slide>img{width: 1010px; }
 
-#view > .banner>.ul>.B_mbti>img{}
+.banner>.ul>.B_mbti>img{}
 .swiper-button-prev,
 .swiper-button-next {font-size: 100px;font-weight: bold; color: #564797}
 
+/*핫모임 section_ view_hotMeeting*/
+hotMeeting{height: 350px}
+hotMeeting>ul{width: 1300px; margin: auto ;}
+hotMeeting>ul>h3{
+    font-family: 'Jalnan'; font-size: 36px;
+    line-height: 100px; color: #564797; float: left;
+}

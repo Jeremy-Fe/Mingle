@@ -178,12 +178,16 @@ body{z-index: 2}
 
 }
 .my_schedule>ul .my_scd{
-    font-size: 40px;
-    font-family: 'Jalnan';
     position: absolute;
     top: 25px;
     left: 116px;
 }
+.my_schedule>ul .my_scd>a{
+    font-size: 40px;
+    font-family: 'Jalnan';
+    color: #2C244F;
+}
+
 .my_schedule .my_scd_box{
     width: 1381px; height: 1150px; background-color:rgba(255,255,255,0.65);
     margin: auto;

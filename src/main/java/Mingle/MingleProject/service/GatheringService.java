@@ -50,31 +50,33 @@ public class GatheringService {
             return null;
         }
     }
-
-    /* 메인페이지_내모임*/
-/*public List<Gathering> findMyMingles(String userId) {
-    Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
-
-    if (memberOptional.isPresent()) {  // Optional 객체가 존재하는지 확인
-        MemberEntity member = memberOptional.get();
-        System.out.println("findByMId = " + userId);
-        List<String> gNames = Arrays.asList(member.getMGGathering().split(",\\s*"));  // 쉼표를 기준으로 문자열을 분할하여 리스트로 변환
-        System.out.println("getMGahtering = " + gNames);
-        return gatheringRepository.findMatchingGatheringsByGName(gNames);
-    } else {
-        return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
-    }
-}*/
+    /*내모임 확인*/
 public List<GatheringEntity> findMyMingles(String userId) {
     Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
 
     if (memberOptional.isPresent()) {  // member가 null인지 확인
         MemberEntity member = memberOptional.get();
-        System.out.println("findByMId = " + userId);
+        System.out.println("내모임 findByMId = " + userId);
         if(member.getMGGathering() != null) {
             List<String> gNames = Arrays.asList(member.getMGGathering().split(",\\s*"));  // 쉼표를 기준으로 문자열을 분할하여 리스트로 변환
-            System.out.println("getMGahtering = " + gNames);
+            System.out.println("내모임 getMGahtering = " + gNames);
             return gatheringRepository.findMatchingGatheringsByGName(gNames);
+        }else {return Collections.emptyList();}
+    } else {
+        return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
+    }
+}
+    /*추천모임 확인*/
+    public List<GatheringEntity> findRecomMingles(String userId) {
+    Optional<MemberEntity> memberOptional = memberRepository.findBymId(userId);  // 사용자 아이디로 MemberEntity 조회
+
+    if (memberOptional.isPresent()) {  // member가 null인지 확인
+        MemberEntity member = memberOptional.get();
+        System.out.println("추천모임 findByMId = " + userId);
+        if(member.getMInterest() != null) {
+            String gInter = member.getMInterest();  // 쉼표를 기준으로 문자열을 분할하여 리스트로 변환
+            System.out.println("추천모임 사용자 관심사 = " + gInter);
+            return gatheringRepository.findMatchingMInterestByMGahtering(gInter);
         }else {return Collections.emptyList();}
     } else {
         return Collections.emptyList();  // 회원을 찾지 못한 경우 빈 리스트 반환
@@ -225,4 +227,5 @@ public List<GatheringEntity> findMyMingles(String userId) {
         }
         return commentsDTOList;
     }
+
 }
