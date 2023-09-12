@@ -19,6 +19,9 @@
 .schedule > li {
     padding-left: 50px;
 }
+.schedule > li:first-child{
+    margin-bottom: 35px;
+}
 .schedule > li > span {
     font-size: 26px;
 }
@@ -45,8 +48,8 @@
     color: #0047FF;
 }
 .schedule > li > .schedule_title{
-    display: block;
     margin-bottom: 40px;
+    font-size: 30px;
 }
 .schedule > li > .schedule_subject{
     font-size: 18px;

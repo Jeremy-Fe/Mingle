@@ -1,10 +1,13 @@
 package Mingle.MingleProject.repository;
 
 import Mingle.MingleProject.entity.GatheringEntity;
+import Mingle.MingleProject.entity.ScheduleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.Blob;
 import java.util.List;
 
 public interface GatheringRepository extends JpaRepository<GatheringEntity, Long> {
@@ -41,7 +44,11 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
     @Query("SELECT g FROM GatheringEntity g WHERE g.gName = ?1 ")
     List<GatheringEntity> searchNameCase1(String searchName);
 
+    @Modifying
+    @Query(value = "UPDATE GatheringEntity g SET g.gCoverimg  = :gCoverimg WHERE g.id =:id")
+    void updateGatheringCoverimg(@Param("gCoverimg") Blob gCoverimg, @Param("id") String id);
 
 
-
+    @Query(value="select s from ScheduleEntity s where s.GatheringEntity.id = :id")
+    List<ScheduleEntity> findBysGNum(@Param("id") Long id);
 }
