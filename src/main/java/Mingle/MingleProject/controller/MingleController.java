@@ -109,8 +109,8 @@ public class MingleController {
         return "myClass";
     }
 
-    @GetMapping("schedule*")
-    public String schedule() {return "schedule";}
+//    @GetMapping("/schedule")
+//    public String schedule() {return "schedule";}
 
     @GetMapping("MyPage")
     public String MyPage(HttpSession session, Model model){

@@ -234,6 +234,28 @@ public class GatheringController {
 
         return "Gathering_Schedule";}
 
+    @GetMapping("Member_Schedule{id}")
+    public String Member_Schedule(@PathVariable Long id, Model model) {
+        // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
+        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+        model.addAttribute("GatheringHome", gatheringDTO);
+
+        List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
+        model.addAttribute("Schedule", scheduleDTOList);
+
+
+        List<Integer> memberCount = new ArrayList<>();
+        List<Long> remainingPerson = new ArrayList<>();
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            String[] member = scheduleDTO.getSMember().split(",");
+            memberCount.add(member.length);
+            remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+        }
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("remaining", remainingPerson);
+
+        return "Gathering_Schedule";}
+
 
 
 
