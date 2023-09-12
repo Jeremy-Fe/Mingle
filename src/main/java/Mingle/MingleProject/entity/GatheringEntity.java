@@ -59,12 +59,12 @@ public class GatheringEntity {
     }
 
 
-    @OneToMany(mappedBy = "gatheringEntity", fetch = FetchType.EAGER)
-    private Set<PostEntity> pGNum = new LinkedHashSet<>();
-
-
-    @OneToMany(mappedBy = "GatheringEntity", fetch = FetchType.EAGER)
-    private Set<ScheduleEntity> sGNum = new LinkedHashSet<>();
+//    @OneToMany(mappedBy = "GatheringEntity", fetch = FetchType.EAGER)
+//    private Set<PostEntity> pGNum = new LinkedHashSet<>();
+//
+//
+//    @OneToMany(mappedBy = "GatheringEntity", fetch = FetchType.EAGER)
+//    private Set<ScheduleEntity> sGNum = new LinkedHashSet<>();
 
     // 게더링
 
