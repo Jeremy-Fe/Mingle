@@ -64,15 +64,11 @@
         </div>
         </ul>
         <ul class="comments">
-            <ul class="comment clearfix">
-                <img class="comment_profileimg" src="/image/Gathering_img2.png">
-                <li><span class="comment_writer">정웅기</span><span class="comment_date">7월 23일 오후 11:01</span></li>
-                <li><span class="comment_contents">우철아 맛있게 잘 먹었다 ㅋㅋㄹㅃㅃ~~</span></li>
-            </ul>
-            <ul class="comment clearfix">
-                <img class="comment_profileimg" src="/image/Gathering_img6.png">
-                <li><span class="comment_writer">강승진</span><span class="comment_date">7월 25일 오전 10:15</span></li>
-                <li><span class="comment_contents">웅기씨 혼나보실래요? 딱밤 딱 대</span></li>
+            <ul class="comment clearfix" th:each="comments, commentsStat: ${Comments}">
+                <img class="comment_profileimg" th:if="${CommentsWriter.get(commentsStat.index).getMProfileimg() == null}" src="/image/DefaultProfile_logo.png">
+                <img class="comment_profileimg" th:unless="${CommentsWriter.get(commentsStat.index).getMProfileimg() == null}" th:src="${CommentsWriter.get(commentsStat.index).getMProfileimg()}">
+                <li><span class="comment_writer" th:text="${CommentsWriter.get(commentsStat.index).getMName()}">정웅기</span><span class="comment_date" th:text="${comments.getCDate()}">7월 23일 오후 11:01</span></li>
+                <li><span class="comment_contents" th:text="${comments.getCComments()}">내용</span></li>
             </ul>
         </ul>
     </div>

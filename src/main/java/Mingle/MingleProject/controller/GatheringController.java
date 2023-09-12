@@ -130,7 +130,12 @@ public class GatheringController {
         model.addAttribute("writer", memberDTO);
 
         List<CommentsDTO> commentsDTOList = gatheringService.findComments(pNum);
-
+        List<MemberDTO> memberDTOList = new ArrayList<>();
+        for (CommentsDTO commentsDTO: commentsDTOList) {
+            memberDTOList.add(memberService.findByCommentsWriter(commentsDTO.getCMId()));
+        }
+        model.addAttribute("Comments", commentsDTOList);
+        model.addAttribute("CommentsWriter", memberDTOList);
 
         return "Gathering_Post";
     }

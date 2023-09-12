@@ -217,11 +217,11 @@ public List<GatheringEntity> findMyMingles(String userId) {
     }
 
     public List<CommentsDTO> findComments(Long pNum) {
-//        List<CommentsEntity> commentsEntityList = gatheringRepository.findByPNum(pNum);
+        List<CommentsEntity> commentsEntityList = gatheringRepository.findByPNum(pNum);
         List<CommentsDTO> commentsDTOList = new ArrayList<>();
-//        for (comments:) {
-//
-//        }
+        for (CommentsEntity commentsEntity: commentsEntityList) {
+            commentsDTOList.add(EntityDTOMapper.entityToDTO(commentsEntity));
+        }
         return commentsDTOList;
     }
 }

@@ -1,5 +1,6 @@
 package Mingle.MingleProject.repository;
 
+import Mingle.MingleProject.entity.CommentsEntity;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.ScheduleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -51,4 +52,7 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
 
     @Query(value="select s from ScheduleEntity s where s.GatheringEntity.id = :id")
     List<ScheduleEntity> findBysGNum(@Param("id") Long id);
+
+    @Query(value="select c from CommentsEntity c where c.cPNum.pNum = :pNum")
+    List<CommentsEntity> findByPNum(@Param("pNum")Long pNum);
 }
