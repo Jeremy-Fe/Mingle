@@ -73,7 +73,6 @@
                 <ul class="posts clearfix">
                     <img class="post_writerimg" th:src="${PostWriter.get(postStat.index).getMProfileimg()}">
                     <li class="date_img"><p class="post_date" th:text="${post.getPDate()}">0월 0일 00:00</p>
-                        <img class="post_img" src="/image/newsPost_img2.png">
                     </li>
 
                     <li><p class="post_boardName" th:text="${PostBoard.get(postStat.index)}">게시판이름</p></li>
