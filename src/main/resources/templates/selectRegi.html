@@ -18,13 +18,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="regiModal" class="modal-dialog modal-xl clearfix" style="overflow:scroll;">
+    <div id="regiModal" class="modal1 clearfix">
         <div>
             <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
         </div>
-        <div id="showRegi" >
+        <div id="showRegi"  style="overflow:scroll;">
         </div>
-        <a href="#" rel="modal:close"></a>
+        <button onclick="regiAll()">전체보기</button>
+        <a href="#" rel="modal1:close"></a>
     </div>
 
     <script>
@@ -94,7 +95,13 @@
             }
         }
 
-
+        function regiAll() {
+            var selectedRegiElement = document.getElementById("selectedRegi");
+            selectedRegiElement.innerText = "";
+            $("#selectedRegi").append("전체");
+            document.querySelector('a[rel="modal:close"]').click();
+            모임업데이트();
+        }
 
     </script>
 </body>

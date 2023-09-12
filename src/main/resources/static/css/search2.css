@@ -135,4 +135,4 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     overflow: hidden; text-overflow: ellipsis;    
 }
 /* / 모임카드들 */
-.modal{max-width: max-content; !important;}
+.modal{max-width: max-content !important;}

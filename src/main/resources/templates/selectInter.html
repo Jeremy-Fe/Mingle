@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/js/iziModal.min.js" integrity="sha512-lR/2z/m/AunQdfBTSR8gp9bwkrjwMq1cP0BYRIZu8zd4ycLcpRYJopB+WsBGPDjlkJUwC6VHCmuAXwwPHlacww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!--script-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- include jQuery :) -->
@@ -24,7 +24,7 @@
     <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
 </head>
 <body>
-<div id="mainInter" class="modal-dialog modal-xl clearfix">
+<div id="mainInter" class="modal2 clearfix">
     <div id="inter1">
         <ul>
             <h2>관심사 선택</h2>
@@ -60,7 +60,7 @@
     <div id="subContent">
         <p id="selectedMainInter"></p>
         <ul id="subInterestList" style="overflow-y: auto">
-            <li>전체</li>
+            <li class="list">전체</li>
             <!-- 세부 관심사가 여기에 추가됩니다. -->
         </ul>
     </div>
@@ -76,7 +76,7 @@
 
             var value = this.getAttribute('data-value');
             console.log('클릭한 a 태그의 값:', value);
-
+            $("#mainCtName").append(value);
 
             $("#mainInter").hide();
             $("#subWrap").show();
@@ -86,13 +86,19 @@
                 method: "GET",
                 data: { mainSubject: value },
                 success: function(data){
+                    var mainCtName = document.getElementById('mainCtName');
+                    mainCtName.textContent = '';
+                    $("#mainCtName").append(value);
                     console.log("get");
                     console.log("data");
                     for (var i = 0; i < data.length; i++) {
                         console.log("2."+data)
                         var subClist = data[i];
-                        var html = '<li>'+subClist+'</li>';
+                        var html = '<li class="list">'+subClist+'</li>';
                         $("#subInterestList").append(html);
+
+
+
                     }
                 },
                 error: function(xhr, status, error) {
@@ -103,6 +109,17 @@
         });
     });
     });
+    function handleClick() {
+        var subC = document.getElementById('subC');
+        subC.textContent = '';
+        var text = $(this).text();
+        console.log(text);
+        $("#subC").append(text);
+        document.querySelector('a[rel="modal:close"]').click();
+        모임업데이트();
+    }
+    $(document).on('click', '.list', handleClick)
+    $('.list').click(handleClick);
 </script>
 </body>
 </html>

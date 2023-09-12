@@ -26,10 +26,11 @@ body{z-index: 2; background-color: aliceblue;}
     background: rgba(0,0,255,0.4);
 }
 
-.modal{max-width: max-content; !important;}
-#mainInter{width: max-content; margin: 0 auto;}
+/*.modal{max-width: max-content; !important;}
+#mainInter{width: max-content !important; margin: 0 auto;}*/
 /* 관심사 선택 1 */
 #inter1{
+    width: 600px; height: 800px;
     display: flex;
     float: left;
 
