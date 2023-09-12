@@ -214,6 +214,11 @@ public class MingleController {
             session.setAttribute("loginId", loginResult.getMId());
             session.setAttribute("memberDTO", loginResult);
             model.addAttribute("memberDTO",loginResult);
+
+            String logInId = (String) session.getAttribute("loginId");
+            String profileimg = memberService.getProfileimgData(logInId);
+            session.setAttribute("profileimg", profileimg);
+
             return "Main_LogIn";
         }else {
             //login 실패
