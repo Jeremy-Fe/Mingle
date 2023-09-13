@@ -98,14 +98,14 @@
         <p class="title_03">내 게시물</p>
         <div id="sc2" class="swiper-container mp clearfix">
             <div id="myPost" class="swiper-wrapper clearfix">
-                <div class="swiper-slide post_01 clearfix"  th:each="mypost :${post}" >
+                <div class="swiper-slide post_01 clearfix"  th:each="mypost, mypostStat :${post}" >
                     <a th:if="${mypost.getPImg1() == null}" href="Mypage">
                         <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
                     </a>
                     <a th:unless="${mypost.getPImg1() == null}" href="Mypage">
                         <img class="postimg_01" alt="모임 이미지1" th:src="${mypost.getPImg1()}">
                     </a>
-                    <p class="postname_01" th:text="${mypost.getPGNum()}">질풍가도</p>
+                    <p class="postname_01" th:text="${postGName.get(mypostStat.index).getGName()}">질풍가도</p>
                     <span th:text="${mypost.getPContents()}">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
                     <p class="day_01" th:text="${mypost.getPDate()}">2023. 05. 19</p>
                     </a>

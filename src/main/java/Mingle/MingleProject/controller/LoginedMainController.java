@@ -49,7 +49,7 @@ public class LoginedMainController {
     }
     /*추천모임*/
      @GetMapping("Main_LogIn/recomMingle")
-    public ResponseEntity<List<GatheringEntity>> recomMingle(HttpSession session, Model model) {
+    public ResponseEntity<Map<String, Object>> recomMingle(HttpSession session, Model model) {
         String userId = (String) session.getAttribute("loginId");
         System.out.println("메인페이지_아이디_getAttribute 확인 = "+userId);
 
@@ -58,7 +58,17 @@ public class LoginedMainController {
         model.addAttribute("mingles",mingles);
         System.out.println("메인페이지_추천모임(mingles) 확인 = "+ mingles);
 
-        return ResponseEntity.ok(mingles);
+         List<Integer> gatheringMemberCount = new ArrayList<>();
+         for (GatheringEntity gatheringEntity: mingles) {
+             gatheringMemberCount.add(memberService.findByGatheringMember(gatheringEntity.getGName()).size());
+         }
+         model.addAttribute("minglesMemberCount",gatheringMemberCount);
+
+         Map<String, Object> responseData = new HashMap<>();
+         responseData.put("mingles", mingles);
+         responseData.put("minglesMemberCount", gatheringMemberCount);
+
+        return ResponseEntity.ok(responseData);
     }
 
     /*모임*/
