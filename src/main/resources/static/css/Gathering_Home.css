@@ -161,6 +161,7 @@
     height: 60px;
     margin-right: 10px;
     float: left;
+    border-radius: 50%;
 }
 .view > #g_contents > #g_member > ul > li > .leadercrown{
     position: absolute;
@@ -206,6 +207,7 @@
     display: inline;
     float: left;
     margin-right: 20px;
+    border-radius: 50%;
 }
 .g_news_post_box > .g_news_post > li{}
 .g_news_post_box > .g_news_post > li > p{
