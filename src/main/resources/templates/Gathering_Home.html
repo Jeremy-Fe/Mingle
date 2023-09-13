@@ -97,7 +97,7 @@
                 <a th:unless="${Post.size() == 0}" th:href="@{|/Gathering_Post/${id}/${posts.getPNum()}|}" th:each="posts, postsStat :${Post}">
                     <ul class="g_news_post_box">
                         <ul class="g_news_post clearfix">
-                            <img class="post_writerImg" th:src="${PostWriter.get(postsStat.index).getMProfileimg()}" src="/image/Gathering_img1.png">
+                            <img class="post_writerImg" th:src="'data:image/png;base64,' + ${#strings.toString(mPImg.get(postsStat.index))}" src="/image/Gathering_img1.png">
                             <img class="post_img" src="/image/newsPost_img1.png">
                             <li><p class="post_boardName" th:text="${PostBoard.get(postsStat.index)}">게시판 이름</p></li>
                             <li><p class="post_writerName" th:text="${PostWriter.get(postsStat.index).getMName()}">작성자</p></li>

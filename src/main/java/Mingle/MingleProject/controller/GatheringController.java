@@ -30,10 +30,8 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.sql.SQLException;
 
 @Controller
 @RequiredArgsConstructor
@@ -74,14 +72,36 @@ public class GatheringController {
 
 
         List<MemberDTO> writerList = new ArrayList<>();
+        List<String> writerPImg = new ArrayList<>();
         for (PostDTO postDTO: postDTOList) {
-            writerList.add(memberService.findByWriter(postDTO.getPMId()));
+            MemberDTO memberDTO = memberService.findByWriter(postDTO.getPMId());
+            Blob mpImg =  memberDTO.getMProfileimg();
+
+            if (mpImg != null) {
+                try {
+                    byte[] byteArray = mpImg.getBytes(1, (int) mpImg.length());
+                    String base64Iame = Base64.getEncoder().encodeToString(byteArray);
+                    writerPImg.add(base64Iame);
+                    System.out.println("base64Iame:" + base64Iame);
+                    System.out.println("base64Iame:" + base64Iame);
+                    System.out.println("base64Iame:" + base64Iame);
+                    System.out.println("base64Iame:" + base64Iame);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            writerList.add(memberDTO);
         }
+
         if(writerList.size() > 2) {
             List<MemberDTO> writer2List = writerList.subList(0, 2);
             model.addAttribute("PostWriter", writer2List);
+            List<String> writer2PImg = writerPImg.subList(0, 2);
+            model.addAttribute("mPImg", writer2PImg);
         } else {
             model.addAttribute("PostWriter", writerList);
+            model.addAttribute("mPImg", writerPImg);
         }
 
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
