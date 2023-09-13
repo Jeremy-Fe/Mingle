@@ -227,4 +227,5 @@ public List<GatheringEntity> findMyMingles(String userId) {
         }
         return commentsDTOList;
     }
+
 }
