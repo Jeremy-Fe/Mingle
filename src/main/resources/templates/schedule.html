@@ -11,6 +11,7 @@
 <div th:replace="/defaultUI.html"></div>
             <!-- 바꿔야하는 부분 -->
 <div id="schedule">
+    <p>내 일정</p>
     <div class="schedule_bg">
         <ul class="schedule" th:each="schedule, scheduleStat : ${Schedule}">
             <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span></li>
@@ -22,37 +23,12 @@
             <li>
                 <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
                     class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
-                <a href="#">참석하기</a>
             </li>
-            <li>
-                <img src="/image/Gathering_img1.png">
-                <img src="/image/Gathering_img2.png">
-                <img src="/image/Gathering_img3.png">
-                <img src="/image/Gathering_img4.png">
-            </li>
+            <a href="#">취소하기</a>
         </ul>
     </div>
 </div>
-            <div class="footer">
-                <div class="footer_menu">
-                    <a href="#">이용약관</a>
-                    <a href="#">개인정보처리방침</a>
-                    <a href="#">책임의 한계와 법적고지</a>
-                    <a href="#">회원정보 고객센터</a>
-                </div> <!--footer메뉴 -->
-                <div class="f_copyright" >
-                    <img src="image/login_footer.png">
-                    <p>Copyright ⓒ </p>
-                    <p class="corp">mingle Corp. </p>
-                    <p>All Rights Reserved.</p>
-                </div> <!--copyright -->
-            </div>
-        </div>
 
 
-    </section>
-
-
-</div>
 </body>
 </html>

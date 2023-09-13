@@ -116,6 +116,7 @@ body{z-index: 2}
     font-weight: bold;
     line-height: 40px;
     font-family: 'Jalnan';
+    color: #2C244F;
 }
 .view> .MyPage .title_02 {
     float: left;
@@ -253,6 +254,7 @@ body{z-index: 2}
 
 .view> .MyPage .profile .text{
     margin-right: 55px;
+    color: #2C244F;
 }
 .view> .MyPage .profile li .name {
     font-size: 32px;
@@ -284,7 +286,7 @@ body{z-index: 2}
     font-size: 30px;
     font-family: 'GmarketSans';
     white-space: pre-line;
-    /*border-style: none;*/
+    color: #000000;
 }
 .view .MyPage .edit_2 {
     width: 30px;

@@ -333,6 +333,28 @@ public class GatheringController {
 
         return "Gathering_Schedule";}
 
+    @GetMapping("Member_Schedule{id}")
+    public String Member_Schedule(@PathVariable Long id, Model model) {
+        // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
+        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+        model.addAttribute("GatheringHome", gatheringDTO);
+
+        List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
+        model.addAttribute("Schedule", scheduleDTOList);
+
+
+        List<Integer> memberCount = new ArrayList<>();
+        List<Long> remainingPerson = new ArrayList<>();
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            String[] member = scheduleDTO.getSMember().split(",");
+            memberCount.add(member.length);
+            remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+        }
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("remaining", remainingPerson);
+
+        return "Gathering_Schedule";}
+
 
 
 
@@ -381,9 +403,10 @@ public class GatheringController {
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
+        PostDTO postDTO = postService.findPost(pNum);
+        model.addAttribute("PostValue", postDTO);
 
-
-        return "Gathering_Post_Write";
+        return "Gathering_Post_Modify";
     }
 
 
@@ -414,8 +437,26 @@ public class GatheringController {
         return "redirect:/Gathering_Post/" + id + "/" + pNum;
     }
 
+    @PostMapping("Gathering_Post_Modify/{id}/{pNum}")
+    public String postModify(@ModelAttribute PostDTO postDTO, @PathVariable Long id, @PathVariable Long pNum){
+        postService.updatePost(postDTO);
+
+        return "redirect:/Gathering_Post/" + id + "/" + pNum;
+    }
+    @GetMapping("Gathering_Post_Comment_Delete/{id}/{pNum}/{cNum}")
+    public String commentDelete(@PathVariable Long id, @PathVariable Long pNum, @PathVariable Long cNum){
+        postService.deleteComment(cNum);
 
 
+        return "redirect:/Gathering_Post/" + id + "/" + pNum;
+    }
+    @GetMapping("Gathering_Post_Delete/{id}/{pNum}")
+    public String postDelete(@PathVariable Long id, @PathVariable Long pNum){
+        postService.deletePost(pNum);
+
+
+        return "redirect:/Gathering_Board/" + id;
+    }
 
 public List BoardName(List<PostDTO> list) {
         List boardName = new ArrayList();
