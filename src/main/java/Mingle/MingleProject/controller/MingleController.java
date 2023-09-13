@@ -104,6 +104,8 @@ public class MingleController {
         String logInId = (String) session.getAttribute("loginId");
         MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
         model.addAttribute("myPagemId", memberDTO);
+        model.addAttribute("loginId", logInId);
+        System.out.println("memberDTO"+memberDTO);
 
         /*--가입한 모임 출력--*/
         List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);

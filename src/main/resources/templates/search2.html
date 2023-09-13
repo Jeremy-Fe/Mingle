@@ -8,9 +8,6 @@
     <!--css-->
     <link href="/CSS/search2.css?after" type="text/css" rel="stylesheet">
 
-
-
-
     <!-- include jQuery :) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <!-- jQuery Modal -->
@@ -128,6 +125,7 @@ function 모임업데이트(){
             for (var i = 0; i < data.length; i++) {
                 var mingles = data[i];
                 console.log("response[i] =", mingles);
+                var 모임아이디 = mingles.id;
                 var 모임명 = mingles.gname;
                 var 모임이미지 = mingles.gcoverimg;
                 var 모임카테고리 = mingles.gmainsubject;
@@ -136,16 +134,16 @@ function 모임업데이트(){
                 console.log("ajax : 모임명 확인 =", 모임명);
                 console.log("ajax : response.length+1 확인 =", data.length);
                 var htmlMingle =
-                    '<div class="mingle">\n' +
+                    '<a href="/Gathering_Home/'+ 모임아이디+'" class="mingle">\n' +
                     '<ul>\n' +
                     '<img src="'+모임이미지+'">\n' +
                     '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
                     '<li id="mCategorie">'+모임카테고리+'</li>\n' +
                     '<li id="mRogi">'+모임지역+'</li>\n' +
-                    '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+                    '<li id="mUser">96명이 참여 중</li>\n' +
                     '</ul>\n' +
                     '<p id="mIntd">'+모임소개글+'</p>\n' +
-                    '</div>';
+                    '</a>';
 
                 $("#inMingle").append(htmlMingle);
 
@@ -188,16 +186,16 @@ $("#search_I").click(function() {
         console.log("ajax : 모임명 확인 =", 모임명);
         console.log("ajax : response.length+1 확인 =", 검색된모임.length);
         var htmlMingle =
-            '<div class="mingle">\n' +
+            '<a href="/Gathering_Home/'+ 모임아이디+'" class="mingle">\n' +
             '<ul>\n' +
             '<img src="'+모임이미지+'">\n' +
             '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
             '<li id="mCategorie">'+모임카테고리+'</li>\n' +
             '<li id="mRogi">'+모임지역+'</li>\n' +
-            '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+            '<li id="mUser">96명이 참여 중</li>\n' +
             '</ul>\n' +
             '<p id="mIntd">'+모임소개글+'</p>\n' +
-            '</div>';
+            '</a>';
 
         $("#inMingle").append(htmlMingle);
     }
