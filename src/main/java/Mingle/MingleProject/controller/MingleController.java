@@ -131,7 +131,7 @@ public class MingleController {
         System.out.println("mingles 확인 = "+ mingles);
 
         /*--내 게시글  출력--*/
-        List<PostDTO> postDTOs = postService.findPost(logInId);
+        List<PostDTO> postDTOs = postService.findPosts(logInId);
         model.addAttribute("post",postDTOs);
         System.out.println("postDTOs 확인 =" + postDTOs);
 
