@@ -156,7 +156,7 @@ public List<GatheringEntity> findMyMingles(String userId) {
             postDTOList.add(EntityDTOMapper.entityToDTO(postEntity));
 
         }
-        // 게시글들을 가져오는 건 성공했지만 게시판 번호, 이름, 프로필 이미지 등등 가공해야할 데이터가 많음
+
         return postDTOList;
     }
 
