@@ -227,6 +227,7 @@ public class MemberService {
 
 
 
+
     public boolean deleteMemberById(String mId) {
         // memberId를 사용하여 회원을 찾습니다.
         MemberEntity member = memberRepository.findBymId(mId).orElse(null);
