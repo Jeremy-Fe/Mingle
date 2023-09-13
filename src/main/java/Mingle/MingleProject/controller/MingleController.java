@@ -167,6 +167,7 @@ public class MingleController {
         System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
         memberService.uploadImage(mProfileimg,logInId);
         return "Mypage";
+
     }
 
     @GetMapping("Create_Meet")
