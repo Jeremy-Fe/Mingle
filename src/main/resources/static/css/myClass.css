@@ -416,11 +416,17 @@ body{z-index: 2}
     font-family: 'GmarketSansMedium';
     text-align: center;
 }
+.view>.recommend .make_meet .meet_bt:hover{
+    cursor: pointer;
+}
 .view>.recommend .make_meet > ul > img{
     position: absolute;
     z-index: 100;
-    left: 220px;
+    left: 250px;
     top: 24px;
+}
+.view>.recommend .make_meet > ul > img:hover{
+    cursor: pointer;
 }
 
 /* footer 메뉴 */
