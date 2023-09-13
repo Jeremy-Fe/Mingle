@@ -368,7 +368,7 @@
 
 .footer_menu {
     position: absolute;
-    top: 179px;
+    top: 230px;
     left: 415px;
 }
 
@@ -399,7 +399,7 @@
 /* footer CopyRight */
 .f_copyright {
     position: absolute;
-    top: 113px;
+    top: 174px;
     height: 0;
     left: 475px;
 }
