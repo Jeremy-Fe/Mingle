@@ -44,13 +44,16 @@
                 <li><a th:unless="${session.loginId == null}" th:text="${session.loginId}"></a></li>
                 <!-- Controller @PostMapping("login")에서 받아옴 -->
                 <li th:if="${session.loginId == null}" class="icon_a">
-                    <!--<img alt="user_img" src="#">-->
+                    <!--<img alt="user_img" src="/image/DefaultProfile_logo.png"></a></li>-->
                 </li>
                 <li th:unless="${session.loginId == null}" class="icon_a"><a href="/MyPage">
-                    <img alt="user_img" th:src="'data:image/png;base64,' + ${#strings.toString(session.profileimg)}"></a></li>
-                    <!--<img alt="user_img" th:src="${session.profileimg2}"></a></li>-->
+                    <img alt="user_img" th:src="'data:image/png;base64,' + ${#strings.toString(session.profileimg)}" th:unless="${session.profileimg == null}"/>
+                    <img alt="user_img" src="/image/DefaultProfile_logo.png" th:if="${session.profileimg == null}"/>
+                    </a>
+                </li>
+
                 <li th:unless="${session.loginId == null}" class="icon_b">
-                    <button type="button" id="logout"><img alt="_mymenu" src="/image/Main_마이메뉴.png"></button>
+                    <button type="button" id="logout"><img alt="_mymenu" src="/image/Main_마이메뉴.png" ></button>
                 </li>
                 <li th:unless="${session.loginId == null}" id="logout_bt">
                     <button type="button" value="로그아웃" onclick="logout()">로그아웃</button>
@@ -84,6 +87,5 @@
                     alert("로그인 또는 회원가입 후 이용해주세요.");
                 }
             </script>
-
 </body>
 </html>

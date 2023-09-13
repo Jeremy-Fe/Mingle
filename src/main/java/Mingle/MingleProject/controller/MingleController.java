@@ -167,6 +167,7 @@ public class MingleController {
         System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
         memberService.uploadImage(mProfileimg,logInId);
         return "Mypage";
+
     }
 
     @GetMapping("Create_Meet")
@@ -352,6 +353,29 @@ public class MingleController {
         } else {
             return false; // 회원을 찾을 수 없음
         }
+    }
+
+    // 모임 탈퇴하기
+    @PostMapping("/deleteMGGathering")
+    @ResponseBody
+    public boolean deleteMGGathering(String gName, String mId) {
+        // mId로 회원을 조회
+        Optional<MemberEntity> optionalMember = memberRepository.findBymId(mId);
+        System.out.println("gName = " + gName + ", mId = " + mId);
+
+        if (optionalMember.isPresent()) {
+            MemberEntity member = optionalMember.get();
+            String currentMGathering = member.getMGathering();
+            if (currentMGathering != null) {
+                // MGathering에서 gName을 제거
+                currentMGathering = currentMGathering.replace("," + gName, "").replace(gName + ",", "").replace(gName, "");
+                // mGGathering 필드를 업데이트
+                member.setMGathering(currentMGathering);
+                memberRepository.save(member); // 업데이트된 회원 정보 저장
+                return true; // 업데이트 성공
+            }
+        }
+        return false; // 회원을 찾을 수 없거나 업데이트 실패
     }
 
 
