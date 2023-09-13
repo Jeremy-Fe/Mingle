@@ -130,15 +130,6 @@
             </ul>
 
             <ul class="comment_01"><a><span class="commenttext">댓글을 추가 작성해 주세요.</span></a></ul>
-              <!--  <li class="accordion clearfix" th:if="${mycommentsStat.index == 5}">
-                    <div class="accordion-item">
-                        <button id="accordion-button-1" aria-expanded="false">
-                            &lt;!&ndash;<span class="icon" aria-hidden="true"></span>&ndash;&gt;
-                            <img id="seemore" alt="더보기" src="/image/더보기.png">
-                        </button>
-                        <p id="seemoretext">더보기</p>
-                    </div>
-                </li>-->
 
         </div>
 
@@ -284,64 +275,6 @@
         });
     });
 </script>
-<!--<script>
-    /*내 댓글*/
-    window.onload = function() {
-        var loginId = document.getElementById("loginId").value;
-
-        console.log("loginId = "+loginId);
-        /*내모임검색*/
-        if(loginId == null){
-            alert("(error)"+"로그인이 필요한 항목입니다.\n"+"회원 가입 또는 로그인을 해주세요");
-        }
-        else{
-            $.ajax({
-                url: "Main_LogIn/findMyMingles",
-                type : 'GET',
-                success: function(response) {
-                    console.log("response = "+response)
-                    if(response.length > 0){
-                        for (var i = 0; i < response.length; i++) {
-                            var mingles = response[i];
-                            console.log("response[i] =", mingles);
-                            var 모임명 = mingles.gname;
-                            var 모임이미지 = mingles.gcoverimg;
-                            var 모임카테고리 = mingles.gmainsubject;
-                            var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
-                            var 모임소개글 = mingles.gintroduction;
-                            console.log("ajax : 내 모임명 확인 =", 모임명);
-                            console.log("ajax : 내 response.length+1 확인 =", response.length);
-                            var htmlMingle =
-                                '<div class="mingle">\n' +
-                                '<ul>\n' +
-                                '<img src="'+모임이미지+'">\n' +
-                                '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
-                                '<li id="mCategorie">'+모임카테고리+'</li>\n' +
-                                '<li id="mRogi">'+모임지역+'</li>\n' +
-                                '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
-                                '</ul>\n' +
-                                '<p id="mIntd">'+모임소개글+'</p>\n' +
-                                '</div>';
-
-                            $("#myMingCardInner").append(htmlMingle);
-                        }
-                    }else{
-                        var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
-                            '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
-                            '밍글되어있지 않아요.' +
-                            '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
-                            '</div>';
-                        $("#myMingCardInner").append(htmlMingle);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-</script>-->
-
-
-
 <!--내 댓글 블럭 생성-->
 <!--<script>
     // 가상의 데이터베이스 데이터 배열
