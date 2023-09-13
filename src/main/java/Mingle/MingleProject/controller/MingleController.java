@@ -2,6 +2,7 @@ package Mingle.MingleProject.controller;
 
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
+import Mingle.MingleProject.dto.ScheduleDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.repository.MemberRepository;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -109,8 +111,8 @@ public class MingleController {
         return "myClass";
     }
 
-//    @GetMapping("/schedule")
-//    public String schedule() {return "schedule";}
+    @GetMapping("schedule*")
+    public String schedule() {return "schedule";}
 
     @GetMapping("MyPage")
     public String MyPage(HttpSession session, Model model){
@@ -222,6 +224,26 @@ public class MingleController {
 
     @PostMapping("/loginForm")
     public String id_pwFind() { return "login"; }
+
+    @GetMapping("Member_Schedule/{mId}")
+    public String Member_Schedule(@PathVariable String mId, Model model) {
+        List<ScheduleDTO> scheduleDTOList = memberService.findByMemberId(mId);
+        model.addAttribute("Schedule", scheduleDTOList);
+
+
+        List<Integer> memberCount = new ArrayList<>();
+        List<Long> remainingPerson = new ArrayList<>();
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            String[] member = scheduleDTO.getSMember().split(",");
+            memberCount.add(member.length);
+            remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+        }
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("remaining", remainingPerson);
+
+        return "schedule";
+    }
+
 
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {

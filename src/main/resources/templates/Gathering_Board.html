@@ -81,7 +81,7 @@
                     <li>
                         <p class="post_contents" th:text="${post.getPContents()}"></p>
                     </li>
-                    <li><span th:text="'좋아요 '+${post.getPLike}+ '개'">좋아요 갯수</span><span>댓글 갯수</span></li>
+                    <li><span th:text="'댓글 ' + ${Comments.get(postStat.index)} + '개'"></span></li>
                 </ul>
             </a>
         </ul>
@@ -115,7 +115,6 @@
 
     document.getElementById("boardSelect").addEventListener("change", function() {
         var sValue = document.getElementById('boardSelect');
-        alert("value: " + sValue.options[sValue.selectedIndex].value);
 
         const 게시물들 = document.querySelectorAll('.board_post');
 
