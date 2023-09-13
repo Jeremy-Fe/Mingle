@@ -97,9 +97,10 @@
                 <li>
                     <span class="comment_writer" th:text="${CommentsWriter.get(commentsStat.index).getMName()}" onclick="toggleCommentSubMenu();">정웅기</span>
                     <div id="comment_delete">
-                        <a th:href="'/Gathering_Post_Comment_Delete/' + ${GatheringHome.id} + '/' + ${post.getPNum()} + ${comments.getCNum()}" onclick="return confirm('댓글을 삭제 하시겠습니까?');">댓글 삭제하기</a>
+                        <a th:href="'/Gathering_Post_Comment_Delete/' + ${GatheringHome.id} + '/' + ${post.getPNum()} + '/' + ${comments.getCNum()}" onclick="return confirm('댓글을 삭제 하시겠습니까?');">댓글 삭제하기</a>
                     </div>
-                    <span class="comment_date" th:text="${comments.getCDate()}">7월 23일 오후 11:01</span></li>
+                    <span class="comment_date" th:text="${comments.getCDate()}">7월 23일 오후 11:01</span>
+                </li>
                 <li><span class="comment_contents" th:text="${comments.getCComments()}">내용</span></li>
             </ul>
         </ul>
