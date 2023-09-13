@@ -56,7 +56,7 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
     @Query(value="select s from ScheduleEntity s where s.GatheringEntity.id = :id")
     List<ScheduleEntity> findBysGNum(@Param("id") Long id);
 
-    @Query(value="select c from CommentsEntity c where c.cPNum = :pNum")
+    @Query(value="select c from CommentsEntity c where c.cPNum = :pNum order by c.cNum")
     List<CommentsEntity> findByPNum(@Param("pNum")Long pNum);
 
 

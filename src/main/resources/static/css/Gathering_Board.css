@@ -95,6 +95,7 @@
     display: inline;
     float: left;
     margin-right: 20px;
+    border-radius: 50%;
 }
 #board > .board_bg > .board_post > a > .posts > .date_img{
     float: right;

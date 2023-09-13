@@ -22,6 +22,7 @@
     display: inline;
     float: left;
     margin-right: 20px;
+    border-radius: 50%;
 }
 
 .Post_bg > .contents > li > .post_boardName{
@@ -137,6 +138,7 @@
     background-color: #B1B2FF;
     color: #fff;
     font-size: 22px;
+    cursor: pointer;
 }
 
 .Post_bg > .comments{}
@@ -150,6 +152,7 @@
     display: inline;
     float: left;
     margin-right: 10px;
+    border-radius: 50%;
 }
 .Post_bg > .comments > .comment > li{
     position: relative;
@@ -163,19 +166,19 @@
     cursor: pointer;
     position: relative;
 }
-.Post_bg > .comments > .comment > li > #comment_delete{
+.Post_bg > .comments > .comment > li > .comment_delete{
     display: none;
     position: absolute;
     width: 200px;
     height: 60px;
     left: 100px;
     background-color: #fff;
-    top: 40px;
+    top: 30px;
     border: 1px solid #000;
     border-radius: 20px;
     z-index: 1;
 }
-.Post_bg > .comments > .comment > li > #comment_delete > a{
+.Post_bg > .comments > .comment > li > .comment_delete > a{
     text-align: center;
     font-size: 24px;
     line-height: 60px;
