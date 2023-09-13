@@ -1,5 +1,6 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.dto.CommentsDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
@@ -28,6 +29,7 @@ public class MingleController {
     private final CityService cityService ;
     private final GatheringService gatheringService;
     private final PostService postService;
+    private final CommentsService commentsService;
 
     // 회원가입 메일 서비스
     @Autowired
@@ -134,6 +136,11 @@ public class MingleController {
         List<PostDTO> postDTOs = postService.findPost(logInId);
         model.addAttribute("post",postDTOs);
         System.out.println("postDTOs 확인 =" + postDTOs);
+
+        /*--내 댓글 출력--*/
+        List<CommentsDTO> commentsDTOS = commentsService.findComments(logInId);
+        model.addAttribute("comments",commentsDTOS);
+        System.out.println("commentsDTOs 확인 :" + commentsDTOS);
 
         return "MyPage";
     }

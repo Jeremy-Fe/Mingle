@@ -86,12 +86,12 @@
                     <span th:text="${gathering.getGIntroduction()}"><도심속 러닝 모...></span>
                 </div>
 
-                <div class="swiper-slide"></div><!--빈 페이지-->
-                <div class="swiper-slide"></div><!--빈 페이지-->
-                <div class="swiper-slide"></div><!--빈 페이지-->
-                <div class="swiper-slide"></div><!--빈 페이지-->
-                <div class="swiper-slide"></div><!--빈 페이지-->
-                <div class="swiper-slide"></div><!--빈 페이지-->
+                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
             </div>
         </div>
         <!--내게시물-->
@@ -110,26 +110,26 @@
                     <p class="day_01" th:text="${mypost.getPDate()}">2023. 05. 19</p>
                     </a>
                 </div>
-                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
             </div>
 
         </div>
         <!--내 댓글-->
         <p class="title_04">내 댓글</p>
-        <div class="myComment clearfix">
+        <div class="myComment clearfix" th:each="mycomments :${comments}">
             <ul class="comment_01">
                 <p class="commenttext_01">
-                    <span>ㅋㅋㅋ 나 그날 러닝 뛰고 집에 오는길에 맥주 한캔 사서 집 들어옴 ㅋㅋㅋ</span>
+                    <span th:text="${mycomments.getCComments()}">ㅋㅋㅋ 나 그날 러닝 뛰고 집에 오는길에 맥주 한캔 사서 집 들어옴 ㅋㅋㅋ</span>
                     2023. 08. 27 - 질풍가도 | 자유게시판
                 </p>
             </ul>
 
-            <ul class="comment_02">
+            <!--<ul class="comment_02">
                 <p class="commenttext_01">
                     <span>이 천체 관측날 캠핑 용품 준비 해가야 하나요??</span>
                     2023. 08. 15 - 우주먼지 | 자유게시판
@@ -161,7 +161,7 @@
                     <span>이 지역 보스몹 잡아 보셨나요?</span>
                     2023. 05. 18 - 빽투더퓨처 | 자유게시판
                 </p>
-            </ul>
+            </ul>-->
             <li class="accordion clearfix">
                 <div class="accordion-item">
                     <button id="accordion-button-1" aria-expanded="false">
@@ -267,7 +267,6 @@
         $('#modalContent .edit').attr('src', editimgSrc);
     });
 </script>
-
 <!--프로필 이미지 불러오기 및 업로드-->
 <script>
     $(document).ready(function () {
@@ -316,32 +315,63 @@
         });
     });
 </script>
-<!--내 게시물 블럭 생성
-<script>
-    // 가상의 데이터베이스 데이터 배열
-    var databaseData = [
-        "데이터 1",
-        "데이터 2",
-        "데이터 3",
-        "데이터 4",
-        "데이터 5",
-        "데이터 6",
-        "데이터 7",
-        "데이터 8",
-        "데이터 9",
-        // ... 더 많은 데이터 ...
-    ];
+<!--<script>
+    /*내 댓글*/
+    window.onload = function() {
+        var loginId = document.getElementById("loginId").value;
 
-    var myPost = document.getElementById("myPost");
+        console.log("loginId = "+loginId);
+        /*내모임검색*/
+        if(loginId == null){
+            alert("(error)"+"로그인이 필요한 항목입니다.\n"+"회원 가입 또는 로그인을 해주세요");
+        }
+        else{
+            $.ajax({
+                url: "Main_LogIn/findMyMingles",
+                type : 'GET',
+                success: function(response) {
+                    console.log("response = "+response)
+                    if(response.length > 0){
+                        for (var i = 0; i < response.length; i++) {
+                            var mingles = response[i];
+                            console.log("response[i] =", mingles);
+                            var 모임명 = mingles.gname;
+                            var 모임이미지 = mingles.gcoverimg;
+                            var 모임카테고리 = mingles.gmainsubject;
+                            var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
+                            var 모임소개글 = mingles.gintroduction;
+                            console.log("ajax : 내 모임명 확인 =", 모임명);
+                            console.log("ajax : 내 response.length+1 확인 =", response.length);
+                            var htmlMingle =
+                                '<div class="mingle">\n' +
+                                '<ul>\n' +
+                                '<img src="'+모임이미지+'">\n' +
+                                '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
+                                '<li id="mCategorie">'+모임카테고리+'</li>\n' +
+                                '<li id="mRogi">'+모임지역+'</li>\n' +
+                                '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+                                '</ul>\n' +
+                                '<p id="mIntd">'+모임소개글+'</p>\n' +
+                                '</div>';
 
-    // 데이터베이스 데이터의 수만큼 <div> 생성
-    for (var i = 0; i < databaseData.length; i++) {
-        var dataDiv = document.createElement("div");
-        dataDiv.className = "swiper-slide post_" + i; // 클래스 지정
-        dataDiv.textContent = databaseData[i]; // 데이터 추가
-        myPost.appendChild(dataDiv); // <div>를 컨테이너에 추가
-    }
+                            $("#myMingCardInner").append(htmlMingle);
+                        }
+                    }else{
+                        var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
+                            '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
+                            '밍글되어있지 않아요.' +
+                            '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
+                            '</div>';
+                        $("#myMingCardInner").append(htmlMingle);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
 </script>-->
+
+
 
 <!--내 댓글 블럭 생성-->
 <script>
