@@ -121,6 +121,7 @@
                     for (var i = 0; i < response.length; i++) {
                         var mingles = response[i];
                         console.log("추천모임 GET response[i] =", mingles);
+                        var 모임아이디 = mingles.id;
                         var 모임명 = mingles.gname;
                         var 모임이미지 = mingles.gcoverimg;
                         var 모임카테고리 = mingles.gmainsubject;
@@ -129,17 +130,16 @@
                         console.log("추천된 모임명 확인 =", 모임명);
                         console.log("추천모임 GET response.length+1 확인 =", response.length);
                         var htmlMingle =
-                            '<a href="#" class="mingle">\n' +
+                            '<a href="/Gathering_Home/'+ 모임아이디+'" class="mingle">\n' +
                             '<ul>\n' +
                             '<img src="'+모임이미지+'">\n' +
                             '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
                             '<li id="mCategorie">'+모임카테고리+'</li>\n' +
                             '<li id="mRogi">'+모임지역+'</li>\n' +
-                            '<li id="mUser"><p>'+96+'</p>명이 참여 중</li>\n' +
+                            '<li id="mUser">96명이 참여 중</li>\n' +
                             '</ul>\n' +
                             '<p id="mIntd">'+모임소개글+'</p>\n' +
                             '</a>';
-
                         $("#recMingCardInner").append(htmlMingle);
                     }
                 }else{
