@@ -128,7 +128,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 #mUser>a{color: #4364B0; text-decoration: underline;}
 /* 모임 설명 */
 #mIntd{
-    width: 405px;height: 90px; 
+    width: 405px;height: 75px;
     margin: auto;padding: 10px;
     line-height: 20px; font-size: 16px;
     
