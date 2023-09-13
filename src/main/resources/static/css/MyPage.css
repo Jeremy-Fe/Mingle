@@ -116,6 +116,7 @@ body{z-index: 2}
     font-weight: bold;
     line-height: 40px;
     font-family: 'Jalnan';
+    color: #2C244F;
 }
 .view> .MyPage .title_02 {
     float: left;
@@ -253,6 +254,7 @@ body{z-index: 2}
 
 .view> .MyPage .profile .text{
     margin-right: 55px;
+    color: #2C244F;
 }
 .view> .MyPage .profile li .name {
     font-size: 32px;
@@ -284,7 +286,7 @@ body{z-index: 2}
     font-size: 30px;
     font-family: 'GmarketSans';
     white-space: pre-line;
-    /*border-style: none;*/
+    color: #000000;
 }
 .view .MyPage .edit_2 {
     width: 30px;
@@ -470,7 +472,7 @@ body{z-index: 2}
     background-color: rgba(255,255,255,0.65);
     border-radius: 20px;
     padding: 30px;
-    height: 550px;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -527,17 +529,17 @@ body{z-index: 2}
 
 }
 
-.view > .MyPage .myComment .accordion {
+/*.view > .MyPage .myComment .comment_01 .accordion {
     margin-top: 30px;
     width: 49px;
     height: 51px;
     position: relative;
     left: 650px;
-}
+}*/
 /*---myComment css(끝)---*/
 
 
-/*---myComment2 css---*/
+/*!*---myComment2 css---*!
 .view > .MyPage .myComment2 > ul {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     width: 1340px;
@@ -580,7 +582,7 @@ body{z-index: 2}
     position: relative;
     left: 650px;
 }
-/*---myComment2 css(끝)---*/
+!*---myComment2 css(끝)---*!*/
 /*---내 댓글 출력(끝)---*/
 
 

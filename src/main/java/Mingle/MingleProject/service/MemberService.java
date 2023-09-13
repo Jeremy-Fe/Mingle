@@ -2,7 +2,9 @@ package Mingle.MingleProject.service;
 
 import Mingle.MingleProject.Mapper.EntityDTOMapper;
 import Mingle.MingleProject.dto.MemberDTO;
+import Mingle.MingleProject.dto.ScheduleDTO;
 import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.ScheduleEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -155,8 +157,7 @@ public class MemberService {
             MemberEntity profileEntity = optionalMemberEntity.get();
             MemberDTO profileDto = MemberDTO.toMemberDTO(profileEntity);
             Blob blobTypeProfileimg = profileDto.getMProfileimg();
-
-
+            System.out.println("blobTypeProfileimg :" + blobTypeProfileimg);
 
             if (blobTypeProfileimg != null) {
                 try {
@@ -274,6 +275,18 @@ public class MemberService {
             member.setMGathering(currentMGathering);
             memberRepository.save(member);
         }
+    }
+    public List<ScheduleDTO> findByMemberId(String mId) {
+        List<ScheduleEntity> scheduleEntityList = memberRepository.findByMemberId(mId);
+        List<ScheduleDTO> scheduleDTOList = new ArrayList<>();
+        for (ScheduleEntity scheduleEntity: scheduleEntityList) {
+            scheduleDTOList.add(EntityDTOMapper.entityToDTO(scheduleEntity));
+
+        }
+
+
+
+        return scheduleDTOList;
     }
 
 }
