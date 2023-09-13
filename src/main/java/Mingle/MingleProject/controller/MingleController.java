@@ -1,9 +1,6 @@
 package Mingle.MingleProject.controller;
 
-import Mingle.MingleProject.dto.CommentsDTO;
-import Mingle.MingleProject.dto.MemberDTO;
-import Mingle.MingleProject.dto.PostDTO;
-import Mingle.MingleProject.dto.ScheduleDTO;
+import Mingle.MingleProject.dto.*;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.entity.ScheduleEntity;
@@ -105,6 +102,8 @@ public class MingleController {
         String logInId = (String) session.getAttribute("loginId");
         MemberDTO memberDTO = memberService.findbyIdMyPage(logInId);
         model.addAttribute("myPagemId", memberDTO);
+        model.addAttribute("loginId", logInId);
+        System.out.println("memberDTO"+memberDTO);
 
         /*--가입한 모임 출력--*/
         List<GatheringEntity> mingles = gatheringService.findMyMingles(logInId);
@@ -138,6 +137,13 @@ public class MingleController {
         List<PostDTO> postDTOs = postService.findPosts(logInId);
         model.addAttribute("post",postDTOs);
         System.out.println("postDTOs 확인 =" + postDTOs);
+
+        /*--게시글에 모임이름--*/
+        List<GatheringDTO> gatheringDTOList = new ArrayList<>();
+        for (PostDTO postDTO: postDTOs) {
+            gatheringDTOList.add(gatheringService.findByGathering(postDTO.getPGNum()));
+        }
+        model.addAttribute("postGName", gatheringDTOList);
 
         /*--내 댓글 출력--*/
         List<CommentsDTO> commentsDTOS = commentsService.findComments(logInId);

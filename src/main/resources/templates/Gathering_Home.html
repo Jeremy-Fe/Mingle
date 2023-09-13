@@ -76,29 +76,12 @@
                         <img src="/image/Gathering_img4.png">
                     </li>
                 </ul>
-<!--                <ul class="g_news_schedule">-->
-<!--                    <li><span>8/12 (토)</span><span class="schedule_date2">D+5</span></li>-->
-<!--                    <li><span class="schedule_title">7월 2차 정기전🎳</span></li>-->
-<!--                    <li><span class="schedule_subject">일시</span><span class="schedule_detail">7월22일 (토) 오후 7:30</span>-->
-<!--                    </li>-->
-<!--                    <li><span class="schedule_subject">위치</span><span class="schedule_detail">하이미디어 볼링센터</span></li>-->
-<!--                    <li><span class="schedule_subject">금액</span><span class="schedule_detail">N빵!! (4게임 17,200원)</span>-->
-<!--                    </li>-->
-<!--                    <li><span class="schedule_subject">참여</span><span class="schedule_detail">4/20</span></li>-->
-<!--                    <li>-->
-<!--                        <img src="/image/Gathering_img1.png">-->
-<!--                        <img src="/image/Gathering_img2.png">-->
-<!--                        <img src="/image/Gathering_img3.png">-->
-<!--                        <img src="/image/Gathering_img4.png">-->
-<!--                    </li>-->
-<!--                </ul>-->
                 <p>게시글</p>
                 <span th:if="${Post.size() == 0}" class="postNone">게시글이 없습니다.</span>
                 <a th:unless="${Post.size() == 0}" th:href="@{|/Gathering_Post/${id}/${posts.getPNum()}|}" th:each="posts, postsStat :${Post}">
                     <ul class="g_news_post_box">
                         <ul class="g_news_post clearfix">
                             <img class="post_writerImg" th:src="'data:image/png;base64,' + ${#strings.toString(mPPImg.get(postsStat.index))}" src="/image/Gathering_img1.png">
-                            <img class="post_img" src="/image/newsPost_img1.png">
                             <li><p class="post_boardName" th:text="${PostBoard.get(postsStat.index)}">게시판 이름</p></li>
                             <li><p class="post_writerName" th:text="${PostWriter.get(postsStat.index).getMName()}">작성자</p></li>
                             <li><p class="post_date" th:text="${posts.getPDate()}">0월 00일 오후 0:00</p></li>

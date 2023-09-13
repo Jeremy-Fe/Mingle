@@ -86,6 +86,7 @@ public class GatheringController {
             model.addAttribute("PostBoard", BoardName(postDTO2List));
         } else {
             model.addAttribute("Post", postDTOList);
+            model.addAttribute("PostBoard", BoardName(postDTOList));
         }
 
 
@@ -445,6 +446,11 @@ public class GatheringController {
     }
     @GetMapping("Gathering_Post_Comment_Delete/{id}/{pNum}/{cNum}")
     public String commentDelete(@PathVariable Long id, @PathVariable Long pNum, @PathVariable Long cNum){
+        System.out.println(cNum);
+        System.out.println(cNum);
+        System.out.println(cNum);
+        System.out.println(cNum);
+        System.out.println(cNum);
         postService.deleteComment(cNum);
 
 

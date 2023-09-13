@@ -105,7 +105,7 @@
             },
         });
 
-        /*내 모임*/
+        /*모임 불러오기*/
         window.onload = function() {
             var loginId = document.getElementById("loginId").value;
 
@@ -118,35 +118,38 @@
                 $.ajax({
                     url: "Main_LogIn/findMyMingles",
                     type : 'GET',
-                    success: function(response) {
-                        console.log("response = "+response)
-                        if(response.length > 0){
-                            for (var i = 0; i < response.length; i++) {
-                                var mingles = response[i];
-                                console.log("response[i] =", mingles);
+                    success: function(responseData) {
+                        console.log("responseData = "+ responseData);
+                        if(responseData.mingles.length > 0){
+                            for (var i = 0; i < responseData.mingles.length; i++) {
+                                var mingles = responseData.mingles[i];
+                                var minglesMemberCount = responseData.minglesMemberCount[i];
+                                console.log("responseData.mingles[i] =", mingles);
+                                var 모임아이디 = mingles.id;
                                 var 모임명 = mingles.gname;
                                 var 모임이미지 = mingles.gcoverimg;
                                 var 모임카테고리 = mingles.gmainsubject;
                                 var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
                                 var 모임소개글 = mingles.gintroduction;
+                                var 모임인원 = parseInt(minglesMemberCount);
                                 console.log("ajax : 내 모임명 확인 =", 모임명);
-                                console.log("ajax : 내 response.length+1 확인 =", response.length);
+                                console.log("ajax : 내 response.length+1 확인 =", responseData.mingles.length);
                                 var htmlMingle =
-                                    '<div class="mingle">\n' +
+                                    '<a href="/Gathering_Home/'+ 모임아이디+'" class="mingle">\n' +
                                     '<ul>\n' +
                                     '<img src="'+모임이미지+'">\n' +
                                     '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
                                     '<li id="mCategorie">'+모임카테고리+'</li>\n' +
                                     '<li id="mRogi">'+모임지역+'</li>\n' +
-                                    '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+                                    '<li id="mUser">'+모임인원+'명이 참가중</li>\n' +
                                     '</ul>\n' +
                                     '<p id="mIntd">'+모임소개글+'</p>\n' +
-                                    '</div>';
+                                    '</a>';
 
                                 $("#myMingCardInner").append(htmlMingle);
                             }
                         }else{
-                            var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
+                            var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search2">'+
                                 '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
                                 '밍글되어있지 않아요.' +
                                 '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
@@ -164,38 +167,40 @@
             $.ajax({
                 url: "Main_LogIn/recomMingle",
                 type : 'GET',
-                success: function(response) {
-                    console.log("추천모임 GET = "+response)
-                    if(response.length > 0){
-                        for (var i = 0; i < response.length; i++) {
-                            var mingles = response[i];
+                success: function(responseData) {
+                    console.log("추천모임 GET = "+responseData)
+                    if(responseData.mingles.length > 0){
+                        for (var i = 0; i < responseData.mingles.length; i++) {
+                            var mingles = responseData.mingles[i];
+                            var minglesMemberCount = responseData.minglesMemberCount[i];
                             console.log("추천모임 GET response[i] =", mingles);
+                            var 모임아이디 = mingles.id;
                             var 모임명 = mingles.gname;
                             var 모임이미지 = mingles.gcoverimg;
                             var 모임카테고리 = mingles.gmainsubject;
                             var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
                             var 모임소개글 = mingles.gintroduction;
+                            var 모임인원 = parseInt(minglesMemberCount);
                             console.log("추천된 모임명 확인 =", 모임명);
-                            console.log("추천모임 GET response.length+1 확인 =", response.length);
+                            console.log("추천모임 GET response.length+1 확인 =", responseData.mingles.length);
                             var htmlMingle =
-                                '<div class="mingle">\n' +
+                                '<a href="/Gathering_Home/'+ 모임아이디+'" class="mingle">\n' +
                                 '<ul>\n' +
                                 '<img src="'+모임이미지+'">\n' +
                                 '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
                                 '<li id="mCategorie">'+모임카테고리+'</li>\n' +
                                 '<li id="mRogi">'+모임지역+'</li>\n' +
-                                '<li id="mUser"><a href="#">'+96+'</a>명이 참여 중</li>\n' +
+                                '<li id="mUser">'+모임인원+'명이 참가중</li>\n' +
                                 '</ul>\n' +
                                 '<p id="mIntd">'+모임소개글+'</p>\n' +
-                                '</div>';
-
+                                '</a>';
                             $("#recMingCardInner").append(htmlMingle);
                         }
                     }else{
-                        var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search1">'+
+                        var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/Create_Meet">'+
                             '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
-                            '밍글되어있지 않아요.' +
-                            '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
+                            '모임이 없습니다.' +
+                            '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 만들기</p></a>' +
                             '</div>';
                         $("#recMingCardInner").append(htmlMingle);
                     }
