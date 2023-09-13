@@ -10,24 +10,29 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
             <!-- 바꿔야하는 부분 -->
-            <div class="my_schedule">
-                <ul>
-                    <li class="my_scd"><a href="#">내 일정</a></li>
-                </ul>
-                <div class="my_scd_box">
-                    <ul>
-                        <li><img class="jjang1" src="image/짱구1.png"></li>
-                        <li><img class="jjang2" src="image/짱구2.png"></li>
-                        <li><img class="jjang3" src="image/짱구3.png"></li>
-                        <li><img class="jjang4" src="image/짱구4.png"></li>
-                    </ul>
-                    <div class="box1"></div>
-                    <div class="box2"></div>
-                    <div class="box3"></div>
-                    <div class="box4"></div>
-                </div>
-            </div>
-
+<div id="schedule">
+    <div class="schedule_bg">
+        <ul class="schedule" th:each="schedule, scheduleStat : ${Schedule}">
+            <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span></li>
+            <li><span class="schedule_subject">일시</span><span class="schedule_detail" th:text="${schedule.getSDate()}">일시</span>
+            </li>
+            <li><span class="schedule_subject">위치</span><span class="schedule_detail" th:text="${schedule.getSPlace()}">장소</span></li>
+            <li><span class="schedule_subject">금액</span><span class="schedule_detail" th:text="${schedule.getSPrice()}">금액</span>
+            </li>
+            <li>
+                <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
+                    class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
+                <a href="#">참석하기</a>
+            </li>
+            <li>
+                <img src="/image/Gathering_img1.png">
+                <img src="/image/Gathering_img2.png">
+                <img src="/image/Gathering_img3.png">
+                <img src="/image/Gathering_img4.png">
+            </li>
+        </ul>
+    </div>
+</div>
             <div class="footer">
                 <div class="footer_menu">
                     <a href="#">이용약관</a>

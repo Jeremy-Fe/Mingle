@@ -48,6 +48,10 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     @Query(value = "UPDATE MemberEntity m SET m.mProfileimg  = :mProfileimg WHERE m.mId =:mId")
     void updatemProfileimg(@Param("mProfileimg") Blob mProfileimg, @Param("mId") String mId);
 
+    @Query(value="select s from ScheduleEntity s where s.sMId.mId = :mId")
+    List<ScheduleEntity> findByMemberId (@Param("mId") String mId);
+
+
 
 
 }

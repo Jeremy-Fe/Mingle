@@ -219,6 +219,7 @@ public List<GatheringEntity> findMyMingles(String userId) {
         return scheduleDTOList;
     }
 
+
     public List<CommentsDTO> findComments(Long pNum) {
         List<CommentsEntity> commentsEntityList = gatheringRepository.findByPNum(pNum);
         List<CommentsDTO> commentsDTOList = new ArrayList<>();
