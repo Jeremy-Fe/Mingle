@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicInsert;
 import javax.persistence.*;
 import java.sql.Blob;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 @DynamicInsert
@@ -58,8 +59,6 @@ public class PostEntity {
     private Blob pImg5;
 
 
-    @OneToMany(mappedBy = "cPNum")
-    private Set<CommentsEntity> comments = new LinkedHashSet<>();
 
 
 }

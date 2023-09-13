@@ -99,7 +99,7 @@
                         <ul class="g_news_post clearfix">
                             <img class="post_writerImg" th:src="${PostWriter.get(postsStat.index).getMProfileimg()}" src="/image/Gathering_img1.png">
                             <img class="post_img" src="/image/newsPost_img1.png">
-                            <li><p class="post_boardName" th:text="${PostBoard}">게시판 이름</p></li>
+                            <li><p class="post_boardName" th:text="${PostBoard.get(postsStat.index)}">게시판 이름</p></li>
                             <li><p class="post_writerName" th:text="${PostWriter.get(postsStat.index).getMName()}">작성자</p></li>
                             <li><p class="post_date" th:text="${posts.getPDate()}">0월 00일 오후 0:00</p></li>
                             <li><p class="post_title" th:text="${posts.getPTitle()}">제목</p></li>
@@ -107,7 +107,7 @@
                                 <p class="post_contents" th:text="${posts.getPContents()}">글 내용</p>
                             </li>
                         </ul>
-                        <li><span th:text="'좋아요 '+${posts.getPLike()}+ '개'">좋아요 갯수</span><span>댓글 2개</span></li>
+                        <li><span th:text="'댓글 ' + ${Comments.get(postsStat.index)} + '개'"></span></li>
                     </ul>
                 </a>
             </ul>
