@@ -71,7 +71,7 @@
         <ul class="board_post" th:each="post, postStat: ${Post}">
             <a th:href="@{|/Gathering_Post/${id}/${post.getPNum()}|}">
                 <ul class="posts clearfix">
-                    <img class="post_writerimg" th:src="${PostWriter.get(postStat.index).getMProfileimg()}">
+                    <img class="post_writerimg" th:src="'data:image/png;base64,' + ${#strings.toString(mPPPImg.get(postStat.index))}">
                     <li class="date_img"><p class="post_date" th:text="${post.getPDate()}">0월 0일 00:00</p>
                     </li>
 
