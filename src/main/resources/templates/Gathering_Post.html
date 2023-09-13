@@ -61,7 +61,7 @@
     <div class="Post_bg">
         <ul class="contents clearfix">
             <img class="post_writerimg" th:if="${writer.getMProfileimg() == null}" src="/image/DefaultProfile_logo.png">
-            <img class="post_writerimg" th:unless="${writer.getMProfileimg() == null}" th:src="${writer.getMProfileimg()}">
+            <img class="post_writerimg" th:unless="${writer.getMProfileimg() == null}" th:src="'data:image/png;base64,' + ${#strings.toString(base64Iamg)}">
             <li>
                 <div class="updatePost">
                     <img class="menu" src="/image/menudot.png" onclick="toggleSubMenu();">
@@ -93,6 +93,8 @@
         <ul class="comments">
             <ul class="comment clearfix" th:each="comments, commentsStat: ${Comments}">
                 <img class="comment_profileimg" th:if="${CommentsWriter.get(commentsStat.index).getMProfileimg() == null}" src="/image/DefaultProfile_logo.png">
+                <img class="comment_profileimg" th:unless="${CommentsWriter.get(commentsStat.index).getMProfileimg() == null}" th:src="'data:image/png;base64,' + ${#strings.toString(cwimg.get(commentsStat.index))}">
+                <li><span class="comment_writer" th:text="${CommentsWriter.get(commentsStat.index).getMName()}">정웅기</span><span class="comment_date" th:text="${comments.getCDate()}">7월 23일 오후 11:01</span></li>
                 <img class="comment_profileimg" th:unless="${CommentsWriter.get(commentsStat.index).getMProfileimg() == null}" th:src="${CommentsWriter.get(commentsStat.index).getMProfileimg()}">
                 <li>
                     <span class="comment_writer" th:text="${CommentsWriter.get(commentsStat.index).getMName()}" onclick="toggleCommentSubMenu();">정웅기</span>

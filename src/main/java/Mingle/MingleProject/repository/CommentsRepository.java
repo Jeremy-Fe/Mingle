@@ -21,4 +21,7 @@ public interface CommentsRepository extends JpaRepository<CommentsEntity, Long> 
     @Modifying
     @Query("DELETE FROM CommentsEntity c WHERE c.cNum = :cNum")
     void deleteComment(Long cNum);
+
+    @Query("select c from CommentsEntity c where c.cMId =:logInId order by c.cDate desc")
+    List<CommentsEntity> findbycMId(String logInId);
 }

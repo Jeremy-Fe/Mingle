@@ -22,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.management.remote.rmi.RMIConnectionImpl;
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
@@ -30,10 +31,8 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.sql.SQLException;
 
 @Controller
 @RequiredArgsConstructor
@@ -59,6 +58,23 @@ public class GatheringController {
         Collections.sort(gatheringMemberDTO, memberComparator);
         model.addAttribute("GatheringMember", gatheringMemberDTO);
 
+        List<String> memberPImg = new ArrayList<>();
+        for (MemberDTO memberDTO : gatheringMemberDTO) {
+            Blob mpImg =  memberDTO.getMProfileimg();
+            System.out.println("mpImg :" + mpImg);
+
+            if (mpImg != null) {
+                try {
+                    byte[] byteArray = mpImg.getBytes(1, (int) mpImg.length());
+                    String base64Iame = Base64.getEncoder().encodeToString(byteArray);
+                    memberPImg.add(base64Iame);
+                    System.out.println("base64Iame:" + base64Iame);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        model.addAttribute("mPImg",memberPImg);
 
         int gatheringHeadcount = gatheringMemberDTO.size();
         model.addAttribute("headcount", gatheringHeadcount);
@@ -74,14 +90,34 @@ public class GatheringController {
 
 
         List<MemberDTO> writerList = new ArrayList<>();
+        List<String> writerPImg = new ArrayList<>();
         for (PostDTO postDTO: postDTOList) {
-            writerList.add(memberService.findByWriter(postDTO.getPMId()));
+            MemberDTO memberDTO = memberService.findByWriter(postDTO.getPMId());
+            Blob mPPImg =  memberDTO.getMProfileimg();
+            System.out.println("mpImg :" + mPPImg);
+
+            if (mPPImg != null) {
+                try {
+                    byte[] byteArray = mPPImg.getBytes(1, (int) mPPImg.length());
+                    String base64Iame = Base64.getEncoder().encodeToString(byteArray);
+                    writerPImg.add(base64Iame);
+                    System.out.println("base64Iame:" + base64Iame);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            writerList.add(memberDTO);
         }
+
         if(writerList.size() > 2) {
             List<MemberDTO> writer2List = writerList.subList(0, 2);
             model.addAttribute("PostWriter", writer2List);
+            List<String> writer2PImg = writerPImg.subList(0, 2);
+            model.addAttribute("mPPImg", writer2PImg);
         } else {
             model.addAttribute("PostWriter", writerList);
+            model.addAttribute("mPPImg", writerPImg);
         }
 
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
@@ -124,6 +160,25 @@ public class GatheringController {
         }
         model.addAttribute("PostWriter", writerList);
 
+        List<String> writerPImg = new ArrayList<>();
+        for (MemberDTO memberDTO: writerList) {
+            Blob mPPPImg = memberDTO.getMProfileimg();
+            System.out.println("mpppImg" + mPPPImg);
+
+            if (mPPPImg != null) {
+                try {
+                    byte[] byteArray = mPPPImg.getBytes(1, (int) mPPPImg.length());
+                    String base64Iame = Base64.getEncoder().encodeToString(byteArray);
+                    writerPImg.add(base64Iame);
+                    System.out.println("base64Iame:" + base64Iame);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        model.addAttribute("mPPPImg",writerPImg);
+
+
         List<Long> commentsCount = postService.commentsCount(postDTOList);
         model.addAttribute("Comments", commentsCount);
 
@@ -144,15 +199,48 @@ public class GatheringController {
         model.addAttribute("boardName", BoardName(postDTO));
 
         MemberDTO memberDTO = memberService.findByWriter(postDTO.getPMId());
-        model.addAttribute("writer", memberDTO);
+        model.addAttribute("writer", memberDTO);/*--게시글작성자--*/
 
         List<CommentsDTO> commentsDTOList = gatheringService.findComments(pNum);
-        List<MemberDTO> memberDTOList = new ArrayList<>();
+        List<MemberDTO> memberDTOList = new ArrayList<>();/*--댓글작성자--*/
         for (CommentsDTO commentsDTO: commentsDTOList) {
             memberDTOList.add(memberService.findByCommentsWriter(commentsDTO.getCMId()));
         }
         model.addAttribute("Comments", commentsDTOList);
         model.addAttribute("CommentsWriter", memberDTOList);
+
+
+        Blob pwimg = memberDTO.getMProfileimg();
+        String pwimgs = null;
+        if (pwimg != null) {
+            try {
+                byte[] byteArray = pwimg.getBytes(1, (int) pwimg.length());
+                String base64Iame = Base64.getEncoder().encodeToString(byteArray);
+                pwimgs = base64Iame;
+                System.out.println("base64Iame 게시글작성자:" + pwimgs);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        model.addAttribute("base64Iamg", pwimgs);
+
+        List<String> cwPImg = new ArrayList<>();
+        for (MemberDTO memberDTO2: memberDTOList) {
+            Blob cwimg = memberDTO2.getMProfileimg();
+            System.out.println("cwimg :" + cwimg);
+
+            if (cwimg != null) {
+                try {
+                    byte[] byteArray = cwimg.getBytes(1, (int) cwimg.length());
+                    String base64Iame = Base64.getEncoder().encodeToString(byteArray);
+                    cwPImg.add(base64Iame);
+                    System.out.println("base64Iame 댓글작성자:" + base64Iame);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        model.addAttribute("cwimg",cwPImg);
 
         return "Gathering_Post";
     }

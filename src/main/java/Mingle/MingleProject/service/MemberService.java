@@ -157,8 +157,7 @@ public class MemberService {
             MemberEntity profileEntity = optionalMemberEntity.get();
             MemberDTO profileDto = MemberDTO.toMemberDTO(profileEntity);
             Blob blobTypeProfileimg = profileDto.getMProfileimg();
-
-
+            System.out.println("blobTypeProfileimg :" + blobTypeProfileimg);
 
             if (blobTypeProfileimg != null) {
                 try {
