@@ -28,6 +28,8 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -96,6 +98,9 @@ public class GatheringController {
         model.addAttribute("memberCount", memberCount);
         model.addAttribute("remaining", remainingPerson);
 
+        List<Long> commentsCount = postService.commentsCount(postDTOList);
+        model.addAttribute("Comments", commentsCount);
+
         return "Gathering_Home";
     }
 
@@ -118,6 +123,9 @@ public class GatheringController {
             writerList.add(memberService.findByWriter(postDTO.getPMId()));
         }
         model.addAttribute("PostWriter", writerList);
+
+        List<Long> commentsCount = postService.commentsCount(postDTOList);
+        model.addAttribute("Comments", commentsCount);
 
         return "Gathering_Board";
     }
@@ -148,6 +156,8 @@ public class GatheringController {
 
         return "Gathering_Post";
     }
+
+
 
     @GetMapping("Gathering_Album_All/{id}")
     public String Gathering_Album_All(@PathVariable Long id, Model model) {
@@ -277,6 +287,18 @@ public class GatheringController {
         return "Gathering_Post_Write";
     }
 
+    @GetMapping("Gathering_Post_Modify/{id}/{pNum}")
+    public String Gathering_Post_Modify(@PathVariable Long id, @PathVariable Long pNum, Model model){
+        // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
+        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+        model.addAttribute("GatheringHome", gatheringDTO);
+
+
+
+        return "Gathering_Post_Write";
+    }
+
+
     @PostMapping("/Gathering_Post_Write/{id}")
     public String uploadPost(@ModelAttribute PostDTO postDTO, @PathVariable Long id, HttpSession session) {
         String logInId = (String) session.getAttribute("loginId");
@@ -290,9 +312,24 @@ public class GatheringController {
 
         return "redirect:/Gathering_Board/" + id;
     }
+    @PostMapping("Gathering_Post/{id}/{pNum}")
+    public String writeComments(@ModelAttribute CommentsDTO commentsDTO, @PathVariable Long id, @PathVariable Long pNum, HttpSession session) {
+        String logInId = (String) session.getAttribute("loginId");
+        commentsDTO.setCPNum(pNum);
+        commentsDTO.setCMId(logInId);
+        if(commentsDTO.getCDate()==null){
+            commentsDTO.setCDate(LocalDate.now());
+        }
+        postService.writeComments(commentsDTO);
 
 
-    public List BoardName(List<PostDTO> list) {
+        return "redirect:/Gathering_Post/" + id + "/" + pNum;
+    }
+
+
+
+
+public List BoardName(List<PostDTO> list) {
         List boardName = new ArrayList();
         for (PostDTO postDTO : list) {
             Long bNum = postDTO.getPBNum();

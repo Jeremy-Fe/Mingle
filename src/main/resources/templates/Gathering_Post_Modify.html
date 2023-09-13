@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <title>모임_게시판-게시글만들기</title>
+
+  <!--css-->
+  <link href="/CSS/gatheringnCreate.css" type="text/css" rel="stylesheet">
+
+  <!-- include jQuery :) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+  <!--font-->
+  <!--font-family: 'GmarketSans';-->
+  <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+  <!--font-family: 'Orbitron', sans-serif;-->
+  <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+  <!--font-family: 'Jalnan';-->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- font-family: 'NexonLv1Gothic'; -->
+  <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div th:replace="/defaultUI.html"></div>
+
+        <!-- 바꿔야하는 부분 -->
+        <div class="view">
+            <form th:action="@{|/Gathering_Post_Write/${id}|}" method="post">
+            <!-- 헤더 -->
+                <div id="viewHeader">
+                  <li id="hGtrImg"><img src="image/Main_Login_내게시물.png" alt=""></li>
+                  <li id="hGtrExp">
+                    <div>
+                       <a class="title_detail" th:text="${GatheringHome.getGDistrict()}">지역</a><!-- th:text="|${District}|"-->
+                      <a class="title_detail" th:text="${GatheringHome.getGMainsubject()}">관심사</a><!--th:text="|${GMainsubject}|"-->
+                    </div>
+
+                    <h3 class="title_title" th:text="${GatheringHome.getGName()}">모임 이름</h3><!-- th:text="|${gName}|"-->
+                  </li>
+                  <li id="hSelCatg">
+                    <h4>게시판</h4>
+                    <select name="pBNum" class="select_board">
+                      <option name="pBNum" value="2">자유글</option>
+                      <option name="pBNum" value="3">관심사 공유</option>
+                      <option name="pBNum" value="1">정모후기</option>
+                      <option name="pBNum" value="4">가입인사</option>
+                      <option name="pBNum" value="5">공지사항</option>
+                  </select>
+                  </li>
+                </div>
+                <!-- // 헤더 -->
+
+                <!-- 글작성페이지 -->
+                <section id="createView">
+                  <div id="createViewInner">
+                    <li><input id="cTitle" name="pTitle" type="text"placeholder="제목을 입력하세요."></li>
+                    <li><textarea id="cText" name="pContents" placeholder="내용을 입력하세요."></textarea></li>
+                    <li>
+                      <input id="cCreate" type="submit" value="수정하기">
+                    </li>
+                    <!--
+                    <input id="cCreate" type="submit" th:if(작성 )>
+                    <input id="cCreate" type="submit" th:if(수정 )>
+                    -->
+                  </div>
+                </section>
+                <!-- // 글작성페이지 -->
+            </form>
+        </div>
+      </div>
+    </section>
+    <!-- / 관심사 -->
+
+  </div>
+
+  </div>
+
+
+
+  </section>
+  </div>
+  <script>
+
+  </script>
+</body>
+
+</html>
