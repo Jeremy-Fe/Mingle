@@ -34,8 +34,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 
     <script>
-        function toggleCommentSubMenu() {
-            const submenu = document.getElementById('comment_delete');
+        function toggleCommentSubMenu(id) {
+            const submenu = document.getElementById(id);
             if (submenu.style.display === 'none' || submenu.style.display === '') {
                 submenu.style.display = 'block';
             } else {
@@ -97,8 +97,8 @@
                 <li><span class="comment_writer" th:text="${CommentsWriter.get(commentsStat.index).getMName()}">정웅기</span><span class="comment_date" th:text="${comments.getCDate()}">7월 23일 오후 11:01</span></li>
                 <img class="comment_profileimg" th:unless="${CommentsWriter.get(commentsStat.index).getMProfileimg() == null}" th:src="${CommentsWriter.get(commentsStat.index).getMProfileimg()}">
                 <li>
-                    <span class="comment_writer" th:text="${CommentsWriter.get(commentsStat.index).getMName()}" onclick="toggleCommentSubMenu();">정웅기</span>
-                    <div id="comment_delete">
+                    <span class="comment_writer" th:text="${CommentsWriter.get(commentsStat.index).getMName()}" th:id="'comment_delete_' + ${comments.getCNum()}">정웅기</span>
+                    <div th:id="'comment_delete_' + ${comments.getCNum()}" class="comment_delete">
                         <a th:href="'/Gathering_Post_Comment_Delete/' + ${GatheringHome.id} + '/' + ${post.getPNum()} + '/' + ${comments.getCNum()}" onclick="return confirm('댓글을 삭제 하시겠습니까?');">댓글 삭제하기</a>
                     </div>
                     <span class="comment_date" th:text="${comments.getCDate()}">7월 23일 오후 11:01</span>
