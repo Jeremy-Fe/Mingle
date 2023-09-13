@@ -97,7 +97,7 @@
                 <a th:unless="${Post.size() == 0}" th:href="@{|/Gathering_Post/${id}/${posts.getPNum()}|}" th:each="posts, postsStat :${Post}">
                     <ul class="g_news_post_box">
                         <ul class="g_news_post clearfix">
-                            <img class="post_writerImg" th:src="${PostWriter.get(postsStat.index).getMProfileimg()}" src="/image/Gathering_img1.png">
+                            <img class="post_writerImg" th:src="'data:image/png;base64,' + ${#strings.toString(mPPImg.get(postsStat.index))}" src="/image/Gathering_img1.png">
                             <img class="post_img" src="/image/newsPost_img1.png">
                             <li><p class="post_boardName" th:text="${PostBoard.get(postsStat.index)}">게시판 이름</p></li>
                             <li><p class="post_writerName" th:text="${PostWriter.get(postsStat.index).getMName()}">작성자</p></li>
@@ -115,9 +115,9 @@
     </div>
     <div id="g_member">
         <h4 th:text="'모임 멤버 (' + ${headcount} + '명)'"></h4>
-        <ul th:each="member: ${GatheringMember}">
+        <ul th:each="member, memberStat: ${GatheringMember}">
             <li class="clearfix">
-                <img class="profileimg" th:src="${member.getMProfileimg()}">
+                <img class="profileimg" th:src="'data:image/png;base64,' + ${#strings.toString(mPImg.get(memberStat.index))}">
                 <img class="leadercrown" src="/image/leadercrown.png" th:if="${member.getMId() == GatheringHome.getGMainleader()}">
                 <img class="leadercrown" src="/image/subleaderstar.png" th:if="${member.getMId() == GatheringHome.getGSubleader1() || member.getMId() == GatheringHome.getGSubleader2() || member.getMId() == GatheringHome.getGSubleader3()}">
                 <ul>

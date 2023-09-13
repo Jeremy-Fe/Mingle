@@ -35,7 +35,7 @@
 
         <!-- 바꿔야하는 부분 -->
         <div class="view">
-            <form th:action="@{|/Gathering_Post_Write/${id}|}" method="post">
+            <form th:action="@{|/Gathering_Post_Modify/${id}/${PostValue.getPNum()}|}" method="post">
             <!-- 헤더 -->
                 <div id="viewHeader">
                   <li id="hGtrImg"><img src="image/Main_Login_내게시물.png" alt=""></li>
@@ -50,11 +50,11 @@
                   <li id="hSelCatg">
                     <h4>게시판</h4>
                     <select name="pBNum" class="select_board">
-                      <option name="pBNum" value="2">자유글</option>
-                      <option name="pBNum" value="3">관심사 공유</option>
-                      <option name="pBNum" value="1">정모후기</option>
-                      <option name="pBNum" value="4">가입인사</option>
-                      <option name="pBNum" value="5">공지사항</option>
+                      <option name="pBNum" value="2" th:selected="${PostValue.getPBNum() == 2}">자유글</option>
+                      <option name="pBNum" value="3" th:selected="${PostValue.getPBNum() == 3}">관심사 공유</option>
+                      <option name="pBNum" value="1" th:selected="${PostValue.getPBNum() == 1}">정모후기</option>
+                      <option name="pBNum" value="4" th:selected="${PostValue.getPBNum() == 4}">가입인사</option>
+                      <option name="pBNum" value="5" th:selected="${PostValue.getPBNum() == 5}">공지사항</option>
                   </select>
                   </li>
                 </div>
@@ -63,8 +63,8 @@
                 <!-- 글작성페이지 -->
                 <section id="createView">
                   <div id="createViewInner">
-                    <li><input id="cTitle" name="pTitle" type="text"placeholder="제목을 입력하세요."></li>
-                    <li><textarea id="cText" name="pContents" placeholder="내용을 입력하세요."></textarea></li>
+                    <li><input id="cTitle" name="pTitle" type="text"placeholder="제목을 입력하세요." th:value="${PostValue.getPTitle()}"></li>
+                    <li><textarea id="cText" name="pContents" placeholder="내용을 입력하세요." th:text="${PostValue.getPContents()}" ></textarea></li>
                     <li>
                       <input id="cCreate" type="submit" value="수정하기">
                     </li>

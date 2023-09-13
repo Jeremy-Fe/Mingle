@@ -1,10 +1,11 @@
 package Mingle.MingleProject.controller;
 
+import Mingle.MingleProject.dto.CommentsDTO;
 import Mingle.MingleProject.dto.MemberDTO;
 import Mingle.MingleProject.dto.PostDTO;
+import Mingle.MingleProject.dto.ScheduleDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
-import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.*;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +30,7 @@ public class MingleController {
     private final CityService cityService ;
     private final GatheringService gatheringService;
     private final PostService postService;
+    private final CommentsService commentsService;
 
     // 회원가입 메일 서비스
     @Autowired
@@ -88,12 +91,12 @@ public class MingleController {
         return "join";
     }
 
+    @GetMapping("/Main_LogIn")
+    public String Main_LogIn() {return "Main_LogIn"; }
+
     @GetMapping("Main_UnLogIn*")
     public String Main_UnLogIn() {
         return "Main_UnLogIn";}
-
-    @GetMapping("/Main_LogIn")
-    public String Main_LogIn() { return "Main_LogIn"; }
 
     @GetMapping("myClass*")
     public String myClass(HttpSession session, Model model) {
@@ -133,9 +136,14 @@ public class MingleController {
         System.out.println("mingles 확인 = "+ mingles);
 
         /*--내 게시글  출력--*/
-        List<PostDTO> postDTOs = postService.findPost(logInId);
+        List<PostDTO> postDTOs = postService.findPosts(logInId);
         model.addAttribute("post",postDTOs);
         System.out.println("postDTOs 확인 =" + postDTOs);
+
+        /*--내 댓글 출력--*/
+        List<CommentsDTO> commentsDTOS = commentsService.findComments(logInId);
+        model.addAttribute("comments",commentsDTOS);
+        System.out.println("commentsDTOs 확인 :" + commentsDTOS);
 
         return "MyPage";
     }
@@ -222,6 +230,29 @@ public class MingleController {
         }
         return "redirect:/Main_UnLogIn?message=success";
     }
+
+    @PostMapping("/loginForm")
+    public String id_pwFind() { return "login"; }
+
+    @GetMapping("Member_Schedule/{mId}")
+    public String Member_Schedule(@PathVariable String mId, Model model) {
+        List<ScheduleDTO> scheduleDTOList = memberService.findByMemberId(mId);
+        model.addAttribute("Schedule", scheduleDTOList);
+
+
+        List<Integer> memberCount = new ArrayList<>();
+        List<Long> remainingPerson = new ArrayList<>();
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            String[] member = scheduleDTO.getSMember().split(",");
+            memberCount.add(member.length);
+            remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+        }
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("remaining", remainingPerson);
+
+        return "schedule";
+    }
+
 
     @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {

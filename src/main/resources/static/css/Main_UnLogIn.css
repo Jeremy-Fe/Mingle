@@ -2,7 +2,7 @@
 *{margin: 0;padding: 0; box-sizing: border-box; }
 li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
 a{text-decoration: none; color: #2C244F;}
-img{display: block; width: 150px;}
+img{display: block;}
 .clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
 p{font-family: 'GmarketSans'; }
 h3{font-family: 'GmarketSans';}
@@ -23,7 +23,7 @@ h3{font-family: 'GmarketSans';}
     font-size: 35px;  font-family: 'Jalnan'; color: #564797;
     float: left ; padding-left: 25px; margin-left: 25px;line-height: 100px;
 }
-.l_news>ul>li>a{
+#view>.l_news>ul>li>a{
     margin: 15px;float: right ; line-height: 70px;
     font-size: 25px ;  font-weight:300;
 }
@@ -67,3 +67,56 @@ hotMeeting>ul>h3{
     font-family: 'Jalnan'; font-size: 36px;
     line-height: 100px; color: #564797; float: left;
 }
+/* footer 메뉴 */
+#footer{
+    height: 196px;
+    position: relative;
+}
+.footer_menu{
+    position: absolute;
+    top: 108px;
+    left: 415px;
+}
+.footer_menu > a{
+    position: relative;
+    color: #FFFFFF;
+    margin-right: 30px;
+}
+.footer_menu > a::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #FFFFFF;
+    top: 1px;
+    left: -15px;
+}
+.footer_menu > a:first-child:before{
+    width: 0;
+}
+.footer_menu > a:last-child{
+    margin-right: 0;
+}
+
+/* footer CopyRight */
+.f_copyright{
+    position: absolute;
+    top: 143px;
+    left: 475px;
+}
+.f_copyright > img{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+}
+.f_copyright > p{
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    color: #EEEEEE;
+}
+.f_copyright .corp{
+    color: #FFFFFF;
+}
+
