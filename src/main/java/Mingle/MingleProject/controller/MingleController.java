@@ -5,7 +5,6 @@ import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.dto.ScheduleDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
-import Mingle.MingleProject.entity.PostEntity;
 import Mingle.MingleProject.repository.MemberRepository;
 import Mingle.MingleProject.service.*;
 import lombok.RequiredArgsConstructor;
@@ -133,7 +132,7 @@ public class MingleController {
         System.out.println("mingles 확인 = "+ mingles);
 
         /*--내 게시글  출력--*/
-        List<PostDTO> postDTOs = postService.findPost(logInId);
+        List<PostDTO> postDTOs = postService.findPosts(logInId);
         model.addAttribute("post",postDTOs);
         System.out.println("postDTOs 확인 =" + postDTOs);
 
@@ -222,6 +221,9 @@ public class MingleController {
         }
         return "redirect:/Main_UnLogIn?message=success";
     }
+
+    @PostMapping("/loginForm")
+    public String id_pwFind() { return "login"; }
 
     @GetMapping("Member_Schedule/{mId}")
     public String Member_Schedule(@PathVariable String mId, Model model) {
