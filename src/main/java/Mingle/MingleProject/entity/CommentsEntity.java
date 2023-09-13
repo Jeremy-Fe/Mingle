@@ -2,9 +2,11 @@ package Mingle.MingleProject.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -18,21 +20,18 @@ public class CommentsEntity {
     @Column(name = "C_NUM", nullable = false)
     private Long cNum;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "C_P_NUM", nullable = false)
-    private PostEntity cPNum;
+    @Column(name = "C_P_NUM", nullable = false)
+    private Long cPNum;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "C_M_ID", nullable = false)
-    private MemberEntity cMId;
+    @Column(name = "C_M_ID", nullable = false)
+    private String cMId;
 
     @Column(name = "C_COMMENTS", nullable = false, length = 500)
     private String cComments;
 
-    @Column(name = "C_DATE", nullable = false)
+    @ColumnDefault("SYSDATE")
+    @Column(name = "C_DATE")
     private LocalDate cDate;
 
-    @OneToMany(mappedBy = "rCNum")
-    private Set<ReplyEntity> replies = new LinkedHashSet<>();
 
 }

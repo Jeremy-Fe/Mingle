@@ -32,6 +32,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+
+    <script>
+        function modifySendPostRequest() {
+
+            const form = document.createElement('form');
+            form.method = 'post';
+            form.action = 'modify'; // The URL where you want to send the POST request
+            document.body.appendChild(form);
+
+            form.submit();
+        }
+        function deleteSendPostRequest() {
+            confirm("글을 삭제 하시겠습니까?")
+            const form = document.createElement('form');
+            form.method = 'delete';
+            form.action = 'modify'; // The URL where you want to send the POST request
+            document.body.appendChild(form);
+
+            form.submit();
+        }
+        function toggleSubMenu(submenuId) {
+            var submenu = document.getElementById(submenuId);
+            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                submenu.style.display = 'block';
+            } else {
+                submenu.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
@@ -43,7 +72,16 @@
         <ul class="contents clearfix">
             <img class="post_writerimg" th:if="${writer.getMProfileimg() == null}" src="/image/DefaultProfile_logo.png">
             <img class="post_writerimg" th:unless="${writer.getMProfileimg() == null}" th:src="${writer.getMProfileimg()}">
-            <li><a href="#"><img class="menu" src="/image/menudot.png"></a><p class="post_boardName" th:text="${boardName}">게시판 이름</p></li>
+            <li>
+                <div class="updatePost">
+                    <img class="menu" src="/image/menudot.png" onclick="toggleSubMenu('submenu');">
+                    <div id="submenu "class="submenu" th:if="${session.loginId == post.getPMId()}">
+                        <a  class="modify" href="Gathering_Post_Modify.html/" th:href="'Gathering_Post_Modify/' + ${GatheringHome.id} + '/' + ${post.getPNum()}" onclick="return confirm('글을 수정 하시겠습니까?');">글 수정하기</a>
+                        <a class="delete" href="javascript:void(0);" onclick="deleteSendPostRequest();">글 삭제하기</a>
+                    </div>
+                </div>
+                <p class="post_boardName" th:text="${boardName}">게시판 이름</p>
+            </li>
             <li><p class="post_writerName" th:text="${writer.getMName()}">작성자</p></li>
             <li><p class="post_date" th:text="${post.getPDate()}">0월 00일 오후 00:00</p></li>
             <li class="title_line"><p class="post_title" th:text="${post.getPTitle()}">제목</p></li>
@@ -53,15 +91,14 @@
         </ul>
         <ul class="like">
             <li>
-                <a href="#"><img src="/image/like.png"><span th:text="'좋아요 '+${post.getPLike}+ '개'">종아요 갯수</span></a>
                 <a href="#"><img src="/image/comment.png"><span>댓글 갯수</span></a>
             </li>
         </ul>
         <ul class="input_comment">
-        <div class="search">
-            <input type="text" placeholder="댓글을 달아주세요.">
-            <button type="button">전송</button>
-        </div>
+        <form class="search" th:action="@{|/Gathering_Post/${id}/${post.getPNum()}|}" method="post">
+            <input type="text" placeholder="댓글을 달아주세요." name="cComments">
+            <button type="submit">전송</button>
+        </form>
         </ul>
         <ul class="comments">
             <ul class="comment clearfix" th:each="comments, commentsStat: ${Comments}">
