@@ -46,7 +46,7 @@
                 <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
                     class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
             </li>
-            <a href="#">참석하기</a>
+            <a href="#" class="attend-button">참석하기</a>
         </ul>
     </div>
 </div>
