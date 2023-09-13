@@ -86,6 +86,7 @@ public class GatheringController {
             model.addAttribute("PostBoard", BoardName(postDTO2List));
         } else {
             model.addAttribute("Post", postDTOList);
+            model.addAttribute("PostBoard", BoardName(postDTOList));
         }
 
 

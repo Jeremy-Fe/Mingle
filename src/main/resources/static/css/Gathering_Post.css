@@ -22,6 +22,7 @@
     display: inline;
     float: left;
     margin-right: 20px;
+    border-radius: 50%;
 }
 
 .Post_bg > .contents > li > .post_boardName{
@@ -151,6 +152,7 @@
     display: inline;
     float: left;
     margin-right: 10px;
+    border-radius: 50%;
 }
 .Post_bg > .comments > .comment > li{
     position: relative;
@@ -171,7 +173,7 @@
     height: 60px;
     left: 100px;
     background-color: #fff;
-    top: 40px;
+    top: 30px;
     border: 1px solid #000;
     border-radius: 20px;
     z-index: 1;
