@@ -222,6 +222,7 @@ public class GatheringController {
 
         return "Gathering_Album_BoardNotification";}
 
+
     @GetMapping("Gathering_Schedule/{id}")
     public String Gathering_Schedule(@PathVariable Long id, Model model) {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.

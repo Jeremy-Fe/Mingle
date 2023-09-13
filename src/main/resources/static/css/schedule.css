@@ -69,184 +69,72 @@ body{z-index: 2}
 }
 
 /*view_바꿔야할 부분*/
-.view{width: 100%;
-    height: 9300px;/* 임의지정 값*/
-    border-radius: 20px 0 0 0;
-}
-/*첫번째 헤더 영역 부분*/
-.interest_schedule{
-    width: 100%;
-    height: 520px;
-    position: relative;
-}
-.interest_schedule>ul>img{
-    position: absolute;
-    top: 47px;
-    left: 70px;
-}
-.interest_schedule>ul .scd{
-    font-size: 40px;
-    font-family: 'Jalnan';
-    position: absolute;
-    top: 45px;
-    left: 116px;
-}
+#schedule{}
 
-.interest_schedule .interest_box{
-    width: 1381px; height: 398px; background-color:rgba(255,255,255,0.65);
-    margin: auto;
+.schedule_bg{
+    width: 1450px;
+    background-color: #fff;
+    float: left;
+    margin-top: 20px;
     border-radius: 20px;
-    position: absolute;
-    top: 122px;
-    left: 70px;
-}
-.interest_box>ul .ib_img1{
-    position: absolute;
-    top: 46px;
-    left: 46px;
-}
-.interest_box>ul .ib_img2{
-    position: absolute;
-    top: 46px;
-    left: 234px;
-}
-.interest_box>ul .ib_img3{
-    position: absolute;
-    top: 46px;
-    left: 417px;
-}
-.interest_box>ul .ib_img4{
-    position: absolute;
-    top: 46px;
-    left: 600px;
-}
-.interest_box>ul .ib_img5{
-    position: absolute;
-    top: 46px;
-    left: 783px;
-}
-.interest_box>ul .ib_img6{
-    position: absolute;
-    top: 46px;
-    left: 992px;
-}
-.interest_box>ul .ib_img7{
-    position: absolute;
-    top: 46px;
-    left: 1202px;
-}
-.interest_box>ul .ib_img8{
-    position: absolute;
-    top: 216px;
-    left: 46px;
-}
-.interest_box>ul .ib_img9{
-    position: absolute;
-    top: 216px;
-    left: 234px;
-}
-.interest_box>ul .ib_img10{
-    position: absolute;
-    top: 216px;
-    left: 417px;
-}
-.interest_box>ul .ib_img11{
-    position: absolute;
-    top: 216px;
-    left: 600px;
-}
-.interest_box>ul .ib_img12{
-    position: absolute;
-    top: 216px;
-    left: 783px;
-}
-.interest_box>ul .ib_img13{
-    position: absolute;
-    top: 216px;
-    left: 992px;
-}
-.interest_box>ul .ib_img14{
-    position: absolute;
-    top: 216px;
-    left: 1202px;
-}
-/*두번 째 섹션*/
-.my_schedule{
-    width: 100%;
-    height: 1300px;
-    position: relative;
-
-}
-.my_schedule>ul .my_scd{
-    position: absolute;
-    top: 25px;
-    left: 116px;
-}
-.my_schedule>ul .my_scd>a{
-    font-size: 40px;
-    font-family: 'Jalnan';
-    color: #2C244F;
+    padding: 35px 50px;
 }
 
-.my_schedule .my_scd_box{
-    width: 1381px; height: 1150px; background-color:rgba(255,255,255,0.65);
-    margin: auto;
+.schedule{
+    box-shadow: 0px 0px 15px  #bcbcbc;
     border-radius: 20px;
-    position: absolute;
-    top: 88px;
-    left: 70px;
+    padding: 25px 0px;
+    margin-bottom: 20px;
 }
-.box1{
-    width: 1123px; height: 200px; background-color:#FFFFFF;
-    margin: auto;
-    border-radius: 0px 20px 20px 0px;
-    position: absolute;
-    top: 30px;
-    left: 224px;
+
+.schedule > li {
+    padding-left: 50px;
 }
-.box2{
-    width: 1123px; height: 200px; background-color:#FFFFFF;
-    margin: auto;
-    border-radius: 0px 20px 20px 0px;
-    position: absolute;
-    top: 320px;
-    left: 224px;
+.schedule > li:first-child{
+    margin-bottom: 35px;
 }
-.box3{
-    width: 1123px; height: 200px; background-color:#FFFFFF;
-    margin: auto;
-    border-radius: 0px 20px 20px 0px;
-    position: absolute;
-    top: 610px;
-    left: 224px;
+.schedule > li > span {
+    font-size: 26px;
 }
-.box4{
-    width: 1123px; height: 200px; background-color:#FFFFFF;
-    margin: auto;
-    border-radius: 0px 20px 20px 0px;
-    position: absolute;
-    top: 900px;
-    left: 224px;
+.schedule > li > a {
+    width: 120px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    font-size: 26px;
+    border: 0px;
+    text-align: center;
+    line-height: 60px;
+    float: right;
+    font-weight: 500;
+    margin-right: 50px;
 }
-.jjang1{
-    position: absolute;
-    top: 30px;
-    left: 35px;
+.schedule > li > span:first-child {
+    margin-right: 15px;
 }
-.jjang2{
-    position: absolute;
-    top: 320px;
-    left: 35px;
+.schedule > li > .schedule_date1{
+    color: red;
 }
-.jjang3{
-    position: absolute;
-    top: 610px;
-    left: 35px;
+.schedule > li > .schedule_date2{
+    color: #0047FF;
 }
-.jjang4{
-    position: absolute;
-    top: 900px;
-    left: 35px;
+.schedule > li > .schedule_title{
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+.schedule > li > .schedule_subject{
+    font-size: 18px;
+    color: #727272;
+    margin-right: 15px;
+}
+.schedule > li > .schedule_detail{
+    font-size: 18px;
+}
+.schedule > li > img{
+    width: 30px;
+    height: 30px;
+    display: inline;
+
 }
 /*푸터 영역*/
 .footer{
