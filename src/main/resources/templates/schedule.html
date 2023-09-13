@@ -24,11 +24,37 @@
                 <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
                     class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
             </li>
-            <a href="#" onclick="cancelSchedule(${session.loginId})">취소하기</a>
+            <a href="#" onclick="cancelSchedule('${schedule.sNum}'); return false;">취소하기</a>
         </ul>
     </div>
 </div>
-
+<!-- JavaScript 코드 추가 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    function cancelSchedule(sNum) {
+        // AJAX 요청 보내기
+        sNum = parseInt(sNum);
+        $.ajax({
+            type: "GET",  // 또는 "POST"로 설정 가능
+            url: `/cancelSchedule/${sNum}`, // 요청할 URL
+            success: function(response) {
+                // 서버에서 작업 완료 후 호출되는 콜백 함수
+                if (response.success) {
+                    // 취소 작업이 성공적으로 완료되었다면 참여자 수 업데이트
+                    var newMemberCount = response.newMemberCount;
+                    $(".schedule_detail").text("참여 " + newMemberCount + "명");
+                } else {
+                    // 실패 시 오류 처리
+                    alert("취소 작업 실패");
+                }
+            },
+            error: function() {
+                // AJAX 요청 실패 시 오류 처리
+                alert("서버와 통신 중 오류가 발생했습니다.");
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

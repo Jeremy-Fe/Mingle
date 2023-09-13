@@ -6,7 +6,9 @@ import Mingle.MingleProject.dto.PostDTO;
 import Mingle.MingleProject.dto.ScheduleDTO;
 import Mingle.MingleProject.entity.GatheringEntity;
 import Mingle.MingleProject.entity.MemberEntity;
+import Mingle.MingleProject.entity.ScheduleEntity;
 import Mingle.MingleProject.repository.MemberRepository;
+import Mingle.MingleProject.repository.ScheduleRepository;
 import Mingle.MingleProject.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,6 +31,7 @@ public class MingleController {
     private final GatheringService gatheringService;
     private final PostService postService;
     private final CommentsService commentsService;
+    private final ScheduleRepository scheduleRepository;
 
     // 회원가입 메일 서비스
     @Autowired
@@ -347,8 +348,37 @@ public class MingleController {
             return false; // 회원을 찾을 수 없음
         }
     }
+    @GetMapping("/cancelSchedule/{sNum}")
+    @ResponseBody
+    public Map<String, Object> cancelSchedule(@PathVariable Long sNum, HttpSession session) {
+        Map<String, Object> response = new HashMap<>();
+        // 세션에서 현재 로그인된 회원의 ID 가져오기
+        String memberId = (String) session.getAttribute("memberId");
+        // Schedule 엔티티 조회
+        ScheduleEntity schedule = scheduleRepository.findById(sNum).orElse(null);
 
+        if (schedule != null) {
+            // 참여자 목록에서 회원 ID 제거
+            schedule.removeMember(memberId);
 
+            // 참여자 수 감소
+            Long currentMemberCount = schedule.getSMaxHeadcount();
+            if (currentMemberCount > 0) {
+                currentMemberCount--;
+                schedule.setSMaxHeadcount(currentMemberCount);
+            }
+
+            // Schedule 엔티티 저장
+            scheduleRepository.save(schedule);
+
+            response.put("success", true);
+            response.put("newMemberCount", currentMemberCount);
+        } else {
+            response.put("success", false);
+        }
+
+        return response;
+    }
 
 }
 
