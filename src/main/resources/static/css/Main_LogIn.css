@@ -132,9 +132,9 @@
 .swiper-button-prev, .swiper-button-next {font-size: 100px;font-weight: bold; color: #564797}
 /* / 배너*/
 
-/*핫모임 section_ view_hotMeeting*/
+/*추천모임 section_ view_hotMeeting*/
 .mingles{
-    width: 1400px; height: 350px; 
+    width: 1400px; height: 380px;
     border-radius: 20px; background-color:rgba(255,255,255,0.5);
     margin: auto ; margin-top: 20px; 
     }
@@ -147,15 +147,15 @@
     font-family: 'Jalnan'; font-size: 36px;
     line-height: 100px; color: #564797; float: left;
 }
-/* / 핫모임 */
+/* / 추천모임 */
 
-#myMingCard , #recMingCard{width: 1315px; height: 250px; float: left; }
+#myMingCard , #recMingCard{width: 1315px; height: 265px;; float: left; }
 
 
 /* 모임카드 */
 .mingle{
     display: block; float: left;
-    width: 440px; height: 230px; padding: 15px;
+    width: 440px;  height: 260px; padding: 15px;
     border-radius: 20px; background-color: #fff;
     margin-left: 0; margin-right: 15px;
     overflow: hidden; text-overflow: ellipsis;
@@ -186,10 +186,10 @@
     text-align: right;
     font-family: 'NexonLv1Gothic';
 }
-#mUser>a{color: #4364B0; text-decoration: underline;}
 /* 모임 설명 */
 #mIntd{
-    width: 405px;height: 45px;
+    width: 405px;
+    height: 65px;
     margin: auto;padding: 10px;
     line-height: 20px; font-size: 16px;
 
