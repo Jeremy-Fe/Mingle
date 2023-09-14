@@ -54,7 +54,7 @@
 .view > #g_contents > #g_news{
     float : right;
     width: 985px;
-    height: 1420px;
+    height: 1500px;
     margin-right: 5px;
     background-color: #fff;
 }
@@ -83,6 +83,7 @@
     border-radius: 20px;
     padding: 25px 0px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li {
@@ -91,7 +92,10 @@
 .view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > span {
     font-size: 26px;
 }
-.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > a {
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > a {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
     width: 120px;
     height: 60px;
     border-radius: 20px;
@@ -100,9 +104,7 @@
     border: 0px;
     text-align: center;
     line-height: 60px;
-    float: right;
-    font-weight: 500;
-    margin-right: 50px;
+    font-family:'GmarketSansMedium';
 }
 .view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > span:first-child {
     margin-right: 15px;

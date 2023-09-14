@@ -7,6 +7,7 @@
     margin-top: 20px;
     border-radius: 20px;
     padding: 35px 50px;
+    position: relative;
 }
 
 .schedule{
@@ -64,4 +65,50 @@
 .schedule > a:hover {
     background-color: #514680;
     color: white;
+}
+.shcedule_create{
+    width: 900px;
+    height: 780px;
+    background-color: #fff;
+    padding: 50px;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0px 0px 15px #999;
+    border-radius: 20px;
+}
+.shcedule_create > form > ul{}
+.shcedule_create > form > ul > li{
+    width: 800px;
+    height: 70px;
+    margin-bottom: 30px;
+}
+.shcedule_create > form > ul > li > img{
+    display: inline;
+    margin: 10px 0px;
+}
+.shcedule_create > form > ul > li > input:first-child{
+    width: 800px;
+}
+.shcedule_create > form > ul > li > input{
+    width: 700px;
+    height: 70px;
+    border-radius: 20px;
+    border: 0;
+    background-color: #F2F2F2;
+    float: right;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.shcedule_create > form > ul > li > input::placeholder{
+    color: #BABABA;
+}
+.shcedule_create > form > input{
+    width: 800px;
+    height: 70px;
+    border-radius: 30px;
+    border: 0;
+    color: #fff;
+    background-image: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    font-size: 25px;
 }

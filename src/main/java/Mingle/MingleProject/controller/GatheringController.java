@@ -313,13 +313,34 @@ public class GatheringController {
 
 
     @GetMapping("Gathering_Schedule/{id}")
-    public String Gathering_Schedule(@PathVariable Long id, Model model) {
+    public String Gathering_Schedule(@PathVariable Long id, Model model, HttpSession session) {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
         model.addAttribute("Schedule", scheduleDTOList);
+
+
+        
+        // 로그인한 아이디 참석 여부
+        String logInId = (String) session.getAttribute("loginId");
+        String[] scheduleAttendMemberList = null;
+        boolean[] attend = new boolean[scheduleDTOList.size()];
+        int index = 0;
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            attend[index] = false;
+            scheduleAttendMemberList = scheduleDTO.getSMember().split(",");
+            for (String memberId:scheduleAttendMemberList) {
+                if(logInId.equals(memberId)){
+                    attend[index] = true;
+                }
+            }
+            
+            index++;
+        }
+        model.addAttribute("Attend", attend);
+
 
 
         List<Integer> memberCount = new ArrayList<>();
@@ -416,8 +437,6 @@ public class GatheringController {
         String logInId = (String) session.getAttribute("loginId");
         postDTO.setPMId(logInId);
         postDTO.setPGNum(id);
-        System.out.println(postDTO);
-        System.out.println(postDTO);
 
         postService.uploadPost(postDTO);
 
@@ -446,11 +465,6 @@ public class GatheringController {
     }
     @GetMapping("Gathering_Post_Comment_Delete/{id}/{pNum}/{cNum}")
     public String commentDelete(@PathVariable Long id, @PathVariable Long pNum, @PathVariable Long cNum){
-        System.out.println(cNum);
-        System.out.println(cNum);
-        System.out.println(cNum);
-        System.out.println(cNum);
-        System.out.println(cNum);
         postService.deleteComment(cNum);
 
 

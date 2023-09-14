@@ -183,7 +183,17 @@ body{z-index: 2}
     border-radius: 100%;
     position: absolute;
 }
-
+#myclass > div > .dummy{
+    width: 195px;
+    height: 240px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 355px;
+    display: block;
+    position: absolute;
+}
 #ptec {
     width: 195px;
     height: 200px;
