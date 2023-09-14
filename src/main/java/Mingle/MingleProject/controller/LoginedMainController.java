@@ -73,7 +73,7 @@ public class LoginedMainController {
 
     /*모임*/
     @GetMapping("search2/searchMingle")
-    public ResponseEntity<List<GatheringEntity>> searchMingle(String selectedRegi,String mainCtName,String subC, Model model) {
+    public ResponseEntity<Map<String, Object>> searchMingle(String selectedRegi,String mainCtName,String subC, Model model) {
         System.out.printf("검색페이지_selectedRegi 확인 = %s  mainCtName 확인 = %s  subC 확인 = %s \n",selectedRegi,mainCtName,subC);
 
         if (selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&!subC.equals("전체")||
@@ -83,7 +83,18 @@ public class LoginedMainController {
             List<GatheringEntity> searchMingle = gatheringService.searchMingleCase2(selectedRegi, mainCtName,subC);
             System.out.println("검색페이지_searchMingle 확인 = " + searchMingle);
             model.addAttribute("searchMingle", searchMingle);
-            return ResponseEntity.ok(searchMingle);
+
+            List<Integer> gatheringMemberCount = new ArrayList<>();
+            for (GatheringEntity gatheringEntity: searchMingle) {
+                gatheringMemberCount.add(memberService.findByGatheringMember(gatheringEntity.getGName()).size());
+            }
+            model.addAttribute("minglesMemberCount",gatheringMemberCount);
+
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("mingles", searchMingle);
+            responseData.put("minglesMemberCount", gatheringMemberCount);
+
+            return ResponseEntity.ok(responseData);
         }else if (selectedRegi.equals("전체")&&mainCtName.equals("전체")&&!subC.equals("전체")||
                 !selectedRegi.equals("전체")&&mainCtName.equals("전체")&&subC.equals("전체")||
                 selectedRegi.equals("전체")&&!mainCtName.equals("전체")&&subC.equals("전체")){
@@ -91,12 +102,32 @@ public class LoginedMainController {
             List<GatheringEntity> searchMingle = gatheringService.searchMingleCase3(selectedRegi, mainCtName,subC);
             System.out.println("검색페이지_searchMingle 확인 = " + searchMingle);
             model.addAttribute("searchMingle", searchMingle);
-            return ResponseEntity.ok(searchMingle);
+            List<Integer> gatheringMemberCount = new ArrayList<>();
+            for (GatheringEntity gatheringEntity: searchMingle) {
+                gatheringMemberCount.add(memberService.findByGatheringMember(gatheringEntity.getGName()).size());
+            }
+            model.addAttribute("minglesMemberCount",gatheringMemberCount);
+
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("mingles", searchMingle);
+            responseData.put("minglesMemberCount", gatheringMemberCount);
+
+            return ResponseEntity.ok(responseData);
         }else if(selectedRegi.equals("전체")&&mainCtName.equals("전체")&&subC.equals("전체")){
             /*전체 3 검색 0*/
             System.out.printf("전체 3 검색 0 = %s %s %s \n ",selectedRegi, mainCtName, subC);
             List<GatheringEntity> searchMingle =gatheringService.searchAll();
-            return ResponseEntity.ok(searchMingle);
+            List<Integer> gatheringMemberCount = new ArrayList<>();
+            for (GatheringEntity gatheringEntity: searchMingle) {
+                gatheringMemberCount.add(memberService.findByGatheringMember(gatheringEntity.getGName()).size());
+            }
+            model.addAttribute("minglesMemberCount",gatheringMemberCount);
+
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("mingles", searchMingle);
+            responseData.put("minglesMemberCount", gatheringMemberCount);
+
+            return ResponseEntity.ok(responseData);
         }else{
             /*전체 0 검색 3*/
             System.out.printf("전체 0 검색 3 = %s %s %s \n ",selectedRegi, mainCtName, subC);
@@ -104,7 +135,17 @@ public class LoginedMainController {
             System.out.println("검색페이지_searchMingle 확인 = "+ searchMingle);
             model.addAttribute("searchMingle",searchMingle);
 
-            return ResponseEntity.ok(searchMingle);
+            List<Integer> gatheringMemberCount = new ArrayList<>();
+            for (GatheringEntity gatheringEntity: searchMingle) {
+                gatheringMemberCount.add(memberService.findByGatheringMember(gatheringEntity.getGName()).size());
+            }
+            model.addAttribute("minglesMemberCount",gatheringMemberCount);
+
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("mingles", searchMingle);
+            responseData.put("minglesMemberCount", gatheringMemberCount);
+
+            return ResponseEntity.ok(responseData);
         }
     }
 
