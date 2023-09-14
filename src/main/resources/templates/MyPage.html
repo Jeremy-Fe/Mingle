@@ -99,22 +99,23 @@
         <div id="sc2" class="swiper-container mp clearfix">
             <div id="myPost" class="swiper-wrapper clearfix">
                 <div class="swiper-slide post_01 clearfix"  th:each="mypost, mypostStat :${post}" >
-                    <a th:if="${mypost.getPImg1() == null}" href="Mypage">
+                    <a th:if="${postGName.get(mypostStat.index).getGCoverimg() == null}" th:href="@{|/Gathering_Post/${postGName.get(mypostStat.index).getId()}/${mypost.getPNum()}|}">
                         <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
                     </a>
-                    <a th:unless="${mypost.getPImg1() == null}" href="Mypage">
-                        <img class="postimg_01" alt="모임 이미지1" th:src="${mypost.getPImg1()}">
+                    <a th:unless="${postGName.get(mypostStat.index).getGCoverimg() == null}" th:href="@{|/Gathering_Post/${postGName.get(mypostStat.index).getId()}/${mypost.getPNum()}|}">
+                        <img class="postimg_01" alt="모임 이미지1" th:src="${postGName.get(mypostStat.index).getGCoverimg()}">
                     </a>
                     <p class="postname_01" th:text="${postGName.get(mypostStat.index).getGName()}">질풍가도</p>
-                    <span th:text="${mypost.getPContents()}">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
+                    <span class="Post_Titile" th:text="${mypost.getPTitle()}">안녕학세요</span>
+                    <span class="Post_Contents" th:text="${mypost.getPContents()}">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
                     <p class="day_01" th:text="${mypost.getPDate()}">2023. 05. 19</p>
                 </div>
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
             </div>
 
         </div>
@@ -122,14 +123,11 @@
         <p class="title_04">내 댓글</p>
         <div class="myComment clearfix" >
             <ul class="comment_01" th:each="mycomments,mycommentsStat :${comments}">
-                <a th:href="@{|/Gathering_Post/${post.get(mycommentsStat.index).getPGNum()}/${mycomments.getCPNum()}|}">
-                <span class="commentdata" th:text="${mycomments.getCDate()}"></span>
+                <a th:href="@{|/Gathering_Post/${Comments_gName.get(mycommentsStat.index).getId()}/${mycomments.getCPNum()}|}">
+                <span class="commentdata" th:text="${Comments_gName.get(mycommentsStat.index).getGName()} + '|' +${mycomments.getCDate()}"></span>
                 <span class="commenttext" th:text="${mycomments.getCComments()}"></span>
                 </a>
             </ul>
-
-            <ul class="comment_01"><a><span class="commenttext">댓글을 추가 작성해 주세요.</span></a></ul>
-
         </div>
 
         <!--프로필수정 모달창--->

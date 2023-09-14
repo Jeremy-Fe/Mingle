@@ -36,7 +36,7 @@
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
-<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id})}"></div>
+<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id}, ${GatheringHome.getGMainleader()})}"></div>
 <div id="album">
     <div class="album_bg">
         <ul class="submenu">

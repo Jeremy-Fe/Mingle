@@ -30,7 +30,7 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 
-<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id})}"></div>
+<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id}, ${GatheringHome.getGMainleader()})}"></div>
 
 <div id="g_contents">
     <div id="g_introduction">
@@ -69,7 +69,8 @@
                             class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
 
                     </li>
-                    <a href="#">참석하기</a>
+                    <a th:href="@{|/Gathering_Schedule_Cancel/${GatheringHome.id}/${schedule.getSNum()}|}" th:if="${Attend[scheduleStat.index]}"class="attend-button" onclick="return confirm('일정을 취소하시겠습니까?')">취소하기</a>
+                    <a th:href="@{|/Gathering_Schedule_Attend/${GatheringHome.id}/${schedule.getSNum()}|}" th:unless="${Attend[scheduleStat.index]}" class="attend-button" onclick="return confirm('일정에 참석하시겠습니까?')">참석하기</a>
                 </ul>
                 <p>게시글</p>
                 <span th:if="${Post.size() == 0}" class="postNone">게시글이 없습니다.</span>

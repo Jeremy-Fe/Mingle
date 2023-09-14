@@ -46,7 +46,7 @@ public class GatheringController {
 
 
     @GetMapping("Gathering_Home/{id}")
-    public String Gathering_Home(@PathVariable Long id, Model model) {
+    public String Gathering_Home(@PathVariable Long id, Model model, HttpSession session) {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
@@ -144,6 +144,24 @@ public class GatheringController {
 
         List<Long> commentsCount = postService.commentsCount(postDTOList);
         model.addAttribute("Comments", commentsCount);
+
+        // 로그인한 아이디 참석 여부
+        String logInId = (String) session.getAttribute("loginId");
+        String[] scheduleAttendMemberList = null;
+        boolean[] attend = new boolean[scheduleDTOList.size()];
+        int index = 0;
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            attend[index] = false;
+            scheduleAttendMemberList = scheduleDTO.getSMember().split(",");
+            for (String memberId:scheduleAttendMemberList) {
+                if(logInId.equals(memberId)){
+                    attend[index] = true;
+                }
+            }
+
+            index++;
+        }
+        model.addAttribute("Attend", attend);
 
         return "Gathering_Home";
     }

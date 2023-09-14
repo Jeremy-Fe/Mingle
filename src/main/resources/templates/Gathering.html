@@ -1,5 +1,5 @@
 <!-- 바꿔야하는 부분 -->
-<div class="view clearfix" th:fragment="gatheringParam ( gCoverimg ,District, GMainsubject, gName, Gathering_id)">
+<div class="view clearfix" th:fragment="gatheringParam ( gCoverimg ,District, GMainsubject, gName, Gathering_id, gMainleader)">
     <head>
         <link href="/CSS/Gathering.css?after" type="text/css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -14,6 +14,7 @@
                 <li>
                     <a class="title_detail" th:text="|${District}|"></a>
                     <a class="title_detail" th:text="|${GMainsubject}|"></a>
+                    <a class="coverimg_modify" th:if="${session.loginId == gMainleader}">커버사진 수정</a>
                 </li>
                 <div id="gName" data-gname="${gName}"></div>
                 <div id="mId" data-mid="${session.memberDTO.getMId()}"></div>

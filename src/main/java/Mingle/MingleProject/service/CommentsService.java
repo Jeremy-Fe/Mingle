@@ -19,7 +19,6 @@ public class CommentsService {
         List<CommentsDTO> CommentDTOList = new ArrayList<>();
         for (CommentsEntity commentsEntity : commentsEntityList) {
             CommentDTOList.add(EntityDTOMapper.entityToDTO(commentsEntity));
-            System.out.println(CommentDTOList);
         }
         return CommentDTOList;
     }
