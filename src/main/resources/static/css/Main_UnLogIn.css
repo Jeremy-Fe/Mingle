@@ -23,9 +23,9 @@ h3{font-family: 'GmarketSans';}
     font-size: 35px;  font-family: 'Jalnan'; color: #564797;
     float: left ; padding-left: 25px; margin-left: 25px;line-height: 100px;
 }
-#view>.l_news>ul>li>a{
-    margin: 15px;float: right ; line-height: 70px;
-    font-size: 25px ;  font-weight:300;
+.l_news>ul>li>a{
+    margin: 15px; float: right; line-height: 70px;
+    font-size: 25px;  font-weight:300;
 }
 .l_news>ul>li>a>img{
     argin: 15px; width: 22px;

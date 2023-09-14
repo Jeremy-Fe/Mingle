@@ -29,6 +29,9 @@ public class MingleController {
     private final PostService postService;
     private final CommentsService commentsService;
 
+    @Autowired
+    private HttpSession session; // HttpSession 주입
+
     // 회원가입 메일 서비스
     @Autowired
     RegisterMail registerMail;
@@ -349,6 +352,13 @@ public class MingleController {
             // mGGathering 필드를 gName으로 업데이트
             member.setMGathering(currentMGathering);
             memberRepository.save(member); // 업데이트된 회원 정보 저장
+
+            //세션 업데이트
+            MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+            if (memberDTO != null) {
+                memberDTO.setMGGathering(currentMGathering);
+                session.setAttribute("memberDTO", memberDTO);
+            }
             return true; // 업데이트 성공
         } else {
             return false; // 회원을 찾을 수 없음
@@ -372,6 +382,13 @@ public class MingleController {
                 // mGGathering 필드를 업데이트
                 member.setMGathering(currentMGathering);
                 memberRepository.save(member); // 업데이트된 회원 정보 저장
+
+                //세션 업데이트
+                MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+                if (memberDTO != null) {
+                    memberDTO.setMGGathering(currentMGathering);
+                    session.setAttribute("memberDTO", memberDTO);
+                }
                 return true; // 업데이트 성공
             }
         }
