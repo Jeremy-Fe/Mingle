@@ -46,15 +46,4 @@ public class ScheduleEntity {
     @Column(name = "S_MAXHEADCOUNT", nullable = false, length = 1000)
     private Long sMaxHeadcount;
 
-    public void removeMember(String memberId) {
-        if (sMember != null && sMember.contains(memberId)) {
-            // ','로 구분된 문자열을 배열로 분리하고 memberId를 삭제
-            String[] memberArray = sMember.split(",");
-            List<String> memberList = new ArrayList<>(Arrays.asList(memberArray));
-            memberList.remove(memberId);
-
-            // 다시 문자열로 합치기
-            sMember = String.join(",", memberList);
-        }
-    }
 }
