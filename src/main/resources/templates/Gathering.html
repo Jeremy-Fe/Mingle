@@ -17,19 +17,16 @@
                 </li>
                 <div id="gName" data-gname="${gName}"></div>
                 <div id="mId" data-mid="${session.memberDTO.getMId()}"></div>
-<!--                <div id="mName" data-mname="${session.memberDTO.getMGGathering()}"></div>-->
-<!--                <div id="containsGName" data-containsgname="${session.memberDTO.getMGGathering().contains(gName)}"></div>-->
                 <li>
                     <h3 class="title_title" th:inline="text">[[${gName}]]
-<!--                        <a th:if="${session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}" th:onclick="'joinGathering(\'' + ${gName} + '\', \'' + ${session.memberDTO.getMId()} + '\')'">가입하기</a>-->
-                        <a th:if="${session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}"
+                        <a th:if="${session.memberDTO == null or session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}"
                            th:attr="data-gname=${gName}, data-mid=${session.memberDTO.getMId()}"
                            id="joinButton"
                            onclick="joinGathering(this.getAttribute('data-gname'), this.getAttribute('data-mid'))">
                             가입하기
                         </a>
 
-                        <a th:unless="${!session.memberDTO.getMGGathering().contains(gName)}"
+                        <a th:unless="${session.memberDTO == null or session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}"
                            th:attr="data-gname=${gName}, data-mid=${session.memberDTO.getMId()}"
                            id="joinButton2"
                            onclick="deleteGathering(this.getAttribute('data-gname'), this.getAttribute('data-mid'))">
