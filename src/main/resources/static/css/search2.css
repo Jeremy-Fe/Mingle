@@ -35,6 +35,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     font-family: 'NexonLv1Gothic';
     padding: 0px 30px;
     float: right;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 /* 검색버튼 */
 #search_I{width: 55px; height: 100%;  float: right; margin-left: 10px;}
@@ -58,6 +59,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     display: flex; float: left;
     background-color: #fff; border-radius: 10px;
     padding-right: 20px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 #mainC>p{    
     font-size: 40px; font-weight: bolder; 
@@ -83,6 +85,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     font-size: 32px; float: right;  
     font-family: 'NexonLv1Gothic'; font-weight: lighter;
     border-radius: 30px; background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* #inMingle::-webkit-scrollbar {display: none; } */
@@ -98,6 +101,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     width: 440px; height: 275px; padding: 15px; margin: 10px;
     border-radius: 20px; background-color: #fff;
     margin-left: 0;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 /* 모임카드 상단 */
 .mingle ul {
