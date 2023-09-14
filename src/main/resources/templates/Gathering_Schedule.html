@@ -9,7 +9,7 @@
 
 
     <!--css-->
-    <link href="/CSS/Gathering_Schedule.css" type="text/css" rel="stylesheet">
+    <link href="/CSS/Gathering_Schedule.css?after" type="text/css" rel="stylesheet">
     <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -29,27 +29,46 @@
             border-bottom: 3px solid #542DFF;
         }
     </style>
+    <script>
+
+        function toggleCreateSchedule() {
+            const shcedule_create = document.getElementById('shcedule_create');
+            if (shcedule_create.style.display === 'none' || shcedule_create.style.display === '') {
+                shcedule_create.style.display = 'block';
+            }
+        }
+        function toggleCreateScheduleClose() {
+            const shcedule_create = document.getElementById('shcedule_create');
+            if (shcedule_create.style.display === 'block') {
+                shcedule_create.style.display = 'none';
+            }
+        }
+
+
+
+    </script>
 </head>
 <body>
 <div th:replace="/defaultUI.html"></div>
 <div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id})}"></div>
 <div id="schedule">
-    <div class="schedule_bg">
-        <div class="shcedule_create">
-            <form action="">
+    <div class="schedule_bg clearfix">
+        <button type="button" class="schedule_create_button" onclick="toggleCreateSchedule()">일정 만들기</button>
+        <div id="shcedule_create" class="shcedule_create">
+            <img src="/image/scheduleClose.png" onclick="toggleCreateScheduleClose()">
+            <form th:action="@{|/create_Schedule/${GatheringHome.id}|}" method="post">
                 <ul>
-                    <li><input type="text" placeholder="일정 제목을 입력하세요"></li>
-                    <li><img src="/image/scheduleCalendar.png"><input type="text" placeholder="일정 제목을 입력하세요"></li>
-                    <li><img src="/image/scheduleMarker.png"><input type="text" placeholder="위치"></li>
-                    <li><img src="/image/scheduleWatch.png"><input type="text" placeholder="날짜"></li>
-                    <li><img src="/image/scheduleWon.png"><input type="text" placeholder="금액"></li>
-                    <li><img src="/image/scheduleUser.png"><input type="text" placeholder="정원 2 ~ 50명"></li>
+                    <li><input type="text" name="sTitle" placeholder="일정 제목을 입력하세요"></li>
+                    <li><img src="/image/scheduleCalendar.png"><input type="text" name="sDate" placeholder="날짜, 시간"></li>
+                    <li><img src="/image/scheduleMarker.png"><input type="text" name="sPlace" placeholder="위치"></li>
+                    <li><img src="/image/scheduleWon.png"><input type="text"  name="sPrice" placeholder="금액"></li>
+                    <li><img src="/image/scheduleUser.png"><input type="text" name="sMaxHeadcount" placeholder="정원 2 ~ 50(*숫자만 입력하세요)"></li>
                 </ul>
-                <input type="submit" value="일정추가">
+                <input type="submit" value="일정추가" onclick="return confirm('일정을 추가 하시겠습니까?')">
             </form>
         </div>
         <ul class="schedule" th:each="schedule, scheduleStat : ${Schedule}">
-            <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span></li>
+            <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span><span class="schedule_delete">일정 삭제하기</span></li>
             <li><span class="schedule_subject">일시</span><span class="schedule_detail" th:text="${schedule.getSDate()}">일시</span>
             </li>
             <li><span class="schedule_subject">위치</span><span class="schedule_detail" th:text="${schedule.getSPlace()}">장소</span></li>

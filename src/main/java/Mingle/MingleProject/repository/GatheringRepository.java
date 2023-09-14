@@ -53,7 +53,7 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
     void updateGatheringCoverimg(@Param("gCoverimg") Blob gCoverimg, @Param("id") String id);
 
 
-    @Query(value="select s from ScheduleEntity s where s.GatheringEntity.id = :id")
+    @Query(value="select s from ScheduleEntity s where s.sGNum = :id")
     List<ScheduleEntity> findBysGNum(@Param("id") Long id);
 
     @Query(value="select c from CommentsEntity c where c.cPNum = :pNum order by c.cNum")

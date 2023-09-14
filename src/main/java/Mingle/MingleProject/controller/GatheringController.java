@@ -122,7 +122,14 @@ public class GatheringController {
         }
 
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
-        model.addAttribute("Schedule", scheduleDTOList);
+        if(scheduleDTOList.size() > 2){
+            List<ScheduleDTO> scheduleDTOList2 = scheduleDTOList.subList(0, 2);
+            model.addAttribute("Schedule", scheduleDTOList2);
+        } else {
+            model.addAttribute("Schedule", scheduleDTOList);
+        }
+
+
 
 
         List<Integer> memberCount = new ArrayList<>();

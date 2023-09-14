@@ -17,13 +17,11 @@ public class ScheduleEntity {
     @Column(name = "S_NUM", nullable = false)
     private Long sNum;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "S_G_NUM", nullable = false)
-    private GatheringEntity GatheringEntity;
+    @Column(name = "S_G_NUM", nullable = false)
+    private Long sGNum;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "S_M_ID", nullable = false)
-    private MemberEntity sMId;
+    @Column(name = "S_M_ID", nullable = false)
+    private String sMId;
 
     @Column(name = "S_TITLE", nullable = false, length = 100)
     private String sTitle;

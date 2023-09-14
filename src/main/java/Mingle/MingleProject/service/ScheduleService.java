@@ -39,4 +39,9 @@ public class ScheduleService {
         scheduleRepository.cancelSchedule(sNum, sMember);
 
     }
+
+    public void save(ScheduleDTO scheduleDTO) {
+        ScheduleEntity scheduleEntity = EntityDTOMapper.DTOToEntity(scheduleDTO);
+        scheduleRepository.save(scheduleEntity);
+    }
 }
