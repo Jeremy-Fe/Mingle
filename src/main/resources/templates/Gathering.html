@@ -28,6 +28,13 @@
                            onclick="joinGathering(this.getAttribute('data-gname'), this.getAttribute('data-mid'))">
                             가입하기
                         </a>
+
+                        <a th:unless="${!session.memberDTO.getMGGathering().contains(gName)}"
+                           th:attr="data-gname=${gName}, data-mid=${session.memberDTO.getMId()}"
+                           id="joinButton2"
+                           onclick="deleteGathering(this.getAttribute('data-gname'), this.getAttribute('data-mid'))">
+                            탈퇴하기
+                        </a>
                     </h3>
                 </li>
 
@@ -57,18 +64,36 @@
                 success: function(response) {
                     if (response === true) {
                         alert("가입이 완료되었습니다.");
-                        // 원하는 동작을 수행하도록 추가 코드 작성
-                        var joinButton = document.getElementById("joinButton");
-                        if (joinButton) {
-                            joinButton.style.display = "none"; // 숨기기
-                            // 또는 joinButtonContainer.remove(); // 삭제
-                        }
+                        window.location.reload();
                     } else {
                         alert("가입에 실패했습니다.");
                     }
                 },
                 error: function() {
                     alert("서버 오류로 인해 가입에 실패했습니다.");
+                }
+            });
+        }
+
+        function deleteGathering(gName, mId) {
+            $.ajax({
+                type: "POST",
+                url: "/deleteMGGathering",
+                data: {
+                    gName: gName,
+                    mId: mId
+                },
+                success: function(response) {
+                    if (response === true) {
+                        alert("탈퇴가 완료되었습니다.");
+                        // 원하는 동작을 수행하도록 추가 코드 작성
+                        window.location.reload();
+                    } else {
+                        alert("탈퇴에 실패했습니다.");
+                    }
+                },
+                error: function() {
+                    alert("서버 오류로 인해 탈퇴에 실패했습니다.");
                 }
             });
         }

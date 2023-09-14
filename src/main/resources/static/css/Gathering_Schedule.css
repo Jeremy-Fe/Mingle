@@ -10,6 +10,7 @@
 }
 
 .schedule{
+    position: relative;
     box-shadow: 0px 0px 15px  #bcbcbc;
     border-radius: 20px;
     padding: 25px 0px;
@@ -24,19 +25,6 @@
 }
 .schedule > li > span {
     font-size: 26px;
-}
-.schedule > li > a {
-    width: 120px;
-    height: 60px;
-    border-radius: 20px;
-    background-color: #B1B2FF;
-    font-size: 26px;
-    border: 0px;
-    text-align: center;
-    line-height: 60px;
-    float: right;
-    font-weight: 500;
-    margin-right: 50px;
 }
 .schedule > li > span:first-child {
     margin-right: 15px;
@@ -59,9 +47,21 @@
 .schedule > li > .schedule_detail{
     font-size: 18px;
 }
-.schedule > li > img{
-    width: 30px;
-    height: 30px;
-    display: inline;
-
+.schedule > a {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    width: 120px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    font-size: 26px;
+    border: 0px;
+    text-align: center;
+    line-height: 60px;
+    font-family:'GmarketSansMedium';
+}
+.schedule > a:hover {
+    background-color: #514680;
+    color: white;
 }

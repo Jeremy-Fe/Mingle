@@ -73,4 +73,9 @@ public class EntityDTOMapper {
     // 일정 맵핑
     public static ScheduleDTO entityToDTO(ScheduleEntity scheduleEntity) {return modelMapper.map(scheduleEntity, ScheduleDTO.class);}
     public static ScheduleEntity DTOToEntity(ScheduleDTO scheduleDTO) {return modelMapper.map(scheduleDTO, ScheduleEntity.class);}
+
+    //참석하기 맵핑
+    public static ScheduleEntity dtoToEntity(ScheduleDTO scheduleDTO) {
+        return modelMapper.map(scheduleDTO, ScheduleEntity.class);
+    }
 }
