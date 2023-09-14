@@ -64,14 +64,7 @@
                 success: function(response) {
                     if (response === true) {
                         alert("가입이 완료되었습니다.");
-                        // 원하는 동작을 수행하도록 추가 코드 작성
-                        var joinButton = document.getElementById("joinButton");
-                        var joinButton2 = document.getElementById("joinButton2");
-                        if (joinButton) {
-                            joinButton.style.display = "none"; // 숨기기
-                            joinButton2.show();
-                            // 또는 joinButtonContainer.remove(); // 삭제
-                        }
+                        window.location.reload();
                     } else {
                         alert("가입에 실패했습니다.");
                     }
@@ -94,10 +87,7 @@
                     if (response === true) {
                         alert("탈퇴가 완료되었습니다.");
                         // 원하는 동작을 수행하도록 추가 코드 작성
-                        var joinButton = document.getElementById("joinButton");
-                        if (joinButton) {
-                            joinButton.style.display = "block"; // 다시 표시
-                        }
+                        window.location.reload();
                     } else {
                         alert("탈퇴에 실패했습니다.");
                     }
