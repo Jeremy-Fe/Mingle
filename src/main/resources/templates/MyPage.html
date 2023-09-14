@@ -28,14 +28,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="/defaultUI.html"></div>
 
-<div class="view">
-    <!--마이페이지-->
-    <div class="MyPage">
-        <img alt="큰제목" src="/image/MyPageTitle.png">
-        <p>마이페이지</p>
-        <li th:unless="${session.loginId == null}" id="delete"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px" onclick="return confirm('정말로 회원탈퇴하시겠습니까?')">회원탈퇴</a></li>
-        <div class="profile">
-            <ul>
+            <div class="view">
+                <!--마이페이지-->
+                <div class="MyPage">
+                    <img alt="큰제목" src="/image/MyPageTitle.png">
+                    <p>마이페이지</p>
+                    <li th:unless="${session.loginId == null}" id="delete"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px" onclick="return confirm('정말로 회원탈퇴하시겠습니까?')">회원탈퇴</a></li>
+                    <div class="profile">
+                <ul>
                 <li class="pimg">
                     <!--프로필 수정 버튼-->
                     <a href="#ex1" rel="modal:open">
@@ -124,8 +124,8 @@
         <div class="myComment clearfix" >
             <ul class="comment_01" th:each="mycomments,mycommentsStat :${comments}">
                 <a th:href="@{|/Gathering_Post/${Comments_gName.get(mycommentsStat.index).getId()}/${mycomments.getCPNum()}|}">
-                    <span class="commentdata" th:text="${Comments_gName.get(mycommentsStat.index).getGName()} + '|' +${mycomments.getCDate()}"></span>
-                    <span class="commenttext" th:text="${mycomments.getCComments()}"></span>
+                <span class="commentdata" th:text="${Comments_gName.get(mycommentsStat.index).getGName()} + '|' +${mycomments.getCDate()}"></span>
+                <span class="commenttext" th:text="${mycomments.getCComments()}"></span>
                 </a>
             </ul>
         </div>
