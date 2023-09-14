@@ -54,7 +54,7 @@
 .view > #g_contents > #g_news{
     float : right;
     width: 985px;
-    height: 1500px;
+    height: 1270px;
     margin-right: 5px;
     background-color: #fff;
 }
@@ -83,6 +83,7 @@
     border-radius: 20px;
     padding: 25px 0px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li {
