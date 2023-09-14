@@ -40,8 +40,17 @@ public class ScheduleService {
 
     }
 
-    public void save(ScheduleDTO scheduleDTO) {
+    public void createSchedule(ScheduleDTO scheduleDTO) {
         ScheduleEntity scheduleEntity = EntityDTOMapper.DTOToEntity(scheduleDTO);
         scheduleRepository.save(scheduleEntity);
+    }
+
+    public void delete(ScheduleDTO scheduleDTO) {
+        ScheduleEntity scheduleEntity = EntityDTOMapper.DTOToEntity(scheduleDTO);
+        scheduleRepository.save(scheduleEntity);
+    }
+
+    public void deleteSchedule(Long sNum) {
+        scheduleRepository.deleteById(sNum);
     }
 }

@@ -149,6 +149,11 @@ public class MingleController {
 
         /*--내 댓글 출력--*/
         List<CommentsDTO> commentsDTOS = commentsService.findComments(logInId);
+        for (CommentsDTO commentsDTO: commentsDTOS) {
+            gatheringDTOList.clear();
+            gatheringDTOList.add(gatheringService.findByGathering(commentsDTO.getCPNum()));
+        }
+        model.addAttribute("Comments_gName", gatheringDTOList);
         model.addAttribute("comments",commentsDTOS);
         System.out.println("commentsDTOs 확인 :" + commentsDTOS);
 

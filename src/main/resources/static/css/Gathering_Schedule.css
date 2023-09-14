@@ -138,3 +138,9 @@
     background-image: linear-gradient(135deg, #B1B2FF, #AAC4FF);
     font-size: 25px;
 }
+.schedule_delete {
+    font-size: 18px;
+    float: right;
+    padding-right: 50px;
+    color: #777;
+}

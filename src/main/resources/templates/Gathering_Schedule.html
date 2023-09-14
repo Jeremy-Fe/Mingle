@@ -9,7 +9,7 @@
 
 
     <!--css-->
-    <link href="/CSS/Gathering_Schedule.css?after" type="text/css" rel="stylesheet">
+    <link href="/CSS/Gathering_Schedule.css" type="text/css" rel="stylesheet">
     <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -68,7 +68,7 @@
             </form>
         </div>
         <ul class="schedule" th:each="schedule, scheduleStat : ${Schedule}">
-            <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span><span class="schedule_delete">일정 삭제하기</span></li>
+            <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span><a th:href="@{|/delete_Schedule/${GatheringHome.id}/${schedule.getSNum()}|}" class="schedule_delete" th:if="${session.loginId == schedule.getSMId()}" onclick="return confirm('일정을 삭제 하시겠습니까?')">일정 삭제하기</a></li>
             <li><span class="schedule_subject">일시</span><span class="schedule_detail" th:text="${schedule.getSDate()}">일시</span>
             </li>
             <li><span class="schedule_subject">위치</span><span class="schedule_detail" th:text="${schedule.getSPlace()}">장소</span></li>
