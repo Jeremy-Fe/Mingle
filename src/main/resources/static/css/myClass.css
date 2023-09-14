@@ -144,7 +144,9 @@ body{z-index: 2}
     margin-right: 30px;
 }
 
-#myclass > div > p {
+
+
+#myclass > div > a > .Gname {
     width: 195px;
     height: 240px;
     color: #2C244F;
@@ -156,7 +158,7 @@ body{z-index: 2}
     position: absolute;
 }
 
-#myclass > div > span {
+#myclass > div > a > span {
     width: 195px;
     height: 240px;
     color: #8B8B8B;
@@ -173,7 +175,7 @@ body{z-index: 2}
     padding-right: 5px ;
 }
 
-#myclass > div > a > img{
+#myclass > div > a > .GImg > img{
     width: 120px;
     height: 120px;
     left: 35px;
@@ -181,7 +183,17 @@ body{z-index: 2}
     border-radius: 100%;
     position: absolute;
 }
-
+#myclass > div > .dummy{
+    width: 195px;
+    height: 240px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 355px;
+    display: block;
+    position: absolute;
+}
 #ptec {
     width: 195px;
     height: 200px;

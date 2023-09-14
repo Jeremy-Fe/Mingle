@@ -81,7 +81,7 @@
         </ul>
         <ul class="like">
             <li>
-                <a href="#"><img src="/image/comment.png"><span>댓글 갯수</span></a>
+                <a href="#"><img src="/image/comment.png"><span th:text="'댓글 ' + ${Comments.size()} + '개'">댓글 갯수</span></a>
             </li>
         </ul>
         <ul class="input_comment">

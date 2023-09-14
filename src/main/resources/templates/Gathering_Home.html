@@ -56,6 +56,7 @@
             <li><h4>최근</h4></li>
             <ul>
                 <p>일정</p>
+                <span th:if="${Schedule.size() == 0}" class="postNone">일정이 없습니다.</span>
                 <ul class="g_news_schedule" th:each="schedule, scheduleStat : ${Schedule}">
                     <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span></li>
                     <li><span class="schedule_subject">일시</span><span class="schedule_detail" th:text="${schedule.getSDate()}">일시</span>
@@ -66,14 +67,9 @@
                     <li>
                         <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
                             class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
-                        <a href="#">참석하기</a>
+
                     </li>
-                    <li>
-                        <img src="/image/Gathering_img1.png">
-                        <img src="/image/Gathering_img2.png">
-                        <img src="/image/Gathering_img3.png">
-                        <img src="/image/Gathering_img4.png">
-                    </li>
+                    <a href="#">참석하기</a>
                 </ul>
                 <p>게시글</p>
                 <span th:if="${Post.size() == 0}" class="postNone">게시글이 없습니다.</span>
