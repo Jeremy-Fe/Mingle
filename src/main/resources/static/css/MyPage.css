@@ -152,6 +152,7 @@ body{z-index: 2}
     margin-right: 50px;
     z-index: 2;
     cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     /*---프로필 사진(끝)---*/
 }
 
@@ -281,6 +282,7 @@ body{z-index: 2}
     border-radius: 40px;
     padding: 20px;
     padding-left: 40px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 .view .MyPage .inBox .coment {
     font-size: 30px;
@@ -474,6 +476,7 @@ body{z-index: 2}
     padding: 30px;
     height: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .view > .MyPage .myComment2 {
@@ -507,27 +510,31 @@ body{z-index: 2}
     overflow: auto;
 }
 
-.view > .MyPage .myComment > ul > p {
+.view > .MyPage .myComment > ul > a > .commentdata {
     width: 1280px;
     line-height: 50px;
     text-align: right;
     font-size: 18px;
-    font-weight: normal;
+    font-weight: bold;
     color: #8B8B8B;
-    position: relative;
+    position: absolute;
+    font-family: 'GmarketSans';
 }
 
-.view > .MyPage .myComment > ul > p > span {
+.view > .MyPage .myComment > ul > a > .commenttext {
     line-height: 50px;
     left: 40px;
-    width: 1280px;
+    width: 1000px;
     font-size: 23px;
-    font-weight: normal;
+    font-weight: bold;
     text-align: left;
     color: #000000;
     position: absolute;
+    font-family: 'GmarketSans';
+    padding-left: 20px;
 
 }
+
 
 /*.view > .MyPage .myComment .comment_01 .accordion {
     margin-top: 30px;

@@ -23,9 +23,9 @@ h3{font-family: 'GmarketSans';}
     font-size: 35px;  font-family: 'Jalnan'; color: #564797;
     float: left ; padding-left: 25px; margin-left: 25px;line-height: 100px;
 }
-#view>.l_news>ul>li>a{
-    margin: 15px;float: right ; line-height: 70px;
-    font-size: 25px ;  font-weight:300;
+.l_news>ul>li>a{
+    margin: 15px; float: right; line-height: 70px;
+    font-size: 25px;  font-weight:300;
 }
 .l_news>ul>li>a>img{
     argin: 15px; width: 22px;
@@ -36,6 +36,7 @@ h3{font-family: 'GmarketSans';}
     width: 1300px; height: 110px; background-color: #fff;
     border-radius: 20px;
     margin: auto; padding: 20px; padding-left: 40px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 .l_news>li{float: left}
 .l_news> .inBox>p{
