@@ -67,22 +67,20 @@
 
         </div>
 
-
-
     </section>
 </div>
 
 <script>
 // 검색창
 $("#Stext").focus(function(){
-  $("#regi").hide();
+  $("#regiButton").hide();
   /*$("관심사").show();*/
 	$("#Stext").animate({
 			"width": "1290px"
 	}, 300, function() {});
 });
 $("#Stext").blur(function(){
-  $("#regi").show(150);
+  $("#regiButton").show(150);
 	$("#Stext").animate({
 			"width": "450px"
 	}, 100, function() {});
@@ -186,7 +184,7 @@ $("#search_I").click(function() {
         var 모임카테고리 = mingles.gmainsubject;
         var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
         var 모임소개글 = mingles.gintroduction;
-        var 모임인원 = parseInt(minglesMemberCount);
+        var 모임인원 = parseInt(mingles.gmaxheadcount);
         console.log("ajax : 모임명 확인 =", 모임명);
         console.log("ajax : response.length+1 확인 =", 검색된모임.length);
         var htmlMingle =
