@@ -54,7 +54,14 @@ public class ScheduleController {
         scheduleDTO.setSMId(logInId);
         scheduleDTO.setSMember(logInId);
         scheduleDTO.setSGNum(id);
-        scheduleService.save(scheduleDTO);
+        scheduleService.createSchedule(scheduleDTO);
+
+        return "redirect:/Gathering_Schedule/" + id;
+    }
+
+    @GetMapping("/delete_Schedule/{id}/{sNum}")
+    public String scheduleDelete(@PathVariable Long id,@PathVariable Long sNum) {
+        scheduleService.deleteSchedule(sNum);
 
         return "redirect:/Gathering_Schedule/" + id;
     }

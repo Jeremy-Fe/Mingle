@@ -13,19 +13,20 @@
 <div id="schedule">
     <p>내 일정</p>
     <div class="schedule_bg">
-        <ul class="schedule" th:each="schedule, scheduleStat : ${Schedule}">
-            <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span></li>
-            <li><span class="schedule_subject">일시</span><span class="schedule_detail" th:text="${schedule.getSDate()}">일시</span>
-            </li>
-            <li><span class="schedule_subject">위치</span><span class="schedule_detail" th:text="${schedule.getSPlace()}">장소</span></li>
-            <li><span class="schedule_subject">금액</span><span class="schedule_detail" th:text="${schedule.getSPrice()}">금액</span>
-            </li>
-            <li>
-                <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
-                    class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
-            </li>
-            <a href="#" onclick="cancelSchedule(${session.loginId})">취소하기</a>
-        </ul>
+        <a th:href="@{|/Gathering_Schedule/${schedule.getSGNum()}|}" th:each="schedule, scheduleStat : ${Schedule}">
+            <ul class="schedule">
+                <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span></li>
+                <li><span class="schedule_subject">일시</span><span class="schedule_detail" th:text="${schedule.getSDate()}">일시</span>
+                </li>
+                <li><span class="schedule_subject">위치</span><span class="schedule_detail" th:text="${schedule.getSPlace()}">장소</span></li>
+                <li><span class="schedule_subject">금액</span><span class="schedule_detail" th:text="${schedule.getSPrice()}">금액</span>
+                </li>
+                <li>
+                    <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
+                        class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
+                </li>
+            </ul>
+        </a>
     </div>
 </div>
 

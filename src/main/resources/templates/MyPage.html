@@ -122,7 +122,7 @@
         <p class="title_04">내 댓글</p>
         <div class="myComment clearfix" >
             <ul class="comment_01" th:each="mycomments,mycommentsStat :${comments}">
-                <a th:href="@{|/Gathering_Post/${mycomments.getCPNum()}|}">
+                <a th:href="@{|/Gathering_Post/${post.get(mycommentsStat.index).getPGNum()}/${mycomments.getCPNum()}|}">
                 <span class="commentdata" th:text="${mycomments.getCDate()}"></span>
                 <span class="commenttext" th:text="${mycomments.getCComments()}"></span>
                 </a>
