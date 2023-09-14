@@ -106,6 +106,12 @@
     line-height: 60px;
     font-family:'GmarketSansMedium';
 }
+
+
+.view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > a:hover {
+    background-color: #514680;
+    color: white;
+}
 .view > #g_contents > #g_news > .g_news_bg > ul > .g_news_schedule > li > span:first-child {
     margin-right: 15px;
 }
