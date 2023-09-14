@@ -201,7 +201,6 @@
 <!--프로필 수정 모달장-->
 <script>
     // 모달이 열릴 때
-    /*$(document).on('modal:open', '#ex1', function ()*/
     $('.edit').on('click', function () {
         console.log('프로필 정보 가져오기가 실행됨');
         // 프로필 정보 가져와서 모달 내에 출력
@@ -274,72 +273,6 @@
         });
     });
 </script>
-<!--내 댓글 블럭 생성-->
-<!--<script>
-    // 가상의 데이터베이스 데이터 배열
-    var databaseData = [
-        "데이터 1",
-        "데이터 2",
-        "데이터 3",
-        "데이터 4",
-        "데이터 5",
-        "데이터 6",
-        "데이터 7",
-        "데이터 8",
-        "데이터 9",
-        // ... 더 많은 데이터 ...
-    ];
-
-    var myComment = document.getElementsByClassName("myComment")[0];
-
-    // 데이터베이스 데이터의 수만큼 <ul> 생성
-    for (var i = 0; i < databaseData.length; i++) {
-        var dataUl = document.createElement("ul");
-        dataUl.className = "comment_1" + i; // 클래스 지정
-        dataUl.textContent = databaseData[i]; // 데이터 추가
-        myComment.appendChild(dataUl); // <ul>를 컨테이너에 추가
-    }
-</script>-->
-
-
-<!--더보기 버튼 활성화-->
-<!--<script>
-    const items = document.querySelectorAll(".accordion button");
-
-    function toggleAccordion() {
-        const itemToggle = this.getAttribute('aria-expanded');
-
-        for (i = 0; i < items.length; i++) {
-            items[i].setAttribute('aria-expanded', 'false');
-        }
-
-        if (itemToggle == 'false') {
-            this.setAttribute('aria-expanded', 'true');
-        }
-    }
-
-    items.forEach(item => item.addEventListener('click', toggleAccordion));
-</script>
-
-&lt;!&ndash;더보기 클릭 후 확장&ndash;&gt;
-<script>
-    const button = document.getElementById('accordion-button-1');
-    const myComment1 = document.querySelector('.myComment');
-
-
-    button.addEventListener('click', function () {
-        const ariaExpandedValue = button.getAttribute('aria-expanded');
-
-        if (ariaExpandedValue === 'true') {
-            myComment1.classList.add('myComment'); // A 스타일 클래스 추가
-            myComment1.classList.remove('myComment2'); // B 스타일 클래스 제거
-        } else {
-            myComment1.classList.remove('myComment'); // A 스타일 클래스 제거
-            myComment1.classList.add('myComment2'); // B 스타일 클래스 추가
-        }
-    });
-</script>-->
-
 <script>
 
     const swiper1 = new Swiper('#sc1', {

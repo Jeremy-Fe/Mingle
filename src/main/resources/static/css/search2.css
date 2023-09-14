@@ -8,23 +8,23 @@ button{border: none; background: none}
 h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 /* 검색창 */
 #search{
-    width: 1400px; height: 75px; 
+    width: 1400px; height: 75px;
     background-color: rgba(255,255,255,0.65);
     margin: auto; border-radius: 15px;
-    display: flex; 
+    display: flex;
 }
 #search>ul{
-    width: 1360px; height: 55px; margin: auto; 
+    width: 1360px; height: 55px; margin: auto;
 }
 /* 지역선택창 */
-#regi{ display: flex;width: auto; height: 55px; float: left;}
-#regi>img:first-child{width: 55px; margin-right: 20px; float: left;}
-#regi>p{
+#regiButton{ display: flex;width: auto; height: 55px; float: left;}
+#regiButton>img:first-child{width: 55px; margin-right: 20px; float: left;}
+#regiButton>p{
     width: max-content; height: 55px;
     float: left; line-height: 65px;
     font-size: 32px; font-weight: lighter;
 }
-#regi>img:last-child{
+#regiButton>img:last-child{
     width: 40px;  float: left;margin-top: 10px;
 }
 /* 검색창 */
@@ -35,6 +35,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     font-family: 'NexonLv1Gothic';
     padding: 0px 30px;
     float: right;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 /* 검색버튼 */
 #search_I{width: 55px; height: 100%;  float: right; margin-left: 10px;}
@@ -43,7 +44,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 
 /* 검색 모임 */
 #chMingle{
-    width: 1400px; height: 860px; 
+    width: 1400px; height: 860px;
     margin: auto; margin-top: 20px;
     border-radius: 15px; padding: 20px;
     background-color: rgba(255,255,255,0.65);
@@ -53,18 +54,19 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 #cM_header{width: 1360px; height: 70px; margin: auto; }
 
 /* 관심사 선택버튼 */
-#mainC{
+#mainCButton{
     width: max-content; height: 70px;
     display: flex; float: left;
     background-color: #fff; border-radius: 10px;
     padding-right: 20px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
-#mainC>p{    
-    font-size: 40px; font-weight: bolder; 
+#mainCButton>p{
+    font-size: 40px; font-weight: bolder;
     font-family: 'NexonLv1Gothic';
     line-height: 75px;
 }
-#mainC>img{
+#mainCButton>img{
     width: 60px; height: 60px;
     margin: 5px 15px;
 }
@@ -78,11 +80,12 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 #subC{}
 /* 정렬 */
 #array{
-    width: 180px;height: 55px; 
+    width: 180px;height: 55px;
     text-align: center; line-height: 55px;
-    font-size: 32px; float: right;  
+    font-size: 32px; float: right;
     font-family: 'NexonLv1Gothic'; font-weight: lighter;
     border-radius: 30px; background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* #inMingle::-webkit-scrollbar {display: none; } */
@@ -98,20 +101,24 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     width: 440px; height: 275px; padding: 15px; margin: 10px;
     border-radius: 20px; background-color: #fff;
     margin-left: 0;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 /* 모임카드 상단 */
 .mingle ul {
     width: 405px; height: 160px;
-    margin: auto; 
+    margin: auto;
 }
-.mingle>ul>img{  width: 175px; height: 160px;float: left;}
+.mingle>ul>img{
+    width: 175px; height: 160px;float: left;
+    object-fit: none;
+}
 .mingle>ul>li{
     float: right; width: 200px; margin: 5px;
 }
 #mTitle{ width: 200px; height: 36px; font-size: 32px;color: #6554AF; line-height: 36px;}
 #mTitle>h4{width: 190px; height: 36px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap}
 #mCategorie{
-    height: 35px; font-size: 20px; 
+    height: 35px; font-size: 20px;
     line-height: 35px; padding-left: 20px;
     border-radius: 10px; background-color: #ececec;
 }
@@ -119,11 +126,11 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     color: #737373;  text-align: right;
     font-weight: lighter;font-family: 'NexonLv1Gothic';
 }
-#mUserImg{width: 100%;height: 35px;}
+#mUserImg{width: 100%;height: 35px;object-fit: none;}
 #mUser{
     font-size: 20px;
     text-align: right;
-    font-family: 'NexonLv1Gothic'; 
+    font-family: 'NexonLv1Gothic';
 }
 #mUser>a{color: #4364B0; text-decoration: underline;}
 /* 모임 설명 */
@@ -131,8 +138,8 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
     width: 405px;height: 75px;
     margin: auto;padding: 10px;
     line-height: 20px; font-size: 16px;
-    
-    overflow: hidden; text-overflow: ellipsis;    
+
+    overflow: hidden; text-overflow: ellipsis;
 }
 /* / 모임카드들 */
 .modal{max-width: max-content !important;}

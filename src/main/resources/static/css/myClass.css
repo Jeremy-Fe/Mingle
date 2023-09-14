@@ -519,6 +519,7 @@ body{z-index: 2}
     border-radius: 20px; background-color: #fff;
     margin: 12px;
     overflow: hidden; text-overflow: ellipsis;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 #recMingle{

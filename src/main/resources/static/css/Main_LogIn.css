@@ -136,7 +136,7 @@
 .mingles{
     width: 1400px; height: 380px;
     border-radius: 20px; background-color:rgba(255,255,255,0.5);
-    margin: auto ; margin-top: 20px; 
+    margin: auto ; margin-top: 20px;
     }
 .mingles>ul{
     width: 1315px; height: 300px;
@@ -159,13 +159,14 @@
     border-radius: 20px; background-color: #fff;
     margin-left: 0; margin-right: 15px;
     overflow: hidden; text-overflow: ellipsis;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 /* 모임카드 상단 */
 .mingle ul {
     width: 405px; height: 160px;
     margin: auto;
 }
-.mingle>ul>img{width: 175px; height: 160px;float: left; overflow: hidden}
+.mingle>ul>img{width: 175px; height: 160px;float: left; overflow: hidden; object-fit: none;}
 .mingle>ul>li{
     float: right; width: 200px; margin: 5px;
 }

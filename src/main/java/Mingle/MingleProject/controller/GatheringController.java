@@ -483,7 +483,7 @@ public List BoardName(List<PostDTO> list) {
         for (PostDTO postDTO : list) {
             Long bNum = postDTO.getPBNum();
             if(bNum == 1L){
-                boardName.add("정모 후기");
+                boardName.add("정모후기");
             } else if(bNum == 2L) {
                 boardName.add("자유게시판");
             } else if(bNum == 3L) {
