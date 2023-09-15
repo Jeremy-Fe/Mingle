@@ -229,4 +229,9 @@ public List<GatheringEntity> findMyMingles(String userId) {
         return commentsDTOList;
     }
 
+
+    @Transactional
+    public void modifyCoverimg(String gCoverimg, long id) {
+        gatheringRepository.updateCoverimg(gCoverimg, id);
+    }
 }
