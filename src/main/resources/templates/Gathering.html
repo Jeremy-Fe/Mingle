@@ -1,10 +1,12 @@
 <!-- 바꿔야하는 부분 -->
 <div class="view clearfix" th:fragment="gatheringParam ( gCoverimg ,District, GMainsubject, gName, Gathering_id, gMainleader)">
     <head>
-        <link href="/CSS/Gathering.css?after" type="text/css" rel="stylesheet">
+        <link href="/CSS/Gathering.css" type="text/css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+
+
     </head>
     <!-- 타이틀 -->
     <div class="g_title">
@@ -14,7 +16,25 @@
                 <li>
                     <a class="title_detail" th:text="|${District}|"></a>
                     <a class="title_detail" th:text="|${GMainsubject}|"></a>
-                    <a class="coverimg_modify" th:if="${session.loginId == gMainleader}">커버사진 수정</a>
+                    <form method="post" th:action="@{|/modify_GatheringCoverimg/${Gathering_id}|}" enctype="multipart/form-data">
+                        <button type="submit" id="enter" class="enterCoverModify">적용</button>
+                        <label for="file" th:if="${session.loginId == gMainleader}">
+                            <div class="coverimg_modify">커버사진 바꾸기</div>
+                        </label>
+                        <input type="file" id="file" accept="image/png, image/jpeg">
+                        <input id="fileName" type="text" name="gCoverimg" style="display: none;">
+                    </form>
+                    <script>
+                        const file = document.getElementById("file");
+                        const enter = document.getElementById('enter');
+                        file.addEventListener("change", function() {
+                            if (file.files.length > 0) {
+                                enter.style.display = 'block';
+                                const fileNames = file.files[0].name;
+                                document.getElementById("fileName").value = fileNames;
+                            }
+                        });
+                    </script>
                 </li>
                 <div id="gName" data-gname="${gName}"></div>
                 <div id="mId" data-mid="${session.memberDTO.getMId()}"></div>

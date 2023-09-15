@@ -503,6 +503,14 @@ public class GatheringController {
         return "redirect:/Gathering_Board/" + id;
     }
 
+    @PostMapping("/modify_GatheringCoverimg/{id}")
+    public String gatheringCoverimgModify(@ModelAttribute GatheringDTO gatheringDTO, @PathVariable long id) {
+        gatheringDTO.setGCoverimg("/image/GatheringCoverImgs/" + gatheringDTO.getGCoverimg());
+        gatheringService.modifyCoverimg(gatheringDTO.getGCoverimg(), id);
+
+        return "redirect:/Gathering_Home/" + id;
+    }
+
 public List BoardName(List<PostDTO> list) {
         List boardName = new ArrayList();
         for (PostDTO postDTO : list) {

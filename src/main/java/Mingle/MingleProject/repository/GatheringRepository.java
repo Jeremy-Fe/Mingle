@@ -48,9 +48,6 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
     @Query("SELECT g FROM GatheringEntity g WHERE g.gName = ?1 ")
     List<GatheringEntity> searchNameCase1(String searchName);
 
-    @Modifying
-    @Query(value = "UPDATE GatheringEntity g SET g.gCoverimg  = :gCoverimg WHERE g.id =:id")
-    void updateGatheringCoverimg(@Param("gCoverimg") Blob gCoverimg, @Param("id") String id);
 
 
     @Query(value="select s from ScheduleEntity s where s.sGNum = :id")
@@ -60,5 +57,7 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
     List<CommentsEntity> findByPNum(@Param("pNum")Long pNum);
 
 
-
+    @Modifying
+    @Query(value="UPDATE GatheringEntity g SET g.gCoverimg = :gCoverimg WHERE g.id = :gNum")
+    void updateCoverimg(@Param("gCoverimg") String gCoverimg, @Param("gNum") long gNum);
 }
