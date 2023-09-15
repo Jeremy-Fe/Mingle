@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <title>모임_게시판-게시글만들기</title>
+  <link rel="icon" href="/image/DefaultProfile_logo.png">
 
   <!--css-->
   <link href="/CSS/gatheringnCreate.css" type="text/css" rel="stylesheet">
@@ -38,7 +39,7 @@
             <form th:action="@{|/Gathering_Post_Modify/${id}/${PostValue.getPNum()}|}" method="post">
             <!-- 헤더 -->
                 <div id="viewHeader">
-                  <li id="hGtrImg"><img src="image/Main_Login_내게시물.png" alt=""></li>
+                  <li id="hGtrImg"><img th:src="${GatheringHome.getGCoverimg()}" alt=""></li>
                   <li id="hGtrExp">
                     <div>
                        <a class="title_detail" th:text="${GatheringHome.getGDistrict()}">지역</a><!-- th:text="|${District}|"-->

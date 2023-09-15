@@ -44,6 +44,9 @@ public class GatheringController {
     private final MemberRepository memberRepository;
     private final PostService postService;
 
+    @Autowired
+    private HttpSession session; // HttpSession 주입
+
 
     @GetMapping("Gathering_Home/{id}")
     public String Gathering_Home(@PathVariable Long id, Model model, HttpSession session) {
@@ -415,14 +418,26 @@ public class GatheringController {
         if (memberOptional.isPresent()) {
             // MemberEntity의 M_G_GATHERING 값을 업데이트합니다.
             MemberEntity member = memberOptional.get();
-
-            member.setMGathering(gName);
-
+            String currentMGathering = member.getMGGathering();
+            if(currentMGathering != null) {
+                currentMGathering += "," + gName;
+            } else {
+                currentMGathering = gName;
+            }
+            member.setMGathering(currentMGathering);
             // MemberEntity를 저장 또는 업데이트합니다.
             memberService.save(MemberDTO.toMemberDTO(member));
 
             // GatheringDTO를 저장합니다.
             gatheringService.save(gatheringDTO);
+
+
+            //세션 업데이트
+            MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+            if (memberDTO != null) {
+                memberDTO.setMGGathering(currentMGathering);
+                session.setAttribute("memberDTO", memberDTO);
+            }
 
             System.out.println("GatheringController.save");
             System.out.println("GatheringDTO = " + gatheringDTO);
@@ -430,7 +445,7 @@ public class GatheringController {
 //        gatheringService.save(gatheringDTO);
 //        System.out.println("GatheringController.save");
 //        System.out.println("GatheringDTO = " + gatheringDTO);
-        return "myClass";
+        return "Main_LogIn";
     }
 
 

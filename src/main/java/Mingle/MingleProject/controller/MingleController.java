@@ -181,6 +181,9 @@ public class MingleController {
         System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
         memberService.uploadImage(mProfileimg,logInId);
 
+        String profileimg = memberService.getProfileimgData(logInId);
+        session.setAttribute("profileimg", profileimg);
+
         return "Mypage";
     }
 
