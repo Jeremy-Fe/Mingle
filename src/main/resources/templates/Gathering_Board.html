@@ -40,7 +40,7 @@
 <body>
 <div th:replace="/defaultUI.html"></div>
 
-<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id})}"></div>
+<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id}, ${GatheringHome.getGMainleader()})}"></div>
 <div id="board">
     <div class="board_bg">
         <ul class="board_title">

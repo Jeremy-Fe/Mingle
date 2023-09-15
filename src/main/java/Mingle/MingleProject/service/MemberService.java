@@ -76,7 +76,7 @@ public class MemberService {
         return memberDTOList;
     }
 
-    public String idCheck(String mId) {
+    public String  idCheck(String mId) {
         Optional<MemberEntity> byMId = memberRepository.findBymId(mId);
         if (byMId.isPresent()) {
             //조회결과가 있다 -> 사용할 수 없다.

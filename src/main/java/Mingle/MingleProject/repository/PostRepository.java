@@ -19,7 +19,7 @@ public interface PostRepository extends JpaRepository<PostEntity, Long> {
     List<PostEntity> findByBoardAndGatheringPost(Long pGNum, Long pBNum);
 
 
-    @Query("select p from PostEntity p where p.pMId =:logInId")
+    @Query("select p from PostEntity p where p.pMId =:logInId order by p.pNum")
     List<PostEntity> findBypMId(String logInId);
 
     @Modifying

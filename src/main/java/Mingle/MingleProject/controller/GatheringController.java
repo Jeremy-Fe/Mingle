@@ -46,7 +46,7 @@ public class GatheringController {
 
 
     @GetMapping("Gathering_Home/{id}")
-    public String Gathering_Home(@PathVariable Long id, Model model) {
+    public String Gathering_Home(@PathVariable Long id, Model model, HttpSession session) {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
@@ -122,7 +122,14 @@ public class GatheringController {
         }
 
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
-        model.addAttribute("Schedule", scheduleDTOList);
+        if(scheduleDTOList.size() > 2){
+            List<ScheduleDTO> scheduleDTOList2 = scheduleDTOList.subList(0, 2);
+            model.addAttribute("Schedule", scheduleDTOList2);
+        } else {
+            model.addAttribute("Schedule", scheduleDTOList);
+        }
+
+
 
 
         List<Integer> memberCount = new ArrayList<>();
@@ -137,6 +144,24 @@ public class GatheringController {
 
         List<Long> commentsCount = postService.commentsCount(postDTOList);
         model.addAttribute("Comments", commentsCount);
+
+        // 로그인한 아이디 참석 여부
+        String logInId = (String) session.getAttribute("loginId");
+        String[] scheduleAttendMemberList = null;
+        boolean[] attend = new boolean[scheduleDTOList.size()];
+        int index = 0;
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            attend[index] = false;
+            scheduleAttendMemberList = scheduleDTO.getSMember().split(",");
+            for (String memberId:scheduleAttendMemberList) {
+                if(logInId.equals(memberId)){
+                    attend[index] = true;
+                }
+            }
+
+            index++;
+        }
+        model.addAttribute("Attend", attend);
 
         return "Gathering_Home";
     }
@@ -313,13 +338,34 @@ public class GatheringController {
 
 
     @GetMapping("Gathering_Schedule/{id}")
-    public String Gathering_Schedule(@PathVariable Long id, Model model) {
+    public String Gathering_Schedule(@PathVariable Long id, Model model, HttpSession session) {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
         GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
         model.addAttribute("GatheringHome", gatheringDTO);
 
         List<ScheduleDTO> scheduleDTOList = gatheringService.findSchedule(id);
         model.addAttribute("Schedule", scheduleDTOList);
+
+
+        
+        // 로그인한 아이디 참석 여부
+        String logInId = (String) session.getAttribute("loginId");
+        String[] scheduleAttendMemberList = null;
+        boolean[] attend = new boolean[scheduleDTOList.size()];
+        int index = 0;
+        for (ScheduleDTO scheduleDTO: scheduleDTOList) {
+            attend[index] = false;
+            scheduleAttendMemberList = scheduleDTO.getSMember().split(",");
+            for (String memberId:scheduleAttendMemberList) {
+                if(logInId.equals(memberId)){
+                    attend[index] = true;
+                }
+            }
+            
+            index++;
+        }
+        model.addAttribute("Attend", attend);
+
 
 
         List<Integer> memberCount = new ArrayList<>();
@@ -416,8 +462,6 @@ public class GatheringController {
         String logInId = (String) session.getAttribute("loginId");
         postDTO.setPMId(logInId);
         postDTO.setPGNum(id);
-        System.out.println(postDTO);
-        System.out.println(postDTO);
 
         postService.uploadPost(postDTO);
 
@@ -446,11 +490,6 @@ public class GatheringController {
     }
     @GetMapping("Gathering_Post_Comment_Delete/{id}/{pNum}/{cNum}")
     public String commentDelete(@PathVariable Long id, @PathVariable Long pNum, @PathVariable Long cNum){
-        System.out.println(cNum);
-        System.out.println(cNum);
-        System.out.println(cNum);
-        System.out.println(cNum);
-        System.out.println(cNum);
         postService.deleteComment(cNum);
 
 
@@ -464,12 +503,20 @@ public class GatheringController {
         return "redirect:/Gathering_Board/" + id;
     }
 
+    @PostMapping("/modify_GatheringCoverimg/{id}")
+    public String gatheringCoverimgModify(@ModelAttribute GatheringDTO gatheringDTO, @PathVariable long id) {
+        gatheringDTO.setGCoverimg("/image/GatheringCoverImgs/" + gatheringDTO.getGCoverimg());
+        gatheringService.modifyCoverimg(gatheringDTO.getGCoverimg(), id);
+
+        return "redirect:/Gathering_Home/" + id;
+    }
+
 public List BoardName(List<PostDTO> list) {
         List boardName = new ArrayList();
         for (PostDTO postDTO : list) {
             Long bNum = postDTO.getPBNum();
             if(bNum == 1L){
-                boardName.add("정모 후기");
+                boardName.add("정모후기");
             } else if(bNum == 2L) {
                 boardName.add("자유게시판");
             } else if(bNum == 3L) {

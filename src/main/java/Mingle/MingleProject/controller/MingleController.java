@@ -147,6 +147,19 @@ public class MingleController {
 
         /*--내 댓글 출력--*/
         List<CommentsDTO> commentsDTOS = commentsService.findComments(logInId);
+
+        /*--내 댓글에 post 넘버 추출 --*/
+        List<PostDTO> postDTOList = new ArrayList<>();
+        for (CommentsDTO commentsDTO: commentsDTOS) {
+            postDTOList.add(postService.findPost(commentsDTO.getCPNum()));
+        }
+        /*--post 에 모임 넘버 추출 --*/
+        List<GatheringDTO> gatheringDTOs = new ArrayList<>();
+        for (PostDTO postDTO: postDTOList) {
+            gatheringDTOs.add(gatheringService.findByGathering(postDTO.getPGNum()));
+        }
+
+        model.addAttribute("Comments_gName", gatheringDTOs);
         model.addAttribute("comments",commentsDTOS);
         System.out.println("commentsDTOs 확인 :" + commentsDTOS);
 
@@ -167,8 +180,8 @@ public class MingleController {
         String logInId = (String) session.getAttribute("loginId");
         System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
         memberService.uploadImage(mProfileimg,logInId);
-        return "Mypage";
 
+        return "Mypage";
     }
 
     @GetMapping("Create_Meet")

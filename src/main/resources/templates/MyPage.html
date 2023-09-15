@@ -99,23 +99,23 @@
         <div id="sc2" class="swiper-container mp clearfix">
             <div id="myPost" class="swiper-wrapper clearfix">
                 <div class="swiper-slide post_01 clearfix"  th:each="mypost, mypostStat :${post}" >
-                    <a th:if="${mypost.getPImg1() == null}" href="Mypage">
+                    <a th:if="${postGName.get(mypostStat.index).getGCoverimg() == null}" th:href="@{|/Gathering_Post/${postGName.get(mypostStat.index).getId()}/${mypost.getPNum()}|}">
                         <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
                     </a>
-                    <a th:unless="${mypost.getPImg1() == null}" href="Mypage">
-                        <img class="postimg_01" alt="모임 이미지1" th:src="${mypost.getPImg1()}">
+                    <a th:unless="${postGName.get(mypostStat.index).getGCoverimg() == null}" th:href="@{|/Gathering_Post/${postGName.get(mypostStat.index).getId()}/${mypost.getPNum()}|}">
+                        <img class="postimg_01" alt="모임 이미지1" th:src="${postGName.get(mypostStat.index).getGCoverimg()}">
                     </a>
                     <p class="postname_01" th:text="${postGName.get(mypostStat.index).getGName()}">질풍가도</p>
-                    <span th:text="${mypost.getPContents()}">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
+                    <span class="Post_Titile" th:text="${mypost.getPTitle()}">안녕학세요</span>
+                    <span class="Post_Contents" th:text="${mypost.getPContents()}">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
                     <p class="day_01" th:text="${mypost.getPDate()}">2023. 05. 19</p>
-                    </a>
                 </div>
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
-                <div class="swiper-slide post_02 clearfix"><span>&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
             </div>
 
         </div>
@@ -123,14 +123,11 @@
         <p class="title_04">내 댓글</p>
         <div class="myComment clearfix" >
             <ul class="comment_01" th:each="mycomments,mycommentsStat :${comments}">
-                <a th:href="@{|/Gathering_Post/${mycomments.getCPNum()}|}">
-                <span class="commentdata" th:text="${mycomments.getCDate()}"></span>
+                <a th:href="@{|/Gathering_Post/${Comments_gName.get(mycommentsStat.index).getId()}/${mycomments.getCPNum()}|}">
+                <span class="commentdata" th:text="${Comments_gName.get(mycommentsStat.index).getGName()} + '|' +${mycomments.getCDate()}"></span>
                 <span class="commenttext" th:text="${mycomments.getCComments()}"></span>
                 </a>
             </ul>
-
-            <ul class="comment_01"><a><span class="commenttext">댓글을 추가 작성해 주세요.</span></a></ul>
-
         </div>
 
         <!--프로필수정 모달창--->
@@ -202,7 +199,6 @@
 <!--프로필 수정 모달장-->
 <script>
     // 모달이 열릴 때
-    /*$(document).on('modal:open', '#ex1', function ()*/
     $('.edit').on('click', function () {
         console.log('프로필 정보 가져오기가 실행됨');
         // 프로필 정보 가져와서 모달 내에 출력
@@ -275,72 +271,6 @@
         });
     });
 </script>
-<!--내 댓글 블럭 생성-->
-<!--<script>
-    // 가상의 데이터베이스 데이터 배열
-    var databaseData = [
-        "데이터 1",
-        "데이터 2",
-        "데이터 3",
-        "데이터 4",
-        "데이터 5",
-        "데이터 6",
-        "데이터 7",
-        "데이터 8",
-        "데이터 9",
-        // ... 더 많은 데이터 ...
-    ];
-
-    var myComment = document.getElementsByClassName("myComment")[0];
-
-    // 데이터베이스 데이터의 수만큼 <ul> 생성
-    for (var i = 0; i < databaseData.length; i++) {
-        var dataUl = document.createElement("ul");
-        dataUl.className = "comment_1" + i; // 클래스 지정
-        dataUl.textContent = databaseData[i]; // 데이터 추가
-        myComment.appendChild(dataUl); // <ul>를 컨테이너에 추가
-    }
-</script>-->
-
-
-<!--더보기 버튼 활성화-->
-<!--<script>
-    const items = document.querySelectorAll(".accordion button");
-
-    function toggleAccordion() {
-        const itemToggle = this.getAttribute('aria-expanded');
-
-        for (i = 0; i < items.length; i++) {
-            items[i].setAttribute('aria-expanded', 'false');
-        }
-
-        if (itemToggle == 'false') {
-            this.setAttribute('aria-expanded', 'true');
-        }
-    }
-
-    items.forEach(item => item.addEventListener('click', toggleAccordion));
-</script>
-
-&lt;!&ndash;더보기 클릭 후 확장&ndash;&gt;
-<script>
-    const button = document.getElementById('accordion-button-1');
-    const myComment1 = document.querySelector('.myComment');
-
-
-    button.addEventListener('click', function () {
-        const ariaExpandedValue = button.getAttribute('aria-expanded');
-
-        if (ariaExpandedValue === 'true') {
-            myComment1.classList.add('myComment'); // A 스타일 클래스 추가
-            myComment1.classList.remove('myComment2'); // B 스타일 클래스 제거
-        } else {
-            myComment1.classList.remove('myComment'); // A 스타일 클래스 제거
-            myComment1.classList.add('myComment2'); // B 스타일 클래스 추가
-        }
-    });
-</script>-->
-
 <script>
 
     const swiper1 = new Swiper('#sc1', {

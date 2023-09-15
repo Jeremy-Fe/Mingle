@@ -29,7 +29,41 @@
 }
 .view > .g_title > ul > .title_subject > li {
     width: 1450px;
+    position: relative;
 }
+.view > .g_title > ul > .title_subject > li > form > label > .coverimg_modify {
+    position: absolute;
+    top: -10px;
+    right: 25px;
+    color: #666;
+    width: 115px;
+    height: 30px;
+    background: #fff;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#file {
+    display: none;
+}
+.view > .g_title > ul > .title_subject > li > form > .enterCoverModify {
+    position: absolute;
+    top: -4px;
+    right: 160px;
+    border: none;
+    background: #fff;
+    font-family: 'GmarketSansMedium';
+    font-weight: normal;
+    font-size: 16px;
+    color: #3000ff;
+    cursor: pointer;
+    display: none;
+}
+
 .view > .g_title > ul > .title_subject > li > .title_detail {
     background-color: #D9D9D9;
     border-radius: 15px;
