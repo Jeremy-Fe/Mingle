@@ -182,6 +182,7 @@ body{z-index: 2}
     bottom: 90px;
     border-radius: 100%;
     position: absolute;
+    object-fit: cover;
 }
 #myclass > div > .dummy{
     width: 195px;
@@ -537,7 +538,7 @@ body{z-index: 2}
     width: 405px; height: 160px;
     margin: auto;
 }
-.mingle>ul>img{width: 175px; height: 160px;float: left; overflow: hidden}
+.mingle>ul>img{width: 175px; height: 160px;float: left; overflow: hidden; object-fit: cover; border-radius: 50%}
 .mingle>ul>li{
     float: right; width: 200px; margin: 5px;
 }
