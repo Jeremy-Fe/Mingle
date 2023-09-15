@@ -15,9 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -182,6 +180,9 @@ public class MingleController {
         String logInId = (String) session.getAttribute("loginId");
         System.out.println("mProfileimg : " + mProfileimg + " " + logInId);
         memberService.uploadImage(mProfileimg,logInId);
+
+        String profileimg = memberService.getProfileimgData(logInId);
+        session.setAttribute("profileimg", profileimg);
 
         return "Mypage";
     }
