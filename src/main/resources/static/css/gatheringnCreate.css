@@ -10,7 +10,7 @@
 #viewHeader>li{float: left; }
 
 #hGtrImg{width: 125px; height: 125px; margin: 12px 25px;}
-#hGtrImg>img{width: 125px; height: 125px;}
+#hGtrImg>img{width: 125px; height: 125px; object-fit: cover; border-radius: 50%;}
 
 #hGtrExp{float: left; margin: 15px 5px;}
 #hGtrExp>div{ width: 1000px;height: 50px;}
