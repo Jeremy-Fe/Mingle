@@ -110,7 +110,7 @@ h1,h2,h3,h4,h5,h6{font-family: 'Jalnan'; }
 }
 .mingle>ul>img{
     width: 175px; height: 160px;float: left;
-    object-fit: none;
+    object-fit: cover; border-radius: 50%;
 }
 .mingle>ul>li{
     float: right; width: 200px; margin: 5px;

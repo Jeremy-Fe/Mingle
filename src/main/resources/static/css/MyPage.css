@@ -69,6 +69,7 @@ body{z-index: 2}
     display: none;
 }
 /*-------페이지 기본구성(끝)*-------*/
+
 /*view_바꿔야할 부분*/
 .view{width: 100%;
     height: 100%;/* 임의지정 값*/
@@ -78,16 +79,15 @@ body{z-index: 2}
 
 
 /*<section_ view>*/
-
 /*---뷰 전체 기본설정---*/
 .view > div {
     width: 1400px;
     margin: auto; margin-top: 20px;
     border-radius: 20px;
     position: relative;
-    /*---뷰 전체 기본설정(끝)---*/
 }
 
+/*--회원탈퇴 css--*/
 #delete{
     position: absolute;
     border-bottom: 1px solid #ffffff;
@@ -98,15 +98,12 @@ body{z-index: 2}
     color: #ffffff;
 }
 
-
-
 /*---마이페이지 아이콘---*/
 .view> .MyPage > img{
     width: 40px;
     height: 40px;
     float: left;
     margin-right: 10px;
-    /*---마이페이지 아이콘(끝)---*/
 }
 
 
@@ -118,11 +115,8 @@ body{z-index: 2}
     font-family: 'Jalnan';
     color: #2C244F;
 }
-.view> .MyPage .title_02 {
-    float: left;
-}
 
-/*---마이페이지 세부설정---*/
+/*---마이페이지 css---*/
 .view> .MyPage .profile ul{
     margin-top: 30px;
     height: 300px;
@@ -136,7 +130,6 @@ body{z-index: 2}
 }
 .view> .MyPage .profile p{
     padding-top: 20px;
-    /*---마이페이지 세부설정(끝)---*/
 }
 
 
@@ -153,11 +146,10 @@ body{z-index: 2}
     z-index: 2;
     cursor: pointer;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    /*---프로필 사진(끝)---*/
 }
 
 
-/*---기본정보 텍스트---*/
+/*---프로필 수정버튼---*/
 .view> .MyPage .profile .pimg > a > .edit{
     width: 30px;
     height: 30px;
@@ -168,13 +160,36 @@ body{z-index: 2}
     cursor: pointer;
 }
 
+/*--프로필 (성명,생일,성별)--*/
+.view> .MyPage .profile .text{
+    margin-right: 55px;
+    color: #2C244F;
+}
+.view> .MyPage .profile li .name {
+    font-size: 32px;
+    margin-top: 40px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+}
+.view> .MyPage .profile li .birth {
+    padding-top: 15px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+}
+.view> .MyPage .profile li .gender{
+    padding-top: 15px;
+    font-weight: bold;
+    font-family: 'Jalnan';
+}
+
+/*--프로필 모달창 (프로필 이미지,성명,생일,성별)--*/
 #ex1 {
     max-width: 800px;
     height: 400px;
     background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
     position: relative;
 }
-
+ /*--수정버튼--*/
 #ex1 > button {
     top: 340px;
     left: 380px;
@@ -193,7 +208,7 @@ body{z-index: 2}
     background-color: #968ACD;
     cursor: pointer;
 }
-
+ /*--이미지 업로드--*/
 #fileInput {
     display: none;
 }
@@ -209,6 +224,7 @@ body{z-index: 2}
     float: left;
     position: absolute;
     border-radius: 100%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 #modalContent .name {
@@ -253,30 +269,8 @@ body{z-index: 2}
     position: absolute;
 }
 
-.view> .MyPage .profile .text{
-    margin-right: 55px;
-    color: #2C244F;
-}
-.view> .MyPage .profile li .name {
-    font-size: 32px;
-    margin-top: 40px;
-    font-weight: bold;
-    font-family: 'Jalnan';
-}
-.view> .MyPage .profile li .birth {
-    padding-top: 15px;
-    font-weight: bold;
-    font-family: 'Jalnan';
-}
-.view> .MyPage .profile li .gender{
-    padding-top: 15px;
-    font-weight: bold;
-    font-family: 'Jalnan';
-    /*---기본정보 텍스트(끝)---*/
-}
 
-
-/*---기본정보 자기소개란---*/
+/*---자기소개 파트---*/
 .view .MyPage .inBox{
     width: 895px; height: 240px; background-color: #fff;
     border-radius: 40px;
@@ -296,12 +290,15 @@ body{z-index: 2}
     right: 20px;
     bottom: 20px;
     position: absolute;
-    /*---기본정보 자기소개란(끝)---*/
 }
 
 
-/*---내모임 제목(감추기)---*/
+/*--내 모임 제목--*/
+.view> .MyPage .title_02 {
+    float: left;
+}
 
+/*---내모임 출력---*/
 .view > .MyPage .mc {
     width: 1400px;
     background-color: rgba(255,255,255,0.65);
@@ -309,19 +306,17 @@ body{z-index: 2}
     margin: auto;
     border-radius: 20px;
     overflow: hidden;
-    /*---내모임 제목(감추기)(끝)---*/
+
 }
-.view > .MyPage .mc #myclass {
+#myclass {
     width: 100%;
     height: 300px;
     margin: auto;
     border-radius: 20px;
     position: relative;
-    /*---내모임 제목(감추기)(끝)---*/
 }
 
-/*---내모임 출력(감추기)---*/
-.view > .MyPage .mc #myclass > div {
+#myclass > div {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     width: 195px;
     height: 240px;
@@ -333,11 +328,11 @@ body{z-index: 2}
 
 }
 
-.view > .MyPage .mc #myclass > div:last-child {
+#myclass > div:last-child {
     margin-right: 30px;
 }
 
-.view > .MyPage .mc #myclass > div > p {
+#myclass > div > a > .Gname {
     width: 195px;
     height: 240px;
     color: #2C244F;
@@ -349,7 +344,7 @@ body{z-index: 2}
     position: absolute;
 }
 
-.view > .MyPage .mc #myclass > div > span {
+#myclass > div > a > span {
     width: 195px;
     height: 240px;
     color: #8B8B8B;
@@ -366,7 +361,7 @@ body{z-index: 2}
     padding-right: 5px ;
 }
 
-.view > .MyPage .mc #myclass > div > a > img{
+#myclass > div > a > .GImg > img{
     width: 120px;
     height: 120px;
     left: 35px;
@@ -375,14 +370,26 @@ body{z-index: 2}
     position: absolute;
     object-fit: cover;
 }
-
-.view > .MyPage .title_03 {
-    margin-top: 20px;
+#myclass > div > .dummy{
+    width: 195px;
+    height: 240px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 355px;
+    display: block;
+    position: absolute;
 }
 
 
 /*---내게시물 제목---*/
+.view > .MyPage .title_03 {
+    margin-top: 20px;
 
+}
+
+/*---내게시물 출력---*/
 .view > .MyPage .mp {
     width: 1400px;
     background-color: rgba(255,255,255,0.65);
@@ -391,7 +398,7 @@ body{z-index: 2}
     border-radius: 20px;
     overflow: hidden;
 }
-.view > .MyPage .mp #myPost {
+#myPost {
     width: 100%;
     height: 540px;
     margin: auto;
@@ -399,7 +406,7 @@ body{z-index: 2}
 
 }
 
-.view > .MyPage .mp #myPost > div {
+#myPost > div {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     margin-left: 60px;
     width: 600px;
@@ -408,14 +415,13 @@ body{z-index: 2}
     background-color: #fff;
     border-radius: 20px;
     float: left;
-    /*---내게시물 제목(끝)---*/
 }
 
-.view > .MyPage .mp #myPost > div:last-child {
+#myPost > div:last-child {
     margin-right: 15px;
 }
 
-.view > .MyPage .mp #myPost .postimg_01 {
+#myPost .postimg_01 {
     width: 110px;
     height: 110px;
     margin-left: 20px;
@@ -425,14 +431,14 @@ body{z-index: 2}
     border-radius: 50%;
 }
 
-.view > .MyPage .mp #myPost > div > .postname_01 {
+#myPost > div > .postname_01 {
     left: 145px;
     top:25px;
     position: absolute;
     font-weight: lighter;
 }
 
-.view > .MyPage .mp #myPost > div > .Post_Titile {
+#myPost > div > .Post_Titile {
     width: 430px;
     left: 140px;
     top: 50px;
@@ -448,7 +454,7 @@ body{z-index: 2}
 
 }
 
-.view > .MyPage .mp #myPost > div > .Post_Contents {
+#myPost > div > .Post_Contents {
     width: 430px;
     left: 140px;
     top: 85px;
@@ -468,7 +474,7 @@ body{z-index: 2}
     -webkit-box-orient: vertical;
 }
 
-.view > .MyPage .mp #myPost > div .day_01 {
+#myPost > div .day_01 {
     left: 465px;
     top: 25px;
     font-weight: lighter;
@@ -476,21 +482,22 @@ body{z-index: 2}
     color: #767676;
 }
 
-.view > .MyPage .mp #myPost > div .viewcount_01 {
+#myPost > div .viewcount_01 {
     left: 500px;
     bottom: 15px;
     font-size: 20px;
     position: absolute;
     color: #6B6B6B;
-    /*---내게시물 출력(끝)---*/
-}
 
-
-.view > .MyPage .title_04 {
-    margin-top: 20px;
 }
 
 /*---내 댓글 제목---*/
+.view > .MyPage .title_04 {
+    margin-top: 20px;
+
+}
+
+/*---내 댓글 출력---*/
 .view > .MyPage .myComment {
     width: 1400px;
     background-color: rgba(255,255,255,0.65);
@@ -499,19 +506,9 @@ body{z-index: 2}
     height: 100%;
     overflow: hidden;
     position: relative;
+
 }
 
-.view > .MyPage .myComment2 {
-    width: 1400px;
-    background-color: rgba(255,255,255,0.65);
-    border-radius: 20px;
-    padding: 30px;
-}
-/*---내 댓글 제목(끝)---*/
-
-
-/*---내 댓글 출력---*/
-/*---myComment css---*/
 .view > .MyPage .myComment > ul {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     width: 1340px;
@@ -554,87 +551,7 @@ body{z-index: 2}
     position: absolute;
     font-family: 'GmarketSans';
     padding-left: 20px;
-
 }
-
-
-/*.view > .MyPage .myComment .comment_01 .accordion {
-    margin-top: 30px;
-    width: 49px;
-    height: 51px;
-    position: relative;
-    left: 650px;
-}*/
-/*---myComment css(끝)---*/
-
-
-/*!*---myComment2 css---*!
-.view > .MyPage .myComment2 > ul {
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    width: 1340px;
-    height: 47px;
-    margin-top: 30px;
-    border-radius: 20px;
-    background-color: #EEF1FF;
-}
-
-.view > .MyPage .myComment2 > ul:first-child {
-    margin-top: 0px;
-}
-
-.view > .MyPage .myComment2 > ul > p {
-    width: 1280px;
-    line-height: 50px;
-    text-align: right;
-    font-size: 18px;
-    font-weight: normal;
-    color: #8B8B8B;
-    position: relative;
-}
-
-.view > .MyPage .myComment2 > ul > p > span {
-    line-height: 50px;
-    left: 40px;
-    width: 1280px;
-    font-size: 23px;
-    font-weight: normal;
-    text-align: left;
-    color: #000000;
-    position: absolute;
-
-}
-
-.view > .MyPage .myComment2 .accordion {
-    margin-top: 30px;
-    width: 49px;
-    height: 51px;
-    position: relative;
-    left: 650px;
-}
-!*---myComment2 css(끝)---*!*/
-/*---내 댓글 출력(끝)---*/
-
-
-/*---더보기 버튼---*/
-#accordion-button-1 {
-    /*position: absolute;*/
-    left: 10px;
-    border: none;
-    background-color: transparent;
-    position: absolute;
-    cursor: pointer;
-}
-#seemore {
-    width: 24px;
-    height: 31px;
-    text-align: center;
-}
-
-#seemoretext {
-    width: 48px;
-    line-height: 85px;
-}
-/*---더보기 버튼(끝)---*/
 
 /* footer 메뉴 */
 #footer{
