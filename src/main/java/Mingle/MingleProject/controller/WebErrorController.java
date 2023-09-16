@@ -21,7 +21,7 @@ public class WebErrorController implements getErrorController {
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
-        System.out.println("404"+status);
+        System.out.println("status"+status);
         if(status != null){
             int statusCode = Integer.valueOf(status.toString());
             System.out.println("statusCode = "+statusCode);
