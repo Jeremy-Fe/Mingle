@@ -6,6 +6,7 @@
     <title>Title</title>
     <!--css-->
     <link href="/css/Create_Meet.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="/image/DefaultProfile_logo.png">
 
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -250,9 +251,9 @@
     interestButtons2.forEach(button => {
         button.addEventListener('click', function () {
             const interest = this.value;
-            console.log(interest);
-            console.log('버튼이 클릭되었습니다. 관심사:', interest);
-            console.log('선택된 버튼 수:', interestButtons2.length);
+            // console.log(interest);
+            // console.log('버튼이 클릭되었습니다. 관심사:', interest);
+            // console.log('선택된 버튼 수:', interestButtons2.length);
             getMainSubjectsContainingText(interest); // 클릭한 관심사로 세부 관심사를 가져오는 함수 호출
         });
     });
