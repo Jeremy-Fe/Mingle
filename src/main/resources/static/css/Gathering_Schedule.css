@@ -8,6 +8,7 @@
     border-radius: 20px;
     padding: 135px 50px 35px 50px;
     position: relative;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 .schedule_bg > .schedule_create_button {
     width: 200px;

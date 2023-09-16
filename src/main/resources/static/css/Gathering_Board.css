@@ -19,6 +19,7 @@
     margin-top: 20px;
     border-radius: 20px;
     padding: 35px 50px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 #board > .board_bg > .board_title > li{
     padding-bottom: 10px;
