@@ -77,22 +77,24 @@
         <div id="sc1" class="swiper-container mc clearfix">
             <div id="myclass" class="swiper-wrapper clearfix">
                 <div id ="myMingCardInner" class="swiper-slide mycb_01" th:each="gathering :${mingles}">
-                    <a th:if="${gathering.getGCoverimg() == null}" href="Mypage">
-                        <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                    <a th:href="@{|/Gathering_Home/${gathering.id}|}">
+                        <p class="GImg" th:if="${gathering.getGCoverimg() == null}">
+                            <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                        </p>
+                        <p class="GImg" th:unless="${gathering.getGCoverimg() == null}">
+                            <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}">
+                        </p>
+                        <p class="Gname" th:text="${gathering.getGName()}" >질풍가도</p>
+                        <span th:text="${gathering.getGIntroduction()}">도심속 러닝 모...</span>
                     </a>
-                    <a th:unless="${gathering.getGCoverimg() == null}" href="Mypage">
-                        <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}">
-                    </a>
-                    <p th:text="${gathering.getGName()}" >질풍가도</p>
-                    <span th:text="${gathering.getGIntroduction()}"><도심속 러닝 모...></span>
                 </div>
 
-                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
-                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
-                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
-                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
-                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
-                <div class="swiper-slide"><p>모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
             </div>
         </div>
         <!--내게시물-->
@@ -125,7 +127,7 @@
         <div class="myComment clearfix" >
             <ul class="comment_01" th:each="mycomments,mycommentsStat :${comments}">
                 <a th:href="@{|/Gathering_Post/${Comments_gName.get(mycommentsStat.index).getId()}/${mycomments.getCPNum()}|}">
-                <span class="commentdata" th:text="${Comments_gName.get(mycommentsStat.index).getGName()} + '|' +${mycomments.getCDate()}"></span>
+                <span class="commentdata" th:text="${Comments_gName.get(mycommentsStat.index).getGName()} +' '+'|'+' '+${mycomments.getCDate()}"></span>
                 <span class="commenttext" th:text="${mycomments.getCComments()}"></span>
                 </a>
             </ul>
@@ -228,6 +230,7 @@
         $('#modalContent .edit').attr('src', editimgSrc);
     });
 </script>
+
 <!--프로필 이미지 불러오기 및 업로드-->
 <script>
     $(document).ready(function () {
@@ -278,8 +281,9 @@
         });
     });
 </script>
-<script>
 
+<script>
+//스와이퍼 1
     const swiper1 = new Swiper('#sc1', {
         loop: false,
         centeredSlides: false,
@@ -297,7 +301,7 @@
 </script>
 
 <script>
-
+//스와이퍼 2
     const swiper2 = new Swiper('#sc2', {
         loop: false,
         centeredSlides: false,
