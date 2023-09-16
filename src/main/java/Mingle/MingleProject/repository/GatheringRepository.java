@@ -60,4 +60,29 @@ public interface GatheringRepository extends JpaRepository<GatheringEntity, Long
     @Modifying
     @Query(value="UPDATE GatheringEntity g SET g.gCoverimg = :gCoverimg WHERE g.id = :gNum")
     void updateCoverimg(@Param("gCoverimg") String gCoverimg, @Param("gNum") long gNum);
+
+    @Modifying
+    @Query(value="UPDATE GatheringEntity g SET g.gSubleader1 = null WHERE g.id = :id AND g.gSubleader1 = :mId")
+    void removeSubleader1(@Param("id") Long id, @Param("mId")String mId);
+
+    @Modifying
+    @Query(value="UPDATE GatheringEntity g SET g.gSubleader2 = null WHERE g.id = :id AND g.gSubleader2 = :mId")
+    void removeSubleader2(@Param("id") Long id, @Param("mId")String mId);
+
+    @Modifying
+    @Query(value="UPDATE GatheringEntity g SET g.gSubleader3 = null WHERE g.id = :id AND g.gSubleader3 = :mId")
+    void removeSubleader3(@Param("id") Long id, @Param("mId")String mId);
+
+
+    @Modifying
+    @Query(value="UPDATE GatheringEntity g SET g.gSubleader1 = :mId where g.id = :id")
+    void grantSubleader1(@Param("id") Long id, @Param("mId")String mId);
+
+    @Modifying
+    @Query(value="UPDATE GatheringEntity g SET g.gSubleader2 = :mId where g.id = :id")
+    void grantSubleader2(@Param("id") Long id, @Param("mId")String mId);
+
+    @Modifying
+    @Query(value="UPDATE GatheringEntity g SET g.gSubleader3 = :mId where g.id = :id")
+    void grantSubleader3(@Param("id") Long id, @Param("mId")String mId);
 }

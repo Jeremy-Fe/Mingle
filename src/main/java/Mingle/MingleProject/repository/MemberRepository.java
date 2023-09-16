@@ -52,7 +52,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     @Query(value="select s from ScheduleEntity s where s.sMember like %:mId%")
     List<ScheduleEntity> findByMemberId (@Param("mId") String mId);
 
-
-
-
+    @Modifying
+    @Query("UPDATE MemberEntity m SET m.mGGathering = :currentMGathering WHERE m.mId = :mId")
+    void removeGathering(@Param("currentMGathering") String currentMGathering, @Param("mId") String mId);
 }

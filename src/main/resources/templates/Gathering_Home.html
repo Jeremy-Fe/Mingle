@@ -9,7 +9,7 @@
 
 
     <!--css-->
-    <link href="/CSS/Gathering_Home.css?after" type="text/css" rel="stylesheet">
+    <link href="/CSS/Gathering_Home.css" type="text/css" rel="stylesheet">
     <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
     <!--font-->
     <!--font-family: 'GmarketSans';-->
@@ -100,7 +100,14 @@
                 <img class="leadercrown" src="/image/leadercrown.png" th:if="${member.getMId() == GatheringHome.getGMainleader()}">
                 <img class="leadercrown" src="/image/subleaderstar.png" th:if="${member.getMId() == GatheringHome.getGSubleader1() || member.getMId() == GatheringHome.getGSubleader2() || member.getMId() == GatheringHome.getGSubleader3()}">
                 <ul>
-                    <li><h4><a href="#" th:text="${member.getMName()}"></a></h4></li>
+                    <li>
+                        <h4>
+                            <a th:text="${member.getMName()}"></a>
+                        </h4>
+                        <a th:href="@{|/GrantSubleader/${GatheringHome.id}/${member.getMId()}|}" th:unless="${session.loginId != GatheringHome.getGMainleader()}" th:if="${memberStat.index != 0 && GatheringHome.getGSubleader1() != member.getMId() && GatheringHome.getGSubleader2() != member.getMId() && GatheringHome.getGSubleader3() != member.getMId()}" class="subLeader" onclick="return confirm('운영진을 부여하시겠습니까?(*운영진은 3명만 가능합니다)')">운영진 부여</a>
+                        <a th:href="@{|/RemoveSubleader/${GatheringHome.id}/${member.getMId()}|}" th:unless="${session.loginId != GatheringHome.getGMainleader()}" th:if="${memberStat.index != 0 && GatheringHome.getGSubleader1() == member.getMId() || GatheringHome.getGSubleader2() == member.getMId() || GatheringHome.getGSubleader3() == member.getMId()}" style="color: rebeccapurple" class="subLeader" onclick="return confirm('운영진을 해임하시겠습니까?')">운영진 해임</a>
+                        <a th:href="@{|/forcedExit/${GatheringHome.id}/${member.getMId()}|}" th:if="${session.loginId == GatheringHome.getGMainleader() && memberStat.index != 0}" class="forcedExit" onclick="return confirm('강제퇴장 시키겠습니까?(모든 활동이 사라지지 않습니다.)')">강퇴하기</a>
+                    </li>
                     <li><p th:text="${member.getMIntroduction()}"></p></li>
                 </ul>
             </li>

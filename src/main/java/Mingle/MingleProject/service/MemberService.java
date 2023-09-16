@@ -290,4 +290,8 @@ public class MemberService {
         return scheduleDTOList;
     }
 
+    @Transactional
+    public void removeGathering(String currentMGathering, String mId) {
+        memberRepository.removeGathering(currentMGathering, mId);
+    }
 }

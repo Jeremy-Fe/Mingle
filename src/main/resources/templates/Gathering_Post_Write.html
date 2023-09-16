@@ -54,7 +54,7 @@
                       <option name="pBNum" value="3">관심사 공유</option>
                       <option name="pBNum" value="1">정모후기</option>
                       <option name="pBNum" value="4">가입인사</option>
-                      <option name="pBNum" value="5">공지사항</option>
+                      <option name="pBNum" value="5" th:if="${GatheringHome.getGMainleader() == session.loginId || GatheringHome.getGSubleader1() == session.loginId || GatheringHome.getGSubleader2() == session.loginId || GatheringHome.getGSubleader3() == session.loginId}">공지사항</option>
                   </select>
                   </li>
                 </div>

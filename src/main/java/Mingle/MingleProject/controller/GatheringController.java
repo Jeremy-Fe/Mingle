@@ -169,6 +169,67 @@ public class GatheringController {
         return "Gathering_Home";
     }
 
+
+    @GetMapping("/GrantSubleader/{id}/{mId}") // 운영진 권한 부여
+    public String GrantSubleader(@PathVariable Long id, @PathVariable String mId) {
+        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+        if(gatheringDTO.getGSubleader1() == null){
+            gatheringService.GrantSubleader(id, mId, 1);
+        } else if (gatheringDTO.getGSubleader2() == null){
+            gatheringService.GrantSubleader(id, mId, 2);
+        } else if (gatheringDTO.getGSubleader3() == null){
+            gatheringService.GrantSubleader(id, mId, 3);
+        } else {
+
+        }
+
+        return "redirect:/Gathering_Home/" + id;
+    }
+    @GetMapping("/RemoveSubleader/{id}/{mId}") // 운영진 해임
+    public String RemoveSubleader(@PathVariable Long id, @PathVariable String mId) {
+        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+        if(gatheringDTO.getGSubleader1() != null && gatheringDTO.getGSubleader1().equals(mId)){
+            gatheringService.RemoveSubleader(id, mId, 1);
+        } else if (gatheringDTO.getGSubleader2() != null && gatheringDTO.getGSubleader2().equals(mId)){
+            gatheringService.RemoveSubleader(id, mId, 2);
+        } else if (gatheringDTO.getGSubleader3() != null && gatheringDTO.getGSubleader3().equals(mId)){
+            gatheringService.RemoveSubleader(id, mId, 3);
+        }
+
+
+        return "redirect:/Gathering_Home/" + id;
+    }
+    @GetMapping("/forcedExit/{id}/{mId}") // 강제 퇴장
+    public String forcedExit(@PathVariable Long id, @PathVariable String mId) {
+        gatheringService.forcedExit(id, mId);
+
+        GatheringDTO gatheringDTO = gatheringService.findByGathering(id);
+        String gName = gatheringDTO.getGName();
+
+        // mId로 회원을 조회
+        Optional<MemberEntity> optionalMember = memberRepository.findBymId(mId);
+
+        if (optionalMember.isPresent()) {
+            MemberEntity member = optionalMember.get();
+            String currentMGathering = member.getMGathering();
+            if (currentMGathering != null) {
+                // MGathering에서 gName을 제거
+                currentMGathering = currentMGathering.replace("," + gName, "").replace(gName + ",", "").replace(gName, "");
+                memberService.removeGathering(currentMGathering, mId);
+
+                //세션 업데이트
+                MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+                if (memberDTO != null) {
+                    memberDTO.setMGGathering(currentMGathering);
+                    session.setAttribute("memberDTO", memberDTO);
+                }
+            }
+        }
+
+        return "redirect:/Gathering_Home/" + id;
+    }
+
+
     @GetMapping("Gathering_Board/{id}")
     public String Gathering_Board(@PathVariable Long id, Model model) {
         // DB 에서 모임 데이터를 가져와서 Gathering_Home에 보여준다.
