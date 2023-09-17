@@ -86,7 +86,7 @@
                 </ul>
             </a>
         </ul>
-        <a class="writeButton" th:href="@{|/Gathering_Post_Write/${id}|}"><img src="/image/write.png"></a>
+        <a class="writeButton" th:if="${session.memberDTO.getMGGathering() != null and session.memberDTO.getMGGathering().contains(GatheringHome.getGName())}" th:href="@{|/Gathering_Post_Write/${id}|}"><img src="/image/write.png"></a>
     </div>
 </div>
 <div th:replace="/footer.html"></div>
