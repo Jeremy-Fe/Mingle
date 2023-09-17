@@ -7,6 +7,7 @@
     height: auto;
     background-color: white;
     float: left;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 .view > #g_contents > #g_introduction > h4 {
     display: block;
@@ -57,6 +58,7 @@
     height: 1270px;
     margin-right: 5px;
     background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 .view > #g_contents > #g_news > .g_news_bg {
     padding-bottom: 20px;
@@ -146,6 +148,7 @@
     float: left;
     background-color: #fff;
     padding: 20px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .view > #g_contents > #g_member > h4 {
