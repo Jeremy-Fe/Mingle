@@ -1,0 +1,57 @@
+@charset "utf-8";
+*{margin: 0;padding: 0; box-sizing: border-box; }
+li{list-style: none; font-family:'GmarketSans'; font-weight: 100}
+a{text-decoration: none; color: #2C244F; display: block;}
+img{display: block;}
+.clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
+p{font-family: 'GmarketSans'; font-weight: 100}
+h3{font-family: 'GmarketSans';}
+body{z-index: 2; background-color: aliceblue;}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    z-index: 0;
+    width: 0.5em; /* 스크롤바 너비 */
+    height: 0.5em; /* 스크롤바 높이 */
+}
+/* 스크롤바의 Track 스타일링 */
+::-webkit-scrollbar-track {background:rgba(255,255,255,0.65) ;}
+/* 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,255,0.1);
+    border-radius: 10px;
+}
+/* 마우스 오버 시 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,255,0.4);
+}
+
+#wrap{
+    width:1920px; height: 1075px;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    display: flex;
+}
+
+#wrap>section{
+    width: 1795px; height: 955px;
+    background-color: #fff;
+    margin: auto;
+    border-radius: 20px;
+    display: flex;
+}
+#wrap>section>ul{
+    width: 1053px;
+    margin: auto;
+}
+#wrap>section>ul>li{font-family: 'GmarketSans';}
+#text>a{font-size: 55px;}
+#text>p{font-size: 32px;}
+#link{
+    width: 350px; height: 70px;
+    background-color: #B1B2FF;
+    font-weight: bolder;
+    line-height: 77px;
+    font-size: 48px; color:#fff;
+    border-radius: 20px;
+    text-align: center;
+}

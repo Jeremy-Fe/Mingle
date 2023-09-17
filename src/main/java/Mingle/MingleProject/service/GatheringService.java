@@ -234,4 +234,32 @@ public List<GatheringEntity> findMyMingles(String userId) {
     public void modifyCoverimg(String gCoverimg, long id) {
         gatheringRepository.updateCoverimg(gCoverimg, id);
     }
+
+
+    @Transactional
+    public void RemoveSubleader(Long id, String mId, int i) {
+        if(i == 1){
+            gatheringRepository.removeSubleader1(id, mId);
+        } else if (i == 2){
+            gatheringRepository.removeSubleader2(id, mId);
+        } else if (i == 3){
+            gatheringRepository.removeSubleader3(id, mId);
+        }
+    }
+
+    @Transactional
+    public void GrantSubleader(Long id, String mId, int i) {
+        if(i == 1){
+            gatheringRepository.grantSubleader1(id, mId);
+        } else if (i == 2){
+            gatheringRepository.grantSubleader2(id, mId);
+        } else if (i == 3){
+            gatheringRepository.grantSubleader3(id, mId);
+        }
+    }
+
+    @Transactional
+    public void forcedExit(Long id, String mId) {
+
+    }
 }

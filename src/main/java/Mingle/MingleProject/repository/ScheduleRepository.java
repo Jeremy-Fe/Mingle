@@ -21,4 +21,6 @@ public interface ScheduleRepository extends JpaRepository<ScheduleEntity, Long> 
     @Modifying
     @Query("UPDATE ScheduleEntity s SET s.sMember =:sMember where s.sNum = :sNum")
     void cancelSchedule(@Param("sNum") Long sNum, @Param("sMember")String sMember);
+
+
 }

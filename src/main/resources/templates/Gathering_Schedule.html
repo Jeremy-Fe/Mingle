@@ -45,7 +45,17 @@
             }
         }
 
+        function toggleScheduleClose(id) {
+            const schedule_Member = document.getElementById(id);
 
+            if(schedule_Member.style.display === 'none' || schedule_Member.style.display === ''){
+                schedule_Member.style.display = 'block';
+            } else if (schedule_Member.style.display === 'block') {
+                schedule_Member.style.display = 'none';
+            }
+
+
+        }
 
     </script>
 </head>
@@ -68,19 +78,30 @@
                 <input type="submit" value="일정추가" onclick="return confirm('일정을 추가 하시겠습니까?')">
             </form>
         </div>
-        <ul class="schedule" th:each="schedule, scheduleStat : ${Schedule}">
-            <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span><a th:href="@{|/delete_Schedule/${GatheringHome.id}/${schedule.getSNum()}|}" class="schedule_delete" th:if="${session.loginId == schedule.getSMId()}" onclick="return confirm('일정을 삭제 하시겠습니까?')">일정 삭제하기</a></li>
+        <div class="schedule" th:each="schedule, scheduleStat : ${Schedule}">
+            <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span><a th:href="@{|/delete_Schedule/${GatheringHome.id}/${schedule.getSNum()}|}" class="schedule_delete" th:if="${session.loginId == schedule.getSMId() || session.loginId == GatheringHome.getGMainleader()}" onclick="return confirm('일정을 삭제 하시겠습니까?')">일정 삭제하기</a></li>
             <li><span class="schedule_subject">일시</span><span class="schedule_detail" th:text="${schedule.getSDate()}">일시</span>
             </li>
             <li><span class="schedule_subject">위치</span><span class="schedule_detail" th:text="${schedule.getSPlace()}">장소</span></li>
             <li><span class="schedule_subject">금액</span><span class="schedule_detail" th:text="${schedule.getSPrice()}">금액</span>
             </li>
-            <li>
-                <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
-                    class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
+            <li class="schedule_box">
+                <span class="schedule_subject">참여</span>
+                <span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)} + '/' + ${schedule.getSMaxHeadcount()}" th:onclick="'toggleScheduleClose(' + ${schedule.getSNum()} +')'" style="cursor: pointer">참여인원</span>
+                <span class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
+                <div th:id="${schedule.getSNum()}" class="schedule_Member clearfix">
+<!--                    <img class="schedule_mPimg" th:src="'data:image/png;base64,' + ${#strings.toString(mPImg.get(memberStat.index))}">-->
+<!--                    <a class="schedule_mName" th:text="${member.getMName()}"></a>-->
+                    <img class="schedule_close" src="/image/scheduleClose.png"  th:onclick="'toggleScheduleClose(' + ${schedule.getSNum()} +')'" style="cursor: pointer">
+                    <h4 th:text="'참가인원 ' + ${memberCount.get(scheduleStat.index)} + '/' + ${schedule.getSMaxHeadcount()}">참가인원</h4>
+                    <div class="schedule_profile" th:each="mPImg, mPImgStat : ${mPImg.get(scheduleStat.index)}">
+                        <img class="schedule_mPimg" th:src="'data:image/png;base64,' + ${#strings.toString(mPImg)}">
+                        <span class="schedule_mName" th:text="${mName.get(scheduleStat.index)[mPImgStat.index]}">신우철</span>
+                    </div>
+                </div>
             </li>
-            <a th:href="@{|/Gathering_Schedule_Cancel/${GatheringHome.id}/${schedule.getSNum()}|}" th:if="${Attend[scheduleStat.index]}"class="attend-button" onclick="return confirm('일정을 취소하시겠습니까?')">취소하기</a>
-            <a th:href="@{|/Gathering_Schedule_Attend/${GatheringHome.id}/${schedule.getSNum()}|}" th:unless="${Attend[scheduleStat.index]}" class="attend-button" onclick="return confirm('일정에 참석하시겠습니까?')">참석하기</a>
+            <a th:href="@{|/Gathering_Schedule_Cancel/${GatheringHome.id}/${schedule.getSNum()}|}" th:if="${Attend[scheduleStat.index] && loginedMember}"class="attend-button" onclick="return confirm('일정을 취소하시겠습니까?')">취소하기</a>
+            <a th:href="@{|/Gathering_Schedule_Attend/${GatheringHome.id}/${schedule.getSNum()}|}" th:if="${!Attend[scheduleStat.index] && loginedMember}" class="attend-button" onclick="return confirm('일정에 참석하시겠습니까?')">참석하기</a>
         </ul>
     </div>
 </div>

@@ -26,6 +26,7 @@ public class MingleController {
     private final GatheringService gatheringService;
     private final PostService postService;
     private final CommentsService commentsService;
+    private final ScheduleService sheduleService;
 
     @Autowired
     private HttpSession session; // HttpSession 주입
@@ -240,8 +241,9 @@ public class MingleController {
     }
 
     @GetMapping("/delete/{mId}")
-    public String deleteById(@PathVariable("mId") String mID, RedirectAttributes redirectAttributes, HttpSession session) {
-        boolean deleted = memberService.deleteMemberById(mID);
+    public String deleteById(@PathVariable("mId") String mId, RedirectAttributes redirectAttributes, HttpSession session) {
+//        boolean deletedSchedule = memberService.deleteScheduleById(mId);
+        boolean deleted = memberService.deleteMemberById(mId);
         if (deleted) {
             // 세션 무효화 (세션 종료)
             session.invalidate();
@@ -408,7 +410,6 @@ public class MingleController {
         }
         return false; // 회원을 찾을 수 없거나 업데이트 실패
     }
-
 
 
 }
