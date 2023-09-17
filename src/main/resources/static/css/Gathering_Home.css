@@ -186,6 +186,31 @@
     float: left;
     margin-top: 5px;
     width: 320px;
+    position: relative;
+    cursor: pointer;
+}
+.view > #g_contents > #g_member > ul > li > ul > li > h4 > a{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: -9px;
+}
+.view > #g_contents > #g_member > ul > li > ul > li > .subLeader{
+    position: absolute;
+    width: 75px;
+    left: 255px;
+    top: 10px;
+    color: #4e4eff;
+    font-size: 14px;
+}
+.view > #g_contents > #g_member > ul > li > ul > li > .forcedExit{
+    position: absolute;
+    width: 65px;
+    left: 335px;
+    top: 13px;
+    color: red;
+    font-size: 14px;
 }
 .view > #g_contents > #g_member > ul > li > ul > li >  p {
     float: left;

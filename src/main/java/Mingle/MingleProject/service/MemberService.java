@@ -219,13 +219,14 @@ public class MemberService {
             index++;
         }
         // 리스트중에 null값이 있다면 삭제
-        while (gatheringMemberDTOList.remove(null)) {
-        }
-
+        while(gatheringMemberDTOList.remove(null)){}
+        
         // 이렇게 해서 모임이름이 정확하지 않는 멤버 DTO를 삭제할 수 있음
 
         return gatheringMemberDTOList;
     }
+
+
 
 
     public boolean deleteMemberById(String mId) {
@@ -253,7 +254,7 @@ public class MemberService {
         Optional<MemberEntity> memberEntity = memberRepository.findBymId(cmId);
 
         MemberDTO memberDTO = MemberDTO.toMemberDTO(memberEntity.get());
-        return memberDTO;
+        return  memberDTO;
     }
 
     @Transactional
@@ -285,6 +286,9 @@ public class MemberService {
             scheduleDTOList.add(EntityDTOMapper.entityToDTO(scheduleEntity));
 
         }
+
+
+
         return scheduleDTOList;
     }
 
@@ -308,5 +312,11 @@ public class MemberService {
 //        }
 //        return false;   // 회원을 찾을 수 없거나 업데이트 실패
 //    }
+    @Transactional
+    public void removeGathering(String currentMGathering, String mId) {
+        memberRepository.removeGathering(currentMGathering, mId);
+    }
+
+
 }
 
