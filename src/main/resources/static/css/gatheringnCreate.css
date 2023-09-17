@@ -1,0 +1,65 @@
+@charset "utf-8";
+*{font-family: 'GmarketSans';}
+/*view_바꿔야할 부분*/
+.view{width: 100%;
+    border-radius: 20px 0 0 0;
+}
+/* 헤더 */
+#viewHeader{width: 1450px; height: 150px;background-color: #fff; border-radius: 20px; margin: auto;}
+
+#viewHeader>li{float: left; }
+
+#hGtrImg{width: 125px; height: 125px; margin: 12px 25px;}
+#hGtrImg>img{width: 125px; height: 125px; object-fit: cover; border-radius: 50%;}
+
+#hGtrExp{float: left; margin: 15px 5px;}
+#hGtrExp>div{ width: 1000px;height: 50px;}
+#hGtrExp>div>a{
+    display: block;  
+    padding: 6px 13px; height: 40px; 
+    font-size: 25px; font-weight: lighter; 
+    border-radius: 15px;
+    background-color: #dbdbdb;
+    float: left;
+    margin-right: 15px;
+}
+#hGtrExp>h3{width: 1050px; height: 60px; font-size: 50px;  font-weight: bold}
+
+#hSelCatg{width: 120px;margin-top: 40px;}
+#hSelCatg>h4{font-size: 32px;  font-family: 'GmarketSans'; font-weight: normal;}
+#hSelCatg>.select_board{
+    width: 175px;height: 46px; margin-top: 10px;
+    border-radius: 15px; border: 1px solid #dbdbdb; font-size: 25px; 
+    font-weight: lighter;line-height:46px; 
+}
+#hSelCatg>.select_board>option{
+    font-size: 25px; font-weight: lighter; line-height:40px; text-align: center;
+}
+
+
+/* 글작성페이지 */
+#createView{width: 1450px; height: 810px; background-color: #fff; margin: auto; margin-top: 10px; border-radius: 20px;}
+#createViewInner{width: 1350px; margin: auto;}
+
+#createViewInner>li{margin: auto;}
+#createViewInner>li>input{}
+
+#cTitle{
+    width: 1330px; height:70px;
+    border: none; border-bottom: 1px solid #dbdbdb;
+    font-size: 42px; line-height: 70px;margin-top: 10px;
+    font-weight: lighter;
+}
+#cText{
+    width: 1330px; height: 640px;
+    border: none; font-size: 22px;font-weight: lighter;
+    line-height: 30px; padding: 15px;
+}
+.cImg{font-size: 20px;
+    margin-top: 20px;}
+#cCreate{
+    width: 180px; height: 70px;
+    background-color: #AAC4FF;
+    float: right; font-size: 34px; line-height: 70px;
+    border: none ;border-radius: 20px;
+}

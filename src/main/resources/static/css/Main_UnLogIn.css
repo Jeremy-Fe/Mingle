@@ -1,0 +1,123 @@
+@charset "utf-8";
+*{margin: 0;padding: 0; box-sizing: border-box; }
+li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
+a{text-decoration: none; color: #2C244F;}
+img{display: block;}
+.clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
+p{font-family: 'GmarketSans'; }
+h3{font-family: 'GmarketSans';}
+
+.
+.view > div{
+/*    width: 1400px;  background-color:rgba(255,255,255,0.65);
+    margin: auto; margin-top: 20px;
+    border-radius: 20px*/;}
+/*section_ view_l_news*/
+.l_news{height: 240px; margin-top: 40px;
+    width: 1400px;  background-color:rgba(255,255,255,0.65);
+    margin: auto; margin-top: 20px;
+    border-radius: 20px;}
+.l_news>ul{width: 1400px;height: 100px}
+
+.l_news>ul>li>p{
+    font-size: 35px;  font-family: 'Jalnan'; color: #564797;
+    float: left ; padding-left: 25px; margin-left: 25px;line-height: 100px;
+}
+.l_news>ul>li>a{
+    margin: 15px; float: right; line-height: 70px;
+    font-size: 25px;  font-weight:300;
+}
+.l_news>ul>li>a>img{
+    argin: 15px; width: 22px;
+    height: 22px; float: right ;
+    margin-top: 20px ;padding-left: 10px
+}
+.l_news> .inBox{
+    width: 1300px; height: 110px; background-color: #fff;
+    border-radius: 20px;
+    margin: auto; padding: 20px; padding-left: 40px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.l_news>li{float: left}
+.l_news> .inBox>p{
+    float: left ; line-height: 80px;
+    font-size: 32px;  font-weight: 300; color: grey}
+.l_news> .inBox>p:first-child{margin-right: 40px}
+.l_news> .inBox>h3{
+    float: left ;line-height: 75px ; margin-left: 10px;
+    font-size: 48px; font-weight: 500}
+
+/*배너 section_ view_banner*/
+.banner{width: 1400px; margin: auto; overflow: hidden;
+    height: 450px !important;
+    border-radius: 20px; background-color:rgba(255,255,255,0.5);
+    margin-top: 40px;
+}
+.banner>.ul{width: 1400px ; margin-left: 180px ;height: 450px !important; padding-top: 50px;}
+.banner>.ul>.swiper-slide{}
+.banner>.ul>.swiper-slide>img{width: 1010px; }
+
+.banner>.ul>.B_mbti>img{}
+.swiper-button-prev,
+.swiper-button-next {font-size: 100px;font-weight: bold; color: #564797}
+
+/*핫모임 section_ view_hotMeeting*/
+hotMeeting{height: 350px}
+hotMeeting>ul{width: 1300px; margin: auto ;}
+hotMeeting>ul>h3{
+    font-family: 'Jalnan'; font-size: 36px;
+    line-height: 100px; color: #564797; float: left;
+}
+/* footer 메뉴 */
+#footer{
+    height: 196px;
+    position: relative;
+}
+.footer_menu{
+    position: absolute;
+    top: 108px;
+    left: 415px;
+}
+.footer_menu > a{
+    position: relative;
+    color: #FFFFFF;
+    margin-right: 30px;
+}
+.footer_menu > a::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #FFFFFF;
+    top: 1px;
+    left: -15px;
+}
+.footer_menu > a:first-child:before{
+    width: 0;
+}
+.footer_menu > a:last-child{
+    margin-right: 0;
+}
+
+/* footer CopyRight */
+.f_copyright{
+    position: absolute;
+    top: 143px;
+    left: 475px;
+}
+.f_copyright > img{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+}
+.f_copyright > p{
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    color: #EEEEEE;
+}
+.f_copyright .corp{
+    color: #FFFFFF;
+}
+

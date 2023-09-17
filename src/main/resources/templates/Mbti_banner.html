@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/image/DefaultProfile_logo.png">
+    <title>Title</title>
+    <!--css-->
+    <link href="/css/Mbti_banner.css?after" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="/defaultUI.html"></div>
+<div class="contents">
+    <ul>
+        <li>
+            <img class="mbti_img" src="image/MBTI_이미지.png">
+        </li>
+    </ul>
+<div class="contents2">
+    <ul>
+        <li>
+            <form action="/search2">
+                <button name="" class="search">더 많은 모임을 보고 싶다면?</button>
+            </form>
+        </li>
+    </ul>
+</div>
+</div>
+
+</body>
+</html>

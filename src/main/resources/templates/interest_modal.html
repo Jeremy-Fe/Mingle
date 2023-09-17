@@ -1,0 +1,94 @@
+<link rel="stylesheet" type="text/css" href="/css/interest_modal.css" />
+<div id="modalWrap">
+    <div id="modalContent">
+        <div id="modalBody">
+            <span id="closeBtn">&times;</span>
+            <p>관심사 선택</p>
+            <button value="여행" type="button" id="btn1"><img src="image/create_meet_image/create_여행.png" alt="관심사 이미지" onclick="">여행</button>
+            <button value="운동스포츠" type="button" id="btn2"><img src="image/create_meet_image/create_운동.png" alt="관심사 이미지" onclick="">운동/스포츠</button>
+            <button value="독서" type="button" id="btn3"><img src="image/create_meet_image/create_독서.png" alt="관심사 이미지" onclick="">독서</button>
+            <button value="업종직무" type="button" id="btn4"><img src="image/create_meet_image/create_업종.png" alt="관심사 이미지" onclick="">업종/직무</button>
+            <button value="문화공연축제" type="button" id="btn5"><img src="image/create_meet_image/create_문화.png" alt="관심사 이미지" onclick="">문화/공연/축제</button>
+            <button value="음악악기" type="button" id="btn6"><img src="image/create_meet_image/create_음악.png" alt="관심사 이미지" onclick="">음악/악기</button>
+            <button value="공예만들기" type="button" id="btn7"><img src="image/create_meet_image/create_공예.png" alt="관심사 이미지" onclick="">공예/만들기</button>
+            <button value="댄스무용" type="button" id="btn8"><img src="image/create_meet_image/create_댄스.png" alt="관심사 이미지" onclick="">댄스/무용</button>
+            <button value="사교인맥" type="button" id="btn9"><img src="image/create_meet_image/create_사교.png" alt="관심사 이미지" onclick="">사교/인맥</button>
+            <button value="차오토바이" type="button" id="btn10"><img src="image/create_meet_image/create_차.png" alt="관심사 이미지" onclick="">차/오토바이</button>
+            <button value="사진영상" type="button" id="btn11"><img src="image/create_meet_image/create_사진.png" alt="관심사 이미지" onclick="">사진/영상</button>
+            <button value="게임오락" type="button" id="btn12"><img src="image/create_meet_image/create_게임.png" alt="관심사 이미지" onclick="">게임/오락</button>
+            <button value="요리제조" type="button" id="btn13"><img src="image/create_meet_image/create_요리.png" alt="관심사 이미지" onclick="">요리/제조</button>
+            <button value="반려동물" type="button" id="btn14"><img src="image/create_meet_image/create_반려.png" alt="관심사 이미지" onclick="">반려/동물</button>
+            <button value="가족결혼" type="button" id="btn15"><img src="image/create_meet_image/create_가족.png" alt="관심사 이미지" onclick="">가족/결혼</button>
+            <button value="자유주제" type="button" id="btn16"><img src="image/create_meet_image/create_자유주제.png" alt="관심사 이미지" onclick="">자유주제</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btn = document.getElementById('interest_bt');
+        const modal = document.getElementById('modalWrap');
+        const closeBtn = document.getElementById('closeBtn');
+
+        const selectedInterestImage = document.querySelector('#selectedInterestImage');
+        const selectedInterest = document.querySelector('#selectedInterest');
+
+        btn.onclick = function () {
+            modal.style.display = 'block';
+        }
+
+        closeBtn.onclick = function () {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        const interestButtons = document.querySelectorAll('#modalBody > button[id^="btn"]');
+
+        const interestImages = {
+            '여행': 'image/create_meet_image/create_여행.png',
+            '운동스포츠': 'image/create_meet_image/create_운동.png',
+            '독서': 'image/create_meet_image/create_독서.png',
+            '업종직무': 'image/create_meet_image/create_업종.png',
+            '문화공연축제': 'image/create_meet_image/create_문화.png',
+            '음악악기': 'image/create_meet_image/create_음악.png',
+            '공예만들기': 'image/create_meet_image/create_공예.png',
+            '댄스무용': 'image/create_meet_image/create_댄스.png',
+            '사교인맥': 'image/create_meet_image/create_사교.png',
+            '차오토바이': 'image/create_meet_image/create_차.png',
+            '사진영상': 'image/create_meet_image/create_사진.png',
+            '게임오락': 'image/create_meet_image/create_게임.png',
+            '요리제조': 'image/create_meet_image/create_요리.png',
+            '반려동물': 'image/create_meet_image/create_반려.png',
+            '가족결혼': 'image/create_meet_image/create_가족.png',
+            '자유주제': 'image/create_meet_image/create_자유주제.png',
+        };
+
+        interestButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const interest = this.value;
+                const imageFileName = interestImages[interest];
+
+                // 이미지를 바꾸기 전에 이미지 크기를 조절합니다.
+                selectedInterestImage.style.width = '50px'; // 원하는 너비
+                selectedInterestImage.style.height = '50px'; // 원하는 높이
+
+                selectedInterestImage.src = imageFileName;
+
+                // 선택한 관심사를 설정합니다.
+                if (selectedInterest) {
+                    selectedInterest.value = interest;
+                }
+
+                modal.style.display = 'none';
+
+
+            });
+        });
+    });
+</script>

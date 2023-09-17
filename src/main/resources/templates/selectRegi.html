@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>select_Resion</title>
+    <link rel="icon" href="/image/DefaultProfile_logo.png">
+     <!--css-->
+    <link rel="stylesheet" href="/CSS/selectRegi.css">
+    <!--script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="regiModal" class="modal1 clearfix">
+        <div>
+            <input id="regiSearch" type="search" name="regiSearch" onkeyup="enterkey()" placeholder="동 . 읍.  면을 선택해주세요.">
+        </div>
+        <div id="showRegi"  style="overflow:scroll;">
+        </div>
+        <button onclick="regiAll()">전체보기</button>
+        <a href="#" rel="modal1:close"></a>
+    </div>
+
+    <script>
+        function enterkey() {
+            if (window.event.keyCode == 13) { // 엔터 키를 눌렀을 때 실행
+                const regiSearch = document.getElementById('regiSearch').value; // 'regiSearch' id를 가진 요소에서 값을 가져옴
+                console.log("1.ReTest1 : "+regiSearch);
+                data = null
+                $.ajax({
+                    url: "selectRegi/regiSearch",
+                    method: "GET",
+                    data: { keyword: regiSearch },
+                    success: function(data) {
+                        // 성공적으로 응답 받았을 때 처리할 로직 작성
+
+                        $("#showRegi>").remove();
+                        for (var i = 0; i < data.length; i++) {
+                            console.log("2."+data)
+                            var city = data[i];
+                            var 시도 = city.bcName;
+                            var 군구 = city.mcName;
+                            var html = '<a class="sResult" data-index="' + i + '"><p>' + 군구 + ' (' + 시도 + ')' + '</p></a>';
+                            $("#showRegi").append(html);
+                        }
+                        $(document).on("click", ".sResult", function(event) {
+                                console.log("3.불러온 데이터 길이 = "+data.length)
+                                var dataIndex = $(this).data("index");
+                                console.log("4. 선택한 dataIndex = "+ dataIndex)
+                                var selectedRegi = data[dataIndex];
+                                var sRegi1 = selectedRegi.mcName;
+                                var sRegi2 = selectedRegi.bcName;
+                                console.log("5.받을 값 = "+sRegi1);
+                            $.ajax({
+                                url: "search2/selectedRegion",
+                                type : 'POST',
+                                data: { selectedRegion: sRegi1 },
+                                success: function(response) {
+
+                                    console.log("6.selectedRegi = " + sRegi1);
+
+                                    document.querySelector('a[rel="modal:close"]').click();
+                                    // location.reload();
+
+                                    // 기존값 지우기
+                                    var selectedRegiElement = document.getElementById("selectedRegi");
+                                    selectedRegiElement.innerText = "";
+
+
+                                    $("#selectedRegi").append(sRegi2+" "+sRegi1);
+
+                                    data = null;
+                                    console.log("7. data = null ?"+data);
+                                    모임업데이트();
+                                },
+                                error: function(xhr, status, error) {
+                                    // 에러 발생 시 처리할 로직 작성
+                                    console.error(error);
+                                }
+                            });
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        // 에러 발생 시 처리할 로직 작성
+                        console.error(error);
+                    }
+                });
+            }
+        }
+
+        function regiAll() {
+            var selectedRegiElement = document.getElementById("selectedRegi");
+            selectedRegiElement.innerText = "";
+            $("#selectedRegi").append("전체");
+            document.querySelector('a[rel="modal:close"]').click();
+            모임업데이트();
+        }
+
+    </script>
+</body>
+</html>

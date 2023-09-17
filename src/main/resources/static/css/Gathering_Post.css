@@ -1,0 +1,291 @@
+#Post{
+    width: 1450px;
+    background-color: #fff;
+    float: left;
+    margin: 20px 0px 0px 30px;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.Post_bg{
+    width: 100%;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px  #bcbcbc;
+}
+
+.Post_bg > .contents > .post_writerimg{
+    width: 75px;
+    height: 75px;
+    margin-bottom: 10px;
+    display: inline;
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.Post_bg > .contents > li > .post_boardName{
+    color: #808080;
+    font-size: 20px;
+    margin-bottom: 3px;
+    float: right;
+}
+.Post_bg > .contents > li > .updatePost{
+    position: relative;
+}
+.Post_bg > .contents > li > .updatePost > .menu{
+    float: right;
+    padding: 0px 30px;
+}
+.Post_bg > .contents > li > .updatePost > #submenu{
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 120px;
+    left: 1150px;
+    background-color: #fff;
+    top: 50px;
+    border: 1px solid #000;
+    border-radius: 20px;
+
+}
+.Post_bg > .contents > li > .updatePost > #submenu > a{
+    display: block;
+    text-align: center;
+    font-size: 24px;
+
+}
+.Post_bg > .contents > li > div > #submenu > .modify {
+    line-height: 65px;
+}
+
+.Post_bg > .contents > li > .post_writerName{
+    font-size: 28px;
+    padding: 10px 0px;
+}
+.Post_bg > .contents > li > .post_date{
+    color: #808080;
+    font-size: 20px;
+}
+.Post_bg > .contents > .title_line{
+    border-bottom: 1px solid #DADADA;
+    margin-bottom: 20px;
+}
+.Post_bg > .contents > li > .post_title{
+    font-size: 38px;
+    margin: 20px 0px;
+    width: 1000px;
+}
+.Post_bg > .contents > li > .post_contents{
+    font-size: 22px;
+    white-space: pre-line;
+    font-weight: normal;
+    margin: 50px 0px;
+}
+
+.Post_bg > .contents > li > a > .post_img {
+    width: 1150px;
+    height: 800px;
+    object-fit: contain;
+    margin: 0px 95px 50px;
+}
+
+.Post_bg > .like > li{
+    height: 95px;
+    padding-top: 30px;
+    border-top: 1px solid #DADADA;
+    display: flex;
+}
+.Post_bg > .like > li > a {
+    position: relative;
+    margin-right: 150px;
+}
+.Post_bg > .like > li > a > img{
+    width: 35px;
+    height: 35px;
+    display: inline;
+    margin-right: 10px;
+}
+.Post_bg > .like > li > a > span{
+    font-size: 25px;
+    margin-right: 50px;
+    line-height: 40px;
+    position: absolute;
+    width: 150px;
+}
+
+
+.search{
+    margin-bottom: 30px;
+}
+
+.search > input{
+    width: 1213px;
+    height: 60px;
+    border-radius: 20px;
+    border: none;
+    background-color: #EEEEEE;
+    font-size: 25px;
+    padding-left: 30px;
+}
+
+.search > button{
+    width: 120px;
+    height: 60px;
+    border: none;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.Post_bg > .comments{}
+.Post_bg > .comments > .comment{
+    margin-bottom: 15px;
+}
+
+.Post_bg > .comments > .comment > .comment_profileimg{
+    width: 60px;
+    height: 60px;
+    display: inline;
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.Post_bg > .comments > .comment > li{
+    position: relative;
+}
+.Post_bg > .comments > .comment > li > .comment_writer {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+}
+.Post_bg > .comments > .comment > li > .comment_delete{
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    left: 100px;
+    background-color: #fff;
+    top: 30px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    z-index: 1;
+}
+.Post_bg > .comments > .comment > li > .comment_delete > a{
+    text-align: center;
+    font-size: 24px;
+    line-height: 60px;
+    display: block;
+}
+
+.Post_bg > .comments > .comment > li > .comment_date{
+    font-size: 16px;
+    color: #828282;
+}
+.Post_bg > .comments > .comment > li > .comment_contents{
+    font-size: 18px;
+    margin-bottom: 3px;
+    display: inline-block;
+}
+
+.Post_bg > .comments > .comment > li > .comment_like {
+    position: relative;
+}
+.Post_bg > .comments > .comment > li > .comment_like > .tabom{
+    display: inline;
+    width: 24px;
+    height: 24px;
+}
+.Post_bg > .comments > .comment > li > .comment_like > span{
+    position: absolute;
+    width: 100px;
+    left: 30px;
+    top: -6px;
+    color: #828282;
+}
+.Post_bg > .comments > .comment > li > .comment_like > span::before{
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 15px;
+    background-color: #828282;
+    right: -10px;
+    top: 0px;
+}
+
+.Post_bg > .comments > .comment > li > .comment_reply{
+    position: absolute;
+    left: 260px;
+    bottom: 7px;
+    color: #828282;
+}
+
+.reply{
+    margin: 10px 0px 0px 60px;
+}
+.reply > .comment_profileimg{
+    width: 60px;
+    height: 60px;
+    display: inline;
+    float: left;
+    margin-right: 10px;
+}
+.reply >  li{
+    position: relative;
+}
+.reply > li > .comment_writer {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 8px;
+}
+.reply > li > .comment_date{
+    font-size: 16px;
+    color: #828282;
+}
+.reply > li > .comment_contents{
+    font-size: 18px;
+    margin-bottom: 3px;
+    display: inline-block;
+}
+
+.reply > li > .comment_like {
+    position: relative;
+}
+.reply > li > .comment_like > .tabom{
+    display: inline;
+    width: 24px;
+    height: 24px;
+}
+.reply > li > .comment_like > span{
+    position: absolute;
+    width: 100px;
+    left: 30px;
+    top: -6px;
+    color: #828282;
+}
+.reply > li > .comment_like > span::before{
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 15px;
+    background-color: #828282;
+    right: -10px;
+    top: 0px;
+}
+
+.reply > li > .comment_reply{
+    position: absolute;
+    left: 260px;
+    bottom: 7px;
+    color: #828282;
+}
+

@@ -1,0 +1,262 @@
+@charset "UTF-8";
+/* 글꼴 */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* 초기화 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #333;
+    font-family: 'GmarketSansMedium';
+    font-weight: 300;
+}
+li{
+    list-style: none;
+}
+a{
+    color: #333;
+    text-decoration: none;
+}
+img{
+    display: block;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+    font-size: 14px;
+}
+.clearfix::after, .clearfix::before{
+    content: "";
+    display: block;
+    clear: both;
+}
+li{
+    list-style: none;
+}
+
+/* 전체영역 */
+#wrap{
+    width: 100%;
+}
+
+body{
+	background: linear-gradient(90deg, #B1B2FF, #AAC4FF);
+}
+
+#contents{
+    position: relative;
+    width: 100%;
+    height: 1020px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contents .background{
+    position: relative;
+	width: 1200px;
+	height: 670px;
+	background-color: #F2F4FF;
+	border-radius: 20px;
+}
+
+#contents .background .logo{
+    position: absolute;
+    width: 454px;
+    height: 458px;
+    top: 111px;
+    left: 73px;
+}
+
+#contents .background > p{
+    position: absolute;
+    font-size: 40px;
+    font-family: 'Fugaz One', cursive;
+    color: #514680;
+    left: 706px;
+    top: 111px;
+}
+
+/* id, pw */
+.drop_mId{
+    position: absolute;
+    left: 657px;
+    top: 225px;
+    width: 380px;
+    height: 65px;
+}
+.drop_mId .mId{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 60px;
+}
+.drop_mId > img{
+    position: absolute;
+    top: 14px;
+    left: 13px;
+}
+
+.drop_mPwd{
+    position: absolute;
+    left: 657px;
+    top: 305px;
+    width: 380px;
+    height: 65px;
+}
+.drop_mPwd .mPwd{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 60px;
+}
+.drop_mPwd > img{
+    position: absolute;
+    top: 10px;
+    left: 9px;
+}
+
+/* checkbox영역 */
+.check_wrap{
+    width: 200px;
+    position: absolute;
+    left: 665px;
+    top: 385px;
+}
+
+#keep_btn{
+    display: none;
+}
+#keep_btn + label{
+    cursor: pointer;
+}
+#keep_btn + label > span{
+    vertical-align: middle;
+    padding-left: 7px;
+    color: #8B8B8B;
+}
+/* label:before에 체크하기 전 상태 CSS */
+input#keep_btn + label:before{
+    content:"";
+    display:inline-block;
+    width:24px;
+    height:24px;
+    border:3px solid #2C244F;
+    vertical-align:middle;
+}
+
+/* label:before에 체크 된 상태 CSS */
+input#keep_btn:checked + label:before{
+    content:"";
+    border-color:#2C244F;
+    background-image: url("../image/login_check.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+/* 로그인버튼 */
+#login{
+    position: absolute;
+    left: 657px;
+    top: 452px;
+    width: 380px;
+    height: 65px;
+    color: #FFFFFF;
+    background-color: #B1B2FF;
+    border-radius: 5px;
+    border: none;
+    font-size: 30px;
+}
+#login:hover{
+    background-color: #514680;
+}
+
+/* 로그인 메뉴 */
+.login_menu{
+    position: absolute;
+    left: 662px;
+    top: 540px;
+}
+
+.login_menu > a{
+    position: relative;
+    color: #8B8B8B;
+    margin-right: 30px;
+}
+.login_menu > a::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #8B8B8B;
+    top: 1px;
+    left: -15px;
+}
+.login_menu > a:first-child:before{
+    width: 0;
+}
+.login_menu > a:last-child{
+    margin-right: 0;
+}
+
+/* footer 메뉴 */
+.footer_menu{
+    position: absolute;
+    bottom: 32px;
+}
+.footer_menu > a{
+    position: relative;
+    color: #FFFFFF;
+    margin-right: 30px;
+}
+.footer_menu > a::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #FFFFFF;
+    top: 1px;
+    left: -15px;
+}
+.footer_menu > a:first-child:before{
+    width: 0;
+}
+.footer_menu > a:last-child{
+    margin-right: 0;
+}
+
+/* footer CopyRight */
+.f_copyright{
+    position: absolute;
+    bottom: 30px;
+    height: 0;
+}
+.f_copyright > img{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+}
+.f_copyright > p{
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    color: #EEEEEE;
+}
+.f_copyright .corp{
+    color: #FFFFFF;
+}

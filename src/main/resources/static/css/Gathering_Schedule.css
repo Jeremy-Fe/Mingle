@@ -1,0 +1,191 @@
+#schedule{}
+
+.schedule_bg{
+    width: 1450px;
+    background-color: #fff;
+    float: left;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 135px 50px 35px 50px;
+    position: relative;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.schedule_bg > .schedule_create_button {
+    width: 200px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    font-size: 26px;
+    border: 0px;
+    text-align: center;
+    line-height: 60px;
+    font-family: 'GmarketSans';
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    cursor: pointer;
+}
+.schedule_bg > .schedule_create_button:hover{
+    background-color: #514680;
+    color: white;
+}
+.schedule{
+    position: relative;
+    box-shadow: 0px 0px 15px  #bcbcbc;
+    border-radius: 20px;
+    padding: 25px 0px;
+    margin-bottom: 20px;
+}
+.schedule > li {
+    padding-left: 50px;
+}
+.schedule > li:first-child{
+    margin-bottom: 35px;
+}
+.schedule > li > span {
+    font-size: 26px;
+}
+.schedule > li > span:first-child {
+    margin-right: 15px;
+}
+.schedule > li > .schedule_date1{
+    color: red;
+}
+.schedule > li > .schedule_date2{
+    color: #0047FF;
+}
+.schedule > li > .schedule_title{
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+.schedule > li > .schedule_subject{
+    font-size: 18px;
+    color: #727272;
+    margin-right: 15px;
+}
+.schedule > li > .schedule_detail{
+    font-size: 18px;
+}
+.schedule > li > .schedule_Member{
+    width: 650px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 15px #999;
+    border-radius: 20px;
+    padding: 20px;
+    position: absolute;
+    top: -200px;
+    left: 350px;
+    display: none;
+}
+.schedule > .schedule_box{
+    position: relative;
+}
+.schedule > li > .schedule_Member > h4{
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+.schedule > li > .schedule_Member > .schedule_close{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.schedule > li > .schedule_Member > .schedule_profile{
+    width: 150px;
+    float: left;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.schedule > li > .schedule_Member > .schedule_profile > .schedule_mPimg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.schedule > li > .schedule_Member > .schedule_profile > .schedule_mName{
+    font-size: 25px;
+    font-family: 'GmarketSansMedium';
+    position: absolute;
+    top: 7px;
+    left: 50px;
+}
+.schedule > a {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    width: 120px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #B1B2FF;
+    font-size: 26px;
+    border: 0px;
+    text-align: center;
+    line-height: 60px;
+    font-family:'GmarketSansMedium';
+}
+.schedule > a:hover {
+    background-color: #514680;
+    color: white;
+}
+.shcedule_create{
+    width: 900px;
+    height: 670px;
+    background-color: #fff;
+    padding: 50px;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0px 0px 15px #999;
+    border-radius: 20px;
+    top: -50px;
+    left: 200px;
+    display: none;
+}
+.shcedule_create > img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.shcedule_create > form > ul{}
+.shcedule_create > form > ul > li{
+    width: 800px;
+    height: 70px;
+    margin-bottom: 30px;
+}
+.shcedule_create > form > ul > li > img{
+    display: inline;
+    margin: 10px 0px;
+}
+.shcedule_create > form > ul > li > input:first-child{
+    width: 800px;
+}
+.shcedule_create > form > ul > li > input{
+    width: 700px;
+    height: 70px;
+    border-radius: 20px;
+    border: 0;
+    background-color: #F2F2F2;
+    float: right;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.shcedule_create > form > ul > li > input::placeholder{
+    color: #BABABA;
+}
+.shcedule_create > form > input{
+    width: 800px;
+    height: 70px;
+    border-radius: 30px;
+    border: 0;
+    color: #fff;
+    background-image: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    font-size: 25px;
+}
+.schedule_delete {
+    font-size: 18px;
+    float: right;
+    padding-right: 50px;
+    color: #777;
+}

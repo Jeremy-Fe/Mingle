@@ -1,0 +1,536 @@
+@charset "utf-8";
+/*@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}*/
+*{margin: 0;padding: 0; box-sizing: border-box; }
+li{list-style: none; font-family:'GmarketSans'; font-weight: 500}
+a{text-decoration: none; color: #2C244F;}
+img{display: block;}
+.clearfix::after, clearfix::before{content: ""; display: block;clear: both;}
+p{font-family: 'GmarketSans'; }
+h3{font-family: 'GmarketSans';}
+body{z-index: 2}
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+    z-index: 0;
+    width: 0.5em; /* 스크롤바 너비 */
+    height: 0.5em; /* 스크롤바 높이 */
+}
+/* 스크롤바의 Track 스타일링 */
+::-webkit-scrollbar-track {background:rgba(255,255,255,0.65) ;}
+/* 스크롤바의 Thumb 스타일링 */
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,255,0.1);
+    border-radius: 10px;
+}
+/* 마우스 오버 시 스크롤바의 Thumb 스타일링1 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,255,0.4);
+}
+
+
+/* wrap */
+#wrap{width: 1915px; margin: 0 auto;}
+
+/*header*/
+#header{width: 400px; height: 1000px; float: left;
+    /*background-color: aliceblue*/
+}
+/*header_logo*/
+#header .logo{width: 100%; height: 200px;}
+#header .logo>a>img{float: left; width:90%; margin: 10px}
+
+/*header_메뉴*/
+#header .menu{ width: 100%; padding: 20px}
+#header .menu>ul{}
+#header .menu>ul>li{margin-bottom: 82px ;margin-left: 20px;}
+#header .menu>ul>li>a{font-size: 40px; margin-left: 25px;}
+#header .menu>ul>li>a>img{width: 40px;float: left;}
+/*#header .menu>ul>li>a:first-child::before{ line-height: 0px}*/
+
+
+/* section */
+#box{width: 1515px; height: 1000px;  float: left; ;}
+#box>div{float: left}
+#user{width: 100%; height: 65px;}
+
+/*section_ user*/
+#box>#user >ul{float: right}
+#box>#user >ul>li{float: left; line-height: 65px;}
+#box>#user >ul>li>a{ font-size: 30px; line-height: 70px;}
+#box>#user >ul>li>img{/*아이콘 링크 or 이미지*/}
+#box>#user >ul>.icon_a{width: 45px; height: 45px; border-radius: 50%; background-color: #AAC4FF ;margin: 10px}
+#box>#user >ul>.icon_b>img{width: 30px; height: 30px;  margin-top: 20px ;}
+
+/*view*/
+#view{width: 100%; height: 100%;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    border-radius: 20px 0 0 0;
+    padding-top: 40px;
+}
+#view::-webkit-scrollbar {
+    display: none;
+}
+/*-------페이지 기본구성(끝)*-------*/
+/*view_바꿔야할 부분*/
+.view{width: 100%;
+    height: 100%;/* 임의지정 값*/
+    margin-bottom: 30px;
+    border-radius: 20px 0 0 0;
+    background: linear-gradient(135deg, #B1B2FF, #AAC4FF);
+    border-radius: 20px 0 0 0;
+}
+/*<section_ view>*/
+
+/*---뷰 전체 기본설정---*/
+.view > div {
+    width: 1400px;
+    margin: auto; margin-top: 20px;
+    border-radius: 20px;
+    position: relative;
+    /*---뷰 전체 기본설정(끝)---*/
+}
+
+/*--가입한 모임--*/
+#MyPage > p{
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 40px;
+    font-family: 'Jalnan';
+}
+#title_02 {
+    font-size: 38px;
+    font-weight: bold;
+    line-height: 40px;
+    font-family: 'Jalnan';
+    margin-left: 50px;
+    margin-bottom: 20px;
+    color: #2C244F;
+}
+#sc1 {
+    width: 1400px;
+    background-color: rgba(255,255,255,0.65);
+    height: 300px;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    left: -10px;
+}
+#myclass {
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    border-radius: 20px;
+    position: relative;
+}
+
+/*---내모임 출력(감추기)---*/
+#myclass > div {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    width: 195px;
+    height: 240px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    float: left;
+
+}
+
+#myclass > div:last-child {
+    margin-right: 30px;
+}
+
+
+
+#myclass > div > a > .Gname {
+    width: 195px;
+    height: 240px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 355px;
+    display: block;
+    position: absolute;
+}
+
+#myclass > div > a > span {
+    width: 195px;
+    height: 240px;
+    color: #8B8B8B;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 410px;
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px ;
+    padding-right: 5px ;
+}
+
+#myclass > div > a > .GImg > img{
+    width: 120px;
+    height: 120px;
+    left: 35px;
+    bottom: 90px;
+    border-radius: 100%;
+    position: absolute;
+    object-fit: cover;
+}
+#myclass > div > .dummy{
+    width: 195px;
+    height: 240px;
+    color: #2C244F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    line-height: 355px;
+    display: block;
+    position: absolute;
+}
+
+.view>.logo2>ul>.my2{
+    font-size: 38px;
+    height: 0px;
+    padding-left: 60px;
+}
+.view>.logo2>ul>.my2>a{
+    font-family: 'Jalnan';
+}
+.view>.logo2 .join_class{
+    width: 100%; height: 306px; background-color:rgba(255,255,255,0.65);
+    margin: auto;
+    border-radius: 20px;
+    position: relative;
+    top: 55px;
+    left: 50px;
+    overflow: hidden;
+}
+
+.view>.logo2 .join_class .container2{
+    width: 195px; height: 236px; background-color:#FFFFFF;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 35px;
+    left: 307px;
+}
+.view>.logo2 .join_class .container3{
+    width: 195px; height: 236px; background-color:#FFFFFF;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 35px;
+    left: 580px;
+}
+.view>.logo2 .join_class .container4{
+    width: 100%; height: 236px; background-color:#FFFFFF;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 35px;
+    left: 853px;
+}
+.view>.logo2 .join_class .container5{
+    width: 238px; height: 236px; background-color:#FFFFFF;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 35px;
+    left: 1126px;
+}
+.view>.logo2 .join_class .container5>ul>li{
+    font-size: 12px;
+    color: #8B8B8B;
+    position: absolute;
+    top: 160px;
+    left: 94px;
+    overflow: hidden;
+}
+
+
+.all_bt{
+    border: none;
+    background: none;
+    position: absolute;
+    top: 73px;
+    left: 79px;
+}
+/*recommend 섹션 */
+
+.view>.recommend{
+    width: 100%;
+    height: 1125px;
+    position: relative;
+}
+.view>.recommend>ul>li{
+    font-size: 38px;
+    position: absolute;
+    top: 41px;
+    left: 55px;
+    font-family: 'Jalnan';
+    color: #2C244F;
+}
+.view>.recommend>ul>li>a{
+    font-family: 'Jalnan';
+}
+.view>.recommend .recommend2{
+    width: 1400px; height: 885px; background-color:rgba(255,255,255,0.65);
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+.view>.recommend .container6{
+    width: 1328px; height: 164px; background-color:#FFFFFF;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 58px;
+    left: 35px;
+}
+.view>.recommend .container7{
+    width: 1328px; height: 164px; background-color:#FFFFFF;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 252px;
+    left: 35px;
+}
+.view>.recommend .container8{
+    width: 1328px; height: 164px; background-color:#FFFFFF;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 458px;
+    left: 35px;
+}
+.view>.recommend .container9{
+    width: 1328px; height: 164px; background-color:#FFFFFF;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 664px;
+    left: 35px;
+}
+/*바로가기 버튼*/
+.view>.recommend .recommend2 .container6>ul> .sh_bt1{
+    border: none;
+    background: none;
+    position: absolute;
+    top: 91px;
+    left: 1156px;
+}
+.sh_bt2{
+    border: none;
+    background: none;
+    position: absolute;
+    top: 91px;
+    left: 1156px;
+}
+.sh_bt3{
+    border: none;
+    background: none;
+    position: absolute;
+    top: 91px;
+    left: 1156px;
+}
+.sh_bt4{
+    border: none;
+    background: none;
+    position: absolute;
+    top: 91px;
+    left: 1156px;
+}
+/*맞춤 추천 이미지*/
+.view>.recommend .recommend2 .container6 .dd_img1{
+    position: absolute;
+    top: 15px;
+    left: 50px;
+}
+.dd_img2{
+    position: absolute;
+    top: 15px;
+    left: 50px;
+}
+.dd_img3{
+    position: absolute;
+    top: 15px;
+    left: 50px;
+}
+.dd_img4{
+    position: absolute;
+    top: 15px;
+    left: 50px;
+}
+/*모임 만들기 컨테이너*/
+.view>.recommend .make_meet{
+    width: 730px;
+    height: 80px;
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 406px;
+    background-color: #EEF1FF;
+}
+.view>.recommend .make_meet:hover {
+    background-color: #968ACD;
+}
+.view>.recommend .make_meet .meet_bt{
+    width: 730px;
+    height: 80px;
+    border: none;
+    background: none;
+    font-size: 27px;
+    font-family: 'GmarketSansMedium';
+    text-align: center;
+}
+.view>.recommend .make_meet .meet_bt:hover{
+    cursor: pointer;
+}
+.view>.recommend .make_meet > ul > img{
+    position: absolute;
+    z-index: 100;
+    left: 250px;
+    top: 24px;
+}
+.view>.recommend .make_meet > ul > img:hover{
+    cursor: pointer;
+}
+
+/* footer 메뉴 */
+#footer{
+    height: 196px;
+    position: relative;
+}
+.footer_menu{
+    position: absolute;
+    top: 78px;
+    left: 415px;
+}
+.footer_menu > a{
+    position: relative;
+    color: #FFFFFF;
+    margin-right: 30px;
+}
+.footer_menu > a::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #FFFFFF;
+    top: 1px;
+    left: -15px;
+}
+.footer_menu > a:first-child:before{
+    width: 0;
+}
+.footer_menu > a:last-child{
+    margin-right: 0;
+}
+
+/* footer CopyRight */
+.f_copyright{
+    position: absolute;
+    top: 113px;
+    left: 475px;
+}
+.f_copyright > img{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+}
+.f_copyright > p{
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    color: #EEEEEE;
+}
+.f_copyright .corp{
+    color: #FFFFFF;
+}
+
+#recMingleName>li {
+    line-height: 40px;
+    font-family: 'Jalnan';
+}
+
+#recMingleName>li>a {
+    line-height: 40px;
+    font-family: 'Jalnan';
+}
+#recMingleName {
+    height: 45px;
+    margin-left: 45px;
+    font-size: 38px;
+    font-weight: bold;
+
+
+
+}
+/* 모임카드 */
+.mingle{
+    display: block; float: left;
+    width: 440px; height: 270px; padding: 15px;
+    border-radius: 20px; background-color: #fff;
+    margin: 12px;
+    overflow: hidden; text-overflow: ellipsis;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+#recMingle{
+    width: 1400px; height: 800px;
+    border-radius: 20px; background-color:rgba(255,255,255,0.5);
+    margin: auto ; margin-top: 20px;
+}
+#recMingCard{
+    width: 1400px; height: 800px;
+    margin: auto ;
+}
+
+/* 모임카드 상단 */
+.mingle ul {
+    width: 405px; height: 160px;
+    margin: auto;
+}
+.mingle>ul>img{width: 175px; height: 160px;float: left; overflow: hidden; object-fit: cover; border-radius: 50%}
+.mingle>ul>li{
+    float: right; width: 200px; margin: 5px;
+}
+#mTitle{ width: 200px; height: 36px; font-size: 32px;color: #6554AF; line-height: 36px;}
+#mTitle>h4{width: 190px; height: 36px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap}
+#mCategorie{
+    height: 35px; font-size: 20px;
+    line-height: 35px; padding-left: 20px;
+    border-radius: 10px; background-color: #ececec;
+}
+#mRogi{
+    color: #737373;  text-align: right;
+    font-weight: lighter;font-family: 'NexonLv1Gothic';
+}
+#mUserImg{width: 100%;height: 35px;}
+#mUser{
+    font-size: 20px;
+    text-align: right;
+    font-family: 'NexonLv1Gothic';
+}
+/* 모임 설명 */
+#mIntd{
+    width: 405px;height: 65px;
+    margin: auto;padding: 15px;
+    line-height: 20px; font-size: 16px;
+
+    overflow: hidden; text-overflow: ellipsis;
+}
+
+

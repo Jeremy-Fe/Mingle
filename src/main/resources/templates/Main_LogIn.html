@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/image/DefaultProfile_logo.png">
+    <title>Main</title>
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!--ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--css-->
+    <link href="/CSS/Main_LogIn.css" type="text/css" rel="stylesheet">
+
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+        <div th:replace="/defaultUI.html"></div>
+
+                <!-- 바꿔야하는 부분 -->
+                <div class="view">
+                    <!--내모임-->
+                    <div id="myMingle" class="mingles">
+                        <ul>
+                            <h3>내 모임</h3>
+                            <div id="myMingCard" style="overflow-x:auto; overflow-y: hidden" >
+                                <div id="myMingCardInner" style="height: 250px; width: max-content;">
+                                </div>
+
+                            </div>
+                        </ul>
+                    </div>
+                    <!-- / 내모임-->
+                    <!--배너-->
+                    <div class="swiper-container banner" >
+                         <div class="swiper-wrapper ul">
+                            <div class="swiper-slide B_mbti"><a href="/Mbti_banner"><img rel="mbti" src="image/배너_mbti.png"></a></div>
+                             <div class="swiper-slide B_hot"><a href="/Create_Meet"><img rel="hot" src="image/배너_모임만들기.png"></a></div>
+                             <div class="swiper-slide B_mypage"><a href="/MyPage"><img rel="mypage" src="image/배너_MYPAGE.png"></a></div>
+                             <div class="swiper-slide B_mimgle"><a href="/join"><img rel="mimgle" src="image/배너_mingle.png"></a></div>
+                        </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    </div>
+                    <!-- / 배너-->
+
+
+
+                    <!--추천모임-->
+                    <div id="recMingle" class="mingles">
+                        <ul>
+                            <h3>추천모임</h3>
+                            <div id="recMingCard" style="overflow-x:auto; overflow-y: hidden" >
+                                <div id="recMingCardInner" style="height: 250px; width: max-content;">
+                                </div>
+
+                            </div>
+                         </ul>
+                    </div>
+                    <!-- / 추천모임-->
+                    <div id="footer">
+                        <div class="footer_menu">
+                            <a href="#">이용약관</a>
+                            <a href="#">개인정보처리방침</a>
+                            <a href="#">책임의 한계와 법적고지</a>
+                            <a href="#">회원정보 고객센터</a>
+                        </div> <!--footer메뉴 -->
+                        <div class="f_copyright">
+                            <img src="image/login_footer.png">
+                            <p>Copyright ⓒ </p>
+                            <p class="corp">mingle Corp. </p>
+                            <p>All Rights Reserved.</p>
+                        </div> <!--copyright -->
+                    </div>
+
+                </div>
+
+    <input type="hidden" id="loginId" th:value="${session.loginId}">
+    <script>
+        /*배너*/
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            slideToClickedSlide: true,
+            effect: 'coverflow',
+            autoplay: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            coverflowEffect: {
+                rotate: 0, // 회전 각도
+                stretch: 400, // 슬라이드 겹침 정도
+                depth: 300, // 원근 거리
+                slideShadows: false, // 슬라이드 그림자 사용 여부
+            },
+        });
+
+        /*모임 불러오기*/
+        window.onload = function() {
+            var loginId = document.getElementById("loginId").value;
+
+            console.log("loginId = "+loginId);
+            /*내모임검색*/
+            if(loginId == null){
+                alert("(error)"+"로그인이 필요한 항목입니다.\n"+"회원 가입 또는 로그인을 해주세요");
+            }
+            else{
+                $.ajax({
+                    url: "Main_LogIn/findMyMingles",
+                    type : 'GET',
+                    success: function(responseData) {
+                        console.log("responseData = "+ responseData);
+                        if(responseData.mingles.length > 0){
+                            for (var i = 0; i < responseData.mingles.length; i++) {
+                                var mingles = responseData.mingles[i];
+                                var minglesMemberCount = responseData.minglesMemberCount[i];
+                                console.log("responseData.mingles[i] =", mingles);
+                                var 모임아이디 = mingles.id;
+                                var 모임명 = mingles.gname;
+                                var 모임이미지 = mingles.gcoverimg;
+                                var 모임카테고리 = mingles.gmainsubject;
+                                var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
+                                var 모임소개글 = mingles.gintroduction;
+                                var 모임인원 = parseInt(minglesMemberCount);
+                                console.log("ajax : 내 모임명 확인 =", 모임명);
+                                console.log("ajax : 내 response.length+1 확인 =", responseData.mingles.length);
+                                var htmlMingle =
+                                    '<a href="/Gathering_Home/'+ 모임아이디+'" class="mingle">\n' +
+                                    '<ul>\n' +
+                                    '<img src="'+모임이미지+'">\n' +
+                                    '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
+                                    '<li id="mCategorie">'+모임카테고리+'</li>\n' +
+                                    '<li id="mRogi">'+모임지역+'</li>\n' +
+                                    '<li id="mUser">'+모임인원+'명이 참가중</li>\n' +
+                                    '</ul>\n' +
+                                    '<p id="mIntd">'+모임소개글+'</p>\n' +
+                                    '</a>';
+
+                                $("#myMingCardInner").append(htmlMingle);
+                            }
+                        }else{
+                            var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/search2">'+
+                                '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
+                                '밍글되어있지 않아요.' +
+                                '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 찾기</p></a>' +
+                                '</div>';
+                            $("#myMingCardInner").append(htmlMingle);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+
+            }
+            /*추천모임검색*/
+            $.ajax({
+                url: "Main_LogIn/recomMingle",
+                type : 'GET',
+                success: function(responseData) {
+                    console.log("추천모임 GET = "+responseData)
+                    if(responseData.mingles.length > 0){
+                        for (var i = 0; i < responseData.mingles.length; i++) {
+                            var mingles = responseData.mingles[i];
+                            var minglesMemberCount = responseData.minglesMemberCount[i];
+                            console.log("추천모임 GET response[i] =", mingles);
+                            var 모임아이디 = mingles.id;
+                            var 모임명 = mingles.gname;
+                            var 모임이미지 = mingles.gcoverimg;
+                            var 모임카테고리 = mingles.gmainsubject;
+                            var 모임지역 = (mingles.gcity)+" "+(mingles.gdistrict);
+                            var 모임소개글 = mingles.gintroduction;
+                            var 모임인원 = parseInt(minglesMemberCount);
+                            console.log("추천된 모임명 확인 =", 모임명);
+                            console.log("추천모임 GET response.length+1 확인 =", responseData.mingles.length);
+                            var htmlMingle =
+                                '<a href="/Gathering_Home/'+ 모임아이디+'" class="mingle">\n' +
+                                '<ul>\n' +
+                                '<img src="'+모임이미지+'">\n' +
+                                '<li id="mTitle"><h4>'+모임명+'</h4> <img src=""></li>\n' +
+                                '<li id="mCategorie">'+모임카테고리+'</li>\n' +
+                                '<li id="mRogi">'+모임지역+'</li>\n' +
+                                '<li id="mUser">'+모임인원+'명이 참가중</li>\n' +
+                                '</ul>\n' +
+                                '<p id="mIntd">'+모임소개글+'</p>\n' +
+                                '</a>';
+                            $("#recMingCardInner").append(htmlMingle);
+                        }
+                    }else{
+                        var htmlMingle ='<div class="mingle" style="padding: 10px;"><a href="/Create_Meet">'+
+                            '<h1 style="font-family:\'Jalnan\'; font-size: 38px; line-height: 190px;color: #514680; text-align: center">' +
+                            '모임이 없습니다.' +
+                            '</h1><p style="font-family: \'GmarketSans\'; float: right; font-size: 22px; font-weight: lighter">모임 만들기</p></a>' +
+                            '</div>';
+                        $("#recMingCardInner").append(htmlMingle);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+
+        };
+
+
+
+    </script>
+</body>
+</html>

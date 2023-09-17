@@ -1,0 +1,429 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+
+    font-weight: bold;
+    font-style: normal;
+}
+
+/*contents 영역*/
+.contents {
+    height: 842px;
+    position: relative;
+}
+
+.contents > ul > li {
+    font-size: 32px;
+    position: absolute;
+    top: 72px;
+    left: 130px;
+}
+
+.contents .select1 {
+    width: 259px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 51px;
+    left: 216px;
+}
+
+.contents .select2 {
+    width: 259px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 51px;
+    left: 513px;
+}
+/*시,도 콤보 박스*/
+.city {
+    width: 239px;
+    height: 55px;
+    border-radius: 5px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    font-size: 32px;
+    font-family: 'GmarketSansMedium';
+    border: 0 solid white;
+    color: #8B8B8B;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+/*구,군 콤보 박스*/
+.county {
+    width: 239px;
+    height: 55px;
+    border-radius: 5px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0 solid white;
+    font-size: 32px;
+    font-family: 'GmarketSansMedium';
+    color: #8B8B8B;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+/*지역 이미지*/
+.marker {
+    position: absolute;
+    top: 59px;
+    left: 45px;
+}
+/*지역 이미지 옆에 글씨*/
+.maker2{
+    position: absolute;
+    top: 72px;
+    left: 103px;
+    font-size: 32px;
+}
+
+.meet_name2 {
+    width: 587px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 191px;
+    left: 513px;
+}
+
+#btn {
+    position: absolute;
+    left: 72px;
+    top: 186px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+#modalWrap {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+#modalContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 720px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#modalBody>p{
+    font-size: 32px;
+    text-align: center;
+    grid-column: span 4;
+}
+#modalBody {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+#modalBody > button{
+    border: 0;
+    background-color: transparent;
+    font-size: 17px;
+    font-family: 'GmarketSansMedium';
+    cursor: pointer;
+}
+#modalBody > button:not(#btn1):not(#btn2):not(#btn3):not(#btn4):not(#btn5):not(#btn6):not(#btn7):not(#btn8):not(#btn9):not(#btn10):not(#btn11):not(#btn12):not(#btn13):not(#btn14):not(#btn15):not(#btn16) {
+    margin: 10px;
+    padding: 10px;
+    width: 130px;
+    height: 108px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* 새로운 모달 창 스타일 */
+#subModalWrap {
+    display: none; /* 초기에는 보이지 않도록 설정 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 배경을 반투명하게 설정 */
+    z-index: 9999; /* 다른 요소 위에 표시되도록 설정 */
+}
+
+
+#subCloseBtn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+#closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.interest1{
+    width: 259px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 191px;
+    left: 216px;
+}
+.I_interest{
+    width: 239px;
+    height: 55px;
+    border-radius: 5px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    border: none;
+    outline: none;
+    font-size: 32px;
+    font-family: 'GmarketSansMedium';
+    color: #8B8B8B;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.g_name {
+    width: 560px;
+    height: 55px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 32px;
+    font-family: 'GmarketSansMedium';
+    color: #8B8B8B;
+    position: absolute;
+    top: 9px;
+    left: 13px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.meet_introduce {
+    width: 1018px;
+    height: 290px;
+    background-color: rgba(255, 255, 255, 0.65);
+    margin: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 317px;
+    left: 68px;
+}
+
+.m_introduce {
+    width: 970px;
+    height: 244px;
+    border-radius: 5px;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 32px;
+    font-family: 'GmarketSansMedium';
+    color: #8B8B8B;
+    position: absolute;
+    top: 23px;
+    left: 24px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+
+}
+
+.personnel > ul .person {
+    position: absolute;
+    top: 660px;
+    left: 73px;
+}
+
+.personnel > ul > li {
+    position: absolute;
+    top: 673px;
+    left: 128px;
+    font-size: 32px;
+}
+
+.personnel_box {
+    width: 173px;
+    height: 74px;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: 20px;
+    position: absolute;
+    top: 650px;
+    left: 399px;
+}
+
+.G_personnel {
+    width: 147px;
+    height: 55px;
+    border-radius: 5px;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 32px;
+    font-family: 'GmarketSans';
+    color: #8B8B8B;
+    position: absolute;
+    top: 9px;
+    left: 13px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.G_create_bt {
+    width: 441px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: 20px;
+    font-size: 27px;
+    font-family: 'NexonLv1Gothic';
+    font-weight: bold;
+    color: #2C244F;
+    position: absolute;
+    top: 763px;
+    left: 535px;
+    border: 0;
+}
+
+.G_create_bt:hover {
+    background-color: #968ACD;
+    cursor: pointer;
+}
+#subModalContent>p{
+    width: 100%; height: 100px;
+    padding-left: 20px;
+    font-family: 'Jalnan'; color: #564797; font-weight: bolder;
+    font-size: 48px;
+}
+#selectedInterest{
+    line-height: 100px;
+    font-family: 'Jalnan'; color: #564797; font-weight: bolder;
+    font-size: 48px;
+}
+
+#subModalContent {
+    width: 1400px;
+    height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #EEF1FF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+}
+
+#subInterestList {
+    width: 100%;
+    height: 650px;
+    line-height: 85px;
+    background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;
+    padding: 20px;
+
+}
+#subInterestList>li{
+    width: max-content; height: max-content;
+    margin: 10px 20px; padding: 5px 15px;
+    font-size: 34px;
+    border-radius: 10px;
+    font-family: 'NexonLv1Gothic'; font-weight: lighter; text-align: center;
+    background-color: #FFFFFF;
+    float: left;cursor: pointer;
+}
+#subInterestList>li:hover{
+    background-color: #968ACD;
+}
+
+
+
+
+
+/*footer 영역*/
+.footer {
+    height: 319px;
+    position: relative;
+}
+
+.footer_menu {
+    position: absolute;
+    top: 230px;
+    left: 415px;
+}
+
+.footer_menu > a {
+    position: relative;
+    color: #FFFFFF;
+    margin-right: 30px;
+}
+
+.footer_menu > a::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #FFFFFF;
+    top: 1px;
+    left: -15px;
+}
+
+.footer_menu > a:first-child:before {
+    width: 0;
+}
+
+.footer_menu > a:last-child {
+    margin-right: 0;
+}
+
+/* footer CopyRight */
+.f_copyright {
+    position: absolute;
+    top: 174px;
+    height: 0;
+    left: 475px;
+}
+
+.f_copyright > img {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+.f_copyright > p {
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    color: #EEEEEE;
+}
+
+.f_copyright .corp {
+    color: #FFFFFF;
+}

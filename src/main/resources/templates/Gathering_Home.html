@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>모임이름-홈</title>
+    <link rel="icon" href="/image/DefaultProfile_logo.png">
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <!--css-->
+    <link href="/CSS/Gathering_Home.css" type="text/css" rel="stylesheet">
+    <!--<link href="/CSS/header.css" type="text/css" rel="stylesheet">-->
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <style>
+        .view > .g_title > ul > li > a:first-child {
+            color: #542DFF;
+            border-bottom: 3px solid #542DFF;
+            margin-left: 70px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="/defaultUI.html"></div>
+
+<div th:replace="~{Gathering :: gatheringParam ( ${GatheringHome.getGCoverimg()}, ${GatheringHome.getGDistrict()}, ${GatheringHome.getGMainsubject()}, ${GatheringHome.getGName()}, ${id}, ${GatheringHome.getGMainleader()})}"></div>
+
+<div id="g_contents">
+    <div id="g_introduction">
+        <h4>소개</h4>
+        <p id="g_introduction_content" th:text="${GatheringHome.getGIntroduction()}">
+
+        </p>
+        <input type="checkbox" id="g_introduction_more">
+        <script>
+            var contentLength = document.querySelector("#g_introduction_content").innerHTML.length
+            var moreButton = document.getElementById("g_introduction_more");
+            var background = document.getElementById("g_introduction");
+
+            if (contentLength < 100) {
+                moreButton.style.display = "none";
+                background.style.paddingBottom = "30px";
+            }
+
+        </script>
+    </div>
+    <div id="g_news">
+        <ul class="g_news_bg">
+            <li><h4>최근</h4></li>
+            <ul>
+                <p>일정</p>
+                <span th:if="${Schedule.size() == 0}" class="postNone" style="margin-bottom: 20px">일정이 없습니다.</span>
+                <ul class="g_news_schedule" th:each="schedule, scheduleStat : ${Schedule}">
+                    <li><span class="schedule_title" th:text="${schedule.getSTitle()}">제목</span></li>
+                    <li><span class="schedule_subject">일시</span><span class="schedule_detail" th:text="${schedule.getSDate()}">일시</span>
+                    </li>
+                    <li><span class="schedule_subject">위치</span><span class="schedule_detail" th:text="${schedule.getSPlace()}">장소</span></li>
+                    <li><span class="schedule_subject">금액</span><span class="schedule_detail" th:text="${schedule.getSPrice()}">금액</span>
+                    </li>
+                    <li>
+                        <span class="schedule_subject">참여</span><span class="schedule_detail" th:text="${memberCount.get(scheduleStat.index)}">참여인원</span><span class="schedule_detail">/</span><span class="schedule_detail" th:text="${schedule.getSMaxHeadcount()}"></span><span
+                            class="schedule_subject" th:text="'('+${remaining.get(scheduleStat.index)}+ '자리 남음)'">잔여 인원</span>
+
+                    </li>
+                    <a th:href="@{|/Gathering_Schedule_Cancel/${GatheringHome.id}/${schedule.getSNum()}|}" th:if="${Attend[scheduleStat.index]  && loginedMember}"class="attend-button" onclick="return confirm('일정을 취소하시겠습니까?')">취소하기</a>
+                    <a th:href="@{|/Gathering_Schedule_Attend/${GatheringHome.id}/${schedule.getSNum()}|}" th:if="${!Attend[scheduleStat.index]  && loginedMember}" class="attend-button" onclick="return confirm('일정에 참석하시겠습니까?')">참석하기</a>
+                </ul>
+                <p>게시글</p>
+                <span th:if="${Post.size() == 0}" class="postNone">게시글이 없습니다.</span>
+                <a th:unless="${Post.size() == 0}" th:href="@{|/Gathering_Post/${id}/${posts.getPNum()}|}" th:each="posts, postsStat :${Post}">
+                    <ul class="g_news_post_box">
+                        <ul class="g_news_post clearfix">
+                            <img class="post_writerImg" th:src="'data:image/png;base64,' + ${#strings.toString(mPPImg.get(postsStat.index))}" src="/image/Gathering_img1.png">
+                            <li><p class="post_boardName" th:text="${PostBoard.get(postsStat.index)}">게시판 이름</p></li>
+                            <li><p class="post_writerName" th:text="${PostWriter.get(postsStat.index).getMName()}">작성자</p></li>
+                            <li><p class="post_date" th:text="${posts.getPDate()}">0월 00일 오후 0:00</p></li>
+                            <li><p class="post_title" th:text="${posts.getPTitle()}">제목</p></li>
+                            <li>
+                                <p class="post_contents" th:text="${posts.getPContents()}">글 내용</p>
+                            </li>
+                        </ul>
+                        <li><span th:text="'댓글 ' + ${Comments.get(postsStat.index)} + '개'"></span></li>
+                    </ul>
+                </a>
+            </ul>
+        </ul>
+    </div>
+    <div id="g_member">
+        <h4 th:text="'모임 멤버 (' + ${headcount} + '명)'"></h4>
+        <ul th:each="member, memberStat: ${GatheringMember}">
+            <li class="clearfix">
+                <img class="profileimg" th:src="'data:image/png;base64,' + ${#strings.toString(mPImg.get(memberStat.index))}">
+                <img class="leadercrown" src="/image/leadercrown.png" th:if="${member.getMId() == GatheringHome.getGMainleader()}">
+                <img class="leadercrown" src="/image/subleaderstar.png" th:if="${member.getMId() == GatheringHome.getGSubleader1() || member.getMId() == GatheringHome.getGSubleader2() || member.getMId() == GatheringHome.getGSubleader3()}">
+                <ul>
+                    <li>
+                        <h4>
+                            <a th:text="${member.getMName()}" th:if="${session.loginId != GatheringHome.getGMainleader()}"></a>
+                            <a th:text="${member.getMName()}" th:if="${session.loginId == GatheringHome.getGMainleader()}" style="width: 190px"></a>
+                        </h4>
+                        <a th:href="@{|/GrantSubleader/${GatheringHome.id}/${member.getMId()}|}" th:unless="${session.loginId != GatheringHome.getGMainleader()}" th:if="${memberStat.index != 0 && GatheringHome.getGSubleader1() != member.getMId() && GatheringHome.getGSubleader2() != member.getMId() && GatheringHome.getGSubleader3() != member.getMId()}" class="subLeader" onclick="return confirm('운영진을 부여하시겠습니까?(*운영진은 3명만 가능합니다)')">운영진 부여</a>
+                        <a th:href="@{|/RemoveSubleader/${GatheringHome.id}/${member.getMId()}|}" th:unless="${session.loginId != GatheringHome.getGMainleader()}" th:if="${memberStat.index != 0 && GatheringHome.getGSubleader1() == member.getMId() || GatheringHome.getGSubleader2() == member.getMId() || GatheringHome.getGSubleader3() == member.getMId()}" style="color: rebeccapurple" class="subLeader" onclick="return confirm('운영진을 해임하시겠습니까?')">운영진 해임</a>
+                        <a th:href="@{|/forcedExit/${GatheringHome.id}/${member.getMId()}|}" th:if="${session.loginId == GatheringHome.getGMainleader() && memberStat.index != 0}" class="forcedExit" onclick="return confirm('강제퇴장 시키겠습니까?(모든 활동이 사라지지 않습니다.)')">강퇴하기</a>
+                    </li>
+                    <li><p th:text="${member.getMIntroduction()}"></p></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div th:replace="/footer.html"></div>
+</div>
+</body>
+</html>

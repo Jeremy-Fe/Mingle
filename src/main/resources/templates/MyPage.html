@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPage</title>
+    <link rel="icon" href="/image/DefaultProfile_logo.png">
+    <!--swiper-->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!--jQuery 모달-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+
+    <!--css-->
+    <link href="/CSS/MyPage.css" type="text/css" rel="stylesheet">
+
+    <!--font-->
+    <!--font-family: 'GmarketSans';-->
+    <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+    <!--font-family: 'Orbitron', sans-serif;-->
+    <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+    <!--font-family: 'Jalnan';-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/defaultUI.html"></div>
+
+            <div class="view">
+                <!--마이페이지-->
+                <div class="MyPage">
+                    <img alt="큰제목" src="/image/MyPageTitle.png">
+                    <p>마이페이지</p>
+                    <li th:if="${session.memberDTO.getMGGathering() == null}" id="delete"><a th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px; cursor: pointer;" onclick="return confirm('정말로 회원탈퇴하시겠습니까?')">회원탈퇴</a></li>
+                    <li th:unless="${session.memberDTO.getMGGathering() == null}" id="delete"><a style="font-size: 20px; cursor: pointer;" onclick="confirmWithdrawal()">회원탈퇴</a></li>
+                    <div class="profile">
+                <ul>
+                <li class="pimg">
+                    <!--프로필 수정 버튼-->
+                    <a href="#ex1" rel="modal:open">
+                        <img class="edit" alt="프로필수정" src="/image/ProfileEdit_w.png">
+                    </a>
+                    <a th:if="${myPagemId.getMProfileimg() == null}" href="#">
+                        <img id="profileimg"  class="proimg" name="mPiProfileimg" alt="프로필사진" src="/image/DefaultProfile_logo.png" >
+                    </a>
+                    <a th:unless="${myPagemId.getMProfileimg() == null}" href="#">
+                        <img id="profileimg"  class="proimg" th:src="'data:image/png;base64,' + ${#strings.toString(profileimg)}" name="mPiProfileimg" alt="프로필사진" src="/image/DefaultProfile_logo.png" >
+                    </a>
+                </li>
+
+                <li class="text">
+                    <p class="name" th:text="${myPagemId.getMName()}">Amelia</p>
+                    <p class="birth" th:text="${myPagemId.getMBirth()}">1998.01.18</p>
+                    <p class="gender" th:text="${myPagemId.getMGender()}">여</p>
+
+                </li>
+                <li class="inBox">
+                    <a th:if="${myPagemId.getMIntroduction() == null}" href="#">
+                        <p id="commentText" class="coment"  name="mIntroduction"  contenteditable="true">자기소개를 입력해주세요.
+                        </p>
+                    </a>
+                    <a th:unless="${myPagemId.getMIntroduction() == null}" href="#">
+                        <p id="commentText" class="coment" th:text="${myPagemId.getMIntroduction()}" name="mIntroduction"  contenteditable="true">
+                        </p>
+                    </a>
+                </li>
+                <a id="submitButton" href="#" class="edit_2_link">
+                    <img class="edit_2" alt="프로필수정" src="/image/ProfileEdit_b.png">
+                </a>
+            </ul>
+
+        </div>
+        <!--내모임-->
+        <p class="title_02">가입한 모임</p>
+        <div id="sc1" class="swiper-container mc clearfix">
+            <div id="myclass" class="swiper-wrapper clearfix">
+                <div id ="myMingCardInner" class="swiper-slide mycb_01" th:each="gathering :${mingles}">
+                    <a th:href="@{|/Gathering_Home/${gathering.id}|}">
+                        <p class="GImg" th:if="${gathering.getGCoverimg() == null}">
+                            <img alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                        </p>
+                        <p class="GImg" th:unless="${gathering.getGCoverimg() == null}">
+                            <img alt="모임 이미지1" th:src="${gathering.getGCoverimg()}">
+                        </p>
+                        <p class="Gname" th:text="${gathering.getGName()}" >질풍가도</p>
+                        <span th:text="${gathering.getGIntroduction()}">도심속 러닝 모...</span>
+                    </a>
+                </div>
+
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+                <div class="swiper-slide"><p class="dummy">모임을 가입해주세요.</P></div><!--빈 페이지-->
+            </div>
+        </div>
+        <!--내게시물-->
+        <p class="title_03">내 게시물</p>
+        <div id="sc2" class="swiper-container mp clearfix">
+            <div id="myPost" class="swiper-wrapper clearfix">
+                <div class="swiper-slide post_01 clearfix"  th:each="mypost, mypostStat :${post}" >
+                    <a th:if="${postGName.get(mypostStat.index).getGCoverimg() == null}" th:href="@{|/Gathering_Post/${postGName.get(mypostStat.index).getId()}/${mypost.getPNum()}|}">
+                        <img class="postimg_01" alt="모임 이미지1" src="/image/DefaultClass_logo.png">
+                    </a>
+                    <a th:unless="${postGName.get(mypostStat.index).getGCoverimg() == null}" th:href="@{|/Gathering_Post/${postGName.get(mypostStat.index).getId()}/${mypost.getPNum()}|}">
+                        <img class="postimg_01" alt="모임 이미지1" th:src="${postGName.get(mypostStat.index).getGCoverimg()}">
+                    </a>
+                    <p class="postname_01" th:text="${postGName.get(mypostStat.index).getGName()}">질풍가도</p>
+                    <span class="Post_Titile" th:text="${mypost.getPTitle()}">안녕학세요</span>
+                    <span class="Post_Contents" th:text="${mypost.getPContents()}">이날 저녁에 러닝 번개 후 맥주 한잔 할 살암</span>
+                    <p class="day_01" th:text="${mypost.getPDate()}">2023. 05. 19</p>
+                </div>
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+                <div class="swiper-slide post_02 clearfix"><span class="Post_Contents">&nbsp&nbsp&nbsp&nbsp&nbsp게시물을 작성해 주세요.</span></div><!--빈 페이지-->
+            </div>
+
+        </div>
+        <!--내 댓글-->
+        <p class="title_04">내 댓글</p>
+        <div class="myComment clearfix" >
+            <ul class="comment_01" th:each="mycomments,mycommentsStat :${comments}">
+                <a th:href="@{|/Gathering_Post/${Comments_gName.get(mycommentsStat.index).getId()}/${mycomments.getCPNum()}|}">
+                <span class="commentdata" th:text="${Comments_gName.get(mycommentsStat.index).getGName()} +' '+'|'+' '+${mycomments.getCDate()}"></span>
+                <span class="commenttext" th:text="${mycomments.getCComments()}"></span>
+                </a>
+            </ul>
+
+            <ul class="comment_01"><a><span class="commenttext">댓글을 추가 작성해 주세요.</span></a></ul>
+
+        </div>
+
+
+        <!--프로필수정 모달창--->
+        <div id="ex1" class="modal clearfix">
+            <div id="modalContent">
+                <img class="proimg" alt="프로필사진"> <!--프로필사진 이미지-->
+                <p class="name"></p>
+                <p class="birth"></p>
+                <p class="gender"></p>
+                <img id="editex" class="edit" alt="프로필사진" src=""><!--흰색 수정버 튼 이미지-->
+            </div>
+            <button id="editcp">수정하기</button><!--최종 수정하기 버튼 이미지-->
+            <input type="file" id="fileInput"><!--수정할 이미지 불러오기 윈도우 창-->
+        </div>
+
+
+        <div id="footer">
+            <div class="footer_menu">
+                <a href="#">이용약관</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">책임의 한계와 법적고지</a>
+                <a href="#">회원정보 고객센터</a>
+            </div> <!--footer메뉴 -->
+            <div class="f_copyright">
+                <img src="image/login_footer.png">
+                <p>Copyright ⓒ </p>
+                <p class="corp">mingle Corp. </p>
+                <p>All Rights Reserved.</p>
+            </div> <!--copyright -->
+        </div>
+    </div>
+    </section>
+
+</div>
+
+<!--프로필 수정-->
+<script>
+
+    var comment = document.getElementById("commentText").textContent;
+    console.log("DB에 현재 저장된 내용: " + comment);
+
+    /*--자기소개 텍스트 수정--*/
+    $(document).ready(function () {
+        $(".edit_2_link").click(function (event) {
+            event.preventDefault();
+            var newText = $(".coment").text();
+            console.log("내용확인  : " + newText);
+
+            $.ajax({
+                url: '/Mypage/mIntroduction', // 실제 서버 요청 경로로 변경
+                type: 'POST', // 또는 'PUT', 'PATCH' 등 HTTP 메서드 선택
+                data: {mIntroduction: newText}, // 수정된 텍스트를 데이터로 전송
+                success: function (data) {
+                    // 서버에서 응답을 처리하는 코드 (예: 성공 메시지 표시)
+                    alert('수정된 내용이 저장되었습니다.');
+                    alert('수정 완료!');
+
+                },
+                error: function () {
+                    // 오류 발생 시 처리하는 코드 (예: 오류 메시지 표시)
+                    alert('수정된 내용이 저장되었습니다.');
+                    alert('수정 완료!');
+                }
+            });
+        });
+    });
+
+<!--프로필 수정 모달장-->
+    // 모달이 열릴 때
+    $('.edit').on('click', function () {
+        console.log('프로필 정보 가져오기가 실행됨');
+        // 프로필 정보 가져와서 모달 내에 출력
+        var profileContainer = $('#box #view .view .MyPage .profile');
+        var proimgSrc = profileContainer.find('#profileimg').attr('src');
+        var nameText = profileContainer.find('.text .name').text();
+        var birthText = profileContainer.find('.text .birth').text();
+        var genderText = profileContainer.find('.text .gender').text();
+        var editimgSrc = profileContainer.find('.pimg .edit').attr('src');
+
+        console.log(proimgSrc);
+        console.log(nameText);
+        console.log(birthText);
+        console.log(genderText );
+        console.log(editimgSrc);
+
+        // 모달 내의 요소에 정보 출력
+        $('#modalContent .proimg').attr('src', proimgSrc);
+        $('#modalContent .name').text(nameText);
+        $('#modalContent .birth').text(birthText);
+        $('#modalContent .gender').text(genderText);
+        $('#modalContent .edit').attr('src', editimgSrc);
+    });
+
+<!--프로필 이미지 불러오기 및 업로드-->
+    $(document).ready(function () {
+        $("#editex").click(function (event) {
+            event.preventDefault();
+            // 파일 업로드 input을 클릭합니다.
+            $("#fileInput").click();
+        });
+
+        $("#fileInput").change(function () {
+            var fileInput = $("#fileInput")[0].files[0]; // 파일 인풋에서 선택한 파일을 가져옵니다.
+
+            // 파일을 선택한 후, 해당 파일의 경로를 img 요소의 src 속성에 설정합니다.
+            var fileURL = URL.createObjectURL(fileInput);
+            $(".proimg").attr("src", fileURL);
+        });
+
+        $("#editcp").click(function (event) {
+            event.preventDefault();
+            var newSrc = $(".proimg").attr("src");
+            console.log("내용확인  : " + newSrc);
+
+            // 이미지를 서버로 업로드하고 서버에서 URL 생성
+            var formData = new FormData();
+            formData.append('mProfileimg', $("#fileInput")[0].files[0]); // 서버 컨트롤러에서 사용하는 파라미터 이름에 맞게 설정
+            console.log("폼데이터확인  : " + formData);
+
+            $.ajax({
+                url: '/Mypage/uploadImage',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    var serverImageUrl = data.imageUrl; // 서버에서 생성된 이미지 URL을 받아옵니다.
+
+                    // 이제 serverImageUrl을 사용하여 서버 측에서 이미지를 불러올 수 있습니다.
+                    console.log('서버 이미지 URL: ' + serverImageUrl);
+                    // 이후 서버 이미지 URL을 사용하여 필요한 작업을 수행할 수 있습니다.
+                    alert('수정 완료.');
+                    window.location.reload();
+                },
+                error: function () {
+                    alert('수정 완료.');
+                    window.location.reload();
+                }
+            });
+        });
+    });
+
+    const swiper1 = new Swiper('#sc1', {
+        loop: false,
+        centeredSlides: false,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+
+        grid: {
+            rows: 1, // 그리드의 행 수
+            fill: 'row', // "row" 또는 "column", 행을 채우는 방식 선택
+        },
+
+
+    });
+
+    const swiper2 = new Swiper('#sc2', {
+        loop: false,
+        centeredSlides: false,
+        slidesPerView: 'auto',
+        slideToClickedSlide: true,
+
+        grid: {
+            rows: 3, // 그리드의 행 수
+            fill: 'row', // "row" 또는 "column", 행을 채우는 방식 선택
+        },
+
+
+    });
+
+    function confirmWithdrawal() {
+        alert("가입된 모임을 탈퇴해주세요.");
+
+    }
+
+</script>
+
+
+
+</body>
+</html>

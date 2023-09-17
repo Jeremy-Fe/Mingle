@@ -1,0 +1,118 @@
+<!-- 바꿔야하는 부분 -->
+<div class="view clearfix" th:fragment="gatheringParam ( gCoverimg ,District, GMainsubject, gName, Gathering_id, gMainleader)">
+    <head>
+        <link href="/CSS/Gathering.css" type="text/css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+
+
+    </head>
+    <!-- 타이틀 -->
+    <div class="g_title">
+        <ul>
+            <li><a class="title_img_a" th:href="|${gCoverimg}|" data-lightbox="example-set"><img class="title_img" th:if="${gCoverimg == null}" src="/image/DefaultGatheringCoverImg.png"><img class="title_img" th:unless="${gCoverimg == null}" th:src="|${gCoverimg}|"></a></li> <!----><!--src="/image/testimg.png"-->
+            <ul class="title_subject">
+                <li>
+                    <a class="title_detail" th:text="|${District}|"></a>
+                    <a class="title_detail" th:text="|${GMainsubject}|"></a>
+                    <form method="post" th:action="@{|/modify_GatheringCoverimg/${Gathering_id}|}" enctype="multipart/form-data">
+                        <button type="submit" id="enter" class="enterCoverModify">적용</button>
+                        <label for="file" th:if="${session.loginId == gMainleader}">
+                            <div class="coverimg_modify">커버사진 바꾸기</div>
+                        </label>
+                        <input type="file" id="file" accept="image/png, image/jpeg">
+                        <input id="fileName" type="text" name="gCoverimg" style="display: none;">
+                    </form>
+                    <script>
+                        const file = document.getElementById("file");
+                        const enter = document.getElementById('enter');
+                        file.addEventListener("change", function() {
+                            if (file.files.length > 0) {
+                                enter.style.display = 'block';
+                                const fileNames = file.files[0].name;
+                                document.getElementById("fileName").value = fileNames;
+                            }
+                        });
+                    </script>
+                </li>
+                <div id="gName" data-gname="${gName}"></div>
+                <div id="mId" data-mid="${session.memberDTO.getMId()}"></div>
+                <li>
+                    <h3 class="title_title" th:inline="text">[[${gName}]]
+                        <a th:if="${session.memberDTO == null or session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}"
+                           th:attr="data-gname=${gName}, data-mid=${session.memberDTO.getMId()}"
+                           id="joinButton"
+                           onclick="joinGathering(this.getAttribute('data-gname'), this.getAttribute('data-mid'))">
+                            가입하기
+                        </a>
+
+                        <a th:unless="${session.memberDTO == null or session.memberDTO.getMGGathering() == null or !session.memberDTO.getMGGathering().contains(gName)}"
+                           th:attr="data-gname=${gName}, data-mid=${session.memberDTO.getMId()}"
+                           id="joinButton2"
+                           onclick="deleteGathering(this.getAttribute('data-gname'), this.getAttribute('data-mid'))">
+                            탈퇴하기
+                        </a>
+                    </h3>
+                </li>
+
+            </ul>
+            <li th:with="gatheringId=${Gathering_id}">
+                <a class="title_nav" th:href="@{|/Gathering_Home/${gatheringId}|}">홈</a>
+                <a class="title_nav" th:href="@{|/Gathering_Board/${gatheringId}|}">게시판</a>
+                <a class="title_nav" th:href="@{|/Gathering_Album_All/${gatheringId}|}">사진첩</a>
+                <a class="title_nav" th:href="@{|/Gathering_Schedule/${gatheringId}|}">일정</a>
+            </li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        // 가입하기 버튼 클릭 시 호출되는 함수
+        function joinGathering(gName, mId) {
+
+            $.ajax({
+                type: "POST",
+                url: "/updateMGGathering",
+                data: {
+                    gName: gName,
+                    mId: mId
+                },
+                success: function(response) {
+                    if (response === true) {
+                        alert("가입이 완료되었습니다.");
+                        window.location.reload();
+                    } else {
+                        alert("가입에 실패했습니다.");
+                    }
+                },
+                error: function() {
+                    alert("서버 오류로 인해 가입에 실패했습니다.");
+                }
+            });
+        }
+
+        function deleteGathering(gName, mId) {
+            $.ajax({
+                type: "POST",
+                url: "/deleteMGGathering",
+                data: {
+                    gName: gName,
+                    mId: mId
+                },
+                success: function(response) {
+                    if (response === true) {
+                        alert("탈퇴가 완료되었습니다.");
+                        // 원하는 동작을 수행하도록 추가 코드 작성
+                        window.location.reload();
+                    } else {
+                        alert("탈퇴에 실패했습니다.");
+                    }
+                },
+                error: function() {
+                    alert("서버 오류로 인해 탈퇴에 실패했습니다.");
+                }
+            });
+        }
+
+    </script>
