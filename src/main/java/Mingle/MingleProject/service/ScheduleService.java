@@ -2,6 +2,7 @@ package Mingle.MingleProject.service;
 
 import Mingle.MingleProject.Mapper.EntityDTOMapper;
 import Mingle.MingleProject.dto.ScheduleDTO;
+import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.entity.ScheduleEntity;
 import Mingle.MingleProject.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -53,4 +54,5 @@ public class ScheduleService {
     public void deleteSchedule(Long sNum) {
         scheduleRepository.deleteById(sNum);
     }
+
 }

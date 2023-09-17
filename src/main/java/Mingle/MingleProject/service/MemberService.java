@@ -6,7 +6,7 @@ import Mingle.MingleProject.dto.ScheduleDTO;
 import Mingle.MingleProject.entity.MemberEntity;
 import Mingle.MingleProject.entity.ScheduleEntity;
 import Mingle.MingleProject.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
+import Mingle.MingleProject.repository.ScheduleRepository;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.lang.reflect.Member;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.sql.SQLException;
-import java.util.stream.DoubleStream;
 
 @Service
 @AllArgsConstructor
@@ -35,6 +32,7 @@ public class MemberService {
 
     @PersistenceContext
     private EntityManager entityManager;
+    private final ScheduleRepository scheduleRepository;
 
     public void save(MemberDTO memberDTO) {
         // 1. dto -> entity 변환
@@ -77,7 +75,7 @@ public class MemberService {
         return memberDTOList;
     }
 
-    public String  idCheck(String mId) {
+    public String idCheck(String mId) {
         Optional<MemberEntity> byMId = memberRepository.findBymId(mId);
         if (byMId.isPresent()) {
             //조회결과가 있다 -> 사용할 수 없다.
@@ -123,27 +121,29 @@ public class MemberService {
         memberEntity.setMId(mId);*/
 
         // MemberEntity 객체를 저장
-        memberRepository.updateMIntroduction(mIntroduction,mId);
+        memberRepository.updateMIntroduction(mIntroduction, mId);
 
     }
 
     //MYpage 자기 프로필 사진 업로드
     @Autowired
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository, ScheduleRepository scheduleRepository) {
         this.memberRepository = memberRepository;
+        this.scheduleRepository = scheduleRepository;
     }
 
     private Blob createBlobFromMultipartFile(MultipartFile multipartFile) throws IOException, SQLException {
         byte[] fileBytes = multipartFile.getBytes();
-            return new SerialBlob(fileBytes);
+        return new SerialBlob(fileBytes);
     }
+
     @Transactional
     public void uploadImage(@NotNull MultipartFile mProfileimg, String mId) {
         try {
             MemberEntity memberEntity = new MemberEntity();
             Blob mProfileBlob = createBlobFromMultipartFile(mProfileimg);
             memberEntity.setMProfileimg(mProfileBlob);
-            memberRepository.updatemProfileimg(mProfileBlob,mId);
+            memberRepository.updatemProfileimg(mProfileBlob, mId);
 
         } catch (IOException | SQLException e) {
             e.printStackTrace(); // 또는 로깅 등을 통해 예외 처리를 수행
@@ -177,7 +177,7 @@ public class MemberService {
     //MYpage 헤더로부터 로그인 된 ID 정보 유지
     public MemberDTO findbyIdMyPage(String logInId) {
         Optional<MemberEntity> myPageMemberEntity = memberRepository.findBymId(logInId);
-        if(myPageMemberEntity.isPresent()){
+        if (myPageMemberEntity.isPresent()) {
             MemberEntity memberEntity = myPageMemberEntity.get();
             MemberDTO memberDTO = MemberDTO.toMemberDTO(memberEntity);
 
@@ -188,31 +188,31 @@ public class MemberService {
     }
 
 
-    public List<MemberDTO> findByGatheringMember(String gatheringName){
+    public List<MemberDTO> findByGatheringMember(String gatheringName) {
         List<MemberEntity> gatheringMemberEntityList = memberRepository.findByGatheringMember(gatheringName);
         List<MemberDTO> gatheringMemberDTOList = new ArrayList<>();
         for (MemberEntity gatheringMemberEntity : gatheringMemberEntityList) {
             gatheringMemberDTOList.add(MemberDTO.toMemberDTO(gatheringMemberEntity));
         }
-    
-        
+
+
         // 삭제 인덱스를 저장할 변수 초기화(향상 for문은 index가 없기때문에 직접 만들기)
         int index = 0;
         // 향상된 for 문으로 배열 순회
-        for (MemberDTO memberDTO: gatheringMemberDTOList) {
+        for (MemberDTO memberDTO : gatheringMemberDTOList) {
             // n번째 list에 memberDTO.getMGGathering() 을 spilt으로 쪼개기
             String[] gatheringNameList = memberDTO.getMGGathering().split(",");
             // 조건문에 들어갈 변수 초기화
             boolean include = true;
             // 쪼개진 문자열을 저장한 배열을 순회하면서 모임이름이 포함되는지 확인
             for (int i = 0; i < gatheringNameList.length; i++) {
-                if(gatheringNameList[i].equals(gatheringName)) {
+                if (gatheringNameList[i].equals(gatheringName)) {
                     include = false;
                 }
             }
-            
+
             // 만약 포함이 되지않아 include가 true이면 index 순서의 list null값으로 변경
-            if(include){
+            if (include) {
                 gatheringMemberDTOList.set(index, null);
             }
             // 향상 for문에 index값 증가
@@ -278,10 +278,11 @@ public class MemberService {
             memberRepository.save(member);
         }
     }
+
     public List<ScheduleDTO> findByMemberId(String mId) {
         List<ScheduleEntity> scheduleEntityList = memberRepository.findByMemberId(mId);
         List<ScheduleDTO> scheduleDTOList = new ArrayList<>();
-        for (ScheduleEntity scheduleEntity: scheduleEntityList) {
+        for (ScheduleEntity scheduleEntity : scheduleEntityList) {
             scheduleDTOList.add(EntityDTOMapper.entityToDTO(scheduleEntity));
 
         }
@@ -291,6 +292,26 @@ public class MemberService {
         return scheduleDTOList;
     }
 
+//    public boolean deleteScheduleById(String mId) {
+//        // memberId를 사용하여 회원을 찾습니다.
+//        List<ScheduleEntity> scheduleEntityList = memberRepository.findByMemberId(mId);
+//        if (scheduleEntityList != null) {
+//            // 회원을 찾았을 경우 삭제합니다.
+//            for (ScheduleEntity member : scheduleEntityList) {
+//                String currentMGathering = member.getSMember();
+//                if (currentMGathering != null) {
+//                    // MGathering에서 gName을 제거
+//                    currentMGathering = currentMGathering.replace("," + mId, "").replace(mId + ",", "").replace(mId, "");
+//                    member.setSMember(currentMGathering);
+//                    scheduleRepository.save(member); // 업데이트된 회원 정보 저장
+//                }
+//
+//            }
+//
+//            return true;
+//        }
+//        return false;   // 회원을 찾을 수 없거나 업데이트 실패
+//    }
     @Transactional
     public void removeGathering(String currentMGathering, String mId) {
         memberRepository.removeGathering(currentMGathering, mId);
@@ -298,3 +319,4 @@ public class MemberService {
 
 
 }
+

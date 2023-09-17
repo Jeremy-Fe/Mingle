@@ -34,10 +34,8 @@
                 <div class="MyPage">
                     <img alt="큰제목" src="/image/MyPageTitle.png">
                     <p>마이페이지</p>
-<!--                    <li id="delete"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px" onclick="return confirm('정말로 회원탈퇴하시겠습니까?')">회원탈퇴</a></li>-->
-                    <li id="delete" th:if="${myPagemId.getMGGathering() == null }"><a href="#" onclick="return confirm('가입된 모임이 없습니다 탈퇴 할랭?')">회원탈퇴</a></li>
-                    <li id="delete" th:unless="${myPagemId.getMGGathering() == null }"><a href="#" onclick="return confirm('가입된 모임이 있습니다.')">회원탈퇴</a></li>
-
+                    <li th:if="${session.memberDTO.getMGGathering() == null}" id="delete"><a th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px; cursor: pointer;" onclick="return confirm('정말로 회원탈퇴하시겠습니까?')">회원탈퇴</a></li>
+                    <li th:unless="${session.memberDTO.getMGGathering() == null}" id="delete"><a style="font-size: 20px; cursor: pointer;" onclick="confirmWithdrawal()">회원탈퇴</a></li>
                     <div class="profile">
                 <ul>
                 <li class="pimg">
@@ -204,10 +202,8 @@
             });
         });
     });
-</script>
 
 <!--프로필 수정 모달장-->
-<script>
     // 모달이 열릴 때
     $('.edit').on('click', function () {
         console.log('프로필 정보 가져오기가 실행됨');
@@ -232,10 +228,8 @@
         $('#modalContent .gender').text(genderText);
         $('#modalContent .edit').attr('src', editimgSrc);
     });
-</script>
 
 <!--프로필 이미지 불러오기 및 업로드-->
-<script>
     $(document).ready(function () {
         $("#editex").click(function (event) {
             event.preventDefault();
@@ -283,10 +277,7 @@
             });
         });
     });
-</script>
 
-<script>
-//스와이퍼 1
     const swiper1 = new Swiper('#sc1', {
         loop: false,
         centeredSlides: false,
@@ -301,10 +292,6 @@
 
     });
 
-</script>
-
-<script>
-//스와이퍼 2
     const swiper2 = new Swiper('#sc2', {
         loop: false,
         centeredSlides: false,
@@ -318,6 +305,11 @@
 
 
     });
+
+    function confirmWithdrawal() {
+        alert("가입된 모임을 탈퇴해주세요.");
+
+    }
 
 </script>
 
