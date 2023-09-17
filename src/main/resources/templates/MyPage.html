@@ -34,7 +34,10 @@
                 <div class="MyPage">
                     <img alt="큰제목" src="/image/MyPageTitle.png">
                     <p>마이페이지</p>
-                    <li th:unless="${session.loginId == null}" id="delete"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px" onclick="return confirm('정말로 회원탈퇴하시겠습니까?')">회원탈퇴</a></li>
+<!--                    <li id="delete"><a  th:href="@{|/delete/${session.memberDTO.getMId()}|}" style="font-size: 20px" onclick="return confirm('정말로 회원탈퇴하시겠습니까?')">회원탈퇴</a></li>-->
+                    <li id="delete" th:if="${myPagemId.getMGGathering() == null }"><a href="#" onclick="return confirm('가입된 모임이 없습니다 탈퇴 할랭?')">회원탈퇴</a></li>
+                    <li id="delete" th:unless="${myPagemId.getMGGathering() == null }"><a href="#" onclick="return confirm('가입된 모임이 있습니다.')">회원탈퇴</a></li>
+
                     <div class="profile">
                 <ul>
                 <li class="pimg">

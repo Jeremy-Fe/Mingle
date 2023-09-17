@@ -55,4 +55,8 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     @Modifying
     @Query("UPDATE MemberEntity m SET m.mGGathering = :currentMGathering WHERE m.mId = :mId")
     void removeGathering(@Param("currentMGathering") String currentMGathering, @Param("mId") String mId);
+
+
+    @Query("SELECT m FROM MemberEntity m WHERE m.mName = :mName")
+    Optional<MemberEntity> findBymName(@Param("mName")String mName);
 }

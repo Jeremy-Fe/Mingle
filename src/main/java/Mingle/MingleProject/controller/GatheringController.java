@@ -17,6 +17,7 @@ import Mingle.MingleProject.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -165,6 +166,16 @@ public class GatheringController {
             index++;
         }
         model.addAttribute("Attend", attend);
+
+        // 비회원 여부 일정 참석 불가
+        List<MemberDTO> gatheringMemberDTOs = memberService.findByGatheringMember(gatheringDTO.getGName());
+        boolean loginedMember = false;
+        for (MemberDTO memberDTO: gatheringMemberDTOs) {
+            if(logInId.equals(memberDTO.getMId())){
+                loginedMember = true;
+            }
+        }
+        model.addAttribute("loginedMember", loginedMember);
 
         return "Gathering_Home";
     }
@@ -411,11 +422,11 @@ public class GatheringController {
         model.addAttribute("Schedule", scheduleDTOList);
 
 
-        
         // 로그인한 아이디 참석 여부
         String logInId = (String) session.getAttribute("loginId");
         String[] scheduleAttendMemberList = null;
-        boolean[] attend = new boolean[scheduleDTOList.size()];
+
+        boolean[] attend = new boolean[scheduleDTOList.size()]; // 참석 여부
         int index = 0;
         for (ScheduleDTO scheduleDTO: scheduleDTOList) {
             attend[index] = false;
@@ -432,15 +443,62 @@ public class GatheringController {
 
 
 
+
+        // 참가자 명단
+        List<String[]> mName = new ArrayList<>();
+        List<String[]> mPImg = new ArrayList<>();
+
+
+        // 참가자 숫자
         List<Integer> memberCount = new ArrayList<>();
         List<Long> remainingPerson = new ArrayList<>();
+
+        // 이것은 배열안에 배열을 넣은 로직이다 굉장히 어렵다 쳐다도 보지 말 것.
         for (ScheduleDTO scheduleDTO: scheduleDTOList) {
             String[] member = scheduleDTO.getSMember().split(",");
             memberCount.add(member.length);
             remainingPerson.add(scheduleDTO.getSMaxHeadcount() - member.length);
+            // 여기에 참가자 명단 프로필 이름 받을 memberDTOList에다가 cNum 검색 어쩌구
+//            mName.add(member);
+            String[] name = new String[member.length];
+            String[] profileimg = new String[member.length];
+            int idx = 0;
+            for (String mname: member) {
+                MemberDTO memberDTO = memberService.findByWriter(mname);
+                Blob mPPImg =  memberDTO.getMProfileimg();
+                System.out.println("mpImg :" + mPPImg);
+
+                if (mPPImg != null) {
+                    try {
+                        byte[] byteArray = mPPImg.getBytes(1, (int) mPPImg.length());
+                        String base64Iame = Base64.getEncoder().encodeToString(byteArray);
+                        profileimg[idx] = base64Iame; // 사진 넣기
+                        name[idx] = memberDTO.getMName(); // 이름 넣기
+                        System.out.println("base64Iame:" + base64Iame);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                idx++;
+            }
+            mPImg.add(profileimg);
+            mName.add(name);
         }
         model.addAttribute("memberCount", memberCount);
         model.addAttribute("remaining", remainingPerson);
+        model.addAttribute("mName", mName);
+        model.addAttribute("mPImg", mPImg);
+
+
+        // 비회원 여부 일정 참석 불가
+        List<MemberDTO> gatheringMemberDTO = memberService.findByGatheringMember(gatheringDTO.getGName());
+        boolean loginedMember = false;
+        for (MemberDTO memberDTO: gatheringMemberDTO) {
+            if(logInId.equals(memberDTO.getMId())){
+                loginedMember = true;
+            }
+        }
+        model.addAttribute("loginedMember", loginedMember);
 
         return "Gathering_Schedule";}
 
@@ -557,6 +615,9 @@ public class GatheringController {
 
         return "redirect:/Gathering_Post/" + id + "/" + pNum;
     }
+
+
+
 
     @PostMapping("Gathering_Post_Modify/{id}/{pNum}")
     public String postModify(@ModelAttribute PostDTO postDTO, @PathVariable Long id, @PathVariable Long pNum){

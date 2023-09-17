@@ -26,6 +26,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.sql.SQLException;
+import java.util.stream.DoubleStream;
 
 @Service
 @AllArgsConstructor
@@ -294,4 +295,6 @@ public class MemberService {
     public void removeGathering(String currentMGathering, String mId) {
         memberRepository.removeGathering(currentMGathering, mId);
     }
+
+
 }
